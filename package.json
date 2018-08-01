@@ -1,23 +1,25 @@
 {
-    "name": "kudypoditys-backend",
+    "name": "kudypoditys-frontend",
     "version": "1.0.0",
     "description": "",
     "main": "server.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js"
+        "start": "react-scripts build && node server.js",
+        "watch": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/BohdanRusinka/kudypoditys-backend.git"
+        "url": "git+https://github.com/BohdanRusinka/kudypoditys-frontend.git"
     },
     "author": "Dmytro Kostiuk",
     "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/BohdanRusinka/kudypoditys-backend/issues"
-    },
-    "homepage": "https://github.com/BohdanRusinka/kudypoditys-backend#readme",
     "dependencies": {
-        "express": "^4.16.3"
+        "express": "^4.16.3",
+        "react": "^16.4.1",
+        "react-dom": "^16.4.1",
+        "react-scripts": "1.1.4"
     }
 }
