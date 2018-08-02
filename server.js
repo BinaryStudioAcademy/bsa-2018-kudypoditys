@@ -4,8 +4,7 @@ const
 
 const 
     app = express(),
-    port = process.env.PORT || 8080,
-    ip = process.env.IP || '127.0.0.1';
+    port = process.env.PORT || 5000;
 
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -15,6 +14,6 @@ app.get('/api/hit-count', (req, res) => {
     res.json({ hitCount });
 });
 
-app.listen(port, ip, () => {
-    console.log('Server running on http://%s:%s', ip, port);
+app.listen(port, () => {
+    console.log('Server running on http://127.0.0.1:%s', port);
 });
