@@ -1,11 +1,13 @@
 const
     path = require('path'),
-    express = require('express');
+    express = require('express'),
+    cors = require('cors');
 
 const 
     app = express(),
     port = process.env.PORT || 5000;
 
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 let hitCount = 0;
