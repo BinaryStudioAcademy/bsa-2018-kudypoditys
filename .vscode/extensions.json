@@ -1,0 +1,8 @@
+{
+	"recommendations": [
+		"christian-kohler.npm-intellisense",
+		"christian-kohler.path-intellisense",
+		"steoates.autoimport",
+		"waderyan.gitblame"
+	]
+}
