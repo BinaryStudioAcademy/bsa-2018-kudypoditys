@@ -6,7 +6,7 @@ const
     app = express(),
     port = process.env.PORT || 5000;
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 let hitCount = 0;
 app.get('/api/hit-count', (req, res) => {
