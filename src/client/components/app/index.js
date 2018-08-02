@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getHitCount } from '../../services/hitCountService';
+import { getHitCount } from 'client/services/hitCountService';
 
 class App extends React.Component {
 
