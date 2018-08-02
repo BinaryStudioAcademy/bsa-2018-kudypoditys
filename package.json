@@ -4,7 +4,7 @@
     "description": "Binary Studio Academy 2018 JS group project.",
     "main": "server.js",
     "scripts": {
-        "start": "react-scripts build && node server.js",
+        "start": "npm run build-client && node server.js",
         "test-client": "react-scripts test --env=jsdom",
         "watch-client": "npm-run-all -p watch-css watch-js",
         "build-client": "npm-run-all build-css build-js",
@@ -30,7 +30,6 @@
         "react": "^16.4.1",
         "react-dom": "^16.4.1",
         "react-scripts": "1.1.4",
-        "semantic-ui": "^2.3.3",
         "whatwg-fetch": "^2.0.4"
     }
 }
