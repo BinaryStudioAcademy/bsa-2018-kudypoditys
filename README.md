@@ -6,7 +6,7 @@ Install the following packages globally (prepend `sudo` if using Unix system):
 ```bash
 npm i -g yarn
 npm i -g nodemon
-npm i -g storybook
+npm i -g @storybook/cli
 ```
 
 Clone repository:
@@ -37,3 +37,8 @@ To build and deploy the whole application locally do this:
 yarn start
 ```
 Files change will not trigger application restart.
+
+To run your storybook, type:
+```bash
+yarn storybook
+```

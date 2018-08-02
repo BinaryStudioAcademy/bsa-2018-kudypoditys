@@ -8,7 +8,9 @@
         "start-client": "node scripts/start.js",
         "start-api": "nodemon server.js",
         "build": "node scripts/build.js",
-        "test": "node scripts/test.js --env=jsdom"
+        "test": "node scripts/test.js --env=jsdom",
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook"
     },
     "repository": {
         "type": "git",
@@ -110,5 +112,10 @@
     "eslintConfig": {
         "extends": "react-app"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "@storybook/react": "^3.4.8",
+        "@storybook/addon-actions": "^3.4.8",
+        "@storybook/addon-links": "^3.4.8",
+        "@storybook/addons": "^3.4.8"
+    }
 }
