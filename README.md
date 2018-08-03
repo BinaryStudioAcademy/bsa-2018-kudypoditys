@@ -1,4 +1,6 @@
-# kudypoditys-frontend
+# Kudypoditys
+
+## Project setup
 
 Make sure you have `nodejs 10.7.x` and `npm 6.2.x`. 
 
@@ -42,3 +44,12 @@ To run your storybook, type:
 ```bash
 yarn storybook
 ```
+
+## Recommended extensions
+It's recommened that you install the following Chrome extensions:
+
+[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+
+[Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+
+[Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en)
