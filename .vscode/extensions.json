@@ -4,6 +4,8 @@
 		"christian-kohler.path-intellisense",
 		"steoates.autoimport",
 		"waderyan.gitblame",
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"EditorConfig.EditorConfig",
+		"wangtao0101.vscode-js-import"
 	]
 }
