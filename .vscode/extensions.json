@@ -3,6 +3,7 @@
 		"christian-kohler.npm-intellisense",
 		"christian-kohler.path-intellisense",
 		"steoates.autoimport",
-		"waderyan.gitblame"
+		"waderyan.gitblame",
+		"dbaeumer.vscode-eslint"
 	]
 }
