@@ -1,3 +1,13 @@
 .hidden {
     display: none;
 }
+
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+
+.check-in-out > * {
+    width: fit-content;
+}

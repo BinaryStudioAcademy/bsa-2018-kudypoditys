@@ -1,30 +1,27 @@
 import React from 'react';
 import './index.scss';
-import Calendar from 'react-calendar';
-import { Select } from 'semantic-ui-react';
+import { Select, Input } from 'semantic-ui-react';
+import { DatesRangeInput } from 'semantic-ui-calendar-react';
+import * as moment from 'moment';
 
 class SearchComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchValue: {
-                destination: '',
-                checkIn: '',
-                checkOut: '',
-                rooms: 1,
-                adults: 2,
-                children: 0
-            }
+            destination: '',
+            date: '',
+            rooms: 1,
+            adults: 2,
+            children: 0
         };
     }
 
-    handleChange(event){
-
+    handleChange(event, {name, value}) {
+        console.log('event');
+        this.setState({ [name]: value });
     }
 
     render() {
-        const checkIn = this.state.searchValue.checkIn;
-        const checkOut = this.state.searchValue.checkOut;
         const selectOptions = [
             { text: '1', value: 1 },
             { text: '2', value: 2 },
@@ -40,31 +37,41 @@ class SearchComponent extends React.Component {
 
 
         return (
-            <form>
+            <form className='search-bar'>
                 <div className='destination'>
-                    <input
-                        name='city'
+                    <Input
+                        iconPosition='left'
+                        icon='map marker alternate'
+                        name='destination'
                         placeholder='Where are you going?'
-                        onChange={this.handleChange}
+                        onChange={this.handleChange.bind(this)}
                     />
                 </div>
-                <div className='check-in'>
-                    {checkIn === '' ? 'Check-in' : 'Error'}
-                    <Calendar
-                        className='hidden'
-                        minDetail='year'
-                    />
-                </div>
-                <div className='check-out'>
-                    {checkOut === '' ? 'Check-out' : 'Error'}
-                    <Calendar
-                        className='hidden'
-                        minDetail='year'
-                    />
+                <div className='check-in-out'>
+                <DatesRangeInput
+                    closable
+                    minDate={moment()}
+                    dateFormat='ddd D MMM'
+                    popupPosition='bottom center'
+                    icon='calendar alternate outline'
+                    iconPosition='left'
+                    placeholder='Check-in - Check-out'
+                    name='date'
+                    value={this.state.date}
+                    onChange={this.handleChange.bind(this)}
+                />
                 </div>
                 <div className='guest-options'>
-                    {this.state.searchValue.adults} adults · {this.state.searchValue.children} children
-                    <div className='guest-options-edit'>
+                    <Input
+                        icon='user'
+                        iconPosition='left'
+                        value=''
+                        placeholder={`${this.state.adults} adults · ${this.state.children} children`}
+                        onFocus={(event) => {event.target.classList.remove('hidden');}}
+                    />
+                    <div
+                        className='guest-options-edit hidden'
+                        >
                         <Select
                             name='rooms'
                             placeholder='Rooms'
@@ -74,12 +81,12 @@ class SearchComponent extends React.Component {
                             name='adults'
                             placeholder='Adults'
                             options={selectOptions}
-                        /> 
+                        />
                         <Select
                             name='children'
                             placeholder='Children'
                             options={selectOptions}
-                        /> 
+                        />
                     </div>
                 </div>
             </form>
