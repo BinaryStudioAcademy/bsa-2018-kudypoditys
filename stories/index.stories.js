@@ -6,6 +6,8 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
+import SearchComponent from '../src/client/components/search-component/index';
+
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
@@ -17,3 +19,8 @@ storiesOf('Button', module)
             </span>
         </Button>
     ));
+
+storiesOf('Search component', module)
+.add('search', () => (
+    <SearchComponent/>
+));    
