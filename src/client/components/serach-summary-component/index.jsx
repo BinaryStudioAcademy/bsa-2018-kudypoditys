@@ -42,6 +42,7 @@ class SearchSummaryComponent extends React.Component {
 
 
 
+
         )
     }
 
