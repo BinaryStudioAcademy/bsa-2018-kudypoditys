@@ -22,5 +22,5 @@ storiesOf('Button', module)
 
 storiesOf('Search component', module)
 .add('search', () => (
-    <SearchComponent/>
-));    
+    <SearchComponent view='bar'/>
+));
