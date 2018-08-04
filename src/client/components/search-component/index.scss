@@ -1,13 +1,52 @@
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .search-bar {
     display: flex;
     flex-direction: row;
-    justify-content: center
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: rgb(254, 187, 2);
+}
+
+.search-bar > * {
+    margin: 0.2rem 0.1rem 0.2rem 0.2rem;
+}
+
+.search-bar input:hover{
+    border: 1px solid rgb(229, 169, 4) !important;
 }
 
 .check-in-out > * {
+    width: 16rem;
+}
+
+.check-in-out *,
+.room-options * {
+    cursor: pointer;
+}
+
+.btn-wrp {
+    display: flex;
+    align-content: center;
+}
+
+.room-selector {
+    box-shadow: 0 0 3px 1px #dddddd;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 2;
+    position: absolute;
+    margin: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.room-selector > * {
     width: fit-content;
 }
