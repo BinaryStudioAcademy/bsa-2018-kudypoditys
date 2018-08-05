@@ -7,24 +7,33 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.svg$/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        query: {
-                            presets: ['airbnb'],
-                        },
-                    },
-                    {
-                        loader: 'react-svg-loader',
-                        query: {
-                            jsx: true,
-                        },
-                    },
-                ],
+                test: [/\.svg$/],
+                loader: require.resolve('url-loader'),
+                options: {
+                    limit: 10000,
+                    name: 'static/media/[name].[hash:8].[ext]',
+                },
             },
+            // {
+            //     test: /\.svg$/,
+            //     use: [
+            //         {
+            //             loader: 'babel-loader',
+            //             query: {
+            //                 presets: ['airbnb'],
+            //             },
+            //         },
+            //         {
+            //             loader: 'react-svg-loader',
+            //             query: {
+            //                 jsx: true,
+            //             },
+            //         },
+            //     ],
+            // },
             {
                 oneOf: [
+
                     {
                         test: /\.css$/,
                         use: [

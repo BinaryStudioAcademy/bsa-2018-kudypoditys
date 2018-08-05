@@ -3,24 +3,19 @@ import { Card, Icon, Image, Grid, Container } from 'semantic-ui-react';
 import 'client/components/region-banner-component/index.scss';
 import birka from 'client/components/region-banner-component/img/birka.svg'
 
-/*
-
-{
+/* {
     id: number,
     city: string,
     flagUrl: string,
     properties: number,
     avgPrice: number
     pictureUrl: string
-}
-
-
-
-*/
+} */
 
 class BannerComponent extends React.Component {
     constructor(props) {
         super(props);
+        console.log('ctor banner component')
     }
 
     render() {
@@ -30,6 +25,8 @@ class BannerComponent extends React.Component {
             backgroundSize: 'cover',
 
         });
+
+        console.log('This is birka >>>> ', birka);
 
         return (
             // <Container onClick={onCardClick} className="banner">
@@ -54,7 +51,7 @@ class BannerComponent extends React.Component {
                     <Card.Meta>
                         <h5 className="subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
                     </Card.Meta>
-                    <Card.Description className="avg-price" style={{ background: birka }}>
+                    <Card.Description className="avg-price" style={{ backgroundImage: `url(${birka})` }}>
                         <span className="avg-price_text">
                             Average price
                         </span>
