@@ -2,6 +2,8 @@ import React from 'react';
 
 import { getHitCount } from 'client/services/hitCountService';
 
+import BannerListComponent from 'client/components/region-banner-component';
+
 class App extends React.Component {
 
     state = {
@@ -10,6 +12,11 @@ class App extends React.Component {
 
     render() {
         const { hitCount } = this.state;
+
+
+
+
+        //return <BannerListComponent cityInfos={cityInfos} />;
 
         if (hitCount === undefined) {
             return null;
