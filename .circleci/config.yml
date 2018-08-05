@@ -1,28 +1,71 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:10.8.0
-      
-      - image: circleci/postgres:10
-        environment:
-          POSTGRES_USER: ubuntu
-          POSTGRES_DB: kudypoditys
-
     working_directory: ~/bsa-2018-kudypoditys
-
+    docker:
+      - image: docker:17.05.0-ce-git
     steps:
       - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache py-pip=9.0.0-r1
+            pip install awscli==1.11.76
+      - run:
+          name: Build application Docker image
+          command: |
+            docker build -t app .
+      # If we had
+      #- run:
+      #    name: Run mongo db
+      #    command: |
+      #      docker run --name mongo_test -d mongo
+      #- run:
+      #    name: Run tests
+      #    command: |
+      #      docker run -a STDOUT -it -p 4100:3000 --link mongo_test:db --name test_app app gulp test
+      #      #docker exec -t test_app gulp test
+      - deploy:
+          name: Push application Docker image
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              CLUSTER='test-app'
+              FAMILY='test-app'
+              DOCKER_IMAGE='test-app'
+              TASK='test-app'
+              SERVICE='app-service'
+              # Login to AWS
+              aws configure set region $AWS_REGION
+              $(aws ecr get-login)
+              # Tag and push docker image
+              docker tag app $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$DOCKER_IMAGE:$CIRCLE_SHA1
+              docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$DOCKER_IMAGE:$CIRCLE_SHA1
+              # Create task for docker deploy
+              task_template='[
+                {
+                  "name": "%s",
+                  "image": "%s.dkr.ecr.%s.amazonaws.com/%s:%s",
+                  "essential": true,
+                  "memoryReservation": 1000,
+                  "portMappings": [
+                    {
+                      "containerPort": 5000,
+                      "hostPort": 80
+                    }
+                  ],
+                  "environment" : [
+                      { "name" : "NODE_ENV", "value" : "production" }
+                  ]
+                }
+              ]'
+              echo "$task_template"
+              task_def=$(printf "$task_template" $TASK $AWS_ACCOUNT_ID $AWS_REGION $TASK $CIRCLE_SHA1)
+              # Register task definition
+              json=$(aws ecs register-task-definition --container-definitions "$task_def" --family "$FAMILY")
+              # Grab revision # using regular bash and grep
+              revision=$(echo "$json" | grep -o '"revision": [0-9]*' | grep -Eo '[0-9]+')
+              # Deploy revision
+              aws ecs update-service --cluster "$CLUSTER" --service "$SERVICE" --task-definition "$TASK":"$revision"
+              return 0
+            fi
