@@ -6,6 +6,8 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
+import LoginComponent from '../src/client/components/loginComponent/index';
+
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
@@ -16,4 +18,9 @@ storiesOf('Button', module)
                 😀 😎 👍 💯
             </span>
         </Button>
+    ));
+
+storiesOf('Login component', module)
+    .add('Login main', () => (
+        <LoginComponent />
     ));
