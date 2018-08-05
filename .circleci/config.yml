@@ -31,10 +31,10 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               CLUSTER='BSAcluster'
-              FAMILY='test-app'
+              FAMILY='first-run-task-definition'
               DOCKER_IMAGE='kudypoditys'
               TASK='first-run-task-definition'
-              SERVICE='sample-app-service'
+              SERVICE='kudypoditys'
               # Login to AWS
               aws configure set region $AWS_REGION
               $(aws ecr get-login)
