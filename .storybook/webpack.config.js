@@ -14,23 +14,6 @@ module.exports = {
                     name: 'static/media/[name].[hash:8].[ext]',
                 },
             },
-            // {
-            //     test: /\.svg$/,
-            //     use: [
-            //         {
-            //             loader: 'babel-loader',
-            //             query: {
-            //                 presets: ['airbnb'],
-            //             },
-            //         },
-            //         {
-            //             loader: 'react-svg-loader',
-            //             query: {
-            //                 jsx: true,
-            //             },
-            //         },
-            //     ],
-            // },
             {
                 oneOf: [
 
