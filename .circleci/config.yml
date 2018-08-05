@@ -32,7 +32,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               CLUSTER='BSAcluster'
               FAMILY='test-app'
-              DOCKER_IMAGE='test-app'
+              DOCKER_IMAGE='kudypoditys'
               TASK='first-run-task-definition'
               SERVICE='sample-app-service'
               # Login to AWS
