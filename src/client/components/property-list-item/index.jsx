@@ -127,7 +127,8 @@ class PropertyListItem extends React.Component {
                                     <Container floated='right'
                                         textAlign='right'
                                         style={{
-                                            marginTop: "5rem"
+                                            marginTop: "5rem",
+                                            display: propertyItemData.availableRoomsCount===0?'none':'block'
                                         }}>
                                         <span
                                             className="priceInfo">prise from {propertyItemData.priceFrom} to {propertyItemData.priceTo} {propertyItemData.curency}</span>
