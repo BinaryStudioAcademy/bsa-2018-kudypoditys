@@ -24,6 +24,6 @@ storiesOf('SearchSummary component', module)
     .add('SearchSummary', () => (
         <SearchSummary
             // mock data here
-            data={{destination: "Lviv", numberOfMatched: 'asas'}}
+            data={{destination: "Lviv", numberOfMatched: '12345'}}
         />
     ));
