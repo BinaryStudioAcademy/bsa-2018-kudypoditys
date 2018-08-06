@@ -3,7 +3,7 @@ import './index.scss';
 import {Menu, Dropdown} from 'semantic-ui-react';
 
 
-class RankingBarComponent extends React.Component {
+export class RankingBarComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,11 +11,13 @@ class RankingBarComponent extends React.Component {
         };
     }
 
-    handleItemClick(e, {value}) {
+
+    handleItemClick = (event, {value}) => {
         this.setState({activeItem: value});
 
 
-    }
+        console.log(this.state.activeItem)
+    };
 
 
     render() {
@@ -24,7 +26,7 @@ class RankingBarComponent extends React.Component {
 
         return (
             <div className='sorting-bar'>
-                <Menu widths='5'>
+                <Menu widths='3'>
 
                     <Menu.Item
                         icon='usd'
@@ -32,14 +34,14 @@ class RankingBarComponent extends React.Component {
 
                         value='price'
                         active={activeItem === 'price'}
-                        onClick={this.handleItemClick.bind(this)}
+                        onClick={this.handleItemClick}
                     />
                     <Menu.Item
                         icon='map marker alternate'
                         name='Distance from city centre'
                         value='distance'
                         active={activeItem === 'distance'}
-                        onClick={this.handleItemClick.bind(this)}
+                        onClick={this.handleItemClick}
                     />
                     <Dropdown
                         item
@@ -53,14 +55,14 @@ class RankingBarComponent extends React.Component {
                             <Dropdown.Item
                                 value='hi'
                                 active={activeItem === 'hi'}
-                                onClick={this.handleItemClick.bind(this)}
+                                onClick={this.handleItemClick}
                             >
                                 stars [5→1]
                             </Dropdown.Item>
                             <Dropdown.Item
                                 value='low'
                                 active={activeItem === 'low'}
-                                onClick={this.handleItemClick.bind(this)}
+                                onClick={this.handleItemClick}
                             >
                                 stars [1→5]
                             </Dropdown.Item>
@@ -78,5 +80,3 @@ class RankingBarComponent extends React.Component {
 
 
 }
-
-export default RankingBarComponent;
