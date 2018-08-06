@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import React, { Component, Fragment } from 'react';
+import { Grid, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import './index.scss';
 
 import { Banner } from './item';
+
 
 export default class BannerList extends Component {
     constructor(props) {

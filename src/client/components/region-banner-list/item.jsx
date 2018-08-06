@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { Card, Container } from 'semantic-ui-react';
+import React, { Component, Fragment } from 'react';
+import { Card, Container, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import './index.scss';
 import tag from 'client/components/region-banner-list/img/tag.svg';
+import shortParagraphImg from './img/short-paragraph.png';
 
 export class Banner extends Component {
 
@@ -15,29 +16,34 @@ export class Banner extends Component {
         });
 
         return (
-            <Container onClick={onCardClick} className="banner" style={imgStyles(cityInfo.pictureUrl)}>
-                <Card.Content>
-                    <Card.Header className="title">
-                        {cityInfo.city}
-                        <img src={cityInfo.flagUrl} alt="/" style={{ width: 59 }} />
-                    </Card.Header>
-                    <Card.Meta>
-                        <h5 className="subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
-                    </Card.Meta>
-                    <Card.Description className="avg-price" style={{ backgroundImage: `url(${tag})` }}>
-                        <span className="avg-price_text">
-                            Average price
+            cityInfo ?
+                < Container onClick={onCardClick} className="banner" style={imgStyles(cityInfo.pictureUrl)} >
+                    <Card.Content>
+                        <Card.Header className="title">
+                            {cityInfo.city}
+                            <img src={cityInfo.flagUrl} alt="/" style={{ width: 55, height: 30 }} />
+                        </Card.Header>
+                        <Card.Meta>
+                            <h5 className="subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
+                        </Card.Meta>
+                        <Card.Description className="avg-price" style={{ backgroundImage: `url(${tag})` }}>
+                            <span className="avg-price_text">
+                                Average price
                         </span>
-                        <span className="avg-price_count">
-                            UAH  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}
-                        </span>
+                            <span className="avg-price_count">
+                                UAH  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}
+                            </span>
 
-                    </Card.Description>
-                </Card.Content>
-
-            </Container>
+                        </Card.Description>
+                    </Card.Content>
+                </Container >
+                : <Fragment>
+                    <Image src={shortParagraphImg} className="shortParagraphImg" />
+                    <Image src={shortParagraphImg} className="shortParagraphImg" />
+                </Fragment>
 
         );
+
     }
 }
 

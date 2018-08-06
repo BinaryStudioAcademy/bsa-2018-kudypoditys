@@ -3,6 +3,7 @@
         font-size:30px;
         display: inline-flex;
         align-items: center;
+        margin-bottom: 10px;
         img{
             width: 59px;
             padding-left: 9px;
@@ -25,9 +26,12 @@
         padding: 1rem 2.5rem;
 
     }
-
+    
     .content{
         padding:20px;
     }
 
 }
+.shortParagraphImg{
+        padding: 7px;
+    }
