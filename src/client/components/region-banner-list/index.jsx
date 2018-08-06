@@ -6,7 +6,6 @@ import './index.scss';
 
 import { Banner } from './item';
 
-
 export default class BannerList extends Component {
     constructor(props) {
         super(props);

@@ -18,22 +18,17 @@ export class Banner extends Component {
         return (
             cityInfo ?
                 < Container onClick={onCardClick} className="banner" style={imgStyles(cityInfo.pictureUrl)} >
-                    <Card.Content>
-                        <Card.Header className="title">
+                    <Card.Content className="banner__content">
+                        <Card.Header className="banner__title">
                             {cityInfo.city}
-                            <img src={cityInfo.flagUrl} alt="/" style={{ width: 55, height: 30 }} />
+                            <img className="banner___flag" src={cityInfo.flagUrl} alt="/" style={{ width: 55, height: 30 }} />
                         </Card.Header>
                         <Card.Meta>
-                            <h5 className="subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
+                            <h5 className="banner__subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
                         </Card.Meta>
-                        <Card.Description className="avg-price" style={{ backgroundImage: `url(${tag})` }}>
-                            <span className="avg-price_text">
-                                Average price
-                        </span>
-                            <span className="avg-price_count">
-                                UAH  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}
-                            </span>
-
+                        <Card.Description className="banner__avgprice" style={{ backgroundImage: `url(${tag})` }}>
+                            <span>Average price</span>
+                            <span> UAH  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}</span>
                         </Card.Description>
                     </Card.Content>
                 </Container >
