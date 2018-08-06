@@ -4,39 +4,22 @@ import {Header} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 
-export class SearchSummaryComponent extends React.Component {
+export class SearchSummary extends React.Component {
     static defaultProps = {
         numberOfMatched: 0
     };
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-            // destination: this.props.destination,
-            // numberOfMatched: this.props.numberOfMatched
-
-
-            //stories mock
-            destination: this.props.data.destination,
-            numberOfMatched: this.props.data.numberOfMatched
-
-        };
-
-
-    }
 
     render() {
-        const destination = this.state.destination,
+        const destination = this.props.data.destination,
             //pretty numbers are here
-            number = this.state.numberOfMatched.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
+            number = this.props.data.numberOfMatched.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
 
         return (
 
             <Header
-                as='h1'
-                style={{'font-size': '23px', 'padding': '10px', 'line-height': '1.2'}}>
+                as="h1"
+                style={{fontSize: 23, padding: 10, lineHeight: 1.2}}>
                 {destination}: {number} properties found
             </Header>
 
@@ -48,7 +31,7 @@ export class SearchSummaryComponent extends React.Component {
 }
 
 
-SearchSummaryComponent.propTypes = {
+SearchSummary.propTypes = {
     destination: PropTypes.string.isRequired,
     numberOfMatched: PropTypes.number.isRequired
 };

@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
-import {SearchSummaryComponent} from "../src/client/components/serach-summary";
+import {SearchSummary} from "../src/client/components/serach-summary";
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -20,10 +20,10 @@ storiesOf('Button', module)
     ));
 
 
-// storiesOf('SearchSummary component', module)
-//     .add('SearchSummary', () => (
-//         <SearchSummaryComponent
-// // mock data here
-// //             data={{destination: "Lviv", numberOfMatched: 1999}}
-//         />
-//     ));
+storiesOf('SearchSummary component', module)
+    .add('SearchSummary', () => (
+        <SearchSummary
+            // mock data here
+            data={{destination: "Lviv", numberOfMatched: 1999}}
+        />
+    ));
