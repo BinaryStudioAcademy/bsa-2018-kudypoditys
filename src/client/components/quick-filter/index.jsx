@@ -3,71 +3,48 @@ import './index.scss';
 import {Checkbox, Card, Image, Button, CardContent, Grid, Container, Icon, Header, Label, Content } from 'semantic-ui-react';
 
 class Quickfilter extends React.Component {
+
     constructor(props){
         super(props);
-        this.state = {
-            mark9:true,
-            mark8:false,
-            mark7:false,
-            mark6:false,
+
+        const a = function(){
+            const { boxes } = this.props;
+            let res = {};
+            for(let box of boxes){
+                res[box.name] = box.ischecked;
+            }
+            return res;
         }
+        this.state = a;
     }
 
-    // componentWillUpdate = name =>{
-    //     this.setState(state=>({
-    //         [name] : [name] === false ? true : false
-    //     }));
-    //     console.log(name)
-
+    onChange = (e) =>{
+        const name = e.target.attributes.getNamedItem('name').value;
+        this.setState(state=>(
+            this.state[name] = !this.state[name]
+        ));
+        console.log(this.state)
+    }
 
     render() {
+        const list = this.props.boxes.map((box)=>
+        <div className="quick-filter-item">
+            <div className="ui input checkbox">
+                <input type="checkbox" defaultChecked={box.ischecked} id={box.name} name={box.name} onChange={this.onChange}/>
+                <label className='filter-amount' htmlFor={box.name}>{box.label}</label>
+            </div>
+            <div className='filter-amount'>{box.amount}</div>
+        </div>
+        );
+
         return(
             <div className="quick-filter-box">
 
                 <div className="quick-filter-header">
                     <h2>Filter by</h2>
                 </div>
-
                 <p className='quick-filter-group'>Location score</p>
-
-                <div className="quick-filter-item">
-                    <Checkbox defaultChecked={this.state.mark9} name='mark9' label='Excelent location: 9+' />
-                    <div className='filter-amount'>312</div>
-                </div>
-                <div className="quick-filter-item">
-                    <Checkbox name='mark8' label='Very good location: 8+' />
-                    <div className='filter-amount'>562</div>
-                </div>
-                <div className="quick-filter-item">
-                    <Checkbox name='mark7' label='good location: 7+' />
-                    <div className='filter-amount'>45</div>
-                </div>
-                <div className="quick-filter-item">
-                    <Checkbox name='mark6' label='Pleasant location: 6+' />
-                    <div className='filter-amount'>74</div>
-                </div>
-
-                 <p className='quick-filter-group'>Popular filters</p>
-
-
-                <div className="quick-filter-item">
-                    <Checkbox name='hotels' label='Hotels' />
-                    <div className='filter-amount'>356</div>
-                </div>
-                <div className="quick-filter-item">
-                    <Checkbox name='apartaments' label='Apartaments' />
-                    <div className='filter-amount'>785</div>
-                </div>
-                <div className="quick-filter-item">
-                    <Checkbox name='hostels' label='Hostels' />
-                    <div className='filter-amount'>124</div>
-                </div>
-                <div className="quick-filter-item">
-                    <Checkbox name='motels' label='Motels' />
-                    <div className='filter-amount'>758</div>
-                </div>
-
-
+                {list}
             </div>
             );
     }

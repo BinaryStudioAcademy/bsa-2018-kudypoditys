@@ -1,5 +1,4 @@
 import React from 'react';
-import Breadcrumbs from 'client/components/breadcrumbs';
 import { getHitCount } from 'client/services/hitCountService';
 import Quickfilter from 'client/components/quick-filter';
 
@@ -18,7 +17,6 @@ class App extends React.Component {
 
         return (
             <div>
-                <Breadcrumbs />
                 <Quickfilter />
             </div>
         );
