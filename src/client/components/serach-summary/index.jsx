@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss';
 import {Header} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import {prettyNumbers} from 'client/helpers/prettyNumbers'
+import formatNumber from 'client/helpers/formatNumber'
 
 export class SearchSummary extends React.Component {
     static defaultProps = {
@@ -14,9 +14,9 @@ export class SearchSummary extends React.Component {
     render() {
         const numbersToPrettify = this.props.data.numberOfMatched,
             destination = this.props.data.destination,
-            numbers = prettyNumbers(numbersToPrettify);
+            numbers = formatNumber(numbersToPrettify);
 
-        console.log(destination);
+
         return (
 
             <Header
