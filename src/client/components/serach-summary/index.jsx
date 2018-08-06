@@ -7,7 +7,9 @@ import {prettyNumbers} from 'client/helpers/prettyNumbers'
 export class SearchSummary extends React.Component {
     static defaultProps = {
         numberOfMatched: 0
+        
     };
+
 
 
     render() {
