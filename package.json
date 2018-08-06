@@ -66,12 +66,9 @@
         "redux-saga": "^0.16.0",
         "resolve": "1.6.0",
         "sass-loader": "^7.1.0",
-<<<<<<< HEAD
         "semantic-ui-calendar-react": "^0.7.1",
         "semantic-ui-react": "^0.82.1",
-=======
         "sequelize": "^4.38.0",
->>>>>>> refs/remotes/origin/master
         "style-loader": "0.19.0",
         "sw-precache-webpack-plugin": "0.11.4",
         "url-loader": "0.6.2",
