@@ -31,7 +31,7 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               CLUSTER='BSAcluster'
-              FAMILY='kudypoditys'
+              FAMILY='kudypoditys-small'
               DOCKER_IMAGE='kudypoditys'
               TASK='kudypoditys-small'
               SERVICE='kudypoditys'
