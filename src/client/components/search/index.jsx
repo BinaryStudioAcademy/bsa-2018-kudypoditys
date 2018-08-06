@@ -59,6 +59,7 @@ class SearchComponent extends React.Component {
                         name='destination'
                         placeholder='Where are you going?'
                         onChange={this.handleChange}
+                        onFocus={this.hideRoomSelector}
                     />
                 </div>
                 <div className='check-in-out'>
@@ -73,6 +74,7 @@ class SearchComponent extends React.Component {
                     name='date'
                     value={this.state.date}
                     onChange={this.handleChange}
+                    onFocus={this.hideRoomSelector}
                 />
                 </div>
                 <div
@@ -87,7 +89,6 @@ class SearchComponent extends React.Component {
                     <div
                         ref={this.roomSelector}
                         className='room-selector hidden'
-                        onMouseEnter={this.showRoomSelector}
                         onMouseLeave={this.hideRoomSelector}
                     >
                         <Form.Field inline>
