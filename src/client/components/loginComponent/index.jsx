@@ -20,8 +20,8 @@ export class LoginComponent extends React.Component {
     }
 
     render() {
-        const listItems = this.props.errors.map((error) =>
-            <li>{error.message}</li>
+        const listItems = this.props.errors.map((error,i) =>
+            <li key={i}>{error.message}</li>
         );
         return (
             <div className="loginComponent" >
@@ -53,7 +53,7 @@ export class LoginComponent extends React.Component {
                                     />
                                 </Form.Field>
                                 <Form.Field style={{ textAlign: 'right' }}>
-                                    <a tabindex="0" onClick={this.handleClickForgot}>Forgot the password ?</a>
+                                    <a tabIndex="0" onClick={this.handleClickForgot}>Forgot the password ?</a>
                                 </Form.Field>
                                 <Button.Group>
                                     <Button positive onClick={this.handleClickLogin}>Login</Button>
