@@ -9,7 +9,6 @@ import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 import App from 'client/components/app';
 import { increment } from 'client/logic/counter/actions';
-
 const store = createStore(
     reducer,
     composeWithDevTools()
@@ -21,7 +20,7 @@ setInterval(() => {
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <App/>
     </Provider>,
     document.getElementById('root')
 );
