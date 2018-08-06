@@ -1,18 +1,22 @@
-.hidden {
-    display: none !important;
+.search--view-bar > .room-options > .room-selector.hidden {
+    display: none;
 }
 
-.search-bar {
+.search {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: fit-content;
-    margin: 0 auto;
     border-radius: 5px;
     background-color: rgb(254, 187, 2);
+    width: fit-content;
 }
 
-.search-panel {
+.search--view-bar {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.search--view-panel {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
@@ -21,12 +25,12 @@
     width: fit-content;
 }
 
-.search-bar > * {
+.search--view-bar > * {
     margin: 0.2rem 0.1rem 0.2rem 0.2rem;
 }
 
-.search-bar input:hover
-.search-panel input:hover {
+.search--view-bar input:hover,
+.search--view-panel input:hover {
     border: 1px solid rgb(229, 169, 4) !important;
 }
 
@@ -64,7 +68,7 @@ td.suir-calendar.date:hover {
     align-content: center;
 }
 
-.search-bar > .room-options > .room-selector {
+.search--view-bar > .room-options > .room-selector {
     box-shadow: 0 0 3px 1px #dddddd;
     background-color: white;
     border-radius: 5px;
@@ -89,21 +93,21 @@ td.suir-calendar.date:hover {
     padding: 0.8rem;
 }
 
-.search-panel > .room-options > .room-selector {
+.search--view-panel > .room-options > .room-selector {
     position: relative;
 }
 
-.search-panel .fields > div.ui.selection.dropdown {
+.search--view-panel .fields > div.ui.selection.dropdown {
     min-width: 0;
 }
 
-.search-panel .room-selector > .fields {
+.ssearch--view-panel .room-selector > .fields {
     width: 100% !important;
     display: flex !important;
     justify-content: space-between;
 }
 
-.search-panel .btn-wrp {
+.search--view-panel .btn-wrp {
     display: flex;
     justify-content: flex-end;
 }

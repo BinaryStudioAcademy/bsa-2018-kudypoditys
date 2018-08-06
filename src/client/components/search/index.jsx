@@ -14,67 +14,57 @@ class SearchComponent extends React.Component {
             adults: 2,
             children: 0
         };
+        this.roomSelector = React.createRef();
     }
 
-    handleChange(event, {name, value}) {
+    handleChange = (event, {name, value}) => {
         this.setState({ [name]: value });
     }
 
-    toggleRoomSelector(){
-        document.getElementById('room-selector').classList.toggle('hidden');
+    generateOptions = (from, to) => {
+        let options = [];
+        for (let i=from; i<=to; i++) {
+            options.push({
+                text: `${i}`,
+                value: i
+            });
+        }
+        return options;
     }
 
-    showRoomSelector(){
-        document.getElementById('room-selector').classList.remove('hidden');
+    toggleRoomSelector = () => {
+        this.roomSelector.current.classList.toggle('hidden');
     }
 
-    hideRoomSelector(){
-        document.getElementById('room-selector').classList.add('hidden');
+    showRoomSelector = () => {
+        this.roomSelector.current.classList.remove('hidden');
+    }
+
+    hideRoomSelector = () => {
+        this.roomSelector.current.classList.add('hidden');
     }
 
     render() {
-        const selectOptions = [
-            { text: '1', value: 1 },
-            { text: '2', value: 2 },
-            { text: '3', value: 3 },
-            { text: '4', value: 4 },
-            { text: '5', value: 5 },
-            { text: '6', value: 6 },
-            { text: '7', value: 7 },
-            { text: '8', value: 8 },
-            { text: '9', value: 9 },
-            { text: '10', value: 10 }
-        ];
-        const childrenOptions = [
-            { text: '0', value: 0 },
-            { text: '1', value: 1 },
-            { text: '2', value: 2 },
-            { text: '3', value: 3 },
-            { text: '4', value: 4 },
-            { text: '5', value: 5 },
-            { text: '6', value: 6 },
-            { text: '7', value: 7 },
-            { text: '8', value: 8 },
-            { text: '9', value: 9 },
-            { text: '10', value: 10 }
-        ];
-
+        const selectOptions = this.generateOptions(1, 10);
+        const childrenOptions = this.generateOptions(0, 10);
+        const { view } = this.props;
 
         return (
-            this.props.view === 'bar' ?
-            <Form className='search-bar' >
+            view === 'bar' ?
+            <Form className='search search--view-bar' >
                 <div className='destination'>
                     <Input
                         iconPosition='left'
                         icon='map marker alternate'
                         name='destination'
                         placeholder='Where are you going?'
-                        onChange={this.handleChange.bind(this)}
+                        onChange={this.handleChange}
                     />
                 </div>
                 <div className='check-in-out'>
                 <DatesRangeInput
                     closable
+
                     minDate={moment()}
                     dateFormat='ddd D MMM'
                     popupPosition='bottom center'
@@ -83,7 +73,7 @@ class SearchComponent extends React.Component {
                     placeholder='Check-in - Check-out'
                     name='date'
                     value={this.state.date}
-                    onChange={this.handleChange.bind(this)}
+                    onChange={this.handleChange}
                 />
                 </div>
                 <div
@@ -96,7 +86,7 @@ class SearchComponent extends React.Component {
                         onClick={this.toggleRoomSelector}
                     />
                     <div
-                        id='room-selector'
+                        ref={this.roomSelector}
                         className='room-selector hidden'
                         onMouseEnter={this.showRoomSelector}
                         onMouseLeave={this.hideRoomSelector}
@@ -109,7 +99,7 @@ class SearchComponent extends React.Component {
                                 name='rooms'
                                 options={selectOptions}
                                 value={this.state.rooms}
-                                onChange={this.handleChange.bind(this)}
+                                onChange={this.handleChange}
                             />
                         </Form.Field>
                         <Form.Field inline>
@@ -120,7 +110,7 @@ class SearchComponent extends React.Component {
                                 name='adults'
                                 options={selectOptions}
                                 value={this.state.adults}
-                                onChange={this.handleChange.bind(this)}
+                                onChange={this.handleChange}
                             />
                         </Form.Field>
                         <Form.Field inline>
@@ -131,7 +121,7 @@ class SearchComponent extends React.Component {
                                 name='children'
                                 options={childrenOptions}
                                 value={this.state.children}
-                                onChange={this.handleChange.bind(this)}
+                                onChange={this.handleChange}
                             />
                         </Form.Field>
                     </div>
@@ -140,14 +130,14 @@ class SearchComponent extends React.Component {
                     <Button type='submit' content='Search' primary/>
                 </div>
             </Form> :
-            <Form className='search-panel'>
+            <Form className='search search--view-panel'>
             <Header as='h2'>Search</Header>
             <Form.Field className='destination'>
                 <label>Destination/property name:</label>
                 <input
                     name='destination'
                     placeholder='Where are you going?'
-                    onChange={this.handleChange.bind(this)}
+                    onChange={this.handleChange}
                 />
             </Form.Field>
             <Form.Field className='check-in-out'>
@@ -162,12 +152,11 @@ class SearchComponent extends React.Component {
                     placeholder='Check-in - Check-out'
                     name='date'
                     value={this.state.date}
-                    onChange={this.handleChange.bind(this)}
+                    onChange={this.handleChange}
                 />
             </Form.Field>
             <div className='room-options'>
                 <div
-                    id='room-selector'
                     className='room-selector'
                 >
                     <Form.Field>
@@ -178,7 +167,7 @@ class SearchComponent extends React.Component {
                             text={`${this.state.adults} ${this.state.adults === 1 ? 'Adult' : 'Adults'}`}
                             options={selectOptions}
                             value={this.state.adults}
-                            onChange={this.handleChange.bind(this)}
+                            onChange={this.handleChange}
                         />
                     </Form.Field>
                     <Form.Group inline>
@@ -188,7 +177,7 @@ class SearchComponent extends React.Component {
                             text={`${this.state.children === 0 ? 'No Children' : `${this.state.children} ${this.state.children === 1 ? 'Child' : 'Children'}`}`}
                             options={childrenOptions}
                             value={this.state.children}
-                            onChange={this.handleChange.bind(this)}
+                            onChange={this.handleChange}
                         />
                         <Dropdown
                             selection
@@ -196,7 +185,7 @@ class SearchComponent extends React.Component {
                             text={`${this.state.rooms} ${this.state.rooms === 1 ? 'Room' : 'Rooms'}`}
                             options={selectOptions}
                             value={this.state.rooms}
-                            onChange={this.handleChange.bind(this)}
+                            onChange={this.handleChange}
                         />
                     </Form.Group>
                 </div>
