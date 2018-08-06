@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-import BannerListComponent from 'client/components/region-banner-component';
+import BannerListComponent from 'client/components/region-banner-list';
 
 const cityInfos = [{
     id: 1,

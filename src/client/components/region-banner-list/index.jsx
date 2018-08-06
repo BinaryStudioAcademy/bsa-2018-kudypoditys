@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Card, Grid, Container } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import 'client/components/region-banner-component/index.scss';
+import './index.scss';
 
-import { BannerComponent } from './banner';
+import { Banner } from './item';
 
-export default class BannerListComponent extends React.Component {
+export default class BannerList extends Component {
     constructor(props) {
         super(props);
     }
@@ -27,22 +27,22 @@ export default class BannerListComponent extends React.Component {
             <Grid >
                 <Grid.Row columns={2}>
                     <Grid.Column>
-                        <BannerComponent cityInfo={city1} onClick={() => this.onCardClick(city1.id)} />
+                        <Banner cityInfo={city1} onClick={() => this.onCardClick(city1.id)} />
                     </Grid.Column>
                     <Grid.Column >
-                        <BannerComponent cityInfo={city2} onClick={() => this.onCardClick(city2.id)} />
+                        <Banner cityInfo={city2} onClick={() => this.onCardClick(city2.id)} />
                     </Grid.Column>
                 </Grid.Row>
 
                 <Grid.Row columns={3}>
                     <Grid.Column >
-                        <BannerComponent cityInfo={city3} onClick={() => this.onCardClick(city3.id)} />
+                        <Banner cityInfo={city3} onClick={() => this.onCardClick(city3.id)} />
                     </Grid.Column>
                     <Grid.Column >
-                        <BannerComponent cityInfo={city4} onClick={() => this.onCardClick(city4.id)} />
+                        <Banner cityInfo={city4} onClick={() => this.onCardClick(city4.id)} />
                     </Grid.Column>
                     <Grid.Column >
-                        <BannerComponent cityInfo={city5} onClick={() => this.onCardClick(city5.id)} />
+                        <Banner cityInfo={city5} onClick={() => this.onCardClick(city5.id)} />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
@@ -51,7 +51,7 @@ export default class BannerListComponent extends React.Component {
     }
 }
 
-BannerListComponent.propTypes = {
+BannerList.propTypes = {
     cityInfos: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,

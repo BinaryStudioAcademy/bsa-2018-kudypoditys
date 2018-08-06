@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { Card, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import 'client/components/region-banner-component/index.scss';
-import birka from 'client/components/region-banner-component/img/birka.svg';
+import './index.scss';
+import tag from 'client/components/region-banner-list/img/tag.svg';
 
-export class BannerComponent extends Component {
-    constructor(props) {
-        super(props);
-    }
+export class Banner extends Component {
 
     render() {
         const { cityInfo, onCardClick } = this.props;
@@ -27,7 +24,7 @@ export class BannerComponent extends Component {
                     <Card.Meta>
                         <h5 className="subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
                     </Card.Meta>
-                    <Card.Description className="avg-price" style={{ backgroundImage: `url(${birka})` }}>
+                    <Card.Description className="avg-price" style={{ backgroundImage: `url(${tag})` }}>
                         <span className="avg-price_text">
                             Average price
                         </span>
@@ -38,13 +35,13 @@ export class BannerComponent extends Component {
                     </Card.Description>
                 </Card.Content>
 
-            </Container >
+            </Container>
 
         );
     }
 }
 
-BannerComponent.propTypes = {
+Banner.propTypes = {
     cityInfo: PropTypes.shape({
         id: PropTypes.number.isRequired,
         city: PropTypes.string.isRequired,
