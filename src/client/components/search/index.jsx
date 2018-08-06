@@ -64,7 +64,6 @@ class SearchComponent extends React.Component {
                 <div className='check-in-out'>
                 <DatesRangeInput
                     closable
-
                     minDate={moment()}
                     dateFormat='ddd D MMM'
                     popupPosition='bottom center'

@@ -7,13 +7,13 @@
     border-radius: 5px;
     background-color: rgb(254, 187, 2);
     width: fit-content;
+    margin: 0 auto;
 }
 
 .search--view-bar {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
 }
 
 .search--view-panel {
@@ -29,23 +29,22 @@
     margin: 0.2rem 0.1rem 0.2rem 0.2rem;
 }
 
-.search--view-bar input:hover,
+.search--view-bar .input input:hover,
 .search--view-panel input:hover {
-    border: 1px solid rgb(229, 169, 4) !important;
+    border: 1px solid rgb(229, 169, 4);
 }
 
 
-td.suir-calendar.date,
-th.suir-calendar.week-day,
-th.suir-calendar.cell {
-    padding: 0.3rem !important;
-    margin: 0 !important;
+.suir-calendar.popup table td.suir-calendar.date,
+.suir-calendar.popup table th.suir-calendar.week-day,
+.suir-calendar.popup table th.suir-calendar.cell {
+    padding: 0.3rem;
 }
 
-td.active.suir-calendar.date,
-td.suir-calendar.date:hover {
-    background-color: rgb(0, 119, 204) !important;
-    color: white !important;
+.suir-calendar.popup table td.active.suir-calendar.date,
+.suir-calendar.popup table td.suir-calendar.date:hover {
+    background-color: rgb(0, 119, 204);
+    color: white;
     cursor: pointer;
 }
 
@@ -56,11 +55,6 @@ td.suir-calendar.date:hover {
 
 .check-in-out > * {
     width: 16rem;
-}
-
-.check-in-out *,
-.room-options * {
-    cursor: pointer;
 }
 
 .btn-wrp {
@@ -101,9 +95,9 @@ td.suir-calendar.date:hover {
     min-width: 0;
 }
 
-.ssearch--view-panel .room-selector > .fields {
-    width: 100% !important;
-    display: flex !important;
+.search--view-panel > .room-options > .room-selector > .fields {
+    width: 100%;
+    display: flex;
     justify-content: space-between;
 }
 
