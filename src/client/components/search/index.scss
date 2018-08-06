@@ -21,12 +21,12 @@
     flex-direction: column;
     border-radius: 5px;
     background-color: rgb(254, 187, 2);
-    padding: 0.8rem;
+    padding: 11px;
     width: fit-content;
 }
 
 .search--view-bar > * {
-    margin: 0.2rem 0.1rem 0.2rem 0.2rem;
+    margin: 3px 2px 3px 3px;
 }
 
 .search--view-bar .input input:hover,
@@ -38,23 +38,23 @@
 .suir-calendar.popup table td.suir-calendar.date,
 .suir-calendar.popup table th.suir-calendar.week-day,
 .suir-calendar.popup table th.suir-calendar.cell {
-    padding: 0.3rem;
+    padding: 4px;
 }
 
-.suir-calendar.popup table td.active.suir-calendar.date,
-.suir-calendar.popup table td.suir-calendar.date:hover {
-    background-color: rgb(0, 119, 204);
-    color: white;
+td.active.suir-calendar.date,
+.suir-calendar.date:hover {
+    background-color: rgb(0, 119, 204) !important;
+    color: white !important;
     cursor: pointer;
 }
 
 .ui.suir-calendar {
-    padding: 0rem;
+    padding: 0;
     margin: 0;
 }
 
 .check-in-out > * {
-    width: 16rem;
+    width: 220px;
 }
 
 .btn-wrp {
@@ -68,13 +68,13 @@
     border-radius: 5px;
     z-index: 2;
     position: absolute;
-    margin: 0.5rem;
-    padding: 1rem;
+    margin: 7px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     width: 30%;
-    height: 15rem;
+    height: 210px;
 }
 
 .room-selector > .field {
@@ -84,7 +84,7 @@
 }
 
 .room-selector > .field > label {
-    padding: 0.8rem;
+    padding: 11px;
 }
 
 .search--view-panel > .room-options > .room-selector {
