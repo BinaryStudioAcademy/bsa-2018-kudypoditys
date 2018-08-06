@@ -4,7 +4,9 @@ import { Input, Button, Form, Header, Grid, Segment, Message } from 'semantic-ui
 
 export class LoginComponent extends React.Component {
 
-    handleChange = () => {
+    handleChange = (i) => {
+        console.log(i);
+        this.props.email=i;
         console.log('Change');
     }
 
@@ -27,7 +29,7 @@ export class LoginComponent extends React.Component {
         return (
             <div className="loginComponent" >
                 <Grid centered columns={3} >
-                    <Grid.Column textAlign='center' style={{ marginTop: "25vh" }}>
+                    <Grid.Column textAlign='center' style={{ marginTop: "13%" }}>
                         <Header as='h1'>Log-in to your account</Header>
                         <Form >
                             <Segment stacked secondary>
