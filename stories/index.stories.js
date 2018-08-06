@@ -20,33 +20,41 @@ storiesOf('Button', module)
         </Button>
     ));
 
+const handleChange = (item) => {
+    console.log(` changed: ${item.name}\n value: ${item.value}`);
+};
+
+const handleBtnClick = () => {
+    console.log('clicked');
+};
+
 let errors = [{ field: 'email', message: 'Please enter your e-mail' }, { field: 'password', message: 'Please enter your password' }];
 
 storiesOf('Login component', module)
     .add('Login with errors', () => (
-        <LoginComponent email={''} password={''} errors={errors} />
+        <LoginComponent change={handleChange} click={handleBtnClick} email={''} password={''} errors={errors} />
     ));
 
 storiesOf('Login component', module)
     .add('Login without errors', () => (
-        <LoginComponent email={''} password={''} errors={[]} />
+        <LoginComponent change={handleChange} click={handleBtnClick} email={''} password={''} errors={[]} />
     ));
 
 storiesOf('Login component', module)
     .add('Login with correct email and password', () => (
-        <LoginComponent email={'testmail@gmail.com'} password={'123456'} errors={[]} />
+        <LoginComponent change={handleChange} click={handleBtnClick} email={'testmail@gmail.com'} password={'123456'} errors={[]} />
     ));
 
 let PasswordLengthError = [{ field: 'password', message: 'Your password must be at least 6 characters' }]
 
 storiesOf('Login component', module)
     .add('Login with wrong password length', () => (
-        <LoginComponent email={'testmail@gmail.com'} password={'12345'} errors={PasswordLengthError} />
+        <LoginComponent change={handleChange} click={handleBtnClick} email={'testmail@gmail.com'} password={'12345'} errors={PasswordLengthError} />
     ));
 
 let EmailFormatError = [{ field: 'email', message: 'Please enter a valid e-mail' }]
 
 storiesOf('Login component', module)
     .add('Login with wrong email format', () => (
-        <LoginComponent email={'testmailgmailcom'} password={'123456'} errors={EmailFormatError} />
+        <LoginComponent change={handleChange} click={handleBtnClick} email={'testmailgmailcom'} password={'123456'} errors={EmailFormatError} />
     ));
