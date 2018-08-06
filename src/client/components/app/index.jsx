@@ -1,6 +1,7 @@
 import React from 'react';
-
+import Breadcrumbs from 'client/components/breadcrumbs';
 import { getHitCount } from 'client/services/hitCountService';
+import Quickfilter from 'client/components/quick-filter';
 
 class App extends React.Component {
 
@@ -16,9 +17,10 @@ class App extends React.Component {
         }
 
         return (
-            <h1>
-                Hit count: <span style={{ color: 'blue' }}>{hitCount}</span>
-            </h1>
+            <div>
+                <Breadcrumbs />
+                <Quickfilter />
+            </div>
         );
     }
 

@@ -1,0 +1,35 @@
+.quick-filter-box{
+    margin: 10px;
+    width: 250px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: #ccc 1px 2px 3px;
+}
+
+.quick-filter-header{
+    color: #fff;
+    padding: 5px 10px;
+    background-color: rgb(0, 192, 192);
+}
+
+.quick-filter-item{
+    padding: 3px 10px;
+}
+
+.quick-filter-group{
+    font-size: 1rem;
+    color: #484848;
+    margin-bottom:0;
+    padding: 3px 10px 0px 10px;
+    font-weight: bold;
+}
+
+.ui .checkbox label{
+    font-size: 0.9rem;
+}
+
+.filter-amount{
+    font-size: 0.9rem;
+    float: right;
+}
