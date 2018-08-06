@@ -6,7 +6,7 @@ export class LoginComponent extends React.Component {
 
     handleChange = (i) => {
         console.log(i);
-        this.props.email=i;
+        this.props.email = i;
         console.log('Change');
     }
 
@@ -23,9 +23,11 @@ export class LoginComponent extends React.Component {
     }
 
     render() {
-        const listItems = this.props.errors.map((error,i) =>
+        const listItems = this.props.errors.map((error, i) =>
             <li key={i}>{error.message}</li>
         );
+        const emailError = (this.props.errors.find((item) => item.field === 'email'));
+        const passwordError = (this.props.errors.find((item) => item.field === 'password'));
         return (
             <div className="loginComponent" >
                 <Grid centered columns={3} >
@@ -33,7 +35,7 @@ export class LoginComponent extends React.Component {
                         <Header as='h1'>Log-in to your account</Header>
                         <Form >
                             <Segment stacked secondary>
-                                <Form.Field>
+                                <Form.Field className={emailError ? 'error' : ''}>
                                     <Input
                                         iconPosition='left'
                                         icon='user'
@@ -44,7 +46,7 @@ export class LoginComponent extends React.Component {
                                         onChange={this.handleChange}
                                     />
                                 </Form.Field>
-                                <Form.Field>
+                                <Form.Field className={passwordError ? 'error' : ''}>
                                     <Input
                                         iconPosition='left'
                                         icon='lock'
@@ -79,6 +81,6 @@ export class LoginComponent extends React.Component {
 
 LoginComponent.propTypes = {
     email: PropTypes.string.isRequired,
-    password:  PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
     errors: PropTypes.arrayOf(PropTypes.shape({ field: PropTypes.string.isRequired, message: PropTypes.string.isRequired }).isRequired).isRequired
-  };
+};

@@ -33,7 +33,7 @@ storiesOf('Login component', module)
     ));
 
 storiesOf('Login component', module)
-    .add('Login with email and password', () => (
+    .add('Login with correct email and password', () => (
         <LoginComponent email={'testmail@gmail.com'} password={'123456'} errors={[]} />
     ));
 
@@ -48,5 +48,5 @@ let EmailFormatError = [{ field: 'email', message: 'Please enter a valid e-mail'
 
 storiesOf('Login component', module)
     .add('Login with wrong email format', () => (
-        <LoginComponent email={'testmailgmailcom'} password={'12345'} errors={EmailFormatError} />
+        <LoginComponent email={'testmailgmailcom'} password={'123456'} errors={EmailFormatError} />
     ));
