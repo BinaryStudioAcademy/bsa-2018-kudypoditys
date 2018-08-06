@@ -39,7 +39,7 @@ export class LoginComponent extends React.Component {
                                         name="email"
                                         value={this.props.email}
                                         placeholder="E-mail address"
-                                        onChange={this.handleChange.bind(this)}
+                                        onChange={this.handleChange}
                                     />
                                 </Form.Field>
                                 <Form.Field>
@@ -50,7 +50,7 @@ export class LoginComponent extends React.Component {
                                         name="password"
                                         value={this.props.password}
                                         placeholder="Password"
-                                        onChange={this.handleChange.bind(this)}
+                                        onChange={this.handleChange}
                                     />
                                 </Form.Field>
                                 <Form.Field style={{ textAlign: 'right' }}>
