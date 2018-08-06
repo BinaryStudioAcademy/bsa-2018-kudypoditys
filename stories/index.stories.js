@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
-import {RankingBarComponent} from 'client/components/ranking-bar'
+import {RankingBar} from 'client/components/ranking-bar'
 
 
 
@@ -25,5 +25,5 @@ storiesOf('Button', module)
 
 storiesOf('Sorting component', module)
     .add('Ranking Bar', () => (
-        <RankingBarComponent/>
+        <RankingBar/>
     ));
