@@ -36,12 +36,29 @@ class SearchComponent extends React.Component {
         this.roomSelector.current.classList.toggle('hidden');
     }
 
-    showRoomSelector = () => {
-        this.roomSelector.current.classList.remove('hidden');
-    }
-
     hideRoomSelector = () => {
         this.roomSelector.current.classList.add('hidden');
+    }
+
+    adultsOutput = () => {
+        if (this.state.adults === 1) return '1 Adult';
+        return `${this.state.adults} Adults`;
+    }
+
+    childrenOutput = () => {
+        switch(this.state.children) {
+            case 0:
+                return 'No children';
+            case 1:
+                return '1 Child';
+            default:
+                return `${this.state.children} Children`;
+        }
+    }
+
+    roomsOutput = () => {
+        if (this.state.rooms === 1) return '1 Room';
+        return `${this.state.rooms} Rooms`;
     }
 
     render() {
@@ -77,13 +94,11 @@ class SearchComponent extends React.Component {
                     onFocus={this.hideRoomSelector}
                 />
                 </div>
-                <div
-                    className='room-options'
-                >
+                <div className='room-options'>
                     <Input
                         icon='user'
                         iconPosition='left'
-                        value={`${this.state.adults} adult${this.state.adults > 1 ? 's' : ''} · ${this.state.children} ${this.state.children === 1 ? 'child' : 'children'}`}
+                        value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
                     <div
@@ -164,7 +179,7 @@ class SearchComponent extends React.Component {
                             fluid
                             selection
                             name='adults'
-                            text={`${this.state.adults} ${this.state.adults === 1 ? 'Adult' : 'Adults'}`}
+                            text={this.adultsOutput()}
                             options={selectOptions}
                             value={this.state.adults}
                             onChange={this.handleChange}
@@ -174,7 +189,7 @@ class SearchComponent extends React.Component {
                         <Dropdown
                             selection
                             name='children'
-                            text={`${this.state.children === 0 ? 'No Children' : `${this.state.children} ${this.state.children === 1 ? 'Child' : 'Children'}`}`}
+                            text={this.childrenOutput()}
                             options={childrenOptions}
                             value={this.state.children}
                             onChange={this.handleChange}
@@ -182,7 +197,7 @@ class SearchComponent extends React.Component {
                         <Dropdown
                             selection
                             name='rooms'
-                            text={`${this.state.rooms} ${this.state.rooms === 1 ? 'Room' : 'Rooms'}`}
+                            text={this.roomsOutput()}
                             options={selectOptions}
                             value={this.state.rooms}
                             onChange={this.handleChange}
