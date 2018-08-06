@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Input, Button, Form, Header, Grid, Segment, Message } from 'semantic-ui-react';
 
 export class LoginComponent extends React.Component {
@@ -73,3 +74,9 @@ export class LoginComponent extends React.Component {
         );
     }
 }
+
+LoginComponent.propTypes = {
+    email: PropTypes.string.isRequired,
+    password:  PropTypes.string.isRequired,
+    errors: PropTypes.arrayOf(PropTypes.shape({ field: PropTypes.string.isRequired, message: PropTypes.string.isRequired }).isRequired).isRequired
+  };

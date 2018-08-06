@@ -20,7 +20,7 @@ storiesOf('Button', module)
         </Button>
     ));
 
-let errors = [{ field: 'email', message: 'Please enter your e-mail' }, { field: 'password', message: 'Please enter your password' }]
+let errors = [{ field: 'email', message: 'Please enter your e-mail'}, { field: 'password', message: 'Please enter your password' }]
 
 storiesOf('Login component', module)
     .add('Login main', () => (
