@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss';
 import {Header} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-
+import {prettyNumbers} from 'client/helpers/prettyNumbers'
 
 export class SearchSummary extends React.Component {
     static defaultProps = {
@@ -11,16 +11,18 @@ export class SearchSummary extends React.Component {
 
 
     render() {
-        const destination = this.props.data.destination,
-            //pretty numbers are here
-            number = this.props.data.numberOfMatched.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
+        const numbersToPrettify = this.props.data.numberOfMatched,
+            destination = this.props.data.destination,
+            numbers = prettyNumbers(numbersToPrettify);
 
+        console.log(destination);
         return (
 
             <Header
                 as="h1"
-                style={{fontSize: 23, padding: 10, lineHeight: 1.2}}>
-                {destination}: {number} properties found
+                style={{fontSize: 23, padding: 10, lineHeight: 1.2}}
+            >
+                {destination}: {numbers} properties found
             </Header>
 
 
@@ -32,6 +34,6 @@ export class SearchSummary extends React.Component {
 
 
 SearchSummary.propTypes = {
-    destination: PropTypes.string.isRequired,
-    numberOfMatched: PropTypes.number.isRequired
+    destination: PropTypes.string,
+    numberOfMatched: PropTypes.number
 };
