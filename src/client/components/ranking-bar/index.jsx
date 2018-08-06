@@ -15,7 +15,7 @@ export class RankingBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeItem: price
+            activeItem: PRICE
         };
     }
 
@@ -32,14 +32,14 @@ export class RankingBar extends React.Component {
                         name="Lowest price first"
 
                         value="price"
-                        active={activeItem === "price"}
+                        active={activeItem === PRICE}
                         onClick={this.handleItemClick}
                     />
                     <Menu.Item
                         icon="map marker alternate"
                         name="Distance from city centre"
                         value="distance"
-                        active={activeItem === "distance"}
+                        active={activeItem === DISTANCE}
                         onClick={this.handleItemClick}
                     />
                     <Dropdown
@@ -53,14 +53,14 @@ export class RankingBar extends React.Component {
                             >Rating</Dropdown.Header>
                             <Dropdown.Item
                                 value="high"
-                                active={activeItem === "high"}
+                                active={activeItem === HIGH_RANK}
                                 onClick={this.handleItemClick}
                             >
                                 stars [5→1]
                             </Dropdown.Item>
                             <Dropdown.Item
                                 value="low"
-                                active={activeItem === "low"}
+                                active={activeItem === LOW_RANK}
                                 onClick={this.handleItemClick}
                             >
                                 stars [1→5]
@@ -87,4 +87,7 @@ const SORT_VALUES = {
     HIGH_RANK: 'high'
 
 };
-const price = SORT_VALUES.PRICE;
+
+const {PRICE, DISTANCE, LOW_RANK, HIGH_RANK} = SORT_VALUES;
+
+
