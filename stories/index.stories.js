@@ -6,7 +6,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
-import LoginComponent from '../src/client/components/loginComponent/index';
+import { LoginComponent } from '../src/client/components/loginComponent/index';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -20,7 +20,9 @@ storiesOf('Button', module)
         </Button>
     ));
 
+let errors = [{ field: 'email', message: 'Please enter your e-mail' }, { field: 'password', message: 'Please enter your password' }]
+
 storiesOf('Login component', module)
     .add('Login main', () => (
-        <LoginComponent />
+        <LoginComponent email={''} password={''} errors={errors} />
     ));
