@@ -31,14 +31,14 @@ export class RankingBar extends React.Component {
                         icon="usd"
                         name="Lowest price first"
 
-                        value="price"
+                        value={PRICE}
                         active={activeItem === PRICE}
                         onClick={this.handleItemClick}
                     />
                     <Menu.Item
                         icon="map marker alternate"
                         name="Distance from city centre"
-                        value="distance"
+                        value={DISTANCE}
                         active={activeItem === DISTANCE}
                         onClick={this.handleItemClick}
                     />
@@ -52,14 +52,14 @@ export class RankingBar extends React.Component {
 
                             >Rating</Dropdown.Header>
                             <Dropdown.Item
-                                value="high"
+                                value={HIGH_RANK}
                                 active={activeItem === HIGH_RANK}
                                 onClick={this.handleItemClick}
                             >
                                 stars [5→1]
                             </Dropdown.Item>
                             <Dropdown.Item
-                                value="low"
+                                value={LOW_RANK}
                                 active={activeItem === LOW_RANK}
                                 onClick={this.handleItemClick}
                             >
