@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-
+import { Breadcrumbs } from '../src/client/components/breadcrumbs/index';
 import { Button, Welcome } from '@storybook/react/demo';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
@@ -17,3 +17,15 @@ storiesOf('Button', module)
             </span>
         </Button>
     ));
+
+
+
+const sections = [
+    { key: 'Lviv', content: 'Lviv', href:'#'},
+    { key: 'Awesome Apart', content: 'Awesome Apart', active: true},
+];
+
+storiesOf('Breadcrumbs component', module)
+.add('Breadcrumbs', () => (
+    <Breadcrumbs sections={sections}/>
+));
