@@ -11,7 +11,6 @@ export class RankingBarComponent extends React.Component {
         };
     }
 
-
     handleItemClick = (event, {value}) => {
         this.setState({activeItem: value});
 
