@@ -28,7 +28,7 @@ class PropertyListItem extends React.Component {
         } else if (propertyItemData.rating >= 5) {
             ratingStatus = 'Good'
         } else if (propertyItemData.rating >= 1) {
-            ratingStatus = 'Satisfactorily'
+            ratingStatus = 'Not good'
         }
 
         return (
@@ -42,7 +42,7 @@ class PropertyListItem extends React.Component {
                     <Grid>
                         <Grid.Column width={3}>
                         <Label as='a' color='orange' ribbon style={{display:propertyItemData.mealType===undefined?'none':'block'}}>
-                        {propertyItemData.mealType}}
+                        {propertyItemData.mealType}
                         </Label>
                             <Image
                                 rounded
@@ -92,7 +92,13 @@ class PropertyListItem extends React.Component {
                                           color:'red',
                                           display: propertyItemData.availableRoomsCount===0?'block':'none'
                                         }}>
-                              unfortunately we do not have any available rooms yet
+                              Unfortunately we do not have any available rooms
+                           </Message>
+                           <Message style={{
+                                          color:'red',
+                                          display: propertyItemData.availableRoomsCount===1?'block':'none'
+                                        }}>
+                         The last available room!!!
                            </Message>
                         </Grid.Column>
                         <Grid.Column width={3}>
