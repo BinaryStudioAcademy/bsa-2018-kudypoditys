@@ -1,9 +1,16 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require(`${apiRoot}/orm`),
+    Property = require('./Property'),
+    Room = require('./Room');
 
-module.exports = orm.define('image', {
+let Image = orm.define('image', {
     url: {
         type: Sequelize.STRING
     }
-})
+});
+
+Image.belongsTo(Property);
+Image.belongsTo(Room);
+
+module.exports = Image;

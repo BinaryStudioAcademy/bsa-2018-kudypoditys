@@ -1,9 +1,14 @@
 const
     Sequelize = require('sequelize'),
     orm = require(`${apiRoot}/orm`);
+//ScoreByCategory = require('./ScoreByCategory');
 
-module.exports = orm.define('reviewCategory', {
+let ReviewCategory = orm.define('reviewCategory', {
     name: {
         type: Sequelize.STRING
     }
 });
+
+//ReviewCategory.hasMany(ScoreByCategory);
+
+module.exports = ReviewCategory;
