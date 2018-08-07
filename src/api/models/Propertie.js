@@ -2,7 +2,7 @@ const
     Sequelize = require('sequelize'),
     orm = require(`${apiRoot}/orm`);
 
-module.exports = orm.define('properties', {
+module.exports = orm.define('property', {
     name: {
         type: Sequelize.STRING
     },
