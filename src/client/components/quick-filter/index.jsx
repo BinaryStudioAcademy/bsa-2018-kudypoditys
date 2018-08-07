@@ -27,22 +27,22 @@ class Quickfilter extends React.Component {
 
     render() {
         const list = this.props.boxes.map((box)=>
-        <div className="quick-filter-item">
+        <div className="box_item">
             <div className="ui input checkbox">
                 <input type="checkbox" defaultChecked={box.ischecked} id={box.name} name={box.name} onChange={this.onChange}/>
-                <label className='filter-amount' htmlFor={box.name}>{box.label}</label>
+                <label className='box_amount' htmlFor={box.name}>{box.label}</label>
             </div>
-            <div className='filter-amount'>{box.amount}</div>
+            <div className='box_amount'>{box.amount}</div>
         </div>
         );
 
         return(
-            <div className="quick-filter-box">
+            <div className="box">
 
-                <div className="quick-filter-header">
+                <div className="box_header">
                     <h2>Filter by</h2>
                 </div>
-                <p className='quick-filter-group'>Location score</p>
+                <p className='box_group'>Location score</p>
                 {list}
             </div>
             );

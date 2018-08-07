@@ -1,4 +1,4 @@
-.quick-filter-box{
+.box{
     margin: 10px;
     width: 250px;
     border-radius: 3px;
@@ -7,17 +7,17 @@
     box-shadow: #ccc 1px 2px 3px;
 }
 
-.quick-filter-header{
+.box_header{
     color: #fff;
     padding: 5px 10px;
     background-color: rgb(0, 192, 192);
 }
 
-.quick-filter-item{
+.box_item{
     padding: 3px 10px;
 }
 
-.quick-filter-group{
+.box_group{
     font-size: 1rem;
     color: #484848;
     margin-bottom:0;
@@ -29,7 +29,7 @@
     font-size: 0.9rem;
 }
 
-.filter-amount{
+.box_amount{
     font-size: 0.9rem;
     float: right;
 }
