@@ -7,6 +7,7 @@ import { linkTo } from '@storybook/addon-links';
 import { Button, Welcome } from '@storybook/react/demo';
 import PropertyListItem from '../src/client/components/property-list-item';
 
+
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
@@ -18,6 +19,7 @@ storiesOf('Button', module)
       </span>
         </Button>
     ));
+
 
 let propertyItemData = {
     image: `http://cdn.home-designing.com/wp-content/uploads/2016/04/luxury-art-deco-apartment-interior.jpg`,
@@ -130,3 +132,4 @@ storiesOf('Property Item', module)
 .add ('Item with all meals included',() => <PropertyListItem propertyItemData={propertyItemData4} /> )
 .add ('Last available room',() => <PropertyListItem propertyItemData={propertyItemData5} /> )
 .add ('Item with middle raiting',() => <PropertyListItem propertyItemData={propertyItemData6} /> )
+
