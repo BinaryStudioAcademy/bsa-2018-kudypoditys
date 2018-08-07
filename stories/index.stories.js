@@ -36,6 +36,7 @@ storiesOf('Search', module)
             onAdultsChange = { value => console.log(`adults: ${value}`)}
             onChildrenChange = { value => console.log(`children: ${value}`)}
             onRoomsChange = { value => console.log(`rooms: ${value}`)}
+            onSearch = { () => console.log('Search propeties!')}
         />
     ))
     /*

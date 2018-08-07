@@ -51,15 +51,7 @@ class SearchComponent extends React.Component {
     }
 
     handleSubmit = () => {
-        const searchValue = {
-            destination: this.state.destination,
-            checkIn: checkIn,
-            checkOut: checkOut,
-            rooms: this.state.rooms,
-            adults: this.state.adults,
-            children: this.state.children
-        }
-        this.props.onSubmit(searchValue);
+        this.props.onSearch();
     }
 
     render() {
@@ -167,7 +159,7 @@ class SearchComponent extends React.Component {
                     <Button type='submit' content='Search' primary/>
                 </div>
             </Form> :
-            <Form className='search search--view-panel'>
+            <Form className='search search--view-panel' onSubmit={this.handleSubmit}>
             <Header as='h2'>Search</Header>
             <Form.Field className='destination'>
                 <label>Destination/property name:</label>
