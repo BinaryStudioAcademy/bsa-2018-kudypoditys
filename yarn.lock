@@ -7732,6 +7732,7 @@ selfsigned@^1.9.1:
   dependencies:
     node-forge "0.7.5"
 
+
 semantic-ui-react@^0.82.1:
   version "0.82.2"
   resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.82.2.tgz#725f6a1a5f007cebff66c2c9f697b165ce1ebceb"
