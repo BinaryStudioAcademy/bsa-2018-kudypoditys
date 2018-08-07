@@ -2,6 +2,7 @@ import React from 'react';
 
 import { getHitCount } from 'client/services/hitCountService';
 
+
 class App extends React.Component {
 
     state = {
@@ -10,6 +11,8 @@ class App extends React.Component {
 
     render() {
         const { hitCount } = this.state;
+
+        //return <BannerListComponent cityInfos={cityInfos} />;
 
         if (hitCount === undefined) {
             return null;
