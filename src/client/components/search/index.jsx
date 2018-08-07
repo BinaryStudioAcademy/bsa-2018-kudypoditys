@@ -1,24 +1,13 @@
 import React from 'react';
 import './index.scss';
 import { Input, Button, Form, Dropdown, Header } from 'semantic-ui-react';
-import { DatesRangeInput } from 'semantic-ui-calendar-react';
+import { DateInput } from 'semantic-ui-calendar-react';
 import moment from 'moment';
 
 class SearchComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            destination: '',
-            date: '',
-            rooms: 1,
-            adults: 2,
-            children: 0
-        };
         this.roomSelector = React.createRef();
-    }
-
-    handleChange = (event, {name, value}) => {
-        this.setState({ [name]: value });
     }
 
     generateOptions = (from, to) => {
@@ -41,28 +30,27 @@ class SearchComponent extends React.Component {
     }
 
     adultsOutput = () => {
-        if (this.state.adults === 1) return '1 Adult';
-        return `${this.state.adults} Adults`;
+        if (this.props.adults === 1) return '1 Adult';
+        return `${this.props.adults} Adults`;
     }
 
     childrenOutput = () => {
-        switch(this.state.children) {
+        switch(this.props.children) {
             case 0:
                 return 'No children';
             case 1:
                 return '1 Child';
             default:
-                return `${this.state.children} Children`;
+                return `${this.props.children} Children`;
         }
     }
 
     roomsOutput = () => {
-        if (this.state.rooms === 1) return '1 Room';
-        return `${this.state.rooms} Rooms`;
+        if (this.props.rooms === 1) return '1 Room';
+        return `${this.props.rooms} Rooms`;
     }
 
     handleSubmit = () => {
-        const { checkIn, checkOut } = this.parseDateRange(this.state.date);
         const searchValue = {
             destination: this.state.destination,
             checkIn: checkIn,
@@ -74,83 +62,10 @@ class SearchComponent extends React.Component {
         this.props.onSubmit(searchValue);
     }
 
-    parseDateRange = dateRangeString => {
-        let pos = 4;
-
-        let dateIn='', monthIn='', dateOut='', monthOut='';
-        for (; dateRangeString.charAt(pos) !== ' '; pos++) {
-            dateIn += dateRangeString.charAt(pos);
-        }
-        pos++;
-        for (; dateRangeString.charAt(pos) !== ' '; pos++) {
-            if (pos === dateRangeString.length) break;
-            monthIn += dateRangeString.charAt(pos);
-        }
-        pos += 7;
-        for (; dateRangeString.charAt(pos) !== ' '; pos++) {
-            if (pos >= dateRangeString.length) break;
-            dateOut += dateRangeString.charAt(pos);
-        }
-        pos++;
-        for (; pos<dateRangeString.length; pos++) {
-            if (pos >= dateRangeString.length) break;
-            monthOut += dateRangeString.charAt(pos);
-        }
-        const checkIn = this.getDateObject(dateIn, monthIn);
-        const checkOut = this.getDateObject(dateOut, monthOut);
-
-        return { checkIn, checkOut };
-    }
-
-    getDateObject = (date, month) => {
-        if (date === '' || month === '') return null;
-
-        const currentDate = new Date(Date.now());
-        const currentYear = currentDate.getFullYear();
-        const currentMonth = currentDate.getMonth();
-        month = this.monthStringToNumber(month);
-
-        if (currentMonth < month)
-            return new Date(currentYear + 1, month, date);
-        else
-            return new Date(currentYear, month, date);
-    }
-
-    monthStringToNumber = monthString => {
-        switch(monthString) {
-            case 'Jan':
-                return 0;
-            case 'Feb':
-                return 1;
-            case 'Mar':
-                return 2;
-            case 'Apr':
-                return 3;
-            case 'May':
-                return 4;
-            case 'Jun':
-                return 5;
-            case 'Jul':
-                return 6;
-            case 'Aug':
-                return 7;
-            case 'Sep':
-                return 8;
-            case 'Oct':
-                return 9;
-            case 'Nov':
-                return 10;
-            case 'Dec':
-                return 11;
-            default:
-                return -1;
-        }
-    }
-
     render() {
         const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
-        const { view } = this.props;
+        const { view, destination, checkIn, checkOut, rooms, adults, children } = this.props;
 
         return (
             view === 'bar' ?
@@ -161,28 +76,45 @@ class SearchComponent extends React.Component {
                         icon='map marker alternate'
                         name='destination'
                         placeholder='Where are you going?'
-                        onChange={this.handleChange}
+                        value={destination}
+                        onChange={(event, input) => this.props.onDestinationChange(input.value)}
                         onFocus={this.hideRoomSelector}
                         required
                     />
                 </div>
                 <div className='check-in-out'>
-                <DatesRangeInput
-                    closable
-                    required
-                    autoComplete='off'
-                    minDate={moment()}
-                    dateFormat='ddd D MMM'
-                    popupPosition='bottom center'
-                    icon='calendar alternate outline'
-                    iconPosition='left'
-                    placeholder='Check-in - Check-out'
-                    name='date'
-                    value={this.state.date}
-                    onChange={this.handleChange}
-                    onFocus={this.hideRoomSelector}
-                    onKeyPress={event => event.preventDefault()}
-                />
+                    <DateInput
+                        closable
+                        required
+                        autoComplete='off'
+                        minDate={moment()}
+                        dateFormat='MMM D YYYY'
+                        popupPosition='bottom center'
+                        icon='calendar alternate outline'
+                        iconPosition='left'
+                        placeholder='Check-in'
+                        name='checkIn'
+                        value={checkIn}
+                        onChange={(event, input) => this.props.onCheckInChange(moment(input.value))}
+                        onFocus={this.hideRoomSelector}
+                        onKeyPress={event => event.preventDefault()}
+                    />
+                    <DateInput
+                        closable
+                        required
+                        autoComplete='off'
+                        minDate={moment()}
+                        dateFormat='MMM D YYYY'
+                        popupPosition='bottom center'
+                        icon='calendar alternate outline'
+                        iconPosition='right'
+                        placeholder='Check-out'
+                        name='checkOut'
+                        value={checkOut}
+                        onChange={(event, input) => this.props.onCheckOutChange(moment(input.value))}
+                        onFocus={this.hideRoomSelector}
+                        onKeyPress={event => event.preventDefault()}
+                    />
                 </div>
                 <div className='room-options'>
                     <Input
@@ -203,8 +135,8 @@ class SearchComponent extends React.Component {
                                 selection
                                 name='rooms'
                                 options={selectOptions}
-                                value={this.state.rooms}
-                                onChange={this.handleChange}
+                                value={rooms}
+                                onChange={(event, input) => this.props.onRoomsChange(input.value)}
                             />
                         </Form.Field>
                         <Form.Field inline>
@@ -214,8 +146,8 @@ class SearchComponent extends React.Component {
                                 selection
                                 name='adults'
                                 options={selectOptions}
-                                value={this.state.adults}
-                                onChange={this.handleChange}
+                                value={adults}
+                                onChange={(event, input) => this.props.onAdultsChange(input.value)}
                             />
                         </Form.Field>
                         <Form.Field inline>
@@ -225,8 +157,8 @@ class SearchComponent extends React.Component {
                                 selection
                                 name='children'
                                 options={childrenOptions}
-                                value={this.state.children}
-                                onChange={this.handleChange}
+                                value={children}
+                                onChange={(event, input) => this.props.onChildrenChange(input.value)}
                             />
                         </Form.Field>
                     </div>
@@ -242,28 +174,49 @@ class SearchComponent extends React.Component {
                 <input
                     name='destination'
                     placeholder='Where are you going?'
-                    onChange={this.handleChange}
+                    value={this.props.destination}
+                    onChange={event => this.props.onDestinationChange(event.currentTarget.value)}
                     required
                 />
             </Form.Field>
-            <Form.Field className='check-in-out'>
-                <label>Check-in and Check-out date</label>
-                <DatesRangeInput
-                    closable
-                    required
-                    autoComplete='off'
-                    minDate={moment()}
-                    dateFormat='ddd D MMM'
-                    popupPosition='bottom center'
-                    icon='calendar alternate outline'
-                    iconPosition='left'
-                    placeholder='Check-in - Check-out'
-                    name='date'
-                    value={this.state.date}
-                    onChange={this.handleChange}
-                    onKeyPress={event => event.preventDefault()}
-                />
-            </Form.Field>
+            <div className='check-in-out'>
+                <Form.Field>
+                    <label>Check-in date</label>
+                    <DateInput
+                        closable
+                        required
+                        autoComplete='off'
+                        minDate={moment()}
+                        dateFormat='MMM D YYYY'
+                        popupPosition='bottom center'
+                        icon='calendar alternate outline'
+                        iconPosition='left'
+                        placeholder='Check-in'
+                        name='checkIn'
+                        value={checkIn}
+                        onChange={(event, input) => this.props.onCheckInChange(moment(input.value))}
+                        onKeyPress={event => event.preventDefault()}
+                    />
+                </Form.Field>
+                <Form.Field>
+                    <label>Check-out date</label>
+                    <DateInput
+                        closable
+                        required
+                        autoComplete='off'
+                        minDate={moment()}
+                        dateFormat='MMM D YYYY'
+                        popupPosition='bottom center'
+                        icon='calendar alternate outline'
+                        iconPosition='left'
+                        placeholder='Check-out'
+                        name='checkOut'
+                        value={checkOut}
+                        onChange={(event, input) => this.props.onCheckOutChange(moment(input.value))}
+                        onKeyPress={event => event.preventDefault()}
+                    />
+                </Form.Field>
+            </div>
             <div className='room-options'>
                 <div
                     className='room-selector'
@@ -275,8 +228,8 @@ class SearchComponent extends React.Component {
                             name='adults'
                             text={this.adultsOutput()}
                             options={selectOptions}
-                            value={this.state.adults}
-                            onChange={this.handleChange}
+                            value={adults}
+                            onChange={(event, input) => this.props.onAdultsChange(input.value)}
                         />
                     </Form.Field>
                     <Form.Group inline>
@@ -285,16 +238,16 @@ class SearchComponent extends React.Component {
                             name='children'
                             text={this.childrenOutput()}
                             options={childrenOptions}
-                            value={this.state.children}
-                            onChange={this.handleChange}
+                            value={children}
+                            onChange={(event, input) => this.props.onChildrenChange(input.value)}
                         />
                         <Dropdown
                             selection
                             name='rooms'
                             text={this.roomsOutput()}
                             options={selectOptions}
-                            value={this.state.rooms}
-                            onChange={this.handleChange}
+                            value={rooms}
+                            onChange={(event, input) => this.props.onRoomsChange(input.value)}
                         />
                     </Form.Group>
                 </div>

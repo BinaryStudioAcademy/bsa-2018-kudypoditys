@@ -54,8 +54,21 @@ td.active.suir-calendar.date,
     margin: 0;
 }
 
+.check-in-out {
+    display: flex;
+}
+
+.search--view-panel .check-in-out {
+    flex-direction: column;
+}
+
+.search--view-panel .check-in-out > div {
+    flex-direction: column;
+    width: 100%;
+}
+
 .check-in-out > div {
-    width: 220px;
+    width: fit-content;
 }
 
 .btn-wrp {
@@ -86,6 +99,10 @@ td.active.suir-calendar.date,
 
 .room-selector > .field > label {
     padding: 11px;
+}
+
+.search--view-panel .room-selector {
+    margin-top: 10px;
 }
 
 .search--view-panel > .room-options > .room-selector {
