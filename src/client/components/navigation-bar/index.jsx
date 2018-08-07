@@ -48,6 +48,10 @@ export class NavigationBar extends React.Component {
     }
 }
 
+NavigationBar.defaultProps = {
+    reviewsCount: 0
+};
+
 NavigationBar.propTypes = {
     reviewsCount: PropTypes.number.isRequired
 };

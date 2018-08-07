@@ -25,13 +25,12 @@ const handleClick = () => {
 };
 
 storiesOf('Navigation Bar', module)
-    .add('Navigation 0 reviews', () => (
+    .add('Navigation with empty reviews count props', () => (
         <NavigationBar
             infoClick={handleClick}
             facilitiesClick={handleClick}
             GoodToKnowClick={handleClick}
             reviewsClick={handleClick}
-            reviewsCount={0}
         />
     ));
 
