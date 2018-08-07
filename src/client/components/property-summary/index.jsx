@@ -12,10 +12,9 @@ export class PropertySummary extends React.Component {
     };
 
 
-
     render() {
         const {propertyItemData} = this.props;
-        console.log(propertyItemData);
+
 
         return (
             <div className="property-summary__container">
@@ -27,20 +26,17 @@ export class PropertySummary extends React.Component {
                 </Header>
 
                 <div className="location__container">
-                <Header
-                    as="h2"
-                    style={{fontSize: 16, padding: 10, lineHeight: 1.2}}
-                >
-                    <Icon
-                        style={{cursor: "pointer"}}
-                        name="map outline"
-                        onClick={this.handleRedirectToMap}
-                    />
-                    {propertyItemData.location}
-                </Header>
-
-
-
+                    <Header
+                        as="h2"
+                        style={{fontSize: 16, padding: 10, lineHeight: 1.2}}
+                    >
+                        <Icon
+                            style={{cursor: "pointer"}}
+                            name="map outline"
+                            onClick={this.handleRedirectToMap}
+                        />
+                        {propertyItemData.location}
+                    </Header>
 
 
                 </div>
