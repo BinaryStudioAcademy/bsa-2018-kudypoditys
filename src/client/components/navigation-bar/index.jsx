@@ -4,42 +4,26 @@ import { Menu, Label } from 'semantic-ui-react';
 
 export class NavigationBar extends React.Component {
 
-    handleClickInfo = () => {
-        this.props.infoClick();
-    }
-
-    handleClickFacilities = () => {
-        this.props.facilitiesClick();
-    }
-
-    handleClickGoodToKnow = () => {
-        this.props.GoodToKnowClick();
-    }
-
-    handleClickReviews = () => {
-        this.props.reviewsClick();
-    }
-
     render() {
         return (
             <Menu stackable fluid widths={4}>
                 <Menu.Item
                     name='info-and-price'
-                    onClick={this.handleClickInfo}
+                    onClick={this.props.infoClick}
                     children='Room info and price'
                 />
                 <Menu.Item
                     name='facilities'
-                    onClick={this.handleClickFacilities}
+                    onClick={this.props.facilitiesClick}
                     children='Facilities'
                 />
                 <Menu.Item
                     name='good-to-know'
-                    onClick={this.handleClickGoodToKnow}
+                    onClick={this.props.goodToKnowClick}
                     children='Good to know'
                 />
                 <Menu.Item name='reviews'
-                    onClick={this.handleClickReviews}>
+                    onClick={this.props.reviewsClick}>
                     Guest reviews
                     <Label color='teal'>{this.props.reviewsCount}</Label>
                 </Menu.Item>
