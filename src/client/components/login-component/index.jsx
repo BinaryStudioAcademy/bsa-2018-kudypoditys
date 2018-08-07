@@ -4,20 +4,24 @@ import { Input, Button, Form, Header, Grid, Segment, Message } from 'semantic-ui
 
 export class LoginComponent extends React.Component {
 
-    handleChange = (item) => {
-        this.props.change(item.target);
+    handleChangeMail = (item) => {
+        this.props.mailChange(item);
+    }
+
+    handleChangePassword = (item) => {
+        this.props.passwordChange(item);
     }
 
     handleClickLogin = (item) => {
-        this.props.click(item);
+        this.props.loginClick(item);
     }
 
     handleClickRegister = (item) => {
-        this.props.click(item);
+        this.props.registrationClick(item);
     }
 
     handleClickForgot = (item) => {
-        this.props.click(item);
+        this.props.forgotClick(item);
     }
 
     render() {
@@ -36,12 +40,12 @@ export class LoginComponent extends React.Component {
                                 <Form.Field className={emailError ? 'error' : ''}>
                                     <Input
                                         iconPosition='left'
-                                        icon='user'
+                                        icon='mail'
                                         type="text"
                                         name="email"
                                         value={this.props.email}
                                         placeholder="E-mail address"
-                                        onChange={this.handleChange}
+                                        onChange={this.handleChangeMail}
                                     />
                                 </Form.Field>
                                 <Form.Field className={passwordError ? 'error' : ''}>
@@ -52,7 +56,7 @@ export class LoginComponent extends React.Component {
                                         name="password"
                                         value={this.props.password}
                                         placeholder="Password"
-                                        onChange={this.handleChange}
+                                        onChange={this.handleChangePassword}
                                     />
                                 </Form.Field>
                                 <Form.Field style={{ textAlign: 'right' }}>

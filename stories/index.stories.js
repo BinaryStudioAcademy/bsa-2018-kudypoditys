@@ -6,7 +6,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
-import { LoginComponent } from '../src/client/components/loginComponent/index';
+import { LoginComponent } from '../src/client/components/login-component/index';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -32,29 +32,73 @@ let errors = [{ field: 'email', message: 'Please enter your e-mail' }, { field: 
 
 storiesOf('Login component', module)
     .add('Login with errors', () => (
-        <LoginComponent change={handleChange} click={handleBtnClick} email={''} password={''} errors={errors} />
+        <LoginComponent
+            mailChange={handleChange}
+            passwordChange={handleChange}
+            registrationClick={handleBtnClick}
+            loginClick={handleBtnClick}
+            forgotClick={handleBtnClick}
+            email={''}
+            password={''}
+            errors={errors}
+        />
     ));
 
 storiesOf('Login component', module)
     .add('Login without errors', () => (
-        <LoginComponent change={handleChange} click={handleBtnClick} email={''} password={''} errors={[]} />
+        <LoginComponent
+            mailChange={handleChange}
+            passwordChange={handleChange}
+            registrationClick={handleBtnClick}
+            loginClick={handleBtnClick}
+            forgotClick={handleBtnClick}
+            email={''}
+            password={''}
+            errors={[]}
+        />
     ));
 
 storiesOf('Login component', module)
     .add('Login with correct email and password', () => (
-        <LoginComponent change={handleChange} click={handleBtnClick} email={'testmail@gmail.com'} password={'123456'} errors={[]} />
+        <LoginComponent
+            mailChange={handleChange}
+            passwordChange={handleChange}
+            registrationClick={handleBtnClick}
+            loginClick={handleBtnClick}
+            forgotClick={handleBtnClick}
+            email={'testmail@gmail.com'}
+            password={'123456'}
+            errors={[]}
+        />
     ));
 
 let PasswordLengthError = [{ field: 'password', message: 'Your password must be at least 6 characters' }]
 
 storiesOf('Login component', module)
     .add('Login with wrong password length', () => (
-        <LoginComponent change={handleChange} click={handleBtnClick} email={'testmail@gmail.com'} password={'12345'} errors={PasswordLengthError} />
+        <LoginComponent mailChange={handleChange}
+            passwordChange={handleChange}
+            registrationClick={handleBtnClick}
+            loginClick={handleBtnClick}
+            forgotClick={handleBtnClick}
+            email={'testmail@gmail.com'}
+            password={'12345'}
+            errors={PasswordLengthError}
+        />
     ));
 
 let EmailFormatError = [{ field: 'email', message: 'Please enter a valid e-mail' }]
 
 storiesOf('Login component', module)
     .add('Login with wrong email format', () => (
-        <LoginComponent change={handleChange} click={handleBtnClick} email={'testmailgmailcom'} password={'123456'} errors={EmailFormatError} />
+        <LoginComponent
+            mailChange={handleChange}
+            passwordChange={handleChange}
+            registrationClick={handleBtnClick}
+            loginClick={handleBtnClick}
+            forgotClick={handleBtnClick}
+            email={'testmailgmailcom'}
+            password={'123456'}
+            errors={EmailFormatError}
+        />
     ));
