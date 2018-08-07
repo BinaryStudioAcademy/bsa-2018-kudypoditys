@@ -30,10 +30,9 @@ export default class SliderComponent extends Component {
             <ul>
                 {
                     pics.map((item, i) => (
-                        <li>
+                        <li key={i}>
                             <button
-                                className={i === this.slideIndex ? 'slider-c-button-active' : ''}
-                                key={i} 
+                                className={i === this.slideIndex ? 'slider-c-button-active' : ''} 
                                 onMouseMove={() => this.slider.slickGoTo(i)} 
                                 onClick={() => this.slider.slickGoTo(i)}
                             >
