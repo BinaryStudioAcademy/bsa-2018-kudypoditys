@@ -21,25 +21,34 @@ storiesOf('Button', module)
     ));
 
 storiesOf('Search', module)
-    .add('search bar', () => (
+    .add('search bar with values', () => (
         <SearchComponent
-            view='panel'
+            view='bar'
             destination='Lviv'
-            checkIn='Aug 14 2018'
-            checkOut='Aug 16 2018'
+            checkIn={new Date('Aug 14 2018')}
+            checkOut={new Date('Aug 16 2018')}
             adults={1}
             rooms={1}
             children={0}
-            onDestinationChange= { value => console.log(`destination: ${value}`)}
-            onCheckInChange= { value => console.log(`check-in: ${new Date(value)}`)}
-            onCheckOutChange= { value => console.log(`check-in: ${new Date(value)}`)}
+            onDestinationChange = { value => console.log(`destination: ${value}`)}
+            onCheckInChange = { value => console.log(`check-in: ${new Date(value)}`)}
+            onCheckOutChange = { value => console.log(`check-in: ${new Date(value)}`)}
             onAdultsChange = { value => console.log(`adults: ${value}`)}
             onChildrenChange = { value => console.log(`children: ${value}`)}
             onRoomsChange = { value => console.log(`rooms: ${value}`)}
             onSearch = { () => console.log('Search propeties!')}
         />
     ))
-    /*
-    .add('search panel', () => (
-        <SearchComponent view='panel'/>
-    ));*/
+
+    .add('search panel with empty values', () => (
+        <SearchComponent
+            view='panel'
+            onDestinationChange = { value => console.log(`destination: ${value}`)}
+            onCheckInChange = { value => console.log(`check-in: ${new Date(value)}`)}
+            onCheckOutChange = { value => console.log(`check-in: ${new Date(value)}`)}
+            onAdultsChange = { value => console.log(`adults: ${value}`)}
+            onChildrenChange = { value => console.log(`children: ${value}`)}
+            onRoomsChange = { value => console.log(`rooms: ${value}`)}
+            onSearch = { () => console.log('Search propeties!')}
+        />
+    ));
