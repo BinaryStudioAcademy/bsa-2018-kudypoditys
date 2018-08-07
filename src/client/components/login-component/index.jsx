@@ -4,24 +4,16 @@ import { Input, Button, Form, Header, Grid, Segment, Message } from 'semantic-ui
 
 export class LoginComponent extends React.Component {
 
-    handleChangeMail = (event) => {
-        this.props.mailChange(event.target.value);
+    handleForgotClicked = () => {
+        this.props.forgotClicked();
     }
 
-    handleChangePassword = (event) => {
-        this.props.passwordChange(event.target.value);
+    handleLoginClicked = () => {
+        this.props.loginClicked();
     }
 
-    handleClickLogin = () => {
-        this.props.loginClick();
-    }
-
-    handleClickRegister = () => {
-        this.props.registrationClick();
-    }
-
-    handleClickForgot = () => {
-        this.props.forgotClick();
+    handleRegisterClicked = () => {
+        this.props.registrationClicked();
     }
 
     render() {
@@ -45,7 +37,7 @@ export class LoginComponent extends React.Component {
                                         name="email"
                                         value={this.props.email}
                                         placeholder="E-mail address"
-                                        onChange={this.handleChangeMail}
+                                        onChange={this.props.mailChanged}
                                     />
                                 </Form.Field>
                                 <Form.Field className={passwordError ? 'error' : ''}>
@@ -56,16 +48,16 @@ export class LoginComponent extends React.Component {
                                         name="password"
                                         value={this.props.password}
                                         placeholder="Password"
-                                        onChange={this.handleChangePassword}
+                                        onChange={this.props.passwordChanged}
                                     />
                                 </Form.Field>
                                 <Form.Field style={{ textAlign: 'right' }}>
-                                    <a tabIndex="0" onClick={this.handleClickForgot}>Forgot the password ?</a>
+                                    <a tabIndex="0" onClick={this.handleForgotClicked}>Forgot the password ?</a>
                                 </Form.Field>
                                 <Button.Group>
-                                    <Button positive onClick={this.handleClickLogin}>Login</Button>
+                                    <Button positive onClick={this.handleLoginClicked}>Login</Button>
                                     <Button.Or />
-                                    <Button primary onClick={this.handleClickRegister}>Register</Button>
+                                    <Button primary onClick={this.handleRegisterClicked}>Register</Button>
                                 </Button.Group>
                             </Segment>
                         </Form>
