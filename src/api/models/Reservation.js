@@ -2,7 +2,7 @@ const
     Sequelize = require('sequelize'),
     orm = require(`${apiRoot}/orm`);
 
-module.exports = orm.define('reservation', {
+let Reservation = orm.define('reservation', {
     dateIn: {
         type: Sequelize.DATE
     },
@@ -13,3 +13,5 @@ module.exports = orm.define('reservation', {
         type: Sequelize.INTEGER
     }
 })
+
+module.exports = Reservation;

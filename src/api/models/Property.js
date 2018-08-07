@@ -28,4 +28,3 @@ module.exports = orm.define('property', {
         type: Sequelize.STRING
     }
 });
-

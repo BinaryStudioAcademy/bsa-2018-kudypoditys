@@ -1,9 +1,14 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require(`${apiRoot}/orm`),
+    Country = require('./Country');
 
-module.exports = orm.define('city', {
+let City = orm.define('city', {
     name: {
         type: Sequelize.STRING
     }
 });
+
+City.belongsTo(Country);
+
+module.exports = City;

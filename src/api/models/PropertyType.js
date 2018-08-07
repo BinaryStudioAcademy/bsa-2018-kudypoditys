@@ -2,7 +2,8 @@ const
     Sequelize = require('sequelize'),
     orm = require(`${apiRoot}/orm`);
 
-module.exports = orm.define('propertyType', {
+
+let PropertyType = orm.define('propertyType', {
     name: {
         type: Sequelize.STRING
     },
@@ -10,3 +11,6 @@ module.exports = orm.define('propertyType', {
         type: Sequelize.STRING
     }
 });
+
+
+module.exports = PropertyType;
