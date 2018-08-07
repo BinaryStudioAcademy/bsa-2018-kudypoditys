@@ -5,8 +5,6 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
-import {RankingBar} from 'client/components/ranking-bar'
-
 
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
@@ -21,13 +19,5 @@ storiesOf('Button', module)
         </Button>
     ));
 
-function getData(val) {
-
-    console.log(val);
-}
 
 
-storiesOf('Sorting component', module)
-    .add('Ranking Bar', () => (
-        <RankingBar sendData={getData}/>
-    ));

@@ -6,24 +6,12 @@ import PropTypes from 'prop-types';
 export class RankingBar extends React.Component {
 
     handleItemClick = (event, value) => {
-
-        this.setState({activeItem: value.value});
-        this.props.sendData(value.value);
-
-
+        this.props.sort(value.value);
     };
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            activeItem: PRICE
-        };
-    }
 
     render() {
 
-        const {activeItem} = this.state;
-
+        const {activeItem} = this.props;
         return (
             <div className="sorting-bar">
                 <Menu widths="3">
@@ -91,7 +79,7 @@ const SORT_VALUE = {
 
 const {PRICE, DISTANCE, LOW_RANK, HIGH_RANK} = SORT_VALUE;
 
-//
+
 RankingBar.propTypes = {
     sendData: PropTypes.func
 };
