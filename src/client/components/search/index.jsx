@@ -267,7 +267,8 @@ SearchComponent.propTypes = {
     onCheckOutChange: PropTypes.func.isRequired,
     onAdultsChange: PropTypes.func.isRequired,
     onChildrenChange: PropTypes.func.isRequired,
-    onRoomsChange: PropTypes.func.isRequired
+    onRoomsChange: PropTypes.func.isRequired,
+    onSearch: PropTypes.func.isRequired
 }
 
 SearchComponent.defaultProps = {
