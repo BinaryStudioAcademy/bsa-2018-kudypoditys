@@ -8,16 +8,16 @@ export class LoginComponent extends React.Component {
         this.props.change(item.target);
     }
 
-    handleClickLogin = () => {
-        this.props.click();
+    handleClickLogin = (item) => {
+        this.props.click(item);
     }
 
-    handleClickRegister = () => {
-        this.props.click();
+    handleClickRegister = (item) => {
+        this.props.click(item);
     }
 
-    handleClickForgot = () => {
-        this.props.click();
+    handleClickForgot = (item) => {
+        this.props.click(item);
     }
 
     render() {
