@@ -10,6 +10,8 @@ import reducer from 'client/logic/reducer';
 import App from 'client/components/app';
 import { increment } from 'client/logic/counter/actions';
 
+import Quickfilter from 'client/components/quick-filter'
+
 const store = createStore(
     reducer,
     composeWithDevTools()
@@ -21,7 +23,7 @@ setInterval(() => {
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Quickfilter />
     </Provider>,
     document.getElementById('root')
 );

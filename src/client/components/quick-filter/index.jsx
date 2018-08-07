@@ -1,7 +1,15 @@
 import React from 'react';
 import './index.scss';
+import PropTypes from 'prop-types';
 
 class Quickfilter extends React.Component {
+
+    static defaultProps = {
+        boxes :[
+            {name:'mark9', ischecked: true, label:'Excelent location: 9+', amount: 321},
+            {name:'mark8', ischecked: false, label:'Very good location: 8+', amount: 658}
+        ]
+    }
 
     constructor(props){
         super(props);
@@ -22,7 +30,6 @@ class Quickfilter extends React.Component {
         this.setState(state=>(
             this.state[name] = !this.state[name]
         ));
-        console.log(this.state)
     }
 
     render() {
@@ -48,4 +55,8 @@ class Quickfilter extends React.Component {
             );
     }
 }
+Quickfilter.propTypes = {
+    boxes: PropTypes.array.isRequired
+}
 export default Quickfilter;
+

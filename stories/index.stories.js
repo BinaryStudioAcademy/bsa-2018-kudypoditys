@@ -18,12 +18,3 @@ storiesOf('Button', module)
             </span>
         </Button>
     ));
-
-const boxes = [
-    {name:'mark9', ischecked: true, label:'Excelent location: 9+', amount: 321},
-    {name:'mark8', ischecked: false, label:'Very good location: 8+', amount: 658}
-];
-storiesOf('Quick filter widget component', module)
-.add('QuickFilter', () => (
-    <Quickfilter boxes={boxes}/>
-));
