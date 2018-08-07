@@ -31,9 +31,9 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               CLUSTER='BSAcluster'
-              FAMILY='kudypoditys-small'
+              FAMILY='kudypoditys-final-task'
               DOCKER_IMAGE='kudypoditys'
-              TASK='kudypoditys-small'
+              TASK='kudypoditys-final-task'
               SERVICE='kudypoditys'
               # Login to AWS
               aws configure set region $AWS_REGION
