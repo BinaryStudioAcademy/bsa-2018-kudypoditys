@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './index.scss';
 import { Input, Button, Form, Dropdown, Header } from 'semantic-ui-react';
 import { DateInput } from 'semantic-ui-calendar-react';
@@ -86,7 +87,7 @@ class SearchComponent extends React.Component {
                         iconPosition='left'
                         placeholder='Check-in'
                         name='checkIn'
-                        value={checkIn}
+                        value={checkIn === 0 ? '' : moment(checkIn).format('MMM D YYYY')}
                         onChange={(event, input) => this.props.onCheckInChange(moment(input.value))}
                         onFocus={this.hideRoomSelector}
                         onKeyPress={event => event.preventDefault()}
@@ -102,7 +103,7 @@ class SearchComponent extends React.Component {
                         iconPosition='right'
                         placeholder='Check-out'
                         name='checkOut'
-                        value={checkOut}
+                        value={checkOut === 0 ? '' : moment(checkOut).format('MMM D YYYY')}
                         onChange={(event, input) => this.props.onCheckOutChange(moment(input.value))}
                         onFocus={this.hideRoomSelector}
                         onKeyPress={event => event.preventDefault()}
@@ -185,7 +186,7 @@ class SearchComponent extends React.Component {
                         iconPosition='left'
                         placeholder='Check-in'
                         name='checkIn'
-                        value={checkIn}
+                        value={checkIn === 0 ? '' : moment(checkIn).format('MMM D YYYY')}
                         onChange={(event, input) => this.props.onCheckInChange(moment(input.value))}
                         onKeyPress={event => event.preventDefault()}
                     />
@@ -203,7 +204,7 @@ class SearchComponent extends React.Component {
                         iconPosition='left'
                         placeholder='Check-out'
                         name='checkOut'
-                        value={checkOut}
+                        value={checkOut === 0 ? '' : moment(checkOut).format('MMM D YYYY')}
                         onChange={(event, input) => this.props.onCheckOutChange(moment(input.value))}
                         onKeyPress={event => event.preventDefault()}
                     />
@@ -251,6 +252,31 @@ class SearchComponent extends React.Component {
         )
     }
 
+}
+
+SearchComponent.propTypes = {
+    view: PropTypes.string.isRequired,
+    destination: PropTypes.string,
+    checkIn: PropTypes.number,
+    checkOut: PropTypes.number,
+    adults: PropTypes.number,
+    children: PropTypes.number,
+    rooms: PropTypes.number,
+    onDestinationChange: PropTypes.func.isRequired,
+    onCheckInChange: PropTypes.func.isRequired,
+    onCheckOutChange: PropTypes.func.isRequired,
+    onAdultsChange: PropTypes.func.isRequired,
+    onChildrenChange: PropTypes.func.isRequired,
+    onRoomsChange: PropTypes.func.isRequired
+}
+
+SearchComponent.defaultProps = {
+    destination: '',
+    checkIn: 0,
+    checkOut: 0,
+    adults: 1,
+    children: 0,
+    rooms: 1
 }
 
 export default SearchComponent;
