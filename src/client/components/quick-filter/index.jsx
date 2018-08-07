@@ -1,13 +1,12 @@
 import React from 'react';
 import './index.scss';
-import {Checkbox, Card, Image, Button, CardContent, Grid, Container, Icon, Header, Label, Content } from 'semantic-ui-react';
 
 class Quickfilter extends React.Component {
 
     constructor(props){
         super(props);
 
-        const a = function(){
+        const checkboxes = function(){
             const { boxes } = this.props;
             let res = {};
             for(let box of boxes){
@@ -15,7 +14,7 @@ class Quickfilter extends React.Component {
             }
             return res;
         }
-        this.state = a;
+        this.state = checkboxes;
     }
 
     onChange = (e) =>{
