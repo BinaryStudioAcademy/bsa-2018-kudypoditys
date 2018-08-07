@@ -3,10 +3,19 @@ const
     orm = require(`${apiRoot}/orm`);
 
 module.exports = orm.define('user', {
-    firstName: {
+    fullName: {
         type: Sequelize.STRING
     },
-    lastName: {
+    password: {
+        type: Sequelize.STRING
+    },
+    email: {
+        type: Sequelize.STRING
+    },
+    phoneNumber: {
+        type: Sequelize.STRING
+    },
+    avatar: {
         type: Sequelize.STRING
     }
 });

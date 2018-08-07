@@ -13,6 +13,14 @@ module.exports = () => {
         });
     });
 
-    // Continue...
+    models.then(({
+        Country
+    }) => {
+        Country.create({
+            name: 'Ukraine'
+        }).then(() => {
+            Country.findAll().then(console.log);
+        })
+    })
 };
 
