@@ -6,6 +6,8 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
+import RegistrationComponent from '../src/client/components/registrationComponent/index';
+
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
@@ -17,3 +19,10 @@ storiesOf('Button', module)
             </span>
         </Button>
     ));
+
+function sendRegistrationData(registrationData) {
+    console.log(registrationData);
+}
+
+storiesOf('RegistrationComponent', module)
+    .add('Component', () => <RegistrationComponent sendRegistrationData={sendRegistrationData} />);
