@@ -4,110 +4,33 @@ import PropTypes from 'prop-types';
 import { Button, Input, Container, Header, Icon, Divider, Label, Form } from 'semantic-ui-react';
 
 export default class RegistrationComponent extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            fullname: '',
-            email: '',
-            phone: '',
-            password: '',
-            fullname_err: false,
-            email_err: false,
-            phone_err: false,
-            password_err: false
-        };
-
-        this.inputChange = this.inputChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
-        this.inputRef = React.createRef();
-    }
-
-    inputChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
-
-    onSubmit() {
-        const dataValid = this.validateCredentials();
-        if(dataValid) {
-            const { fullname, email, phone, password } = this.state;
-            const registrationData = {
-                fullname,
-                email,
-                phone,
-                password
-            }
-            this.props.sendRegistrationData(registrationData); // API POST REQUEST
-            console.log(dataValid); // SHOULD BE: «TRUE»
-        }
-    }
-
-    validateCredentials() {
-        const { fullname, email, phone, password } = this.state;
-
-        if(!fullname || fullname.length < 2 || !fullname.match(/^[a-z ,.'-]+$/i) || fullname.length > 64) {
-            this.setState({
-                fullname_err: true
-            });
-            return false;
-        } else if(this.state.fullname_err) {
-            this.setState({
-                fullname_err: false
-            });
-        }
-
-        if(!email || !email.match(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/) || email.length > 64) {
-            this.setState({
-                email_err: true
-            });
-            return false;
-        } else if(this.state.email_err) {
-            this.setState({
-                email_err: false
-            });
-        }
-
-        if(!phone || !phone.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) {
-            this.setState({
-                phone_err: true
-            });
-            return false;
-        } else if(this.state.phone_err) {
-            this.setState({
-                phone_err: false
-            });
-        }
-
-        if(!password || !password.match(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32})/)) {
-            this.setState({
-                password_err: true
-            });
-            return false;
-        } else if(this.state.password_err) {
-            this.setState({
-                password_err: false
-            });
-        }
-
-        return true;
-    }
-
     componentDidMount() {
-        this.inputRef.current.focus();
+        this.inputRef.focus();
+    }
+
+    handleInputChange = (e) => {
+        this.props.handleChange({ name: e.target.name, value: e.target.value });
+    }
+
+    handleRegisterClick = (e) => {
+        this.props.handleClick(e.target.name);
     }
 
     render() {
-        const { fullname, email, phone, password, fullname_err, email_err, phone_err, password_err } = this.state;
+        const { fullname, email, phone, password, errors } = this.props;
+        const 
+            fullname_err = errors.find(err => err.name === 'fullname'),
+            email_err = errors.find(err => err.name === 'email'),
+            phone_err = errors.find(err => err.name === 'phone'),
+            password_err = errors.find(err => err.name === 'password');
+
         return (
             <Container text className='registration-c-wrapper'>
                 <Header className='registration-c-header'>Register</Header>
                 <Form>
                 <Form.Field>
                     <Label basic className={fullname_err ? 'shown' : 'hidden'} color='red' pointing='below'>
-                        Incorrect user name
+                        { fullname_err ? fullname_err.msg : '' }
                     </Label>
                     <Input 
                         className='registration-c-input' 
@@ -116,14 +39,14 @@ export default class RegistrationComponent extends Component {
                         type='text' 
                         placeholder='Full Name' 
                         fluid
-                        ref={this.inputRef}
+                        ref={(input) => { this.inputRef = input; }}
                         value={fullname}
-                        onChange={this.inputChange}
+                        onChange={this.handleInputChange}
                     />
                 </Form.Field>
                 <Form.Field>
                     <Label basic className={email_err ? 'shown' : 'hidden'} color='red' pointing='below'>
-                        Incorrect e-mail
+                        { email_err ? email_err.msg : '' }
                     </Label>
                     <Input 
                         className='registration-c-input' 
@@ -133,12 +56,12 @@ export default class RegistrationComponent extends Component {
                         placeholder='E-mail' 
                         fluid
                         value={email}
-                        onChange={this.inputChange}
+                        onChange={this.handleInputChange}
                     />
                 </Form.Field>
                 <Form.Field>
                     <Label basic className={phone_err ? 'shown' : 'hidden'} color='red' pointing='below'>
-                        Invalid phone number
+                        { phone_err ? phone_err.msg : '' }
                     </Label>
                     <Input 
                         className='registration-c-input' 
@@ -148,12 +71,12 @@ export default class RegistrationComponent extends Component {
                         placeholder='Phone' 
                         fluid
                         value={phone}
-                        onChange={this.inputChange}
+                        onChange={this.handleInputChange}
                     />
                 </Form.Field>
                 <Form.Field>
                     <Label basic className={password_err ? 'shown' : 'hidden'} color='red' pointing='below'>
-                        Incorrect password
+                        { password_err ? password_err.msg : '' }
                     </Label>
                     <Input 
                         className='registration-c-input' 
@@ -163,7 +86,7 @@ export default class RegistrationComponent extends Component {
                         placeholder='Password' 
                         fluid
                         value={password}
-                        onChange={this.inputChange}
+                        onChange={this.handleInputChange}
                     />
                 </Form.Field>
                 </Form>
@@ -175,7 +98,8 @@ export default class RegistrationComponent extends Component {
                     color='blue' 
                     size='medium' 
                     basic
-                    onClick={this.onSubmit}
+                    name='register'
+                    onClick={this.handleRegisterClick}
                 >
                     <Icon name='check'/>
                     Submit
@@ -189,5 +113,14 @@ export default class RegistrationComponent extends Component {
 
 
 RegistrationComponent.propTypes = {
-    sendRegistrationData: PropTypes.func.isRequired
+    fullname: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    errors: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string,
+            msg: PropTypes.string
+        })
+    ).isRequired
 }
