@@ -25,9 +25,9 @@ let propertyItemData = {
 
     location: 'Prospekt Gagarina 145, Kharkov, 61124, Ukraine ',
 
-}
+};
 
 
 
 storiesOf('Property Summary', module)
-    .add('Item base state', () => <PropertySummary propertyItemData={propertyItemData} />)
+    .add('Item base state', () => <PropertySummary propertyItemData={propertyItemData}/>);
