@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'client/components/registrationComponent/index.scss';
+import 'client/components/registration-component/index.scss';
 import PropTypes from 'prop-types';
 import { Button, Input, Container, Header, Icon, Divider, Label, Form } from 'semantic-ui-react';
 
