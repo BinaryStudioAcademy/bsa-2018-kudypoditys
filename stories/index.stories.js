@@ -17,15 +17,3 @@ storiesOf('Button', module)
             </span>
         </Button>
     ));
-
-
-
-const sections = [
-    { key: 'Lviv', content: 'Lviv', href:'#'},
-    { key: 'Awesome Apart', content: 'Awesome Apart', active: true},
-];
-
-storiesOf('Breadcrumbs component', module)
-.add('Breadcrumbs', () => (
-    <Breadcrumbs sections={sections}/>
-));
