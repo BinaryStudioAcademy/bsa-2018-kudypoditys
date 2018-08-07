@@ -19,5 +19,16 @@ yarn-debug.log*
 yarn-error.log*
 
 *.css
+
 *.iml
 .idea/dictionaries/minzd.xml
+
+.idea/bsa-2018-kudypoditys.iml
+.idea/dictionaries/minzd.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/watcherTasks.xml
+.idea/workspace.xml
+

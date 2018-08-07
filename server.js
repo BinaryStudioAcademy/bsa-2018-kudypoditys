@@ -3,9 +3,11 @@ const
     express = require('express'),
     cors = require('cors'),
     bodyParser = require('body-parser')
-    compression = require('compression')
+    compression = require('compression');
 
-const 
+global.apiRoot = path.resolve(path.join(__dirname, 'src/api'));
+
+const
     app = express(),
     port = process.env.PORT || 5000;
 
@@ -24,3 +26,5 @@ app.get('/api/hit-count', (req, res) => {
 app.listen(port, () => {
     console.log('Server running on http://127.0.0.1:%s', port);
 });
+
+require(`${apiRoot}/testModels`)();
