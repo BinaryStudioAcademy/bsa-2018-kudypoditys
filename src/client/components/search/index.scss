@@ -1,0 +1,125 @@
+.search--view-bar > .room-options > .room-selector.hidden {
+    display: none;
+}
+
+.search {
+    display: flex;
+    border-radius: 5px;
+    background-color: rgb(254, 187, 2);
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.search--view-bar {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.search--view-panel {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: rgb(254, 187, 2);
+    padding: 11px;
+    min-width: 237px;
+    width: fit-content;
+}
+
+.search--view-bar > div {
+    margin: 3px 2px 3px 3px;
+}
+
+.search--view-bar .input input:hover,
+.search--view-panel input:hover {
+    border: 1px solid rgb(229, 169, 4);
+}
+
+
+.suir-calendar.popup table td.suir-calendar.date,
+.suir-calendar.popup table th.suir-calendar.week-day,
+.suir-calendar.popup table th.suir-calendar.cell {
+    padding: 4px;
+}
+
+td.active.suir-calendar.date,
+.suir-calendar.date:hover {
+    background-color: rgb(0, 119, 204) !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.ui.suir-calendar {
+    padding: 0;
+    margin: 0;
+}
+
+.check-in-out {
+    display: flex;
+}
+
+.search--view-panel .check-in-out {
+    flex-direction: column;
+}
+
+.search--view-panel .check-in-out > div {
+    flex-direction: column;
+    width: 100%;
+}
+
+.check-in-out > div {
+    width: fit-content;
+}
+
+.btn-wrp {
+    display: flex;
+    align-content: center;
+}
+
+.search--view-bar > .room-options > .room-selector {
+    box-shadow: 0 0 3px 1px #dddddd;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 2;
+    position: absolute;
+    margin: 7px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 30%;
+    height: 210px;
+}
+
+.room-selector > .field {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.room-selector > .field > label {
+    padding: 11px;
+}
+
+.search--view-panel .room-selector {
+    margin-top: 10px;
+}
+
+.search--view-panel > .room-options > .room-selector {
+    position: relative;
+}
+
+.search--view-panel .fields > div.ui.selection.dropdown {
+    min-width: 0;
+}
+
+.search--view-panel > .room-options > .room-selector > .fields {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search--view-panel .btn-wrp {
+    display: flex;
+    justify-content: flex-end;
+}

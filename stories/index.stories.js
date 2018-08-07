@@ -3,9 +3,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-
+import { Breadcrumbs } from '../src/client/components/breadcrumbs/index';
 import { Button, Welcome } from '@storybook/react/demo';
-import PropertyListItem from '../src/client/components/property-list-item';
 
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
@@ -16,10 +15,11 @@ storiesOf('Button', module)
         <Button onClick={action('clicked')}>
             <span role="img" aria-label="so cool">
                 😀 😎 👍 💯
-      </span>
+            </span>
         </Button>
     ));
 
+<<<<<<< HEAD
 
 let propertyItemData = {
     image: `http://cdn.home-designing.com/wp-content/uploads/2016/04/luxury-art-deco-apartment-interior.jpg`,
@@ -133,3 +133,5 @@ storiesOf('Property Item', module)
     .add('Last available room', () => <PropertyListItem propertyItemData={propertyItemData5}/>)
     .add('Item with middle raiting', () => <PropertyListItem propertyItemData={propertyItemData6}/>)
 
+=======
+>>>>>>> develop
