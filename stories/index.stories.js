@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
-import { NavigationBar } from '../src/client/components/navigationBar';
+import { NavigationBar } from '../src/client/components/navigation-bar';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -20,11 +20,61 @@ storiesOf('Button', module)
     ));
 
 
-const handleBtnClick = () => {
+const handleClick = () => {
     console.log('clicked');
 };
 
 storiesOf('Navigation Bar', module)
-    .add('Navigation Bar Base', () => (
-        <NavigationBar click={handleBtnClick} />
+    .add('Navigation 0 reviews', () => (
+        <NavigationBar
+            infoClick={handleClick}
+            facilitiesClick={handleClick}
+            GoodToKnowClick={handleClick}
+            reviewsClick={handleClick}
+            reviewsCount={0}
+        />
+    ));
+
+storiesOf('Navigation Bar', module)
+    .add('Navigation 10 reviews', () => (
+        <NavigationBar
+            infoClick={handleClick}
+            facilitiesClick={handleClick}
+            GoodToKnowClick={handleClick}
+            reviewsClick={handleClick}
+            reviewsCount={10}
+        />
+    ));
+
+storiesOf('Navigation Bar', module)
+    .add('Navigation 100 reviews', () => (
+        <NavigationBar
+            infoClick={handleClick}
+            facilitiesClick={handleClick}
+            GoodToKnowClick={handleClick}
+            reviewsClick={handleClick}
+            reviewsCount={100}
+        />
+    ));
+
+storiesOf('Navigation Bar', module)
+    .add('Navigation 1000 reviews', () => (
+        <NavigationBar
+            infoClick={handleClick}
+            facilitiesClick={handleClick}
+            GoodToKnowClick={handleClick}
+            reviewsClick={handleClick}
+            reviewsCount={1000}
+        />
+    ));
+
+storiesOf('Navigation Bar', module)
+    .add('Navigation 10000 reviews', () => (
+        <NavigationBar
+            infoClick={handleClick}
+            facilitiesClick={handleClick}
+            GoodToKnowClick={handleClick}
+            reviewsClick={handleClick}
+            reviewsCount={10000}
+        />
     ));
