@@ -4,24 +4,24 @@ import { Input, Button, Form, Header, Grid, Segment, Message } from 'semantic-ui
 
 export class LoginComponent extends React.Component {
 
-    handleChangeMail = (item) => {
-        this.props.mailChange(item);
+    handleChangeMail = (event) => {
+        this.props.mailChange(event.target.value);
     }
 
-    handleChangePassword = (item) => {
-        this.props.passwordChange(item);
+    handleChangePassword = (event) => {
+        this.props.passwordChange(event.target.value);
     }
 
-    handleClickLogin = (item) => {
-        this.props.loginClick(item);
+    handleClickLogin = () => {
+        this.props.loginClick();
     }
 
-    handleClickRegister = (item) => {
-        this.props.registrationClick(item);
+    handleClickRegister = () => {
+        this.props.registrationClick();
     }
 
-    handleClickForgot = (item) => {
-        this.props.forgotClick(item);
+    handleClickForgot = () => {
+        this.props.forgotClick();
     }
 
     render() {

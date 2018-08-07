@@ -20,11 +20,11 @@ storiesOf('Button', module)
         </Button>
     ));
 
-const handleChange = (item) => {
-    console.log(` changed: ${item.target.name}\n value: ${item.target.value}`);
+const handleChange = (value) => {
+    console.log(`changed value: ${value}`);
 };
 
-const handleBtnClick = (item) => {
+const handleBtnClick = () => {
     console.log('clicked');
 };
 
