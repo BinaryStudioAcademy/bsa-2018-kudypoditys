@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'client/components/registrationComponent/index.scss';
-
+import PropTypes from 'prop-types';
 import { Button, Input, Container, Header, Icon, Divider, Label, Form } from 'semantic-ui-react';
 
 export default class RegistrationComponent extends Component {
@@ -185,4 +185,9 @@ export default class RegistrationComponent extends Component {
             </Container>
         )
     }
+}
+
+
+RegistrationComponent.propTypes = {
+    sendRegistrationData: PropTypes.func.isRequired
 }

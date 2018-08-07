@@ -25,4 +25,5 @@ function sendRegistrationData(registrationData) {
 }
 
 storiesOf('RegistrationComponent', module)
-    .add('Component', () => <RegistrationComponent sendRegistrationData={sendRegistrationData} />);
+    .add('Component', () => <RegistrationComponent sendRegistrationData={sendRegistrationData} />)
+    .add('Component Without Prop Function', () => <RegistrationComponent />)
