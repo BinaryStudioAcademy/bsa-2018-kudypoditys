@@ -1,15 +1,16 @@
 import React from 'react';
 import './index.scss';
 import {Menu, Dropdown} from 'semantic-ui-react';
-
+import PropTypes from 'prop-types';
 
 export class RankingBar extends React.Component {
 
     handleItemClick = (event, value) => {
 
         this.setState({activeItem: value.value});
+        this.props.sendData(value.value);
 
-        console.log(this.state.activeItem)
+
     };
 
     constructor(props) {
@@ -80,7 +81,7 @@ export class RankingBar extends React.Component {
 
 }
 
-const SORT_VALUES = {
+const SORT_VALUE = {
     PRICE: 'price',
     DISTANCE: 'distance',
     LOW_RANK: 'low',
@@ -88,6 +89,10 @@ const SORT_VALUES = {
 
 };
 
-const {PRICE, DISTANCE, LOW_RANK, HIGH_RANK} = SORT_VALUES;
+const {PRICE, DISTANCE, LOW_RANK, HIGH_RANK} = SORT_VALUE;
 
+//
+RankingBar.propTypes = {
+    sendData: PropTypes.func
+};
 

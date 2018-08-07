@@ -21,9 +21,12 @@ storiesOf('Button', module)
         </Button>
     ));
 
+function getData(val) {
 
+    console.log(val);
+}
 
 storiesOf('Sorting component', module)
     .add('Ranking Bar', () => (
-        <RankingBar/>
+        <RankingBar sendData={getData}/>
     ));
