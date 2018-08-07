@@ -17,8 +17,8 @@
         "url": "git+https://github.com/BinaryStudioAcademy/bsa-2018-kudypoditys.git"
     },
     "engines": {
-        "node": "10.8.x",
-        "npm": "6.2.x"
+        "node": "10.x.x",
+        "npm": "6.x.x"
     },
     "author": "Dmytro Kostiuk",
     "license": "ISC",
