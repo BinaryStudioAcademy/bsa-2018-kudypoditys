@@ -6,8 +6,11 @@ import formatNumber from 'client/helpers/formatNumber'
 
 export class SearchSummary extends React.Component {
     static defaultProps = {
-        numberOfMatched: 0
-        
+
+
+        numberOfMatched: 0,
+        destination: 'City'
+
     };
 
 
