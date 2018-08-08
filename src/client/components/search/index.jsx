@@ -7,7 +7,7 @@ import { DateInput } from 'semantic-ui-calendar-react';
 import moment from 'moment';
 import { searchUpdate } from 'client/logic/search/actions';
 
-export class SearchComponent extends React.Component {
+export class Search extends React.Component {
     constructor(props) {
         super(props);
         this.roomSelector = React.createRef();
@@ -256,7 +256,7 @@ export class SearchComponent extends React.Component {
 
 }
 
-SearchComponent.propTypes = {
+Search.propTypes = {
     view: PropTypes.string.isRequired,
     destination: PropTypes.string,
     checkIn: PropTypes.number,
@@ -272,7 +272,7 @@ SearchComponent.propTypes = {
     onRoomsChange: PropTypes.func.isRequired
 }
 
-SearchComponent.defaultProps = {
+Search.defaultProps = {
     destination: '',
     checkIn: 0,
     checkOut: 0,
@@ -296,4 +296,4 @@ function mapDispatchToProps(dispatch, ownProps) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
