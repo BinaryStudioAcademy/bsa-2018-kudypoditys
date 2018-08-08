@@ -7,9 +7,11 @@ const
 let Review = orm.define('review', {
     content: {
         type: Sequelize.TEXT
+
     },
     createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: { isDate: true}
     }
 });
 

@@ -8,10 +8,12 @@ const
 //проміжна таблиця
 let RoomDiscount = orm.define('roomDiscount', {
     discountStart: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: {isDate: true }
     },
     discountEnd: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: {isDate: true }
     }
 });
 
