@@ -10,7 +10,7 @@ export class RankingBar extends React.Component {
 
     handleItemClick = (event, value) => {
         this.props.onSelect(value.value);
-        console.log(value.value)
+
     };
 
     render() {
