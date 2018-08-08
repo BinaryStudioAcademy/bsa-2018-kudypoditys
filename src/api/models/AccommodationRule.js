@@ -10,19 +10,25 @@ let AccommodationRule = orm.define('accommodationRule', {
         type: Sequelize.INTEGER
     },
     minimumStay: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        validate: { min: 1,  isNumeric: true }
+
     },
     arrivalTimeStart: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: { isDate: true }
     },
     arrivalTimeEnd: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: { isDate: true}
     },
     departureTimeStart: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: { isDate: true}
     },
     departureTimeEnd: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: { isDate: true}
     }
 });
 

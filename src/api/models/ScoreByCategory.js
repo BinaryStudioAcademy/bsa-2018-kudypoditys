@@ -4,7 +4,9 @@ const
 
 let ScoreByCategory = orm.define('scoreByCategory', {
     evaluation: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE,
+        validate: { min: 0, max: 10 }
+
     }
 });
 

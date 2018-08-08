@@ -5,22 +5,32 @@ const
 
 let Property = orm.define('property', {
     name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
+
     },
     address: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
+
     },
     description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        validate: { notEmpty: true }
+
     },
     taxes: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        validate: { isFloat: true}
+
     },
     coordinates: {
         type: Sequelize.JSON
     },
     rating: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        validate: { min: 0, max: 10, isFloat: true }
+
     },
     contactPersonName: {
         type: Sequelize.STRING

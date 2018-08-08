@@ -4,13 +4,17 @@ const
 
 let Reservation = orm.define('reservation', {
     dateIn: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: { isDate: true}
     },
     dateOut: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: { isDate: true}
     },
     guestsCount: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        validate: { min: 1 }
+
     }
 });
 

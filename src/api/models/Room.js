@@ -4,13 +4,17 @@ const
 
 let Room = orm.define('room', {
     price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        validate: { min: 1 , notEmpty: true}
     },
     amount: {
-        type: Sequelize.INTEGER
-    },
+        type: Sequelize.INTEGER,
+        validate: { min: 1 }
+      },
     area: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT,
+        validate: { min: 1, isFloat: true}
+
     },
     description: {
         type: Sequelize.TEXT

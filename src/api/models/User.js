@@ -4,16 +4,20 @@ const
 
 let User = orm.define('user', {
     fullName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
     },
     password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
     },
     email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: { notEmpty: true, isEmail: true }
     },
     phoneNumber: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
     },
     avatar: {
         type: Sequelize.STRING

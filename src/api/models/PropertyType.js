@@ -4,10 +4,12 @@ const
 
 let PropertyType = orm.define('propertyType', {
     name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
     },
     description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
     }
 });
 
