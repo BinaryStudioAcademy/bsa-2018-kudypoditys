@@ -1,11 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import './index.scss';
+import moment from 'moment';
+import { connect } from 'react-redux';
 import { Input, Button, Form, Dropdown, Header } from 'semantic-ui-react';
 import { DateInput } from 'semantic-ui-calendar-react';
-import moment from 'moment';
-import { searchUpdate } from 'client/logic/search/actions';
+
+import { mapStateToProps, mapDispatchToProps } from './container';
+import './index.scss';
 
 export class Search extends React.Component {
     constructor(props) {
@@ -279,21 +280,6 @@ Search.defaultProps = {
     adults: 1,
     children: 0,
     rooms: 1
-}
-
-function mapStateToProps(state, ownProps) {
-    const { search } = state;
-    return {
-        destination: search.destination
-    };
-}
-
-function mapDispatchToProps(dispatch, ownProps) {
-    return {
-        onSearch() {
-            dispatch(searchUpdate({ destination: 'UPDATED' }));
-        }
-    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
