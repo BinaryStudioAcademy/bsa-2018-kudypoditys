@@ -1,7 +1,6 @@
 const
     Sequelize = require('sequelize'),
     orm = require(`${apiRoot}/orm`),
-
     Property = require('./Property');
 
 let AccommodationRule = orm.define('accommodationRule', {

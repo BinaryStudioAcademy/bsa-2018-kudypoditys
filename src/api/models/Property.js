@@ -4,9 +4,9 @@ const
     orm = require(`${apiRoot}/orm`),
     User = require('./User'),
     City = require('./City'),
-    VerificationStatus = require('./VerificationStatus')
+    VerificationStatus = require('./VerificationStatus');
 
- let Property= orm.define('property', {
+let Property = orm.define('property', {
     name: {
         type: Sequelize.STRING
     },

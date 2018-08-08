@@ -1,15 +1,12 @@
 
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`),
-    RoomDiscount = require ('./RoomDiscount')
+    orm = require(`${apiRoot}/orm`);
 
 let Discount = orm.define('discount', {
-    discountRate:{
-        type: Sequelize.FLOAT
+    rate: {
+        type: Sequelize.DOUBLE
     }
 });
-
-Discount.belongsTo(RoomDiscount);
 
 module.exports = Discount;

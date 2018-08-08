@@ -1,4 +1,3 @@
-
 const
     Sequelize = require('sequelize'),
     orm = require(`${apiRoot}/orm`),

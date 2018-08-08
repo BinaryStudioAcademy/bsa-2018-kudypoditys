@@ -4,13 +4,14 @@ const
     BedType = require('./BedType'),
     Room = require('./Room');
 
+// проміжна таблиця
 let BedInRoom = orm.define('bedInRoom', {
     count: {
         type: Sequelize.INTEGER
     }
 });
 
-BadInRoom.belongsTo(BedType);
-BadInRoom.belongsTo(Room);
+BedInRoom.belongsTo(BedType);
+BedInRoom.belongsTo(Room);
 
-module.exports = BadInRoom;
+module.exports = BedInRoom;

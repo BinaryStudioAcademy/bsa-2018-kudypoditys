@@ -12,6 +12,7 @@ let Review = orm.define('review', {
         type: Sequelize.DATE
     }
 });
+
 Review.belongsTo(User);
 Review.belongsTo(Property);
 
