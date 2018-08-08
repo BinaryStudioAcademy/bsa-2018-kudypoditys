@@ -11,6 +11,26 @@ function hitsReducer(state = defaultState.search, action) {
                 ...action.payload
             };
         }
+        // case COLLECTION_DELETE: {
+        //     const newState = { ...state };
+        //     delete newState.foundProperties[action._id]
+        //     return newState;
+        // }
+        // case COLLECTION_INSERT: {
+        //     return {
+        //         ...state.foundProperties,
+        //         [action._id]: action.payload
+        //     };
+        // }
+        // case COLLECTION_UPDATE: {
+        //     return {
+        //         ...state.foundProperties,
+        //         [action._id]: {
+        //             ...state.foundProperties[action._id],
+        //             ...action.payload
+        //         }
+        //     };
+        // }
         default: {
             return state;
         }
