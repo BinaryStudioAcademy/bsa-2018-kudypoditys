@@ -1,6 +1,6 @@
 const state = {
     search: {
-        destination: 'Lviv'
+        destination: 'sdf'
     },
     // collections: {
     //     'iud-sdfdsf-asdasd': {
@@ -10,6 +10,10 @@ const state = {
     //         _id: 'iud-sdfdsf-asdasd'
     //     }
     // }
+    searchSummary: {
+        destination: 'Dnipro',
+        numberOfMatched: 1345,
+    }
 };
 
 export default state;

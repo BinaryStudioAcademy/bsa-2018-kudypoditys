@@ -3,18 +3,15 @@ import './index.scss';
 import {Header} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import formatNumber from 'client/helpers/formatNumber'
+import {connect} from 'react-redux';
+import {mapStateToProps} from './container';
+
 
 export class SearchSummary extends React.Component {
 
-    static defaultProps = {
-        numberOfMatched: 0,
-        destination: 'City'
-
-    };
-
     render() {
-        const numbersToPrettify = this.props.data.numberOfMatched,
-            destination = this.props.data.destination,
+        const numbersToPrettify = this.props.numberOfMatched,
+            destination = this.props.destination,
             numbers = formatNumber(numbersToPrettify);
 
 
@@ -36,3 +33,5 @@ SearchSummary.propTypes = {
     destination: PropTypes.string,
     numberOfMatched: PropTypes.number
 };
+
+export default connect(mapStateToProps)(SearchSummary);

@@ -9,7 +9,7 @@ import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 
 import Search from 'client/components/search';
-
+import SearchSummary from 'client/components/search-summary';
 const store = createStore(
     reducer,
     composeWithDevTools()
@@ -33,7 +33,8 @@ ReactDOM.render(
                     onAdultsChange = { value => console.log(`adults: ${value}`)}
                     onChildrenChange = { value => console.log(`children: ${value}`)}
                     onRoomsChange = { value => console.log(`rooms: ${value}`)}
-                />
+                />,
+                <SearchSummary/>
             ]}
         </React.Fragment>
 
