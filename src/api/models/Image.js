@@ -5,7 +5,8 @@ const
 let Image = orm.define('image', {
     url: {
         type: Sequelize.STRING,
-        validate:{ isUrl: true}
+        validate: { isUrl: true },
+        allowNull: false
     }
 });
 

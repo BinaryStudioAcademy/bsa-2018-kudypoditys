@@ -4,7 +4,9 @@ const
 
 let Role = orm.define('role', {
     name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
     }
 });
 

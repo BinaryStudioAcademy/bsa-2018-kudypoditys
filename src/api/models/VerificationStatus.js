@@ -4,7 +4,9 @@ const
 
 let VerificationStatus = orm.define('verificationStatus', {
     status: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
     }
 });
 

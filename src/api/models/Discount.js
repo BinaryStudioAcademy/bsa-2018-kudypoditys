@@ -5,7 +5,8 @@ const
 
 let Discount = orm.define('discount', {
     rate: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE,
+        allowNull: false
     }
 });
 

@@ -4,7 +4,9 @@ const
 
 let ReviewCategory = orm.define('reviewCategory', {
     name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
     }
 });
 

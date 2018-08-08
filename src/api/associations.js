@@ -102,13 +102,14 @@ function associations(models) {
     Property.belongsTo(VerificationStatus);
     Property.belongsTo(City);
     Property.belongsTo(PropertyType);
+    Property.belongsTo(AccommodationRule);
 
     Property.hasMany(Favorite);
     Property.hasMany(Review);
     Property.hasMany(FacilityList);
     Property.hasMany(PropertyPaymentType);
     Property.hasMany(Room);
-    Property.hasMany(AccommodationRule);
+
 
     // PaymentType associations
     PaymentType.hasMany(Reservation);
@@ -154,26 +155,26 @@ function associations(models) {
     BedInRoom.belongsTo(Room);
 
     // AccommodationRule associations
-    AccommodationRule.belongsTo(Property);
+    AccommodationRule.hasMany(Property);
 
     // Many To Many Associations
-    ReviewCategory.belongsToMany(Review, { through: 'ScoreByCategory' });
-    Review.belongsToMany(ReviewCategory, { through: 'ScoreByCategory' });
+    ReviewCategory.belongsToMany(Review, { through: 'scoreByCategory' });
+    Review.belongsToMany(ReviewCategory, { through: 'scoreByCategory' });
 
-    Room.belongsToMany(Discount, { through: 'RoomDiscount' });
-    Discount.belongsToMany(Room, { through: 'RoomDiscount' });
+    Room.belongsToMany(Discount, { through: 'roomDiscount' });
+    Discount.belongsToMany(Room, { through: 'roomDiscount' });
 
-    Property.belongsToMany(PaymentType, { through: 'PropertyPaymentType' });
-    PaymentType.belongsToMany(Property, { through: 'PropertyPaymentType' });
+    Property.belongsToMany(PaymentType, { through: 'propertyPaymentType' });
+    PaymentType.belongsToMany(Property, { through: 'propertyPaymentType' });
 
-    User.belongsToMany(Property, { as: 'favoriteProperties', through: 'Favorite' });
-    Property.belongsToMany(User, { as: 'likedByUsers', through: 'Favorite' });
+    User.belongsToMany(Property, { as: 'favoriteProperties', through: 'favorite' });
+    Property.belongsToMany(User, { as: 'likedByUsers', through: 'favorite' });
 
-    Facility.belongsToMany(Property, { through: 'FacilityList' });
-    Property.belongsToMany(Facility, { through: 'FacilityList' });
+    Facility.belongsToMany(Property, { through: 'facilityList' });
+    Property.belongsToMany(Facility, { through: 'facilityList' });
 
-    Room.belongsToMany(BedType, { through: 'BedInRoom' });
-    BedType.belongsToMany(Room, { through: 'BedInRoom' });
+    Room.belongsToMany(BedType, { through: 'bedInRoom' });
+    BedType.belongsToMany(Room, { through: 'bedInRoom' });
 
     // Image.findAll({ include: [{ model: Room }] }) :D
     // image = { propertyId: 1, roomId: 1 } room = { id: 1, propertyId: 2 }

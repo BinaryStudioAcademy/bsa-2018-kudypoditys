@@ -5,8 +5,9 @@ const
 let BedInRoom = orm.define('bedInRoom', {
     count: {
         type: Sequelize.INTEGER,
-        validate: { min: 1,  isNumeric: true }
-
+        validate: { min: 1, isNumeric: true },
+        allowNull: false,
+        defaultValue: 1
     }
 });
 

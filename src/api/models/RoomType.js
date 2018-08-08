@@ -4,7 +4,9 @@ const
 
 let RoomType = orm.define('roomType', {
     name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
     }
 });
 

@@ -25,6 +25,7 @@ module.exports = () => {
         Role
     }) => {
         Role.create({
+            name: 'user'
         }).then(() => {
             //Role.findAll().then(console.log);
         });
@@ -53,10 +54,10 @@ module.exports = () => {
         });
     });
 
-    models.then(({
-        Property
+    models.then(({ // example how to use many to many
+        Property, Facility, FacilityList
     }) => {
-        Property.create({
+        return Property.create({
             name: 'Lviv',
             address: 'Zelena 8b',
             description: 'description',
@@ -65,8 +66,30 @@ module.exports = () => {
             rating: 7.9,
             contactPersonName: 'Jhon Doe',
             contactPhone: '9876543'
-        }).then(() => {
-            //Property.findAll().then(console.log);
+        }).then(() =>
+            Facility.create({ name: 'facility1' })
+        ).then(() =>
+            Facility.create({ name: 'facility2' })
+        ).then(() =>
+            FacilityList.create({
+                propertyId: 1,
+                facilityId: 1
+            })
+        ).then(() =>
+            FacilityList.create({
+                propertyId: 1,
+                facilityId: 2
+            })
+        ).then(() => {
+            return Property.findOne({
+                // JOIN through FacilityList
+                include: [{ model: Facility }],
+
+                // WHERE
+                where: { id: 1 }
+            })
+        }).then(prop => {
+            console.log('>>>> ', prop.facilities.map(x => `id: ${x.id} name: ${x.name}`));
         });
     });
 
@@ -85,7 +108,7 @@ module.exports = () => {
         Discount
     }) => {
         Discount.create({
-            discountRate: 1.7,
+            rate: 1.7,
         }).then(() => {
             //Discount.findAll().then(console.log);
         });
@@ -93,9 +116,9 @@ module.exports = () => {
 
     models.then(({ Reservation, User }) => {
         User.create({
-            fullName: 'Nata Didukh',
+            fullName: 'Doctor Strange',
             password: '1234',
-            email: 'nata.mail.gmail@gmail.com',
+            email: 'doctors@marvel.com',
             phoneNumber: '0123412312',
             avatar: 'https://avatar.com'
         }).then(() => {
@@ -103,7 +126,8 @@ module.exports = () => {
                 dateIn: '2018-01-01',
                 dateOut: '2018-02-01',
                 guestsCount: 3,
-                userId: 1
+                userId: 1,
+                roomId: 1
             });
         }).then(() => {
             return User.findAll({
@@ -118,7 +142,8 @@ module.exports = () => {
         BedType
     }) => {
         BedType.create({
-            type: 'twin bed'
+            id: 1,
+            name: 'twin bed'
         }).then(() => {
             //BedType.findAll().then(console.log);
         });
@@ -127,7 +152,9 @@ module.exports = () => {
         BedInRoom
     }) => {
         BedInRoom.create({
-            count: 4
+            roomId: 1,
+            count: 4,
+            bedTypeId: 1
         }).then(() => {
             //BedInRoom.findAll().then(console.log);
         });

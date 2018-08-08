@@ -4,31 +4,38 @@ const
 
 let AccommodationRule = orm.define('accommodationRule', {
     allowPets: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: true
     },
     cancelReservation: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BOOLEAN,
+        allowNull: false
     },
     minimumStay: {
         type: Sequelize.INTEGER,
-        validate: { min: 1,  isNumeric: true }
-
+        validate: { min: 1, isNumeric: true },
+        defaultValue: 1,
+        allowNull: false
     },
     arrivalTimeStart: {
         type: Sequelize.DATE,
-        validate: { isDate: true }
+        validate: { isDate: true },
+        allowNull: false
     },
     arrivalTimeEnd: {
         type: Sequelize.DATE,
-        validate: { isDate: true}
+        validate: { isDate: true },
+        allowNull: false
     },
     departureTimeStart: {
         type: Sequelize.DATE,
-        validate: { isDate: true}
+        validate: { isDate: true },
+        allowNull: false
     },
     departureTimeEnd: {
         type: Sequelize.DATE,
-        validate: { isDate: true}
+        validate: { isDate: true },
+        allowNull: false
     }
 });
 

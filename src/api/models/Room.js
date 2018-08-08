@@ -5,19 +5,23 @@ const
 let Room = orm.define('room', {
     price: {
         type: Sequelize.INTEGER,
-        validate: { min: 1 , notEmpty: true}
+        validate: { min: 1, notEmpty: true },
+        allowNull: false
     },
     amount: {
         type: Sequelize.INTEGER,
-        validate: { min: 1 }
-      },
+        validate: { min: 1 },
+        allowNull: false
+    },
     area: {
         type: Sequelize.FLOAT,
-        validate: { min: 1, isFloat: true}
+        validate: { min: 1, isFloat: true },
+        allowNull: false
 
     },
     description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: true
     }
 });
 

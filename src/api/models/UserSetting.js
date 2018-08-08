@@ -4,7 +4,8 @@ const
 
 let UserSetting = orm.define('userSetting', {
     settings: {
-        type: Sequelize.JSON
+        type: Sequelize.JSON,
+        allowNull: true
     }
 });
 

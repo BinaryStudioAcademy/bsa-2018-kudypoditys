@@ -6,11 +6,14 @@ const
 let PropertyCategory = orm.define('propertyCategory', {
     name: {
         type: Sequelize.STRING,
-        validate: { notEmpty: true }
+        validate: { notEmpty: true },
+        unique: true,
+        allowNull: false
     },
     description: {
         type: Sequelize.STRING,
-        validate: { notEmpty: true }
+        validate: { notEmpty: true },
+        allowNull: false
     }
 });
 

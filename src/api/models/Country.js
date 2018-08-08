@@ -5,6 +5,8 @@ const
 module.exports = orm.define('country', {
     name: {
         type: Sequelize.STRING,
-        validate: { notEmpty: true }
+        validate: { notEmpty: true },
+        allowNull: false,
+        unique: true
     }
 });

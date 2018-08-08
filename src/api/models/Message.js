@@ -4,7 +4,8 @@ const
 
 let Message = orm.define('messsage', {
     body: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false
     }
 });
 

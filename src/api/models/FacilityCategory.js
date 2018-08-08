@@ -4,7 +4,9 @@ const
 
 let FacilityCategory = orm.define('facilityCategory', {
     name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
     }
 });
 

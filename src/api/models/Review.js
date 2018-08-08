@@ -4,15 +4,9 @@ const
 
 let Review = orm.define('review', {
     content: {
-        type: Sequelize.TEXT
-
-    },
-    createdAt: {
-        type: Sequelize.DATE,
-        validate: { isDate: true}
+        type: Sequelize.TEXT,
+        allowNull: false
     }
 });
-
-
 
 module.exports = Review;

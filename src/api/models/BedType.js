@@ -4,7 +4,9 @@ const
 
 let BedType = orm.define('bedType', {
     name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
     }
 });
 

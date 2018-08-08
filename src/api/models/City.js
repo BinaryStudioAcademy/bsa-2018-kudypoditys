@@ -5,7 +5,9 @@ const
 let City = orm.define('city', {
     name: {
         type: Sequelize.STRING,
-        validate: { notEmpty: true }
+        validate: { notEmpty: true },
+        allowNull: false,
+        unique: true
     }
 });
 
