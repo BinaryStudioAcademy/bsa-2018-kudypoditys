@@ -1,10 +1,10 @@
 const
     Sequelize = require('sequelize'),
     orm = require(`${apiRoot}/orm`),
-    Room = require('./Room'),
-    Discount = require('./Discount');
+    Room = require('./Room')
 
-let roomDiscount = orm.define('roomDiscount', {
+
+let RoomDiscount = orm.define('roomDiscount', {
     discountStart: {
         type: Sequelize.DATE
     },
@@ -13,7 +13,7 @@ let roomDiscount = orm.define('roomDiscount', {
     }
 });
 
-roomDiscount.belongsTo(Room);
-roomDiscount.belongsTo(Discount);
+RoomDiscount.belongsTo(Room);
 
-module.exports = roomDiscount;
+
+module.exports = RoomDiscount;

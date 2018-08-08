@@ -1,9 +1,14 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require(`${apiRoot}/orm`),
+    BedInRoom = require('./BedInRoom')
 
-module.exports = orm.define('bedType', {
+let Bed = orm.define('bed', {
     name: {
         type: Sequelize.STRING
     }
 });
+
+Bed.hasMany(BedInRoom);
+
+module.exports = Bed;

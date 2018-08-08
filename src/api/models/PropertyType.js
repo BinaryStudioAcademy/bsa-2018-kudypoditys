@@ -1,6 +1,6 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require(`${apiRoot}/orm`)
 
 
 let PropertyType = orm.define('propertyType', {
@@ -11,6 +11,5 @@ let PropertyType = orm.define('propertyType', {
         type: Sequelize.STRING
     }
 });
-
 
 module.exports = PropertyType;

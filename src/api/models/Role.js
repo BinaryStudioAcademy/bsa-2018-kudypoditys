@@ -1,6 +1,7 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require(`${apiRoot}/orm`),
+    User = require('./User')
 
 let Role = orm.define('role', {
     name: {
@@ -8,4 +9,7 @@ let Role = orm.define('role', {
     }
 });
 
+Role.belongsTo(User);
+
 module.exports = Role;
+

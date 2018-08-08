@@ -3,7 +3,7 @@ const
     orm = require(`${apiRoot}/orm`);
 //Property = require('./Property');
 
-let verificationStatus = orm.define('verificationStatus', {
+let VerificationStatus = orm.define('verificationStatus', {
     status: {
         type: Sequelize.STRING
     }
@@ -11,4 +11,4 @@ let verificationStatus = orm.define('verificationStatus', {
 
 // verificationStatus.hasMany(Property);
 
-module.exports = verificationStatus;
+module.exports = VerificationStatus;

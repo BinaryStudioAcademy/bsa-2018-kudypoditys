@@ -15,4 +15,4 @@ let Review = orm.define('review', {
 Review.belongsTo(User);
 Review.belongsTo(Property);
 
-module.exports = Review
+module.exports = Review;

@@ -1,9 +1,14 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require(`${apiRoot}/orm`),
+    Facility = require ('./Facility')
 
-module.exports = orm.define('facilityCategory', {
+let FacilityCategory = orm.define('facilityCategory', {
     name: {
         type: Sequelize.STRING
     }
 });
+
+FacilityCategory.belongsTo(Facility);
+
+module.exports = FacilityCategory;
