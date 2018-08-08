@@ -1,6 +1,6 @@
 const state = {
     search: {
-        destination: 'sdf'
+        destination: 'Lviv'
     },
     // collections: {
     //     'iud-sdfdsf-asdasd': {
