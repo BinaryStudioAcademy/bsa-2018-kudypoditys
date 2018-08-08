@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import counter from 'client/logic/counter/reducer';
+import search from 'client/logic/search/reducer';
 
 export default combineReducers({
-    counter
+    search
 });

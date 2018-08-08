@@ -1,7 +1,7 @@
 const state = {
-    counter: {
-        hits: 0
-    }
+    search: {
+        destination: 'Lviv'
+    },
 };
 
 export default state;

@@ -1,12 +1,14 @@
 import defaultState from 'client/logic/defaultState';
-import { INCREMENT } from './actionTypes';
+import {
+    SEARCH_UPDATE
+} from './actionTypes';
 
-function hitsReducer(state = defaultState.counter, action) {
+function hitsReducer(state = defaultState.search, action) {
     switch (action.type) {
-        case INCREMENT: {
+        case SEARCH_UPDATE: {
             return {
-                ...state,
-                hits: state.hits + 1
+                ...state.search,
+                ...action.payload
             };
         }
         default: {
