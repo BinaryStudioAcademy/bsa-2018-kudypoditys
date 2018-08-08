@@ -10,6 +10,11 @@ const state = {
     //         _id: 'iud-sdfdsf-asdasd'
     //     }
     // }
+
+    sortType: {
+        activeItem: 'price'
+    }
+
 };
 
 export default state;
