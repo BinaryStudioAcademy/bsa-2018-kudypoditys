@@ -7,7 +7,9 @@ const
 // проміжна таблиця
 let BedInRoom = orm.define('bedInRoom', {
     count: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        validate: { min: 1 }
+
     }
 });
 

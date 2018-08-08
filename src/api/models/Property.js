@@ -23,7 +23,9 @@ let Property = orm.define('property', {
         type: Sequelize.JSON
     },
     rating: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        validate: { min: 0, max: 10 }
+
     },
     contactPersonName: {
         type: Sequelize.STRING

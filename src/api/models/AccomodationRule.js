@@ -11,7 +11,9 @@ let AccommodationRule = orm.define('accommodationRule', {
         type: Sequelize.INTEGER
     },
     minimumStay: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        validate: { min: 1 }
+
     },
     arrivalTimeStart: {
         type: Sequelize.DATE
