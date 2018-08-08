@@ -10,8 +10,6 @@ let ScoreByCategory = orm.define('scoreByCategory', {
     }
 });
 
-console.log('>>>>>>>>>>>>>>>', ReviewCategory);
-
 ScoreByCategory.belongsTo(ReviewCategory);
 ScoreByCategory.belongsTo(Review);
 

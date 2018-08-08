@@ -1,8 +1,8 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
-    Bed = require('./Bed')
-    Room = require('./Room')
+    orm = require(`${apiRoot}/orm`),
+    BedType = require('./BedType'),
+    Room = require('./Room');
 
 let BadInRoom = orm.define('bedInRoom', {
     count: {
@@ -10,6 +10,6 @@ let BadInRoom = orm.define('bedInRoom', {
     }
 });
 
-BadInRoom.belongsTo(Bed)
+BadInRoom.belongsTo(BedType)
 BadInRoom.belongsTo(Room)
 module.exports = BadInRoom;

@@ -1,8 +1,9 @@
 const
     Sequelize = require('sequelize'),
     orm = require(`${apiRoot}/orm`);
+//PropertyType = require('./PaymentType');
 
-module.exports = orm.define('propertyCategory', {
+let PropertyCategory = orm.define('propertyCategory', {
     name: {
         type: Sequelize.STRING
     },
@@ -10,3 +11,8 @@ module.exports = orm.define('propertyCategory', {
         type: Sequelize.STRING
     }
 });
+
+// strange fk
+// PropertyCategory.belongsTo(PropertyType);
+
+module.exports = PropertyCategory;

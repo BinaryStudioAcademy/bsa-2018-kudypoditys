@@ -1,6 +1,8 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require(`${apiRoot}/orm`),
+    User = require('./User'),
+    Room = require('./Room');
 
 let Reservation = orm.define('reservation', {
     dateIn: {
@@ -13,5 +15,8 @@ let Reservation = orm.define('reservation', {
         type: Sequelize.INTEGER
     }
 })
+
+Reservation.belongsTo(User);
+Reservation.belongsTo(Room);
 
 module.exports = Reservation;

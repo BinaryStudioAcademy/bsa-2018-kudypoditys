@@ -4,7 +4,7 @@ const
 
     Property = require('./Property');
 
-let RuleAccommodation = orm.define('ruleAccommodation', {
+let AccommodationRule = orm.define('accommodationRule', {
     allowPets: {
         type: Sequelize.BOOLEAN
     },
@@ -28,6 +28,6 @@ let RuleAccommodation = orm.define('ruleAccommodation', {
     }
 });
 
-RuleAccommodation.belongsTo(Property);
+AccommodationRule.belongsTo(Property);
 
-module.exports = RuleAccommodation;
+module.exports = AccommodationRule;

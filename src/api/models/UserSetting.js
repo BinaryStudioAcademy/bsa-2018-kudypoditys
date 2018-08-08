@@ -1,15 +1,12 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`),
-    User = require('./User');
+    orm = require(`${apiRoot}/orm`);
 
 let UserSetting = orm.define('userSetting', {
     settings: {
         type: Sequelize.JSON
     }
 });
-
-UserSetting.belongsTo(User);
 
 module.exports = UserSetting;
 

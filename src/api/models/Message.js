@@ -1,9 +1,14 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require(`${apiRoot}/orm`),
+    Reservation = require('./Reservation');
 
-module.exports = orm.define('messsage', {
+let Message = orm.define('messsage', {
     body: {
         type: Sequelize.TEXT
     }
 });
+
+Message.belongsTo(Reservation);
+
+module.exports = Message;
