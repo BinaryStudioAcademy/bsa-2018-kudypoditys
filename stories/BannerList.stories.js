@@ -1,10 +1,8 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
-import BannerListComponent from 'client/components/region-banner-list';
-import { Banner } from 'client/components/region-banner-list/item'
+
+import BannerList from 'client/components/banner-list';
+import { Banner } from 'client/components/banner-list/item'
 
 const cityInfos = [{
     id: 1,
@@ -98,9 +96,9 @@ const city2 = {
     flagUrl: 'https://www.nonstopparty.co.uk/images/_lib//poland-flag-5x3-27508-0-1465403984000.jpg'
 };
 
-storiesOf('BannerListComponent', module)
-    .add('banner list with five elements', () => <BannerListComponent cityInfos={cityInfos} />)
-    .add('banner list with four elements', () => <BannerListComponent cityInfos={cityInfos2} />)
+storiesOf('BannerList', module)
+    .add('banner list with five elements', () => <BannerList cityInfos={cityInfos} />)
+    .add('banner list with four elements', () => <BannerList cityInfos={cityInfos2} />)
     .add('single banner Lviv', () => <Banner cityInfo={city} onCardClick={() => { }} />)
     .add('single banner Poland', () => <Banner cityInfo={city2} onCardClick={() => { }} />)
 

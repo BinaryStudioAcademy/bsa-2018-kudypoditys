@@ -3,7 +3,7 @@ import { Card, Container, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import './index.scss';
-import tag from 'client/components/region-banner-list/img/tag.svg';
+import tag from 'client/components/banner-list/img/tag.svg';
 import shortParagraphImg from './img/short-paragraph.png';
 
 export class Banner extends Component {

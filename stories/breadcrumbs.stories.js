@@ -1,9 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import Breadcrumbs from '../src/client/components/breadcrumbs/index';
-
-
+import Breadcrumbs from '../src/client/components/breadcrumbs';
 
 const sections1 = [
     { key: 'Home', content: 'Home', href:'#'},
@@ -21,7 +19,7 @@ const sections3 = [
     { key: 'Awesome Apart', content: 'Awesome Apart'},
 ];
 
-storiesOf('Breadcrumbs component', module)
+storiesOf('Breadcrumbs', module)
 .add('Breadcrumbs with four sections', () =>(
     <Breadcrumbs sections={sections1} />
 ))
