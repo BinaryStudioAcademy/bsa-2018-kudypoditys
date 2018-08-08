@@ -2,11 +2,15 @@ import React from 'react';
 import './index.scss';
 import {Menu, Dropdown} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {mapStateToProps, mapDispatchToProps} from './container';
+
 
 export class RankingBar extends React.Component {
 
     handleItemClick = (event, value) => {
-        this.props.sort(value.value);
+        this.props.onSelect(value.value);
+        console.log(value.value)
     };
 
     render() {
@@ -81,6 +85,7 @@ const {PRICE, DISTANCE, LOW_RANK, HIGH_RANK} = SORT_VALUE;
 
 
 RankingBar.propTypes = {
-    sendData: PropTypes.func
+    activeItem: PropTypes.string
 };
 
+export default connect(mapStateToProps, mapDispatchToProps)(RankingBar);
