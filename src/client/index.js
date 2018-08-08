@@ -9,20 +9,19 @@ import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 import App from 'client/components/app';
 import { increment } from 'client/logic/counter/actions';
-import Quickfilter from 'client/components/quick-filter';
 
-    // const store = createStore(
-    //     reducer,
-    //     composeWithDevTools()
-    // );
+    const store = createStore(
+        reducer,
+        composeWithDevTools()
+    );
 
-    // setInterval(() => {
-    //     store.dispatch(increment());
-    // }, 1000);
+    setInterval(() => {
+        store.dispatch(increment());
+    }, 1000);
 
 ReactDOM.render(
-    // <Provider store={store}>
-        <Quickfilter />,
-    // </Provider>,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('root')
 );

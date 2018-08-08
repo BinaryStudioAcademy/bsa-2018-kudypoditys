@@ -3,47 +3,67 @@ import './index.scss';
 import PropTypes from 'prop-types';
 
 class Quickfilter extends React.Component {
-
-
-
-    static defaultProps = {
-        boxes :[
-            {ischecked: true, label:'Excelent location: 9+', amount: 321},
-            {ischecked: false, label:'Very good location: 8+', amount: 658}
-
-        ],
-        changeQuickFilter (props){
-           console.log(props);
+    findBox(name, boxes){
+        for(let i in boxes){
+            if(boxes[i].id === name){
+                return i;
+            }
         }
     }
+
     onChange = e =>{
-        const propsCopy = this.props.boxes;
-        const index = e.target.attributes[1].nodeValue;
-        propsCopy[index].ischecked = !propsCopy[index].ischecked;
-        this.props.changeQuickFilter(propsCopy);
+        const boxes = this.props.boxes;
+        const name = e.target.attributes[1].nodeValue;
+        let index = this.findBox(name, boxes);
+
+        boxes[index].ischecked = !boxes[index].ischecked;
+        this.props.changeQuickFilter(boxes);
     }
 
-    render() {
-        const list = this.props.boxes.map((box, index)=>(
+    sortByType(type){
+        return this.props.boxes.filter(function (obj) { return obj.type === type});
+    }
 
-        <div key={index} className="box_item">
+    drawBoxes(arr){
+        const temp = arr.map(box=>(
+        <div
+            key={box.id}
+            className={box.ischecked===true?'box_item_checked':'box_item'}>
             <div className="ui input checkbox">
-                <input  type="checkbox" defaultChecked={box.ischecked} name={index} onChange={this.onChange.bind(this)}/>
-                <label className='box_amount' htmlFor={box.name}>{box.label}</label>
+                <input  type="checkbox"
+                        defaultChecked={box.ischecked}
+                        name={box.id}
+                        id={box.id}
+                        onChange={this.onChange.bind(this)}
+                />
+                <label className="box_label" htmlFor={box.id}> {box.label} </label>
             </div>
-            <div className='box_amount'>{box.amount}</div>
+            <label className='box_amount' htmlFor={box.id}>{box.amount}</label>
         </div>
+        ));
+        console.log(arr)
+        return temp;
+    }
+    render() {
+        const PropertyType = this.sortByType('Property Type');
+        const Facility = this.sortByType('Facility');
+        const ReviewScore = this.sortByType('Review Score');
 
-         ));
+        const list1 = this.drawBoxes(PropertyType);
+        const list2 = this.drawBoxes(Facility);
+        const list3 = this.drawBoxes(ReviewScore);
 
         return(
             <div className="box">
-
                 <div className="box_header">
                     <h2>Filter by</h2>
                 </div>
-                <p className='box_group'>Location score</p>
-                {list}
+                <p className='box_group'>Property Type</p>
+                {list1}
+                <p className='box_group'>Facility</p>
+                {list2}
+                <p className='box_group'>Review Score</p>
+                {list3}
             </div>
             );
     }
@@ -51,12 +71,14 @@ class Quickfilter extends React.Component {
     Quickfilter.propTypes = {
         boxes: PropTypes.arrayOf(
             PropTypes.shape({
+                id: PropTypes.string,
                 ischecked: PropTypes.boolean,
                 label:PropTypes.string,
-                amount: PropTypes.oneOfType([PropTypes.number],[PropTypes.string])
+                amount: PropTypes.oneOfType([PropTypes.number],[PropTypes.string]),
+                type: PropTypes.string
             })
         ),
-        changeQuickFilter: PropTypes.func
+        OnQuickFilterChange: PropTypes.func
     }
 export default Quickfilter;
 
