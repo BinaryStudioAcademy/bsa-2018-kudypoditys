@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import 'slick-carousel/slick/slick.css';
 import './index.scss';
 
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from "./container";
 
 import { Container, Button, Image, Icon } from 'semantic-ui-react';
 
@@ -81,4 +83,4 @@ Slider.propTypes = {
     slideId: PropTypes.number.isRequired
 }
 
-export default Slider;
+export default connect(mapStateToProps, mapDispatchToProps)(Slider);

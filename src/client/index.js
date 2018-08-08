@@ -9,6 +9,7 @@ import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 
 import Search from 'client/components/search';
+import Slider from 'client/components/slider';
 
 const store = createStore(
     reducer,
@@ -33,7 +34,8 @@ ReactDOM.render(
                     onAdultsChange = { value => console.log(`adults: ${value}`)}
                     onChildrenChange = { value => console.log(`children: ${value}`)}
                     onRoomsChange = { value => console.log(`rooms: ${value}`)}
-                />
+                />,
+                <Slider key='slider' />
             ]}
         </React.Fragment>
 

@@ -1,0 +1,1 @@
+export const  SLIDE_CHANGE = 'SLIDE:CHANGE';
