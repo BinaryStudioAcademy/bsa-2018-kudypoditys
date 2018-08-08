@@ -10,9 +10,13 @@ const state = {
     //         _id: 'iud-sdfdsf-asdasd'
     //     }
     // }
-    searchSummary: {
+
+
+    searchResults: {
         destination: 'Dnipro',
-        numberOfMatched: 1345,
+        totalCount: 42,
+        shownFrom: 1,
+        shownTo: 5
     }
 };
 

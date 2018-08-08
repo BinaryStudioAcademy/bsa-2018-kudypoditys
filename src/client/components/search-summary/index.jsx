@@ -10,7 +10,10 @@ import {mapStateToProps} from './container';
 export class SearchSummary extends React.Component {
 
     render() {
-        const numbersToPrettify = this.props.numberOfMatched,
+
+
+        const numbersToPrettify = this.props.totalCount,
+
             destination = this.props.destination,
             numbers = formatNumber(numbersToPrettify);
 
@@ -31,7 +34,7 @@ export class SearchSummary extends React.Component {
 
 SearchSummary.propTypes = {
     destination: PropTypes.string,
-    numberOfMatched: PropTypes.number
+    totalCount: PropTypes.number
 };
 
 export default connect(mapStateToProps)(SearchSummary);

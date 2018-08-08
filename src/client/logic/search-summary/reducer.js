@@ -1,12 +1,22 @@
 import defaultState from 'client/logic/defaultState';
+import {
+    SEARCH_RESULT_UPDATE
+} from './actionTypes';
 
+function summaryReducer(state = defaultState.searchResults, action) {
+    switch (action.type) {
+        case SEARCH_RESULT_UPDATE: {
+            return {
+                ...state.searchResults,
+                ...action.payload
 
-function summaryReducer(state = defaultState.searchSummary) {
+            };
+        }
 
-
-    return state;
-
-
+        default: {
+            return state;
+        }
+    }
 }
 
 export default summaryReducer;

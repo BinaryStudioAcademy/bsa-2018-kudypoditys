@@ -3,7 +3,7 @@ export function mapStateToProps(state) {
 
     return {
         destination: searchSummary.destination,
-        numberOfMatched: searchSummary.numberOfMatched
+        totalCount: searchSummary.totalCount
     };
 }
 
