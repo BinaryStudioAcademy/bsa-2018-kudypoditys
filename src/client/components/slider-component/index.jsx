@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import 'slick-carousel/slick/slick.css';
 import 'client/components/slider-component/index.scss';
 
-import Slider from 'react-slick';
+import SlickSlider from 'react-slick';
 
 import { Container, Button, Image, Icon } from 'semantic-ui-react';
 
-export default class SliderComponent extends Component {
+export default class Slider extends Component {
 
     settings = {
         dots: true,
@@ -61,9 +61,9 @@ export default class SliderComponent extends Component {
                     >
                     <Icon name='arrow alternate circle left' size='large'/>
                 </Button>
-                    <Slider ref={slider => (this.slider = slider)} {...this.settings}>
+                    <SlickSlider ref={slider => (this.slider = slider)} {...this.settings}>
                         {this.props.pics.map((item, i) =><Image className='slider-c-image' src={item} key={i}/>)}
-                    </Slider>
+                    </SlickSlider>
                 <Button
                     className='slider-c-button slider-c-next-button'
                     onClick={() => this.slider.slickNext()}
@@ -75,7 +75,7 @@ export default class SliderComponent extends Component {
     }
 }
 
-SliderComponent.propTypes = {
+Slider.propTypes = {
     pics: PropTypes.array.isRequired,
     handleSlideChange: PropTypes.func.isRequired,
     slideId: PropTypes.number.isRequired
