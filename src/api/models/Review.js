@@ -1,8 +1,8 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
-    User = require('./User');
-  Property= require('./Property');
+    orm = require(`${apiRoot}/orm`),
+    User = require('./User'),
+    Property= require('./Property')
 
  let Review= orm.define('review', {
    content: {
@@ -14,4 +14,5 @@ const
 });
 Review.belongsTo(User);
 Review.belongsTo(Property);
-module.exports = Review
+
+module.exports = Review;

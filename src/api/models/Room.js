@@ -1,8 +1,10 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require(`${apiRoot}/orm`),
+    RoomType = require('./RoomType'),
+    Property= require('./Property')
 
-module.exports = orm.define('room', {
+let Room = orm.define('room', {
     price: {
         type: Sequelize.INTEGER
     },
@@ -16,3 +18,8 @@ module.exports = orm.define('room', {
         type: Sequelize.TEXT
     }
 });
+
+Room.belongsTo(RoomType);
+Room.belongsTo(Property);
+
+module.exports = Room;
