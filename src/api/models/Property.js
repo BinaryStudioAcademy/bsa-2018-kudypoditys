@@ -1,10 +1,7 @@
 
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`),
-    User = require('./User'),
-    City = require('./City'),
-    VerificationStatus = require('./VerificationStatus');
+    orm = require(`${apiRoot}/orm`);
 
 let Property = orm.define('property', {
     name: {
@@ -33,8 +30,6 @@ let Property = orm.define('property', {
     }
 });
 
-Property.belongsTo(User);
-Property.belongsTo(VerificationStatus);
-Property.belongsTo(City);
+
 
 module.exports = Property;

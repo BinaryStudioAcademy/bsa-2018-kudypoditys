@@ -1,11 +1,7 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`),
-    Room = require('./Room'),
-    Discount = require('./Discount');
+    orm = require(`${apiRoot}/orm`);
 
-
-//проміжна таблиця
 let RoomDiscount = orm.define('roomDiscount', {
     discountStart: {
         type: Sequelize.DATE
@@ -14,8 +10,5 @@ let RoomDiscount = orm.define('roomDiscount', {
         type: Sequelize.DATE
     }
 });
-
-RoomDiscount.belongsTo(Room);
-RoomDiscount.belongsTo(Discount);
 
 module.exports = RoomDiscount;

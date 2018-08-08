@@ -4,12 +4,12 @@ module.exports = () => {
     models.then(({
         User
     }) => {
-        User.create({
-            firstName: 'John',
-            lastName: 'Doe'
-        }).then(() => {
-            User.findAll().then(console.log);
-        });
+        // User.create({
+        //     firstName: 'John',
+        //     lastName: 'Doe'
+        // }).then(() => {
+        //     User.findAll().then(console.log);
+        // });
     });
 
     models.then(({
@@ -18,7 +18,7 @@ module.exports = () => {
         Country.create({
             name: 'Ukraine'
         }).then(() => {
-            Country.findAll().then(console.log);
+            //Country.findAll().then(console.log);
         })
     });
     models.then(({
@@ -26,7 +26,7 @@ module.exports = () => {
     }) => {
         Role.create({
         }).then(() => {
-            Role.findAll().then(console.log);
+            //Role.findAll().then(console.log);
         });
     });
 
@@ -36,7 +36,7 @@ module.exports = () => {
         RoomType.create({
             name: 'Twin room'
         }).then(() => {
-            RoomType.findAll().then(console.log);
+            //RoomType.findAll().then(console.log);
         });
     });
 
@@ -49,7 +49,7 @@ module.exports = () => {
             area: 89,
             description: 'Nice view from the window'
         }).then(() => {
-            Room.findAll().then(console.log);
+            //Room.findAll().then(console.log);
         });
     });
 
@@ -66,7 +66,7 @@ module.exports = () => {
             contactPersonName: 'Jhon Doe',
             contactPhone: '9876543'
         }).then(() => {
-            Property.findAll().then(console.log);
+            //Property.findAll().then(console.log);
         });
     });
 
@@ -77,7 +77,7 @@ module.exports = () => {
             content: 'Very nice place',
             createdAt: new Date(1918556565656)
         }).then(() => {
-            Review.findAll().then(console.log);
+            //Review.findAll().then(console.log);
         });
     });
 
@@ -87,8 +87,31 @@ module.exports = () => {
         Discount.create({
             discountRate: 1.7,
         }).then(() => {
-            Discount.findAll().then(console.log);
+            //Discount.findAll().then(console.log);
         });
+    });
+
+    models.then(({ Reservation, User }) => {
+        User.create({
+            fullName: 'Nata Didukh',
+            password: '1234',
+            email: 'nata.mail.gmail@gmail.com',
+            phoneNumber: '0123412312',
+            avatar: 'https://avatar.com'
+        }).then(() => {
+            return Reservation.create({
+                dateIn: '2018-01-01',
+                dateOut: '2018-02-01',
+                guestsCount: 3,
+                userId: 1
+            });
+        }).then(() => {
+            return User.findAll({
+                include: [{
+                    model: Reservation
+                }]
+            });
+        }).then(console.log);
     });
 
     models.then(({
@@ -97,7 +120,7 @@ module.exports = () => {
         BedType.create({
             type: 'twin bed'
         }).then(() => {
-            BedType.findAll().then(console.log);
+            //BedType.findAll().then(console.log);
         });
     });
     models.then(({
@@ -106,7 +129,7 @@ module.exports = () => {
         BedInRoom.create({
             count: 4
         }).then(() => {
-            BedInRoom.findAll().then(console.log);
+            //BedInRoom.findAll().then(console.log);
         });
     });
 
@@ -116,7 +139,7 @@ module.exports = () => {
         Facility.create({
             name: 'Swimming Pool'
         }).then(() => {
-            Facility.findAll().then(console.log);
+            //Facility.findAll().then(console.log);
         });
     });
 
@@ -126,7 +149,7 @@ module.exports = () => {
         FacilityCategory.create({
             name: 'SPA'
         }).then(() => {
-            FacilityCategory.findAll().then(console.log);
+            //FacilityCategory.findAll().then(console.log);
         });
     });
 
@@ -137,7 +160,7 @@ module.exports = () => {
         Message.create({
             body: 'Сan i arrive earlier?'
         }).then(() => {
-            Message.findAll().then(console.log);
+            //Message.findAll().then(console.log);
         });
     });
 };

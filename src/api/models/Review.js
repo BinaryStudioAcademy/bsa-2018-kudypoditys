@@ -1,8 +1,6 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`),
-    User = require('./User'),
-    Property = require('./Property');
+    orm = require(`${apiRoot}/orm`);
 
 let Review = orm.define('review', {
     content: {
@@ -13,7 +11,6 @@ let Review = orm.define('review', {
     }
 });
 
-Review.belongsTo(User);
-Review.belongsTo(Property);
+
 
 module.exports = Review;

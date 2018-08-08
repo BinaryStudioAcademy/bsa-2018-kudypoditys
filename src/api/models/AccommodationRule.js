@@ -1,7 +1,6 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`),
-    Property = require('./Property');
+    orm = require(`${apiRoot}/orm`);
 
 let AccommodationRule = orm.define('accommodationRule', {
     allowPets: {
@@ -26,7 +25,5 @@ let AccommodationRule = orm.define('accommodationRule', {
         type: Sequelize.DATE
     }
 });
-
-AccommodationRule.belongsTo(Property);
 
 module.exports = AccommodationRule;

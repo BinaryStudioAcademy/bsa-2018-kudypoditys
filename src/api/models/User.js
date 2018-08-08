@@ -1,8 +1,6 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`),
-    Role = require('./Role'),
-    UserSettings = require('./UserSetting');
+    orm = require(`${apiRoot}/orm`);
 
 let User = orm.define('user', {
     fullName: {
@@ -22,7 +20,6 @@ let User = orm.define('user', {
     }
 });
 
-User.belongsTo(Role);
-User.belongsTo(UserSettings);
+
 
 module.exports = User;
