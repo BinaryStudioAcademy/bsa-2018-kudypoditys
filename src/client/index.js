@@ -5,20 +5,26 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import thunk from 'redux-thunk';
+
 import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 
 import Search from 'client/components/search';
+import Registration from 'client/components/registration';
 
 const store = createStore(
     reducer,
-    composeWithDevTools()
+    composeWithDevTools(applyMiddleware(thunk))
 );
 
 ReactDOM.render(
     <Provider store={store}>
         <React.Fragment>
             {[
+                <Registration
+                    key='registration'
+                />,
                 <Search
                     key="Search"
                     view='bar'

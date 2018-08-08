@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
-import 'client/components/registration-component/index.scss';
+import 'client/components/registration/index.scss';
 import PropTypes from 'prop-types';
 import { Button, Input, Container, Header, Icon, Divider, Label, Form } from 'semantic-ui-react';
 
-export default class RegistrationComponent extends Component {
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from "./container";
+
+export class Registration extends Component {
+    state = {
+        fullname: '',
+        email: '',
+        phone: '',
+        password: ''
+    }
+
     componentDidMount() {
         this.inputRef.focus();
     }
 
     handleInputChange = (e) => {
-        this.props.handleChange({ name: e.target.name, value: e.target.value });
+        // this.props.handleChange({ name: e.target.name, value: e.target.value });
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
 
-    handleRegisterClick = (e) => {
-        this.props.handleClick(e.target.name);
+    handleRegisterClick = () => {
+        const { fullname, email, phone, password } = this.state;
+        this.props.handleClick({ fullname, email, phone, password });
     }
 
     render() {
-        const { fullname, email, phone, password, errors } = this.props;
+        const { fullname, email, phone, password } = this.state;
+        const { errors } = this.props;
         const 
             fullname_err = errors.find(err => err.name === 'fullname'),
             email_err = errors.find(err => err.name === 'email'),
@@ -112,15 +127,17 @@ export default class RegistrationComponent extends Component {
 }
 
 
-RegistrationComponent.propTypes = {
+Registration.propTypes = {
     fullname: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
+    password: PropTypes.string,
     errors: PropTypes.arrayOf(
         PropTypes.shape({
             name: PropTypes.string,
             msg: PropTypes.string
         })
     ).isRequired
-}
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);

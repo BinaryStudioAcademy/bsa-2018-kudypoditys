@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import Registration from 'client/components/registration-component';
+import Registration from 'client/components/registration';
 
 const registerErrors = [
     { name: 'fullname', msg: 'Please, provide your full name.' },
