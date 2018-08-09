@@ -1,4 +1,4 @@
-import { slideChange } from 'client/logic/slider/actions';
+import { slideUpdate } from 'client/logic/slider/actions';
 
 export function mapStateToProps(state) {
     const { slider } = state;
@@ -9,8 +9,8 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        handleSlideChange(slideId) {
-            dispatch(slideChange(slideId));
+        handleSlideChange(slideIndex) {
+            dispatch(slideUpdate(slideIndex));
         }
     }
 }

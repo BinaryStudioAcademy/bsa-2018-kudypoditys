@@ -50,11 +50,8 @@ export class Slider extends Component {
         )
     }
 
-    componentDidMount() {
-    }
-
     render() {
-        this.slideIndex = this.props.slideId || 0;
+        this.slideIndex = this.props.slideIndex || 0;
         return (
             <Container fluid className='slider-c-wrapper'>
                 <Button
@@ -80,7 +77,7 @@ export class Slider extends Component {
 Slider.propTypes = {
     pics: PropTypes.array.isRequired,
     handleSlideChange: PropTypes.func.isRequired,
-    slideId: PropTypes.number.isRequired
+    slideIndex: PropTypes.number.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Slider);

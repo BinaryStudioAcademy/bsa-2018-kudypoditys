@@ -1,10 +1,10 @@
 import {
-    SLIDE_CHANGE
+    SLIDE_UPDATE
 } from './actionTypes';
 
-export function slideChange(payload) {
+export function slideUpdate(payload) {
     return {
-        type: SLIDE_CHANGE,
+        type: SLIDE_UPDATE,
         payload
     }
 }

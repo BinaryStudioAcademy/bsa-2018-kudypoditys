@@ -3,7 +3,7 @@ const state = {
         destination: 'Lviv'
     },
     slider: {
-        slideId: 0,
+        slideIndex: 0,
         pics: [
             'https://picsum.photos/600/302',
             'https://picsum.photos/600/303',

@@ -1,1 +1,1 @@
-export const  SLIDE_CHANGE = 'SLIDE:CHANGE';
+export const  SLIDE_UPDATE = 'SLIDE:UPDATE';
