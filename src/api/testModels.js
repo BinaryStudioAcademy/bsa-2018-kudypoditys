@@ -1,4 +1,3 @@
-const apiRoot='./';
 const models = require(apiRoot + '/models');
 
 module.exports = () => {

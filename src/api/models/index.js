@@ -3,7 +3,6 @@ const
     path = require('path'),
     basename = path.basename(__filename),
     Sequelize = require('sequelize'),
-    apiRoot = '../.',
     orm = require(`${apiRoot}/orm`);
 
 const models = {
