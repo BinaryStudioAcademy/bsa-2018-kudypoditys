@@ -21,7 +21,13 @@ const state = {
         activeItem: 'price'
     },
 
-    cityInfos: []
+    cityInfos: [],
+
+    header: {
+        currencies: [],
+        selectedCurrency: null,
+        currentUser: null
+    }
 };
 
 export default state;

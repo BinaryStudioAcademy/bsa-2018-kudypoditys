@@ -11,6 +11,7 @@ import reducer from 'client/logic/reducer';
 import Search from 'client/components/search';
 import AvailabilityPanel from 'client/components/availability-panel';
 import RankingBar from 'client/components/ranking-bar';
+import MainHeader from 'client/components/header';
 
 const store = createStore(
     reducer,
@@ -21,6 +22,7 @@ ReactDOM.render(
     <Provider store={store}>
         <React.Fragment>
             {[
+                <MainHeader />,
                 <Search
                     key="Search"
                     view='bar'
