@@ -5,7 +5,7 @@ import {PROPERTY_ITEM_DELETE,
     FETCH_PROPERTY_ITEM,
     FETCH_ALL_PROPERTIES} from './actionTypes';
 
-function propertyReducer(state = defaultState.property, action) {
+function propertiesReducer(state = defaultState.property, action) {
     switch (action.type) {
          case PROPERTY_ITEM_DELETE : {
             const newState = { ...state };
@@ -48,4 +48,4 @@ function propertyReducer(state = defaultState.property, action) {
     }
 }
 
-export default propertyReducer;
+export default propertiesReducer;
