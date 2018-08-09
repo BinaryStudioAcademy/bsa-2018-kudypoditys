@@ -24,7 +24,9 @@ ReactDOM.render(
                     key="Search"
                     view='bar'
                 />,
-                <AvailabilityPanel />
+                <AvailabilityPanel
+                    key='Availability'
+                />
             ]}
         </React.Fragment>
 
