@@ -26,10 +26,7 @@ ReactDOM.render(
                     view='bar'
                 />,
                 <AvailabilityPanel
-                    key="Availability"
-                />,
-                <RankingBar
-                    key="RankingBar"
+                    key='Availability'
                 />
             ]}
         </React.Fragment>
