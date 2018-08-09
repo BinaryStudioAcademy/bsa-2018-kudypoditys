@@ -1,4 +1,4 @@
-import { inputChange, registerSubmit } from 'client/logic/registration/actions';
+import { registerUpdate, registerSubmit } from 'client/logic/registration/actions';
 
 export function mapStateToProps(state, ownProps) {
     const { registration } = state;
@@ -9,7 +9,10 @@ export function mapStateToProps(state, ownProps) {
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
-        handleClick(userData) {
+        registerUpdate(data) {
+            dispatch(registerUpdate(data));
+        },
+        handleSubmit(userData) {
             dispatch(registerSubmit(userData));
         }
     };

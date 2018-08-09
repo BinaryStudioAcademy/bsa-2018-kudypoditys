@@ -5,7 +5,6 @@ import {
 } from './actionTypes';
 
 export default function registrationReducer(state = defaultState.registration, action) {
-    console.log(state, action);
     switch (action.type) {
         case REGISTER_SUCCESS: {
             return {
@@ -15,6 +14,13 @@ export default function registrationReducer(state = defaultState.registration, a
         }
 
         case REGISTER_FAILURE: {
+            return {
+                ...state,
+                ...action.payload
+            }
+        }
+
+        case "REGISTER:UPDATE": {
             return {
                 ...state,
                 ...action.payload
