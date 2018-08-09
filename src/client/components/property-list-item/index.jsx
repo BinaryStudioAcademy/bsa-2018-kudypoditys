@@ -2,20 +2,26 @@ import React from 'react';
 import { Card,Message, Image, Button, CardContent, Grid, CardMeta, CardDescription, Container, Icon, Header, Label } from 'semantic-ui-react';
 import './index.scss';
 import PropTypes from 'prop-types';
+import {mapStateToProps, mapDispatchToProps} from './container';
+import {connect} from 'react-redux';
 
-class PropertyListItem extends React.Component {
 
+export class PropertyListItem extends React.Component {
+
+    componentDidMount() {
+        this.props.actions.fetchAllProperty();
+    }
     handleRedirectToMap = id => {
-        //todo  add redirection to map
+        //todo  handleRedirectToMap
     }
     handleAddToComparison = id => {
-        // todo sdd to comparision
+        //todo
     }
     handleAddToFavorites = id => {
-        // todo add to favorites
+      //todo
     }
     handleRedirectToDetails = id => {
-        //todo add redirection to property page
+        this.props.actions.fetchPropertyItem(id)
     }
     render() {
         const {propertyItemData}=this.props
@@ -170,8 +176,8 @@ PropertyListItem.propTypes = {
         mealType:PropTypes.string
     })
 };
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyListItem);
 
-export default PropertyListItem;
 
 
 

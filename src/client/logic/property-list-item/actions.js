@@ -1,9 +1,9 @@
 import {
-    PROPERTY_ITEM_UPDATE ,
+    PROPERTY_ITEM_UPDATE,
     PROPERTY_ITEM_DELETE,
-    PROPERTY_ITEM_INSERT ,
+    PROPERTY_ITEM_INSERT,
     FETCH_PROPERTY_ITEM,
-    FETCH_ALL_PROPERTY
+    FETCH_ALL_PROPERTIES
 } from './actionTypes';
 
  export function propertyItemUpdate(payload) {
@@ -32,7 +32,8 @@ export function fetchPropertyItem(id) {
 };
 export function fetchAllProperty() {
     return {
-        type:FETCH_ALL_PROPERTY
+        type:FETCH_ALL_PROPERTIES
+
   };
 };
 

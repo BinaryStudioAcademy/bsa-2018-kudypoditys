@@ -1,16 +1,28 @@
-import { foundProperties} from 'client/logic/property-list-item/actions';
+import {
+    propertyItemUpdate,
+    propertyItemInsert,
+    propertyItemDelete,
+    fetchPropertyItem,
+    fetchAllProperty
+} from 'client/logic/property-list-item/actions';
+import { bindActionCreators } from 'redux';
 
-export function mapStateToProps(state) {
-    const {foundProperties} = state;
-    return {
-        activeItem: foundProperties.activeItem
-    };
-}
 
 export function mapDispatchToProps(dispatch) {
     return {
-        onSelect(value) {
-            dispatch(foundProperties({activeItem: value}));
-        }
+        actions: bindActionCreators({
+            propertyItemUpdate,
+            propertyItemInsert,
+            propertyItemDelete,
+            fetchPropertyItem,
+            fetchAllProperty
+        }, dispatch)
+    }
+};
+
+export function mapStateToProps(state) {
+    const { property } = state;
+    return {
+        propertyItemData: property.propertyItemData
     };
 }
