@@ -1,6 +1,16 @@
 const state = {
     search: {
+
         destination: '231'
+
+        destination: '',
+        checkIn: null,
+        checkOut: null,
+        adults: 1,
+        children: 0,
+        rooms: 1,
+        results: []
+
     },
     // collections: {
     //     'iud-sdfdsf-asdasd': {
@@ -11,9 +21,14 @@ const state = {
     //     }
     // }
 
+
+
+   
+
     sortType: {
         activeItem: 'price'
     },
+
     shownProperties: {
         'xyz-1': {
             image: `http://cdn.home-designing.com/wp-content/uploads/2016/04/luxury-art-deco-apartment-interior.jpg`,
@@ -37,7 +52,11 @@ const state = {
         totalCount: 42,
         shownFrom: 1,
         shownTo: 5
-    }
+    },
+
+
+    cityInfos: []
+
 
 };
 

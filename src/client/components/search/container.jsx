@@ -1,16 +1,54 @@
-import { searchUpdate } from 'client/logic/search/actions';
+import { searchUpdate } from '../../logic/search/actions';
 
 export function mapStateToProps(state, ownProps) {
     const { search } = state;
     return {
-        destination: search.destination
+        destination: search.destination,
+        checkIn: search.checkIn,
+        checkOut: search.checkOut,
+        adults: search.adults,
+        children: search.children,
+        rooms: search.rooms
     };
 }
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
         onSearch() {
-            dispatch(searchUpdate({ destination: 'UPDATED' }));
+            //todo server request
+            const serverResponse = [
+                {
+                    Name: 'Name example 1',
+                    Description: 'Description example 1'
+                },
+                {
+                    Name: 'Name example 2',
+                    Description: 'Description example 2'
+                },
+                {
+                    Name: 'Name example 3',
+                    Description: 'Description example 3'
+                },
+            ];
+            dispatch(searchUpdate({ results : serverResponse}));
+        },
+        onDestinationChange(value) {
+            dispatch(searchUpdate({ destination: value }));
+        },
+        onCheckInChange(value) {
+            dispatch(searchUpdate({ checkIn: value }));
+        },
+        onCheckOutChange(value) {
+            dispatch(searchUpdate({ checkOut: value }));
+        },
+        onAdultsChange(value) {
+            dispatch(searchUpdate({ adults: value }));
+        },
+        onChildrenChange(value) {
+            dispatch(searchUpdate({ children: value }));
+        },
+        onRoomsChange(value) {
+            dispatch(searchUpdate({ rooms: value }));
         }
     };
 }
