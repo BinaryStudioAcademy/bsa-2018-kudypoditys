@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 export class PropertyListItem extends React.Component {
 
     componentDidMount() {
-        this.props.actions.fetchAllProperty();
+      //  this.props.actions.fetchAllProperty();
     }
     handleRedirectToMap = id => {
         //todo  handleRedirectToMap
@@ -21,7 +21,7 @@ export class PropertyListItem extends React.Component {
       //todo
     }
     handleRedirectToDetails = id => {
-        this.props.actions.fetchPropertyItem(id)
+       // this.props.actions.redirectToDetails(id)
     }
     render() {
         const {propertyItemData}=this.props
