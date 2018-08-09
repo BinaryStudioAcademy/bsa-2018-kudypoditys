@@ -13,8 +13,9 @@ const state = {
 
     sortType: {
         activeItem: 'price'
-    }
+    },
 
+    cityInfos: []
 };
 
 export default state;
