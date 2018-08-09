@@ -1,11 +1,11 @@
 import React from 'react';
-import { Pagination, Grid } from 'semantic-ui-react';
+import { Pagination as SemanticPagination } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-export class PaginationComponent extends React.Component {
+export class Pagination extends React.Component {
     render() {
         return (
-            <Pagination
+            <SemanticPagination
                 defaultActivePage={1}
                 totalPages={this.props.pagesCount}
                 onPageChange={this.props.paginationChanged}
@@ -14,10 +14,10 @@ export class PaginationComponent extends React.Component {
     }
 }
 
-PaginationComponent.propTypes = {
+Pagination.propTypes = {
     pagesCount: PropTypes.number
 }
 
-PaginationComponent.defaultProps = {
+Pagination.defaultProps = {
     pagesCount: 1
 }
