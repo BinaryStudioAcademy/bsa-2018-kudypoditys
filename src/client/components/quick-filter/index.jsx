@@ -41,7 +41,6 @@ class Quickfilter extends React.Component {
             <label className='box_amount' htmlFor={box.id}>{box.amount}</label>
         </div>
         ));
-        console.log(arr)
         return temp;
     }
     render() {
