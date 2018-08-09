@@ -1,14 +1,8 @@
-const Repository = require("./generalRepository");
-const models = require(apiRoot + '/models');
+const Repository = require('./generalRepository');
+const messageModel = require('../models/Message');
 
-
-function MessageRepository() {
-    models.then(({
-                     Message
-                 }) => {
-        //here
-    });
+class MessageRepository extends Repository  {
+    //todo additional methods for repository
 }
 
-
-module.exports = new MessageRepository()
+module.exports = new MessageRepository(messageModel);
