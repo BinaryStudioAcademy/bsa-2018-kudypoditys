@@ -8,6 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 
+import App from 'client/components/app';
 import Search from 'client/components/search';
 import AvailabilityPanel from 'client/components/availability-panel';
 import RankingBar from 'client/components/ranking-bar';
@@ -19,7 +20,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <React.Fragment>
+        {/* <React.Fragment>
             {[
                 <Search
                     key="Search"
@@ -32,7 +33,9 @@ ReactDOM.render(
                     key="RankingBar"
                 />
             ]}
-        </React.Fragment>
+        </React.Fragment> */}
+
+        <App />
 
     </Provider>,
     document.getElementById('root')
