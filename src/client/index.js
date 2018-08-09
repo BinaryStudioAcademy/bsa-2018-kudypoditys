@@ -10,6 +10,8 @@ import reducer from 'client/logic/reducer';
 
 import Search from 'client/components/search';
 import RankingBar from 'client/components/ranking-bar';
+import PropertyDescription from 'client/components/property-description'
+
 const store = createStore(
     reducer,
     composeWithDevTools()
@@ -36,6 +38,10 @@ ReactDOM.render(
                 />,
                 <RankingBar
                     key="RankingBar"
+                />,
+                <PropertyDescription
+                    key="RankingBar"
+                    id='xyz-1'
                 />
 
 
