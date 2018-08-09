@@ -1,26 +1,32 @@
 import {
     REGISTER_SUCCESS,
-    REGISTER_FAILURE
+    REGISTER_FAILURE,
+    REGISTER_UPDATE
 } from './actionTypes';
 
 export function registerSubmit(payload) {
-    console.log(payload);
+    const _payload = {
+        fullname: payload.fullname,
+        email: payload.email,
+        phone: payload.phone,
+        errors: payload.errors
+    };
     if(payload.errors.length > 0) {
         return {
             type: REGISTER_FAILURE,
-            payload
+            payload: _payload
         }
     } else {
         return {
             type: REGISTER_SUCCESS,
-            payload
+            payload: _payload
         }
     }
 }
 
 export function registerUpdate(payload) {
     return {
-        type: "REGISTER:UPDATE",
+        type: REGISTER_UPDATE,
         payload
     }
 }

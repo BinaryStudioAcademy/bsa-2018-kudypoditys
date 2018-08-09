@@ -23,13 +23,13 @@ export class Registration extends Component {
             [e.target.name]: e.target.value
         });
         e.target.name === 'password' ? null :
-        this.props.registerUpdate({ [e.target.name]: e.target.value });
+        this.props.handleUpdate({ [e.target.name]: e.target.value });
     }
 
     handleRegisterClick = () => {
         const { fullname, email, phone, password } = this.state;
         const credValid = validateCredentials({ fullname, email, phone, password });
-        this.props.handleSubmit({ fullname, email, phone, errors: credValid.errors });
+        this.props.handleSubmit({ fullname, email, phone, password, errors: credValid.errors });
         this.setState({
             password: ''
         });

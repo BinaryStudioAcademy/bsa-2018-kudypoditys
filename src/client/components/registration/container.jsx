@@ -9,7 +9,7 @@ export function mapStateToProps(state, ownProps) {
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
-        registerUpdate(data) {
+        handleUpdate(data) {
             dispatch(registerUpdate(data));
         },
         handleSubmit(userData) {

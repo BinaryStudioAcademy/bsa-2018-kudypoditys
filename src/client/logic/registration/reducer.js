@@ -1,7 +1,8 @@
 import defaultState from 'client/logic/defaultState';
 import {
     REGISTER_SUCCESS,
-    REGISTER_FAILURE
+    REGISTER_FAILURE,
+    REGISTER_UPDATE
 } from './actionTypes';
 
 export default function registrationReducer(state = defaultState.registration, action) {
@@ -20,7 +21,7 @@ export default function registrationReducer(state = defaultState.registration, a
             }
         }
 
-        case "REGISTER:UPDATE": {
+        case REGISTER_UPDATE: {
             return {
                 ...state,
                 ...action.payload
