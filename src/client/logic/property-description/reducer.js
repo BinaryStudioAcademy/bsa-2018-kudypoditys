@@ -9,7 +9,10 @@ function propertyDescriptionReducer(state = defaultState.shownProperties, action
 
             return {
                 ...state.shownProperties,
-                ...action.payload
+                [action.payload.id]: {
+                    ...action.payload.data
+                }
+
             };
         }
         default: {
