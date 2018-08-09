@@ -5,12 +5,17 @@ import PropTypes from 'prop-types';
 import 'slick-carousel/slick/slick.css';
 import './index.scss';
 
-import { connect } from 'react-redux';
-import { mapStateToProps, mapDispatchToProps } from "./container";
-
 import { Container, Button, Image, Icon } from 'semantic-ui-react';
 
 export class Slider extends Component {
+
+    pics = [
+        'https://picsum.photos/600/302',
+        'https://picsum.photos/600/303',
+        'https://picsum.photos/600/304',
+        'https://picsum.photos/600/305',
+        'https://picsum.photos/600/306'
+    ];
 
     settings = {
         dots: true,
@@ -20,12 +25,9 @@ export class Slider extends Component {
         slidesToScroll: 1,
         centerMode: true,
         accessibility: false,
-        appendDots: () => this.picsThumbnails(this.props.pics),
-        beforeChange: (curr, next) => {
-            this.slideIndex = next;
-            return this.props.handleSlideChange(next);
-        }
-    }
+        appendDots: () => this.picsThumbnails(this.pics),
+        beforeChange: (curr, next) => this.slideIndex = next
+    };
 
     picsThumbnails = (pics) => {
         return (
@@ -48,7 +50,7 @@ export class Slider extends Component {
                 }
             </ul>
         )
-    }
+    };
 
     render() {
         this.slideIndex = this.props.slideIndex || 0;
@@ -61,7 +63,7 @@ export class Slider extends Component {
                     <Icon name='arrow alternate circle left' size='large'/>
                 </Button>
                     <SliderSlick ref={slider => (this.slider = slider)} {...this.settings}>
-                            {this.props.pics.map((item, i) =><Image className='slider-c-image' src={item} key={i}/>)}
+                            {this.pics.map((item, i) =><Image className='slider-c-image' src={item} key={i}/>)}
                     </SliderSlick>
                 <Button
                     className='slider-c-button slider-c-next-button'
@@ -75,9 +77,8 @@ export class Slider extends Component {
 }
 
 Slider.propTypes = {
-    pics: PropTypes.array.isRequired,
-    handleSlideChange: PropTypes.func.isRequired,
-    slideIndex: PropTypes.number.isRequired
-}
+    pics: PropTypes.array,
+    slideIndex: PropTypes.number
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Slider);
+export default Slider;
