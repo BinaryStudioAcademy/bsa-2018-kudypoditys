@@ -1,9 +1,7 @@
 const state = {
     search: {
 
-        destination: '231'
-
-        destination: '',
+        destination: '231',
         checkIn: null,
         checkOut: null,
         adults: 1,

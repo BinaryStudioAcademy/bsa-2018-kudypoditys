@@ -1,0 +1,84 @@
+import React from 'react';
+import './index.scss';
+import {Divider, Container} from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {mapStateToProps, mapDispatchToProps} from './container';
+import Search from 'client/components/search';
+
+import SearchSummary from 'client/components/search-summary';
+
+import AvailabilityPanel from 'client/components/availability-panel';
+import RankingBar from 'client/components/ranking-bar';
+import Breadcrumbs from 'client/components/breadcrumbs'
+import Slider from 'client/components/slider'
+import PropertyDescription from 'client/components/property-description'
+import {PropertySummary} from "../property-summary";
+import {NavigationBar} from "../navigation-bar";
+
+export class PropertyPage extends React.Component {
+
+
+    render() {
+        let propertyItemData = {
+            name: 'DREAM Hostel Lviv',
+            location: 'Prospekt Gagarina 145, Kharkov, 61124, Ukraine '
+        };
+        const pics = [
+            'https://picsum.photos/600/302',
+            'https://picsum.photos/600/303',
+            'https://picsum.photos/600/304',
+            'https://picsum.photos/600/305',
+            'https://picsum.photos/600/306'
+        ];
+
+        const handleSlideChange = (index) => {
+            console.log(`Slide changed to ${index}`);
+        }
+
+
+        return (
+            <div className='property-page__wrapper'>
+
+
+                <Breadcrumbs/>
+
+                <Container text className='property-page__wrapper-left_side'>
+                    <Search
+                        key="Search"
+                        view='panel'
+
+
+                        adults={1}
+                        rooms={1}
+                        children={0}
+                    />
+
+                </Container>
+                <Container text className='property-page__wrapper-right_side'>
+                    <NavigationBar/>
+
+
+                    <PropertySummary propertyItemData={propertyItemData}/>
+                    <Slider pics={pics} handleSlideChange={handleSlideChange} slideId={0}/>
+
+                    <PropertyDescription
+                        key="RankingBar"
+                        id='xyz-1'
+                    />
+
+
+                    <AvailabilityPanel/>
+
+                </Container>
+            </div>
+
+        )
+    }
+
+
+}
+
+
+PropertyPage.propTypes = {};
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyPage);
