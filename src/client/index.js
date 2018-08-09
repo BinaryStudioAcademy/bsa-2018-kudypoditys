@@ -15,6 +15,8 @@ import SearchSummary from 'client/components/search-summary';
 import AvailabilityPanel from 'client/components/availability-panel';
 import RankingBar from 'client/components/ranking-bar';
 
+import PropertyDescription from 'client/components/property-description'
+
 
 const store = createStore(
     reducer,
@@ -41,7 +43,17 @@ ReactDOM.render(
                     onChildrenChange = { value => console.log(`children: ${value}`)}
                     onRoomsChange = { value => console.log(`rooms: ${value}`)}
                 />,
+
+                <RankingBar
+                    key="RankingBar"
+                />,
+                <PropertyDescription
+                    key="RankingBar"
+                    id='xyz-1'
+                />,
+
                 <SearchSummary/>
+
 
                 />,
                 <AvailabilityPanel
