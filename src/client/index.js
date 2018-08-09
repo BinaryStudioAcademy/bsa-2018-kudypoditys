@@ -9,7 +9,7 @@ import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 
 import Search from 'client/components/search';
-
+import RankingBar from 'client/components/ranking-bar';
 const store = createStore(
     reducer,
     composeWithDevTools()
@@ -22,7 +22,12 @@ ReactDOM.render(
                 <Search
                     key="Search"
                     view='bar'
+                />,
+                <RankingBar
+                    key="RankingBar"
                 />
+
+
             ]}
         </React.Fragment>
 
