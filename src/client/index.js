@@ -9,7 +9,9 @@ import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 
 import Search from 'client/components/search';
+import AvailabilityPanel from 'client/components/availability-panel';
 import RankingBar from 'client/components/ranking-bar';
+
 const store = createStore(
     reducer,
     composeWithDevTools()
@@ -23,11 +25,12 @@ ReactDOM.render(
                     key="Search"
                     view='bar'
                 />,
+                <AvailabilityPanel
+                    key="Availability"
+                />,
                 <RankingBar
                     key="RankingBar"
                 />
-
-
             ]}
         </React.Fragment>
 
