@@ -17,11 +17,21 @@ const state = {
     //     }
     // }
 
+
+
+    searchResults: {
+        destination: 'Dnipro',
+        totalCount: 42,
+        shownFrom: 1,
+        shownTo: 5
+    },
+
     sortType: {
         activeItem: 'price'
     },
 
     cityInfos: []
+
 };
 
 export default state;
