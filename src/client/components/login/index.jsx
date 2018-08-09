@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button, Form, Header, Grid, Segment, Message } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from "./container";
 
-export class LoginComponent extends React.Component {
+class LoginComponent extends React.Component {
 
     handleForgotClicked = () => {
         this.props.forgotClicked();
     }
 
     handleLoginClicked = () => {
-        this.props.loginClicked();
+        const userData = {
+            email: this.props.email,
+            password: this.props.password
+        }
+        this.props.loginClicked(userData);
     }
 
     handleRegisterClicked = () => {
@@ -78,3 +84,5 @@ LoginComponent.propTypes = {
     password: PropTypes.string.isRequired,
     errors: PropTypes.arrayOf(PropTypes.shape({ field: PropTypes.string.isRequired, message: PropTypes.string.isRequired }).isRequired).isRequired
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);

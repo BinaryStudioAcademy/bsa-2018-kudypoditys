@@ -2,6 +2,11 @@ const state = {
     search: {
         destination: 'Lviv'
     },
+    login: {
+        email: '',
+        password: '',
+        errors:[]
+    }
     // collections: {
     //     'iud-sdfdsf-asdasd': {
     //         _id: 'iud-sdfdsf-asdasd'

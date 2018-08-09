@@ -1,0 +1,2 @@
+export const LOGIN_SUCCESS = 'CITY_INFOS:GET_FAILD';
+export const LOGIN_FAILURE = 'CITY_INFOS:GET_FAILD';
