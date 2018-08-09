@@ -3,14 +3,23 @@ import {
     SEARCH_UPDATE
 } from './actionTypes';
 
-function hitsReducer(state = defaultState.search, action) {
+function searchReducer(state = defaultState.search, action) {
     switch (action.type) {
         case SEARCH_UPDATE: {
+            if ((action.payload.checkOut && state.checkIn) && action.payload.checkOut <= state.checkIn) {
+                state.checkIn = null;
+                action.payload.checkOut = null;
+            }
+            if ((action.payload.checkIn && state.checkOut) && action.payload.checkIn >= state.checkOut) {
+                state.checkOut = null;
+                action.payload.checkIn = null;
+            }
             return {
-                ...state.search,
+                ...state,
                 ...action.payload
             };
         }
+
         // case COLLECTION_DELETE: {
         //     const newState = { ...state };
         //     delete newState.foundProperties[action._id]
@@ -37,4 +46,4 @@ function hitsReducer(state = defaultState.search, action) {
     }
 }
 
-export default hitsReducer;
+export default searchReducer;

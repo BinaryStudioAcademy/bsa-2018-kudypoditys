@@ -1,6 +1,12 @@
 const state = {
     search: {
-        destination: 'Lviv'
+        destination: '',
+        checkIn: null,
+        checkOut: null,
+        adults: 1,
+        children: 0,
+        rooms: 1,
+        results: []
     },
     // collections: {
     //     'iud-sdfdsf-asdasd': {
@@ -12,12 +18,20 @@ const state = {
     // }
 
 
+
     searchResults: {
         destination: 'Dnipro',
         totalCount: 42,
         shownFrom: 1,
         shownTo: 5
-    }
+    },
+
+    sortType: {
+        activeItem: 'price'
+    },
+
+    cityInfos: []
+
 };
 
 export default state;

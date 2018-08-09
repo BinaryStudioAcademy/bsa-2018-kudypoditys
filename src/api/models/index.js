@@ -3,7 +3,8 @@ const
     path = require('path'),
     basename = path.basename(__filename),
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require(`${apiRoot}/orm`),
+    associations = require(`${apiRoot}/associations`);
 
 const models = {
     Sequelize,
@@ -18,5 +19,7 @@ fs.readdirSync(__dirname)
     .forEach(modelName => {
         models[modelName] = require(`${apiRoot}/models/${modelName}`);
     });
+
+associations(models); // make associations
 
 module.exports = orm.sync({ force: true }).then(() => models);

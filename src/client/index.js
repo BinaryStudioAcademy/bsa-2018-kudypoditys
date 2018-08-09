@@ -9,7 +9,13 @@ import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 
 import Search from 'client/components/search';
+
 import SearchSummary from 'client/components/search-summary';
+
+import AvailabilityPanel from 'client/components/availability-panel';
+import RankingBar from 'client/components/ranking-bar';
+
+
 const store = createStore(
     reducer,
     composeWithDevTools()
@@ -22,6 +28,7 @@ ReactDOM.render(
                 <Search
                     key="Search"
                     view='bar'
+
                     checkIn={new Date('Aug 14 2018')}
                     checkOut={new Date('Aug 16 2018')}
                     adults={1}
@@ -35,6 +42,12 @@ ReactDOM.render(
                     onRoomsChange = { value => console.log(`rooms: ${value}`)}
                 />,
                 <SearchSummary/>
+
+                />,
+                <AvailabilityPanel
+                    key='Availability'
+                />
+
             ]}
         </React.Fragment>
 

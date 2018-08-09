@@ -16,6 +16,14 @@
     align-items: center;
 }
 
+.search--view-bar > .check-in-out {
+    align-items: center;
+}
+
+.search--view-bar > .check-in-out > .field {
+    margin: 0;
+}
+
 .search--view-panel {
     display: flex;
     flex-direction: column;
@@ -36,14 +44,14 @@
 }
 
 
-.suir-calendar.popup table td.suir-calendar.date,
-.suir-calendar.popup table th.suir-calendar.week-day,
-.suir-calendar.popup table th.suir-calendar.cell {
-    padding: 4px;
+table.ui.celled.table tbody td,
+table.ui.celled.table thead th,
+table.ui.celled.table thead th {
+    padding: 4px
 }
 
-td.active.suir-calendar.date,
-.suir-calendar.date:hover {
+table.ui.celled.table tbody td.active,
+table.ui.celled.table tbody td:hover {
     background-color: rgb(0, 119, 204) !important;
     color: white !important;
     cursor: pointer;
