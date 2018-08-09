@@ -23,26 +23,24 @@ ReactDOM.render(
                 <Registration
                     key='registration'
                 />,
-
+                <Search
+                    key="Search"
+                    view='bar'
+                    checkIn={new Date('Aug 14 2018')}
+                    checkOut={new Date('Aug 16 2018')}
+                    adults={1}
+                    rooms={1}
+                    children={0}
+                    onDestinationChange = { value => console.log(`destination: ${value}`)}
+                    onCheckInChange = { value => console.log(`check-in: ${new Date(value)}`)}
+                    onCheckOutChange = { value => console.log(`check-in: ${new Date(value)}`)}
+                    onAdultsChange = { value => console.log(`adults: ${value}`)}
+                    onChildrenChange = { value => console.log(`children: ${value}`)}
+                    onRoomsChange = { value => console.log(`rooms: ${value}`)}
+                />
             ]}
         </React.Fragment>
 
     </Provider>,
     document.getElementById('root')
 );
-
-// <Search
-//     key="Search"
-//     view='bar'
-//     checkIn={new Date('Aug 14 2018')}
-//     checkOut={new Date('Aug 16 2018')}
-//     adults={1}
-//     rooms={1}
-//     children={0}
-//     onDestinationChange = { value => console.log(`destination: ${value}`)}
-//     onCheckInChange = { value => console.log(`check-in: ${new Date(value)}`)}
-//     onCheckOutChange = { value => console.log(`check-in: ${new Date(value)}`)}
-//     onAdultsChange = { value => console.log(`adults: ${value}`)}
-//     onChildrenChange = { value => console.log(`children: ${value}`)}
-//     onRoomsChange = { value => console.log(`rooms: ${value}`)}
-// />
