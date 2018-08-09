@@ -1,9 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'whatwg-fetch';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import 'client/styles/global.scss';
+import reducer from 'client/logic/reducer';
 
-import App from 'client/components/app';
+import Search from 'client/components/search';
+import AvailabilityPanel from 'client/components/availability-panel';
+import RankingBar from 'client/components/ranking-bar';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(
+    reducer,
+    composeWithDevTools()
+);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <React.Fragment>
+            {[
+                <Search
+                    key="Search"
+                    view='bar'
+                />,
+                <AvailabilityPanel
+                    key="Availability"
+                />,
+                <RankingBar
+                    key="RankingBar"
+                />
+            ]}
+        </React.Fragment>
+
+    </Provider>,
+    document.getElementById('root')
+);
