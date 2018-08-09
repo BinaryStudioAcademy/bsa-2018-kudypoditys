@@ -1,6 +1,12 @@
 const state = {
     search: {
-        destination: 'Lviv'
+        destination: '',
+        checkIn: null,
+        checkOut: null,
+        adults: 1,
+        children: 0,
+        rooms: 1,
+        results: []
     },
     // collections: {
     //     'iud-sdfdsf-asdasd': {
@@ -13,8 +19,9 @@ const state = {
 
     sortType: {
         activeItem: 'price'
-    }
+    },
 
+    cityInfos: []
 };
 
 export default state;

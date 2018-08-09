@@ -3,7 +3,7 @@ import { searchUpdate } from '../../logic/search/actions';
 export function mapStateToProps(state, ownProps) {
     const { search } = state;
     return {
-        destination: search.destination,
+        propertyName: search.destination,
         checkIn: search.checkIn,
         checkOut: search.checkOut,
         adults: search.adults,
@@ -14,26 +14,14 @@ export function mapStateToProps(state, ownProps) {
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
-        onSearch() {
+        onAvailabilityCheck() {
             //todo server request
             const serverResponse = [
-                {
-                    Name: 'Name example 1',
-                    Description: 'Description example 1'
-                },
-                {
-                    Name: 'Name example 2',
-                    Description: 'Description example 2'
-                },
-                {
-                    Name: 'Name example 3',
-                    Description: 'Description example 3'
-                },
+                { room: 'Available room type' },
+                { room: 'Available room type2' },
+                { room: 'Available room type3' },
             ];
             dispatch(searchUpdate({ results : serverResponse}));
-        },
-        onDestinationChange(value) {
-            dispatch(searchUpdate({ destination: value }));
         },
         onCheckInChange(value) {
             dispatch(searchUpdate({ checkIn: value }));
