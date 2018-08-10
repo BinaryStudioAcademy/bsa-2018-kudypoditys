@@ -1,8 +1,8 @@
 import defaultState from 'client/logic/defaultState';
-import {PROPERTY_DESCRIPTION_UPDATE} from "./actionTypes";
+import {PROPERTY_DESCRIPTION_UPDATE} from "/logic/property-description/actionTypes";
 
 
-function propertyDescriptionReducer(state = defaultState.shownProperties, action) {
+function propertyPageReducer(state = defaultState.shownProperties, action) {
     switch (action.type) {
         case PROPERTY_DESCRIPTION_UPDATE: {
 
@@ -22,4 +22,4 @@ function propertyDescriptionReducer(state = defaultState.shownProperties, action
 
 }
 
-export default propertyDescriptionReducer;
+export default propertyPageReducer;
