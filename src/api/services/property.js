@@ -2,7 +2,7 @@ const Service = require('./generalService');
 const propertyRepository = require("../repositories/propertyRepository");
 
 class PropertyService extends Service {
-    getAllproperties() {
+    getAllProperties() {
         return propertyRepository.findAll();
     }
 
