@@ -1,4 +1,4 @@
-import defaultState from './../defaultState';
+import defaultState from 'client/logic/defaultState';
 import {PROPERTY_ITEM_DELETE,
     PROPERTY_ITEM_INSERT,
     PROPERTY_ITEM_UPDATE,

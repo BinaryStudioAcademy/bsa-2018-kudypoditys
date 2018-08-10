@@ -25,17 +25,18 @@ export class PropertyListItem extends React.Component {
     }
     render() {
         const {propertyItemData}=this.props
+        console.log(propertyItemData)
 
-        let ratingStatus = ''
+         let ratingStatus = ''
         if (propertyItemData.rating >= 9) {
-            ratingStatus = 'Excellent'
-        } else if (propertyItemData.rating >= 7) {
-            ratingStatus = 'Very Good'
-        } else if (propertyItemData.rating >= 5) {
+             ratingStatus = 'Excellent'
+         } else if (propertyItemData.rating >= 7) {
+             ratingStatus = 'Very Good'
+         } else if (propertyItemData.rating >= 5) {
             ratingStatus = 'Good'
-        } else if (propertyItemData.rating >= 1) {
+         } else if (propertyItemData.rating >= 1) {
             ratingStatus = 'Not good'
-        }
+         }
 
         return (
             <Card fluid
