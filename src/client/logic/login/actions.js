@@ -1,9 +1,7 @@
-import {
-    LOGIN_SUCCESS
-} from './actionTypes';
+import { LOGIN_SUCCESS } from "./actionTypes";
 
 export function loginSubmit(payload) {
     return {
         type: LOGIN_SUCCESS
-    }
+    };
 }

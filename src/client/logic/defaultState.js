@@ -1,11 +1,11 @@
 const state = {
     search: {
-        destination: 'Lviv'
+        destination: "Lviv"
     },
     login: {
-        email: '',
-        password: '',
-        errors:[]
+        email: "",
+        password: "",
+        errors: []
     }
     // collections: {
     //     'iud-sdfdsf-asdasd': {

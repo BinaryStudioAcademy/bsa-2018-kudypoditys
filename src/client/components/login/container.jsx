@@ -1,10 +1,10 @@
-import { loginSubmit } from 'client/logic/login/actions';
+import { loginSubmit } from "client/logic/login/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { login } = state;
     return {
         ...login
-    }
+    };
 }
 
 export function mapDispatchToProps(dispatch, ownProps) {

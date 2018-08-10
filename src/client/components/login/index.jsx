@@ -1,17 +1,16 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-import LoginForm from './loginForm';
+import LoginForm from "./loginForm";
 
 export class LoginComponent extends React.Component {
-
     handleForgotClicked = () => {
-        console.log('Forgot clicked');
-    }
+        console.log("Forgot clicked");
+    };
 
     handleRegisterClicked = () => {
-        console.log('Register clicked');
-    }
+        console.log("Register clicked");
+    };
 
     render() {
         return (
@@ -24,4 +23,7 @@ export class LoginComponent extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LoginComponent);
