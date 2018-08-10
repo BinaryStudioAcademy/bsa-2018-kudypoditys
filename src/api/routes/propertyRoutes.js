@@ -4,7 +4,7 @@ const propertyService = require('../services/property');
 
 property.route('/')
     .get((req, res) => {
-        propertyService.getAllproperties()
+        propertyService.getAllProperties()
             .then(property => {
                 res.send(property);
             })
