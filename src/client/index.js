@@ -11,6 +11,14 @@ import reducer from 'client/logic/reducer';
 import Search from 'client/components/search';
 import Registration from 'client/components/registration';
 
+import SearchSummary from 'client/components/search-summary';
+
+import AvailabilityPanel from 'client/components/availability-panel';
+import RankingBar from 'client/components/ranking-bar';
+
+import PropertyDescription from 'client/components/property-description'
+import  PropertyListItem  from 'client/components/property-list-item';
+
 const store = createStore(
     reducer,
     composeWithDevTools()
@@ -24,20 +32,39 @@ ReactDOM.render(
                     key='registration'
                 />,
                 <Search
-                   key="Search"
-                   view='bar'
-                   checkIn={new Date('Aug 14 2018')}
-                   checkOut={new Date('Aug 16 2018')}
-                   adults={1}
-                   rooms={1}
-                   children={0}
-                   onDestinationChange = { value => console.log(`destination: ${value}`)}
-                   onCheckInChange = { value => console.log(`check-in: ${new Date(value)}`)}
-                   onCheckOutChange = { value => console.log(`check-in: ${new Date(value)}`)}
-                   onAdultsChange = { value => console.log(`adults: ${value}`)}
-                   onChildrenChange = { value => console.log(`children: ${value}`)}
-                   onRoomsChange = { value => console.log(`rooms: ${value}`)}
+                    key="Search"
+                    view='bar'
+                    checkIn={new Date('Aug 14 2018')}
+                    checkOut={new Date('Aug 16 2018')}
+                    adults={1}
+                    rooms={1}
+                    children={0}
+                    onDestinationChange = { value => console.log(`destination: ${value}`)}
+                    onCheckInChange = { value => console.log(`check-in: ${new Date(value)}`)}
+                    onCheckOutChange = { value => console.log(`check-in: ${new Date(value)}`)}
+                    onAdultsChange = { value => console.log(`adults: ${value}`)}
+                    onChildrenChange = { value => console.log(`children: ${value}`)}
+                    onRoomsChange = { value => console.log(`rooms: ${value}`)}
+                />,
+                <AvailabilityPanel
+                    key="Availability"
+                />,
+
+                <RankingBar
+                    key="RankingBar"
+                />,
+                <PropertyDescription
+                    key="RankingBar"
+                    id='xyz-1'
+                />,
+
+                <SearchSummary/>,
+
+                <PropertyListItem
+                    key="PropertyListItem"
+                    id='foundProperty1'
                 />
+
             ]}
         </React.Fragment>
 
