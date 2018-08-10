@@ -1,8 +1,8 @@
 const express = require('express');
-const properties = express.Router();
+const user = express.Router();
 const userService = require('../services/property');
 
-properties.route('/')
+user.route('/')
     .get((req, res) => {
 
     })
@@ -11,7 +11,7 @@ properties.route('/')
     });
 
 
-properties.route('/:id')
+user.route('/:id')
     .put((req, res) => {
 
     })
