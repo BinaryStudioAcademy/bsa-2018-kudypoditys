@@ -57,7 +57,7 @@ const RegistrationForm = (props) => {
 
             <Field component={renderField}
                    name="password"
-                   type="text"
+                   type="password"
                    icon="key"
                    label="Password"
                    required="required"
