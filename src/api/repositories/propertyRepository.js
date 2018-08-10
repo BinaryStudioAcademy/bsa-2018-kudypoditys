@@ -1,7 +1,7 @@
 const Repository = require('./generalRepository');
 const propertyModel = require('../models/Property');
 
-class PropertyRepository extends Repository  {
+class PropertyRepository extends Repository {
     //todo additional methods for repository
 }
 

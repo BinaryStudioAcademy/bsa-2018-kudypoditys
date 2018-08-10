@@ -23,9 +23,9 @@ class Repository  {
         return this.model.destroy({ where: { id: id } });
     }
 
-    findByPage(page=0, recordsOnPage=20, sortField='createdAt', sortDirection='DESC') {
+    findByPage(page = 0, recordsOnPage = 20, sortField = 'createdAt', sortDirection = 'DESC') {
         let offset = undefined;
-        if (page && recordsOnPage) offset = page*recordsOnPage;
+        if (page && recordsOnPage) offset = page * recordsOnPage;
         return this.model.findAll({
             limit: recordsOnPage,
             offset: offset,
