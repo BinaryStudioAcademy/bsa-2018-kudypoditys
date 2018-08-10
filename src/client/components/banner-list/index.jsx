@@ -8,13 +8,13 @@ import './index.scss';
 import { Banner } from './item';
 import { mapStateToProps, mapDispatchToProps } from './container';
 
-class BannerList extends Component {
+export class BannerList extends Component {
     constructor(props) {
         super(props);
     }
 
     componentDidMount() {
-        this.props.getCityInfos();
+        // this.props.getCityInfos();
     }
 
     onCardClick = (cityId) => {

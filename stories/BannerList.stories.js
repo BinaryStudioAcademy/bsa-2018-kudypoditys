@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import BannerList from 'client/components/banner-list';
+import { BannerList } from 'client/components/banner-list';
 import { Banner } from 'client/components/banner-list/item'
 
 const cityInfos = [{
