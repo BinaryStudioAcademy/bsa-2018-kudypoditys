@@ -10,6 +10,7 @@ import reducer from 'client/logic/reducer';
 
 import App from 'client/components/app';
 import Search from 'client/components/search';
+import Registration from 'client/components/registration';
 
 import SearchSummary from 'client/components/search-summary';
 
@@ -28,10 +29,12 @@ ReactDOM.render(
     <Provider store={store}>
         {/* <React.Fragment>
             {[
+                <Registration
+                    key='registration'
+                />,
                 <Search
                     key="Search"
                     view='bar'
-
                     checkIn={new Date('Aug 14 2018')}
                     checkOut={new Date('Aug 16 2018')}
                     adults={1}
