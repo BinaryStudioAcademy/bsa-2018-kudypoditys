@@ -1,6 +1,6 @@
 const express = require('express');
 const properties = express.Router();
-const userService = require('../services/property');
+const propertyService = require('../services/property');
 
 properties.route('/')
     .get((req, res) => {
