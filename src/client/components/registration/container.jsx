@@ -1,18 +1,15 @@
-import { registerUpdate, registerSubmit } from 'client/logic/registration/actions';
+import { registerSubmit } from 'client/logic/registration/actions';
 
-export function mapStateToProps(state, ownProps) {
-    const { registration } = state;
+export function mapStateToProps({ form }) {
+    const { registration } = form;
     return {
         ...registration
     }
 }
 
-export function mapDispatchToProps(dispatch, ownProps) {
+export function mapDispatchToProps(dispatch) {
     return {
-        handleUpdate(data) {
-            dispatch(registerUpdate(data));
-        },
-        handleSubmit(userData) {
+        handleRegistrationSubmit(userData) {
             dispatch(registerSubmit(userData));
         }
     };

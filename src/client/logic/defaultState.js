@@ -1,12 +1,6 @@
 const state = {
     search: {
         destination: 'Lviv'
-    },
-    registration: {
-        fullname: '',
-        email: '',
-        phone: '',
-        errors: []
     }
     // collections: {
     //     'iud-sdfdsf-asdasd': {
