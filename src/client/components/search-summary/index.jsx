@@ -5,14 +5,12 @@ import PropTypes from 'prop-types';
 import formatNumber from 'client/helpers/formatNumber'
 
 export class SearchSummary extends React.Component {
+
     static defaultProps = {
-
-
         numberOfMatched: 0,
         destination: 'City'
 
     };
-
 
     render() {
         const numbersToPrettify = this.props.data.numberOfMatched,
@@ -32,10 +30,7 @@ export class SearchSummary extends React.Component {
 
         )
     }
-
-
 }
-
 
 SearchSummary.propTypes = {
     destination: PropTypes.string,

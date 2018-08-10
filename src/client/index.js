@@ -7,21 +7,33 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
-import App from 'client/components/app';
-import { increment } from 'client/logic/counter/actions';
+
+import Search from 'client/components/search';
+import AvailabilityPanel from 'client/components/availability-panel';
+import RankingBar from 'client/components/ranking-bar';
 
 const store = createStore(
     reducer,
     composeWithDevTools()
 );
 
-setInterval(() => {
-    store.dispatch(increment());
-}, 1000);
-
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <React.Fragment>
+            {[
+                <Search
+                    key="Search"
+                    view='bar'
+                />,
+                <AvailabilityPanel
+                    key="Availability"
+                />,
+                <RankingBar
+                    key="RankingBar"
+                />
+            ]}
+        </React.Fragment>
+
     </Provider>,
     document.getElementById('root')
 );
