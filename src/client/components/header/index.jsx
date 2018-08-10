@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Image, Dropdown, Button } from 'semantic-ui-react';
+import { Grid, Image, Dropdown, Button, Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import './index.scss';
@@ -21,38 +21,41 @@ export class MainHeader extends Component {
         } = this.props;
 
         return (
-            <Grid padded>
-                <Grid.Row columns={2}>
-                    <Grid.Column>
-                        KudyPoditys
-                    </Grid.Column>
-                    <Grid.Column >
-                        <Grid >
-                            <Grid.Row columns={4}>
-                                <Grid.Column>
-                                    <Dropdown
-                                        fluid
-                                        selection
-                                        name='currency'
-                                        options={currencies}
-                                        value={selectedCurrency}
-                                        onChange={(event, input) => this.props.onCurrencyChange(input.value)}
-                                    />
-                                </Grid.Column>
-                                <Grid.Column >
-                                    <Button emphasis="primary">Login</Button>
-                                </Grid.Column>
-                                <Grid.Column>
-                                    <Button >Register</Button>
-                                </Grid.Column>
-                                {currentUser ? <Grid.Column>
-                                    Wellcome {currentUser.name}
-                                </Grid.Column> : ''}
-                            </Grid.Row>
-                        </Grid>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+
+            <Menu size='small' className="main-menu">
+                <Menu.Item className="menu__logo">KudyPoditys</Menu.Item>
+
+                <Menu.Menu position='right'>
+                    {/* <Dropdown item text='Language'>
+                        <Dropdown.Menu>
+                            <Dropdown.Item>English</Dropdown.Item>
+                            <Dropdown.Item>Russian</Dropdown.Item>
+                            <Dropdown.Item>Spanish</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown> */}
+
+                    <Dropdown
+                        fluid
+                        selection
+                        name='currency'
+                        options={currencies}
+                        value={selectedCurrency}
+                        onChange={(event, input) => this.props.onCurrencyChange(input.value)}
+                        className="menu__dropdown"
+                    />
+
+                    <Menu.Item>
+                        {currentUser ?
+                            "Wellcome" + currentUser.name :
+                            <Fragment>
+                                <Button inverted>Login</Button>
+                                <Button inverted>Register</Button>
+                            </Fragment>}
+                    </Menu.Item>
+
+                </Menu.Menu>
+
+            </Menu>
         );
     }
 }

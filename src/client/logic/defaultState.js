@@ -25,7 +25,7 @@ const state = {
 
     header: {
         currencies: [],
-        selectedCurrency: null,
+        selectedCurrency: 1,
         currentUser: null
     }
 };
