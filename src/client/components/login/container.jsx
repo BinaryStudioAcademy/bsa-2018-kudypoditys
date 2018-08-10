@@ -1,9 +1,7 @@
-import { loginSubmit } from 'client/logic/login-component/actions';
+import { loginSubmit } from 'client/logic/login/actions';
 
 export function mapStateToProps(state, ownProps) {
     const { login } = state;
-    console.log(login);
-    console.log('////////////////////////');
     return {
         ...login
     }
@@ -11,7 +9,7 @@ export function mapStateToProps(state, ownProps) {
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
-        loginClicked(userData) {
+        handleLoginSubmit(userData) {
             dispatch(loginSubmit(userData));
         }
     };

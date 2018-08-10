@@ -5,19 +5,18 @@ import {
 } from './actionTypes';
 
 export default function loginReducer(state = defaultState.login, action) {
-    console.log(state, action);
     switch (action.type) {
         case LOGIN_SUCCESS: {
             return {
                 ...state,
-                ...action.payload
+                registerSuccess: true
             }
         }
 
         case LOGIN_FAILURE: {
             return {
                 ...state,
-                ...action.payload
+                registerSuccess: false
             }
         }
 
