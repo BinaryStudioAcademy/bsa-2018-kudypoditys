@@ -26,13 +26,6 @@ export class MainHeader extends Component {
                 <Menu.Item className="menu__logo">KudyPoditys</Menu.Item>
 
                 <Menu.Menu position='right'>
-                    {/* <Dropdown item text='Language'>
-                        <Dropdown.Menu>
-                            <Dropdown.Item>English</Dropdown.Item>
-                            <Dropdown.Item>Russian</Dropdown.Item>
-                            <Dropdown.Item>Spanish</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown> */}
 
                     <Dropdown
                         fluid
@@ -48,8 +41,8 @@ export class MainHeader extends Component {
                         {currentUser ?
                             "Wellcome" + currentUser.name :
                             <Fragment>
-                                <Button inverted>Login</Button>
-                                <Button inverted>Register</Button>
+                                <Button inverted className="menu__login">Login</Button>
+                                <Button inverted className="menu__register">Register</Button>
                             </Fragment>}
                     </Menu.Item>
 
@@ -59,5 +52,16 @@ export class MainHeader extends Component {
         );
     }
 }
+
+MainHeader.propTypes = {
+    currencies: PropTypes.arrayOf(
+        PropTypes.shape({
+            text: PropTypes.string.isRequired,
+            value: PropTypes.number.isRequired
+        })
+    ).isRequired,
+    selectedCurrency: PropTypes.string,
+    currentUser: PropTypes.string
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainHeader);
