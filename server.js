@@ -3,12 +3,11 @@ const
     express = require('express'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
-    compression = require('compression'),
-    routes = require(`${global.apiRoot}/routes`);
+    compression = require('compression');
+// routes = require(`${apiRoot}/testModels`);
 
 
-
-global.apiRoot = path.resolve(path.join(__dirname, 'src/api'));
+const apiRoot = path.resolve(path.join(__dirname, 'src/api'));
 
 const
     app = express(),
@@ -20,11 +19,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
 
+const routes = require('./src/api/routes')(app);
 
 app.listen(port, () => {
     console.log('Server running on http://127.0.0.1:%s', port);
 });
 
-require(`${global.apiRoot}/testModels`)();
+require(`${apiRoot}/testModels`)();

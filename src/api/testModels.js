@@ -1,4 +1,6 @@
-const models = require(apiRoot + '/models');
+const
+    apiRoot = '.',
+    models = require(apiRoot + '/models');
 
 module.exports = () => {
     models.then(({

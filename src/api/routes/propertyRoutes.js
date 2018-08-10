@@ -1,5 +1,5 @@
 const express = require('express');
-const property = express.Router;
+const property = express.Router();
 const propertyService = require('../services/property');
 
 property.route('/')

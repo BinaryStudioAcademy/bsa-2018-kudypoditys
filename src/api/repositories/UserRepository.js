@@ -2,7 +2,10 @@ const Repository = require('./generalRepository');
 const userModel = require('.././models/User');
 
 class UserRepository extends Repository  {
-    //todo additional methods for user repository
+    constructor() {
+        super();
+        this.model = userModel;
+    }
 }
 
-module.exports = new UserRepository(userModel);
+module.exports = new UserRepository();

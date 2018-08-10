@@ -1,6 +1,6 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require('../orm');
 
 let ReviewCategory = orm.define('reviewCategory', {
     name: {

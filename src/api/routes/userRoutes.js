@@ -1,5 +1,5 @@
 const express = require('express');
-const user = express.Router;
+const user = express.Router();
 const userService = require('../services/user');
 
 user.route('/')
@@ -53,3 +53,5 @@ user.route('/:id')
             });
 
     });
+
+module.exports = user;
