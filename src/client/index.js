@@ -27,19 +27,11 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-<<<<<<< HEAD
         <Switch>
             <Route exact path='/' component={Search}/>
             <Route path='/search' component={Search}/>
             <Route path='/property/:id' component={DummyComponent}/>
         </Switch>
-=======
-          <Switch>
-              <Route exact path='/' component={Search}/>
-              <Route path='/search' component={Search}/>
-              <Route path='/property/:id' component={Search}/>
-          </Switch>
->>>>>>> origin/50-client-router
         </BrowserRouter>
     </Provider>,
     document.getElementById('root')
