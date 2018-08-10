@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"recommendations": [
 		"christian-kohler.npm-intellisense",
 		"christian-kohler.path-intellisense",
@@ -8,4 +9,16 @@
 		"EditorConfig.EditorConfig",
 		"wangtao0101.vscode-js-import"
 	]
+=======
+    "recommendations": [
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense",
+        "steoates.autoimport",
+        "waderyan.gitblame",
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "wangtao0101.vscode-js-import",
+        "esbenp.prettier-vscode"
+    ]
+>>>>>>> 2d47dc8... Add prettier and other recommended extentions.
 }
