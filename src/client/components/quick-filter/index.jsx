@@ -1,6 +1,9 @@
 import React from 'react';
 import './index.scss';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {mapStateToProps, mapDispatchToProps} from './container';
+
 class Quickfilter extends React.Component {
     handleItemClick(box){
         this.props.selectFilter(box);
@@ -65,5 +68,7 @@ class Quickfilter extends React.Component {
         ),
         OnQuickFilterChange: PropTypes.func
     }
-export default Quickfilter;
+
+    export default connect(mapStateToProps, mapDispatchToProps)(Quickfilter);
+
 
