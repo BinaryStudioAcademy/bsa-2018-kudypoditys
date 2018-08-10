@@ -27,8 +27,9 @@
 .menu .menu__dropdown.selection.dropdown.visible{
     border: none ;
     padding-top: 16px;
+    background: transparent;
 
-    .text {
+    >.text {
         color: white;
         background: transparent;
     }
