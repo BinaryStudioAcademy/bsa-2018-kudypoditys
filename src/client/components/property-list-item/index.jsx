@@ -2,34 +2,41 @@ import React from 'react';
 import { Card,Message, Image, Button, CardContent, Grid, CardMeta, CardDescription, Container, Icon, Header, Label } from 'semantic-ui-react';
 import './index.scss';
 import PropTypes from 'prop-types';
+import {mapStateToProps} from './container';
+import {connect} from 'react-redux';
 
-class PropertyListItem extends React.Component {
 
+export class PropertyListItem extends React.Component {
+
+    componentDidMount() {
+      //  this.props.actions.fetchAllProperty();
+    }
     handleRedirectToMap = id => {
-        //todo  add redirection to map
+        //todo  handleRedirectToMap
     }
     handleAddToComparison = id => {
-        // todo sdd to comparision
+        //todo
     }
     handleAddToFavorites = id => {
-        // todo add to favorites
+      //todo
     }
     handleRedirectToDetails = id => {
-        //todo add redirection to property page
+       // this.props.actions.redirectToDetails(id)
     }
     render() {
         const {propertyItemData}=this.props
+        console.log(propertyItemData)
 
-        let ratingStatus = ''
+         let ratingStatus = ''
         if (propertyItemData.rating >= 9) {
-            ratingStatus = 'Excellent'
-        } else if (propertyItemData.rating >= 7) {
-            ratingStatus = 'Very Good'
-        } else if (propertyItemData.rating >= 5) {
+             ratingStatus = 'Excellent'
+         } else if (propertyItemData.rating >= 7) {
+             ratingStatus = 'Very Good'
+         } else if (propertyItemData.rating >= 5) {
             ratingStatus = 'Good'
-        } else if (propertyItemData.rating >= 1) {
+         } else if (propertyItemData.rating >= 1) {
             ratingStatus = 'Not good'
-        }
+         }
 
         return (
             <Card fluid
@@ -170,8 +177,8 @@ PropertyListItem.propTypes = {
         mealType:PropTypes.string
     })
 };
+export default connect(mapStateToProps)(PropertyListItem);
 
-export default PropertyListItem;
 
 
 
