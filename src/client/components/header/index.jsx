@@ -9,8 +9,8 @@ import { mapStateToProps, mapDispatchToProps } from './container';
 export class MainHeader extends Component {
 
     componentDidMount() {
-        this.props.getCurrentUser();
-        this.props.getCurrencies();
+        // this.props.getCurrentUser();
+        // this.props.getCurrencies();
     }
 
     render() {
@@ -37,9 +37,9 @@ export class MainHeader extends Component {
                         className="menu__dropdown"
                     />
 
-                    <Menu.Item>
+                    <Menu.Item className="menu__welcome">
                         {currentUser ?
-                            "Wellcome" + currentUser.name :
+                            "Wellcome " + currentUser.name :
                             <Fragment>
                                 <Button inverted className="menu__login">Login</Button>
                                 <Button inverted className="menu__register">Register</Button>
@@ -60,7 +60,6 @@ MainHeader.propTypes = {
             value: PropTypes.number.isRequired
         })
     ).isRequired,
-    selectedCurrency: PropTypes.string,
     currentUser: PropTypes.string
 };
 
