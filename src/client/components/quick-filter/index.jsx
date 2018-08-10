@@ -1,23 +1,9 @@
 import React from 'react';
 import './index.scss';
 import PropTypes from 'prop-types';
-
 class Quickfilter extends React.Component {
-    findBox(name, boxes){
-        for(let i in boxes){
-            if(boxes[i].id === name){
-                return i;
-            }
-        }
-    }
-
-    onChange = e =>{
-        const boxes = this.props.boxes;
-        const name = e.target.attributes[1].nodeValue;
-        let index = this.findBox(name, boxes);
-
-        boxes[index].ischecked = !boxes[index].ischecked;
-        this.props.changeQuickFilter(boxes);
+    handleItemClick(box){
+        this.props.selectFilter(box);
     }
 
     sortByType(type){
@@ -30,18 +16,17 @@ class Quickfilter extends React.Component {
             key={box.id}
             className={box.ischecked===true?'box_item_checked':'box_item'}>
             <div className="ui input checkbox">
-                <input  type="checkbox"
+                <input key={box.id}  type="checkbox"
                         defaultChecked={box.ischecked}
-                        name={box.id}
                         id={box.id}
-                        onChange={this.onChange.bind(this)}
+                        onChange={() => this.handleItemClick(box)}
                 />
                 <label className="box_label" htmlFor={box.id}> {box.label} </label>
             </div>
             <label className='box_amount' htmlFor={box.id}>{box.amount}</label>
         </div>
         ));
-        console.log(arr)
+
         return temp;
     }
     render() {
