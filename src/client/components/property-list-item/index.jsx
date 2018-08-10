@@ -2,7 +2,7 @@ import React from 'react';
 import { Card,Message, Image, Button, CardContent, Grid, CardMeta, CardDescription, Container, Icon, Header, Label } from 'semantic-ui-react';
 import './index.scss';
 import PropTypes from 'prop-types';
-import {mapStateToProps, mapDispatchToProps} from './container';
+import {mapStateToProps} from './container';
 import {connect} from 'react-redux';
 
 
@@ -176,7 +176,7 @@ PropertyListItem.propTypes = {
         mealType:PropTypes.string
     })
 };
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyListItem);
+export default connect(mapStateToProps)(PropertyListItem);
 
 
 
