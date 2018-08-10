@@ -1,7 +1,8 @@
 
-export function mapStateToProps(state) {
-    const { property } = state;
+export function mapStateToProps(state,ownProps) {
+    const { foundProperties } = state;
     return {
-        propertyItemData: property.propertyItemData
+        propertyItemData: foundProperties[ownProps.id]
     };
 }
+

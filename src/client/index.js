@@ -16,7 +16,7 @@ import AvailabilityPanel from 'client/components/availability-panel';
 import RankingBar from 'client/components/ranking-bar';
 
 import PropertyDescription from 'client/components/property-description'
-import { PropertyListItem } from 'client/components/property-list-item';
+import  PropertyListItem  from 'client/components/property-list-item';
 
 const store = createStore(
     reducer,
@@ -59,6 +59,7 @@ ReactDOM.render(
 
                 <PropertyListItem
                     key="PropertyListItem"
+                    id='foundProperty1'
                 />
 
             ]}
