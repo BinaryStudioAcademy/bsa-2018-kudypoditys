@@ -2,7 +2,7 @@ const
     path = require('path'),
     express = require('express'),
     cors = require('cors'),
-    bodyParser = require('body-parser')
+    bodyParser = require('body-parser'),
     compression = require('compression');
 
 global.apiRoot = path.resolve(path.join(__dirname, 'src/api'));
