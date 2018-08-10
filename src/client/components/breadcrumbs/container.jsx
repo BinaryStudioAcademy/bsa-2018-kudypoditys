@@ -1,3 +1,5 @@
 export function mapStateToProps(state) {
-    return state;
+    return{
+        sections: state.sections
+    }
 }
