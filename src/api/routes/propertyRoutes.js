@@ -5,6 +5,7 @@ const propertyService = require('../services/property');
 property.route('/')
     .get((req, res) => {
 
+
     })
     .post((req, res) => {
 
