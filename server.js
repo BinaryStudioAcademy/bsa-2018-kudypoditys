@@ -2,8 +2,11 @@ const
     path = require('path'),
     express = require('express'),
     cors = require('cors'),
-    bodyParser = require('body-parser')
-    compression = require('compression');
+    bodyParser = require('body-parser'),
+    compression = require('compression'),
+    routes = require(`${global.apiRoot}/routes`);
+
+
 
 global.apiRoot = path.resolve(path.join(__dirname, 'src/api'));
 
@@ -17,14 +20,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-let hitCount = 0;
-app.get('/api/hit-count', (req, res) => {
-    hitCount++;
-    res.json({ hitCount });
-});
+app.use('/', routes);
+
 
 app.listen(port, () => {
     console.log('Server running on http://127.0.0.1:%s', port);
 });
 
-require(`${apiRoot}/testModels`)();
+require(`${global.apiRoot}/testModels`)();
