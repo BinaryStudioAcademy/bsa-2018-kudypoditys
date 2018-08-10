@@ -27,8 +27,9 @@ ReactDOM.render(
     <Provider store={store}>
         <React.Fragment>
             {[
-
-                <PropertyPage/>
+                <PropertyPage
+                    key='PropertyPage'
+                />
             ]}
         </React.Fragment>
 

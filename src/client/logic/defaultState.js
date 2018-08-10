@@ -10,18 +10,6 @@ const state = {
         results: []
 
     },
-    // collections: {
-    //     'iud-sdfdsf-asdasd': {
-    //         _id: 'iud-sdfdsf-asdasd'
-    //     },
-    //     'iud-sdfdsf-asdasd': {
-    //         _id: 'iud-sdfdsf-asdasd'
-    //     }
-    // }
-
-
-
-   
 
     sortType: {
         activeItem: 'price'

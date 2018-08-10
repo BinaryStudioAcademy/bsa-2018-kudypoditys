@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.scss';
-import {Divider, Container} from 'semantic-ui-react';
+import {Divider, Container, Segment} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from './container';
@@ -10,9 +10,9 @@ import SearchSummary from 'client/components/search-summary';
 
 import AvailabilityPanel from 'client/components/availability-panel';
 import RankingBar from 'client/components/ranking-bar';
-import Breadcrumbs from 'client/components/breadcrumbs'
-import Slider from 'client/components/slider'
-import PropertyDescription from 'client/components/property-description'
+import Breadcrumbs from 'client/components/breadcrumbs';
+import Slider from 'client/components/slider';
+import PropertyDescription from 'client/components/property-description';
 import {PropertySummary} from "../property-summary";
 import {NavigationBar} from "../navigation-bar";
 
@@ -32,43 +32,52 @@ export class PropertyPage extends React.Component {
             'https://picsum.photos/600/306'
         ];
 
+        const sections = [
+            { key: 'Main', content: 'Main', link: true },
+            { key: 'Country', content: 'Ukraine', link: true },
+            { key: 'Region', content: 'Lviv Region', link: true },
+            { key: 'City', content: 'Lviv', link: true },
+            { key: 'Property', content: 'DREAM Hostel Lviv', active: true }
+        ];
+
         const handleSlideChange = (index) => {
             console.log(`Slide changed to ${index}`);
-        }
+        };
 
 
         return (
             <div className='property-page__wrapper'>
 
 
-                <Breadcrumbs/>
+                <Segment>
+                    <Breadcrumbs sections={sections} />
+                </Segment>
 
                 <Container text className='property-page__wrapper-left_side'>
                     <Search
                         key="Search"
                         view='panel'
-
-
                         adults={1}
                         rooms={1}
                         children={0}
                     />
-
                 </Container>
+
                 <Container text className='property-page__wrapper-right_side'>
                     <NavigationBar/>
 
-
                     <PropertySummary propertyItemData={propertyItemData}/>
-                    <Slider pics={pics} handleSlideChange={handleSlideChange} slideId={0}/>
+                    <Slider pics={pics} handleSlideChange={handleSlideChange} slideIndex={0}/>
 
+                    <Divider hidden />
                     <PropertyDescription
-                        key="RankingBar"
                         id='xyz-1'
                     />
+                    <Divider hidden />
 
-
-                    <AvailabilityPanel/>
+                    <AvailabilityPanel
+                        style={{width: '100%'}}
+                    />
 
                 </Container>
             </div>
