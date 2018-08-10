@@ -13,20 +13,21 @@ import AvailabilityPanel from 'client/components/availability-panel';
 import RankingBar from 'client/components/ranking-bar';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { DummyComponent } from './helpers/dummyComponent';
 
 const store = createStore(
     reducer,
     composeWithDevTools()
 );
 
-// todo add corresponding pages to routes components
+// TODO: add corresponding pages to routes components
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
         <Switch>
             <Route exact path='/' component={Search}/>
             <Route path='/search' component={Search}/>
-            <Route path='/property/:id' component={Search}/>
+            <Route path='/property/:id' component={DummyComponent}/>
         </Switch>
         </BrowserRouter>
     </Provider>,
