@@ -11,15 +11,15 @@ class UserService extends Service {
     }
 
     addUser(user) {
-        return userRepository.add(user);
+        return userRepository.create(user);
     }
 
     updateUser(id, user) {
-        return userRepository.update({_id: id}, user);
+        return userRepository.updateById({_id: id}, user);
     }
 
     deleteUser(id) {
-        return userRepository.delete({_id: id});
+        return userRepository.deleteById({_id: id});
     }
 }
 
