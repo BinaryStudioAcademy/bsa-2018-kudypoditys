@@ -1,3 +1,13 @@
 .rooms-summary-table{
-    margin: 10px;
+    margin:20px;
+}
+.rooms-summary-table .rooms-sleeps{
+    text-align: center;
+
+}
+.rooms-summary-table .room-title{
+    cursor: pointer;
+}
+.rooms-summary-table .room-info{
+    width: 400px;
 }

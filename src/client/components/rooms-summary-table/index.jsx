@@ -8,10 +8,36 @@ import { Header, Image, Table, Button, Icon } from 'semantic-ui-react'
 class RoomsSummary extends React.Component {
 
     static defaultProps={
-
+        rooms: [
+            {id:'1', type:'Standart Double room', bedsAmount: 1, bedsType:null, sleeps:2},
+            {id:'2', type:'Carska Room', bedsAmount: 1, bedsType:null, sleeps:1},
+            {id:'3', type:'Obshchajna Room', bedsAmount: 3, bedsType:null, sleeps:4},
+            {id:'4', type:'Polu Obshajna Room', bedsAmount: 1, bedsType:null, sleeps:3}
+        ]
     }
 
+    handleItemClick(id){
+        console.log(id)
+    }
+    showPrice(id){
+        this.props.findPrice(id)
+        console.log(id)
+    }
+
+
     render() {
+        const rooms = this.props.rooms.map((room, key)=>
+        <Table.Row key={key}>
+            <Table.Cell className='room-sleeps'>
+                {room.sleeps}
+            </Table.Cell>
+            <Table.Cell className='room-info'>
+                <h4><a className='room-title' onClick={()=>this.handleItemClick(room.id)}>{room.type}</a></h4>
+            </Table.Cell>
+            <Table.Cell><Button onClick={()=>this.showPrice(room.id)}>Show prices    </Button></Table.Cell>
+        </Table.Row>
+    );
+
         return(
             <div className='rooms-summary-table'>
                 <Table basic='very' celled collapsing>
@@ -19,19 +45,11 @@ class RoomsSummary extends React.Component {
                 <Table.Row>
                     <Table.HeaderCell>Sleeps</Table.HeaderCell>
                     <Table.HeaderCell>Room Type</Table.HeaderCell>
-                    <Table.HeaderCell>price</Table.HeaderCell>
+                    <Table.HeaderCell></Table.HeaderCell>
                 </Table.Row>
                 </Table.Header>
-
                 <Table.Body>
-                <Table.Row>
-                    <Table.Cell>
-                        <Icon disabled name='user' />
-                    </Table.Cell>
-                    <Table.Cell>22</Table.Cell>
-                    <Table.Cell><Button>Click Here</Button></Table.Cell>
-                </Table.Row>
-
+                    {rooms}
                 </Table.Body>
             </Table>
           </div>
