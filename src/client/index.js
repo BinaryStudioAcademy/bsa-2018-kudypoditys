@@ -8,16 +8,17 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 
-import Search from 'client/components/search';
-import Registration from 'client/components/registration';
+// import Search from 'client/components/search';
+// import Registration from 'client/components/registration';
 
-import SearchSummary from 'client/components/search-summary';
+// import SearchSummary from 'client/components/search-summary';
 
-import AvailabilityPanel from 'client/components/availability-panel';
-import RankingBar from 'client/components/ranking-bar';
+// import AvailabilityPanel from 'client/components/availability-panel';
+// import RankingBar from 'client/components/ranking-bar';
 
-import PropertyDescription from 'client/components/property-description'
-import  PropertyListItem  from 'client/components/property-list-item';
+// import PropertyDescription from 'client/components/property-description'
+// import  PropertyListItem  from 'client/components/property-list-item';
+import RoomsSummary from './components/rooms-summary-table';
 
 const store = createStore(
     reducer,
@@ -26,7 +27,11 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <React.Fragment>
+        <RoomsSummary />
+    </Provider>,
+    document.getElementById('root')
+);
+{/* <React.Fragment>
             {[
                 <Registration
                     key='registration'
@@ -66,8 +71,4 @@ ReactDOM.render(
                 />
 
             ]}
-        </React.Fragment>
-
-    </Provider>,
-    document.getElementById('root')
-);
+        </React.Fragment> */}
