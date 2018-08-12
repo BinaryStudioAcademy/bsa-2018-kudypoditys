@@ -1,5 +1,6 @@
 const user = require('./userRoutes');
 const property = require('./propertyRoutes');
+const auth = require('./authRoutes');
 
 
 //
@@ -9,6 +10,9 @@ const property = require('./propertyRoutes');
 // };
 
 module.exports = function (app) {
+
+    app.use('', auth);
     app.use('/users', user);
-    app.use('/property', property)
+    app.use('/property', property);
+
 };

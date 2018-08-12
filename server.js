@@ -3,7 +3,8 @@ const
     express = require('express'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
-    compression = require('compression');
+    compression = require('compression'),
+    cookieParser = require('cookie-parser');
 // routes = require(`${apiRoot}/testModels`);
 
 
@@ -18,8 +19,9 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
-
+require('./src/api/middleware')(app);//adding jwt and other
 const routes = require('./src/api/routes')(app);
 
 app.listen(port, () => {
