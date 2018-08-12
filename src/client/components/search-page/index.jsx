@@ -1,12 +1,13 @@
 import React from "react";
 import "./index.scss";
-import { Grid, Image } from "semantic-ui-react";
+import { Grid} from "semantic-ui-react";
 import Search from "client/components/search";
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "../property-list-item";
 import { Pagination } from "../pagination";
+import BasicMapWidget from '../basic-map-widget';
 
 export class SearchPage extends React.Component {
     render() {
@@ -47,10 +48,9 @@ export class SearchPage extends React.Component {
                                 rooms={1}
                                 children={0}
                             />
-                            <Image
-                                style={{ marginTop: "3%" }}
-                                src="//c1.staticflickr.com/4/3056/3076562323_99e673ea27.jpg"
-                                size="medium"
+                            <BasicMapWidget
+                                key ="BasicMapWidget"
+                                location ={ {lat:  49.837089,  lng: 24.021161} }
                                 rounded
                                 centered
                             />
