@@ -27,9 +27,9 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Search} />
-                <Route path="/search" component={Search} />
-                <Route path="/property/:id" component={DummyComponent} />
+                <Route exact path="/" component={} />
+                <Route path="/search" component={} />
+                <Route path="/property/:id" component={} />
             </Switch>
         </BrowserRouter>
     </Provider>,
