@@ -16,11 +16,9 @@ jobs:
                   name: Build application Docker image
                   command: |
                       docker build -t app .
-deployment:
-  prod:
-    branch: master
-    commands:
-      - ./deploy.sh
+            - deploy:
+                commands:
+                   - ./deploy.sh
             # If we had
             #- run:
             #    name: Run mongo db
