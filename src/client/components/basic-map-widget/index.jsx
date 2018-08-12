@@ -1,20 +1,5 @@
 import React from "react";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-
-const Map = withScriptjs(withGoogleMap((props) => {
-    const location = props.location
-    return (
-        <GoogleMap
-            defaultZoom={14}
-            center={location}>
-            <Marker
-                position={props.location}
-            >
-            </Marker>
-        </GoogleMap>
-    );
-}
-))
+import Map from './map'
 
 const GOOGLE_MAP_URL=`https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dkzMEoW2UBi7tA1TVAMbrwCUStF_9xw&v=3.exp&libraries=geometry,drawing,places`
 
