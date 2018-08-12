@@ -1,0 +1,8 @@
+kudypoditys:
+  image: "rusinkabohdan/kudypoditys:${CIRCLE_SHA1}"
+nginx:
+  image: "rusinkabohdan/kudypoditys-nginx:stable"
+  links:
+    - kudypoditys
+  ports:
+   - "8000:8000"

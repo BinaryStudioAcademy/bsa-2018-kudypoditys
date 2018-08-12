@@ -1,12 +1,6 @@
 # Pull base image from stock node image.
 FROM node:10.8.0
 
-# Maintainer
-MAINTAINER Rusinka Bohdan <bohdan.rusinka@binary-studio.com>
-
-# Need global gulp
-RUN npm install gulp -g
-
 # Make app directory
 RUN mkdir /opt/kudypoditys
 
