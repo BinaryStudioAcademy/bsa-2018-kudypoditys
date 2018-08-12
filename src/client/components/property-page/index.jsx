@@ -70,9 +70,12 @@ export class PropertyPage extends React.Component {
                     <Slider pics={pics} handleSlideChange={handleSlideChange} slideIndex={0}/>
 
                     <Divider hidden />
-                    <PropertyDescription
-                        id='xyz-1'
-                    />
+                    <div className='property-page__description' style={{width: '100%'}}>
+                        <PropertyDescription
+                            id='xyz-1'
+                            style={{width: '100%'}}
+                        />
+                    </div>
                     <Divider hidden />
 
                     <AvailabilityPanel
