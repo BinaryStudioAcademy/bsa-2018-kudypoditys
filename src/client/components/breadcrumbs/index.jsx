@@ -12,6 +12,7 @@ class Breadcrumbs extends React.Component {
         )
     }
 }
+
 Breadcrumbs.propTypes = {
     sections: PropTypes.arrayOf(
         PropTypes.shape({
