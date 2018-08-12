@@ -17,8 +17,8 @@ jobs:
                   command: |
                       docker build -t app .
             - deploy:
-                commands:
-                   - ./deploy.sh
+                command: |
+                    sh ./deploy.sh
             # If we had
             #- run:
             #    name: Run mongo db
