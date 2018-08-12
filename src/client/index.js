@@ -17,9 +17,9 @@ import AvailabilityPanel from "client/components/availability-panel";
 import RankingBar from "client/components/ranking-bar";
 import PropertyDescription from "client/components/property-description";
 import PropertyListItem from "client/components/property-list-item";
-
+import {PropertyCreationTabs} from 'client/components/property-creation-tabs'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { DummyComponent } from "./helpers/dummyComponent";
+
 
 const store = createStore(reducer, composeWithDevTools());
 
@@ -28,9 +28,10 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={} />
-                <Route path="/search" component={} />
-                <Route path="/property/:id" component={} />
+                <Route exact path="/" component={Registration} />
+                <Route path="/search" component={Registration} />
+                <Route path="/property/:id" component={Registration} />
+                <Route path="/add-property/" component={PropertyCreationTabs} />
             </Switch>
         </BrowserRouter>
     </Provider>,
