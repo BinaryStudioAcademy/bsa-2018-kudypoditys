@@ -1,6 +1,7 @@
 const
+    // apiRoot = '/api',
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require('../orm');
 
 let User = orm.define('user', {
     fullName: {

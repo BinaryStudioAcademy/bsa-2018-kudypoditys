@@ -1,10 +1,12 @@
 const
-    fs = require('fs'),
     path = require('path'),
+    apiRoot = path.resolve(path.join(__dirname, '../.')),
+    fs = require('fs'),
+
     basename = path.basename(__filename),
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`),
-    associations = require(`${apiRoot}/associations`);
+    orm = require(`../orm`),
+    associations = require(`../associations`);
 
 const models = {
     Sequelize,

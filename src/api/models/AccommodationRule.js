@@ -1,6 +1,8 @@
 const
+
+
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require('../orm');
 
 let AccommodationRule = orm.define('accommodationRule', {
     allowPets: {

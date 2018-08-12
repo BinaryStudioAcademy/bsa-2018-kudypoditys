@@ -22,6 +22,7 @@ class Service {
     deleteById(id) {
         return this.repository.deleteById(id);
     }
+
     /*@param
      options (all optional):
         page (default 0): number,
@@ -30,7 +31,7 @@ class Service {
         sortDirection (default 'DESC'): 'DESC' || 'ASC'
     */
     findByPage(options) {
-        const { page, recordsOnPage, sortField, sortDirection } = options;
+        const {page, recordsOnPage, sortField, sortDirection} = options;
         return this.repository.findByPage(page, recordsOnPage, sortField, sortDirection);
     }
 }
