@@ -1,0 +1,50 @@
+.availability-panel-wrp {
+    width: fit-content;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.availability-panel {
+    background-color: rgb(254, 187, 2);
+    padding: 15px 5px 5px 5px;
+    border-radius: 5px;
+}
+
+.availability-panel > p {
+    padding-left: 10px;
+}
+
+.availability-form-midsection > .field {
+    max-width: 250px;
+}
+
+.availability-form-midsection > div {
+    width: fit-content;
+}
+
+.availability-form-midsection {
+    display: flex;
+    flex-direction: row;
+}
+
+.availability-form > .availability-form-midsection > .field {
+    margin: 0 10px;
+    align-self: flex-end;
+}
+
+.availability-form-midsection > .btn-wrp {
+    margin: 1px 10px;
+    align-self: flex-end;
+}
+
+.btn-wrp > button {
+    width: fit-content;
+}
+
+.room-selector {
+    padding-top: 10px;
+}
+
+.room-selector > .field {
+    width: fit-content;
+}
