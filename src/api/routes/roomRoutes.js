@@ -1,21 +1,21 @@
 const express = require('express');
-const user = express.Router();
-const userService = require('../services/user');
+const room = express.Router();
+const roomService = require('../services/room');
 
-user.route('/')
+room.route('/')
     .get((req, res) => {
-        userService.getAllUsers()
-            .then(users => {
-                res.send(users);
+        roomService.getAllRooms()
+            .then(room => {
+                res.send(room);
             })
             .catch((err) => {
                 res.status(404).send(err);
             });
     })
     .post((req, res) => {
-        userService.addUser(req.body)
-            .then(user => {
-                res.send(user);
+        roomService.addRoom(req.body)
+            .then(room => {
+                res.send(room);
             })
             .catch((err) => {
                 res.status(500).send(err);
@@ -23,35 +23,33 @@ user.route('/')
     });
 
 
-
-user.route('/:id')
+room.route('/:id')
     .put((req, res) => {
-        userService.updateUser(req.params.id, req.body)
-            .then(user => {
-                res.send(user);
+        roomService.updateRoom(req.params.id, req.body)
+            .then(room => {
+                res.send(room);
             })
             .catch((err) => {
                 res.status(500).send(err);
             });
     })
     .get((req, res) => {
-        userService.getUserById(req.params.id)
-            .then(user => {
-                res.send(user);
+        roomService.getRoomById(req.params.id)
+            .then(room => {
+                res.send(room);
             })
             .catch((err) => {
                 res.status(404).send(err);
             });
     })
     .delete((req, res) => {
-        userService.deleteUser(req.params.id)
-            .then(user => {
-                res.send(user);
+        roomService.deleteRoom(req.params.id)
+            .then(room => {
+                res.send(room);
             })
             .catch((err) => {
                 res.status(500).send(err);
             });
-
     });
 
-module.exports = user;
+module.exports = room;

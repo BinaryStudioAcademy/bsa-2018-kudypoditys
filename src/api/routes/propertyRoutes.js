@@ -8,8 +8,8 @@ property.route('/')
             .then(property => {
                 res.send(property);
             })
-            .catch(err => {
-                console.log(err);
+            .catch((err) => {
+                res.status(404).send(err);
             });
     })
     .post((req, res) => {
@@ -17,8 +17,8 @@ property.route('/')
             .then(property => {
                 res.send(property);
             })
-            .catch(err => {
-                console.log(err);
+            .catch((err) => {
+                res.status(500).send(err);
             });
     });
 
@@ -29,8 +29,8 @@ property.route('/:id')
             .then(property => {
                 res.send(property);
             })
-            .catch(err => {
-                console.log(err);
+            .catch((err) => {
+                res.status(500).send(err);
             });
     })
     .get((req, res) => {
@@ -38,8 +38,8 @@ property.route('/:id')
             .then(property => {
                 res.send(property);
             })
-            .catch(err => {
-                console.log(err);
+            .catch((err) => {
+                res.status(404).send(err);
             });
     })
     .delete((req, res) => {
@@ -47,8 +47,8 @@ property.route('/:id')
             .then(property => {
                 res.send(property);
             })
-            .catch(err => {
-                console.log(err);
+            .catch((err) => {
+                res.status(500).send(err);
             });
     });
 
