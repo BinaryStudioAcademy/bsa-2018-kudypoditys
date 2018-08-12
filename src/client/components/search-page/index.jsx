@@ -7,16 +7,13 @@ import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "../property-list-item";
 import { Pagination } from "../pagination";
-// import Quickfilter from "../quick-filter";
-//import Pagination from "../quick-filter";
 
 export class SearchPage extends React.Component {
     render() {
         return (
-            <div className="search-page__wrapper" style={{ marginTop: "5%" }}>
+            <div className="search-page__wrapper" style={{ marginTop: "3%" }}>
                 <Grid>
                     <Grid.Column
-                        centered
                         width={16}
                         style={{
                             marginLeft: "2%"
@@ -30,20 +27,15 @@ export class SearchPage extends React.Component {
                                     content: "Ukraine",
                                     href: "#"
                                 },
-                                { key: "Lviv", content: "Lviv", href: "#" },
-                                {
-                                    key: "Awesome Apart",
-                                    content: "Awesome Apart",
-                                    active: true
-                                }
+                                { key: "Lviv", content: "Lviv", href: "#" }
                             ]}
                         />
                     </Grid.Column>
-
                     <Grid.Row>
                         <Grid.Column
-                            left
-                            width={3}
+                            mobile={16}
+                            tablet={16}
+                            computer={3}
                             style={{
                                 marginLeft: "2%"
                             }}
@@ -56,14 +48,17 @@ export class SearchPage extends React.Component {
                                 children={0}
                             />
                             <Image
+                                style={{ marginTop: "3%" }}
                                 src="//c1.staticflickr.com/4/3056/3076562323_99e673ea27.jpg"
-                                size="small"
+                                size="medium"
+                                rounded
+                                centered
                             />
                         </Grid.Column>
-
                         <Grid.Column
-                            right
-                            width={12}
+                            mobile={16}
+                            tablet={16}
+                            computer={12}
                             style={{
                                 marginLeft: "2%"
                             }}
@@ -77,25 +72,6 @@ export class SearchPage extends React.Component {
                             <Pagination pagesCount={10} />
                         </Grid.Column>
                     </Grid.Row>
-
-                    {/* <Grid.Row>
-                        <Grid.Column centered width={10}>
-                            <SearchSummary />
-
-                        </Grid.Column>
-                        <Grid.Column centered width={10}>
-                            <RankingBar key="RankingBar" />
-                        </Grid.Column>
-                        <Grid.Column centered width={10}>
-                            <PropertyListItem
-                                key="PropertyListItem"
-                                id="foundProperty1"
-                            />
-                        </Grid.Column>
-                        <Grid.Column centered width={10}>
-
-                        </Grid.Column>
-                    </Grid.Row> */}
                 </Grid>
             </div>
         );
