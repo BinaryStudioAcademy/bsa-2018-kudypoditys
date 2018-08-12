@@ -1,7 +1,7 @@
 const Repository = require('./generalRepository');
 const roomDiscountModel = require('../models/RoomDiscount');
 
-class RoomDiscountRepository extends Repository  {
+class RoomDiscountRepository extends Repository {
     //todo additional methods for repository
 }
 

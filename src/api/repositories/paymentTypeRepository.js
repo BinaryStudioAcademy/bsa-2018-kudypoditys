@@ -1,7 +1,7 @@
 const Repository = require('./generalRepository');
 const paymentTypeModel = require('../models/PaymentType');
 
-class PaymentTypeRepository extends Repository  {
+class PaymentTypeRepository extends Repository {
     //todo additional methods for repository
 }
 

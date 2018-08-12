@@ -18,7 +18,7 @@ import RankingBar from 'client/components/ranking-bar';
 
 import PropertyDescription from 'client/components/property-description'
 import PropertyPage from 'client/components/property-page'
-
+import PropertyListItem from 'client/components/property-list-item'
 const store = createStore(
     reducer,
     composeWithDevTools()
@@ -39,12 +39,12 @@ ReactDOM.render(
                     adults={1}
                     rooms={1}
                     children={0}
-                    onDestinationChange = { value => console.log(`destination: ${value}`)}
-                    onCheckInChange = { value => console.log(`check-in: ${new Date(value)}`)}
-                    onCheckOutChange = { value => console.log(`check-in: ${new Date(value)}`)}
-                    onAdultsChange = { value => console.log(`adults: ${value}`)}
-                    onChildrenChange = { value => console.log(`children: ${value}`)}
-                    onRoomsChange = { value => console.log(`rooms: ${value}`)}
+                    onDestinationChange={value => console.log(`destination: ${value}`)}
+                    onCheckInChange={value => console.log(`check-in: ${new Date(value)}`)}
+                    onCheckOutChange={value => console.log(`check-in: ${new Date(value)}`)}
+                    onAdultsChange={value => console.log(`adults: ${value}`)}
+                    onChildrenChange={value => console.log(`children: ${value}`)}
+                    onRoomsChange={value => console.log(`rooms: ${value}`)}
                 />,
                 <AvailabilityPanel
                     key="Availability"
