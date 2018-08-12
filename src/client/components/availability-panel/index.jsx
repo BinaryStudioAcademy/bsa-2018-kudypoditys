@@ -5,7 +5,10 @@ import { Header, Button, Form, Dropdown } from 'semantic-ui-react';
 import { DateInput } from 'semantic-ui-calendar-react';
 import moment from 'moment';
 
-class AvailabilityPanel extends React.Component {
+import { mapStateToProps, mapDispatchToProps } from './container';
+import { connect } from 'react-redux';
+
+export class AvailabilityPanel extends React.Component {
 
     generateOptions = (from, to) => {
         let options = [];
@@ -43,7 +46,7 @@ class AvailabilityPanel extends React.Component {
                                 iconPosition='left'
                                 placeholder='Check-in'
                                 name='checkIn'
-                                value={checkIn === 0 ? '' : moment(checkIn).format('MMM D YYYY')}
+                                value={checkIn === null ? '' : moment(checkIn).format('MMM D YYYY')}
                                 onChange={(event, input) => this.props.onCheckInChange(moment(input.value))}
                                 onFocus={this.hideRoomSelector}
                                 onKeyPress={event => event.preventDefault()}
@@ -62,7 +65,7 @@ class AvailabilityPanel extends React.Component {
                                 iconPosition='left'
                                 placeholder='Check-out'
                                 name='checkOut'
-                                value={checkOut === 0 ? '' : moment(checkOut).format('MMM D YYYY')}
+                                value={checkOut === null ? '' : moment(checkOut).format('MMM D YYYY')}
                                 onChange={(event, input) => this.props.onCheckOutChange(moment(input.value))}
                                 onFocus={this.hideRoomSelector}
                                 onKeyPress={event => event.preventDefault()}
@@ -130,11 +133,11 @@ AvailabilityPanel.propTypes = {
 }
 
 AvailabilityPanel.defaultProps = {
-    checkIn: 0,
-    checkOut: 0,
+    checkIn: null,
+    checkOut: null,
     adults: 1,
     children: 0,
     rooms: 1
 }
 
-export default AvailabilityPanel;
+export default connect(mapStateToProps, mapDispatchToProps)(AvailabilityPanel);

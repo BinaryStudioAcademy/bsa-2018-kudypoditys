@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import PropertyListItem from '../src/client/components/property-list-item';
 
 let propertyItemData = {

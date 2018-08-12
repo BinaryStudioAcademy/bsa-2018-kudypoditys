@@ -1,14 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import { Grid, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import './index.scss';
 
 import { Banner } from './item';
+import { mapStateToProps, mapDispatchToProps } from './container';
 
-export default class BannerList extends Component {
+class BannerList extends Component {
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+        this.props.getCityInfos();
     }
 
     onCardClick = (cityId) => {
@@ -63,3 +69,10 @@ BannerList.propTypes = {
         })
     ).isRequired
 };
+
+BannerList.defaultProps = {
+    cityInfos: []
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(BannerList);

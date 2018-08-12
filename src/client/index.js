@@ -4,44 +4,35 @@ import "whatwg-fetch";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
 
 import Search from "client/components/search";
+import Registration from "client/components/registration";
 import LoginComponent from "./components/login";
+
+import SearchSummary from "client/components/search-summary";
+import AvailabilityPanel from "client/components/availability-panel";
+import RankingBar from "client/components/ranking-bar";
+import PropertyDescription from "client/components/property-description";
+import PropertyListItem from "client/components/property-list-item";
+
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { DummyComponent } from "./helpers/dummyComponent";
 
 const store = createStore(reducer, composeWithDevTools());
 
+// TODO: add corresponding pages to routes components
 ReactDOM.render(
     <Provider store={store}>
-        <React.Fragment>
-            {[
-                <Search
-                    key="Search"
-                    view="bar"
-                    checkIn={new Date("Aug 14 2018")}
-                    checkOut={new Date("Aug 16 2018")}
-                    adults={1}
-                    rooms={1}
-                    children={0}
-                    onDestinationChange={value =>
-                        console.log(`destination: ${value}`)
-                    }
-                    onCheckInChange={value =>
-                        console.log(`check-in: ${new Date(value)}`)
-                    }
-                    onCheckOutChange={value =>
-                        console.log(`check-in: ${new Date(value)}`)
-                    }
-                    onAdultsChange={value => console.log(`adults: ${value}`)}
-                    onChildrenChange={value =>
-                        console.log(`children: ${value}`)
-                    }
-                    onRoomsChange={value => console.log(`rooms: ${value}`)}
-                />,
-                <LoginComponent key="Login" />
-            ]}
-        </React.Fragment>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={} />
+                <Route path="/search" component={} />
+                <Route path="/property/:id" component={} />
+            </Switch>
+        </BrowserRouter>
     </Provider>,
     document.getElementById("root")
 );

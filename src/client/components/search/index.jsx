@@ -90,7 +90,7 @@ export class Search extends React.Component {
                         iconPosition='left'
                         placeholder='Check-in'
                         name='checkIn'
-                        value={checkIn === 0 ? '' : moment(checkIn).format('MMM D YYYY')}
+                        value={checkIn === null ? '' : moment(checkIn).format('MMM D YYYY')}
                         onChange={(event, input) => this.props.onCheckInChange(moment(input.value))}
                         onFocus={this.hideRoomSelector}
                         onKeyPress={event => event.preventDefault()}
@@ -103,10 +103,9 @@ export class Search extends React.Component {
                         dateFormat='MMM D YYYY'
                         popupPosition='bottom center'
                         icon='calendar alternate outline'
-                        iconPosition='right'
                         placeholder='Check-out'
                         name='checkOut'
-                        value={checkOut === 0 ? '' : moment(checkOut).format('MMM D YYYY')}
+                        value={checkOut === null ? '' : moment(checkOut).format('MMM D YYYY')}
                         onChange={(event, input) => this.props.onCheckOutChange(moment(input.value))}
                         onFocus={this.hideRoomSelector}
                         onKeyPress={event => event.preventDefault()}
@@ -189,7 +188,7 @@ export class Search extends React.Component {
                         iconPosition='left'
                         placeholder='Check-in'
                         name='checkIn'
-                        value={checkIn === 0 ? '' : moment(checkIn).format('MMM D YYYY')}
+                        value={checkIn === null ? '' : moment(checkIn).format('MMM D YYYY')}
                         onChange={(event, input) => this.props.onCheckInChange(moment(input.value))}
                         onKeyPress={event => event.preventDefault()}
                     />
@@ -207,7 +206,7 @@ export class Search extends React.Component {
                         iconPosition='left'
                         placeholder='Check-out'
                         name='checkOut'
-                        value={checkOut === 0 ? '' : moment(checkOut).format('MMM D YYYY')}
+                        value={checkOut === null ? '' : moment(checkOut).format('MMM D YYYY')}
                         onChange={(event, input) => this.props.onCheckOutChange(moment(input.value))}
                         onKeyPress={event => event.preventDefault()}
                     />
@@ -275,8 +274,8 @@ Search.propTypes = {
 
 Search.defaultProps = {
     destination: '',
-    checkIn: 0,
-    checkOut: 0,
+    checkIn: null,
+    checkOut: null,
     adults: 1,
     children: 0,
     rooms: 1
