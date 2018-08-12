@@ -1,6 +1,6 @@
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require('../orm');
 //PropertyType = require('./PaymentType');
 
 let PropertyCategory = orm.define('propertyCategory', {
