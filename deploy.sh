@@ -10,6 +10,7 @@ JQ="jq --raw-output --exit-status"
 deploy_image() {
 
     docker login -u $DOCKER_USERNAME -p $DOCKER_PASS -e $DOCKER_EMAIL
+    docker tag app rusinkabohdan/kudypoditys:$CIRCLE_SHA1
     docker push rusinkabohdan/kudypoditys:$CIRCLE_SHA1 | cat # workaround progress weirdness
 
 }
