@@ -16,6 +16,10 @@ jobs:
                   name: Build application Docker image
                   command: |
                       docker build -t app .
+            - run:
+                  name: JQ install
+                  command: |
+                      sudo apt-get update; sudo apt-get install jq
             - deploy:
                 command: |
                     sh ./deploy.sh
