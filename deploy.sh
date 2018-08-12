@@ -28,7 +28,8 @@ make_task_def() {
         {
             "containerPort": 5000,
             "hostPort": 5000
-        },
+        }
+        ],
 	    "memory": 200,
 	    "cpu": 10
 	},
