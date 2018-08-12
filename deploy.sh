@@ -24,6 +24,11 @@ make_task_def() {
 	    "name": "kudypoditys",
 	    "image": "rusinkabohdan/kudypoditys:%s",
 	    "essential": true,
+         "portMappings": [
+		{
+		    "containerPort": 5000,
+		    "hostPort": 5000
+		}
 	    "memory": 200,
 	    "cpu": 10
 	},
@@ -65,7 +70,7 @@ register_definition() {
 deploy_cluster() {
 
     host_port=80
-    family="kudypoditys-final-task"
+    family="kudypoditys-small"
     cluster="BSAcluster"
     service="kudypoditys"
 
