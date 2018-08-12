@@ -3,27 +3,34 @@ import './index.scss';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from './container';
-import { Header, Image, Table, Button, Icon } from 'semantic-ui-react'
+import { Table, Button } from 'semantic-ui-react'
+import ModalWindow from './modal.jsx';
 
-class RoomsSummary extends React.Component {
+class RoomsSummaryTable extends React.Component {
 
-    static defaultProps={
-        rooms: [
-            {id:'1', type:'Standart Double room', bedsAmount: 1, bedsType:null, sleeps:2},
-            {id:'2', type:'Carska Room', bedsAmount: 1, bedsType:null, sleeps:1},
-            {id:'3', type:'Obshchajna Room', bedsAmount: 3, bedsType:null, sleeps:4},
-            {id:'4', type:'Polu Obshchajna Room', bedsAmount: 1, bedsType:null, sleeps:3}
-        ]
+    constructor(props){
+        super(props)
+        this.state = {
+            modalOpen:false,
+            modalInfo:'',
+            modalTitle:''
+
+        }
+    }
+    handleItemClick(info, title){
+       this.setState({modalInfo : info})
+       this.setState({modalOpen : true})
+       this.setState({modalTitle : title})
+       console.log(this.state)
+    }
+    onModalClose(){
+        this.setState({modalOpen:false})
+
     }
 
-    handleItemClick(id){
-        console.log(id)
-    }
     showPrice(id){
-        this.props.findPrice(id)
-        console.log(id)
+        this.props.showRoomPrice(id)
     }
-
 
     render() {
         const rooms = this.props.rooms.map((room, key)=>
@@ -32,7 +39,8 @@ class RoomsSummary extends React.Component {
                 {room.sleeps}
             </Table.Cell>
             <Table.Cell className='room-info'>
-                <h4><a className='room-title' onClick={()=>this.handleItemClick(room.id)}>{room.type}</a></h4>
+                <h4><a className='room-title' onClick={()=>this.handleItemClick(room.info, room.type)}>{room.type}</a></h4>
+                <p>{room.beds}</p>
             </Table.Cell>
             <Table.Cell>
                 <Button onClick={()=>this.showPrice(room.id)}>Show prices</Button>
@@ -54,20 +62,27 @@ class RoomsSummary extends React.Component {
                     {rooms}
                 </Table.Body>
             </Table>
+            <ModalWindow
+                modalOpen={this.state.modalOpen}
+                onClose={this.onModalClose.bind(this)}
+                header={this.state.modalTitle}
+                info={this.state.modalInfo}
+            />
           </div>
         )
     }
 }
-    // RoomsSummary.propTypes = {
-    //     boxes: PropTypes.arrayOf(
-    //         PropTypes.shape({
-    //             id: PropTypes.string,
-    //             ischecked: PropTypes.boolean,
-    //             label:PropTypes.string,
-    //             amount: PropTypes.oneOfType([PropTypes.number],[PropTypes.string]),
-    //             type: PropTypes.string
-    //         })
-    //     ),
-    //     OnQuickFilterChange: PropTypes.func
-    // }
-export default connect(mapStateToProps, mapDispatchToProps)(RoomsSummary);
+    RoomsSummaryTable.propTypes = {
+        boxes: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.string,
+                type: PropTypes.string,
+                bedsAmount: PropTypes.number,
+                sleeps:PropTypes.number,
+                beds: PropTypes.string,
+                info: PropTypes.string
+            })
+        ),
+        OnQuickFilterChange: PropTypes.func
+    }
+export default connect(mapStateToProps, mapDispatchToProps)(RoomsSummaryTable);

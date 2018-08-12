@@ -1,19 +1,26 @@
-import React from 'react';
-import './index.scss';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {mapStateToProps, mapDispatchToProps} from './container';
-import { Header, Image, Table, Button, Icon } from 'semantic-ui-react'
+import React from "react";
+import { Modal } from "semantic-ui-react";
 
-class Popup extends React.Component {
+import "./index.scss";
+
+export default class ModalWindow extends React.Component {
     render() {
-      return (
-        <div className='popup'>
-          <div className='popup-inner'>
-            <h1>{this.props.text}</h1>
-          <button onClick={this.props.closePopup}>close me</button>
-          </div>
-        </div>
-      );
+        const {modalOpen, header,info, onClose} = this.props;
+
+        return (
+            <Modal
+                open={modalOpen}
+                size='fullscreen'
+                onClose={onClose}
+                closeIcon
+            >
+                {header ? (
+                    <Modal.Header>{header}</Modal.Header>
+                ) : (
+                    <React.Fragment />
+                )}
+                <Modal.Content>{info}</Modal.Content>
+            </Modal>
+        );
     }
-  }
+}

@@ -1,74 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'whatwg-fetch';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import React from "react";
+import ReactDOM from "react-dom";
+import "whatwg-fetch";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import 'client/styles/global.scss';
-import reducer from 'client/logic/reducer';
+import "client/styles/global.scss";
+import reducer from "client/logic/reducer";
 
-// import Search from 'client/components/search';
-// import Registration from 'client/components/registration';
+import Search from "client/components/search";
+import Registration from "client/components/registration";
 
-// import SearchSummary from 'client/components/search-summary';
+import SearchSummary from "client/components/search-summary";
+import AvailabilityPanel from "client/components/availability-panel";
+import RankingBar from "client/components/ranking-bar";
+import PropertyDescription from "client/components/property-description";
+import PropertyListItem from "client/components/property-list-item";
 
-// import AvailabilityPanel from 'client/components/availability-panel';
-// import RankingBar from 'client/components/ranking-bar';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { DummyComponent } from "./helpers/dummyComponent";
 
-// import PropertyDescription from 'client/components/property-description'
-// import  PropertyListItem  from 'client/components/property-list-item';
-import RoomsSummary from './components/rooms-summary-table';
+const store = createStore(reducer, composeWithDevTools());
 
-const store = createStore(
-    reducer,
-    composeWithDevTools()
-);
-
+// TODO: add corresponding pages to routes components
 ReactDOM.render(
     <Provider store={store}>
-        <RoomsSummary />
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={} />
+                <Route path="/search" component={} />
+                <Route path="/property/:id" component={} />
+            </Switch>
+        </BrowserRouter>
     </Provider>,
-    document.getElementById('root')
+    document.getElementById("root")
 );
-{/* <React.Fragment>
-            {[
-                <Registration
-                    key='registration'
-                />,
-                <Search
-                    key="Search"
-                    view='bar'
-                    checkIn={new Date('Aug 14 2018')}
-                    checkOut={new Date('Aug 16 2018')}
-                    adults={1}
-                    rooms={1}
-                    children={0}
-                    onDestinationChange = { value => console.log(`destination: ${value}`)}
-                    onCheckInChange = { value => console.log(`check-in: ${new Date(value)}`)}
-                    onCheckOutChange = { value => console.log(`check-in: ${new Date(value)}`)}
-                    onAdultsChange = { value => console.log(`adults: ${value}`)}
-                    onChildrenChange = { value => console.log(`children: ${value}`)}
-                    onRoomsChange = { value => console.log(`rooms: ${value}`)}
-                />,
-                <AvailabilityPanel
-                    key="Availability"
-                />,
-
-                <RankingBar
-                    key="RankingBar"
-                />,
-                <PropertyDescription
-                    key="RankingBar"
-                    id='xyz-1'
-                />,
-
-                <SearchSummary/>,
-
-                <PropertyListItem
-                    key="PropertyListItem"
-                    id='foundProperty1'
-                />
-
-            ]}
-        </React.Fragment> */}

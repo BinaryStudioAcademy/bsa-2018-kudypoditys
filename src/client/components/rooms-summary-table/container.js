@@ -1,4 +1,4 @@
-import { getRoomPrice} from 'client/logic/rooms-summary-table/actions';
+import { roomSummaryPriceGet } from 'client/logic/rooms-summary-table/actions';
 
 
 export function mapStateToProps(state) {
@@ -10,8 +10,8 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        findPricePrice(id) {
-            dispatch(getRoomPrice(id));
+        showRoomPrice(id) {
+            dispatch(roomSummaryPriceGet(id));
         }
     }
 }
