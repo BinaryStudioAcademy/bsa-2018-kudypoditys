@@ -21,7 +21,6 @@ class RoomsSummaryTable extends React.Component {
        this.setState({modalInfo : info})
        this.setState({modalOpen : true})
        this.setState({modalTitle : title})
-       console.log(this.state)
     }
     onModalClose(){
         this.setState({modalOpen:false})
