@@ -20,6 +20,7 @@ import PropertyListItem from "client/components/property-list-item";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { DummyComponent } from "./helpers/dummyComponent";
+import BasicMapWidget from './components/basic-map-widget';
 
 const store = createStore(reducer, composeWithDevTools());
 
@@ -31,6 +32,8 @@ ReactDOM.render(
                 <Route exact path="/" component={} />
                 <Route path="/search" component={} />
                 <Route path="/property/:id" component={} />
+                <Route exact path="/map" component={} />
+
             </Switch>
         </BrowserRouter>
     </Provider>,
