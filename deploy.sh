@@ -30,7 +30,7 @@ make_task_def() {
             "hostPort": 5000
         }
         ],
-	    "memory": 200,
+	    "memory": 256,
 	    "cpu": 10
 	},
 	{
@@ -46,7 +46,7 @@ make_task_def() {
 		}
 	    ],
 	    "cpu": 10,
-	    "memory": 200,
+	    "memory": 256,
 	    "essential": true
 	}
     ]'
