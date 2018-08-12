@@ -1,42 +1,34 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
+import { storiesOf } from "@storybook/react";
 
-import Modal from '../src/client/components/modal';
+import Modal from "../src/client/components/modal";
 
-storiesOf('Modal', module)
-    .add('fit content size modal', () => (
-        <Modal
-            trigger={<button>Show modal</button>}
-            >
+storiesOf("Modal", module)
+    .add("fit content size modal", () => (
+        <Modal trigger={<button>Show modal</button>}>
             <h1>Hello modal!!</h1>
         </Modal>
     ))
 
-    .add('fit content size modal with header', () => (
-        <Modal
-            header='Hotel Dolynskyi'
-            trigger={<button>Show modal</button>}
-            >
+    .add("fit content size modal with header", () => (
+        <Modal header="Hotel Dolynskyi" trigger={<button>Show modal</button>}>
             <h1>Hello modal!!</h1>
         </Modal>
     ))
 
-    .add('fullscreen size modal', () => (
-        <Modal
-            size='fullScreen'
-            trigger={<button>Show modal</button>}
-            >
+    .add("fullscreen size modal", () => (
+        <Modal fullScreen trigger={<button>Show modal</button>}>
             <h1>Hello fullscreen modal with close icon!!</h1>
         </Modal>
     ))
 
-    .add('fullscreen size modal with header', () => (
+    .add("fullscreen size modal with header", () => (
         <Modal
-            header='Hotel Dolynskyi'
-            size='fullScreen'
+            header="Hotel Dolynskyi"
+            fullScreen
             trigger={<button>Show modal</button>}
-            >
+        >
             <h1>Hello fullscreen modal with close icon!!</h1>
         </Modal>
     ));
