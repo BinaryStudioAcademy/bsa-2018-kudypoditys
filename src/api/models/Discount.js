@@ -1,7 +1,7 @@
 
 const
     Sequelize = require('sequelize'),
-    orm = require(`${apiRoot}/orm`);
+    orm = require('../orm');
 
 let Discount = orm.define('discount', {
     rate: {
