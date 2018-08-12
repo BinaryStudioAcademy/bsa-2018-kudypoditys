@@ -12,7 +12,7 @@ class RoomsSummary extends React.Component {
             {id:'1', type:'Standart Double room', bedsAmount: 1, bedsType:null, sleeps:2},
             {id:'2', type:'Carska Room', bedsAmount: 1, bedsType:null, sleeps:1},
             {id:'3', type:'Obshchajna Room', bedsAmount: 3, bedsType:null, sleeps:4},
-            {id:'4', type:'Polu Obshajna Room', bedsAmount: 1, bedsType:null, sleeps:3}
+            {id:'4', type:'Polu Obshchajna Room', bedsAmount: 1, bedsType:null, sleeps:3}
         ]
     }
 
@@ -34,7 +34,9 @@ class RoomsSummary extends React.Component {
             <Table.Cell className='room-info'>
                 <h4><a className='room-title' onClick={()=>this.handleItemClick(room.id)}>{room.type}</a></h4>
             </Table.Cell>
-            <Table.Cell><Button onClick={()=>this.showPrice(room.id)}>Show prices    </Button></Table.Cell>
+            <Table.Cell>
+                <Button onClick={()=>this.showPrice(room.id)}>Show prices</Button>
+            </Table.Cell>
         </Table.Row>
     );
 
