@@ -10,16 +10,12 @@ jobs:
             - run:
                   name: Install dependencies
                   command: |
-                      apk add --no-cache py-pip=9.0.0-r1
+                      apk add --no-cache py-pip=9.0.0-r1 jq
                       pip install awscli==1.11.76
             - run:
                   name: Build application Docker image
                   command: |
                       docker build -t app .
-            - run:
-                  name: JQ install
-                  command: |
-                      apt-get update; apt-get install jq
             - deploy:
                 command: |
                     sh ./deploy.sh
