@@ -18,7 +18,6 @@ import PropertyDescription from "client/components/property-description";
 import PropertyListItem from "client/components/property-list-item";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { DummyComponent } from "./helpers/dummyComponent";
 
 const store = createStore(reducer, composeWithDevTools());
 
@@ -27,9 +26,9 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={} />
-                <Route path="/search" component={} />
-                <Route path="/property/:id" component={} />
+                <Route exact path="/" component={Search} />
+                <Route path="/search" component={Search} />
+                <Route path="/property/:id" component={Search} />
             </Switch>
         </BrowserRouter>
     </Provider>,
