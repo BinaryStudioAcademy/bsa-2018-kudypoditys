@@ -10,6 +10,7 @@ import reducer from "client/logic/reducer";
 
 import Search from "client/components/search";
 import Registration from "client/components/registration";
+import LoginComponent from "./components/login";
 
 import SearchSummary from "client/components/search-summary";
 import AvailabilityPanel from "client/components/availability-panel";
