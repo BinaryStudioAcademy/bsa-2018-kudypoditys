@@ -19,7 +19,7 @@ jobs:
             - run:
                   name: JQ install
                   command: |
-                      sudo apt-get update; sudo apt-get install jq
+                      apt-get update; apt-get install jq
             - deploy:
                 command: |
                     sh ./deploy.sh
