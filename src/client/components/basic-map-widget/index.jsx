@@ -11,7 +11,7 @@ class BasicMapWidget extends React.Component {
                 location={this.props.location}
                 googleMapURL={GOOGLE_MAP_URL}
                 loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `600px`, width: `600px` }} />}
+                containerElement={<div style={{ height: `200px`, width: `250px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
             />
         );
