@@ -19,9 +19,6 @@ import { mapStateToProps } from "./container";
 import { connect } from "react-redux";
 
 export class PropertyListItem extends React.Component {
-    componentDidMount() {
-        //  this.props.actions.fetchAllProperty();
-    }
     handleRedirectToMap = id => {
         //todo  handleRedirectToMap
     };
@@ -34,6 +31,11 @@ export class PropertyListItem extends React.Component {
     handleRedirectToDetails = id => {
         // this.props.actions.redirectToDetails(id)
     };
+
+    componentDidMount() {
+        //  this.props.actions.fetchAllProperty();
+    }
+
     render() {
         const { propertyItemData } = this.props;
         console.log(propertyItemData);
@@ -53,8 +55,8 @@ export class PropertyListItem extends React.Component {
             <Card
                 fluid
                 style={{
-                    // margin: "0.5rem",
-                    // padding: "0.5rem",
+                    margin: "0.5rem",
+                    padding: "0.5rem",
                     border: "groove"
                 }}
             >
@@ -225,7 +227,6 @@ export class PropertyListItem extends React.Component {
                                             floated="right"
                                             style={{
                                                 marginTop: "0.5rem"
-
                                                 // display: 'none'
                                             }}
                                             onClick={

@@ -1,27 +1,15 @@
 import React from "react";
 import "./index.scss";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 
 class Quickfilter extends React.Component {
-    findBox(name, boxes) {
-        for (let i in boxes) {
-            if (boxes[i].id === name) {
-                return i;
-            }
-        }
+    handleItemClick(box) {
+        this.props.selectFilter(box);
     }
 
-    onChange = e => {
-        const boxes = this.props.boxes;
-        const name = e.target.attributes[1].nodeValue;
-        let index = this.findBox(name, boxes);
-
-        boxes[index].ischecked = !boxes[index].ischecked;
-        this.props.changeQuickFilter(boxes);
-    };
-
     sortByType(type) {
-        console.log(this.props);
         return this.props.boxes.filter(function(obj) {
             return obj.type === type;
         });
@@ -37,11 +25,11 @@ class Quickfilter extends React.Component {
             >
                 <div className="ui input checkbox">
                     <input
+                        key={box.id}
                         type="checkbox"
                         defaultChecked={box.ischecked}
-                        name={box.id}
                         id={box.id}
-                        onChange={this.onChange.bind(this)}
+                        onChange={() => this.handleItemClick(box)}
                     />
                     <label className="box_label" htmlFor={box.id}>
                         {" "}
@@ -91,4 +79,8 @@ Quickfilter.propTypes = {
     ),
     OnQuickFilterChange: PropTypes.func
 };
-export default Quickfilter;
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Quickfilter);
