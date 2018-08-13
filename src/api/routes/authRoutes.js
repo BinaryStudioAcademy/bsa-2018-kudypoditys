@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 authRouter
     .route("/login")
     .post((req, res) => {
-        const data = req.data;
+        const data = req.body;
         userService
             .login(data.email, data.password)
             .then(token => {
@@ -30,7 +30,7 @@ authRouter.route("/signup").post((req, res) => {
     const data = req.body;
     const hash = bcrypt.hashSync(data.password.trim(), 10);
     const user = {
-        fullName: data.name.trim(),
+        fullName: data.fullName.trim(),
         password: hash,
         email: data.email.trim(),
         phoneNumber: data.phoneNumber.trim(),

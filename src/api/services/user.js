@@ -12,7 +12,7 @@ class UserService extends Service {
     }
 
     addUser(user) {
-        this.repository.userByEmail(user.email).then(data => {
+        return this.repository.getUserByEmail(user.email).then(data => {
             if (data)
                 return Promise.reject(
                     new Error("user with this email already exists")
