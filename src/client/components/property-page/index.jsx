@@ -6,10 +6,7 @@ import {connect} from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from './container';
 import Search from 'client/components/search';
 
-import SearchSummary from 'client/components/search-summary';
-
 import AvailabilityPanel from 'client/components/availability-panel';
-import RankingBar from 'client/components/ranking-bar';
 import Breadcrumbs from 'client/components/breadcrumbs';
 import Slider from 'client/components/slider';
 import PropertyDescription from 'client/components/property-description';
