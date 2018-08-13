@@ -1,3 +1,4 @@
+import propertyPage from 'client/logic/property-page/reducer'
 import { combineReducers } from "redux";
 import search from "client/logic/search/reducer";
 import shownProperties from "client/logic/property-description/reducer";
@@ -22,5 +23,8 @@ export default combineReducers({
     form: formReducer.plugin({
         registration: registration,
         login: login
-    })
+    }),
+    propertyPage
 });
+
+

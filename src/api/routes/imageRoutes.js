@@ -1,21 +1,21 @@
 const express = require('express');
-const user = express.Router();
-const userService = require('../services/user');
+const image = express.Router();
+const imageService = require('../services/image');
 
-user.route('/')
+image.route('/')
     .get((req, res) => {
-        userService.getAllUsers()
-            .then(users => {
-                res.send(users);
+        imageService.getAllImages()
+            .then(image => {
+                res.send(image);
             })
             .catch((err) => {
                 res.status(404).send(err);
             });
     })
     .post((req, res) => {
-        userService.addUser(req.body)
-            .then(user => {
-                res.send(user);
+        imageService.addImage(req.body)
+            .then(image => {
+                res.send(image);
             })
             .catch((err) => {
                 res.status(500).send(err);
@@ -23,35 +23,33 @@ user.route('/')
     });
 
 
-
-user.route('/:id')
+image.route('/:id')
     .put((req, res) => {
-        userService.updateUser(req.params.id, req.body)
-            .then(user => {
-                res.send(user);
+        imageService.updateImage(req.params.id, req.body)
+            .then(image => {
+                res.send(image);
             })
             .catch((err) => {
                 res.status(500).send(err);
             });
     })
     .get((req, res) => {
-        userService.getUserById(req.params.id)
-            .then(user => {
-                res.send(user);
+        imageService.getImageById(req.params.id)
+            .then(image => {
+                res.send(image);
             })
             .catch((err) => {
                 res.status(404).send(err);
             });
     })
     .delete((req, res) => {
-        userService.deleteUser(req.params.id)
-            .then(user => {
-                res.send(user);
+        imageService.deleteImage(req.params.id)
+            .then(image => {
+                res.send(image);
             })
             .catch((err) => {
                 res.status(500).send(err);
             });
-
     });
 
-module.exports = user;
+module.exports = image;
