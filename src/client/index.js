@@ -8,35 +8,25 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
 
-import Slider from 'client/components/slider';
+import Slider from "client/components/slider";
 import Registration from "client/components/registration";
-import { PropertyCreationTabs } from 'client/components/property-creation-tabs'
+import { PropertyCreationTabs } from "client/components/property-creation-tabs";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import PropertyPage from "client/components/property-page";
 
-import PropertyPage from 'client/components/property-page'
-
-    const store = createStore(
-        reducer,
-        composeWithDevTools()
-    );
-
-    setInterval(() => {
-        store.dispatch(increment());
-    }, 1000);
+const store = createStore(reducer, composeWithDevTools());
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
-
                 <Route exact path="/" component={Registration} />
                 <Route path="/search" component={Registration} />
                 <Route path="/property/:id" component={PropertyPage} />
                 <Route path="/add-property/" component={PropertyCreationTabs} />
-
             </Switch>
         </BrowserRouter>
     </Provider>,
-    document.getElementById('root')
+    document.getElementById("root")
 );
