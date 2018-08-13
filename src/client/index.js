@@ -16,12 +16,15 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import PropertyPage from 'client/components/property-page'
 
-const store = createStore(
-    reducer,
-    composeWithDevTools()
-);
+    const store = createStore(
+        reducer,
+        composeWithDevTools()
+    );
 
-// TODO: add corresponding pages to routes components
+    setInterval(() => {
+        store.dispatch(increment());
+    }, 1000);
+
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
@@ -35,5 +38,5 @@ ReactDOM.render(
             </Switch>
         </BrowserRouter>
     </Provider>,
-    document.getElementById("root")
+    document.getElementById('root')
 );
