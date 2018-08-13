@@ -2,6 +2,7 @@ const Service = require("./generalService");
 const userRepository = require("../repositories/userRepository");
 const jwt = require('jsonwebtoken');
 const settings = require('../../../config/settings');
+const bcrypt = require('bcrypt');
 
 class UserService extends Service {
     getAllUsers() {
@@ -13,7 +14,7 @@ class UserService extends Service {
     }
 
     addUser(user) {
-        this.repository.userByEmail(user.email).then(data => {
+        return this.repository.getUserByEmail(user.email).then(data => {
             if (data)
                 return Promise.reject(
                     new Error("user with this email already exists")
@@ -37,12 +38,15 @@ class UserService extends Service {
     }
 
     login(email, password) {
-        return userRepository.getUser(email, password)
+        return userRepository.getUserByEmail(email)
             .then((userFromDb) => {
                 if (!userFromDb) {
                     return Promise.reject(new Error('user was not found'));
                 }
                 const user = userFromDb.dataValues;
+                if (!bcrypt.compareSync(password, user.password)) {
+                    return Promise.reject(new Error('password is invalid'));
+                }
                 const toSign = {
                     id: user.id,
                     fullName: user.fullName
@@ -51,6 +55,8 @@ class UserService extends Service {
                 return jwt.sign(toSign, settings.jwtPrivateKey);
             });
     }
+
+
 }
 
 module.exports = new UserService(userRepository);

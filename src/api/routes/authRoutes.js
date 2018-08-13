@@ -4,11 +4,12 @@ const userService = require("../services/user");
 const jwtMiddleware = require("../middleware/jwt.middleware");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const settings = require('../../../config/settings');
 
 authRouter
     .route("/login")
     .post((req, res) => {
-        const data = req.data;
+        const data = req.body;
         userService
             .login(data.email, data.password)
             .then(token => {
@@ -45,7 +46,7 @@ authRouter.route("/signup").post((req, res) => {
                         id: user.id,
                         fullName: user.fullName
                     },
-                    "My secret"
+                    settings.jwtPrivateKey
                 );
                 res.cookie("jwtToken", token)
                     .status(200)
