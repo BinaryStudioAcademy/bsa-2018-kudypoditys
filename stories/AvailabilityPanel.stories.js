@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import AvailabilityPanel from '../src/client/components/availability-panel/index';
+import { AvailabilityPanel } from '../src/client/components/availability-panel/index';
 
 storiesOf('AvailabilityPanel', module)
     .add('availability panel with custom props', () => (

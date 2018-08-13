@@ -2,11 +2,11 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import SearchComponent from '../src/client/components/search/index';
+import { Search } from '../src/client/components/search/index';
 
 storiesOf('Search', module)
     .add('search bar with values', () => (
-        <SearchComponent
+        <Search
             view='bar'
             destination='Lviv'
             checkIn={new Date('Aug 14 2018')}
@@ -25,7 +25,7 @@ storiesOf('Search', module)
     ))
 
     .add('search panel with empty values', () => (
-        <SearchComponent
+        <Search
             view='panel'
             onDestinationChange = { value => console.log(`destination: ${value}`)}
             onCheckInChange = { value => console.log(`check-in: ${new Date(value)}`)}
