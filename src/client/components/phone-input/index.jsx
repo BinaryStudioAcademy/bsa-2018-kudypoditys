@@ -1,6 +1,5 @@
 import React from "react";
-import { Modal } from "semantic-ui-react";
-import { Dropdown, Input, Flag } from "semantic-ui-react";
+import { Dropdown, Input } from "semantic-ui-react";
 import countries from "./common";
 
 const PhoneInput = () => (
@@ -12,8 +11,8 @@ const PhoneInput = () => (
                     button
                     basic
                     floating
+                    defaultValue="af"
                     options={countries}
-                    defaultValue="page"
                 />
             }
             actionPosition={"left"}

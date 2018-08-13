@@ -1,5 +1,5 @@
 const countries = [
-    { text: "Afghanistan", flag: "af", value: "af", key: "af" },
+    { text: "Afghanistan +293", flag: "af", value: "af", key: "af" },
     { text: "Aland Islands", flag: "ax" },
     { text: "Albania", flag: "al" },
     { text: "Algeria", flag: "dz" },
