@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const settings = require('../../../config/settings');
+const { dateHelpers } = require('../helpers');
 
 const jwtMiddleware = (req, res, next) => {
     const token = req.cookies.jwtToken;
@@ -11,7 +12,15 @@ const jwtMiddleware = (req, res, next) => {
         return;
     }
 
+    const unixSeconds = dateHelpers.toUnixTimeSeconds(new Date());
+    if (user.expiresIn <= unixSeconds) {
+        res.status(401).send('Access token expired');
+        return;
+    }
+
     req.user = user;
+
+
 
     next();
 };

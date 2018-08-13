@@ -27,7 +27,8 @@ function associations(models) {
         ScoreByCategory,
         User,
         UserSetting,
-        VerificationStatus
+        VerificationStatus,
+        UserRefreshToken
     } = models;
 
     // console.log(models);
@@ -42,6 +43,8 @@ function associations(models) {
     // User associations
     User.belongsTo(Role);
     User.belongsTo(UserSetting);
+
+    User.hasOne(UserRefreshToken);
 
     User.hasMany(Reservation);
     User.hasMany(Property);
@@ -157,6 +160,9 @@ function associations(models) {
     // AccommodationRule associations
     AccommodationRule.hasMany(Property);
 
+    // UserRefreshToken associations
+    UserRefreshToken.belongsTo(User);
+
     // Many To Many Associations
     ReviewCategory.belongsToMany(Review, { through: 'scoreByCategory' });
     Review.belongsToMany(ReviewCategory, { through: 'scoreByCategory' });
@@ -178,6 +184,7 @@ function associations(models) {
 
     // Image.findAll({ include: [{ model: Room }] }) :D
     // image = { propertyId: 1, roomId: 1 } room = { id: 1, propertyId: 2 }
+
 
 }
 
