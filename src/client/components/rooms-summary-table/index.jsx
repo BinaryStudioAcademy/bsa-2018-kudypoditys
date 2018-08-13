@@ -18,9 +18,11 @@ class RoomsSummaryTable extends React.Component {
         }
     }
     handleItemClick(info, title){
-       this.setState({modalInfo : info})
-       this.setState({modalOpen : true})
-       this.setState({modalTitle : title})
+        this.setState({
+            modalInfo : info,
+            modalOpen : true,
+            modalTitle : title
+        })
     }
     onModalClose(){
         this.setState({modalOpen:false})
@@ -32,8 +34,8 @@ class RoomsSummaryTable extends React.Component {
     }
 
     render() {
-        const rooms = this.props.rooms.map((room, key)=>
-        <Table.Row key={key}>
+        const rooms = this.props.rooms.map((room)=>
+        <Table.Row key={room.id}>
             <Table.Cell className='room-sleeps'>
                 {room.sleeps}
             </Table.Cell>
