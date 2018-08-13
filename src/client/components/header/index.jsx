@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { Grid, Image, Dropdown, Button, Menu } from 'semantic-ui-react';
+import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
+import {Grid, Image, Dropdown, Button, Menu} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import './index.scss';
-import { mapStateToProps, mapDispatchToProps } from './container';
+import {mapStateToProps, mapDispatchToProps} from './container';
 
 export class MainHeader extends Component {
 

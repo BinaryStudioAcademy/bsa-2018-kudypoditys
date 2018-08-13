@@ -16,17 +16,6 @@ export class Slider extends Component {
         'https://picsum.photos/600/305',
         'https://picsum.photos/600/306'
     ];
-    settings = {
-        dots: true,
-        speed: 300,
-        fade: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        centerMode: true,
-        accessibility: false,
-        appendDots: () => this.picsThumbnails(this.pics),
-        beforeChange: (curr, next) => this.slideIndex = next
-    };
     picsThumbnails = (pics) => {
         return (
             <ul>
@@ -49,6 +38,17 @@ export class Slider extends Component {
             </ul>
         )
     };
+    settings = {
+        dots: true,
+        speed: 300,
+        fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: true,
+        accessibility: false,
+        appendDots: () => this.picsThumbnails(this.pics),
+        beforeChange: (curr, next) => this.slideIndex = next
+    };
 
     render() {
         this.slideIndex = this.props.slideIndex || 0;
@@ -61,7 +61,7 @@ export class Slider extends Component {
                     <Icon name='arrow alternate circle left' size='large'/>
                 </Button>
                     <SliderSlick ref={slider => (this.slider = slider)} {...this.settings}>
-                            {this.pics.map((item, i) =><Image className='slider-c-image' src={item} key={i}/>)}
+                        {this.pics.map((item, i) => <Image className='slider-c-image' src={item} key={i}/>)}
                     </SliderSlick>
                 <Button
                     className='slider-c-button slider-c-next-button'

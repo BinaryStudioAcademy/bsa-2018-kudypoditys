@@ -1,8 +1,8 @@
-import { quickFiltersUpdate } from 'client/logic/quick-filter/actions';
+import {quickFiltersUpdate} from 'client/logic/quick-filter/actions';
 
 
 export function mapStateToProps(state) {
-    const { filters } = state.filters;
+    const {filters} = state.filters;
     return {
         boxes: filters
     };

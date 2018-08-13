@@ -30,11 +30,11 @@ export class PropertyPage extends React.Component {
         ];
 
         const sections = [
-            { key: 'Main', content: 'Main', link: true },
-            { key: 'Country', content: 'Ukraine', link: true },
-            { key: 'Region', content: 'Lviv Region', link: true },
-            { key: 'City', content: 'Lviv', link: true },
-            { key: 'Property', content: 'DREAM Hostel Lviv', active: true }
+            {key: 'Main', content: 'Main', link: true},
+            {key: 'Country', content: 'Ukraine', link: true},
+            {key: 'Region', content: 'Lviv Region', link: true},
+            {key: 'City', content: 'Lviv', link: true},
+            {key: 'Property', content: 'DREAM Hostel Lviv', active: true}
         ];
 
         const handleSlideChange = (index) => {
@@ -47,7 +47,7 @@ export class PropertyPage extends React.Component {
 
 
                 <Segment>
-                    <Breadcrumbs sections={sections} />
+                    <Breadcrumbs sections={sections}/>
                 </Segment>
 
                 <Container text className='property-page__wrapper-left_side'>
@@ -66,14 +66,14 @@ export class PropertyPage extends React.Component {
                     <PropertySummary propertyItemData={propertyItemData}/>
                     <Slider pics={pics} handleSlideChange={handleSlideChange} slideIndex={0}/>
 
-                    <Divider hidden />
+                    <Divider hidden/>
                     <div className='property-page__description' style={{width: '100%'}}>
                         <PropertyDescription
                             id='xyz-1'
                             style={{width: '100%'}}
                         />
                     </div>
-                    <Divider hidden />
+                    <Divider hidden/>
 
                     <AvailabilityPanel
                         style={{width: '100%'}}

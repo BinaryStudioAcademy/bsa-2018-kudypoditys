@@ -159,7 +159,7 @@ export class Search extends React.Component {
                         </div>
                     </div>
                     <div className='btn-wrp'>
-                        <Button type='submit' content='Search' primary />
+                        <Button type='submit' content='Search' primary/>
                     </div>
                 </Form> :
                 <Form className='search search--view-panel' onSubmit={this.handleSubmit}>
@@ -248,7 +248,7 @@ export class Search extends React.Component {
                         </div>
                     </div>
                     <div className='btn-wrp'>
-                        <Button type='submit' content='Search' primary />
+                        <Button type='submit' content='Search' primary/>
                     </div>
                 </Form>
         )
