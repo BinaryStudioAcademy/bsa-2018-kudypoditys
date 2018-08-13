@@ -8,9 +8,11 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
 
+import Slider from 'client/components/slider';
 import Registration from "client/components/registration";
 import {PropertyCreationTabs} from 'client/components/property-creation-tabs'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 
 import PropertyPage from 'client/components/property-page'
 
