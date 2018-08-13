@@ -1,0 +1,30 @@
+.ui.modal {
+    width: fit-content;
+    height: fit-content;
+    max-height: 100%;
+}
+
+.ui.modal.map-widget-modal {
+    width: 100%;
+    height: 100%;
+}
+
+.map-widget-modal-button {
+    color: red;
+}
+
+.ui.modal.map-widget-modal > div.content {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ui.modal > i.close.icon {
+    top: 5px;
+    right: 5px;
+    text-align: center;
+    background-color: white;
+    color: #37383a;
+    border-radius: 15px;
+    z-index: 2;
+}

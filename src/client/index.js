@@ -23,7 +23,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/" component={Registration} />
                 <Route path="/search" component={Registration} />
-                <Route path="/property/:id" component={PropertyPage} />
+                <Route path="/property/:id" component={Registration} />
                 <Route path="/add-property/" component={PropertyCreationTabs} />
             </Switch>
         </BrowserRouter>
