@@ -8,8 +8,8 @@ user.route('/')
             .then(users => {
                 res.send(users);
             })
-            .catch(err => {
-                console.log(err);
+            .catch((err) => {
+                res.status(404).send(err);
             });
     })
     .post((req, res) => {
@@ -17,8 +17,8 @@ user.route('/')
             .then(user => {
                 res.send(user);
             })
-            .catch(err => {
-                console.log(err);
+            .catch((err) => {
+                res.status(500).send(err);
             });
     });
 
@@ -30,8 +30,8 @@ user.route('/:id')
             .then(user => {
                 res.send(user);
             })
-            .catch(err => {
-                console.log(err);
+            .catch((err) => {
+                res.status(500).send(err);
             });
     })
     .get((req, res) => {
@@ -39,8 +39,8 @@ user.route('/:id')
             .then(user => {
                 res.send(user);
             })
-            .catch(err => {
-                console.log(err);
+            .catch((err) => {
+                res.status(404).send(err);
             });
     })
     .delete((req, res) => {
@@ -48,8 +48,8 @@ user.route('/:id')
             .then(user => {
                 res.send(user);
             })
-            .catch(err => {
-                console.log(err);
+            .catch((err) => {
+                res.status(500).send(err);
             });
 
     });
