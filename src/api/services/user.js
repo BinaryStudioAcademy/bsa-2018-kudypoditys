@@ -1,6 +1,7 @@
 const Service = require('./generalService');
 const userRepository = require("../repositories/userRepository");
 const jwt = require('jsonwebtoken');
+const settings = require('../../../config/settings');
 
 class UserService extends Service {
     getAllUsers() {
@@ -35,7 +36,7 @@ class UserService extends Service {
                     fullName: user.fullName
                 };
 
-                return jwt.sign(toSign, 'mySecret');
+                return jwt.sign(toSign, settings.jwtPrivateKey);
             });
     }
 }
