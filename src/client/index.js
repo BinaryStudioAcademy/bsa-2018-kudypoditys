@@ -14,6 +14,8 @@ import {PropertyCreationTabs} from 'client/components/property-creation-tabs'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 
+import PropertyPage from 'client/components/property-page'
+
 const store = createStore(
     reducer,
     composeWithDevTools()
@@ -27,7 +29,7 @@ ReactDOM.render(
 
                 <Route exact path="/" component={Registration} />
                 <Route path="/search" component={Registration} />
-                <Route path="/property/:id" component={Registration} />
+                <Route path="/property/:id" component={PropertyPage} />
                 <Route path="/add-property/" component={PropertyCreationTabs} />
 
             </Switch>

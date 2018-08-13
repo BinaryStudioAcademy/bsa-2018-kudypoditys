@@ -16,7 +16,6 @@ export class Slider extends Component {
         'https://picsum.photos/600/305',
         'https://picsum.photos/600/306'
     ];
-
     settings = {
         dots: true,
         speed: 300,
@@ -28,7 +27,6 @@ export class Slider extends Component {
         appendDots: () => this.picsThumbnails(this.pics),
         beforeChange: (curr, next) => this.slideIndex = next
     };
-
     picsThumbnails = (pics) => {
         return (
             <ul>
@@ -59,7 +57,7 @@ export class Slider extends Component {
                 <Button
                     className='slider-c-button slider-c-prev-button'
                     onClick={() => this.slider.slickPrev()}
-                    >
+                >
                     <Icon name='arrow alternate circle left' size='large'/>
                 </Button>
                     <SliderSlick ref={slider => (this.slider = slider)} {...this.settings}>
