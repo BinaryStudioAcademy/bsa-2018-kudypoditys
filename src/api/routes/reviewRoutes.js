@@ -1,21 +1,21 @@
 const express = require('express');
-const user = express.Router();
-const userService = require('../services/user');
+const review = express.Router();
+const reviewService = require('../services/review');
 
-user.route('/')
+review.route('/')
     .get((req, res) => {
-        userService.getAllUsers()
-            .then(users => {
-                res.send(users);
+        reviewService.getAllReviews()
+            .then(review => {
+                res.send(review);
             })
             .catch((err) => {
                 res.status(404).send(err);
             });
     })
     .post((req, res) => {
-        userService.addUser(req.body)
-            .then(user => {
-                res.send(user);
+        reviewService.addReview(req.body)
+            .then(review => {
+                res.send(review);
             })
             .catch((err) => {
                 res.status(500).send(err);
@@ -23,35 +23,33 @@ user.route('/')
     });
 
 
-
-user.route('/:id')
+review.route('/:id')
     .put((req, res) => {
-        userService.updateUser(req.params.id, req.body)
-            .then(user => {
-                res.send(user);
+        reviewService.updateReview(req.params.id, req.body)
+            .then(review => {
+                res.send(review);
             })
             .catch((err) => {
                 res.status(500).send(err);
             });
     })
     .get((req, res) => {
-        userService.getUserById(req.params.id)
-            .then(user => {
-                res.send(user);
+        reviewService.getReviewById(req.params.id)
+            .then(review => {
+                res.send(review);
             })
             .catch((err) => {
                 res.status(404).send(err);
             });
     })
     .delete((req, res) => {
-        userService.deleteUser(req.params.id)
-            .then(user => {
-                res.send(user);
+        reviewService.deleteReview(req.params.id)
+            .then(review => {
+                res.send(review);
             })
             .catch((err) => {
                 res.status(500).send(err);
             });
-
     });
 
-module.exports = user;
+module.exports = review;
