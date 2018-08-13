@@ -8,6 +8,7 @@ import foundProperties from "client/logic/property-list-item/reducer";
 import registration from "client/logic/registration/reducer";
 import login from "client/logic/login/reducer";
 import { reducer as formReducer } from "redux-form";
+import header from 'client/logic/header/reducer';
 
 import cityInfos from "client/logic/banner-list/reducer";
 
@@ -16,6 +17,7 @@ export default combineReducers({
     sortType,
     cityInfos,
     searchSummary,
+    header,
     shownProperties,
     foundProperties,
     form: formReducer.plugin({
