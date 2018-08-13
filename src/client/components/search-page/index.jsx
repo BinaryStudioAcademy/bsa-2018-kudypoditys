@@ -1,19 +1,23 @@
 import React from "react";
 import "./index.scss";
-import { Grid} from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import Search from "client/components/search";
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "../property-list-item";
 import { Pagination } from "../pagination";
-import BasicMapWidget from '../basic-map-widget';
+import BasicMapWidget from "../basic-map-widget";
+import Header from "../header";
 
-export class SearchPage extends React.Component {
+class SearchPage extends React.Component {
     render() {
         return (
-            <div className="search-page__wrapper" style={{ marginTop: "3%" }}>
+            <div className="search-page__wrapper">
                 <Grid>
+                    <Grid.Column width={16}>
+                        <Header />
+                    </Grid.Column>
                     <Grid.Column
                         width={16}
                         style={{
@@ -22,13 +26,13 @@ export class SearchPage extends React.Component {
                     >
                         <Breadcrumbs
                             sections={[
-                                { key: "Home", content: "Home", href: "#" },
+                                { key: "Home", content: "Home", link: true },
+                                { key: "Store", content: "Store", link: true },
                                 {
-                                    key: "Ukraine",
-                                    content: "Ukraine",
-                                    href: "#"
-                                },
-                                { key: "Lviv", content: "Lviv", href: "#" }
+                                    key: "Shirt",
+                                    content: "T-Shirt",
+                                    active: true
+                                }
                             ]}
                         />
                     </Grid.Column>
@@ -49,8 +53,8 @@ export class SearchPage extends React.Component {
                                 children={0}
                             />
                             <BasicMapWidget
-                                key ="BasicMapWidget"
-                                location ={ {lat:  49.837089,  lng: 24.021161} }
+                                key="BasicMapWidget"
+                                location={{ lat: 49.837089, lng: 24.021161 }}
                                 rounded
                                 centered
                             />
