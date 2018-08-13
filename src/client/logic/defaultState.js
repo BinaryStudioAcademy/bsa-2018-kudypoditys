@@ -48,6 +48,11 @@ const state = {
         activeItem: "price"
     },
 
+    header: {
+        currencies: [],
+        selectedCurrency: 1,
+        currentUser: null
+    },
     shownProperties: {
         "xyz-1": {
             image: `http://cdn.home-designing.com/wp-content/uploads/2016/04/luxury-art-deco-apartment-interior.jpg`,
