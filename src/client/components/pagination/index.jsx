@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pagination as SemanticPagination } from 'semantic-ui-react';
+import {Pagination as SemanticPagination} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 export class Pagination extends React.Component {
