@@ -33,3 +33,4 @@ yarn-error.log*
 .idea/workspace.xml
 
 *.xml
+.idea/jsLibraryMappings.xml
