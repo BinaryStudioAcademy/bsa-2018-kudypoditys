@@ -1,4 +1,4 @@
-const Service = require('./generalService');
+const Service = require("./generalService");
 const userRepository = require("../repositories/userRepository");
 const jwt = require('jsonwebtoken');
 const settings = require('../../../config/settings');
@@ -13,7 +13,19 @@ class UserService extends Service {
     }
 
     addUser(user) {
-        return userRepository.create(user);
+        this.repository.userByEmail(user.email).then(data => {
+            if (data)
+                return Promise.reject(
+                    new Error("user with this email already exists")
+                );
+            else {
+                return this.create(user);
+            }
+        });
+    }
+
+    getUserByEmail(email) {
+        return this.repository.getUserByEmail(email);
     }
 
     updateUser(id, user) {
