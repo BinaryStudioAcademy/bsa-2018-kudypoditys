@@ -20,7 +20,7 @@ import PropertyListItem from "client/components/property-list-item";
 import {PropertyCreationTabs} from 'client/components/property-creation-tabs'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-//import { DummyComponent } from "./helpers/dummyComponent";
+import { DummyComponent } from "./helpers/dummyComponent";
 import BasicMapWidget from './components/basic-map-widget';
 
 
