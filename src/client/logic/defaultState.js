@@ -47,6 +47,12 @@ const state = {
     sortType: {
         activeItem: "price"
     },
+    addProperty: {
+        arrivalFrom: "10:00",
+        arrivalTo: "12:00",
+        departureFrom: "10:00",
+        departureTo: "12:00"
+    },
 
     shownProperties: {
         "xyz-1": {

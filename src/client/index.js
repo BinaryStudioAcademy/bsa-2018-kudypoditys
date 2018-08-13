@@ -19,6 +19,7 @@ import PropertyDescription from "client/components/property-description";
 import PropertyListItem from "client/components/property-list-item";
 import {PropertyCreationTabs} from 'client/components/property-creation-tabs'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import CheckInCheckOut from   'client/components/checkin-checkout'
 
 
 const store = createStore(reducer, composeWithDevTools());
@@ -29,7 +30,7 @@ ReactDOM.render(
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Registration} />
-                <Route path="/search" component={Registration} />
+                <Route path="/search" component={CheckInCheckOut} />
                 <Route path="/property/:id" component={Registration} />
                 <Route path="/add-property/" component={PropertyCreationTabs} />
             </Switch>
