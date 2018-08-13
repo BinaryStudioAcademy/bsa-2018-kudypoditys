@@ -33,8 +33,8 @@ class Quickfilter extends React.Component {
     }
 
     render() {
-        const list = this.props.boxes.map((box)=>
-        <div className="box_item">
+        const list = this.props.boxes.map((box,index)=>
+        <div key = {index} className="box_item">
             <div className="ui input checkbox">
                 <input type="checkbox" defaultChecked={box.ischecked} id={box.name} name={box.name} onChange={this.onChange}/>
                 <label className='box_amount' htmlFor={box.name}>{box.label}</label>

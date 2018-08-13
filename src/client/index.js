@@ -9,6 +9,7 @@ import 'client/styles/global.scss';
 import reducer from 'client/logic/reducer';
 import App from 'client/components/app';
 import { increment } from 'client/logic/counter/actions';
+import Quickfilter from 'client/components/quickfilter'
 
 const store = createStore(
     reducer,
@@ -21,7 +22,7 @@ setInterval(() => {
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Quickfilter />
     </Provider>,
     document.getElementById('root')
 );
