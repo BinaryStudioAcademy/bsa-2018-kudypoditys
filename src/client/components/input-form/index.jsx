@@ -1,6 +1,6 @@
 import React from 'react';
 import { reduxForm ,Field} from 'redux-form';
-import { Input} from 'semantic-ui-react';
+import { Input, Label} from 'semantic-ui-react';
 
 const required = value => (value || typeof value === 'number' ? undefined : 'Required')
 
@@ -34,21 +34,17 @@ const aol = value =>
     ? 'Really? You still use AOL for your email?'
     : undefined
 
-const warn = values => {
-    const warnings = {}
-    if (values.propertyname > 20) {
-        warnings.age = 'Hmm, perhaps a shorter name will be more attractive.'
-    }
-    return warnings
-}
-
-const renderField = ({ input, type, label, meta: { touched, error, warning } }) => (
+const renderField = ({ input, type, label,  className, meta: { touched, error, warning } }) => (
     <React.Fragment>
-        <label> {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}</label>
+       <Label basic className={touched && error ? 'shown' : 'hidden'} color='red' pointing='below'>
+            {touched && error ? error : ''}
+        </Label>
         <Input
             {...input}
             type={type}
             placeholder={label}
+            fluid
+            className={className}
         />
     </React.Fragment>
 )
@@ -57,12 +53,11 @@ const InputForm = (props) => {
     return (
         <form onSubmit={handleSubmit}>
       <Field
-        name="username"
-        type="text"
-        component={renderField}
-        label="Username"
-        validate={[required, maxLength20, minLength2]}
-        warn={alphaNumeric}
+       name="phone"
+       type="number"
+       component={renderField}
+       label="Phone number"
+       validate={[required, phoneNumber]}
       />
         </form>
     )
@@ -70,6 +65,5 @@ const InputForm = (props) => {
 };
 
 export default reduxForm({
-    form: 'InputForm',
-    warn
+    form: 'InputForm'
 })(InputForm)
