@@ -93,11 +93,11 @@ class SearchPage extends React.Component {
                                 /></List.Item>
                                 <List.Item><PropertyListItem
                                     key="PropertyListItem"
-                                    id="foundProperty1"
+                                    id="foundProperty2"
                                 /></List.Item>
                                 <List.Item><PropertyListItem
                                     key="PropertyListItem"
-                                    id="foundProperty1"
+                                    id="foundProperty3"
                                 /></List.Item>
                             </List>
                             <Pagination pagesCount={10} />
