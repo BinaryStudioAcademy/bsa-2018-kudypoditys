@@ -1,3 +1,4 @@
+const auth = require('./authRoutes');
 const user = require("./userRoutes");
 const property = require("./propertyRoutes");
 const message = require("./messageRoutes");

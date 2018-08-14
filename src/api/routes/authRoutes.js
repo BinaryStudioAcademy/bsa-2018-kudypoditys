@@ -52,7 +52,7 @@ authRouter.route("/signup").post((req, res) => {
         .then(() => {
             userService.getUserByEmail(user.email).then(user => {
                 let obj = {
-                    expiresIn: userService.getExpiresDate()
+                    expiresIn: userTokenService.getExpiresDate()
                 };
                 obj.token = jwt.sign(
                     {

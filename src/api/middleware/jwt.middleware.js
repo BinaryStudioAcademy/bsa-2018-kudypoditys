@@ -3,9 +3,8 @@ const settings = require('../../../config/settings');
 const { dateHelpers } = require('../helpers');
 
 const jwtMiddleware = (req, res, next) => {
-    console.log('#### ', req.headers);
-
-    const token = req.cookies.jwtToken;
+    // Bearer <jwt>
+    const token = req.headers.authorization.split(' ')[1];
     let user;
     try {
         user = jwt.verify(token, settings.jwtPrivateKey);
