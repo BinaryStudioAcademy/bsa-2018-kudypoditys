@@ -116,6 +116,12 @@ const state = {
             amount: 658,
             type: "Property Type"
         }
+    ],
+    breadcrumbsSections:[
+        { key: 'Home', content: 'Home', href:'#'},
+        { key: 'Ukraine', content: 'Ukraine', href:'#'},
+        { key: 'Lviv', content: 'Lviv', href:'#'},
+        { key: 'Awesome Apart', content: 'Awesome Apart', active: true},
     ]
 };
 
