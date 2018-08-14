@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.scss';
-import {Divider, Container, Segment} from 'semantic-ui-react';
+import {Divider, Container, Segment, Grid} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from './container';
@@ -12,6 +12,7 @@ import Slider from 'client/components/slider';
 import PropertyDescription from 'client/components/property-description';
 import {PropertySummary} from "../property-summary";
 import {NavigationBar} from "../navigation-bar";
+import BasicMapWidget from "../basic-map-widget";
 
 export class PropertyPage extends React.Component {
 
@@ -57,6 +58,12 @@ export class PropertyPage extends React.Component {
                         adults={1}
                         rooms={1}
                         children={0}
+                    />
+                    <BasicMapWidget
+                        key="BasicMapWidget"
+                        location={{lat: 49.837089, lng: 24.021161}}
+                        rounded
+                        centered
                     />
                 </Container>
 
