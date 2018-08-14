@@ -6,7 +6,6 @@ const GOOGLE_MAP_URL = `https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dkzM
 
 class MapView extends React.Component {
     render() {
-        console.log(this.props);
         return (
             <Map
                 location={this.props.location}

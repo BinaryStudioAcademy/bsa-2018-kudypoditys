@@ -1,4 +1,4 @@
-import propertyPage from 'client/logic/property-page/reducer'
+import propertyPage from "client/logic/property-page/reducer";
 import { combineReducers } from "redux";
 import search from "client/logic/search/reducer";
 import shownProperties from "client/logic/property-description/reducer";
@@ -8,6 +8,8 @@ import foundProperties from "client/logic/property-list-item/reducer";
 import registration from "client/logic/registration/reducer";
 import login from "client/logic/login/reducer";
 import { reducer as formReducer } from "redux-form";
+import quickFilter from "client/logic/quick-filter/reducer";
+import roomSummary from "client/logic/rooms-summary-table/reducer"
 import header from 'client/logic/header/reducer';
 
 import checkInOut from 'client/logic/checkIn-checkOut/reducer'
@@ -26,7 +28,7 @@ export default combineReducers({
         registration: registration,
         login: login
     }),
-    propertyPage
+    propertyPage,
+    quickFilter,
+    roomSummary
 });
-
-

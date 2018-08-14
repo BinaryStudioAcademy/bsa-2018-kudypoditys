@@ -55,7 +55,6 @@ export class PropertyListItem extends React.Component {
             <Card
                 fluid
                 style={{
-                    margin: "0.5rem",
                     padding: "0.5rem",
                     border: "groove"
                 }}
