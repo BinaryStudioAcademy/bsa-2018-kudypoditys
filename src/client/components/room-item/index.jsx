@@ -10,6 +10,9 @@ class RoomItem extends React.Component {
     handleDelete = id => {
         // this.props.actions.delete(id)
     }
+    handleRedirectToNext= id =>{
+        //this.props.actions.redirectToNext(id)
+    }
     render() {
         const { roomData } = this.props
 
@@ -50,14 +53,17 @@ class RoomItem extends React.Component {
                         <Grid.Column width={4}>
                             <Segment secondary >
                                 After you complete registration you'll be able to make changes to your listing before it goes live
-
                    </Segment>
                         </Grid.Column>
                     </Grid>
                 </Container>
                 <div className="footer">
-                    <Button floated='right' content='Continue' primary />
-                    <Button floated='right' content='Add another room' />
+                    <Button floated='right'
+                     content='Continue' primary
+                     onClick={this.handleRedirectToNext}/>
+                    <Button floated='right'
+                     content='Add another room'
+                     onClick={this.handleRedirectToDetails} />
                 </div>
             </Container>)
 
