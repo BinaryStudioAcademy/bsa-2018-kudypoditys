@@ -8,7 +8,7 @@ const PhoneInput = () => (
             action={
                 <Dropdown
                     className="phone-dropdown"
-                    compact="true"
+                    compact={true}
                     left="true"
                     button
                     basic

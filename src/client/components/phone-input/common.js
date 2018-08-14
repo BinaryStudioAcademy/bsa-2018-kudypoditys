@@ -56,13 +56,6 @@ const countries = [
         key: "ai"
     },
     {
-        content: "Antarctica",
-        text: "+672",
-        value: "+672",
-        flag: "aq",
-        key: "aq"
-    },
-    {
         content: "Antigua and Barbuda",
         text: "+1268",
         value: "+1268",
@@ -609,13 +602,6 @@ const countries = [
         key: "gt"
     },
     {
-        content: "Guernsey",
-        text: "+44",
-        value: "+44",
-        flag: "gg",
-        key: "gg"
-    },
-    {
         content: "Guinea",
         text: "+224",
         value: "+224",
@@ -714,13 +700,6 @@ const countries = [
         key: "ie"
     },
     {
-        content: "Isle of Man",
-        text: "+44",
-        value: "+44",
-        flag: "im",
-        key: "im"
-    },
-    {
         content: "Israel",
         text: "+972",
         value: "+972",
@@ -747,13 +726,6 @@ const countries = [
         value: "+81",
         flag: "jp",
         key: "jp"
-    },
-    {
-        content: "Jersey",
-        text: "+44",
-        value: "+44",
-        flag: "je",
-        key: "je"
     },
     {
         content: "Jordan",
@@ -1260,13 +1232,6 @@ const countries = [
         key: "re"
     },
     {
-        content: "Saint Barthelemy",
-        text: "+590",
-        value: "+590",
-        flag: "bl",
-        key: "bl"
-    },
-    {
         content: "Saint Helena, Ascension and Tristan Da Cunha",
         text: "+290",
         value: "+290",
@@ -1286,13 +1251,6 @@ const countries = [
         value: "+1 758",
         flag: "lc",
         key: "lc"
-    },
-    {
-        content: "Saint Martin",
-        text: "+590",
-        value: "+590",
-        flag: "mf",
-        key: "mf"
     },
     {
         content: "Saint Pierre and Miquelon",
