@@ -1,17 +1,30 @@
-import { REGISTER_SUCCESS } from "./actionTypes";
+import {
+    REGISTER_SUBMIT,
+    REGISTER_SUCCESS,
+    REGISTER_FAILURE
+} from "./actionTypes";
 import api from "../.././helpers/api";
 
 export function registerSubmit(payload) {
     // Saga
     api.sendRequest("/signup", "post", payload)
         .then(response => {
-            console.log("DATA: " + JSON.stringify(response.data));
+            return {
+                type: REGISTER_SUCCESS,
+                payload: {
+                    error: false,
+                    message: "Successfully signed up!",
+                    jwtToken: response.data
+                }
+            };
         })
         .catch(err => {
-            console.log(JSON.stringify(err.data));
+            return {
+                type: REGISTER_FAILURE,
+                payload: {
+                    error: true,
+                    message: err.data
+                }
+            };
         });
-
-    return {
-        type: REGISTER_SUCCESS
-    };
 }
