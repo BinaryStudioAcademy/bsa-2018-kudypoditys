@@ -11,7 +11,8 @@ import { reducer as formReducer } from "redux-form";
 import header from 'client/logic/header/reducer';
 
 import cityInfos from "client/logic/banner-list/reducer";
-
+// import quickFilters from "client/logic/quick-filter/reducer";
+// import quickFilters from "client/logic/quick-filter/reducer";
 export default combineReducers({
     search,
     sortType,
@@ -24,7 +25,8 @@ export default combineReducers({
         registration: registration,
         login: login
     }),
-    propertyPage
+    propertyPage,
+    // quickFilters
 });
 
 

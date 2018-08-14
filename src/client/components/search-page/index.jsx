@@ -8,7 +8,7 @@ import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "../property-list-item";
 import { Pagination } from "../pagination";
 import BasicMapWidget from '../basic-map-widget';
-
+import Quickfilter from 'client/components/quick-filter'
 export class SearchPage extends React.Component {
     render() {
         return (
@@ -54,6 +54,8 @@ export class SearchPage extends React.Component {
                                 rounded
                                 centered
                             />
+
+                            {/*<Quickfilter/>*/}
                         </Grid.Column>
                         <Grid.Column
                             mobile={16}

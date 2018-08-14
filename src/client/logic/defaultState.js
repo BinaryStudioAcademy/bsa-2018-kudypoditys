@@ -86,6 +86,13 @@ const state = {
         shownFrom: 1,
         shownTo: 5
     },
+    sections: [
+        { key: 'Main', content: 'Main', link: true },
+        { key: 'Country', content: 'Ukraine', link: true },
+        { key: 'Region', content: 'Lviv Region', link: true },
+        { key: 'City', content: 'Lviv', link: true },
+        { key: 'Property', content: 'DREAM Hostel Lviv', active: true }
+    ],
 
     cityInfos: []
 };
