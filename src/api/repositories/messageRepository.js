@@ -1,7 +1,7 @@
 const Repository = require('./generalRepository');
 const messageModel = require('../models/Message');
 
-class MessageRepository extends Repository  {
+class MessageRepository extends Repository {
     //todo additional methods for repository
 }
 

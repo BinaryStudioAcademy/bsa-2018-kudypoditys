@@ -1,73 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'whatwg-fetch';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import React from "react";
+import ReactDOM from "react-dom";
+import "whatwg-fetch";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import 'client/styles/global.scss';
-import reducer from 'client/logic/reducer';
+import "client/styles/global.scss";
+import reducer from "client/logic/reducer";
 
-import Search from 'client/components/search';
-import Registration from 'client/components/registration';
+import Slider from "client/components/slider";
+import Registration from "client/components/registration";
+import { PropertyCreationTabs } from "client/components/property-creation-tabs";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import CheckInCheckOut from 'client/components/checkin-checkout'
+import {HomePage} from 'client/components/home-page'
+import PropertyPage from "client/components/property-page";
+import Search from "client/components/search";
+import Login from "client/components/login";
+import SearchPage from "client/components/search-page";
+import {NotFoundPage} from "client/components/404-page";
 
-import SearchSummary from 'client/components/search-summary';
-
-import AvailabilityPanel from 'client/components/availability-panel';
-import RankingBar from 'client/components/ranking-bar';
-
-import PropertyDescription from 'client/components/property-description'
-import  PropertyListItem  from 'client/components/property-list-item';
-
-const store = createStore(
-    reducer,
-    composeWithDevTools()
-);
+const store = createStore(reducer, composeWithDevTools());
 
 ReactDOM.render(
     <Provider store={store}>
-        <React.Fragment>
-            {[
-                <Registration
-                    key='registration'
-                />,
-                <Search
-                    key="Search"
-                    view='bar'
-                    checkIn={new Date('Aug 14 2018')}
-                    checkOut={new Date('Aug 16 2018')}
-                    adults={1}
-                    rooms={1}
-                    children={0}
-                    onDestinationChange = { value => console.log(`destination: ${value}`)}
-                    onCheckInChange = { value => console.log(`check-in: ${new Date(value)}`)}
-                    onCheckOutChange = { value => console.log(`check-in: ${new Date(value)}`)}
-                    onAdultsChange = { value => console.log(`adults: ${value}`)}
-                    onChildrenChange = { value => console.log(`children: ${value}`)}
-                    onRoomsChange = { value => console.log(`rooms: ${value}`)}
-                />,
-                <AvailabilityPanel
-                    key="Availability"
-                />,
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={HomePage}/>
+                <Route exact path="/reg" component={Registration}/>
+                <Route exact path="/log" component={Login}/>
+                <Route path="/search-page" component={SearchPage}/>
+                <Route path="/property-page" component={PropertyPage}/>
+                <Route path="/add-property/" component={PropertyCreationTabs} />
+                <Route path="/404" component={NotFoundPage}/>
 
-                <RankingBar
-                    key="RankingBar"
-                />,
-                <PropertyDescription
-                    key="RankingBar"
-                    id='xyz-1'
-                />,
-
-                <SearchSummary/>,
-
-                <PropertyListItem
-                    key="PropertyListItem"
-                    id='foundProperty1'
-                />
-
-            ]}
-        </React.Fragment>
-
+            </Switch>
+        </BrowserRouter>
     </Provider>,
-    document.getElementById('root')
+    document.getElementById("root")
 );

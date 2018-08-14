@@ -3,10 +3,10 @@ import { Field, reduxForm } from 'redux-form';
 import { Button, Input, Label, Icon, Message } from 'semantic-ui-react';
 import 'client/components/registration/index.scss';
 
-const renderField = ({ input, type, icon, label, className, meta: { touched, error } }) => (
+const renderField = ({input, type, icon, label, className, meta: {touched, error}}) => (
     <React.Fragment>
-        <Label basic className={ touched && error ? 'shown' : 'hidden'} color='red' pointing='below'>
-            { touched && error ? error : '' }
+        <Label basic className={touched && error ? 'shown' : 'hidden'} color='red' pointing='below'>
+            {touched && error ? error : ''}
         </Label>
         <Input
             {...input}
@@ -80,7 +80,7 @@ const RegistrationForm = (props) => {
                 disabled={submitting}
             >
                 <Icon name='check'/>
-                    Submit
+                Submit
             </Button>
         </form>
     );
