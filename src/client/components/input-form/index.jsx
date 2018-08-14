@@ -1,6 +1,6 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import renderField from './inputForm';
+import FormTextInput from './formTextInput';
 import { required, phoneNumber } from './../../regexValidationService'
 
 
@@ -12,7 +12,7 @@ const InputForm = (props) => {
             type="number"
             label="Phone number"
             validate={[required, phoneNumber]}
-            component={renderField}
+            component={FormTextInput}
         />
     )
 };
