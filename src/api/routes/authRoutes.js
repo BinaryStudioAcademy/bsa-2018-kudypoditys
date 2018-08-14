@@ -27,12 +27,15 @@ authRouter.route("/logout").get((req, res) => {
 authRouter.route("/signup").post((req, res) => {
     const data = req.body;
     const hash = bcrypt.hashSync(data.password.trim(), 10);
+    let avatar = data.avatar;
+    if (avatar) avatar = avatar.trim();
+    else avatar = "";
     const user = {
         fullName: data.fullName.trim(),
         password: hash,
         email: data.email.trim(),
         phoneNumber: data.phoneNumber.trim(),
-        avatar: data.avatar.trim()
+        avatar: avatar
     };
     userService
         .addUser(user)
