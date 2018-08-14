@@ -19,7 +19,7 @@ import Search from "client/components/search";
 import Login from "client/components/login";
 import SearchPage from "client/components/search-page";
 import {NotFoundPage} from "client/components/404-page";
-// import RoomsSummaryTable from "client/components/rooms-summary-table"
+
 const store = createStore(reducer, composeWithDevTools());
 
 ReactDOM.render(
@@ -33,7 +33,7 @@ ReactDOM.render(
                 <Route path="/property-page" component={PropertyPage}/>
                 <Route path="/add-property/" component={PropertyCreationTabs} />
                 <Route path="/404" component={NotFoundPage}/>
-               
+
             </Switch>
         </BrowserRouter>
     </Provider>,

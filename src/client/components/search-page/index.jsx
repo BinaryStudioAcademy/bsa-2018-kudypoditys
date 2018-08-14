@@ -1,26 +1,37 @@
 import React from "react";
 import "./index.scss";
-import { Grid} from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import Search from "client/components/search";
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "../property-list-item";
 import { Pagination } from "../pagination";
-import BasicMapWidget from '../basic-map-widget';
-import Quickfilter from 'client/components/quick-filter'
-export class SearchPage extends React.Component {
+import BasicMapWidget from "../basic-map-widget";
+import Header from "../header";
+import { Breadcrumb } from "semantic-ui-react";
+import QuickFilter from "../quick-filter";
+import { connect } from "react-redux";
+import { mapStateToProps } from "./container";
+
+class SearchPage extends React.Component {
     render() {
         return (
-            <div className="search-page__wrapper" style={{ marginTop: "3%" }}>
+            <div className="search-page__wrapper">
                 <Grid>
+                    <Grid.Column width={16}>
+                        <Header />
+                    </Grid.Column>
                     <Grid.Column
                         width={16}
                         style={{
-                            marginLeft: "2%"
+                            marginLeft: "2%",
+                            paddingTop: "0%",
+                            paddingBottom: "0%"
                         }}
                     >
-                        <Breadcrumbs
+                        <Breadcrumb
+                            icon="right angle"
                             sections={[
                                 { key: "Home", content: "Home", href: "#" },
                                 {
@@ -48,14 +59,22 @@ export class SearchPage extends React.Component {
                                 rooms={1}
                                 children={0}
                             />
-                            <BasicMapWidget
-                                key ="BasicMapWidget"
-                                location ={ {lat:  49.837089,  lng: 24.021161} }
-                                rounded
-                                centered
-                            />
-
-                            {/*<Quickfilter/>*/}
+                            <QuickFilter />
+                            <div
+                                style={{
+                                    marginTop: "4%"
+                                }}
+                            >
+                                <BasicMapWidget
+                                    key="BasicMapWidget"
+                                    location={{
+                                        lat: 49.837089,
+                                        lng: 24.021161
+                                    }}
+                                    rounded
+                                    centered
+                                />
+                            </div>
                         </Grid.Column>
                         <Grid.Column
                             mobile={16}
@@ -79,4 +98,5 @@ export class SearchPage extends React.Component {
         );
     }
 }
-export default SearchPage;
+
+export default connect(mapStateToProps)(SearchPage);
