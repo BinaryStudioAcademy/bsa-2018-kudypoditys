@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const settings = require('../../../config/settings');
 const bcrypt = require('bcrypt');
 const { dateHelpers } = require('../helpers');
-const userRefreshTokenService = require('./userRefreshToken');
+const userTokenService = require('./userToken');
 
 class UserService extends Service {
     getAllUsers() {
@@ -50,9 +50,9 @@ class UserService extends Service {
                 return Promise.reject(new Error('password is invalid'));
             }
 
-            return userRefreshTokenService.generateForUser(user.id).then((refreshToken) => {
+            return userTokenService.generateForUser(user.id).then((refreshToken) => {
                 return {
-                    ...this.generateAccessToken(user.id),
+                    ...userTokenService.generateAccessToken(user.id),
                     refreshToken: refreshToken
                 };
             });
@@ -60,24 +60,6 @@ class UserService extends Service {
         });
     }
 
-    generateAccessToken(userId) {
-        const expiresDate = this.getExpiresDate();
-        const toSign = {
-            id: userId,
-            expiresIn: expiresDate
-        };
-
-        return {
-            token: jwt.sign(toSign, settings.jwtPrivateKey),
-            expiresIn: expiresDate
-        }
-
-    }
-
-    getExpiresDate() {
-        const secondsFromUnixEpoch = dateHelpers.toUnixTimeSeconds(new Date());
-        return secondsFromUnixEpoch + settings.accessTokenLife;
-    }
 }
 
 module.exports = new UserService(userRepository);
