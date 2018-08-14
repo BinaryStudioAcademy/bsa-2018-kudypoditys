@@ -8,7 +8,7 @@ import './index.scss';
 import { Banner } from './item';
 import { mapStateToProps, mapDispatchToProps } from './container';
 
-class BannerList extends Component {
+export class BannerList extends Component {
     constructor(props) {
         super(props);
     }
@@ -74,5 +74,6 @@ BannerList.defaultProps = {
     cityInfos: []
 };
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(BannerList);
+
+
