@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import { Grid } from "semantic-ui-react";
+import { Grid, List } from "semantic-ui-react";
 import Search from "client/components/search";
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
@@ -86,10 +86,20 @@ class SearchPage extends React.Component {
                         >
                             <SearchSummary />
                             <RankingBar key="RankingBar" />
-                            <PropertyListItem
-                                key="PropertyListItem"
-                                id="foundProperty1"
-                            />
+                            <List>
+                                <List.Item><PropertyListItem
+                                    key="PropertyListItem"
+                                    id="foundProperty1"
+                                /></List.Item>
+                                <List.Item><PropertyListItem
+                                    key="PropertyListItem"
+                                    id="foundProperty1"
+                                /></List.Item>
+                                <List.Item><PropertyListItem
+                                    key="PropertyListItem"
+                                    id="foundProperty1"
+                                /></List.Item>
+                            </List>
                             <Pagination pagesCount={10} />
                         </Grid.Column>
                     </Grid.Row>
