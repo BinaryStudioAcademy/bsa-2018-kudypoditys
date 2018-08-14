@@ -1,53 +1,66 @@
 import React from 'react';
-import { Segment, Grid, Button, Header, Container } from 'semantic-ui-react';
-
+import { Segment, Grid, Button, Header, Container, Menu } from 'semantic-ui-react';
+import './index.scss'
 
 class RoomItem extends React.Component {
 
+    handleRedirectToDetails = id => {
+        // this.props.actions.redirectToDetails(id)
+    }
+    handleDelete = id => {
+        // this.props.actions.delete(id)
+    }
     render() {
-        const {roomData}=this.props
+        const { roomData } = this.props
+
 
         return (
             <Container
-            style={{
-                margin: "15px",
-                padding: "15px"
-            }} >
-            <Header as='h2'>
-                Layout and Pricing
+                style={{
+                    margin: "15px",
+                    padding: "15px"
+                }} >
+                <Header as='h2'>
+                    Layout and Pricing
             <Header.Subheader>Tell us about your first room. After entering all the necessary info,
                  you can fill in the details of your other rooms.</Header.Subheader>
-            </Header>
-            <Container>
-            <Segment clearing style={{ marginRight: "10.5rem" }}>{roomData.title}
-            Number of this type: {roomData.amount}
-            <Button floated='right' basic>Edit</Button>
-            <Button floated='right' basic >Delete</Button>
-            </Segment>
-            <Segment secondary >
-            After you complete registration you'll be able to make changes to your listing before it goes live
+                </Header>
+                <Container>
+                    <Grid columns='equal'>
+                        <Grid.Column width={12}>
+                            <Segment>
+                                <Grid columns={3} centered >
+                                    <Grid.Column>
+                                        {roomData.title}
+                                    </Grid.Column>
+                                    <Grid.Column>
+                                        Number of this type: {roomData.amount}
+                                    </Grid.Column>
+                                    <Grid.Column >
+                                        <Button floated='right'
+                                            basic color="blue"
+                                            onClick={this.handleRedirectToDetails}>Edit</Button>
+                                        <Button floated='right'
+                                            basic color="blue"
+                                            onClick={this.handleDelete}>Delete</Button>
+                                    </Grid.Column>
+                                </Grid>
+                            </Segment>
+                        </Grid.Column>
+                        <Grid.Column width={4}>
+                            <Segment secondary >
+                                After you complete registration you'll be able to make changes to your listing before it goes live
 
-              </Segment>
-              </Container>
-
-                <Button  floated='right' content='Add another room' />
-                <Button  floated='right' content='Continue' primary />
+                   </Segment>
+                        </Grid.Column>
+                    </Grid>
+                </Container>
+                <div className="footer">
+                    <Button floated='right' content='Continue' primary />
+                    <Button floated='right' content='Add another room' />
+                </div>
             </Container>)
 
     }
 }
 export default RoomItem
-
-// <Grid>
-// <Grid columns='equal'>
-//     <Grid.Column width={10}>
-//     </Grid.Column>
-//     <Grid.Column >
-//     </Grid.Column>
-// </Grid>
-// </Grid>
-{/* <Rail position='right'>
-                <Sticky context={contextRef}>
-                  <Header as='h3'>After you complete registration you'll be able to make changes to your listing before it goes live.</Header>
-                </Sticky>
-              </Rail> */}
