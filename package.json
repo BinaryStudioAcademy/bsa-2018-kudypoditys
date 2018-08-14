@@ -111,11 +111,9 @@
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web"
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/BinaryStudioAcademy/bsa-2018-kudypoditys.git"
     },
     "moduleFileExtensions": [
       "web.js",

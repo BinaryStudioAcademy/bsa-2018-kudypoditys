@@ -1,11 +1,8 @@
-const jwtMiddleware = require('./jwt.middleware');
-const { unless } = require('../helpers');
+const jwtMiddleware = require("./jwt.middleware");
+const { unless } = require("../helpers");
 
-const IGNORE_ROUTES = [
-    '/login',
-    '/signup'
-];
+const IGNORE_ROUTES = ["/login", "/signup"];
 
-module.exports = (app) => {
+module.exports = app => {
     app.use(unless(IGNORE_ROUTES, jwtMiddleware));
 };

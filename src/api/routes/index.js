@@ -11,7 +11,6 @@ const favorite = require("./favoriteRoutes");
 const discount = require("./discountRoutes");
 const roomDiscount = require("./roomDiscountRoutes");
 const bedInRoom = require("./bedInRoomRoutes");
-const auth = require('./authRoutes');
 //
 // module.exports = app => {
 //     app.use('/user', user);
@@ -31,7 +30,7 @@ module.exports = function (app) {
     app.use("/api/image", image);
     app.use("/api/favorite", favorite);
     app.use("/api/discount", discount);
-    app.use("/api/room-discount", discount);
+    app.use("/api/room-discount", roomDiscount);
     app.use("/api/bed-in-room", bedInRoom);
 
 };
