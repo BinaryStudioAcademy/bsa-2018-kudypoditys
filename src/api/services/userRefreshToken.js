@@ -13,7 +13,7 @@ class UserRefreshTokenService extends Service {
     }
 
     generateForUser(userId) {
-        const refreshToken = uuidv1().replace(/-/g, '');
+        const refreshToken = jwt.sign({ userId }, settings.jwtRefreshTokenPrivateKey);
         const currDate = dateHelpers.toUnixTimeSeconds(new Date());
         return this.repository.upsert({
             refreshToken: refreshToken,

@@ -49,22 +49,29 @@ class UserService extends Service {
             if (!bcrypt.compareSync(password, user.password)) {
                 return Promise.reject(new Error('password is invalid'));
             }
-            const expiresDate = this.getExpiresDate();
-            const toSign = {
-                id: user.id,
-                fullName: user.fullName,
-                expiresIn: expiresDate
-            };
 
             return userRefreshTokenService.generateForUser(user.id).then((refreshToken) => {
                 return {
-                    token: jwt.sign(toSign, settings.jwtPrivateKey),
-                    expiresIn: expiresDate,
+                    ...this.generateAccessToken(user.id),
                     refreshToken: refreshToken
                 };
             });
 
         });
+    }
+
+    generateAccessToken(userId) {
+        const expiresDate = this.getExpiresDate();
+        const toSign = {
+            id: userId,
+            expiresIn: expiresDate
+        };
+
+        return {
+            token: jwt.sign(toSign, settings.jwtPrivateKey),
+            expiresIn: expiresDate
+        }
+
     }
 
     getExpiresDate() {
