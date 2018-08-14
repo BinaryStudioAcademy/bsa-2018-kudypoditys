@@ -1,6 +1,10 @@
 const Service = require("./generalService");
 const userRepository = require("../repositories/userRepository");
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
+const settings = require('../../../config/settings');
+const bcrypt = require('bcrypt');
+const { dateHelpers } = require('../helpers');
+const userRefreshTokenService = require('./userRefreshToken');
 
 class UserService extends Service {
     getAllUsers() {
@@ -36,18 +40,36 @@ class UserService extends Service {
     }
 
     login(email, password) {
-        return userRepository.getUser(email, password).then(userFromDb => {
+        return userRepository.getUserByEmail(email).then((userFromDb) => {
             if (!userFromDb) {
-                return Promise.reject(new Error("user was not found"));
+                return Promise.reject(new Error('user was not found'));
             }
             const user = userFromDb.dataValues;
+
+            if (!bcrypt.compareSync(password, user.password)) {
+                return Promise.reject(new Error('password is invalid'));
+            }
+            const expiresDate = this.getExpiresDate();
             const toSign = {
                 id: user.id,
-                fullName: user.fullName
+                fullName: user.fullName,
+                expiresIn: expiresDate
             };
 
-            return jwt.sign(toSign, "mySecret");
+            return userRefreshTokenService.generateForUser(user.id).then((refreshToken) => {
+                return {
+                    token: jwt.sign(toSign, settings.jwtPrivateKey),
+                    expiresIn: expiresDate,
+                    refreshToken: refreshToken
+                };
+            });
+
         });
+    }
+
+    getExpiresDate() {
+        const secondsFromUnixEpoch = dateHelpers.toUnixTimeSeconds(new Date());
+        return secondsFromUnixEpoch + settings.accessTokenLife;
     }
 }
 

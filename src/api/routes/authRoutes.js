@@ -4,23 +4,22 @@ const userService = require("../services/user");
 const jwtMiddleware = require("../middleware/jwt.middleware");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const settings = require('../../../config/settings');
 
-authRouter
-    .route("/login")
+authRouter.route("/login")
     .post((req, res) => {
         const data = req.body;
         userService
             .login(data.email, data.password)
-            .then(token => {
-                res.cookie("jwtToken", token)
+            .then(obj => {
+                res.cookie("jwtToken", obj.token)
                     .status(200)
-                    .send(true);
+                    .send(obj);
             })
             .catch(err => {
                 res.status(400).send(err.message);
             });
-    })
-    .get(jwtMiddleware);
+    });
 
 authRouter.route("/logout").get((req, res) => {
     res.clearCookie("jwtToken").send(true);
@@ -45,7 +44,7 @@ authRouter.route("/signup").post((req, res) => {
                         id: user.id,
                         fullName: user.fullName
                     },
-                    "My secret"
+                    settings.jwtPrivateKey
                 );
                 res.cookie("jwtToken", token)
                     .status(200)
