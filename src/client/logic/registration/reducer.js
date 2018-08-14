@@ -1,4 +1,5 @@
 import {
+    REGISTER_FAILURE,
     REGISTER_SUCCESS
 } from './actionTypes';
 
@@ -7,7 +8,13 @@ export default (state, action) => {
         case REGISTER_SUCCESS: {
             return {
                 ...state,
-                registerSuccessMessage: 'Registration success!'
+                ...action.payload
+            }
+        }
+        case REGISTER_FAILURE: {
+            return {
+                ...state,
+                ...action.payload
             }
         }
         default: {
