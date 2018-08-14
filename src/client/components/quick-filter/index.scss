@@ -1,5 +1,5 @@
-.box{
-    margin: 10px;
+.box {
+    margin-top: 4%;
     width: 250px;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -7,42 +7,41 @@
     box-shadow: #ccc 1px 2px 3px;
 }
 
-.box_header{
+.box_header {
     color: #fff;
     padding: 5px 10px;
     background-color: #003580;
 }
 
-.box_item{
+.box_item {
     padding: 3px 10px;
 }
 .box .box_item_checked * {
     padding: 0 10px 3px 10px;
     font-weight: bold;
-
 }
-.box  .box_item_checked label{
+.box .box_item_checked label {
     cursor: pointer;
 }
 
-.box_group{
+.box_group {
     font-size: 1rem;
     color: #484848;
-    margin-bottom:0;
+    margin-bottom: 0;
     padding: 3px 10px 0px 10px;
     font-weight: bold;
 }
 
-.ui .checkbox label{
+.ui .checkbox label {
     font-size: 0.9rem;
     cursor: pointer;
 }
-.box .box_item .box_label{
+.box .box_item .box_label {
     cursor: pointer;
     margin-top: -3px;
 }
 
-.box_amount{
+.box_amount {
     margin: 1px 0 0 0;
     font-size: 0.9rem;
     float: right;
