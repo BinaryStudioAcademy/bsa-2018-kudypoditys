@@ -14,7 +14,7 @@ const PhoneInput = () => (
                     basic
                     floating
                     selection
-                    defaultValue="af"
+                    defaultValue="+380"
                     options={countries}
                 />
             }
