@@ -26,10 +26,6 @@ authRouter.route('/refreshtoken/:token').get((req, res) => {
     }).catch(err => {
         res.status(400).send(err.message);
     });
-})
-
-authRouter.route("/logout").get((req, res) => {
-    res.clearCookie("jwtToken").send(true);
 });
 
 authRouter.route("/signup").post((req, res) => {
