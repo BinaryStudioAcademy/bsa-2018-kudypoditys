@@ -22,8 +22,8 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={SearchPage} />
-                <Route path="/search" component={Registration} />
+                <Route exact path="/" component={Registration} />
+                <Route path="/search" component={SearchPage} />
                 <Route path="/property/:id" component={PropertyPage} />
                 <Route path="/add-property/" component={PropertyCreationTabs} />
             </Switch>
