@@ -11,9 +11,7 @@ authRouter.route("/login").post((req, res) => {
     userService
         .login(data.email, data.password)
         .then(obj => {
-            res.cookie("jwtToken", obj.token)
-                .status(200)
-                .send(obj);
+            res.status(200).send(obj);
         })
         .catch(err => {
             res.status(400).send(err.message);
@@ -24,7 +22,7 @@ authRouter.route('/refreshtoken/:token').get((req, res) => {
     const token = req.params.token;
 
     userTokenService.refreshToken(token).then(data => {
-        res.cookie('jwtToken', data.token).status(200).send(data);
+        res.status(200).send(data);
     }).catch(err => {
         res.status(400).send(err.message);
     });
@@ -61,9 +59,6 @@ authRouter.route("/signup").post((req, res) => {
                     },
                     settings.jwtPrivateKey
                 );
-                res.cookie("jwtToken", obj.token)
-                    .status(200)
-                    .send(obj);
             });
         })
         .catch(err => {
