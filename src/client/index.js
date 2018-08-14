@@ -8,28 +8,23 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
 
-import Search from "client/components/search";
+import Slider from "client/components/slider";
 import Registration from "client/components/registration";
-
-import SearchSummary from "client/components/search-summary";
-import AvailabilityPanel from "client/components/availability-panel";
-import RankingBar from "client/components/ranking-bar";
-import PropertyDescription from "client/components/property-description";
-import PropertyListItem from "client/components/property-list-item";
-
+import { PropertyCreationTabs } from "client/components/property-creation-tabs";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { DummyComponent } from "./helpers/dummyComponent";
+
+import PropertyPage from "client/components/property-page";
 
 const store = createStore(reducer, composeWithDevTools());
 
-// TODO: add corresponding pages to routes components
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={} />
-                <Route path="/search" component={} />
-                <Route path="/property/:id" component={} />
+                <Route exact path="/" component={Registration} />
+                <Route path="/search" component={Registration} />
+                <Route path="/property/:id" component={PropertyPage} />
+                <Route path="/add-property/" component={PropertyCreationTabs} />
             </Switch>
         </BrowserRouter>
     </Provider>,

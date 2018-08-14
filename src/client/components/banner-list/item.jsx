@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, connect } from 'react';
 import { Card, Container, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
@@ -16,6 +16,7 @@ export class Banner extends Component {
         });
 
         return (
+
             cityInfo ?
                 < Container onClick={onCardClick} className="banner" style={imgStyles(cityInfo.pictureUrl)} >
                     <Card.Content className="banner__content">
@@ -54,3 +55,4 @@ Banner.propTypes = {
 
     onCardClick: PropTypes.func
 };
+
