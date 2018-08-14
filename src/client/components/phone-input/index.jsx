@@ -1,7 +1,8 @@
 import React from "react";
 import { Dropdown, Input } from "semantic-ui-react";
-import countries from "./common.js";
+import countries from "./countriesInfo.js";
 import "./index.scss";
+
 const PhoneInput = () => (
     <div>
         <Input
