@@ -2,14 +2,21 @@ import React, { Component, Fragment } from 'react';
 
 import Search from 'client/components/search';
 import BannerList from 'client/components/banner-list';
-import Header from 'client/components/header'
+import Header from 'client/components/header';
+import cookies from 'browser-cookies';
 
 export class HomePage extends Component {
 
     render() {
+        cookies.set('myTestJwtCookie', '{ jwtjwtilovejwt }');
+
+        console.log(
+            cookies.get('myTestJwtCookie')
+        );
+
         return (
             <Fragment>
-                <Header/>
+                <Header />
                 <div className="">
 
                 </div>

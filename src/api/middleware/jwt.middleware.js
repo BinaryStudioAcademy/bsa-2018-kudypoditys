@@ -3,6 +3,8 @@ const settings = require('../../../config/settings');
 const { dateHelpers } = require('../helpers');
 
 const jwtMiddleware = (req, res, next) => {
+    console.log('#### ', req.headers);
+
     const token = req.cookies.jwtToken;
     let user;
     try {
