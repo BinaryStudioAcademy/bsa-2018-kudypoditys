@@ -1,10 +1,9 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
-import { required, phoneNumber } from './../../regexValidationService'
 import './index.scss'
-import { Input } from 'semantic-ui-react';
 
- export const FormTextInput = ({ input, max, min, label, type, required, autocomplete, meta: { touched, error } }) => {
+
+
+const FormTextInput = ({ input, max, min, label, type, required, autocomplete, meta: { touched, error } }) => {
     return (
     <div className="input">
         <input {...input}
@@ -22,20 +21,4 @@ import { Input } from 'semantic-ui-react';
     </div>
 )
 }
-
-const InputForm = (props) => {
-    return (
-        <Input
-            name="phone"
-            type="number"
-            label="Phone number"
-            validate={[required, phoneNumber]}
-            component={FormTextInput}
-            />
-
-    )
-};
-
-export default reduxForm({
-    form: 'InputForm'
-})(InputForm)
+export default FormTextInput
