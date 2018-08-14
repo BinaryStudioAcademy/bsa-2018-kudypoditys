@@ -10,11 +10,11 @@ import { Container, Button, Image, Icon } from 'semantic-ui-react';
 export class Slider extends Component {
 
     pics = [
-        'https://picsum.photos/600/302',
-        'https://picsum.photos/600/303',
-        'https://picsum.photos/600/304',
-        'https://picsum.photos/600/305',
-        'https://picsum.photos/600/306'
+        'https://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg',
+        'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg',
+        'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-10.jpg',
+        'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg',
+        'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-12.jpg'
     ];
     settings = {
         dots: true,

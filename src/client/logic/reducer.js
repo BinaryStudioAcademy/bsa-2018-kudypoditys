@@ -10,7 +10,7 @@ import login from "client/logic/login/reducer";
 import { reducer as formReducer } from "redux-form";
 import header from "client/logic/header/reducer";
 import quickFilter from "client/logic/quick-filter/reducer";
-
+import roomSummary from "client/logic/rooms-summary-table/reducer"
 import cityInfos from "client/logic/banner-list/reducer";
 
 export default combineReducers({
@@ -26,5 +26,6 @@ export default combineReducers({
         login: login
     }),
     propertyPage,
-    quickFilter
+    quickFilter,
+    roomSummary
 });

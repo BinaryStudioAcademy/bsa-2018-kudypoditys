@@ -14,7 +14,7 @@ export class SearchSummary extends React.Component {
 
         return (
             <Header as="h1" style={{ fontSize: 23, lineHeight: 1.2 }}>
-                {destination}: {numbers} properties found
+                {destination}: {numbers} property found
             </Header>
         );
     }
