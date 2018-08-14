@@ -34,6 +34,9 @@ authRouter.route('/refreshtoken/:token').get((req, res) => {
         return;
     }
     userRefreshTokenService.getByUserId(userId).then(model => {
+        if (!model) {
+            return Promise.reject(new Error('refresh token not found'));
+        }
         const { refreshToken } = model.dataValues;
         const { tillDate } = model.dataValues;
         const currDate = dateHelpers.toUnixTimeSeconds(new Date());
