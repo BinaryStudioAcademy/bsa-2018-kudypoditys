@@ -6,9 +6,20 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 class Breadcrumbs extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            breadcrumbsSections:[
+                { key: 'Home', content: 'Home', href:'#'},
+                { key: 'Ukraine', content: 'Ukraine', href:'#'},
+                { key: 'Lviv', content: 'Lviv', href:'#'},
+                { key: 'Awesome Apart', content: 'Awesome Apart', active: true},
+            ]
+        }
+    }
     render() {
         return (
-            <Breadcrumb icon='right angle' sections={this.props.sections} />
+            <Breadcrumb icon='right angle' sections={this.state.breadcrumbsSections} />
         )
     }
 }

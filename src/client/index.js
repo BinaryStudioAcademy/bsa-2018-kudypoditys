@@ -19,7 +19,7 @@ import reducer from "client/logic/reducer";
 // import Login from "client/components/login";
 // import SearchPage from "client/components/search-page";
 // import {NotFoundPage} from "client/components/404-page";
-import { Breadcrumbs } from "semantic-ui-react";
+import Breadcrumbs from "client/components/breadcrumbs";
 
 const store = createStore(reducer, composeWithDevTools());
 
@@ -37,7 +37,7 @@ ReactDOM.render(
 
             </Switch>
         </BrowserRouter> */}
-        <Breadcrumbs/>
+        <Breadcrumbs />
     </Provider>,
     document.getElementById("root")
 );
