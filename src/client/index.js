@@ -19,6 +19,7 @@ import Search from "client/components/search";
 import Login from "client/components/login";
 import SearchPage from "client/components/search-page";
 import {NotFoundPage} from "client/components/404-page";
+
 const store = createStore(reducer, composeWithDevTools());
 
 ReactDOM.render(
