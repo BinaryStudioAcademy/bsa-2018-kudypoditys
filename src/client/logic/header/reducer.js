@@ -8,11 +8,11 @@ import {
 function headerReducer(state = defaultState.header, action) {
     switch (action.type) {
         case CURENCY_SELECT:
-            return { ...state, selectedCurrency: action.payload };
+            return {...state, selectedCurrency: action.payload};
         case CURRENCIES_GET:
-            return { ...state, currencies: [...MOCK_CURRENCIES] };
+            return {...state, currencies: [...MOCK_CURRENCIES]};
         case CURRENT_USER_GET:
-            return { ...state, currentUser: action.payload }
+            return {...state, currentUser: action.payload}
         default:
             return state;
     }
