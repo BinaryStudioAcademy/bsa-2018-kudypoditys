@@ -1,16 +1,19 @@
 import React from "react";
 import { Dropdown, Input } from "semantic-ui-react";
-import countries from "./common";
-
+import countries from "./common.js";
+import "./index.scss";
 const PhoneInput = () => (
     <div>
         <Input
             action={
                 <Dropdown
+                    className="phone-dropdown"
+                    compact="true"
                     left="true"
                     button
                     basic
                     floating
+                    selection
                     defaultValue="af"
                     options={countries}
                 />

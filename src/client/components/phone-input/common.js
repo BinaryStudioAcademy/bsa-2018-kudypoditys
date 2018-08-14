@@ -1,5 +1,11 @@
 const countries = [
-    { text: "Afghanistan +293", flag: "af", value: "af", key: "af" },
+    {
+        text: "+293",
+        flag: "af",
+        value: "af",
+        key: "af",
+        content: "Afghanistan"
+    },
     { text: "Aland Islands", flag: "ax" },
     { text: "Albania", flag: "al" },
     { text: "Algeria", flag: "dz" },
