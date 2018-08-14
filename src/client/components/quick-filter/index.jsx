@@ -5,12 +5,29 @@ import {connect} from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from './container';
 
 class Quickfilter extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            boxes : [
+                {id:'1', ischecked: true, label:'Pool', amount: 321,type:'Facility'},
+                {id:'1', ischecked: true, label:'Restoraunt', amount: 1213,type:'Facility'},
+                {id:'1', ischecked: true, label:'SPA', amount: 17,type:'Facility'},
+                {id:'2', ischecked: false, label:'Good location: 7+', amount: 231, type:'Review Score'},
+                {id:'2', ischecked: false, label:'Very good location: 8+', amount: 113, type:'Review Score'},
+                {id:'6', ischecked: false, label:'Excelent location: 9+', amount: 324, type:'Review Score'},
+                {id:'4', ischecked: false, label:'Hotel', amount: 345, type:'Property Type'},
+                {id:'3', ischecked: false, label:'Hostel', amount: 69, type:'Property Type'},
+                {id:'5', ischecked: false, label:'Motel', amount: 12, type:'Property Type'},
+
+            ]
+        }
+    }
     handleItemClick(box){
         this.props.selectFilter(box);
     }
 
     sortByType(type){
-        return this.props.boxes.filter(function (obj) { return obj.type === type});
+        return this.state.boxes.filter(function (obj) { return obj.type === type});
     }
 
     drawBoxes(arr){
