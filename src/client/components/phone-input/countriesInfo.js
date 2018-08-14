@@ -1127,7 +1127,7 @@ const countries = [
         key: "pw"
     },
     {
-        content: "Palestinian Territory, Occupied",
+        content: "Palestinian Territory",
         text: "+970",
         value: "+970",
         flag: "ps",
