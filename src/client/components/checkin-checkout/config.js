@@ -1,3 +1,8 @@
+import {Fragment} from "react";
+import React from 'react'
+import {Header} from "semantic-ui-react";
+
+
 export const options = [
     {key: '1:00', text: '1:00', value: '1:00'},
     {key: '2:00', text: '2:00', value: '2:00'},
@@ -24,6 +29,6 @@ export const options = [
     {key: '23:00', text: '23:00', value: '23:00'},
     {key: '24:00', text: '24:00', value: '24:00'}
 
-
 ];
 export const ButtonsValues = ['10:00', '13:00', '14:00'];
+

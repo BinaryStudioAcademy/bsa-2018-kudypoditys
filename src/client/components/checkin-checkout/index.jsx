@@ -4,7 +4,7 @@ import {Container, Form, Header, Grid} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import Draw from './DrawButtons'
+import DrawInputs from './DrawInputs'
 import {mapStateToProps, mapDispatchToProps} from './container';
 
 
@@ -16,8 +16,7 @@ export class CheckInCheckOut extends React.Component {
     };
 
     render() {
-        const
-            {arrivalFrom, arrivalTo, departureFrom, departureTo} = this.props;
+        const {arrivalFrom, arrivalTo, departureFrom, departureTo} = this.props;
 
         return (
             <Container>
@@ -34,9 +33,8 @@ export class CheckInCheckOut extends React.Component {
 
                                 <Form.Group widths='equal'>
 
-                                    <Draw
-                                        activeO={arrivalFrom}
-
+                                    <DrawInputs
+                                        active={arrivalFrom}
                                         type={'arrivalFrom'}
                                     />
 
@@ -53,8 +51,8 @@ export class CheckInCheckOut extends React.Component {
 
 
                                 <Form.Group widths="equal">
-                                    <Draw
-                                        activeO={departureFrom}
+                                    <DrawInputs
+                                        active={departureFrom}
 
                                         type={'departureFrom'}
                                     />
@@ -74,8 +72,8 @@ export class CheckInCheckOut extends React.Component {
 
                                 <Form.Group widths='equal'>
 
-                                    <Draw
-                                        activeO={arrivalTo}
+                                    <DrawInputs
+                                        active={arrivalTo}
 
                                         type={'arrivalTo'}
                                     />
@@ -93,8 +91,8 @@ export class CheckInCheckOut extends React.Component {
 
                                 <Form.Group widths='equal'>
 
-                                    <Draw
-                                        activeO={departureTo}
+                                    <DrawInputs
+                                        active={departureTo}
 
                                         type={'departureTo'}
                                     />

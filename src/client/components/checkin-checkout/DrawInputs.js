@@ -5,17 +5,18 @@ import {mapStateToProps, mapDispatchToProps} from './container';
 import {connect} from 'react-redux';
 
 
-export class Draw extends React.Component {
+export class DrawInputs extends React.Component {
 
     handleClick = (event, value) => {
         this.props.onSelectTime(value.value, value.type);
 
     };
 
+
     render() {
 
         const
-            activeO = this.props.activeO,
+            active = this.props.active,
             type = this.props.type;
 
         const Buttons = ButtonsValues.map(button => (
@@ -26,7 +27,7 @@ export class Draw extends React.Component {
                     content={button}
                     onClick={this.handleClick}
                     value={button}
-                    active={button === activeO}
+                    active={button === active}
                     type={type}
                 />
             )
@@ -49,4 +50,4 @@ export class Draw extends React.Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Draw);
+export default connect(mapStateToProps, mapDispatchToProps)(DrawInputs);
