@@ -32,22 +32,6 @@ make_task_def() {
         ],
 	    "memory": 256,
 	    "cpu": 10
-	},
-	{
-	    "name": "nginx",
-	    "links": [
-		"kudypoditys"
-	    ],
-	    "image": "bellkev/nginx-base:stable",
-	    "portMappings": [
-		{
-		    "containerPort": 8000,
-		    "hostPort": %s
-		}
-	    ],
-	    "cpu": 10,
-	    "memory": 256,
-	    "essential": true
 	}
     ]'
 
@@ -71,7 +55,7 @@ register_definition() {
 deploy_cluster() {
 
     host_port=80
-    family="kudypoditys-small"
+    family="kudypoditys"
     cluster="BSAcluster"
     service="kudypoditys"
 
