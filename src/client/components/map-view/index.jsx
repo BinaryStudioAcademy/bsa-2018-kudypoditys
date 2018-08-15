@@ -9,40 +9,63 @@ class MapView extends React.Component {
         viewport: {
             width: 500,
             height: 500,
-            latitude: 49.837089,
-            longitude: 24.021161,
-            zoom: 15,
+            latitude: this.props.latitude,
+            longitude: this.props.longitude,
+            zoom: this.props.zoom,
             mapboxApiAccessToken: MAPBOX_TOKEN
         }
+    };
+
+    componentDidMount() {
+        window.addEventListener("resize", this.resize);
+        this.resize();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.resize);
+    }
+
+    resize = () => {
+        this.setState({
+            viewport: {
+                ...this.state.viewport,
+                width: this.props.width || window.innerWidth,
+                height: this.props.height || window.innerHeight
+            }
+        });
     };
 
     render() {
         return (
             <ReactMapGL
                 {...this.state.viewport}
-                onViewportChange={viewport => this.setState({ viewport })}
+                // onViewportChange={viewport => this.setState({ viewport })}
                 mapStyle="mapbox://styles/mapbox/streets-v9"
             >
                 <Marker
-                    latitude={49.837089}
-                    longitude={24.021161}
+                    latitude={this.props.latitude}
+                    longitude={this.props.longitude}
                     offsetLeft={-20}
                     offsetTop={-10}
                 >
                     <Icon size="big" name="map marker alternate" />
                 </Marker>
-                <Popup
-                    tipSize={15}
-                    anchor="left"
-                    offsetLeft={10}
-                    latitude={49.837089}
-                    longitude={24.021161}
-                    closeButton={false}
-                    closeOnClick={true}
-                    dynamicPosition={true}
-                >
-                    1200 ГРН
-                </Popup>
+                {this.props.popupText ? (
+                    <Popup
+                        tipSize={15}
+                        anchor="left"
+                        offsetLeft={10}
+                        latitude={this.props.latitude}
+                        longitude={this.props.longitude}
+                        closeButton={false}
+                        closeOnClick={false}
+                        dynamicPosition={true}
+                    >
+                        {this.props.popupText}
+                    </Popup>
+                ) : (
+                    ""
+                )}
             </ReactMapGL>
         );
     }
