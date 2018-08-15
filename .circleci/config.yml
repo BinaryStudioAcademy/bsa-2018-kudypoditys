@@ -67,7 +67,7 @@ jobs:
                         echo "$task_template"
                         task_def=$(printf "$task_template" $TASK $AWS_ACCOUNT_ID $AWS_REGION $TASK $CIRCLE_SHA1)
                         # Register task definition
-                        json=$(aws ecs register-task-definition --cpu 128 --memory 512 --execution-role-arn ecsTaskExecutionRole --task-role-arn ecsTaskExecutionRole --container-definitions "$task_def" --family "$FAMILY")
+                        json=$(aws ecs register-task-definition --container-definitions "$task_def" --family "$FAMILY" --cpu 128 --memory 512 --execution-role-arn "ecsTaskExecutionRole" --task-role-arn "ecsTaskExecutionRole")
                         # Grab revision # using regular bash and grep
                         revision=$(echo "$json" | grep -o '"revision": [0-9]*' | grep -Eo '[0-9]+')
                         # Deploy revision
