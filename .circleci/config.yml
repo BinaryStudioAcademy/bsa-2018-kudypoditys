@@ -60,8 +60,7 @@ jobs:
                             "environment" : [
                                 { "name" : "NODE_ENV", "value" : "production" }
                             ],
-                            "cpu": 128,
-
+                            "cpu": 128
                           }
                         ]'
                         echo "$task_template"
