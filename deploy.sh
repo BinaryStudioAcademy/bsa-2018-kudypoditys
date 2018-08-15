@@ -19,21 +19,23 @@ deploy_image() {
 # sets $task_def
 make_task_def() {
 
-    task_template='[
-	{
-	    "name": "kudypoditys",
-	    "image": "rusinkabohdan/kudypoditys:%s",
-	    "essential": true,
-        "portMappings": [
-        {
-            "containerPort": 5000,
-            "hostPort": 5000
-        }
-        ],
-	    "memory": 256,
-	    "cpu": 10
-	}
-    ]'
+    task_template=task_template='[
+                         {
+                           "name": "%s",
+                           "image": "%s.dkr.ecr.%s.amazonaws.com/%s:%s",
+                           "essential": true,
+                           "memoryReservation": 1000,
+                           "portMappings": [
+                             {
+                               "containerPort": 5000,
+                               "hostPort": 80
+                             }
+                           ],
+                           "environment" : [
+                               { "name" : "NODE_ENV", "value" : "production" }
+                           ]
+                         }
+                       ]'
 
     task_def=$(printf "$task_template" $CIRCLE_SHA1 $host_port)
 
