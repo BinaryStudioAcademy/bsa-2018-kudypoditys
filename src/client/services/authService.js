@@ -1,5 +1,6 @@
 import api from '../helpers/api';
 import cookies from 'browser-cookies';
+import history from 'client/history';
 
 class AuthService {
     login(email, password) {
@@ -7,13 +8,20 @@ class AuthService {
             email, password
         }).then(response => {
             const { token, expiresIn, refreshToken } = response.data;
-
-            console.log('##### ', response);
-
+            
             cookies.set('accessToken', token);
             cookies.set('expiresIn', expiresIn.toString());
             cookies.set('refreshToken', refreshToken);
+        }).then(_ => {
+            history.push('/');
         });
+    }
+
+    logout() {
+        cookies.erase('accessToken');
+        cookies.erase('expiresIn');
+        cookies.erase('refreshToken');
+        history.push('/log');
     }
 }
 

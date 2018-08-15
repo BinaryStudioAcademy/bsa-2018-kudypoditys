@@ -91,7 +91,7 @@ module.exports = () => {
                 where: { id: 1 }
             })
         }).then(prop => {
-            console.log('>>>> ', prop.facilities.map(x => `id: ${x.id} name: ${x.name}`));
+            //console.log('>>>> ', prop.facilities.map(x => `id: ${x.id} name: ${x.name}`));
         });
     });
 
@@ -119,8 +119,8 @@ module.exports = () => {
     models.then(({ Reservation, User }) => {
         User.create({
             fullName: 'Doctor Strange',
-            password: '1234',
-            email: 'doctors@marvel.com',
+            password: '$2b$10$tT5Nz5oq3OuImIMaxqRt5eu9gPmVOH5yJgKIR88CjvfiKl9itpu/a', // 1234
+            email: 'email@gmail.com',
             phoneNumber: '0123412312',
             avatar: 'https://avatar.com'
         }).then(() => {

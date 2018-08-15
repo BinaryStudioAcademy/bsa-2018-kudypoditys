@@ -31,7 +31,7 @@ class Service {
         sortDirection (default 'DESC'): 'DESC' || 'ASC'
     */
     findByPage(options) {
-        const {page, recordsOnPage, sortField, sortDirection} = options;
+        const { page, recordsOnPage, sortField, sortDirection } = options;
         return this.repository.findByPage(page, recordsOnPage, sortField, sortDirection);
     }
 }

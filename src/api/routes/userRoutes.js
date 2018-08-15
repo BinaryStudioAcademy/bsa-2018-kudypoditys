@@ -22,7 +22,18 @@ user.route('/')
             });
     });
 
+user.route('/me')
+    .get((req, res) => {
+        const user = req.user;
 
+        userService.findById(user.id).then(user => {
+            delete user.password;
+
+            res.status(200).send(user);
+        }).catch(err => {
+            res.status(400).send(err.message);
+        });
+    });
 
 user.route('/:id')
     .put((req, res) => {
