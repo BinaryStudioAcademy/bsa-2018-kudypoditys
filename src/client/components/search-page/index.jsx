@@ -67,10 +67,8 @@ class SearchPage extends React.Component {
                             >
                                 <BasicMapWidget
                                     key="BasicMapWidget"
-                                    location={{
-                                        lat: 49.837089,
-                                        lng: 24.021161
-                                    }}
+                                    latitude={49.837089}
+                                    longitude={24.021161}
                                     rounded
                                     centered
                                 />
