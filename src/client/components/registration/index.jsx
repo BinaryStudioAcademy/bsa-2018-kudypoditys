@@ -12,7 +12,7 @@ export class Registration extends Component {
     render() {
         return (
             <Container text className="registration-c-wrapper">
-                <Header className="registration-c-header">Register user</Header>
+                <Header className="registration-c-header">Register</Header>
                 <Registrationform
                     onSubmit={this.props.handleRegistrationSubmit}
                 />
