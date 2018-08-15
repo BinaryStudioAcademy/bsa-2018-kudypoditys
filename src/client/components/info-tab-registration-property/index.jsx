@@ -4,7 +4,7 @@ import { RegistrationTypeItem } from './registrationTypeItem';
 import Header from 'client/components/header'
 
 
-export class InfoTabRegistration extends Component {
+class InfoTabRegistration extends Component {
 
     render() {
         return (
@@ -20,21 +20,27 @@ export class InfoTabRegistration extends Component {
                         <Grid.Row centered  >
                             <Grid.Column width={3} textAlign='center' >
                                 <RegistrationTypeItem
-                                    image='https://q.bstatic.com/static/img/join/segmentation/accomm_home_main@2x.png'
+                                    image='https://q.bstatic.com/static/img/join
+                                    /segmentation/accomm_home_main@2x.png'
                                     header='Home or apartament'
-                                    description=' For home-like properties: Apartaments, vacation homes, guest houses, etc.' />
+                                    description=' For home-like properties:
+                                     Apartaments, vacation homes, guest houses, etc.' />
                             </Grid.Column>
                             <Grid.Column width={3} textAlign='center' >
                                 <RegistrationTypeItem
-                                    image="https://q.bstatic.com/static/img/join/segmentation/accomm_hotels_main_v2@2x.png"
+                                    image="https://q.bstatic.com/static/img/join
+                                    /segmentation/accomm_hotels_main_v2@2x.png"
                                     header='Hotel, B&Bs and More'
-                                    description='For hotel-like properties: Hotels, condo hotels, hostels, etc.' />
+                                    description='For hotel-like properties:
+                                    Hotels, condo hotels, hostels, etc.' />
                             </Grid.Column >
                             <Grid.Column width={3} textAlign='center' >
                                 <RegistrationTypeItem
-                                    image='https://q.bstatic.com/static/img/join/segmentation/tent-big@2x.png'
+                                    image='https://q.bstatic.com/static/img/join
+                                    /segmentation/tent-big@2x.png'
                                     header='Alternative Places'
-                                    description='For alternative accommodation: Boats, campgrounds or luxury tents.' />
+                                    description='For alternative accommodation:
+                                    Boats, campgrounds or luxury tents.' />
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
@@ -43,3 +49,4 @@ export class InfoTabRegistration extends Component {
         );
     }
 }
+export default InfoTabRegistration
