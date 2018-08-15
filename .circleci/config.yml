@@ -72,7 +72,7 @@ jobs:
                         task_name=$(aws ecs list-tasks --cluster "$CLUSTER" --service "$SERVICE" --output text --query taskArns[0])
                         echo "$task_name"
                         echo "Task name is above this line"
-                        aws ecs  stop-task --task "$task_name"
+                        aws ecs  stop-task --task "$task_name" --cluster "$CLUSTER"
                         aws ecs update-service --cluster "$CLUSTER" --service "$SERVICE" --task-definition "$TASK":"$revision"
                         return 0
                       fi
