@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import { connect } from "react-redux";
-import { Input, Button, Form, Dropdown, Header } from "semantic-ui-react";
-import { DateInput } from "semantic-ui-calendar-react";
+import {connect} from "react-redux";
+import {Input, Button, Form, Dropdown, Header} from "semantic-ui-react";
+import {DateInput} from "semantic-ui-calendar-react";
 
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 import "./index.scss";
 
 export class Search extends React.Component {
@@ -189,7 +189,7 @@ export class Search extends React.Component {
                     </div>
                 </div>
                 <div className="btn-wrp">
-                    <Button type="submit" content="Search" primary />
+                    <Button type="submit" content="Search" primary/>
                 </div>
             </Form>
         ) : (
@@ -302,7 +302,7 @@ export class Search extends React.Component {
                     </div>
                 </div>
                 <div className="btn-wrp">
-                    <Button type="submit" content="Search" primary />
+                    <Button type="submit" content="Search" primary/>
                 </div>
             </Form>
         );

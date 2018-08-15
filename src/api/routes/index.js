@@ -17,7 +17,7 @@ const bedInRoom = require("./bedInRoomRoutes");
 //     app.use('/property', property)
 // };
 
-module.exports = function(app) {
+module.exports = function (app) {
     app.use("/api/users", user);
     app.use("/api/property", property);
     app.use("/api/message", message);

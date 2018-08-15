@@ -10,11 +10,12 @@ class MapView extends React.Component {
             <Map
                 location={this.props.location}
                 googleMapURL={GOOGLE_MAP_URL}
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div className="map" />}
-                mapElement={<div style={{ height: `100%` }} />}
+                loadingElement={<div style={{height: `100%`}}/>}
+                containerElement={<div className="map"/>}
+                mapElement={<div style={{height: `100%`}}/>}
             />
         );
     }
 }
+
 export default MapView;
