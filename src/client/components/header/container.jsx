@@ -17,5 +17,10 @@ export function mapDispatchToProps(dispatch, ownProps) {
         getCurrentUser() {
             dispatch(getCurrentUser());
         }
+
+        // logout() {
+        //     console.log('DISPATCH -> LOGOUT')
+        //     dispatch({ type: 'LOGOUT', payload: 'something' })
+        // }
     };
 }

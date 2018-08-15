@@ -1,3 +1,5 @@
 export const CURRENT_USER_GET = 'CURRENT_USER:GET';
 export const CURRENCIES_GET = 'CURRENCIES:GET';
 export const CURENCY_SELECT = 'CURRENCY:SELECT';
+
+export const LOGOUT = 'LOGOUT';

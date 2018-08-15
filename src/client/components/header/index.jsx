@@ -13,6 +13,10 @@ export class MainHeader extends Component {
         // this.props.getCurrencies();
     }
 
+    logout = () => {
+        // this.props.logout();
+    }
+
     render() {
         const {
             currencies,
@@ -39,7 +43,10 @@ export class MainHeader extends Component {
 
                     <Menu.Item className="menu__welcome">
                         {currentUser ?
-                            "Wellcome " + currentUser.name :
+                            <Fragment>
+                                Wellcome  {currentUser}
+                                <Button inverted className="menu__logout" onClick={this.logout}>Logout</Button>
+                            </Fragment> :
                             <Fragment>
                                 <Button inverted className="menu__login">Login</Button>
                                 <Button inverted className="menu__register">Register</Button>
