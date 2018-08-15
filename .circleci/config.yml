@@ -50,7 +50,7 @@ jobs:
                             "name": "%s",
                             "image": "%s.dkr.ecr.%s.amazonaws.com/%s:%s",
                             "essential": true,
-                            "memoryReservation": 1000,
+                            "memoryReservation": 512,
                             "portMappings": [
                               {
                                 "containerPort": 5000,
@@ -59,7 +59,9 @@ jobs:
                             ],
                             "environment" : [
                                 { "name" : "NODE_ENV", "value" : "production" }
-                            ]
+                            ],
+                            "cpu": 128,
+
                           }
                         ]'
                         echo "$task_template"
