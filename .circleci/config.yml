@@ -59,10 +59,8 @@ jobs:
                             ],
                             "environment" : [
                                 { "name" : "NODE_ENV", "value" : "production" }
-                            ],
-                            "cpu": 128,
-                            "memory": 512
-                          }
+                            ]
+                            }
                         ]'
                         echo "$task_template"
                         task_def=$(printf "$task_template" $TASK $AWS_ACCOUNT_ID $AWS_REGION $TASK $CIRCLE_SHA1)
