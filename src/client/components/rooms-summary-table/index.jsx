@@ -7,6 +7,17 @@ import { Table, Button } from 'semantic-ui-react'
 import ModalWindow from './modal.jsx';
 
 class RoomsSummaryTable extends React.Component {
+    static defaultProps = {
+        rooms: [
+            {id:'1', type:'Стандарт на двох', bedsAmount: 1, sleeps:2, beds:'2 ліжка', info:'Кімната...1'},
+            {id:'2', type:'Люкс', bedsAmount: 1,  sleeps:1, beds:'1 ліжко', info:'Кімната...2'},
+            {id:'3', type:'Кімната гуртожитковго типу', bedsAmount: 3, beds:'4 ліжка', sleeps:4,  info:'Кімната...3'},
+            {id:'4', type:'Комната на 3-х', bedsAmount: 1, beds:'3 ліжка',  sleeps:3, info:'Кімната...4'}
+        ],
+        showRoomPrice(id){
+            console.log(id)
+        }
+    }
 
     constructor(props){
         super(props)
