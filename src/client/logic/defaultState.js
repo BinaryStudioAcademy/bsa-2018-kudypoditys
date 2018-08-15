@@ -116,7 +116,8 @@ const state = {
             amount: 658,
             type: "Property Type"
         }
-    ]
+    ],
+
 };
 
 export default state;
