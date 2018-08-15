@@ -12,7 +12,7 @@ const apiRoot = path.resolve(path.join(__dirname, "src/api"));
 const app = express(),
     port = process.env.PORT || 5000;
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({origin: "http://localhost:3000", credentials: true}));
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,7 +25,7 @@ const routes = require("./src/api/routes")(app);
 app.get("/*", (req, res) => {
     const fileDirectory = path.join(__dirname, "public");
 
-    res.sendFile("index.html", { root: fileDirectory }, err => {
+    res.sendFile("index.html", {root: fileDirectory}, err => {
         res.end();
     });
 });

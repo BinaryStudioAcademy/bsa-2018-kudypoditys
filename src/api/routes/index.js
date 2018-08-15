@@ -12,11 +12,6 @@ const favorite = require("./favoriteRoutes");
 const discount = require("./discountRoutes");
 const roomDiscount = require("./roomDiscountRoutes");
 const bedInRoom = require("./bedInRoomRoutes");
-//
-// module.exports = app => {
-//     app.use('/user', user);
-//     app.use('/property', property)
-// };
 
 module.exports = function (app) {
     app.use('/api', auth);
