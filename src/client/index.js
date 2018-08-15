@@ -8,37 +8,31 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
 
-import Search from "client/components/search";
-
- import LoginComponent from "./components/login";
-
- import SearchSummary from "client/components/search-summary";
-  import AvailabilityPanel from "client/components/availability-panel";
- import RankingBar from "client/components/ranking-bar";
- import PropertyDescription from "client/components/property-description";
- import PropertyListItem from "client/components/property-list-item";
- import {PropertyCreationTabs} from 'client/components/property-creation-tabs'
+import Slider from "client/components/slider";
+import Registration from "client/components/registration";
+import { PropertyCreationTabs } from "client/components/property-creation-tabs";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import InputForm from "./components/input-form";
-import { Registration } from './components/registration';
-import RoomItem from './components/room-item';
-
-import { DummyComponent } from "./helpers/dummyComponent";
- import BasicMapWidget from './components/basic-map-widget';
-
+// import CheckInCheckOut from 'client/components/checkin-checkout'
+import {HomePage} from 'client/components/home-page'
+import PropertyPage from "client/components/property-page";
+import Search from "client/components/search";
+import Login from "client/components/login";
+import SearchPage from "client/components/search-page";
+import {NotFoundPage} from "client/components/404-page";
 
 const store = createStore(reducer, composeWithDevTools());
 
-// TODO: add corresponding pages to routes components
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
-            <Route  exact path="/" render={()=><RoomItem roomData = { {title:"double room", amount:2} }/>}/>
-
-                  <Route path="/search" component={Registration} />
-                <Route path="/property/:id" component={Registration} />
+                <Route exact path="/" component={HomePage}/>
+                <Route exact path="/reg" component={Registration}/>
+                <Route exact path="/log" component={Login}/>
+                <Route path="/search-page" component={SearchPage}/>
+                <Route path="/property-page" component={PropertyPage}/>
                 <Route path="/add-property/" component={PropertyCreationTabs} />
+                <Route path="/404" component={NotFoundPage}/>
 
             </Switch>
         </BrowserRouter>
