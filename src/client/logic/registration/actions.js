@@ -11,7 +11,8 @@ export function registerSubmit(payload) {
     api.sendRequest("/signup", "post", payload)
         .then(response => {
             const { token, expiresIn } = response.data;
-            cookies.set("accessToken", token, { expires: new Date(expiresIn) });
+            cookies.set("accessToken", token);
+            cookies.set("expiresIn", expiresIn.toString());
             return {
                 type: REGISTER_SUCCESS,
                 payload: {
