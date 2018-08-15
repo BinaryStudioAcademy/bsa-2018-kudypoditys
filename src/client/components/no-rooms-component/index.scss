@@ -1,0 +1,82 @@
+.btn-add{
+    align-content: center;
+}
+.Button{
+    margin: 20px;
+    align-content: center;
+    margin: auto;
+    color: red;
+}
+.no-room-box{
+    width: 800px;
+    margin: 10px;
+    align-content: center;
+}
+.no-room-box .default-text{
+    width: 300px;
+    text-align: center;
+    margin: 10px auto;
+}
+* .no-room-box .plan-price-form>.plan-price-field{
+    border-radius: 0;
+}
+.plan-price-form-group{
+    margin: 10px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    //border: 2px solid #ccc;
+    box-shadow: #ddd 2px 2px 2px;
+}
+.plan-price-form-group>label,input,select {
+    padding: 10px;
+    display: block;
+    width: 250px;
+    font-size: 15px;
+}
+.plan-price-form-group>select,input{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius:3px;
+    margin: 4px;
+}
+.plan-price-form-label{
+    margin: 10px 0 0 0;
+}
+.plan-price-form-group>input[name='roomsAmount']{
+    width: 50px;
+}
+.plan-price-form-group>p{
+    clear: both;
+    padding: 20px 4px 0px 4px;
+}
+.plan-price-form-group>span{
+    background: #ededed;
+    padding: 5px;
+    margin-left: -20px;
+    border-radius: 2px;
+}
+.complex-input{
+    width: 600px;
+    margin: 10px 0 0 0;
+    position: relative;
+}
+.complex-input>select{
+    display: block;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius:3px;
+
+}
+.complex-input>p{
+    display: block;
+    float: left;
+    margin: 10px;
+}
+.plan-price-form-group>input[name='guestsAmount']{
+    display: block;
+    clear: both;
+    width: 50px;
+    margin: 4px;
+}
