@@ -3,6 +3,7 @@ import {
 } from './actionTypes';
 
 export function checkInOutUpdate(payload) {
+
     return {
         type: CHECKIN_OUT_UPDATE,
         payload

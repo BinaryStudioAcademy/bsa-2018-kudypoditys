@@ -3,65 +3,22 @@ import './index.scss';
 import {Container, Form, Header, Grid} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {options} from './config'
-import {ButtonsValues} from './config'
+
+import Draw from './DrawButtons'
 import {mapStateToProps, mapDispatchToProps} from './container';
 
 
 export class CheckInCheckOut extends React.Component {
 
-    handleCheckInFromClick = (event, value) => {
-        this.props.onCheckInFrom(value.value);
-
-
-    };
-    handleCheckInToClick = (event, value) => {
-        this.props.onCheckInTo(value.value);
+    handleClick = (event, value) => {
+        this.props.onSelectTime(value.value, value.type);
 
     };
-    handleCheckOutFromClick = (event, value) => {
-        this.props.onCheckOutFrom(value.value);
-
-    };
-    handleCheckOutToClick = (event, value) => {
-        this.props.onCheckOutTo(value.value);
-
-    };
-
-    DrawButtons(arr, handleType, activeO) {
-        return arr.map(button => (
-                <Form.Button
-                    key={button + 1}
-                    basic
-                    fluid
-                    content={button}
-                    onClick={handleType}
-                    value={button}
-                    active={button === activeO}
-                />
-
-            )
-        );
-
-    }
-
 
     render() {
         const
-            {arrivalFrom} = this.props,
-            {arrivalTo} = this.props,
-            {departureFrom} = this.props,
-            {departureTo} = this.props,
-            inFrom = this.handleCheckInFromClick,
-            inTo = this.handleCheckInToClick,
-            OutFrom = this.handleCheckOutFromClick,
-            OutTo = this.handleCheckOutToClick;
+            {arrivalFrom, arrivalTo, departureFrom, departureTo} = this.props;
 
-
-        const inFromButtons = this.DrawButtons(ButtonsValues, inFrom, arrivalFrom);
-        const OutFromButtons = this.DrawButtons(ButtonsValues, OutFrom, departureFrom);
-        const inToButtons = this.DrawButtons(ButtonsValues, inTo, arrivalTo);
-        const OutToButtons = this.DrawButtons(ButtonsValues, OutTo, departureTo);
         return (
             <Container>
 
@@ -77,14 +34,13 @@ export class CheckInCheckOut extends React.Component {
 
                                 <Form.Group widths='equal'>
 
-                                    {inFromButtons}
+                                    <Draw
+                                        activeO={arrivalFrom}
 
-
-                                    <Form.Select
-                                        options={options}
-
-                                        onChange={this.handleCheckInFromClick}
+                                        type={'arrivalFrom'}
                                     />
+
+
                                 </Form.Group>
                             </Form>
                         </Grid.Column>
@@ -97,13 +53,12 @@ export class CheckInCheckOut extends React.Component {
 
 
                                 <Form.Group widths="equal">
+                                    <Draw
+                                        activeO={departureFrom}
 
-                                    {OutFromButtons}
-                                    <Form.Select
-                                        basic
-                                        options={options}
-                                        onChange={this.handleCheckOutFromClick}
+                                        type={'departureFrom'}
                                     />
+
                                 </Form.Group>
                             </Form>
                         </Grid.Column>
@@ -119,10 +74,12 @@ export class CheckInCheckOut extends React.Component {
 
                                 <Form.Group widths='equal'>
 
-                                    {inToButtons}
-                                    <Form.Select options={options}
-                                                 onChange={this.handleCheckInToClick}
+                                    <Draw
+                                        activeO={arrivalTo}
+
+                                        type={'arrivalTo'}
                                     />
+
                                 </Form.Group>
                             </Form>
                         </Grid.Column>
@@ -136,11 +93,12 @@ export class CheckInCheckOut extends React.Component {
 
                                 <Form.Group widths='equal'>
 
-                                    {OutToButtons}
-                                    <Form.Select
-                                        options={options}
-                                        onChange={this.handleCheckOutToClick}
+                                    <Draw
+                                        activeO={departureTo}
+
+                                        type={'departureTo'}
                                     />
+
                                 </Form.Group>
                             </Form>
                         </Grid.Column>
@@ -150,9 +108,7 @@ export class CheckInCheckOut extends React.Component {
         )
     }
 
-
 }
-
 
 CheckInCheckOut.propTypes = {
 

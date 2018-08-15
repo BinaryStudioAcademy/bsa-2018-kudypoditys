@@ -1,10 +1,10 @@
 import {checkInOutUpdate} from 'client/logic/checkIn-checkOut/actions';
 
+
 export function mapStateToProps(state) {
     const {checkInOut} = state;
 
     return {
-
 
         arrivalFrom: checkInOut.arrivalFrom,
         arrivalTo: checkInOut.arrivalTo,
@@ -16,27 +16,14 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        onCheckInFrom(value) {
+        onSelectTime(value, type) {
+
             dispatch(checkInOutUpdate({
 
-                arrivalFrom: value
+                [type]: value
 
             }));
-        },
-        onCheckInTo(value) {
-            dispatch(checkInOutUpdate({arrivalTo: value}));
-        },
-        onCheckOutFrom(value) {
-            dispatch(checkInOutUpdate({
-
-
-                        departureFrom: value
-
-                }
-            ));
-        },
-        onCheckOutTo(value) {
-            dispatch(checkInOutUpdate({departureTo: value}));
         }
-    };
+
+    }
 }

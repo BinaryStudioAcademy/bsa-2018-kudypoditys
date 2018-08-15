@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
 import {Grid} from "semantic-ui-react";
-import {Grid} from "semantic-ui-react";
+
 import Search from "client/components/search";
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
@@ -14,8 +14,7 @@ import {Breadcrumb} from "semantic-ui-react";
 import QuickFilter from "../quick-filter";
 import {connect} from "react-redux";
 import {mapStateToProps} from "./container";
-import {Pagination} from "../pagination";
-import BasicMapWidget from '../basic-map-widget';
+
 
 class SearchPage extends React.Component {
     render() {

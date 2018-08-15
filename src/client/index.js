@@ -12,7 +12,7 @@ import Slider from "client/components/slider";
 import Registration from "client/components/registration";
 import {PropertyCreationTabs} from "client/components/property-creation-tabs";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import CheckInCheckOut from 'client/components/checkin-checkout'
+import CheckInCheckOut from 'client/components/checkin-checkout'
 import {HomePage} from 'client/components/home-page'
 import PropertyPage from "client/components/property-page";
 import Search from "client/components/search";
@@ -28,7 +28,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/" component={HomePage}/>
                 <Route exact path="/reg" component={Registration}/>
-                <Route exact path="/log" component={Login}/>
+                <Route exact path="/log" component={CheckInCheckOut}/>
                 <Route path="/search-page" component={SearchPage}/>
                 <Route path="/property-page" component={PropertyPage}/>
                 <Route path="/add-property/" component={PropertyCreationTabs} />
