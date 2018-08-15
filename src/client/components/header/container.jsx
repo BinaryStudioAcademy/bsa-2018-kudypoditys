@@ -1,7 +1,7 @@
-import { getCurrencies, getCurrentUser, selectCurrency } from 'client/logic/header/actions';
+import {getCurrencies, getCurrentUser, selectCurrency} from 'client/logic/header/actions';
 
 export function mapStateToProps(state, ownProps) {
-    return { ...state.header };
+    return {...state.header};
 }
 
 export function mapDispatchToProps(dispatch, ownProps) {

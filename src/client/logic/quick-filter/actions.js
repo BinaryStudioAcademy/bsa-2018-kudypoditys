@@ -3,7 +3,7 @@ import {
 } from './actionType';
 
 export const quickFiltersUpdate = (filter) => {
-    return{
+    return {
         type: QUICK_FILTERS_UPDATE,
         payload: filter
     }

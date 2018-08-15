@@ -78,4 +78,5 @@ class MapView extends React.Component {
         );
     }
 }
+
 export default MapView;

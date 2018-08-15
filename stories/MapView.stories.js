@@ -1,6 +1,6 @@
 import React from "react";
 
-import { storiesOf } from "@storybook/react";
+import {storiesOf} from "@storybook/react";
 import MapView from "../src/client/components/map-view";
 import Modal from "../src/client/components/modal";
 

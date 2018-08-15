@@ -1,20 +1,20 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { Button, Icon, Message } from 'semantic-ui-react';
+import {Field, reduxForm} from 'redux-form';
+import {Button, Icon, Message} from 'semantic-ui-react';
 import 'client/components/registration/index.scss';
 import validate from './validate';
 import renderField from 'client/components/input-form/renderField';
 
 const RegistrationForm = (props) => {
-    const { submitting, registerFeedback } = props;
+    const {submitting, registerFeedback} = props;
     return (
         <form onSubmit={props.handleSubmit}>
             {
                 registerFeedback && registerFeedback.error ?
-                <Message negative>
-                    <Message.Header>Oops!</Message.Header>
-                    <p>{ registerFeedback.message }</p>
-                </Message> : null
+                    <Message negative>
+                        <Message.Header>Oops!</Message.Header>
+                        <p>{registerFeedback.message}</p>
+                    </Message> : null
             }
             <Field component={renderField}
                    name="fullName"
@@ -71,8 +71,6 @@ const RegistrationForm = (props) => {
     );
 
 };
-
-
 
 export default reduxForm({
     form: 'registration',
