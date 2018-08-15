@@ -1,56 +1,28 @@
-import React from "react";
-import { Field, reduxForm } from "redux-form";
-import { Button, Input, Label, Icon } from "semantic-ui-react";
-import "client/components/registration/index.scss";
+import React from 'react';
+import {Field, reduxForm} from 'redux-form';
+import {Button, Icon, Message} from 'semantic-ui-react';
+import 'client/components/registration/index.scss';
+import validate from './validate';
+import renderField from 'client/components/input-form/renderField';
 
-const renderField = ({
-    input,
-    type,
-    icon,
-    label,
-    className,
-    meta: { touched, error }
-}) => (
-    <React.Fragment>
-        <Label
-            basic
-            className={touched && error ? "shown" : "hidden"}
-            color="red"
-            pointing="below"
-        >
-            {touched && error ? error : ""}
-        </Label>
-        <Input
-            {...input}
-            type={type}
-            placeholder={label}
-            icon={icon}
-            fluid
-            iconPosition="left"
-            className={className}
-        />
-    </React.Fragment>
-);
-
-const RegistrationForm = props => {
-    const { submitting } = props;
+const RegistrationForm = (props) => {
+    const {submitting, registerFeedback} = props;
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field
-                component={renderField}
-                name="fullName"
-                type="text"
-                icon="user"
-                label="Username"
-                required="required"
-                className="registration-c-input"
-                validate={[
-                    required,
-                    minLength(2),
-                    maxLength(32),
-                    fullnameValidate
-                ]}
-            />
+            {
+                registerFeedback && registerFeedback.error ?
+                    <Message negative>
+                        <Message.Header>Oops!</Message.Header>
+                        <p>{registerFeedback.message}</p>
+                    </Message> : null
+            }
+            <Field component={renderField}
+                   name="fullName"
+                   type="text"
+                   icon="user"
+                   label="Username"
+                   required="required"
+                   className="registration-c-input            />
 
             <Field
                 component={renderField}
@@ -121,23 +93,10 @@ const required = value => {
     }
 };
 
-const minLength = min => value => {
-    if (value.length < min) {
-        return `Must be at least ${min} characters long.`;
-    }
-};
-
-const maxLength = max => value => {
-    if (value.length > max) {
-        return `It's too long.`;
-    }
-};
-
-const fullnameValidate = value => {
-    if (!value.match(/^[a-z ,.'-]+$/i)) {
-        return "Incorrect name format.";
-    }
-};
+export default reduxForm({
+    form: 'registration',
+    validate
+})(RegistrationForm);
 
 const emailValidate = value => {
     if (!value.match(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)) {

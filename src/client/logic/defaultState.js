@@ -1,6 +1,6 @@
 const state = {
     search: {
-        destination: "231",
+        destination: "Lviv",
         checkIn: null,
         checkOut: null,
         adults: 1,
@@ -47,6 +47,12 @@ const state = {
     sortType: {
         activeItem: "price"
     },
+    addProperty: {
+        arrivalFrom: "10:00",
+        arrivalTo: "12:00",
+        departureFrom: "10:00",
+        departureTo: "12:00"
+    },
 
     header: {
         currencies: [],
@@ -81,8 +87,8 @@ const state = {
         "xyz-2": {}
     },
     searchResults: {
-        destination: "Dnipro",
-        totalCount: 42,
+        destination: "Lviv",
+        totalCount: 1,
         shownFrom: 1,
         shownTo: 5
     },
@@ -116,7 +122,10 @@ const state = {
             amount: 658,
             type: "Property Type"
         }
-    ]
+    ],
+
+    rooms: {}
+
 };
 
 export default state;

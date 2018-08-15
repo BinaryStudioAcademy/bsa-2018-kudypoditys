@@ -11,7 +11,7 @@ const Map = withScriptjs(
         const location = props.location;
         return (
             <GoogleMap defaultZoom={12} center={location}>
-                <Marker position={props.location} />
+                <Marker position={props.location}/>
             </GoogleMap>
         );
     })

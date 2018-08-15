@@ -1,18 +1,20 @@
 import React from "react";
 import "./index.scss";
-import { Grid } from "semantic-ui-react";
+import {Grid} from "semantic-ui-react";
+
 import Search from "client/components/search";
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "../property-list-item";
-import { Pagination } from "../pagination";
+import {Pagination} from "../pagination";
 import BasicMapWidget from "../basic-map-widget";
 import Header from "../header";
-import { Breadcrumb } from "semantic-ui-react";
+import {Breadcrumb} from "semantic-ui-react";
 import QuickFilter from "../quick-filter";
-import { connect } from "react-redux";
-import { mapStateToProps } from "./container";
+import {connect} from "react-redux";
+import {mapStateToProps} from "./container";
+
 
 class SearchPage extends React.Component {
     render() {
@@ -20,7 +22,7 @@ class SearchPage extends React.Component {
             <div className="search-page__wrapper">
                 <Grid>
                     <Grid.Column width={16}>
-                        <Header />
+                        <Header/>
                     </Grid.Column>
                     <Grid.Column
                         width={16}
@@ -33,13 +35,13 @@ class SearchPage extends React.Component {
                         <Breadcrumb
                             icon="right angle"
                             sections={[
-                                { key: "Home", content: "Home", href: "#" },
+                                {key: "Home", content: "Home", href: "#"},
                                 {
                                     key: "Ukraine",
                                     content: "Ukraine",
                                     href: "#"
                                 },
-                                { key: "Lviv", content: "Lviv", href: "#" }
+                                {key: "Lviv", content: "Lviv", href: "#"}
                             ]}
                         />
                     </Grid.Column>
@@ -59,7 +61,7 @@ class SearchPage extends React.Component {
                                 rooms={1}
                                 children={0}
                             />
-                            <QuickFilter />
+                            <QuickFilter/>
                             <div
                                 style={{
                                     marginTop: "4%"
@@ -84,13 +86,13 @@ class SearchPage extends React.Component {
                                 marginLeft: "2%"
                             }}
                         >
-                            <SearchSummary />
-                            <RankingBar key="RankingBar" />
+                            <SearchSummary/>
+                            <RankingBar key="RankingBar"/>
                             <PropertyListItem
                                 key="PropertyListItem"
                                 id="foundProperty1"
                             />
-                            <Pagination pagesCount={10} />
+                            <Pagination pagesCount={10}/>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
@@ -98,5 +100,6 @@ class SearchPage extends React.Component {
         );
     }
 }
+
 
 export default connect(mapStateToProps)(SearchPage);
