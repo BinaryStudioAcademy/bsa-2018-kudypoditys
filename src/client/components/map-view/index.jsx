@@ -1,19 +1,49 @@
 import React from "react";
-import Map from "./map";
-import "./index.scss";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import { MAPBOX_TOKEN } from "client/constants";
+import { Icon } from "semantic-ui-react";
 
-const GOOGLE_MAP_URL = `https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dkzMEoW2UBi7tA1TVAMbrwCUStF_9xw&v=3.exp&libraries=geometry,drawing,places`;
-
+import "mapbox-gl/dist/mapbox-gl.css";
 class MapView extends React.Component {
+    state = {
+        viewport: {
+            width: 500,
+            height: 500,
+            latitude: 49.837089,
+            longitude: 24.021161,
+            zoom: 15,
+            mapboxApiAccessToken: MAPBOX_TOKEN
+        }
+    };
+
     render() {
         return (
-            <Map
-                location={this.props.location}
-                googleMapURL={GOOGLE_MAP_URL}
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div className="map" />}
-                mapElement={<div style={{ height: `100%` }} />}
-            />
+            <ReactMapGL
+                {...this.state.viewport}
+                onViewportChange={viewport => this.setState({ viewport })}
+                mapStyle="mapbox://styles/mapbox/streets-v9"
+            >
+                <Marker
+                    latitude={49.837089}
+                    longitude={24.021161}
+                    offsetLeft={-20}
+                    offsetTop={-10}
+                >
+                    <Icon size="big" name="map marker alternate" />
+                </Marker>
+                <Popup
+                    tipSize={15}
+                    anchor="left"
+                    offsetLeft={10}
+                    latitude={49.837089}
+                    longitude={24.021161}
+                    closeButton={false}
+                    closeOnClick={true}
+                    dynamicPosition={true}
+                >
+                    1200 ГРН
+                </Popup>
+            </ReactMapGL>
         );
     }
 }
