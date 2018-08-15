@@ -5,16 +5,20 @@ import { Icon } from "semantic-ui-react";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 class MapView extends React.Component {
-    state = {
-        viewport: {
-            width: 500,
-            height: 500,
-            latitude: this.props.latitude,
-            longitude: this.props.longitude,
-            zoom: this.props.zoom,
-            mapboxApiAccessToken: MAPBOX_TOKEN
-        }
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            viewport: {
+                width: 500,
+                height: 500,
+                latitude: this.props.latitude,
+                longitude: this.props.longitude,
+                zoom: this.props.zoom,
+                mapboxApiAccessToken: MAPBOX_TOKEN
+            },
+            controlEnable: this.props.controlEnable
+        };
+    }
 
     componentDidMount() {
         window.addEventListener("resize", this.resize);
@@ -35,11 +39,15 @@ class MapView extends React.Component {
         });
     };
 
+    handleViewportChange = viewport => {
+        if (this.state.controlEnable) this.setState({ viewport });
+    };
+
     render() {
         return (
             <ReactMapGL
                 {...this.state.viewport}
-                // onViewportChange={viewport => this.setState({ viewport })}
+                onViewportChange={this.handleViewportChange}
                 mapStyle="mapbox://styles/mapbox/streets-v9"
             >
                 <Marker
