@@ -69,6 +69,7 @@ jobs:
                         # Grab revision # using regular bash and grep
                         revision=$(echo "$json" | grep -o '"revision": [0-9]*' | grep -Eo '[0-9]+')
                         # Deploy revision
+                        aws ecs  stop-task --task kudypoditys
                         aws ecs update-service --cluster "$CLUSTER" --service "$SERVICE" --task-definition "$TASK":"$revision"
                         return 0
                       fi
