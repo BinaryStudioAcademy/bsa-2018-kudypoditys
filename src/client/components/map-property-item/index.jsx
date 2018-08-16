@@ -18,15 +18,13 @@ export class MapPropertyItem extends Component {
     render() {
         return (
             <Fragment>
-                <div style={{ marginTop: "1%" }}>
-                    <Slider
-                        dotsEnable={false}
-                        style={{ marginTop: "13%" }}
-                        pics={this.props.pics}
-                        handleSlideChange={this.handleSlideChange}
-                        slideIndex={0}
-                    />
-                </div>
+                <Slider
+                    dotsEnable={false}
+                    style={{ marginTop: "13%" }}
+                    pics={this.props.pics}
+                    handleSlideChange={this.handleSlideChange}
+                    slideIndex={0}
+                />
             </Fragment>
         );
     }

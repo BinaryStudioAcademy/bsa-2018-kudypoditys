@@ -49,7 +49,6 @@ export class Slider extends Component {
     };
 
     render() {
-        console.log(this.props.dotsEnable);
         this.slideIndex = this.props.slideIndex || 0;
         return (
             <Container fluid className="slider-c-wrapper">
