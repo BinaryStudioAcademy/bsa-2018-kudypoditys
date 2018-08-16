@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {HomePage} from 'client/components/home-page';
 import { getHitCount } from 'client/services/hitCountService';
 
 class App extends React.Component {
@@ -11,11 +11,16 @@ class App extends React.Component {
     render() {
         const { hitCount } = this.state;
 
+
+        return (<HomePage/>);
+
+
         if (hitCount === undefined) {
             return null;
         }
 
         return (
+
             <h1>
                 Hit count: <span style={{ color: 'blue' }}>{hitCount}</span>
             </h1>

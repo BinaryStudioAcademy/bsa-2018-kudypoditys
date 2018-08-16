@@ -36,11 +36,14 @@ ReactDOM.render(
 );
  /* <BrowserRouter>
             <Switch>
-
-                <Route exact path="/" component={Registration} />
-                <Route path="/search" component={Registration} />
-                <Route path="/property/:id" component={Registration} />
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/reg" component={Registration} />
+                <Route exact path="/log" component={Login} />
+                <Route exact path="/checkin-checkout" component={CheckInCheckOut} />
+                <Route path="/search-page" component={SearchPage} />
+                <Route path="/property-page" component={PropertyPage} />
                 <Route path="/add-property/" component={PropertyCreationTabs} />
+                <Route path="/404" component={NotFoundPage} />
 
             </Switch>
         </BrowserRouter> */

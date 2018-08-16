@@ -1,20 +1,18 @@
 import React from "react";
-import Map from './map'
-
-const GOOGLE_MAP_URL=`https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dkzMEoW2UBi7tA1TVAMbrwCUStF_9xw&v=3.exp&libraries=geometry,drawing,places`
+import MapView from "../map-view";
 
 class BasicMapWidget extends React.Component {
-
     render() {
         return (
-            <Map
-                location={this.props.location}
-                googleMapURL={GOOGLE_MAP_URL}
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `600px`, width: `600px` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
+            <MapView
+                latitude={this.props.latitude}
+                longitude={this.props.longitude}
+                zoom={12}
+                controlEnable={false}
+                width={250}
+                height={250}
             />
         );
     }
 }
-export default BasicMapWidget
+export default BasicMapWidget;

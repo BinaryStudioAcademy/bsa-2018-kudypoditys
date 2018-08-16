@@ -1,6 +1,6 @@
 const state = {
     search: {
-        destination: "231",
+        destination: "Lviv",
         checkIn: null,
         checkOut: null,
         adults: 1,
@@ -11,7 +11,8 @@ const state = {
     login: {
         email: "",
         password: "",
-        errors: []
+        errors: [],
+        loginSuccess: false
     },
     foundProperties: {
         foundProperty1: {
@@ -47,7 +48,18 @@ const state = {
     sortType: {
         activeItem: "price"
     },
+    addProperty: {
+        arrivalFrom: "10:00",
+        arrivalTo: "12:00",
+        departureFrom: "10:00",
+        departureTo: "12:00"
+    },
 
+    header: {
+        currencies: [],
+        selectedCurrency: 1,
+        currentUser: null
+    },
     shownProperties: {
         "xyz-1": {
             image: `http://cdn.home-designing.com/wp-content/uploads/2016/04/luxury-art-deco-apartment-interior.jpg`,
@@ -76,13 +88,45 @@ const state = {
         "xyz-2": {}
     },
     searchResults: {
-        destination: "Dnipro",
-        totalCount: 42,
+        destination: "Lviv",
+        totalCount: 1,
         shownFrom: 1,
         shownTo: 5
     },
+    cityInfos: [],
+    filters: [
+        {
+            id: "1",
+            ischecked: true,
+            label: "Pool",
+            amount: 321,
+            type: "Facility"
+        },
+        {
+            id: "2",
+            ischecked: false,
+            label: "Very good location: 8+",
+            amount: 658,
+            type: "Review Score"
+        },
+        {
+            id: "4",
+            ischecked: false,
+            label: "Hotel",
+            amount: 658,
+            type: "Property Type"
+        },
+        {
+            id: "3",
+            ischecked: false,
+            label: "Hostel",
+            amount: 658,
+            type: "Property Type"
+        }
+    ],
 
-    cityInfos: []
+    rooms: {}
+
 };
 
 export default state;

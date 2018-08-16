@@ -5,26 +5,17 @@ import PropTypes from 'prop-types';
 import 'slick-carousel/slick/slick.css';
 import './index.scss';
 
-
 import { Container, Button, Image, Icon } from 'semantic-ui-react';
 
 export class Slider extends Component {
 
-    settings = {
-        dots: true,
-        speed: 300,
-        fade: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        centerMode: true,
-        accessibility: false,
-        appendDots: () => this.picsThumbnails(this.props.pics),
-        beforeChange: (curr, next) => {
-            this.slideIndex = next;
-            return this.props.handleSlideChange(next);
-        }
-    }
-
+    pics = [
+        'https://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg',
+        'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg',
+        'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-10.jpg',
+        'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg',
+        'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-12.jpg'
+    ];
     picsThumbnails = (pics) => {
         return (
             <ul>
@@ -46,23 +37,31 @@ export class Slider extends Component {
                 }
             </ul>
         )
-    }
-
-    componentDidMount() {
-    }
+    };
+    settings = {
+        dots: true,
+        speed: 300,
+        fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: true,
+        accessibility: false,
+        appendDots: () => this.picsThumbnails(this.pics),
+        beforeChange: (curr, next) => this.slideIndex = next
+    };
 
     render() {
-        this.slideIndex = this.props.slideId || 0;
+        this.slideIndex = this.props.slideIndex || 0;
         return (
             <Container fluid className='slider-c-wrapper'>
                 <Button
                     className='slider-c-button slider-c-prev-button'
                     onClick={() => this.slider.slickPrev()}
-                    >
+                >
                     <Icon name='arrow alternate circle left' size='large'/>
                 </Button>
                     <SliderSlick ref={slider => (this.slider = slider)} {...this.settings}>
-                            {this.props.pics.map((item, i) =><Image className='slider-c-image' src={item} key={i}/>)}
+                        {this.pics.map((item, i) => <Image className='slider-c-image' src={item} key={i}/>)}
                     </SliderSlick>
                 <Button
                     className='slider-c-button slider-c-next-button'
@@ -76,9 +75,8 @@ export class Slider extends Component {
 }
 
 Slider.propTypes = {
-    pics: PropTypes.array.isRequired,
-    handleSlideChange: PropTypes.func.isRequired,
-    slideId: PropTypes.number.isRequired
-}
+    pics: PropTypes.array,
+    slideIndex: PropTypes.number
+};
 
 export default Slider;
