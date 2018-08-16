@@ -11,7 +11,8 @@ const state = {
     login: {
         email: "",
         password: "",
-        errors: []
+        errors: [],
+        loginSuccess: false
     },
     foundProperties: {
         foundProperty1: {

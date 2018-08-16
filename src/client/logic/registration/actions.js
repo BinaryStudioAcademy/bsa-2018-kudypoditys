@@ -1,6 +1,9 @@
-import { REGISTER_SUCCESS, REGISTER_FAILURE } from "./actionTypes";
+import {
+    REGISTER_SUBMIT,
+    REGISTER_SUCCESS,
+    REGISTER_FAILURE
+} from "./actionTypes";
 import api from "../.././helpers/api";
-import cookies from "browser-cookies";
 
 export function registerSubmit(payload) {
     // Saga

@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const settings = require('../../../config/settings');
 const bcrypt = require('bcrypt');
 const { dateHelpers } = require('../helpers');
-const userRefreshTokenService = require('./userRefreshToken');
+const userTokenService = require('./userToken');
 
 class UserService extends Service {
     getAllUsers() {
@@ -49,17 +49,9 @@ class UserService extends Service {
             if (!bcrypt.compareSync(password, user.password)) {
                 return Promise.reject(new Error('password is invalid'));
             }
-            const expiresDate = this.getExpiresDate();
-            const toSign = {
-                id: user.id,
-                fullName: user.fullName,
-                expiresIn: expiresDate
-            };
-
-            return userRefreshTokenService.generateForUser(user.id).then((refreshToken) => {
+            return userTokenService.generateForUser(user.id).then((refreshToken) => {
                 return {
-                    token: jwt.sign(toSign, settings.jwtPrivateKey),
-                    expiresIn: expiresDate,
+                    ...userTokenService.generateAccessToken(user.id),
                     refreshToken: refreshToken
                 };
             });
@@ -67,10 +59,6 @@ class UserService extends Service {
         });
     }
 
-    getExpiresDate() {
-        const secondsFromUnixEpoch = dateHelpers.toUnixTimeSeconds(new Date());
-        return secondsFromUnixEpoch + settings.accessTokenLife;
-    }
 }
 
 module.exports = new UserService(userRepository);

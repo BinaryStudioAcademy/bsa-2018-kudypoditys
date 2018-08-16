@@ -4,12 +4,34 @@ import {storiesOf} from "@storybook/react";
 import MapView from "../src/client/components/map-view";
 import Modal from "../src/client/components/modal";
 
-const location = {lat: 49.8569857, lng: 24.0180817};
-
 storiesOf("Map View", module)
-    .add("Map View", () => <MapView location={location}/>)
+    .add("Map View with popup", () => (
+        <MapView
+            latitude={49.837089}
+            longitude={24.021161}
+            popupText={"1200 грн"}
+            zoom={15}
+            controlEnable={true}
+        />
+    ))
+    .add("Map View without popup", () => (
+        <MapView
+            latitude={49.837089}
+            longitude={24.021161}
+            zoom={15}
+            controlEnable={true}
+        />
+    ))
+    .add("Map View disabled control", () => (
+        <MapView
+            latitude={49.837089}
+            longitude={24.021161}
+            zoom={15}
+            controlEnable={false}
+        />
+    ))
     .add("Map View in modal", () => (
         <Modal fullScreen trigger={<button>Show modal</button>}>
-            <MapView location={location}/>
+            <MapView latitude={49.837089} longitude={24.021161} zoom={15} />
         </Modal>
     ));

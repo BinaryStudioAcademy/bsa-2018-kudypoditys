@@ -1,7 +1,7 @@
 const express = require("express");
 const authRouter = express.Router();
 const userService = require("../services/user");
-const jwtMiddleware = require("../middleware/jwt.middleware");
+const userTokenService = require("../services/userToken");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const settings = require("../../../config/settings");
@@ -11,17 +11,21 @@ authRouter.route("/login").post((req, res) => {
     userService
         .login(data.email, data.password)
         .then(obj => {
-            res.cookie("jwtToken", obj.token)
-                .status(200)
-                .send(obj);
+            res.status(200).send(obj);
         })
         .catch(err => {
             res.status(400).send(err.message);
         });
 });
 
-authRouter.route("/logout").get((req, res) => {
-    res.clearCookie("jwtToken").send(true);
+authRouter.route('/refreshtoken/:token').get((req, res) => {
+    const token = req.params.token;
+
+    userTokenService.refreshToken(token).then(data => {
+        res.status(200).send(data);
+    }).catch(err => {
+        res.status(400).send(err.message);
+    });
 });
 
 authRouter.route("/signup").post((req, res) => {
@@ -42,7 +46,7 @@ authRouter.route("/signup").post((req, res) => {
         .then(() => {
             userService.getUserByEmail(user.email).then(user => {
                 let obj = {
-                    expiresIn: userService.getExpiresDate()
+                    expiresIn: userTokenService.getExpiresDate()
                 };
                 obj.token = jwt.sign(
                     {
@@ -51,9 +55,7 @@ authRouter.route("/signup").post((req, res) => {
                     },
                     settings.jwtPrivateKey
                 );
-                res.cookie("jwtToken", obj.token)
-                    .status(200)
-                    .send(obj);
+                res.status(200).send(obj);
             });
         })
         .catch(err => {
