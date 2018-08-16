@@ -3,7 +3,10 @@ import './index.scss';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react'
 import { fieldArrayMetaPropTypes } from 'redux-form';
-import ComplexInput from './complexInput.jsx'
+import ComplexInput from './complexInput.jsx';
+import RoomSquare from './roomSquare.jsx';
+import BasePriceForm from './basePrice.jsx';
+import ApplyBtn from './applyButton.jsx'
 
 class AddRoom extends React.Component {
     constructor(props){
@@ -17,8 +20,9 @@ class AddRoom extends React.Component {
     //     this.setState({displayAddForm:true});
     // }
     onFocusHandler(e){
-        const a = e.target;
-        console.log(a.id)
+
+        //const a = e.target;
+        console.log(e.target.name)
     }
     optionRender(arr){
         const res = arr.map((item)=>
@@ -51,7 +55,7 @@ class AddRoom extends React.Component {
         return(
             <div className='plan-price-form'>
                 <form action="">
-                    <div id='1' className="plan-price-form-group" onClick={(e)=>{this.onFocusHandler(e)}}>
+                    <div name='1' className="plan-price-form-group" onClick={this.onFocusHandler}>
                         <h3>Виберіть</h3>
                         <label  htmlFor="type"className='plan-price-form-label'>Тип номеру</label>
                         <select name='type' className='plan-price-form-select'>
@@ -66,7 +70,10 @@ class AddRoom extends React.Component {
                         <input name='roomsAmount'type="text"/>
                     </div>
 
-                   <ComplexInput />
+                   <ComplexInput onFocus={this.onFocusHandler.bind(this)} />
+                   <RoomSquare />
+                   <BasePriceForm/>
+                   <ApplyBtn/>
 
                 </form>
             </div>
