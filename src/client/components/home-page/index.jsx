@@ -2,14 +2,15 @@ import React, {Component, Fragment} from 'react';
 
 import Search from 'client/components/search';
 import BannerList from 'client/components/banner-list';
-import Header from 'client/components/header'
+import Header from 'client/components/header';
 
 export class HomePage extends Component {
 
     render() {
+
         return (
             <Fragment>
-                <Header/>
+                <Header />
                 <div className="">
 
                 </div>
