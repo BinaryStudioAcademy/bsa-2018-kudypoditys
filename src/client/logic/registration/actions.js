@@ -9,12 +9,14 @@ export function registerSubmit(payload) {
     // Saga
     api.sendRequest("/signup", "post", payload)
         .then(response => {
+            const { token, expiresIn } = response.data;
+            cookies.set("accessToken", token);
+            cookies.set("expiresIn", expiresIn.toString());
             return {
                 type: REGISTER_SUCCESS,
                 payload: {
                     error: false,
-                    message: "Successfully signed up!",
-                    jwtToken: response.data
+                    message: "Successfully signed up!"
                 }
             };
         })

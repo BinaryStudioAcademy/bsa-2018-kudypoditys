@@ -16,6 +16,10 @@ app.use(cors({origin: "http://localhost:3000", credentials: true}));
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+
+require('./src/api/middleware')(app);//adding jwt and other
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 

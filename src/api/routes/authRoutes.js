@@ -55,7 +55,6 @@ authRouter.route("/signup").post((req, res) => {
                     },
                     settings.jwtPrivateKey
                 );
-
                 res.status(200).send(obj);
             });
         })

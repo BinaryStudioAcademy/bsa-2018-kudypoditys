@@ -12,7 +12,7 @@ class Repository {
     }
 
     findById(id) {
-        return this.model.findById(id).then(entity => entity.dataValues);
+        return this.model.findById(id);
     }
 
     updateById(id, data) {
