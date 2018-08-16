@@ -1,7 +1,5 @@
-import defaultState from 'client/logic/defaultState';
-import {
-    QUICK_FILTERS_UPDATE
-} from './actionType';
+import defaultState from "client/logic/defaultState";
+import { QUICK_FILTERS_UPDATE } from "./actionType";
 
 function quickFiltersReducer(state = defaultState.filters, action) {
     switch (action.type) {
@@ -9,10 +7,9 @@ function quickFiltersReducer(state = defaultState.filters, action) {
             return {
                 ...state.filters,
                 ...action.payload
-            }
+            };
         default:
             return state;
-
     }
 }
 

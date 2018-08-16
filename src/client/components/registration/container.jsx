@@ -4,7 +4,7 @@ export function mapStateToProps({form}) {
     const {registration} = form;
     return {
         ...registration
-    }
+    };
 }
 
 export function mapDispatchToProps(dispatch) {
