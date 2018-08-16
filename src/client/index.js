@@ -20,6 +20,7 @@ import { NotFoundPage } from "client/components/404-page";
 import createSagaMidddelware from 'redux-saga';
 import rootSaga from 'client/logic/rootSaga';
 import history from 'client/history';
+import {PhotoTab} from "./components/photo-tab-registration-property";
 
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [
@@ -38,7 +39,7 @@ ReactDOM.render(
                 <Route exact path="/checkin-checkout" component={CheckInCheckOut} />
                 <Route path="/search-page" component={SearchPage} />
                 <Route path="/property-page" component={PropertyPage} />
-                <Route path="/add-property/" component={PropertyCreationTabs} />
+                <Route path="/add-property/" component={PhotoTab}/>
                 <Route path="/404" component={NotFoundPage} />
 
             </Switch>
