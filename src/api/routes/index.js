@@ -1,3 +1,4 @@
+const auth = require('./authRoutes');
 const user = require("./userRoutes");
 const property = require("./propertyRoutes");
 const message = require("./messageRoutes");
@@ -11,13 +12,9 @@ const favorite = require("./favoriteRoutes");
 const discount = require("./discountRoutes");
 const roomDiscount = require("./roomDiscountRoutes");
 const bedInRoom = require("./bedInRoomRoutes");
-//
-// module.exports = app => {
-//     app.use('/user', user);
-//     app.use('/property', property)
-// };
 
-module.exports = function(app) {
+module.exports = function (app) {
+    app.use('/api', auth);
     app.use("/api/users", user);
     app.use("/api/property", property);
     app.use("/api/message", message);
@@ -29,6 +26,7 @@ module.exports = function(app) {
     app.use("/api/image", image);
     app.use("/api/favorite", favorite);
     app.use("/api/discount", discount);
-    app.use("/api/room-discount", discount);
+    app.use("/api/room-discount", roomDiscount);
     app.use("/api/bed-in-room", bedInRoom);
+
 };

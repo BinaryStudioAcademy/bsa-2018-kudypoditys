@@ -1,7 +1,7 @@
 import {
     CURENCY_SELECT,
     CURRENCIES_GET,
-    CURRENT_USER_GET
+    LOGOUT
 } from './actionTypes';
 
 export function selectCurrency(payload) {
@@ -17,8 +17,8 @@ export function getCurrencies() {
     }
 }
 
-export function getCurrentUser() {
+export function logout() {
     return {
-        type: CURRENT_USER_GET
+        type: LOGOUT
     }
 }

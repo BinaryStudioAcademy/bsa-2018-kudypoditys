@@ -11,10 +11,10 @@ const RegistrationForm = (props) => {
         <form onSubmit={props.handleSubmit} className='registration-c-form'>
             {
                 registerFeedback && registerFeedback.error ?
-                <Message negative>
-                    <Message.Header>Oops!</Message.Header>
-                    <p>{ registerFeedback.message }</p>
-                </Message> : null
+                    <Message negative>
+                        <Message.Header>Oops!</Message.Header>
+                        <p>{registerFeedback.message}</p>
+                    </Message> : null
             }
             <Field component={renderField}
                    name="fullName"
@@ -59,28 +59,23 @@ const RegistrationForm = (props) => {
 
             <Button
                 type="submit"
-                className='registration-c-button'
+                className="registration-c-button"
                 icon
-                labelPosition='left'
-                floated='right'
-                color='blue'
-                size='medium'
+                labelPosition="left"
+                floated="right"
+                color="blue"
+                size="medium"
                 basic
-                name='register'
+                name="register"
                 disabled={submitting}
             >
-                <Icon name='check'/>
+                <Icon name="check" />
                 Submit
             </Button>
         </form>
     );
-
 };
 
-
-
 export default reduxForm({
-    form: 'registration'
+    form: "registration"
 })(RegistrationForm);
-
-

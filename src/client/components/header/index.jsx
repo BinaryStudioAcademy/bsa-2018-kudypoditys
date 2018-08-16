@@ -1,16 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Image, Dropdown, Button, Menu } from 'semantic-ui-react';
+import { Dropdown, Button, Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import history from 'client/history';
 
 import './index.scss';
 import { mapStateToProps, mapDispatchToProps } from './container';
 
 export class MainHeader extends Component {
 
-    componentDidMount() {
-        // this.props.getCurrentUser();
-        // this.props.getCurrencies();
+    logout = () => {
+        this.props.logout();
+    }
+
+    login = () => {
+        history.push('/log');
     }
 
     render() {
@@ -39,9 +43,12 @@ export class MainHeader extends Component {
 
                     <Menu.Item className="menu__welcome">
                         {currentUser ?
-                            "Wellcome " + currentUser.name :
                             <Fragment>
-                                <Button inverted className="menu__login">Login</Button>
+                                Wellcome  {currentUser.fullName}
+                                <Button inverted className="menu__logout" onClick={this.logout}>Logout</Button>
+                            </Fragment> :
+                            <Fragment>
+                                <Button inverted className="menu__login" onClick={this.login}>Login</Button>
                                 <Button inverted className="menu__register">Register</Button>
                             </Fragment>}
                     </Menu.Item>
@@ -60,7 +67,9 @@ MainHeader.propTypes = {
             value: PropTypes.number.isRequired
         })
     ).isRequired,
-    currentUser: PropTypes.string
+    currentUser: PropTypes.shape({
+        fullName: PropTypes.string.isRequired
+    })
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainHeader);
