@@ -6,9 +6,10 @@ export const maxLength = max => value =>
 export const maxLength20 = maxLength(20)
 
 export const minLength = min => value =>
-
     value && value.length < min ? `Must be ${min} characters or more` : undefined
+
 export const minLength2 = minLength(2)
+export const minLength8 = minLength(8)
 
 export const email = value =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
@@ -28,4 +29,9 @@ export const alphaNumeric = value =>
 export const aol = value =>
     value && /.+@aol\.com/.test(value)
         ? 'Really? You still use AOL for your email?'
+        : undefined
+
+export const password = value =>
+    value && !/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))/.test(value)
+        ? 'Password must contain uppercase, downcase letter and at least 1 number'
         : undefined
