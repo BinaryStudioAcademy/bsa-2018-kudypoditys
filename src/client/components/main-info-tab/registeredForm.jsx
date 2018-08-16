@@ -4,7 +4,7 @@ import FormTextInput from '../input-form/formTextInput';
 import { required, maxLength20, phoneNumber } from 'client/regexValidationService';
 import { Field, reduxForm } from 'redux-form';
 import CheckboxForm from './checkboxForm';
-import semanticSelectorFormField from './semanticSelectorForm'
+import semanticSelectorFormField from 'client/components/dropdown-form/semanticSelectorForm'
 
 
 
