@@ -1,31 +1,43 @@
-import React, { Component, Fragment } from "react";
-import { Button } from "semantic-ui-react";
+import React, { Component } from "react";
+import { Card, Icon } from "semantic-ui-react";
 import Slider from "client/components/slider";
-import { PropertySummary } from "../property-summary";
 export class MapPropertyItem extends Component {
     nameClicked = () => {
         console.log("Name clicked");
     };
 
-    checkPlacesClicked = () => {
-        console.log("Check places clicked");
-    };
-
-    handleSlideChange = index => {
-        console.log(`Slide changed to ${index}`);
-    };
-
     render() {
         return (
-            <Fragment>
+            <Card style={{ minWidth: "400px" }}>
                 <Slider
                     dotsEnable={false}
                     style={{ marginTop: "13%" }}
                     pics={this.props.pics}
-                    handleSlideChange={this.handleSlideChange}
                     slideIndex={0}
                 />
-            </Fragment>
+                <Card.Content>
+                    <Card.Header>
+                        <a tabIndex="0" onClick={this.nameClicked}>
+                            {this.props.propertyName}
+                        </a>
+                    </Card.Header>
+                    <Card.Meta>
+                        <span className="address">
+                            {this.props.propertyAddress}
+                        </span>
+                    </Card.Meta>
+                </Card.Content>
+                <Card.Content extra>
+                    <a style={{ float: "right" }}>
+                        <Icon name="money" />
+                        {this.props.price}
+                    </a>
+                    <a style={{ float: "left" }}>
+                        <Icon name="star" />
+                        {this.props.rating}
+                    </a>
+                </Card.Content>
+            </Card>
         );
     }
 }
