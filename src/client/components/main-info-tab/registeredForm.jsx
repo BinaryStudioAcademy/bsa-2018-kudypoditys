@@ -50,7 +50,7 @@ let RegistrationForm = props => {
                         validate={[required, phoneNumber]} />
                     <CardDescription><br /> Do you own multiple apartments, or are you part
                             of a property management company or group?</CardDescription>
-                    <CheckboxForm />
+                    <CheckboxForm  name='select1'/>
                 </Card.Content>
             </Card>
             <Card style={{ width: '900px' }} color='teal'>
@@ -59,7 +59,7 @@ let RegistrationForm = props => {
                         </Card.Description>
                     <CardDescription><br />Do you work with a channel manager or XML provider
                              to manage your pricing and availability?</CardDescription>
-                    <CheckboxForm />
+                    <CheckboxForm name='select2'/>
                 </Card.Content>
             </Card>
             <Card style={{ width: '900px' }} color='teal'>
@@ -91,14 +91,14 @@ let RegistrationForm = props => {
                         icon="map marker"
                         validate={[required, maxLength20]} />
                     <CardDescription><br />City</CardDescription>
-                    <Field
-                    name="selectExample"
-                    component={semanticSelectorFormField}
-                    as={Form.Select}
-                    options={cities}
-                    label="Semantic selector"
-                    placeholder="Select an option"
-                    validate={required}/>
+                     <Field
+                        name="selectExample"
+                        component={semanticSelectorFormField}
+                        as={Form.Select}
+                        options={cities}
+                        label="Semantic selector"
+                        placeholder="Select an option"
+                        validate={required}/>
                 </Card.Content>
             </Card>
             <Card style={{ width: '900px' }} color='teal'>
@@ -106,7 +106,7 @@ let RegistrationForm = props => {
                     <Card.Description style={{ fontSize: '18px' }}>Did we contact you?</Card.Description>
                     <CardDescription><br />Were you contacted by a Booking.com representative in
                             the past two weeks before starting your registration process?</CardDescription>
-                    <CheckboxForm />
+                    <CheckboxForm name='select3'/>
                 </Card.Content>
             </Card>
             <Button color='teal' style={{ width: '750px' }}
