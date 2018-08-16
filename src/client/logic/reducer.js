@@ -11,6 +11,7 @@ import { reducer as formReducer } from "redux-form";
 import quickFilter from "client/logic/quick-filter/reducer";
 import roomSummary from "client/logic/rooms-summary-table/reducer"
 import header from 'client/logic/header/reducer';
+import propertyPaymentTab from 'client/logic/property-payment-tab/reducer';
 
 import checkInOut from 'client/logic/checkIn-checkOut/reducer'
 import cityInfos from "client/logic/banner-list/reducer";
@@ -30,5 +31,6 @@ export default combineReducers({
     }),
     propertyPage,
     quickFilter,
-    roomSummary
+    roomSummary,
+    propertyPaymentTab
 });

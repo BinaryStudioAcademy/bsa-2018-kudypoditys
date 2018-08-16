@@ -125,7 +125,30 @@ const state = {
         }
     ],
 
-    rooms: {}
+    rooms: {},
+
+    propertyPaymentTab: {
+        paymentType: "cash", // "creditcards"
+        paymentCreditCards: {
+            mastercard: false,
+            visa: false
+        },
+        vatTaxes: "default", // "none"
+        cityTax: "default", // "individual"
+        cityTaxIndividual: {
+            value: "",
+            type: "percent",
+            includeToPrice: false
+        },
+        commissionName: "",
+        recipientSameAddress: true,
+        recipientActualAddress: {
+            country: "",
+            city: "",
+            address: "",
+            postcode: ""
+        }
+    }
 
 };
 
