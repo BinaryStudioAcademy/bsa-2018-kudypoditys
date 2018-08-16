@@ -1,3 +1,7 @@
+import {LoginComponent} from "../login";
+import React from "react";
+
+
 export const MenuItems = [
 
     {
@@ -14,6 +18,9 @@ export const MenuItems = [
         menuItem: {
             key: 'Layout and pricing', icon: 'usd', content: 'Layout and pricing', header: 'Amenities',
             subheader: ' Describe the bed options, common spaces, size, and pricing for each of your apartments',
+
+            //this is how to USE
+            component: <LoginComponent/>,
         }
 
     },

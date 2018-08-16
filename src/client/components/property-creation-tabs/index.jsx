@@ -1,9 +1,8 @@
 import './index.scss';
 import React from 'react';
-import { Tab, Container, Header} from 'semantic-ui-react';
+import {Tab, Container} from 'semantic-ui-react';
 import {MenuItems} from "./config";
-
-
+import {DrawTab} from "./DrawTab";
 
 
 export class PropertyCreationTabs extends React.Component {
@@ -15,23 +14,15 @@ export class PropertyCreationTabs extends React.Component {
 
             render: () =>
 
-                <Tab.Pane>
-                    {console.log(tab)}
-                    <Header as="h2">
-                        {tab.menuItem.header}
-                    </Header>
-                    <Header as="h4" style={{paddingBottom: 10, lineHeight: 1.2}}>
-
-                        {tab.menuItem.subheader}
-
-                    </Header>
-                    {tab.menuItem.content}
-                </Tab.Pane>
+                <DrawTab
+                    header={tab.menuItem.header}
+                    subheader={tab.menuItem.subheader}
+                    component={tab.menuItem.component}
+                />
         }))
     }
 
     render() {
-
 
         return (
             <Container>
