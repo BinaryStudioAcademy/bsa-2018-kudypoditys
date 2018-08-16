@@ -2,7 +2,7 @@ import React from "react";
 
 import { storiesOf } from "@storybook/react";
 
-import Quickfilter from "client/components/rooms-summary-tables/";
+// import Quickfilter from "client/components/rooms-summary-tables/";
 import RoomsSummaryTable from "../src/client/components/rooms-summary-table";
 
 const rooms1 = {

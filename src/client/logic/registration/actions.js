@@ -4,6 +4,7 @@ import {
     REGISTER_FAILURE
 } from "./actionTypes";
 import api from "../.././helpers/api";
+import cookies from "browser-cookies";
 
 export function registerSubmit(payload) {
     // Saga
