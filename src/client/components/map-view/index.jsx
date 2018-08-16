@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { MAPBOX_TOKEN } from "client/constants";
 import { Icon } from "semantic-ui-react";
+import MapPropertyItem from "client/components/map-property-item";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 class MapView extends React.Component {
@@ -11,13 +12,20 @@ class MapView extends React.Component {
             viewport: {
                 width: 500,
                 height: 500,
-                latitude: this.props.latitude,
-                longitude: this.props.longitude,
+                latitude: this.props.startPosition.latitude,
+                longitude: this.props.startPosition.longitude,
                 zoom: this.props.zoom,
                 mapboxApiAccessToken: MAPBOX_TOKEN
             },
-            controlEnable: this.props.controlEnable
+            controlEnable: this.props.controlEnable,
+            popupInfo: null
         };
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("This state ", this.state);
+        console.log("Next state ", nextState);
+        return !this.state.popupInfo;
     }
 
     componentDidMount() {
@@ -39,42 +47,69 @@ class MapView extends React.Component {
         });
     };
 
+    renderPopup = () => {
+        const { popupInfo } = this.state;
+        console.log("Render");
+        return (
+            popupInfo && (
+                <Popup
+                    tipSize={15}
+                    anchor="left"
+                    offsetLeft={10}
+                    latitude={popupInfo.latitude}
+                    longitude={popupInfo.longitude}
+                    // closeButton={true}
+                    // closeOnClick={false}
+                    dynamicPosition={true}
+                    onClose={() => this.setState({ popupInfo: null })}
+                >
+                    <MapPropertyItem
+                        propertyName={"Avangard Kulisha Apartment"}
+                        propertyAddress={
+                            "15 Panteleimona Kulisha Street, Львов"
+                        }
+                        price={"1200 UAH"}
+                        rating={"10/10"}
+                    />
+                </Popup>
+            )
+        );
+    };
+
+    renderPropertyMarker = (property, index) => {
+        return (
+            <Marker
+                key={`marker-${index}`}
+                latitude={property.latitude}
+                longitude={property.longitude}
+                offsetLeft={-20}
+                offsetTop={-10}
+            >
+                <Icon
+                    size="big"
+                    name="map marker alternate"
+                    onClick={() => this.setState({ popupInfo: property })}
+                />
+            </Marker>
+        );
+    };
+
     handleViewportChange = viewport => {
         if (this.state.controlEnable) this.setState({ viewport });
     };
 
     render() {
         return (
-            <ReactMapGL
-                {...this.state.viewport}
-                onViewportChange={this.handleViewportChange}
-                mapStyle="mapbox://styles/mapbox/streets-v9"
-            >
-                <Marker
-                    latitude={this.props.latitude}
-                    longitude={this.props.longitude}
-                    offsetLeft={-20}
-                    offsetTop={-10}
+            <Fragment>
+                <ReactMapGL
+                    {...this.state.viewport}
+                    onViewportChange={this.handleViewportChange}
+                    mapStyle="mapbox://styles/mapbox/streets-v9"
                 >
-                    <Icon size="big" name="map marker alternate" />
-                </Marker>
-                {this.props.popupText ? (
-                    <Popup
-                        tipSize={15}
-                        anchor="left"
-                        offsetLeft={10}
-                        latitude={this.props.latitude}
-                        longitude={this.props.longitude}
-                        closeButton={false}
-                        closeOnClick={false}
-                        dynamicPosition={true}
-                    >
-                        {this.props.popupText}
-                    </Popup>
-                ) : (
-                    ""
-                )}
-            </ReactMapGL>
+                    {this.props.properties.map(this.renderPropertyMarker)}
+                    {this.renderPopup()}
+                </ReactMapGL>
+            </Fragment>
         );
     }
 }
