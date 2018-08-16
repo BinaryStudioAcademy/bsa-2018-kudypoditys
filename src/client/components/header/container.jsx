@@ -1,4 +1,4 @@
-import { getCurrencies, getCurrentUser, selectCurrency } from 'client/logic/header/actions';
+import { getCurrencies, selectCurrency, logout } from 'client/logic/header/actions';
 
 export function mapStateToProps(state, ownProps) {
     return { ...state.header };
@@ -14,8 +14,8 @@ export function mapDispatchToProps(dispatch, ownProps) {
             dispatch(selectCurrency(payload));
         },
 
-        getCurrentUser() {
-            dispatch(getCurrentUser());
+        logout() {
+            dispatch(logout());
         }
     };
 }

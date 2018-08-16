@@ -15,8 +15,8 @@ import {
 } from "semantic-ui-react";
 import "./index.scss";
 import PropTypes from "prop-types";
-import { mapStateToProps } from "./container";
-import { connect } from "react-redux";
+import {mapStateToProps} from "./container";
+import {connect} from "react-redux";
 
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
@@ -37,7 +37,7 @@ export class PropertyListItem extends React.Component {
     }
 
     render() {
-        const { propertyItemData } = this.props;
+        const {propertyItemData} = this.props;
         console.log(propertyItemData);
 
         let ratingStatus = "";
@@ -55,7 +55,6 @@ export class PropertyListItem extends React.Component {
             <Card
                 fluid
                 style={{
-                    margin: "0.5rem",
                     padding: "0.5rem",
                     border: "groove"
                 }}
@@ -165,7 +164,7 @@ export class PropertyListItem extends React.Component {
                                             {" "}
                                             {ratingStatus}
                                         </span>
-                                        <br />
+                                        <br/>
                                         {propertyItemData.reviewsNamber} reviews
                                     </Container>
                                 </Grid.Column>
@@ -234,7 +233,7 @@ export class PropertyListItem extends React.Component {
                                                 0
                                                     ? ""
                                                     : this
-                                                          .handleRedirectToDetails
+                                                        .handleRedirectToDetails
                                             }
                                         >
                                             Choose room

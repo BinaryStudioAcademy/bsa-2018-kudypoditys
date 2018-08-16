@@ -1,38 +1,30 @@
 import React from 'react';
-import {Field, reduxForm} from 'redux-form';
-import {Button, Input, Label, Icon} from 'semantic-ui-react';
+import { Field, reduxForm } from 'redux-form';
+import { Button, Icon, Message } from 'semantic-ui-react';
 import 'client/components/registration/index.scss';
-
-const renderField = ({input, type, icon, label, className, meta: {touched, error}}) => (
-    <React.Fragment>
-        <Label basic className={touched && error ? 'shown' : 'hidden'} color='red' pointing='below'>
-            {touched && error ? error : ''}
-        </Label>
-        <Input
-            {...input}
-            type={type}
-            placeholder={label}
-            icon={icon}
-            fluid
-            iconPosition='left'
-            className={className}
-        />
-    </React.Fragment>
-);
+import renderField from 'client/components/input-form/renderField';
+import { required, minLength2, minLength8, maxLength20, email, phoneNumber, password } from 'client/regexValidationService';
 
 const RegistrationForm = (props) => {
-    const {submitting} = props;
+    const { submitting, registerFeedback } = props;
     return (
-        <form onSubmit={props.handleSubmit}>
-
+        <form onSubmit={props.handleSubmit} className='registration-c-form'>
+            {
+                registerFeedback && registerFeedback.error ?
+                    <Message negative>
+                        <Message.Header>Oops!</Message.Header>
+                        <p>{registerFeedback.message}</p>
+                    </Message> : null
+            }
             <Field component={renderField}
-                   name="fullname"
+                   name="fullName"
                    type="text"
                    icon="user"
                    label="Username"
                    required="required"
                    className="registration-c-input"
-                   validate={[required, minLength(2), maxLength(32), fullnameValidate]}
+                   style={{ height: "90px" }}
+                   validate={[required, minLength2, maxLength20]}
             />
 
             <Field component={renderField}
@@ -42,17 +34,17 @@ const RegistrationForm = (props) => {
                    label="Email Address"
                    required="required"
                    className="registration-c-input"
-                   validate={[required, emailValidate]}
+                   validate={[required, email]}
             />
 
             <Field component={renderField}
-                   name="phone"
+                   name="phoneNumber"
                    type="number"
                    icon="phone"
                    label="Phone"
                    required="required"
                    className="registration-c-input"
-                   validate={[required, phoneValidate]}
+                   validate={[required, phoneNumber]}
             />
 
             <Field component={renderField}
@@ -62,75 +54,28 @@ const RegistrationForm = (props) => {
                    label="Password"
                    required="required"
                    className="registration-c-input"
-                   validate={[required, minLength(8), maxLength(64), passwordValidate]}
+                   validate={[required, password, minLength8]}
             />
 
             <Button
                 type="submit"
-                className='registration-c-button'
+                className="registration-c-button"
                 icon
-                labelPosition='left'
-                floated='right'
-                color='blue'
-                size='medium'
+                labelPosition="left"
+                floated="right"
+                color="blue"
+                size="medium"
                 basic
-                name='register'
+                name="register"
                 disabled={submitting}
             >
-                <Icon name='check'/>
+                <Icon name="check" />
                 Submit
             </Button>
         </form>
     );
-
 };
 
 export default reduxForm({
-    form: 'registration'
+    form: "registration"
 })(RegistrationForm);
-
-
-// Validation
-
-const required = value => {
-    if (!value) {
-        return 'Is required.';
-    }
-};
-
-const minLength = min => value => {
-    if (value.length < min) {
-        return `Must be at least ${min} characters long.`;
-    }
-};
-
-const maxLength = max => value => {
-    if (value.length > max) {
-        return `It's too long.`;
-    }
-};
-
-const fullnameValidate = value => {
-    if (!value.match(/^[a-z ,.'-]+$/i)) {
-        return 'Incorrect name format.';
-    }
-};
-
-const emailValidate = value => {
-    if (!value.match(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)) {
-        return 'Invalid e-mail format.';
-    }
-};
-
-const phoneValidate = value => {
-    if (!value.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) {
-        return 'Invalid phone number.';
-    }
-};
-
-const passwordValidate = value => {
-    if (!value.match(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))/)) {
-        return 'Password must contain at least one upperscore letter and one number.';
-    }
-};
-

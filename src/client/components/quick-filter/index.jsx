@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.scss";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import {connect} from "react-redux";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 
 class Quickfilter extends React.Component {
     handleItemClick(box) {
@@ -10,7 +10,7 @@ class Quickfilter extends React.Component {
     }
 
     sortByType(type) {
-        return this.props.boxes.filter(function(obj) {
+        return this.props.boxes.filter(function (obj) {
             return obj.type === type;
         });
     }
@@ -67,6 +67,7 @@ class Quickfilter extends React.Component {
         );
     }
 }
+
 Quickfilter.propTypes = {
     boxes: PropTypes.arrayOf(
         PropTypes.shape({
