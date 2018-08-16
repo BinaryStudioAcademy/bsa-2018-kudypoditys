@@ -1,28 +1,29 @@
 import React, { Component, Fragment } from "react";
-import { Button, Checkbox } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import { Field, reduxForm } from 'redux-form';
 
-const renderCheckbox = ({ input, data }) =>
-    < Checkbox {...input}
-        label={data}
-        onBlur={() => input.onBlur()}
-        data={data} />
 
 class CheckboxForm extends Component {
     render() {
         return (
             <Fragment>
                 <Button basic>
-                    <Field
+               <Field
                         name="select"
-                        component={renderCheckbox}
-                        data={['Yes']} />
+                        component="input"
+                        type="radio"
+                        value="yes" />
+                        {' '}
+                        Yes
                 </Button>
                 <Button basic>
                     <Field
                         name="select"
-                        component={renderCheckbox}
-                        data={['No']} />
+                        component="input"
+                        type="radio"
+                        value="no" />
+                        {' '}
+                        No
                 </Button>
             </Fragment>
         )
