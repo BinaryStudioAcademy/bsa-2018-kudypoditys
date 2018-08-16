@@ -14,23 +14,21 @@ passport.use(
                 .getUserByEmail(email)
                 .then(user => {
                     if (!user) {
-                        return callback(null, false, {
-                            message: "Email is incorrect"
-                        });
+                        return callback(null, false, "Email is incorrect");
                     } else {
                         if (!bcrypt.compareSync(password, user.password))
-                            return callback(null, false, {
-                                message: "Password is incorrect"
-                            });
+                            return callback(
+                                null,
+                                false,
+                                "Password is incorrect"
+                            );
                         else {
-                            return callback(null, user, {
-                                message: "Logged in"
-                            });
+                            return callback(null, user, "Logged in");
                         }
                     }
                 })
                 .catch(err => {
-                    return callback(null, false, { message: err.message });
+                    return callback(err, false, err.message);
                 });
         }
     )

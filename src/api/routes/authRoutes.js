@@ -1,3 +1,4 @@
+import passport from "../helpers/passport";
 const express = require("express");
 const authRouter = express.Router();
 const userService = require("../services/user");
@@ -5,9 +6,26 @@ const userTokenService = require("../services/userToken");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const settings = require("../../../config/settings");
+const passport = require("passport");
 
 authRouter.route("/login").post((req, res) => {
-    const data = req.body;
+    passport.authenticate("local", { session: false }, (err, user, message) => {
+        if (err || !user) {
+            res.status(400).send(message);
+        }
+        req.login(user, { session: false }, err => {
+            if (err) res.status(400).send(err.message);
+        });
+
+        userTokenService.generateForUser(user.id).then(refreshToken => {
+            const token = {
+                accessToken: userTokenService.generateAccessToken(user),
+                refreshToken: refreshToken
+            };
+            res.status(200).send(token);
+        });
+    })(req, res);
+    /*
     userService
         .login(data.email, data.password)
         .then(obj => {
@@ -15,7 +33,7 @@ authRouter.route("/login").post((req, res) => {
         })
         .catch(err => {
             res.status(400).send(err.message);
-        });
+        });*/
 });
 
 authRouter.route("/refreshtoken/:token").get((req, res) => {
