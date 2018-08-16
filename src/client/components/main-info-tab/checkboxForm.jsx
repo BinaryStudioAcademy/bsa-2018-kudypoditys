@@ -8,13 +8,13 @@ class CheckboxForm extends Component {
         return (
             <Fragment>
                 <Button basic>
-               <Field
+                    <Field
                         name="select"
                         component="input"
                         type="radio"
                         value="yes" />
-                        {' '}
-                        Yes
+                    {' '}
+                    Yes
                 </Button>
                 <Button basic>
                     <Field
@@ -22,8 +22,8 @@ class CheckboxForm extends Component {
                         component="input"
                         type="radio"
                         value="no" />
-                        {' '}
-                        No
+                    {' '}
+                    No
                 </Button>
             </Fragment>
         )

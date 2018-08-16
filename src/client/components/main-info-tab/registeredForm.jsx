@@ -1,20 +1,15 @@
 import React, { Fragment } from "react";
-import { Card, CardDescription, Button, Dropdown } from "semantic-ui-react";
+import { Card, CardDescription, Button, Form } from "semantic-ui-react";
 import FormTextInput from '../input-form/formTextInput';
-import { required, maxLength20, phoneNumber, isValidZip } from 'client/regexValidationService';
+import { required, maxLength20, phoneNumber } from 'client/regexValidationService';
 import { Field, reduxForm } from 'redux-form';
 import CheckboxForm from './checkboxForm';
+import semanticSelectorFormField from './semanticSelectorForm'
+
 
 
 const cities = ['Lviv', 'Kyiv', 'Odessa', 'Dnipro', 'Ternopil']
 
-// const renderDropdownList = ({ input, data, valueField, textField }) =>
-// <Dropdown
-// {...input}
-// data={data}
-// valueField={valueField}
-// textField={textField}
-// onChange={input.onChange} />
 
 let RegistrationForm = props => {
     const { handleSubmit, pristine, submitting } = props
@@ -96,21 +91,14 @@ let RegistrationForm = props => {
                         icon="map marker"
                         validate={[required, maxLength20]} />
                     <CardDescription><br />City</CardDescription>
-                    <Field name="favoriteColor" component="select">
-                        <option value="">Select a city...</option>
-                        {cities.map(cityOption => (
-                            <option value={cityOption} key={cityOption}>
-                                {cityOption}
-                            </option>
-                        ))}
-                    </Field>
-                    <CardDescription>Zip code</CardDescription>
                     <Field
-                        component={FormTextInput}
-                        name="address"
-                        icon="map marker"
-                        label=" For example:79007"
-                        validate={[required, isValidZip]} />
+                    name="selectExample"
+                    component={semanticSelectorFormField}
+                    as={Form.Select}
+                    options={cities}
+                    label="Semantic selector"
+                    placeholder="Select an option"
+                    validate={required}/>
                 </Card.Content>
             </Card>
             <Card style={{ width: '900px' }} color='teal'>
@@ -120,7 +108,6 @@ let RegistrationForm = props => {
                             the past two weeks before starting your registration process?</CardDescription>
                     <CheckboxForm />
                 </Card.Content>
-
             </Card>
             <Button color='teal' style={{ width: '750px' }}
                 disabled={pristine || submitting} >Continue</Button>
