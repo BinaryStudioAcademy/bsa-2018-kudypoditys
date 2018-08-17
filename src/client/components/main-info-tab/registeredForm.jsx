@@ -113,7 +113,7 @@ let RegistrationForm = props => {
                     <CheckboxForm name='select3'/>
                 </Card.Content>
             </Card>
-            <Button color='teal' style={{ width: '750px' }}
+            <Button color='teal' fluid
                 disabled={pristine || submitting} >Continue</Button>
         </Fragment>
     );

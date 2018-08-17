@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Button, Card, Form, Input, Label } from "semantic-ui-react";
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import semanticSelectorFormField from 'client/components/dropdown-form/semanticSelectorForm'
@@ -26,21 +26,23 @@ let CheckboxBedForm = (props) => {
                     <Card.Description >Can you provide extra beds?</Card.Description>
                     <Button basic>
                         <Field
-                            name="yes"
-                            id="yes"
+                            name="hasExtraBads"
+                            id="hasExtraBads"
                             component="input"
                             type="radio"
-                            value="yes" />
+                            value="true"
+                             />
                         {' '}
                         Yes
                 </Button>
                     <Button basic>
                         <Field
                             id="no"
-                            name="yes1"
+                            name="hasExtraBads"
                             component="input"
                             type="radio"
-                            value="no" />
+
+                            />
                         {' '}
                         No
                 </Button>
@@ -51,9 +53,8 @@ let CheckboxBedForm = (props) => {
                             component={semanticSelectorFormField}
                             as={Form.Select}
                             options={numbers}
-                            label="Semantic selector"
-                            placeholder="Select an option"
-                            validate={required} /></div>}
+                            placeholder="Select amount"
+                            validate={required} />
                     <Card.Header style={{ fontSize: '14px' }} ><br/>Check the box(es) if you can accommodate
                          the following guests in extra beds.</Card.Header>
                     <Card.Description ><br />Children up to 2 years old in cribs</Card.Description>
@@ -66,7 +67,7 @@ let CheckboxBedForm = (props) => {
                     {hasChildrenUpToTwoValue && <div>
                         <Card.Description ><br />Enter the price per night, per child</Card.Description>
                         <Input labelPosition='right' type='text' placeholder='Amount'>
-                            <Label basic>$</Label>
+                            <Label basic>UAN</Label>
                             <input />
                             <Label>.00</Label>
                         </Input> </div>}
@@ -83,11 +84,11 @@ let CheckboxBedForm = (props) => {
                             component={semanticSelectorFormField}
                             as={Form.Select}
                             options={ages}
-                            placeholder="Select an option"
+                            placeholder="Select child's age"
                             validate={required} />
                         <Card.Description ><br />Enter the price per night, per child</Card.Description>
                         <Input labelPosition='right' type='text' placeholder='Amount'>
-                            <Label basic>$</Label>
+                            <Label basic>UAN</Label>
                             <input />
                             <Label>.00</Label>
                         </Input> </div>}
@@ -101,10 +102,11 @@ let CheckboxBedForm = (props) => {
                     {hasAdultsValue && <div>
                         <Card.Description ><br />Enter the price per night, per child</Card.Description>
                         <Input labelPosition='right' type='text' placeholder='Amount'>
-                            <Label basic>$</Label>
+                            <Label basic>UAN</Label>
                             <input />
                             <Label>.00</Label>
                         </Input> </div>}
+                        </div>}
                 </Card.Content>
             </Card>
         </Fragment>
@@ -117,10 +119,10 @@ CheckboxBedForm = reduxForm({
     form: "checkboxForm"
 })(CheckboxBedForm);
 
-const selector = formValueSelector('checkboxBadForm')
+const selector = formValueSelector('checkboxForm')
 CheckboxBedForm = connect(
     state => {
-        const hasExtraBedValue = selector(state, 'yes');
+        const hasExtraBedValue = selector(state, 'hasExtraBads');
         const hasChildrenUpToTwoValue = selector(state, 'ChildrenUpTwo');
         const hasChildrenValue = selector(state, 'Children');
         const hasAdultsValue = selector(state, 'Adults')
