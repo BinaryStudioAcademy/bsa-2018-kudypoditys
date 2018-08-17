@@ -21,7 +21,7 @@ class UserService extends Service {
                     new Error("user with this email already exists")
                 );
             else {
-                return this.create(user);
+                return this.create(newUser);
             }
         });
     }
