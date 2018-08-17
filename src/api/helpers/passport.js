@@ -2,6 +2,16 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const userService = require("../services/user");
 const bcrypt = require("bcrypt");
+const settings = require("../../../config/settings");
+
+const passportJWT = require("passport-jwt");
+const JWTStrategy = passportJWT.Strategy;
+const ExtractJwt = passportJWT.ExtractJwt;
+
+const opts = {
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: settings.jwtPrivateKey
+};
 
 passport.use(
     new LocalStrategy(
@@ -32,6 +42,20 @@ passport.use(
                 });
         }
     )
+);
+
+passport.use(
+    new JWTStrategy(opts, function(jwtPayload, cb) {
+        //find the user in db if needed
+        return userService
+            .findById(jwtPayload.userId)
+            .then(user => {
+                return cb(null, user);
+            })
+            .catch(err => {
+                return cb(err);
+            });
+    })
 );
 
 module.exports = passport;

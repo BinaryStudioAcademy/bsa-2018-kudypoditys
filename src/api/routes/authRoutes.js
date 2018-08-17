@@ -23,7 +23,7 @@ authRouter.route("/login").post((req, res) => {
             .generateForUser(user.id)
             .then(refreshToken => {
                 const token = {
-                    accessToken: userTokenService.generateAccessToken(user),
+                    accessToken: userTokenService.generateAccessToken(user.id),
                     refreshToken: refreshToken
                 };
                 res.status(200).send(token);
@@ -62,7 +62,7 @@ authRouter.route("/signup").post((req, res) => {
         .then(user => {
             userTokenService.generateForUser(user.id).then(refreshToken => {
                 const token = {
-                    accessToken: userTokenService.generateAccessToken(user),
+                    accessToken: userTokenService.generateAccessToken(user.id),
                     refreshToken: refreshToken
                 };
                 res.status(200).send(token);
