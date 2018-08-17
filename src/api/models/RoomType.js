@@ -1,8 +1,8 @@
 const
     Sequelize = require('sequelize'),
-    orm = require('../orm')
+    orm = require('../orm');
 
-let RoomType = orm.define('roomType', {
+let RoomType = orm.define('roomTypes', {
     name: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -10,4 +10,4 @@ let RoomType = orm.define('roomType', {
     }
 });
 
-module.exports = RoomType
+module.exports = RoomType;

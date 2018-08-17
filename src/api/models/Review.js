@@ -4,8 +4,8 @@ const
 
 let Review = orm.define('review', {
     content: {
-        type: Sequelize.TEXT,
-        allowNull: false
+        type: Sequelize.TEXT
+
     }
 });
 
