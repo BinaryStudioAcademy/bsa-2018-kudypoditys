@@ -1,9 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Card, CardDescription } from 'semantic-ui-react';
 import { Field, reduxForm, } from 'redux-form';
 
-class CheckboxAmenitiesForm extends Component {
-    render() {
+let CheckboxAmenitiesForm = (props) => {
         return (
             <Fragment >
                 <Card style={{ width: '1000px' }} >
@@ -45,7 +44,6 @@ class CheckboxAmenitiesForm extends Component {
                     </Card>
             </Fragment>
         )
-    }
 }
 CheckboxAmenitiesForm = reduxForm({
     form: "CheckboxAmenitiesForm"
