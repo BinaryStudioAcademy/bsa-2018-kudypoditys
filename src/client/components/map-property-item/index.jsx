@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Card, Icon } from "semantic-ui-react";
-import Slider from "client/components/slider";
+import { Card, Icon, Image } from "semantic-ui-react";
+import PropTypes from "prop-types";
+
 export class MapPropertyItem extends Component {
     nameClicked = () => {
         console.log("Name clicked");
@@ -8,13 +9,8 @@ export class MapPropertyItem extends Component {
 
     render() {
         return (
-            <Card style={{ minWidth: "400px" }}>
-                <Slider
-                    dotsEnable={false}
-                    style={{ marginTop: "13%" }}
-                    pics={this.props.pics}
-                    slideIndex={0}
-                />
+            <Card style={{ minWidth: "100px" }}>
+                <Image centered src={this.props.imageSrc} size="medium" />
                 <Card.Content>
                     <Card.Header>
                         <a tabIndex="0" onClick={this.nameClicked}>
@@ -41,5 +37,13 @@ export class MapPropertyItem extends Component {
         );
     }
 }
+
+MapPropertyItem.propTypes = {
+    imageSrc: PropTypes.string,
+    propertyName: PropTypes.string,
+    propertyAddress: PropTypes.string,
+    price: PropTypes.number,
+    rating: PropTypes.string
+};
 
 export default MapPropertyItem;
