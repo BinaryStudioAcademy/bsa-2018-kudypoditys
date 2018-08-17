@@ -1,4 +1,3 @@
-import passport from "../helpers/passport";
 const express = require("express");
 const authRouter = express.Router();
 const userService = require("../services/user");
@@ -12,18 +11,26 @@ authRouter.route("/login").post((req, res) => {
     passport.authenticate("local", { session: false }, (err, user, message) => {
         if (err || !user) {
             res.status(400).send(message);
+            return;
         }
+
         req.login(user, { session: false }, err => {
             if (err) res.status(400).send(err.message);
+            return;
         });
 
-        userTokenService.generateForUser(user.id).then(refreshToken => {
-            const token = {
-                accessToken: userTokenService.generateAccessToken(user),
-                refreshToken: refreshToken
-            };
-            res.status(200).send(token);
-        });
+        userTokenService
+            .generateForUser(user.id)
+            .then(refreshToken => {
+                const token = {
+                    accessToken: userTokenService.generateAccessToken(user),
+                    refreshToken: refreshToken
+                };
+                res.status(200).send(token);
+            })
+            .catch(err => {
+                res.status(400).send(err.message);
+            });
     })(req, res);
     /*
     userService
