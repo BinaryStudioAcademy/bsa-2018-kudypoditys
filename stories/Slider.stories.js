@@ -18,18 +18,8 @@ const handleSlideChange = index => {
 
 storiesOf("Slider", module)
     .add("Slider With Pictures", () => (
-        <Slider
-            pics={pics}
-            handleSlideChange={handleSlideChange}
-            slideId={0}
-            dotsEnable={true}
-        />
+        <Slider pics={pics} handleSlideChange={handleSlideChange} slideId={0} />
     ))
     .add("Slider Without Pictures", () => (
-        <Slider
-            pics={[]}
-            handleSlideChange={handleSlideChange}
-            slideId={0}
-            dotsEnable={true}
-        />
+        <Slider pics={[]} handleSlideChange={handleSlideChange} slideId={0} />
     ));

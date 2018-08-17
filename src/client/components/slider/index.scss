@@ -1,4 +1,4 @@
-$slider-height: 100%;
+$slider-height: 400px;
 
 .slider-c-wrapper {
     background-color: white;
@@ -60,7 +60,7 @@ $slider-height: 100%;
 .slider-c-button {
     position: absolute;
     top: 0;
-    height: 100%;
+    height: 400px;
     z-index: 100;
     background-color: #0000000d !important;
     transition: 0.2s background-color ease-in-out;
