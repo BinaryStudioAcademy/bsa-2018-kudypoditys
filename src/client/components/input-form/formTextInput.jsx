@@ -1,24 +1,24 @@
-import React from 'react';
-import './index.scss'
+import React from "react";
+import {Input, Label} from "semantic-ui-react";
 
 
-
-const FormTextInput = ({ input, max, min, label, type, required, autocomplete, meta: { touched, error } }) => {
-    return (
-    <div className="input">
-        <input {...input}
+const FormTextInput = ({input, min, max, type, icon, label, autocomplete, className, meta: {touched, error}}) => (
+    <React.Fragment>
+        <Label basic className={touched && error ? 'shown' : 'hidden'} color='red' pointing='below'>
+            {touched && error ? error : ''}
+        </Label>
+        <Input
+            {...input}
             type={type}
             placeholder={label}
-            required={required}
+            icon={icon}
+            fluid
+            iconPosition='left'
             autoComplete={autocomplete}
             max={max}
-            min={min} />
-        {touched &&
-                error &&
-                <span className='error'>
-                    {error}
-                </span>}
-    </div>
-)
-}
-export default FormTextInput
+            min={min}
+        />
+    </React.Fragment>
+);
+
+export default FormTextInput;

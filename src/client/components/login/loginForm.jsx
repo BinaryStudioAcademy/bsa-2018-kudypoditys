@@ -1,45 +1,19 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { Input, Button, Form, Header, Grid, Segment } from "semantic-ui-react";
-
-const required = value => (value ? undefined : "Required");
-
-const minValue = min => value =>
-    value && value.length < min ? `Must be at least ${min}` : undefined;
-
-const minValue8 = minValue(8);
-
-const email = value =>
-    value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-        ? "Invalid email address"
-        : undefined;
-
-const renderField = ({
-    input,
-    label,
-    type,
-    icon,
-    iconPosition,
-    meta: { touched, error }
-}) => (
-    <Form.Field className={touched && error ? "error" : ""}>
-        <Input
-            {...input}
-            placeholder={label}
-            type={type}
-            icon={icon}
-            iconPosition={iconPosition}
-            autoComplete="on"
-        />
-        {touched && (error && <span style={{ color: "red" }}>{error}</span>)}
-    </Form.Field>
-);
+import {Button, Form, Header, Grid, Segment} from "semantic-ui-react";
+import renderField from "client/components/input-form/renderField";
+import {
+    required,
+    email,
+    password,
+    minLength8
+} from "client/regexValidationService";
 
 let LoginForm = props => {
     const { handleSubmit, handleRegisterClicked, handleForgotClicked } = props;
     return (
         <Grid centered columns={3}>
-            <Grid.Column textAlign="center" style={{ marginTop: "13%" }}>
+            <Grid.Column textAlign="center">
                 <Header as="h1">Log-in to your account</Header>
                 <Form onSubmit={handleSubmit}>
                     <Segment stacked secondary>
@@ -50,15 +24,18 @@ let LoginForm = props => {
                             label="Email"
                             validate={[required, email]}
                             icon="mail"
+                            className="login-mail-input"
                             iconPosition="left"
                         />
                         <Field
+                            style={{marginTop: "4%"}}
                             name="password"
                             type="password"
                             component={renderField}
                             label="Password"
-                            validate={[required, minValue8]}
+                            validate={[required, password, minLength8]}
                             icon="lock"
+                            className="login-password-input"
                             iconPosition="left"
                         />
                         <Form.Field style={{ textAlign: "right" }}>
