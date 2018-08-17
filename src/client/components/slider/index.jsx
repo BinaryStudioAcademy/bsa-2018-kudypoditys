@@ -37,7 +37,7 @@ export class Slider extends Component {
         );
     };
     settings = {
-        dots: this.props.dotsEnable,
+        dots: true,
         speed: 300,
         fade: true,
         slidesToShow: 1,
@@ -79,8 +79,7 @@ export class Slider extends Component {
 
 Slider.propTypes = {
     pics: PropTypes.array,
-    slideIndex: PropTypes.number,
-    dotsEnable: PropTypes.bool.isRequired
+    slideIndex: PropTypes.number
 };
 
 export default Slider;
