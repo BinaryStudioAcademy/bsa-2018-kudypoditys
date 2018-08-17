@@ -1,5 +1,6 @@
 import {LoginComponent} from "../login";
 import React from "react";
+import TabRegistration from '../main-info-tab';
 
 
 export const MenuItems = [
@@ -11,6 +12,7 @@ export const MenuItems = [
             content: 'Basic Info',
             header: ' Rooms and pricing',
             subheader: 'Start by telling us your property\'s name, contact details and address.',
+            component:<TabRegistration/>
         }
     },
 
