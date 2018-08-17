@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { BannerList } from 'client/components/banner-list';
+import {BannerList} from 'client/components/banner-list';
 import { Banner } from 'client/components/banner-list/item'
 
 const cityInfos = [{
@@ -98,9 +98,11 @@ const city2 = {
 
 storiesOf('BannerList', module)
     .add('banner list with five elements', () =>
-        <BannerList cityInfos={cityInfos} getCityInfos={() => { }} />)
+        <BannerList cityInfos={cityInfos} getCityInfos={() => {
+        }}/>)
     .add('banner list with four elements', () =>
-        <BannerList cityInfos={cityInfos2} getCityInfos={() => { }} />)
+        <BannerList cityInfos={cityInfos2} getCityInfos={() => {
+        }}/>)
     .add('single banner Lviv', () => <Banner cityInfo={city} onCardClick={() => { }} />)
     .add('single banner Poland', () => <Banner cityInfo={city2} onCardClick={() => { }} />)
 

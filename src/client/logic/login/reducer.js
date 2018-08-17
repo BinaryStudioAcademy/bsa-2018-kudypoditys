@@ -6,19 +6,20 @@ export default function loginReducer(state = defaultState.login, action) {
         case LOGIN_SUCCESS: {
             return {
                 ...state,
-                registerSuccess: true
+                loginSuccess: true
             };
         }
 
         case LOGIN_FAILURE: {
             return {
                 ...state,
-                registerSuccess: false
+                loginSuccess: false
             };
         }
 
         default: {
             return state;
         }
+
     }
 }

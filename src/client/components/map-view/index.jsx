@@ -1,20 +1,82 @@
 import React from "react";
-import Map from "./map";
-import "./index.scss";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import { MAPBOX_TOKEN } from "client/constants";
+import { Icon } from "semantic-ui-react";
 
-const GOOGLE_MAP_URL = `https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dkzMEoW2UBi7tA1TVAMbrwCUStF_9xw&v=3.exp&libraries=geometry,drawing,places`;
-
+import "mapbox-gl/dist/mapbox-gl.css";
 class MapView extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            viewport: {
+                width: 500,
+                height: 500,
+                latitude: this.props.latitude,
+                longitude: this.props.longitude,
+                zoom: this.props.zoom,
+                mapboxApiAccessToken: MAPBOX_TOKEN
+            },
+            controlEnable: this.props.controlEnable
+        };
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.resize);
+        this.resize();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.resize);
+    }
+
+    resize = () => {
+        this.setState({
+            viewport: {
+                ...this.state.viewport,
+                width: this.props.width || window.innerWidth,
+                height: this.props.height || window.innerHeight
+            }
+        });
+    };
+
+    handleViewportChange = viewport => {
+        if (this.state.controlEnable) this.setState({ viewport });
+    };
+
     render() {
         return (
-            <Map
-                location={this.props.location}
-                googleMapURL={GOOGLE_MAP_URL}
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div className="map" />}
-                mapElement={<div style={{ height: `100%` }} />}
-            />
+            <ReactMapGL
+                {...this.state.viewport}
+                onViewportChange={this.handleViewportChange}
+                mapStyle="mapbox://styles/mapbox/streets-v9"
+            >
+                <Marker
+                    latitude={this.props.latitude}
+                    longitude={this.props.longitude}
+                    offsetLeft={-20}
+                    offsetTop={-10}
+                >
+                    <Icon size="big" name="map marker alternate" />
+                </Marker>
+                {this.props.popupText ? (
+                    <Popup
+                        tipSize={15}
+                        anchor="left"
+                        offsetLeft={10}
+                        latitude={this.props.latitude}
+                        longitude={this.props.longitude}
+                        closeButton={false}
+                        closeOnClick={false}
+                        dynamicPosition={true}
+                    >
+                        {this.props.popupText}
+                    </Popup>
+                ) : (
+                    ""
+                )}
+            </ReactMapGL>
         );
     }
 }
+
 export default MapView;

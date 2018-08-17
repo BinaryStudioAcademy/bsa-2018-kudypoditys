@@ -2,25 +2,32 @@ import {
     REGISTER_SUBMIT,
     REGISTER_SUCCESS,
     REGISTER_FAILURE
-} from './actionTypes';
+} from "./actionTypes";
+import api from "../.././helpers/api";
+import cookies from "browser-cookies";
 
 export function registerSubmit(payload) {
     // Saga
-    return {
-        type: REGISTER_SUBMIT
-    }
-}
-
-export function registerSuccess(payload) {
-    return {
-        type: REGISTER_SUCCESS,
-        payload // = registerFeedback: { error: false, message: 'Success!' }
-    }
-}
-
-export function registerFailure(payload) {
-    return {
-        type: REGISTER_FAILURE,
-        payload // = registerFeedback: { error: true, message: 'Some error!' }
-    }
+    api.sendRequest("/signup", "post", payload)
+        .then(response => {
+            const { token, expiresIn } = response.data;
+            cookies.set("accessToken", token);
+            cookies.set("expiresIn", expiresIn.toString());
+            return {
+                type: REGISTER_SUCCESS,
+                payload: {
+                    error: false,
+                    message: "Successfully signed up!"
+                }
+            };
+        })
+        .catch(err => {
+            return {
+                type: REGISTER_FAILURE,
+                payload: {
+                    error: true,
+                    message: err.data
+                }
+            };
+        });
 }

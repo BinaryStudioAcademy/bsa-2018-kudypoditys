@@ -1,4 +1,4 @@
-class Repository  {
+class Repository {
     constructor(model) {
         this.model = model;
     }
@@ -11,12 +11,16 @@ class Repository  {
         return this.model.findAll();
     }
 
-    findById(id){
+    findById(id) {
         return this.model.findById(id);
     }
 
     updateById(id, data) {
         return this.model.update(data, { where: { id: id } });
+    }
+
+    upsert(data) {
+        return this.model.upsert(data);
     }
 
     deleteById(id) {

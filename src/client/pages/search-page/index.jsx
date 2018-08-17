@@ -1,16 +1,17 @@
 import React from "react";
 import "./index.scss";
 import { Grid } from "semantic-ui-react";
+
 import Search from "client/components/search";
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
-import PropertyListItem from "../property-list-item";
-import { Pagination } from "../pagination";
-import BasicMapWidget from "../basic-map-widget";
-import Header from "../header";
+import PropertyListItem from "client/components/property-list-item";
+import { Pagination } from "client/components/pagination";
+import BasicMapWidget from "client/components/basic-map-widget";
+import Header from "client/components/header";
 import { Breadcrumb } from "semantic-ui-react";
-import QuickFilter from "../quick-filter";
+import QuickFilter from "client/components/quick-filter";
 import { connect } from "react-redux";
 import { mapStateToProps } from "./container";
 
@@ -67,10 +68,8 @@ class SearchPage extends React.Component {
                             >
                                 <BasicMapWidget
                                     key="BasicMapWidget"
-                                    location={{
-                                        lat: 49.837089,
-                                        lng: 24.021161
-                                    }}
+                                    latitude={49.837089}
+                                    longitude={24.021161}
                                     rounded
                                     centered
                                 />

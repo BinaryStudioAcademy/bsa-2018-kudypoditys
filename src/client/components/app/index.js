@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomePage } from 'client/components/home-page';
+import {HomePage} from 'client/components/home-page';
 import { getHitCount } from 'client/services/hitCountService';
 
 class App extends React.Component {
@@ -12,7 +12,7 @@ class App extends React.Component {
         const { hitCount } = this.state;
 
 
-        return (<HomePage />);
+        return (<HomePage/>);
 
 
         if (hitCount === undefined) {
