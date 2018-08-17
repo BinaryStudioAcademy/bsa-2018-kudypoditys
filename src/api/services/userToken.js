@@ -14,7 +14,7 @@ class UserTokenService extends Service {
         const refreshToken = jwt.sign(
             { userId },
             settings.jwtRefreshTokenPrivateKey,
-            { expiresIn: currDate + settings.refreshTokenLife }
+            { expiresIn: settings.refreshTokenLife }
         );
         try {
             await this.repository.upsert({
@@ -37,20 +37,13 @@ class UserTokenService extends Service {
         return refreshToken;*/
     }
     generateAccessToken(userId) {
-        const expiresDate = this.getExpiresDate();
-
         const toSign = {
             userId
         };
 
         return jwt.sign(toSign, settings.jwtPrivateKey, {
-            expiresIn: expiresDate
+            expiresIn: settings.accessTokenLife
         });
-    }
-
-    getExpiresDate() {
-        const secondsFromUnixEpoch = dateHelpers.toUnixTimeSeconds(new Date());
-        return secondsFromUnixEpoch + settings.accessTokenLife;
     }
 
     refreshToken(oldRefreshToken) {
