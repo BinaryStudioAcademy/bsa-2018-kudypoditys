@@ -1,7 +1,7 @@
 
 import React, { Component,} from "react";
 import { Header, Container, Grid, Rail, Sticky, Segment } from 'semantic-ui-react';
-import CheckboxBadForm from './badForm';
+import CheckboxBedForm from './bedForm';
 import CheckboxAmenitiesForm from './checkboxAmenitiesForm';
 
 
@@ -20,8 +20,8 @@ class AmenitiesTabRegistration extends Component {
                         You're almost done! We just need a few more details about the extra bed options you provide,
                          plus any amenities or specific features and services available.
                      </Container>
-                    < CheckboxBadForm />
-                    <Header as='h4'>Amenities</Header>
+                    < CheckboxBedForm />
+                    <Header as='h3'>Amenities</Header>
                     Tell us about your amenities
                     <CheckboxAmenitiesForm />
 
