@@ -46,7 +46,6 @@ passport.use(
 
 passport.use(
     new JWTStrategy(opts, function(jwtPayload, cb) {
-        //find the user in db if needed
         return userService
             .findById(jwtPayload.userId)
             .then(user => {
