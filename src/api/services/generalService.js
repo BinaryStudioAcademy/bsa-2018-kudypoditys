@@ -4,7 +4,7 @@ class Service {
     }
 
     create(data) {
-        return this.repository.create(data).catch();
+        return this.repository.create(data);
     }
 
     findAll() {
