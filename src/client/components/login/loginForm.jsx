@@ -39,7 +39,7 @@ let LoginForm = props => {
     const { handleSubmit, handleRegisterClicked, handleForgotClicked } = props;
     return (
         <Grid centered columns={3}>
-            <Grid.Column textAlign="center" style={{ marginTop: "13%" }}>
+            <Grid.Column textAlign="center" >
                 <Header as="h1">Log-in to your account</Header>
                 <Form onSubmit={handleSubmit}>
                     <Segment stacked secondary>
