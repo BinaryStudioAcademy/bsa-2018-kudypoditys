@@ -35,8 +35,8 @@ ReactDOM.render(
         <Router history={history}>
             <Switch>
                 <Route exact path="/" component={HomePage} />
-                <Route exact path="/reg" component={RegistrationPage} />
-                <Route exact path="/log" component={LoginPage} />
+                <Route exact path="/signup" component={RegistrationPage} />
+                <Route exact path="/login" component={LoginPage} />
                 <Route
                     exact
                     path="/checkin-checkout"
