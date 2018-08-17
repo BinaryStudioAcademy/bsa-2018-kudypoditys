@@ -5,6 +5,7 @@ import { Icon } from "semantic-ui-react";
 import MapPropertyItem from "client/components/map-property-item";
 
 import "mapbox-gl/dist/mapbox-gl.css";
+
 class MapView extends React.Component {
     constructor(props) {
         super(props);
@@ -18,14 +19,9 @@ class MapView extends React.Component {
                 mapboxApiAccessToken: MAPBOX_TOKEN
             },
             controlEnable: this.props.controlEnable,
-            popupInfo: null
+            popupInfo: null,
+            informInfo: null
         };
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log("This state ", this.state);
-        console.log("Next state ", nextState);
-        return !this.state.popupInfo;
     }
 
     componentDidMount() {
@@ -49,7 +45,6 @@ class MapView extends React.Component {
 
     renderPopup = () => {
         const { popupInfo } = this.state;
-        console.log("Render");
         return (
             popupInfo && (
                 <Popup
@@ -58,19 +53,11 @@ class MapView extends React.Component {
                     offsetLeft={10}
                     latitude={popupInfo.latitude}
                     longitude={popupInfo.longitude}
-                    // closeButton={true}
-                    // closeOnClick={false}
+                    closeButton={false}
                     dynamicPosition={true}
                     onClose={() => this.setState({ popupInfo: null })}
                 >
-                    <MapPropertyItem
-                        propertyName={"Avangard Kulisha Apartment"}
-                        propertyAddress={
-                            "15 Panteleimona Kulisha Street, Львов"
-                        }
-                        price={"1200 UAH"}
-                        rating={"10/10"}
-                    />
+                    {popupInfo.name}
                 </Popup>
             )
         );
@@ -88,9 +75,26 @@ class MapView extends React.Component {
                 <Icon
                     size="big"
                     name="map marker alternate"
-                    onClick={() => this.setState({ popupInfo: property })}
+                    onMouseEnter={() => this.setState({ popupInfo: property })}
+                    onMouseLeave={() => this.setState({ popupInfo: null })}
+                    onClick={() => this.setState({ informInfo: property })}
                 />
             </Marker>
+        );
+    };
+
+    renderInfo = () => {
+        const { informInfo } = this.state;
+        return (
+            informInfo && (
+                <MapPropertyItem
+                    propertyName={"Avangard Kulisha Apartment"}
+                    propertyAddress={"15 Panteleimona Kulisha Street, Львов"}
+                    price={"1200 UAH"}
+                    rating={"10/10"}
+                    imageSrc={informInfo.imageSrc}
+                />
+            )
         );
     };
 
@@ -108,6 +112,7 @@ class MapView extends React.Component {
                 >
                     {this.props.properties.map(this.renderPropertyMarker)}
                     {this.renderPopup()}
+                    {this.renderInfo()}
                 </ReactMapGL>
             </Fragment>
         );

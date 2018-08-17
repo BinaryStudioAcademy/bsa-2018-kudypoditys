@@ -9,8 +9,25 @@ export class MapPropertyItem extends Component {
 
     render() {
         return (
-            <Card style={{ minWidth: "100px" }}>
+            <Card
+                style={{
+                    minWidth: "100px",
+                    margin: "10%"
+                }}
+            >
                 <Image centered src={this.props.imageSrc} size="medium" />
+                <Icon
+                    style={{
+                        position: "absolute",
+                        right: "2%",
+                        top: "2%",
+                        textAlign: "right",
+                        color: "white"
+                    }}
+                    name="close"
+                    size="large"
+                    onClick={this.props.CloseClicked}
+                />
                 <Card.Content>
                     <Card.Header>
                         <a tabIndex="0" onClick={this.nameClicked}>
