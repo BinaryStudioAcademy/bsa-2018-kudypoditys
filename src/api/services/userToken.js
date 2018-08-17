@@ -9,22 +9,32 @@ class UserTokenService extends Service {
         return this.repository.getRefreshTokenByUserId(userId);
     }
 
-    generateForUser(userId) {
+    async generateForUser(userId) {
         const currDate = dateHelpers.toUnixTimeSeconds(new Date());
         const refreshToken = jwt.sign(
             { userId },
             settings.jwtRefreshTokenPrivateKey,
             { expiresIn: currDate + settings.refreshTokenLife }
         );
-        return this.repository
-            .upsert({
+        try {
+            await this.repository.upsert({
                 refreshToken: refreshToken,
                 tillDate: currDate + settings.refreshTokenLife,
                 userId: userId
-            })
+            });
+            return Promise.resolve(refreshToken);
+        } catch (err) {
+            return Promise.reject(new Error("Refresh token generator error"));
+        } /*
+
             .then(() => {
                 return refreshToken;
+            })
+            .catch(err => {
+                return err.message;
             });
+        await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+        return refreshToken;*/
     }
     generateAccessToken(userId) {
         const expiresDate = this.getExpiresDate();
