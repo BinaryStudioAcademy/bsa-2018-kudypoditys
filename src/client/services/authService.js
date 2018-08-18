@@ -22,14 +22,11 @@ class AuthService {
                 password
             })
             .then(response => {
-                const { token, expiresIn, refreshToken } = response.data;
-
-                cookies.set("accessToken", token);
-                cookies.set("expiresIn", expiresIn.toString());
-                cookies.set("refreshToken", refreshToken);
+                const { accessToken, refreshToken, expiryDate } = response.data;
+                cookies.setTokens(accessToken, refreshToken, expiryDate);
             })
-            .then(_ => {
-                history.push("/");
+            .catch(err => {
+                return Promise.reject(new Error(err.response.data));
             });
     }
 
