@@ -22,9 +22,11 @@ authRouter.route("/login").post((req, res) => {
         userTokenService
             .generateForUser(user.id)
             .then(refreshToken => {
+                const tokenObj = userTokenService.generateAccessToken(user.id);
                 const token = {
-                    accessToken: userTokenService.generateAccessToken(user.id),
-                    refreshToken: refreshToken
+                    accessToken: tokenObj.token,
+                    refreshToken: refreshToken,
+                    expiryDate: tokenObj.expiryDate
                 };
                 res.status(200).send(token);
             })
