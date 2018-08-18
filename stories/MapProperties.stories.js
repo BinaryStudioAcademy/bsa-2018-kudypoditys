@@ -11,7 +11,9 @@ const properties = [
         latitude: 49.856761,
         longitude: 24.0214934,
         imageSrc:
-            "https://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg"
+            "https://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg",
+        address: "15 Panteleimona Kulisha Street, Львов",
+        rating: "10/10"
     },
     {
         price: 1200,
@@ -19,7 +21,9 @@ const properties = [
         latitude: 49.8513984,
         longitude: 24.0310599,
         imageSrc:
-            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg"
+            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg",
+        address: "15 Panteleimona Kulisha Street, Львов",
+        rating: "10/10"
     },
     {
         price: 5000,
@@ -27,7 +31,9 @@ const properties = [
         latitude: 49.8474261,
         longitude: 24.0252256,
         imageSrc:
-            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-12.jpg"
+            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-12.jpg",
+        address: "15 Panteleimona Kulisha Street, Львов",
+        rating: "9/10"
     },
     {
         price: 2000,
@@ -35,7 +41,9 @@ const properties = [
         latitude: 49.8481073,
         longitude: 24.0154046,
         imageSrc:
-            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-10.jpg"
+            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-10.jpg",
+        address: "15 Panteleimona Kulisha Street, Львов",
+        rating: "5/10"
     },
     {
         price: 3000,
@@ -43,7 +51,9 @@ const properties = [
         latitude: 49.8376405,
         longitude: 24.0253219,
         imageSrc:
-            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg"
+            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg",
+        address: "15 Panteleimona Kulisha Street, Львов",
+        rating: "8/10"
     }
 ];
 
