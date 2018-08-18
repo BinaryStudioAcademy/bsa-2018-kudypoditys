@@ -40,10 +40,13 @@ class UserTokenService extends Service {
         const toSign = {
             userId
         };
-
-        return jwt.sign(toSign, settings.jwtPrivateKey, {
-            expiresIn: settings.accessTokenLife
-        });
+        const expiryDate = this.getExpiresDate();
+        return {
+            token: jwt.sign(toSign, settings.jwtPrivateKey, {
+                expiresIn: settings.accessTokenLife
+            }),
+            expiryDate: expiryDate
+        };
     }
 
     refreshToken(oldRefreshToken) {
@@ -84,6 +87,11 @@ class UserTokenService extends Service {
                 refreshToken: newRefreshToken,
                 ...this.generateAccessToken(userId)
             }));
+    }
+
+    getExpiresDate() {
+        const secondsFromUnixEpoch = dateHelpers.toUnixTimeSeconds(new Date());
+        return secondsFromUnixEpoch + settings.accessTokenLife;
     }
 }
 

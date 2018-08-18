@@ -7,11 +7,11 @@ class AuthService {
         return api
             .sendRequest("/api/signup", "post", user)
             .then(response => {
-                const { accessToken, refreshToken } = response.data;
-                cookies.setTokens(accessToken, refreshToken);
+                const { accessToken, refreshToken, expiryDate } = response.data;
+                cookies.setTokens(accessToken, refreshToken, expiryDate);
             })
             .catch(err => {
-                Promise.reject(new Error(err.message));
+                return Promise.reject(new Error(err.response.data));
             });
     }
 

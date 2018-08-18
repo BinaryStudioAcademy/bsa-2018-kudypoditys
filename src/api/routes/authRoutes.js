@@ -32,15 +32,6 @@ authRouter.route("/login").post((req, res) => {
                 res.status(400).send(err.message);
             });
     })(req, res);
-    /*
-    userService
-        .login(data.email, data.password)
-        .then(obj => {
-            res.status(200).send(obj);
-        })
-        .catch(err => {
-            res.status(400).send(err.message);
-        });*/
 });
 
 authRouter.route("/refreshtoken/:token").get((req, res) => {
@@ -61,9 +52,11 @@ authRouter.route("/signup").post((req, res) => {
         .addUser(req.body)
         .then(user => {
             userTokenService.generateForUser(user.id).then(refreshToken => {
+                const tokenObj = userTokenService.generateAccessToken(user.id);
                 const token = {
-                    accessToken: userTokenService.generateAccessToken(user.id),
-                    refreshToken: refreshToken
+                    accessToken: tokenObj.token,
+                    refreshToken: refreshToken,
+                    expiryDate: tokenObj.expiryDate
                 };
                 res.status(200).send(token);
             });
