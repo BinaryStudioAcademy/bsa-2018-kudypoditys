@@ -26,7 +26,7 @@ export class MapPropertyItem extends Component {
                     }}
                     name="close"
                     size="large"
-                    onClick={this.props.CloseClicked}
+                    onClick={this.props.closeClicked}
                 />
                 <Card.Content>
                     <Card.Header>

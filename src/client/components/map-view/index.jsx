@@ -3,6 +3,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { MAPBOX_TOKEN } from "client/constants";
 import { Icon } from "semantic-ui-react";
 import MapPropertyItem from "client/components/map-property-item";
+import PropTypes from "prop-types";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -11,8 +12,6 @@ class MapView extends React.Component {
         super(props);
         this.state = {
             viewport: {
-                width: 500,
-                height: 500,
                 latitude: this.props.startPosition.latitude,
                 longitude: this.props.startPosition.longitude,
                 zoom: this.props.zoom,
@@ -57,7 +56,9 @@ class MapView extends React.Component {
                     dynamicPosition={true}
                     onClose={() => this.setState({ popupInfo: null })}
                 >
-                    {popupInfo.name}
+                    <p>
+                        <strong> {popupInfo.name} </strong>
+                    </p>
                 </Popup>
             )
         );
@@ -93,6 +94,7 @@ class MapView extends React.Component {
                     price={"1200 UAH"}
                     rating={"10/10"}
                     imageSrc={informInfo.imageSrc}
+                    closeClicked={() => this.setState({ informInfo: null })}
                 />
             )
         );
@@ -118,5 +120,14 @@ class MapView extends React.Component {
         );
     }
 }
+
+MapPropertyItem.propTypes = {
+    width: PropTypes.number,
+    height: PropTypes.number,
+    properties: PropTypes.array,
+    startPosition: PropTypes.array,
+    zoom: PropTypes.number,
+    controlEnable: PropTypes.bool
+};
 
 export default MapView;
