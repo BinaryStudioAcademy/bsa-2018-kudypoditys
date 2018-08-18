@@ -57,13 +57,15 @@ let CheckboxBedForm = (props) => {
                             validate={required} />
                     <Card.Header style={{ fontSize: '14px' }} ><br/>Check the box(es) if you can accommodate
                          the following guests in extra beds.</Card.Header>
-                    <Card.Description ><br />Children up to 2 years old in cribs</Card.Description>
-                    <Field
+                       <br />
+                        <Field
+                        style={{ marginTop: '17px' }}
                         name="ChildrenUpTwo"
                         id="ChildrenUpTwo"
                         component="input"
                         type="checkbox"
-                    />
+                        />
+                         <label>Children up to 2 years old in cribs</label>
                     {hasChildrenUpToTwoValue && <div>
                         <Card.Description ><br />Enter the price per night, per child</Card.Description>
                         <Input labelPosition='right' type='text' placeholder='Amount'>
@@ -71,13 +73,15 @@ let CheckboxBedForm = (props) => {
                             <input />
                             <Label>.00</Label>
                         </Input> </div>}
-                    <Card.Description ><br />Children</Card.Description>
-                    <Field
+                        <br />
+                        <Field
+                        style={{ marginTop: '17px' }}
                         name="Children"
                         id="Children"
                         component="input"
                         type="checkbox"
-                    />
+                        />
+                        <label>Children</label>
                     {hasChildrenValue && <div>
                         <Field
                             name="selectExample"
@@ -92,13 +96,15 @@ let CheckboxBedForm = (props) => {
                             <input />
                             <Label>.00</Label>
                         </Input> </div>}
-                    <Card.Description ><br />Adults</Card.Description>
-                    <Field
+                   <br/>
+                        <Field
+                        style={{ marginTop: '17px' }}
                         name="Adults"
                         id="Adults"
                         component="input"
                         type="checkbox"
-                    />
+                        />
+                        <label>Adults</label>
                     {hasAdultsValue && <div>
                         <Card.Description ><br />Enter the price per night, per child</Card.Description>
                         <Input labelPosition='right' type='text' placeholder='Amount'>

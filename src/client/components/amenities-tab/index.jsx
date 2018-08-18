@@ -23,10 +23,11 @@ class AmenitiesTabRegistration extends Component {
     state = {}
     handleContextRef = contextRef => this.setState({ contextRef })
     render() {
-        var shown = {
+        let shown = {
 			display: this.state.shown ? "block" : "none"
-		};
-        const { handleSubmit, pristine, submitting } = this.props
+        };
+       let buttonName = this.state.shown ? "Hide all amenities":"Show all amenities"
+        const { handleSubmit, pristine, submitting} = this.props
         const { contextRef } = this.state
         return (
             <Grid centered columns={2}>
@@ -42,8 +43,8 @@ class AmenitiesTabRegistration extends Component {
                         <Header as='h3'>Amenities</Header>
                         Tell us about your amenities
                     <CheckboxAmenitiesForm />
-                        <Button basic onClick={this.toggleClick.bind(this)}>Show all amenities </Button>
-                        <h2 style={shown}><ButtonTab /></h2>
+                        <Button basic onClick={this.toggleClick.bind(this)}> {buttonName} </Button>
+                        <div style={shown}><ButtonTab /></div>
                         <Button color='teal' fluid
                             disabled={pristine || submitting} >Continue</Button>
                     </Fragment>

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Card, CardDescription } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 import { Field, reduxForm, } from 'redux-form';
 
 let CheckboxAmenitiesForm = (props) => {
@@ -7,40 +7,56 @@ let CheckboxAmenitiesForm = (props) => {
             <Fragment >
                 <Card style={{ width: '1000px' }} >
                 <Card.Content>
-                        <Card.Header style={{ fontSize: '14px' }} >Most Requested by Guests<br/></Card.Header>
-                        <Field name="hasAir"
+                        <Card.Header style={{ fontSize: '14px' }} >Most Requested by Guests</Card.Header>
+                        <Field
+                            style={{ marginTop: '17px' }}
+                            name="hasAir"
                             component="input"
                             type="checkbox" />
-                          <label>Air conditioning</label>
-                        <Card.Description> <br/>Private pool</Card.Description>
-                        <Field name="hasPool"
+                          <label>Air conditioning</label> <br/>
+                        <Field
+                            style={{ marginTop: '17px' }}
+                            name="hasPool"
+                            component="input"
+                            type="checkbox"/>
+                            <label>Private pool</label> <br/>
+                        <Field
+                            style={{ marginTop: '17px' }}
+                            name="hasBalcony"
                             component="input"
                             type="checkbox" />
-                        <CardDescription><br/>Balcony</CardDescription>
-                        <Field name="hasBalcony"
+                         <label>Balcony</label> <br/>
+                        <Field
+                            style={{ marginTop: '17px' }}
+                            name="hasTerrace"
                             component="input"
                             type="checkbox" />
-                        <CardDescription><br/>Terrace</CardDescription>
-                        <Field name="hasTerrace"
+                        <label>Terrace</label> <br/>
+                        <Field
+                            style={{ marginTop: '17px' }}
+                            name="Bathroom"
                             component="input"
                             type="checkbox" />
-                        <CardDescription><br/>Bathroom</CardDescription>
-                        <Field name="Bathroom"
+                         <label>Bathroom</label> <br/>
+                        <Field
+                            style={{ marginTop: '17px' }}
+                            name="hasTV"
                             component="input"
                             type="checkbox" />
-                        <CardDescription><br/>Flat-screen TV</CardDescription>
-                        <Field name="hasTV"
+                         <label>Flat-screen TV</label> <br/>
+                        <Field
+                            style={{ marginTop: '17px' }}
+                            name="hasWashing"
                             component="input"
                             type="checkbox" />
-                        <CardDescription><br/> Washing machine</CardDescription>
-                        <Field name="hasWashing"
-                            component="input"
-                            type="checkbox" />
-                    <CardDescription><br/>Kitchenette</CardDescription>
-                        <Field name="hasKitchenette"
+                         <label> Washing machine</label> <br/>
+                        <Field
+                            style={{ marginTop: '17px' }}
+                            name="hasKitchenette"
                             component="input"
                             type="checkbox"
-                            label="Kitchenette"/>
+                            label="Kitchenette" />
+                        <label >Kitchenette</label>
                     </Card.Content>
                     </Card>
             </Fragment>
