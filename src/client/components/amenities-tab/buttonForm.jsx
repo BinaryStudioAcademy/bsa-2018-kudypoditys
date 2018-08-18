@@ -1,6 +1,6 @@
 import React, {  Fragment } from "react";
 import { Card } from 'semantic-ui-react';
-import ButtonWithCheckbox from './buttonWithCkheckbox';
+import ButtonWithCheckbox from './buttonWithCheckbox';
 
 
 let ButtonTab = (props) => {
