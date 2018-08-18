@@ -1,6 +1,6 @@
 import axios from "axios";
-import cookies from 'browser-cookies';
-import dateHelpers from './date-helpers';
+import cookies from "browser-cookies";
+import dateHelpers from "./date-helpers";
 // TODO: implement servers url
 const baseUrl = "http://127.0.0.1:5000";
 
@@ -11,7 +11,7 @@ class Api {
         });
     }
 
-    sendRequestWithAuth(url, type, payload) {
+    sendAuthRequest(url, type, payload) {
         return this.checkAccessToken().then(() =>
             this.adapter.request({
                 url: url, // url
@@ -20,7 +20,8 @@ class Api {
                 headers: {
                     ...this.getAuthHeader()
                 }
-            }));
+            })
+        );
     }
 
     sendRequest(url, type, payload) {
@@ -32,7 +33,7 @@ class Api {
     }
 
     getAuthHeader() {
-        const accessToken = cookies.get('accessToken');
+        const accessToken = cookies.get("accessToken");
 
         if (!accessToken) {
             return {};
@@ -40,11 +41,11 @@ class Api {
 
         return {
             Authorization: `Bearer ${accessToken}`
-        }
+        };
     }
 
     checkAccessToken() {
-        const expiresIn = cookies.get('expiresIn');
+        const expiresIn = cookies.get("expiresIn");
         const current = dateHelpers.toUnixTimeSeconds(new Date());
         if (expiresIn < current) {
             return this.refreshTokens();
@@ -54,18 +55,18 @@ class Api {
     }
 
     refreshTokens() {
-        const refreshToken = cookies.get('refreshToken');
+        const refreshToken = cookies.get("refreshToken");
         if (!refreshToken) {
             // when this error go to login page
-            return Promise.reject(new Error('refresh token not found'));
+            return Promise.reject(new Error("refresh token not found"));
         }
 
         const url = `/api/refreshtoken/${refreshToken}`;
         return this.adapter.get(url).then(response => {
             const { token, expiresIn, refreshToken } = response.data;
-            cookies.set('accessToken', token);
-            cookies.set('refreshToken', refreshToken);
-            cookies.set('expiresIn', expiresIn.toString());
+            cookies.set("accessToken", token);
+            cookies.set("refreshToken", refreshToken);
+            cookies.set("expiresIn", expiresIn.toString());
         });
     }
 }
