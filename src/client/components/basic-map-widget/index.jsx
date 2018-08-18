@@ -21,15 +21,6 @@ class BasicMapWidget extends React.Component {
                 zoom={12}
                 controlEnable={false}
             />
-
-            // <MapView
-            //     latitude={this.props.latitude}
-            //     longitude={this.props.longitude}
-            //     zoom={12}
-            //     controlEnable={false}
-            //     width={250}
-            //     height={250}
-            // />
         );
     }
 }

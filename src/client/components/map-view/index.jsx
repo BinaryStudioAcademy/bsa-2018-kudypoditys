@@ -78,10 +78,16 @@ class MapView extends React.Component {
                     name="map marker alternate"
                     onMouseEnter={() => this.setState({ popupInfo: property })}
                     onMouseLeave={() => this.setState({ popupInfo: null })}
-                    onClick={() => this.setState({ propertyInfo: property })}
+                    onClick={() => {
+                        this.handleMarkerClicked(property);
+                    }}
                 />
             </Marker>
         );
+    };
+
+    handleMarkerClicked = property => {
+        if (this.state.controlEnable) this.setState({ propertyInfo: property });
     };
 
     renderInfo = () => {
