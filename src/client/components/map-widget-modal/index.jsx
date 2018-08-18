@@ -29,8 +29,6 @@ export default class MapWidgetModal extends Component {
                 >
                     <Modal.Content>
                         <MapView
-                            width={250}
-                            height={250}
                             properties={this.props.properties}
                             startPosition={this.props.startPosition}
                             zoom={12}
