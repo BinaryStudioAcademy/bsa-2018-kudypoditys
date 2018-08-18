@@ -7,8 +7,13 @@ import CheckboxForm from './checkboxForm';
 import semanticSelectorFormField from 'client/components/dropdown-form/semanticSelectorForm'
 
 
-
-const cities = ['Lviv', 'Kyiv', 'Odessa', 'Dnipro', 'Ternopil']
+const cities = [
+    {key: '0', text: 'Lviv', value: 'Lviv'},
+    {key: '1', text: 'Kyiv', value: 'Kyiv'},
+    {key: '2', text: 'Odessa', value: 'Odessa'},
+    {key: '3', text: 'Dnipro', value: 'Dnipro'},
+    {key: '4', text: 'Ternopil', value: 'Ternopil'}
+]
 
 
 let RegistrationForm = props => {
@@ -96,8 +101,7 @@ let RegistrationForm = props => {
                         component={semanticSelectorFormField}
                         as={Form.Select}
                         options={cities}
-                        label="Semantic selector"
-                        placeholder="Select an option"
+                        placeholder="Select city"
                         validate={required}/>
                 </Card.Content>
             </Card>
