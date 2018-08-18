@@ -19,7 +19,7 @@ class MapView extends React.Component {
             },
             controlEnable: this.props.controlEnable,
             popupInfo: null,
-            informInfo: null
+            propertyInfo: null
         };
     }
 
@@ -78,23 +78,23 @@ class MapView extends React.Component {
                     name="map marker alternate"
                     onMouseEnter={() => this.setState({ popupInfo: property })}
                     onMouseLeave={() => this.setState({ popupInfo: null })}
-                    onClick={() => this.setState({ informInfo: property })}
+                    onClick={() => this.setState({ propertyInfo: property })}
                 />
             </Marker>
         );
     };
 
     renderInfo = () => {
-        const { informInfo } = this.state;
+        const { propertyInfo } = this.state;
         return (
-            informInfo && (
+            propertyInfo && (
                 <MapPropertyItem
-                    propertyName={"Avangard Kulisha Apartment"}
-                    propertyAddress={"15 Panteleimona Kulisha Street, Львов"}
-                    price={"1200 UAH"}
-                    rating={"10/10"}
-                    imageSrc={informInfo.imageSrc}
-                    closeClicked={() => this.setState({ informInfo: null })}
+                    propertyName={propertyInfo.name}
+                    propertyAddress={propertyInfo.address}
+                    price={propertyInfo.price}
+                    rating={propertyInfo.rating}
+                    imageSrc={propertyInfo.imageSrc}
+                    closeClicked={() => this.setState({ propertyInfo: null })}
                 />
             )
         );
