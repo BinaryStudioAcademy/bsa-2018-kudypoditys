@@ -19,6 +19,7 @@
     grid-template-columns: minmax(100px, 150px) minmax(100px, 150px) minmax(100px, 150px);
     grid-template-rows: auto;
     grid-gap: 1%;
+    box-shadow: 2px 2px 30px -4px #0000001f !important;
 }
 
 .property_services_tab-segment h4, .property_services_tab-segment p, .property_services_tab-segment .ui.label {
@@ -29,8 +30,23 @@
     margin: 0;
 }
 
+.property_services_tab-switched-segment, .property_services_tab-parking {
+    position: relative;
+}
+
 .property_services_tab-switched-segment p {
     margin: 0 0 5px 0;
+}
+
+.property_services_tab-input-error {
+    position: relative;
+}
+
+.property_services_tab-input-error div.ui.pointing.label {
+    position: absolute;
+    z-index: 99;
+    top: -34px;
+    left: 50px;
 }
 
 .property_services_tab-radio-segment:nth-of-type(1) {
@@ -98,4 +114,9 @@
 
 .property_services_tab-checkbox-segment {
     height: 64px;
+}
+
+.property_services_tab-continue-btn {
+    background-color: #50E3C2 !important;
+    margin-top: 10px !important;
 }

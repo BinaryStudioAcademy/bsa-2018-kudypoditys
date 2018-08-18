@@ -135,7 +135,7 @@ const state = {
             type: "private",
             placement: "on_territory",
             booking: "need",
-            priceForDay: ""
+            priceForDay: "0"
         },
         languages: [
             "ukrainian",
