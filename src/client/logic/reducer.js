@@ -9,11 +9,12 @@ import registration from "client/logic/registration/reducer";
 import login from "client/logic/login/reducer";
 import { reducer as formReducer } from "redux-form";
 import quickFilter from "client/logic/quick-filter/reducer";
-import roomSummary from "client/logic/rooms-summary-table/reducer"
-import header from 'client/logic/header/reducer';
+import roomSummary from "client/logic/rooms-summary-table/reducer";
+import header from "client/logic/header/reducer";
 
-import checkInOut from 'client/logic/checkIn-checkOut/reducer'
+import checkInOut from "client/logic/checkIn-checkOut/reducer";
 import cityInfos from "client/logic/banner-list/reducer";
+import propertyServicesTab from "client/logic/property-services-tab/reducer";
 
 export default combineReducers({
     search,
@@ -26,9 +27,10 @@ export default combineReducers({
     checkInOut,
     form: formReducer.plugin({
         registration: registration,
-        login: login
+        login: login,
     }),
     propertyPage,
     quickFilter,
-    roomSummary
+    roomSummary,
+    propertyServicesTab,
 });
