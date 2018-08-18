@@ -13,7 +13,6 @@ function* login(action) {
         });
         history.push("/");
     } catch (err) {
-        console.log(err.message);
         yield put({
             type: actionTypes.LOGIN_FAILURE,
             payload: {
