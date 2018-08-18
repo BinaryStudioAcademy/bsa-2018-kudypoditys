@@ -33,11 +33,6 @@ class AmenitiesTabRegistration extends Component {
         return (
             <Grid  width={13}>
                 <Grid.Column width={10}>
-                    <Container >
-                        <Header as='h2'>Amenities</Header>
-                        You're almost done! We just need a few more details about the extra bed options you provide,
-                         plus any amenities or specific features and services available.
-                     </Container>
                     <Fragment onSubmit={handleSubmit} >
                         < CheckboxBedForm />
                         <Header as='h3'>Amenities</Header>
@@ -50,7 +45,7 @@ class AmenitiesTabRegistration extends Component {
                     </Fragment>
                 </Grid.Column>
                 <Grid.Column width={3}>
-                    <Rail position='right' style={{ marginTop: '120px' }}>
+                    <Rail position='right' style={{ marginTop: '15px' }}>
                         <Sticky context={contextRef}>
                             <Segment secondary >
                                 After you complete registration you'll be able to

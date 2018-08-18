@@ -14,12 +14,11 @@ class TabRegistration extends Component {
                 <Grid.Column width={10}>
                     <Container >
                         <Header as='h2'>Welcome {name}!</Header>
-                        Start by telling us your property's name, contact details, and address.
                        <RegistrationForm />
                     </Container>
                 </Grid.Column>
                 <Grid.Column width={3}>
-                    <Rail position='right' style={{marginTop: '120px',marginRight:'850px' }}>
+                    <Rail position='right' style={{marginTop: '50px'}}>
                         <Sticky context={contextRef}>
                             <Segment secondary >
                                 After you complete registration you'll be able to
