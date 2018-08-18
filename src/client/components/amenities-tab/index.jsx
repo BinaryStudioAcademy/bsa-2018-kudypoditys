@@ -4,7 +4,8 @@ import { Header, Container, Grid, Rail, Button, Sticky, Segment } from 'semantic
 import CheckboxBedForm from './bedForm';
 import CheckboxAmenitiesForm from './checkboxAmenitiesForm';
 import ButtonTab from './buttonForm';
-import { reduxForm, } from 'redux-form';
+import { mapStateToProps, mapDispatchToProps } from './container';
+import { connect } from 'react-redux';;
 
 
 
@@ -30,10 +31,9 @@ class AmenitiesTabRegistration extends Component {
         const { handleSubmit, pristine, submitting} = this.props
         const { contextRef } = this.state
         return (
-            <Grid centered columns={2}>
-                <Grid.Column>
+            <Grid  width={13}>
+                <Grid.Column width={10}>
                     <Container >
-                        <Header />
                         <Header as='h2'>Amenities</Header>
                         You're almost done! We just need a few more details about the extra bed options you provide,
                          plus any amenities or specific features and services available.
@@ -48,6 +48,8 @@ class AmenitiesTabRegistration extends Component {
                         <Button color='teal' fluid
                             disabled={pristine || submitting} >Continue</Button>
                     </Fragment>
+                </Grid.Column>
+                <Grid.Column width={3}>
                     <Rail position='right' style={{ marginTop: '120px' }}>
                         <Sticky context={contextRef}>
                             <Segment secondary >
@@ -61,7 +63,5 @@ class AmenitiesTabRegistration extends Component {
         );
     }
 }
-AmenitiesTabRegistration = reduxForm({
-    form: "AmenitiesTabRegistration"
-})(AmenitiesTabRegistration);
-export default AmenitiesTabRegistration;
+
+export default connect(mapStateToProps, mapDispatchToProps)(AmenitiesTabRegistration)

@@ -10,15 +10,16 @@ class TabRegistration extends Component {
         const {name } = this.props;
         const { contextRef } = this.state
         return (
-            <Grid centered columns={2}>
-                <Grid.Column>
+            <Grid width={13}>
+                <Grid.Column width={10}>
                     <Container >
-                        <Header />
                         <Header as='h2'>Welcome {name}!</Header>
                         Start by telling us your property's name, contact details, and address.
                        <RegistrationForm />
-                     </Container>
-                    <Rail position='right' style={{ marginTop: '120px' }}>
+                    </Container>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                    <Rail position='right' style={{marginTop: '120px',marginRight:'850px' }}>
                         <Sticky context={contextRef}>
                             <Segment secondary >
                                 After you complete registration you'll be able to
