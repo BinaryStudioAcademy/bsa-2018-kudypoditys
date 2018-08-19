@@ -1,62 +1,56 @@
 import React from 'react';
 import './index.scss';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {mapStateToProps, mapDispatchToProps} from './container';
 
 class Quickfilter extends React.Component {
-
-    static defaultProps = {
-        boxes :[
-            {name:'mark9', ischecked: true, label:'Excelent location: 9+', amount: 321},
-            {name:'mark8', ischecked: false, label:'Very good location: 8+', amount: 658}
-        ]
+    handleItemClick(box){
+        this.props.selectFilter(box);
     }
 
-    constructor(props){
-        super(props);
-
-        const checkboxes = function(){
-            const { boxes } = this.props;
-            let res = {};
-            for(let box of boxes){
-                res[box.name] = box.ischecked;
-            }
-            return res;
-        }
-        this.state = checkboxes;
-    }
-
-    onChange = (e) =>{
-        const name = e.target.attributes.getNamedItem('name').value;
-        this.setState(state=>(
-            this.state[name] = !this.state[name]
-        ));
+    sortByType(type){
+        return this.props.boxes.filter(function (obj) { return obj.type === type});
     }
 
     render() {
-        const list = this.props.boxes.map((box,index)=>
-        <div key = {index} className="box_item">
-            <div className="ui input checkbox">
-                <input type="checkbox" defaultChecked={box.ischecked} id={box.name} name={box.name} onChange={this.onChange}/>
-                <label className='box_amount' htmlFor={box.name}>{box.label}</label>
-            </div>
-            <div className='box_amount'>{box.amount}</div>
-        </div>
-        );
+        // const PropertyType = this.sortByType('Property Type');
+        // const Facility = this.sortByType('Facility');
+        // const ReviewScore = this.sortByType('Review Score');
+
+        // const list1 = this.drawBoxes(PropertyType);
+        // const list2 = this.drawBoxes(Facility);
+        // const list3 = this.drawBoxes(ReviewScore);
 
         return(
             <div className="box">
-
                 <div className="box_header">
                     <h2>Filter by</h2>
                 </div>
-                <p className='box_group'>Location score</p>
-                {list}
+                <DrawFilters onchange = {this.handleItemClick.bind(this)}/>
+                {/* <p className='box_group'>Property Type</p>
+                {list1}
+                <p className='box_group'>Facility</p>
+                {list2}
+                <p className='box_group'>Review Score</p>
+                {list3} */}
             </div>
             );
     }
 }
-Quickfilter.propTypes = {
-    boxes: PropTypes.array.isRequired
-}
-export default Quickfilter;
+    // Quickfilter.propTypes = {
+    //     boxes: PropTypes.arrayOf(
+    //         PropTypes.shape({
+    //             id: PropTypes.string,
+    //             ischecked: PropTypes.boolean,
+    //             label:PropTypes.string,
+    //             amount: PropTypes.oneOfType([PropTypes.number],[PropTypes.string]),
+    //             type: PropTypes.string
+    //         })
+    //     ),
+    //     OnQuickFilterChange: PropTypes.func
+    // }
+
+    export default connect(mapStateToProps, mapDispatchToProps)(Quickfilter);
+
 

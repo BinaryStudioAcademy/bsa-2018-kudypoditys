@@ -5,29 +5,30 @@ import { storiesOf } from '@storybook/react';
 import Quickfilter from 'client/components/quick-filter';
 
 const boxes1 = [
-    {name:'mark9', ischecked: true, label:'Excelent location: 9+', amount: 321},
-    {name:'mark8', ischecked: false, label:'Very good location: 8+', amount: 658}
+    {id:'1', ischecked: true, label:'Pool', amount: 321,type:'Facility'},
+    {id:'2', ischecked: false, label:'Very good location: 8+', amount: 658, type:'Review Score'},
+    {id:'4', ischecked: false, label:'Hotel', amount: 658, type:'Property Type'},
+    {id:'3', ischecked: false, label:'Hostel', amount: 658, type:'Property Type'}
 ];
-const boxes2 = [];
-
+const boxes2 = [
+    {id:'1', ischecked: true, label:'Pool', type:'Facility'},
+    {id:'2', ischecked: false, label:'Very good location: 8+', type:'Review Score'},
+    {id:'4', ischecked: false, label:'Hotel', type:'Property Type'},
+    {id:'3', ischecked: false, label:'Hostel', type:'Property Type'}
+];
 const boxes3 = [
-    {name:'mark9', ischecked: true, label:'Excelent location: 9+'},
-    {name:'mark8', ischecked: false, label:'Very good location: 8+'}
-];
-const boxes4 = [
-    {name:'mark9', label:'Excelent location: 9+', amount: 321},
-    {name:'mark8',  label:'Very good location: 8+', amount: 658}
+    {id:'1',  label:'Pool', amount: 321,type:'Facility'},
+    {id:'2',  label:'Very good location: 8+', amount: 658, type:'Review Score'},
+    {id:'4',  label:'Hotel', amount: 432, type:'Property Type'},
+    {id:'3',  label:'Hostel', amount: 111, type:'Property Type'}
 ];
 storiesOf('Quick filter widget component', module)
-.add('QuickFilter with two boxes', () => (
+.add('QuickFilter with four boxes', () => (
     <Quickfilter boxes={boxes1}/>
 ))
-.add('QuickFilter with empty props', () => (
+.add('QuickFilter with no amount', () => (
     <Quickfilter boxes={boxes2}/>
 ))
-.add('QuickFilter with no amount', () => (
+.add('QuickFilter with no check', () => (
     <Quickfilter boxes={boxes3}/>
-))
-.add('QuickFilter with no ckeck', () => (
-    <Quickfilter boxes={boxes4}/>
 ))

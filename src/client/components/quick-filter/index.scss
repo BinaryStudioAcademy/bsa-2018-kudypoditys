@@ -16,6 +16,14 @@
 .box_item{
     padding: 3px 10px;
 }
+.box .box_item_checked * {
+    padding: 0 10px 3px 10px;
+    font-weight: bold;
+
+}
+.box  .box_item_checked label{
+    cursor: pointer;
+}
 
 .box_group{
     font-size: 1rem;
@@ -27,9 +35,16 @@
 
 .ui .checkbox label{
     font-size: 0.9rem;
+    cursor: pointer;
+}
+.box .box_item .box_label{
+    cursor: pointer;
+    margin-top: -3px;
 }
 
 .box_amount{
+    margin: 1px 0 0 0;
     font-size: 0.9rem;
     float: right;
+    cursor: pointer;
 }

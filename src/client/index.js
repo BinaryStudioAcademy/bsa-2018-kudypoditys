@@ -11,14 +11,14 @@ import App from 'client/components/app';
 import { increment } from 'client/logic/counter/actions';
 import Quickfilter from 'client/components/quickfilter'
 
-const store = createStore(
-    reducer,
-    composeWithDevTools()
-);
+    const store = createStore(
+        reducer,
+        composeWithDevTools()
+    );
 
-setInterval(() => {
-    store.dispatch(increment());
-}, 1000);
+    setInterval(() => {
+        store.dispatch(increment());
+    }, 1000);
 
 ReactDOM.render(
     <Provider store={store}>
