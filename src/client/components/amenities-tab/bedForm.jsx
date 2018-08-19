@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Button, Card, Form, Input, Label } from "semantic-ui-react";
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, formValueSelector } from 'redux-form';
 import semanticSelectorFormField from 'client/components/dropdown-form/semanticSelectorForm'
 import { required } from 'client/regexValidationService';
 import { connect } from 'react-redux'
@@ -49,7 +49,7 @@ let CheckboxBedForm = (props) => {
                     {hasExtraBedValue && <div>
                         <Card.Description ><br />Can you provide extra beds?</Card.Description>
                         <Field
-                            name="selectExample"
+                            name="Select amount"
                             component={semanticSelectorFormField}
                             as={Form.Select}
                             options={numbers}
@@ -84,7 +84,7 @@ let CheckboxBedForm = (props) => {
                         <label>Children</label>
                     {hasChildrenValue && <div>
                         <Field
-                            name="selectExample"
+                            name="child age"
                             component={semanticSelectorFormField}
                             as={Form.Select}
                             options={ages}
@@ -121,11 +121,7 @@ let CheckboxBedForm = (props) => {
     )
 }
 
-CheckboxBedForm = reduxForm({
-    form: "checkboxForm"
-})(CheckboxBedForm);
-
-const selector = formValueSelector('checkboxForm')
+const selector = formValueSelector('AmenitiesTabRegistrationForm')
 CheckboxBedForm = connect(
     state => {
         const hasExtraBedValue = selector(state, 'hasExtraBads');

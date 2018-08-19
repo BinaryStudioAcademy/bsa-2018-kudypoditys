@@ -9,7 +9,8 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        updateTab(data) {
+        onSubmit(data) {
+            console.log("mapDispatchToProps dispatch( amenitiesTabUpdate(data)"+JSON.stringify(data))
             dispatch(amenitiesTabUpdate(data));
         }
     }
