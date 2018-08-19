@@ -27,8 +27,8 @@ class ButtonWithCheckbox extends React.Component {
                     icon='right chevron'
                     onClick={this.toggleAddAmenities.bind(this)} />
                 <div style={shown}>
-                    {fieldsDataList.map(fieldData =>
-                        <div>
+                    {fieldsDataList.map((fieldData,index )=>
+                        <div key={index}>
                             <Field
                                 style={{ marginTop: '17px' }}
                                 name={fieldData.name}
@@ -36,15 +36,11 @@ class ButtonWithCheckbox extends React.Component {
                                 label={fieldData.label}
                                 type="checkbox" />
                             <label>{fieldData.label}</label>
-                        </div>)}
-
-                </div>
+                    </div>)}
+                    </div>
             </Container>
         )
     }
 }
-ButtonWithCheckbox = reduxForm({
-    form: "ButtonWithCheckbox"
-})(ButtonWithCheckbox);
 
 export default ButtonWithCheckbox
