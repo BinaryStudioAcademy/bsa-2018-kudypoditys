@@ -45,7 +45,7 @@ ReactDOM.render(
                 <Route path="/search-page" component={SearchPage} />
                 <Route path="/property-page" component={PropertyPage} />
                 <Route path="/add-property/" component={PropertyCreationTabs} />
-                <Route path="/404" component={NotFoundPage} />
+                <Route component={NotFoundPage} />
             </Switch>
         </Router>
     </Provider>,
