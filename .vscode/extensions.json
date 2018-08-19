@@ -1,11 +1,12 @@
 {
-	"recommendations": [
-		"christian-kohler.npm-intellisense",
-		"christian-kohler.path-intellisense",
-		"steoates.autoimport",
-		"waderyan.gitblame",
-		"dbaeumer.vscode-eslint",
-		"EditorConfig.EditorConfig",
-		"wangtao0101.vscode-js-import"
-	]
+    "recommendations": [
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense",
+        "steoates.autoimport",
+        "waderyan.gitblame",
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "wangtao0101.vscode-js-import",
+        "esbenp.prettier-vscode"
+    ]
 }

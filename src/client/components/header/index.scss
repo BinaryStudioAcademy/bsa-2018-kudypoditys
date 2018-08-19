@@ -1,0 +1,45 @@
+.ui.small.main-menu.menu {
+    border: none;
+    padding: 1rem;
+    background: #003580;
+    border-radius: 0px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.dropdown.icon {
+    display: none;
+}
+
+.menu .item.menu__welcome {
+    color: white;
+    font-size: 15px;
+}
+
+.menu .item.menu__logo {
+    color: white;
+    font-size: 20px;
+}
+
+.menu {
+    .menu__dropdown {
+        background: transparent;
+    }
+}
+
+.menu .menu__dropdown.selection.dropdown,
+.menu .menu__dropdown.selection.dropdown.visible {
+    border: none;
+    padding-top: 16px;
+    background: transparent;
+
+    > .text {
+        color: white;
+        background: transparent;
+    }
+}
+
+.menu .item .ui.inverted.button {
+    margin-right: 20px;
+}

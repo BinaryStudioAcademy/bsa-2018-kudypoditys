@@ -1,28 +1,53 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'whatwg-fetch';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import React from "react";
+import ReactDOM from "react-dom";
+import "whatwg-fetch";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import 'client/styles/global.scss';
-import reducer from 'client/logic/reducer';
-import App from 'client/components/app';
-import { increment } from 'client/logic/counter/actions';
-import Quickfilter from 'client/components/quickfilter'
+import "client/styles/global.scss";
+import reducer from "client/logic/reducer";
 
-    const store = createStore(
-        reducer,
-        composeWithDevTools()
-    );
+import RegistrationPage from "client/pages/registration-page";
+import PropertyCreationTabs from "client/pages/add-property-page";
+import { Router, Route, Switch } from "react-router-dom";
+import CheckInCheckOut from "client/pages/checkin-checkout-page";
+import { HomePage } from "client/pages/home-page";
+import PropertyPage from "client/pages/property-page";
+import LoginPage from "client/pages/login-page";
+import SearchPage from "client/pages/search-page";
+import { NotFoundPage } from "client/pages/404-page";
+import createSagaMidddelware from "redux-saga";
+import rootSaga from "client/logic/rootSaga";
+import history from "client/history";
 
-    setInterval(() => {
-        store.dispatch(increment());
-    }, 1000);
+const sagaMiddelware = createSagaMidddelware();
+const middleware = [sagaMiddelware];
+const store = createStore(
+    reducer,
+    composeWithDevTools(),
+    applyMiddleware(...middleware)
+);
+sagaMiddelware.run(rootSaga);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Quickfilter />
+        <Router history={history}>
+            <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/signup" component={RegistrationPage} />
+                <Route exact path="/login" component={LoginPage} />
+                <Route
+                    exact
+                    path="/checkin-checkout"
+                    component={CheckInCheckOut}
+                />
+                <Route path="/search-page" component={SearchPage} />
+                <Route path="/property-page" component={PropertyPage} />
+                <Route path="/add-property/" component={PropertyCreationTabs} />
+                <Route component={NotFoundPage} />
+            </Switch>
+        </Router>
     </Provider>,
-    document.getElementById('root')
+    document.getElementById("root")
 );
