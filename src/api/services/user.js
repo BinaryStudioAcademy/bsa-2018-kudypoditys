@@ -31,11 +31,11 @@ class UserService extends Service {
     }
 
     updateUser(id, user) {
-        return userRepository.updateById({ _id: id }, user);
+        return userRepository.updateById(id, user);
     }
 
     deleteUser(id) {
-        return userRepository.deleteById({ _id: id });
+        return userRepository.deleteById(id);
     }
 
     login(email, password) {

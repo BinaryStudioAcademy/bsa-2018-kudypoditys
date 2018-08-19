@@ -52,7 +52,7 @@ user.route("/:id")
     })
     .get((req, res) => {
         userService
-            .getUserById(req.params.id)
+            .findById(req.params.id)
             .then(user => {
                 res.send(user);
             })
