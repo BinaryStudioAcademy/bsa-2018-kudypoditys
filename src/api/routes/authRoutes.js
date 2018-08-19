@@ -39,7 +39,6 @@ authRouter.route("/login").post((req, res) => {
 
 authRouter.route("/refreshtoken/:token").get((req, res) => {
     const token = req.params.token;
-
     userTokenService
         .refreshToken(token)
         .then(data => {

@@ -25,7 +25,7 @@ class UserTokenService extends Service {
             });
             return Promise.resolve({
                 token: refreshToken,
-                expires: expiryDate
+                expiryDate: expiryDate
             });
         } catch (err) {
             return Promise.reject(new Error("Refresh token generator error"));
@@ -78,10 +78,15 @@ class UserTokenService extends Service {
 
                 return this.generateForUser(userId);
             })
-            .then(newRefreshToken => ({
-                refreshToken: newRefreshToken,
-                ...this.generateAccessToken(userId)
-            }));
+            .then(newRefreshToken => {
+                const accessToken = this.generateAccessToken(userId);
+                return {
+                    refreshToken: newRefreshToken.token,
+                    refreshExpiryDate: newRefreshToken.expiryDate,
+                    accessToken: accessToken.token,
+                    accessExpiryDate: accessToken.expiryDate
+                };
+            });
     }
 
     getAccessExpiresDate() {
