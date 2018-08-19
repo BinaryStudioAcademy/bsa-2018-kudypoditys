@@ -113,5 +113,5 @@ export const TabForm = (props) => {
 };
 
 export default reduxForm({
-    form: "paymentTab"
+    form: "servicesTab"
 })(TabForm);
