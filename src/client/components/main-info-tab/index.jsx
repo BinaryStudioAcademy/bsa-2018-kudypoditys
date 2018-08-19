@@ -1,11 +1,14 @@
 import React, { Component,} from "react";
 import { Header, Container, Grid, Rail, Sticky, Segment } from 'semantic-ui-react';
 import RegistrationForm from './registeredForm';
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 
 
 class TabRegistration extends Component {
     state = {}
     handleContextRef = contextRef => this.setState({ contextRef })
+
     render() {
         const {name } = this.props;
         const { contextRef } = this.state
@@ -14,7 +17,7 @@ class TabRegistration extends Component {
                 <Grid.Column width={10}>
                     <Container >
                         <Header as='h2'>Welcome {name}!</Header>
-                       <RegistrationForm />
+                        <RegistrationForm  onSubmit={ this.props.createProperty}/>
                     </Container>
                 </Grid.Column>
                 <Grid.Column width={3}>
@@ -31,4 +34,7 @@ class TabRegistration extends Component {
         );
     }
 }
-export default TabRegistration;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(TabRegistration);
