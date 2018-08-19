@@ -1,6 +1,7 @@
 import {LoginComponent} from "../login";
 import React from "react";
 import TabRegistration from '../main-info-tab';
+import PhotoTab from "client/components/photo-tab-registration-property";
 
 
 export const MenuItems = [
@@ -55,6 +56,7 @@ export const MenuItems = [
             content: 'Property photos',
             header: '  Property photos',
             subheader: 'Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property\'s page on the Booking.com website.',
+            component: <PhotoTab/>
         }
     },
 

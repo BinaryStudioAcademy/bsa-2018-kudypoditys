@@ -1,8 +1,17 @@
-export function mapStateToProps(state) {
+import {imageUpdate} from "client/logic/photo-tab/actions";
 
-    return {};
+
+export function mapStateToProps(state) {
+    const {propertyPhoto} = state;
+    return {
+        ...propertyPhoto
+    }
 }
 
 export function mapDispatchToProps(dispatch) {
-    return {};
+    return {
+        filesUpdate(data) {
+            dispatch(imageUpdate(data));
+        }
+    }
 }
