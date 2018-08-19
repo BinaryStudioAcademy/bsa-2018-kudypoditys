@@ -1,6 +1,6 @@
 import axios from "axios";
-import cookies from "browser-cookies";
 import dateHelpers from "./date-helpers";
+import cookies from "./cookie-tool";
 // TODO: implement servers url
 const baseUrl = "http://127.0.0.1:5000";
 
@@ -45,9 +45,8 @@ class Api {
     }
 
     checkAccessToken() {
-        const expiresIn = cookies.get("expiresIn");
-        const current = dateHelpers.toUnixTimeSeconds(new Date());
-        if (expiresIn < current) {
+        const accessToken = cookies.getAccessToken();
+        if (!accessToken) {
             return this.refreshTokens();
         }
 
@@ -55,7 +54,7 @@ class Api {
     }
 
     refreshTokens() {
-        const refreshToken = cookies.get("refreshToken");
+        const refreshToken = cookies.getRefreshToken();
         if (!refreshToken) {
             // when this error go to login page
             return Promise.reject(new Error("refresh token not found"));
@@ -63,10 +62,18 @@ class Api {
 
         const url = `/api/refreshtoken/${refreshToken}`;
         return this.adapter.get(url).then(response => {
-            const { token, expiresIn, refreshToken } = response.data;
-            cookies.set("accessToken", token);
-            cookies.set("refreshToken", refreshToken);
-            cookies.set("expiresIn", expiresIn.toString());
+            const {
+                accessToken,
+                refreshToken,
+                accessExpiryDate,
+                refreshExpiryDate
+            } = response.data;
+            cookies.setTokens(
+                accessToken,
+                refreshToken,
+                accessExpiryDate,
+                refreshExpiryDate
+            );
         });
     }
 }
