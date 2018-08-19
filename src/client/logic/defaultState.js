@@ -140,7 +140,11 @@ const state = {
             type: "percent",
             includeToPrice: false
         },
-        commissionName: "",
+        additionalFees: false,
+        additionalFeesOptions: [
+
+        ],
+        commissionName: "Name one",
         recipientSameAddress: true,
         recipientActualAddress: {
             country: "",

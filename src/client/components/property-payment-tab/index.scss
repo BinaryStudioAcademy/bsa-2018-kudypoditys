@@ -91,6 +91,36 @@
     padding-top: 10px;
 }
 
+.property_payment_tab-addition-fee-container {
+    display: grid;
+    grid-template-columns: minmax(60px, 200px) minmax(60px, 200px) minmax(60px, 200px) minmax(60px, 200px) minmax(60px, 200px);
+    grid-template-rows: 40px 6px;
+    grid-gap: 6px 1%;
+}
+
+.property_payment_tab-addition-fee-container div.ui.checkbox {
+    margin-top: 12px;
+}
+
+.property_payment_tab-addition-fee-container a.ui.label {
+    width: 94px;
+    height: 29px;
+    margin-top: 5px;
+}
+.property_payment_tab-addition-fee-container a.ui.label i {
+    padding: 0 4px 0 0;
+}
+
+.property_payment_tab-payment-input {
+    position: relative;
+}
+
+.property_payment_tab-payment-input div.ui.pointing.label {
+    position: absolute;
+    z-index: 99;
+    bottom: 35px;
+}
+
 .property_payment_tab-commission {
     display: grid;
     grid-template-columns: 100px 100px 100px auto;
@@ -112,6 +142,11 @@
     display: grid;
     grid-template-rows: 40px 40px 40px 40px;
     grid-gap: 15px;
+}
+
+.property_services_tab-continue-btn {
+    background-color: #50E3C2 !important;
+    margin-top: 10px !important;
 }
 
 @media only screen and (max-width: 980px) {
