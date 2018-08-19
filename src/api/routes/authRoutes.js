@@ -25,8 +25,9 @@ authRouter.route("/login").post((req, res) => {
                 const tokenObj = userTokenService.generateAccessToken(user.id);
                 const token = {
                     accessToken: tokenObj.token,
-                    refreshToken: refreshToken,
-                    expiryDate: tokenObj.expiryDate
+                    refreshToken: refreshToken.token,
+                    accessExpiryDate: tokenObj.expiryDate,
+                    refreshExpiryDate: refreshToken.expiryDate
                 };
                 res.status(200).send(token);
             })
@@ -57,8 +58,9 @@ authRouter.route("/signup").post((req, res) => {
                 const tokenObj = userTokenService.generateAccessToken(user.id);
                 const token = {
                     accessToken: tokenObj.token,
-                    refreshToken: refreshToken,
-                    expiryDate: tokenObj.expiryDate
+                    refreshToken: refreshToken.token,
+                    accessExpiryDate: tokenObj.expiryDate,
+                    refreshExpiryDate: refreshToken.expiryDate
                 };
                 res.status(200).send(token);
             });
