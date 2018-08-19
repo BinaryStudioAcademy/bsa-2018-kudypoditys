@@ -38,10 +38,7 @@ function* getCurrentUser(action) {
 
 export default function* loginSaga() {
     yield all([
-        takeLatest(
-            actionTypes.LOGIN,
-            login
-        ) /*,
-        takeLatest(actionTypes.LOGIN_SUCCESS, getCurrentUser)*/
+        takeLatest(actionTypes.LOGIN, login),
+        takeLatest(actionTypes.LOGIN_SUCCESS, getCurrentUser)
     ]);
 }
