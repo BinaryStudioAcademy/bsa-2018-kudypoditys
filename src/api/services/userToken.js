@@ -16,31 +16,26 @@ class UserTokenService extends Service {
             settings.jwtRefreshTokenPrivateKey,
             { expiresIn: settings.refreshTokenLife }
         );
+        const expiryDate = this.getRefreshExpiresDate();
         try {
             await this.repository.upsert({
                 refreshToken: refreshToken,
                 tillDate: currDate + settings.refreshTokenLife,
                 userId: userId
             });
-            return Promise.resolve(refreshToken);
+            return Promise.resolve({
+                token: refreshToken,
+                expires: expiryDate
+            });
         } catch (err) {
             return Promise.reject(new Error("Refresh token generator error"));
-        } /*
-
-            .then(() => {
-                return refreshToken;
-            })
-            .catch(err => {
-                return err.message;
-            });
-        await new Promise((resolve, reject) => setTimeout(resolve, 3000));
-        return refreshToken;*/
+        }
     }
     generateAccessToken(userId) {
         const toSign = {
             userId
         };
-        const expiryDate = this.getExpiresDate();
+        const expiryDate = this.getAccessExpiresDate();
         return {
             token: jwt.sign(toSign, settings.jwtPrivateKey, {
                 expiresIn: settings.accessTokenLife
@@ -89,9 +84,14 @@ class UserTokenService extends Service {
             }));
     }
 
-    getExpiresDate() {
+    getAccessExpiresDate() {
         const secondsFromUnixEpoch = dateHelpers.toUnixTimeSeconds(new Date());
         return secondsFromUnixEpoch + settings.accessTokenLife;
+    }
+
+    getRefreshExpiresDate() {
+        const secondsFromUnixEpoch = dateHelpers.toUnixTimeSeconds(new Date());
+        return secondsFromUnixEpoch + settings.refreshTokenLife;
     }
 }
 
