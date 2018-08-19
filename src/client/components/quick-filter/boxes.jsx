@@ -9,7 +9,8 @@ class DrawFilters extends React.Component {
 
     render(){
         const temp = filters.map(box=>{
-            const filters = box.children.map(filter=>(
+            // const filters =
+            box.children.map(filter=>(
                 <div
                     key={filter.id}
                     className={filter.ischecked===true?'box_item_checked':'box_item'}>
@@ -25,8 +26,9 @@ class DrawFilters extends React.Component {
                 <label className='box_amount' htmlFor={filter.id}>{filter.amount}</label>
                 </div>
             ))
-            {filters}
+            // {filters}
         });
         return(temp)
     }
 }
+export default DrawFilters;

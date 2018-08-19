@@ -3,6 +3,7 @@ import './index.scss';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from './container';
+import DrawFilters from './boxes.jsx';
 
 class Quickfilter extends React.Component {
     handleItemClick(box){
@@ -51,6 +52,7 @@ class Quickfilter extends React.Component {
     //     OnQuickFilterChange: PropTypes.func
     // }
 
-    export default connect(mapStateToProps, mapDispatchToProps)(Quickfilter);
+    // export default connect(mapStateToProps, mapDispatchToProps)(Quickfilter);
 
+    export default Quickfilter;
 
