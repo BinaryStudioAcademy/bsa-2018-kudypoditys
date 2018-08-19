@@ -1,4 +1,3 @@
-import { formValues } from 'redux-form';
 export const required = value => (value || typeof value === 'number' ? undefined : 'Required')
 
 export const maxLength = max => value =>
@@ -33,7 +32,7 @@ export const aol = value =>
         : undefined
 
 export const isValidZip = value =>
-     value  && /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(value)
+    value && /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(value)
         ? 'The US zip code must contain 5 digits'
         : undefined
 export const password = value =>
