@@ -7,8 +7,18 @@ class AuthService {
         return api
             .sendRequest("/api/signup", "post", user)
             .then(response => {
-                const { accessToken, refreshToken, expiryDate } = response.data;
-                cookies.setTokens(accessToken, refreshToken, expiryDate);
+                const {
+                    accessToken,
+                    refreshToken,
+                    accessExpiryDate,
+                    refreshExpiryDate
+                } = response.data;
+                cookies.setTokens(
+                    accessToken,
+                    refreshToken,
+                    accessExpiryDate,
+                    refreshExpiryDate
+                );
             })
             .catch(err => {
                 return Promise.reject(new Error(err.response.data));
@@ -22,8 +32,18 @@ class AuthService {
                 password
             })
             .then(response => {
-                const { accessToken, refreshToken, expiryDate } = response.data;
-                cookies.setTokens(accessToken, refreshToken, expiryDate);
+                const {
+                    accessToken,
+                    refreshToken,
+                    accessExpiryDate,
+                    refreshExpiryDate
+                } = response.data;
+                cookies.setTokens(
+                    accessToken,
+                    refreshToken,
+                    accessExpiryDate,
+                    refreshExpiryDate
+                );
             })
             .catch(err => {
                 return Promise.reject(new Error(err.response.data));

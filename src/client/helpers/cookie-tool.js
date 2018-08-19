@@ -1,11 +1,13 @@
 import cookies from "browser-cookies";
 
 class CookieTool {
-    setTokens(accessToken, refreshToken, accessExpiryDate) {
+    setTokens(accessToken, refreshToken, accessExpiryDate, refreshExpiryDate) {
         cookies.set("accessToken", accessToken, {
             expires: new Date(accessExpiryDate)
         });
-        cookies.set("refreshToken", refreshToken);
+        cookies.set("refreshToken", refreshToken, {
+            expires: new Date(refreshExpiryDate)
+        });
     }
 
     getTokens() {
@@ -21,6 +23,11 @@ class CookieTool {
 
     getRefreshToken() {
         return cookies.get("refreshToken");
+    }
+
+    clearTokens() {
+        cookies.erase("accessToken");
+        cookies.erase("refreshToken");
     }
 }
 
