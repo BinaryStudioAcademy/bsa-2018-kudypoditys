@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Header, Segment, Input, Dropdown, Divider, Radio, Label, Button, Icon, Checkbox } from "semantic-ui-react";
 import "./index.scss";
 
-import TabForm from './tabForm';
+import TabForm from './servicesTabForm';
 
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "client/components/property-services-tab/container";
