@@ -6,7 +6,24 @@ import {mapStateToProps, mapDispatchToProps} from './container';
 import DrawFilters from './boxes.jsx';
 
 class Quickfilter extends React.Component {
-    handleItemClick(box) {
+    constructor(props){
+        super(props)
+        this.state = {
+            boxes : [
+                {id:'1', ischecked: true, label:'Pool', amount: 321,type:'Facility'},
+                {id:'1', ischecked: true, label:'Restoraunt', amount: 1213,type:'Facility'},
+                {id:'1', ischecked: true, label:'SPA', amount: 17,type:'Facility'},
+                {id:'2', ischecked: false, label:'Good location: 7+', amount: 231, type:'Review Score'},
+                {id:'2', ischecked: false, label:'Very good location: 8+', amount: 113, type:'Review Score'},
+                {id:'6', ischecked: false, label:'Excelent location: 9+', amount: 324, type:'Review Score'},
+                {id:'4', ischecked: false, label:'Hotel', amount: 345, type:'Property Type'},
+                {id:'3', ischecked: false, label:'Hostel', amount: 69, type:'Property Type'},
+                {id:'5', ischecked: false, label:'Motel', amount: 12, type:'Property Type'},
+
+            ]
+        }
+    }
+    handleItemClick(box){
         this.props.selectFilter(box);
     }
 
