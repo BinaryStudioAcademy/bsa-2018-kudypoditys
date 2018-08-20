@@ -6,5 +6,5 @@ const IGNORE_ROUTES = [
 ];
 
 module.exports = app => {
-    app.use(unless(IGNORE_ROUTES, jwtMiddleware));
+    // app.use(unless(IGNORE_ROUTES, jwtMiddleware));
 };

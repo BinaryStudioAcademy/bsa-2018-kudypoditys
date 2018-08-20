@@ -99,6 +99,7 @@ function associations(models) {
     PropertyPaymentType.belongsTo(PaymentType);
 
     // PropertyCategory ???
+    PropertyCategory.hasMany(Property);
 
     // Property associations
     Property.belongsTo(User);
@@ -106,6 +107,7 @@ function associations(models) {
     Property.belongsTo(City);
     Property.belongsTo(PropertyType);
     Property.belongsTo(AccommodationRule);
+    Property.belongsTo(PropertyCategory);
 
     Property.hasMany(Favorite);
     Property.hasMany(Review);

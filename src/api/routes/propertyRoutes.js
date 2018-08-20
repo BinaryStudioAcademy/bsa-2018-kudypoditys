@@ -52,4 +52,15 @@ property.route('/:id')
             });
     });
 
+property.route('/:id/details')
+    .get((req, res) => {
+        propertyService.getDetailsById(req.params.id)
+            .then(property => {
+                res.send(property);
+            })
+            .catch((err) => {
+                res.status(404).send(err);
+            });
+    });
+
 module.exports = property;

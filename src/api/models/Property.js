@@ -42,6 +42,10 @@ let Property = orm.define('property', {
     contactPhone: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    cityId: {
+        type: Sequelize.INTEGER,
+        allowNull: true
     }
 });
 
