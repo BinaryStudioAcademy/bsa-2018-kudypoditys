@@ -35,7 +35,7 @@ export const MenuItems = [
             key: 'menuItem Room', icon: 'usd', content: 'Layout and pricing', //temporary
             header: ' Layout and pricing',
             subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
-            component: <RoomItem/>,
+            component: <RoomItem title="Nice title" amount="5" />,
         }
 
     },

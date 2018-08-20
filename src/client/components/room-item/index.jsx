@@ -1,6 +1,6 @@
 import React from 'react';
 import { Segment, Grid, Button, Container } from 'semantic-ui-react';
-import { mapStateToProps, mapDispatchToProps } from './container';
+import { mapStateToProps} from './container';
 import { connect } from 'react-redux';
 import {  reduxForm } from 'redux-form';
 import './index.scss'
@@ -73,6 +73,6 @@ class RoomItem extends React.Component {
 
         }
     }
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
-    form: 'AmenitiesTabRegistrationForm'
+export default connect(mapStateToProps)(reduxForm({
+    form: 'RoomItemForm'
 })(RoomItem))
