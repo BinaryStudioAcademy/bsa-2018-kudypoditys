@@ -1,6 +1,7 @@
 import {LoginComponent} from "../login";
 import React from "react";
 import TabRegistration from '../main-info-tab';
+import AmenitiesTabRegistration from '../amenities-tab';
 import TabPolices from "../polices-tab";
 
 
@@ -46,7 +47,10 @@ export const MenuItems = [
             header: 'Amenities',
             subheader: ' You are nearly done! We just need a few more details about the extra bed options you provide, plus any\n' +
                 '    //             amenities or specific features and services available.',
+             component:<AmenitiesTabRegistration/>
         }
+
+
     },
 
     {

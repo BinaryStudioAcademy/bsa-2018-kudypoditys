@@ -4,6 +4,7 @@ import { MAPBOX_TOKEN } from "client/constants";
 import { Icon } from "semantic-ui-react";
 import MapPropertyItem from "client/components/map-property-item";
 import PropTypes from "prop-types";
+import MapPopupItem from "client/components/map-popup-item";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -56,9 +57,11 @@ class MapView extends React.Component {
                     dynamicPosition={true}
                     onClose={() => this.setState({ popupInfo: null })}
                 >
-                    <p>
-                        <strong> {popupInfo.name} </strong>
-                    </p>
+                    <MapPopupItem
+                        propertyName={popupInfo.name}
+                        price={popupInfo.price}
+                        rating={popupInfo.rating}
+                    />
                 </Popup>
             )
         );

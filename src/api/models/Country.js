@@ -7,6 +7,6 @@ module.exports = orm.define('country', {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
         allowNull: false,
-        unique: true
+
     }
 });

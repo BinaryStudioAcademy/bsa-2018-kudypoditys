@@ -99,12 +99,14 @@ function associations(models) {
     PropertyPaymentType.belongsTo(PaymentType);
 
     // PropertyCategory ???
+    PropertyCategory.hasMany(Property);
 
     // Property associations
     Property.belongsTo(User);
     Property.belongsTo(VerificationStatus);
     Property.belongsTo(City);
     Property.belongsTo(PropertyType);
+    Property.belongsTo(PropertyCategory);
     Property.belongsTo(AccommodationRule);
 
     Property.hasMany(Favorite);

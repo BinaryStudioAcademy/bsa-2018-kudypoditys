@@ -8,8 +8,10 @@ export function mapStateToProps(state) {
 }
 export function mapDispatchToProps(dispatch) {
     return {
-        registrationTab(data) {
-            dispatch(propertySubmit(data));
+        createProperty(data) {
+            console.log("mapDispatchToProps dispatch(propertySubmit(data)")
+            console.log(data)
+            dispatch(propertySubmit(data))
         }
     }
 }
