@@ -1,17 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import {connect} from "react-redux";
-import {Input, Button, Form, Dropdown, Header} from "semantic-ui-react";
-import {DateInput} from "semantic-ui-calendar-react";
+import { connect } from "react-redux";
+import { Input, Button, Form, Dropdown, Header } from "semantic-ui-react";
+// import DayPickerRangeController from "react-dates";
+// import { DateInput } from "semantic-ui-calendar-react";
+import "react-dates/initialize";
+import {
+    DateRangePicker,
+    SingleDatePicker,
+    DayPickerRangeController
+} from "react-dates";
 
-import {mapStateToProps, mapDispatchToProps} from "./container";
+import "react-dates/lib/css/_datepicker.css";
+
+import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 
 export class Search extends React.Component {
     constructor(props) {
         super(props);
         this.roomSelector = React.createRef();
+        this.state = {
+            startDate: null,
+            endDate: null,
+            focusedInput: new Date()
+        };
     }
 
     generateOptions = (from, to) => {
@@ -78,8 +92,6 @@ export class Search extends React.Component {
             >
                 <div className="destination">
                     <Input
-                        iconPosition="left"
-                        icon="map marker alternate"
                         name="destination"
                         placeholder="Where are you going?"
                         value={destination}
@@ -91,15 +103,30 @@ export class Search extends React.Component {
                     />
                 </div>
                 <div className="check-in-out">
-                    <DateInput
+                    <DateRangePicker
+                        noBorder={true}
+                        // showDefaultInputIcon={false}
+                        required={true}
+                        startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                        startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                        endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                        endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                        onDatesChange={({ startDate, endDate }) =>
+                            this.setState({ startDate, endDate })
+                        } // PropTypes.func.isRequired,
+                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                        onFocusChange={focusedInput =>
+                            this.setState({ focusedInput })
+                        } // PropTypes.func.isRequired,
+                    />
+                    {/* <DateInput
+                        icon={null}
                         closable
                         required
                         autoComplete="off"
                         minDate={moment()}
                         dateFormat="MMM D YYYY"
                         popupPosition="bottom center"
-                        icon="calendar alternate outline"
-                        iconPosition="left"
                         placeholder="Check-in"
                         name="checkIn"
                         value={
@@ -112,15 +139,15 @@ export class Search extends React.Component {
                         }
                         onFocus={this.hideRoomSelector}
                         onKeyPress={event => event.preventDefault()}
-                    />
-                    <DateInput
+                    /> */}
+                    {/* <DateInput
+                        icon={null}
                         closable
                         required
                         autoComplete="off"
                         minDate={moment()}
                         dateFormat="MMM D YYYY"
                         popupPosition="bottom center"
-                        icon="calendar alternate outline"
                         placeholder="Check-out"
                         name="checkOut"
                         value={
@@ -133,12 +160,10 @@ export class Search extends React.Component {
                         }
                         onFocus={this.hideRoomSelector}
                         onKeyPress={event => event.preventDefault()}
-                    />
+                    /> */}
                 </div>
                 <div className="room-options">
                     <Input
-                        icon="user"
-                        iconPosition="left"
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
@@ -189,7 +214,7 @@ export class Search extends React.Component {
                     </div>
                 </div>
                 <div className="btn-wrp">
-                    <Button type="submit" content="Search" primary/>
+                    <Button type="submit" content="Search" primary />
                 </div>
             </Form>
         ) : (
@@ -215,15 +240,13 @@ export class Search extends React.Component {
                 <div className="check-in-out">
                     <Form.Field>
                         <label>Check-in date</label>
-                        <DateInput
+                        {/* <DateInput
                             closable
                             required
                             autoComplete="off"
                             minDate={moment()}
                             dateFormat="MMM D YYYY"
                             popupPosition="bottom center"
-                            icon="calendar alternate outline"
-                            iconPosition="left"
                             placeholder="Check-in"
                             name="checkIn"
                             value={
@@ -235,19 +258,17 @@ export class Search extends React.Component {
                                 this.props.onCheckInChange(moment(input.value))
                             }
                             onKeyPress={event => event.preventDefault()}
-                        />
+                        /> */}
                     </Form.Field>
                     <Form.Field>
                         <label>Check-out date</label>
-                        <DateInput
+                        {/* <DateInput
                             closable
                             required
                             autoComplete="off"
                             minDate={moment()}
                             dateFormat="MMM D YYYY"
                             popupPosition="bottom center"
-                            icon="calendar alternate outline"
-                            iconPosition="left"
                             placeholder="Check-out"
                             name="checkOut"
                             value={
@@ -259,7 +280,7 @@ export class Search extends React.Component {
                                 this.props.onCheckOutChange(moment(input.value))
                             }
                             onKeyPress={event => event.preventDefault()}
-                        />
+                        /> */}
                     </Form.Field>
                 </div>
                 <div className="room-options">
@@ -302,7 +323,7 @@ export class Search extends React.Component {
                     </div>
                 </div>
                 <div className="btn-wrp">
-                    <Button type="submit" content="Search" primary/>
+                    <Button type="submit" content="Search" primary />
                 </div>
             </Form>
         );
