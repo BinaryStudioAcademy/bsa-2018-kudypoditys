@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './index.scss';
 import Header from 'client/components/header';
+import Footer from 'client/components/footer';
 
 class Page extends Component {
 
@@ -8,9 +9,7 @@ class Page extends Component {
         return (<Fragment>
             <Header></Header>
             {this.props.children}
-            <footer>
-                Maybe till to the end of the academy we will make a footer, but now we have this...
-            </footer>
+            <Footer></Footer>
         </Fragment>);
     }
 }

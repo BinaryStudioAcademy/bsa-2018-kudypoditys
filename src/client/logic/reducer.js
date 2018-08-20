@@ -15,6 +15,8 @@ import header from "client/logic/header/reducer";
 import checkInOut from "client/logic/checkIn-checkOut/reducer";
 import cityInfos from "client/logic/banner-list/reducer";
 import propertyServicesTab from "client/logic/property-services-tab/reducer";
+import amenitiesTab from './amenities-tab-for-property/reducer';
+import propertySubmit from './main-info-tab/reducer';
 
 export default combineReducers({
     search,
@@ -33,4 +35,6 @@ export default combineReducers({
     quickFilter,
     roomSummary,
     propertyServicesTab,
+    propertySubmit,
+    amenitiesTab
 });

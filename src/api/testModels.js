@@ -56,44 +56,7 @@ module.exports = () => {
         });
     });
 
-    models.then(({ // example how to use many to many
-        Property, Facility, FacilityList
-    }) => {
-        return Property.create({
-            name: 'Lviv',
-            address: 'Zelena 8b',
-            description: 'description',
-            taxes: 1.3,
-            coordinates: { "lat": 41.650299987709538, "lng": 12.536399034779624 },
-            rating: 7.9,
-            contactPersonName: 'Jhon Doe',
-            contactPhone: '9876543'
-        }).then(() =>
-            Facility.create({ name: 'facility1' })
-        ).then(() =>
-            Facility.create({ name: 'facility2' })
-        ).then(() =>
-            FacilityList.create({
-                propertyId: 1,
-                facilityId: 1
-            })
-        ).then(() =>
-            FacilityList.create({
-                propertyId: 1,
-                facilityId: 2
-            })
-        ).then(() => {
-            return Property.findOne({
-                // JOIN through FacilityList
-                include: [{ model: Facility }],
 
-                // WHERE
-                where: { id: 1 }
-            })
-        }).then(prop => {
-            //console.log('>>>> ', prop.facilities.map(x => `id: ${x.id} name: ${x.name}`));
-        });
-    });
 
     models.then(({
         Review
@@ -162,24 +125,16 @@ module.exports = () => {
         });
     });
 
-    models.then(({
-        Facility
-    }) => {
-        Facility.create({
-            name: 'Swimming Pool'
-        }).then(() => {
-            //Facility.findAll().then(console.log);
-        });
-    });
 
     models.then(({
         FacilityCategory
     }) => {
         FacilityCategory.create({
             name: 'SPA'
-        }).then(() => {
-            //FacilityCategory.findAll().then(console.log);
-        });
+        })
+        //     .then(() => {
+        //     //FacilityCategory.findAll().then(console.log);
+        // });
     });
 
 
@@ -187,10 +142,12 @@ module.exports = () => {
         Message
     }) => {
         Message.create({
-            body: 'Сan i arrive earlier?'
-        }).then(() => {
-            //Message.findAll().then(console.log);
-        });
+            // body: 'Сan i arrive earlier?'
+
+        })
+        //     .then(() => {
+        //     // Message.findAll().then(console.log);
+        // });
     });
 };
 
