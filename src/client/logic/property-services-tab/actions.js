@@ -1,4 +1,5 @@
-import { SERVICES_TAB_UPDATE } from "./actionTypes";
+import {SERVICES_TAB_UPDATE} from "./actionTypes";
+
 
 export function servicesTabUpdate(payload) {
     return {

@@ -4,8 +4,6 @@ import {
 } from './actionTypes';
 
 
-
-
 export default function propertySubmitReducer(state = {}, action) {
     switch (action.type) {
         case CREATE_PROPERTY_FAILED: {

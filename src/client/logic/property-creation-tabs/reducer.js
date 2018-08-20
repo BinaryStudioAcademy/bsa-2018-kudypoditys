@@ -1,4 +1,5 @@
-import { CREATE_PROPERTY_FAILED, CREATE_PROPERTY_SUCCESS } from './actionTypes'
+import {CREATE_PROPERTY_FAILED, CREATE_PROPERTY_SUCCESS} from './actionTypes'
+
 
 export default function propertySubmitReducer(state = {}, action) {
     switch (action.type) {

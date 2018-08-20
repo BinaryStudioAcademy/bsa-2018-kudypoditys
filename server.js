@@ -14,7 +14,7 @@ const apiRoot = path.resolve(path.join(__dirname, "src/api"));
 
 require(`${apiRoot}/helpers/passport`);
 
-const io = require("socket.io")(server, { serveClient: true });
+const io = require("socket.io")(server, {serveClient: true});
 
 const port = process.env.PORT || 5000;
 
@@ -30,7 +30,7 @@ const routes = require("./src/api/routes")(app);
 app.get("/*", (req, res) => {
     const fileDirectory = path.join(__dirname, "public");
 
-    res.sendFile("index.html", { root: fileDirectory }, err => {
+    res.sendFile("index.html", {root: fileDirectory}, err => {
         res.end();
     });
 });
