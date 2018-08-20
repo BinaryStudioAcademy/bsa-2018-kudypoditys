@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Card, Icon } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
-export class MapPropertyItem extends Component {
+export class MapPopupItem extends Component {
 
     render() {
         return (
@@ -28,10 +28,10 @@ export class MapPropertyItem extends Component {
     }
 }
 
-MapPropertyItem.propTypes = {
+MapPopupItem.propTypes = {
     propertyName: PropTypes.string,
     price: PropTypes.number,
     rating: PropTypes.string
 };
 
-export default MapPropertyItem;
+export default MapPopupItem;
