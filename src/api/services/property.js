@@ -11,11 +11,11 @@ class PropertyService extends Service {
     }
 
     addProperty(property) {
-        return propertyRepository.create(property);
+        return propertyRepository.createDetails(property);
     }
 
     updateProperty(id, property) {
-        return propertyRepository.updateById({ _id: id }, property);
+        return propertyRepository.updateById(id, property);
     }
 
     deleteProperty(id) {

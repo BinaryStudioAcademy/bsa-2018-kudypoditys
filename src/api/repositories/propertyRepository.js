@@ -1,6 +1,12 @@
 const sequelize = require('sequelize');
 const Repository = require('./generalRepository');
 const propertyModel = require('../models/Property');
+const Facility = require('../models/Facility');
+const PaymentType = require('../models/PaymentType');
+const Room = require('../models/Room');
+const AccommodationRule = require('../models/AccommodationRule');
+const PropertyType = require('../models/PropertyType');
+const PropertyCategory = require('../models/PropertyCategory');
 
 const User = require('../models/User');
 const City = require('../models/City');
@@ -44,29 +50,19 @@ class PropertyRepository extends Repository {
             });
         });
     }
+
+    createDetails(entity) {
+        return this.model.create(entity, {
+            include: [
+                PropertyType,
+                PropertyCategory,
+                Room,
+                Facility,
+                AccommodationRule,
+                PaymentType
+            ]
+        });
+    }
 }
-
-// Property associations
-// Property.belongsTo(User);
-// Property.belongsTo(VerificationStatus);
-// Property.belongsTo(City);
-// Property.belongsTo(PropertyType);
-// Property.belongsTo(AccommodationRule);
-
-// Property.hasMany(Favorite);
-// Property.hasMany(Review);
-// Property.hasMany(FacilityList);
-// Property.hasMany(PropertyPaymentType);
-// Property.hasMany(Room);
-
-// Property.belongsToMany(PaymentType, { through: 'propertyPaymentType' });
-// PaymentType.belongsToMany(Property, { through: 'propertyPaymentType' });
-
-// User.belongsToMany(Property, { as: 'favoriteProperties', through: 'favorite' });
-// Property.belongsToMany(User, { as: 'likedByUsers', through: 'favorite' });
-
-// Facility.belongsToMany(Property, { through: 'facilityList' });
-// Property.belongsToMany(Facility, { through: 'facilityList' });
-
 
 module.exports = new PropertyRepository(propertyModel);

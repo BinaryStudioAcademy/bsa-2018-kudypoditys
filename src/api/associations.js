@@ -106,6 +106,7 @@ function associations(models) {
     Property.belongsTo(VerificationStatus);
     Property.belongsTo(City);
     Property.belongsTo(PropertyType);
+    Property.belongsTo(PropertyCategory);
     Property.belongsTo(AccommodationRule);
     Property.belongsTo(PropertyCategory);
 

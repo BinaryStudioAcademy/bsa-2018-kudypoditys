@@ -3,7 +3,7 @@ const userRepository = require("../repositories/userRepository");
 const jwt = require("jsonwebtoken");
 const settings = require("../../../config/settings");
 const bcrypt = require("bcrypt");
-const { dateHelpers } = require("../helpers");
+const {dateHelpers} = require("../helpers");
 const userTokenService = require("./userToken");
 
 class UserService extends Service {
