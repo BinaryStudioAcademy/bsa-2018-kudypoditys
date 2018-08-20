@@ -54,6 +54,9 @@ const state = {
         departureFrom: "10:00",
         departureTo: "12:00",
     },
+    images: []
+
+    ,
 
     header: {
         currencies: [],

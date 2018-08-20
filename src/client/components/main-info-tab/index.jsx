@@ -1,5 +1,5 @@
-import React, { Component,} from "react";
-import { Header, Container, Grid, Rail, Sticky, Segment } from 'semantic-ui-react';
+import React, {Component,} from "react";
+import {Header, Container, Grid, Rail, Sticky, Segment} from 'semantic-ui-react';
 import RegistrationForm from './registeredForm';
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from "./container";
@@ -7,15 +7,15 @@ import {mapStateToProps, mapDispatchToProps} from "./container";
 
 class TabRegistration extends Component {
     state = {}
-    handleContextRef = contextRef => this.setState({ contextRef })
+    handleContextRef = contextRef => this.setState({contextRef})
 
     render() {
-        const {name } = this.props;
-        const { contextRef } = this.state
+        const {name} = this.props;
+        const {contextRef} = this.state
         return (
             <Grid width={13}>
                 <Grid.Column width={10}>
-                    <Container >
+                    <Container>
                         <Header as='h2'>Welcome {name}!</Header>
                         <RegistrationForm onSubmit={this.props.createProperty}/>
                     </Container>
@@ -23,10 +23,10 @@ class TabRegistration extends Component {
                 <Grid.Column width={3}>
                     <Rail position='right' style={{marginTop: '50px'}}>
                         <Sticky context={contextRef}>
-                            <Segment secondary >
+                            <Segment secondary>
                                 After you complete registration you'll be able to
-                                 make changes to your listing before it goes live
-                             </Segment>
+                                make changes to your listing before it goes live
+                            </Segment>
                         </Sticky>
                     </Rail>
                 </Grid.Column>
