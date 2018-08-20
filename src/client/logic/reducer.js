@@ -42,5 +42,4 @@ export default combineReducers({
     amenitiesTab,
     policesTab
 
-
 });
