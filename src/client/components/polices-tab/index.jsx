@@ -10,7 +10,7 @@ import semanticSelectorFormField from 'client/components/dropdown-form/semanticS
 
 import CheckInCheckOut from 'client/components/checkin-checkout'
 import {connect} from 'react-redux';
-import {mapDispatchToProps, mapStateToProps} from "../amenities-tab/container";
+import {mapDispatchToProps, mapStateToProps} from "../polices-tab/container";
 
 
 class TabPolices extends Component {

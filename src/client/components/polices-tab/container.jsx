@@ -2,9 +2,14 @@ import {policesTabUpdate} from "client/logic/polices-tab/actions";
 
 
 export function mapStateToProps(state) {
-    const {propertyPolicesTab} = state;
+    const {policesTab} = state;
+    console.log(policesTab)
     return {
-        ...propertyPolicesTab,
+        arrivalFrom: policesTab.arrivalFrom,
+        arrivalTo: policesTab.arrivalTo,
+        departureFrom: policesTab.departureFrom,
+        departureTo: policesTab.departureTo,
+
     };
 }
 
