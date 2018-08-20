@@ -4,9 +4,8 @@ const
 
 let Facility = orm.define('facility', {
     name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
+        type: Sequelize.STRING
+
     }
 });
 
