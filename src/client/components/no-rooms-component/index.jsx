@@ -21,7 +21,7 @@ class NoRoom extends React.Component {
             {this.state.displayAddForm === false?
                <DefaultContainer AddRoom = {this.AddRoom.bind(this)}/>
             :
-            <AddRoom />
+                <AddRoom />
             }
             </div>
         )

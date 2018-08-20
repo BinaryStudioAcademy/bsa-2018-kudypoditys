@@ -3,8 +3,12 @@ import './index.scss';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react'
 import { fieldArrayMetaPropTypes } from 'redux-form';
+import { required, maxLength20, phoneNumber, number,maxLength } from 'client/regexValidationService';
+import { Field, reduxForm } from 'redux-form';
 import { Icon } from 'semantic-ui-react';
 import {bedType,bedAmount} from './options.js';
+import semanticSelectorFormField from './dropdown-form/semanticSelectorForm'
+
 class ComplexInput extends React.Component {
     constructor(props){
         super(props);
@@ -27,18 +31,20 @@ class ComplexInput extends React.Component {
         }
         this.setState({guests:amount})
     }
-    handleTypeChange(e){
-        const index = e.target.name;
+    TypeChange(a,field){
+        console.log(a.target)
+        const index = field.name;
         let beds = this.state.beds;
-        beds[index].value = Number(e.target.value)
+        beds[index].value = Number(field.value)
         this.setState(
             {beds:beds},()=>this.setGuests()
         )
     }
-    handleAmountChange(e){
-        const index = e.target.name;
+    handleAmountChange(a,field){
+        console.log(a)
+        const index = Number(field.name)-100;
         let beds = this.state.beds;
-        beds[index].amount = Number(e.target.value)
+        beds[index].amount = Number(field.value)
         this.setState(
             {beds:beds},()=>this.setGuests()
         )
@@ -90,13 +96,28 @@ class ComplexInput extends React.Component {
 
             bed.display===true?
                 <div key={bed.key} className='complex-input'>
-                    <select name = {bed.key}  onChange={this.handleTypeChange.bind(this)} name={bed.key} className='plan-price-form-select'>
-                        {bedOptions}
-                    </select>
+                    <Field
+                                style={{margin:'0 0 0 10px'}}
+                                name={String(bed.key)}
+                                component={semanticSelectorFormField}
+                                as={Form.Select}
+                                options={bedType}
+                                label="Тип номеру"
+                                onChange={this.TypeChange}
+                                placeholder="Виберіть"
+                                validate={required}/>
+                                <br />
                     <p>X</p>
-                    <select name={bed.key} onChange={this.handleAmountChange.bind(this)} className='plan-price-form-select'>
-                        {multOptions}
-                    </select>
+                    <Field
+                                style={{margin:'0 0 0 10px'}}
+                                name={String(Number(bed.key+100))}
+                                component={semanticSelectorFormField}
+                                as={Form.Select}
+                                options={bedAmount}
+                                label="Тип номеру"
+                                onChange={this.AmountChange}
+                                validate={required}/>
+                                <br />
                     {bed.button?
                     <div onClick={this.handleDelete.bind(this)} className='delete-btn'>
                         <Icon name='remove circle' color='red'/>

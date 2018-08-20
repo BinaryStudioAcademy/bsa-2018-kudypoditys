@@ -1,9 +1,9 @@
 import React from "react";
 import {Input, Label} from "semantic-ui-react";
 
-const FormTextInput = ({input, min,max,type, icon, label, autocomplete, className, meta: {touched, error}}) => (
+const renderField = ({input, type, icon, label, className, pointing, meta: {touched, error}}) => (
     <React.Fragment>
-        <Label basic className={touched && error ? 'shown' : 'hidden'} color='red' pointing='below'>
+        <Label basic className={touched && error ? 'shown' : 'hidden'} color='red' pointing={pointing || 'below'}>
             {touched && error ? error : ''}
         </Label>
         <Input
@@ -13,11 +13,9 @@ const FormTextInput = ({input, min,max,type, icon, label, autocomplete, classNam
             icon={icon}
             fluid
             iconPosition='left'
-            autoComplete={autocomplete}
-            max={max}
-            min={min}
+            className={className}
         />
     </React.Fragment>
 );
 
-export default FormTextInput;
+export default renderField;

@@ -7,8 +7,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
-import NoRoom from "./components/no-rooms-component";
-
+import NoRoom from "client/components/no-rooms-component";
 // import Search from "client/components/search";
 // import Registration from "client/components/registration";
 // import LoginComponent from "./components/login";
@@ -25,13 +24,13 @@ import NoRoom from "./components/no-rooms-component";
 // import BasicMapWidget from './components/basic-map-widget';
 
 
-//const store = createStore(reducer, composeWithDevTools());
+const store = createStore(reducer, composeWithDevTools());
 
 // TODO: add corresponding pages to routes components
 ReactDOM.render(
-    // <Provider store={store}>
-        <NoRoom />,
-    // </Provider>,
+    <Provider store={store}>
+        <NoRoom/>
+    </Provider>,
     document.getElementById("root")
 );
  /* <BrowserRouter>

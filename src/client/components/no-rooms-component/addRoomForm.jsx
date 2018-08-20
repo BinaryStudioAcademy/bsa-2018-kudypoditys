@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { Fragment } from "react";
 import './index.scss';
+import { Card, CardDescription, Button, Form } from "semantic-ui-react";
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react'
 import { fieldArrayMetaPropTypes } from 'redux-form';
 import ComplexInput from './complexInput.jsx';
 import RoomSquare from './roomSquare.jsx';
 import BasePriceForm from './basePrice.jsx';
-import ApplyBtn from './applyButton.jsx'
-
+import ApplyBtn from './applyButton.jsx';
+import FormTextInput from './input-form';
+import { required, maxLength20, phoneNumber, number,maxLength } from 'client/regexValidationService';
+import { Field, reduxForm } from 'redux-form';
+import semanticSelectorFormField from './dropdown-form/semanticSelectorForm.jsx'
+import SelectInput from './selectInput.jsx'
+import { type, smoking} from './options.js';
 class AddRoom extends React.Component {
     constructor(props){
         super(props);
@@ -19,44 +24,122 @@ class AddRoom extends React.Component {
     // AddRoom(){
     //     this.setState({displayAddForm:true});
     // }
-    onFocusHandler(e){
+    // handleChange(field){
+    //     console.log(field)
+    // }
+    handleFormChange(e){
 
-        //const a = e.target;
-        console.log(e.target.name)
-    }
-    optionRender(arr){
-        const res = arr.map((item)=>
-            <option key={item.key} value={item.value}>{item.text}</option>
-        );
-        return res
+        console.log(e.target.value)
     }
     render(){
-        const type = [
-            { key: '0', text: 'Виберіть', value: '' },
-            { key: '1', text: 'Одномісний', value: 'Одномісний' },
-            { key: '2', text: 'Двомісний', value: 'Двомісний' },
-            { key: '3', text: 'Тримісний', value: 'Тримісний' },
-            { key: '4', text: 'Люкс', value: 'luxury' },
-          ]
-        const smoking=[
-            { key: '1', text: 'Для некурців', value: 'nosmoke' },
-            { key: '2', text: 'Для курців', value: 'smoke' },
-            { key: '3', text: 'У номерах цього типу можливе розміщення як курців, так і некурців', value: 'both' },
-        ]
-        const beds = [
-            { key: '1', text: 'Односпальне', value: '1' },
-            { key: '2', text: 'Двоспальне', value: '2' },
-            { key: '3', text: 'Широке двоспальне', value: '2' }
-        ]
-        const typeOptions = this.optionRender(type);
-        const smokingOptions = this.optionRender(smoking);
-        const bedOptions = this.optionRender(beds);
         const { value } = 1
+        const { handleSubmit, pristine, submitting } = this.props
         return(
+
             <div className='plan-price-form'>
-                <form action="">
+
+             <Fragment key='1'>
+
+                <Card style={{ width: '900px' }} color='teal'>
+                    <Card.Content>
+                        <Card.Description style={{ fontSize: '18px' }}>
+                            Виберіть
+                        </Card.Description><br />
+                            <Field
+                                style={{margin:'0 0 0 10px'}}
+                                name="type"
+                                component={semanticSelectorFormField}
+                                as={Form.Select}
+                                options={type}
+                                label="Тип номеру"
+                                placeholder="Виберіть"
+                                validate={required}/>
+                                <br />
+                            <Field style={{margin:'0 0 0 10px'}}
+                                name="smoking"
+                                component={semanticSelectorFormField}
+                                as={Form.Select}
+                                options={smoking}
+                                label="Куріння"
+                                placeholder="Виберіть"
+                                validate={required}/>
+                                <br />
+
+                                <label htmlFor="roomsAmount">Кількість номерів цього типу</label>
+                            <Field
+                                component={FormTextInput}
+                                as={Form.Input}
+                                name="roomsAmount"
+                                key='roomsAmount'
+                                label=""
+                                type="text"
+                                validate={[required, number, maxLength(3)]} />
+                    </Card.Content>
+                </Card>
+
+                <Card style={{ width: '900px' }} color='teal'>
+                    <Card.Content>
+                        <Card.Description style={{ fontSize: '18px' }}>
+                            Ліжка
+                        </Card.Description><br />
+                        <ComplexInput/>
+                    </Card.Content>
+                </Card>
+
+                <Card style={{ width: '900px' }} color='teal'>
+                    <Card.Content>
+                        <Card.Description style={{ fontSize: '18px' }}>
+                            Площа номера(необов'язково)
+                        </Card.Description><br />
+                                <label htmlFor="roomsAmount"></label>
+                            <Field
+                                component={FormTextInput}
+                                as={Form.Input}
+                                name="roomSquare"
+                                key="roomSquare"
+                                label="кв.м"
+                                type="text"
+                                validate={false} />
+                    </Card.Content>
+                </Card>
+                <Card style={{ width: '900px' }} color='teal'>
+                    <Card.Content>
+                        <Card.Description style={{ fontSize: '18px' }}>
+                            Базова ціна за ніч
+                        </Card.Description><br />
+                            <span className='form-info'>
+                                Це найнижча ціна, яку ми автоматично застосовуємо
+                                до цього номера на всі дати.
+                                Перш ніж ваше помешкання почне отримувати бронювання,
+                                ви можете налаштувати сезонні ціни в особистому кабінеті.
+                            </span>
+                            <label htmlFor="roomPrice">Ціна за 1 особу</label>
+                            <Field
+                                component={FormTextInput}
+                                as={Form.Input}
+                                name="roomPrice"
+                                key="roomPrice"
+                                label="UAH/ніч"
+                                type="text"
+                                validate={[required, number, maxLength(3)]} />
+                    </Card.Content>
+                </Card>
+
+                <Button key='submit' type="submit" color='teal' style={{ width: '750px' }}
+                disabled={pristine || submitting} >Continue</Button>
+
+            </Fragment>
+
+
+                 {/* <form action="">
                     <div name='1' className="plan-price-form-group" onClick={this.onFocusHandler}>
                         <h3>Виберіть</h3>
+                        <SelectInput
+                            name='type'
+                            options={typeOptions}
+                            label='Тип номеру'
+                            onchange={this.handleFormChange.bind(this)}
+                        />
                         <label  htmlFor="type"className='plan-price-form-label'>Тип номеру</label>
                         <select name='type' className='plan-price-form-select'>
                             {typeOptions}
@@ -68,18 +151,32 @@ class AddRoom extends React.Component {
                         </select>
                         <label  htmlFor="roomsAmount" className='plan-price-form-label'>Кількість номерів (цього типу)</label>
                         <input name='roomsAmount'type="text"/>
-                    </div>
+                        <reduxForm >
+                            <Field
+                            component={FormTextInput}
+                            name="PropertyName"
+                            label="Property name"
+                            type="text"
+                            validate={[required, maxLength20]} />
+
+                        </reduxForm >
+
+                        </div>
 
                    <ComplexInput onFocus={this.onFocusHandler.bind(this)} />
                    <RoomSquare />
                    <BasePriceForm/>
                    <ApplyBtn/>
 
-                </form>
+                </form> */}
             </div>
+
         )
     }
 }
+AddRoom = reduxForm({
+    form: "TabRegistration"
+})(AddRoom);
     // Quickfilter.propTypes = {
     //     boxes: PropTypes.arrayOf(
     //         PropTypes.shape({
@@ -92,5 +189,6 @@ class AddRoom extends React.Component {
     //     ),
     //     OnQuickFilterChange: PropTypes.func
     // }
+
 export default AddRoom;
 
