@@ -24,8 +24,8 @@ property.route('/')
 
 property.route('/page')
     .get((req, res) => {
-        const { page, recordsOnPage } = req.query;
-        propertyService.findByPage({ page, recordsOnPage })
+        const {page, recordsOnPage} = req.query;
+        propertyService.findByPage({page, recordsOnPage})
             .then(list => {
                 res.status(200).send(list);
             })

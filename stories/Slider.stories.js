@@ -1,6 +1,6 @@
 import React from "react";
 
-import { storiesOf } from "@storybook/react";
+import {storiesOf} from "@storybook/react";
 
 import Slider from "client/components/slider";
 
@@ -18,8 +18,8 @@ const handleSlideChange = index => {
 
 storiesOf("Slider", module)
     .add("Slider With Pictures", () => (
-        <Slider pics={pics} handleSlideChange={handleSlideChange} slideId={0} />
+        <Slider pics={pics} handleSlideChange={handleSlideChange} slideId={0}/>
     ))
     .add("Slider Without Pictures", () => (
-        <Slider pics={[]} handleSlideChange={handleSlideChange} slideId={0} />
+        <Slider pics={[]} handleSlideChange={handleSlideChange} slideId={0}/>
     ));

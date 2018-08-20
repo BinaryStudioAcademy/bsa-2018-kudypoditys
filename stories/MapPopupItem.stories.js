@@ -1,8 +1,9 @@
 import React from "react";
 
-import { storiesOf } from "@storybook/react";
+import {storiesOf} from "@storybook/react";
 
 import MapPopupItem from "client/components/map-popup-item";
+
 
 storiesOf("Map popup item", module).add("Basic", () => (
     <MapPopupItem
