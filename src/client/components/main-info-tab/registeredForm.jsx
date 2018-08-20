@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardDescription, Button,Form} from "semantic-ui-react";
+import {Card, CardDescription, Button, Form} from "semantic-ui-react";
 import FormTextInput from '../input-form/formTextInput';
 import { required, maxLength20, phoneNumber } from 'client/regexValidationService';
 import { Field, reduxForm } from 'redux-form';
@@ -18,10 +18,10 @@ const cities = [
 
 let RegistrationForm = props => {
 
-    const { pristine, submitting, handleSubmit } = props
+    const {pristine, submitting, handleSubmit} = props
     return (
         <form onSubmit={handleSubmit}>
-               <Card style={{ width: '900px' }} color='teal'>
+            <Card style={{width: '900px'}} color='teal'>
                 <Card.Content>
                     <Card.Description style={{ fontSize: '18px' }}>What's the
                         name of your property?</Card.Description><br />
@@ -115,8 +115,8 @@ let RegistrationForm = props => {
                 </Card.Content>
             </Card>
             <Button color='teal' fluid
-                disabled={pristine || submitting}
-                type="submit" >Continue</Button>
+                    disabled={pristine || submitting}
+                    type="submit">Continue</Button>
         </form>
     );
 }

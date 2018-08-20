@@ -1,12 +1,13 @@
-import { Input, Label } from "semantic-ui-react";
+import {Input, Label} from "semantic-ui-react";
 import React from "react";
 
-export const InputPrice = ({ input, label, classname, type, pholder, val, _onChange, value, meta: { touched, error } }) => {
+
+export const InputPrice = ({input, label, classname, type, pholder, val, _onChange, value, meta: {touched, error}}) => {
     return (
         <div className={classname}>
-            { touched && error ?
+            {touched && error ?
                 <Label color="red" pointing="below">
-                    { error }
+                    {error}
                 </Label>
                 : null
             }

@@ -12,7 +12,7 @@ const apiRoot = path.resolve(path.join(__dirname, "src/api"));
 
 require(`${apiRoot}/helpers/passport`);
 
-const io = require("socket.io")(server, { serveClient: true });
+const io = require("socket.io")(server, {serveClient: true});
 
 const port = process.env.PORT || 5000;
 

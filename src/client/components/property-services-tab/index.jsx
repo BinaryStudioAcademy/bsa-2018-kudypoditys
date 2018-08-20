@@ -1,19 +1,32 @@
-import React, { Component } from "react";
-import { Container, Header, Segment, Input, Dropdown, Divider, Radio, Label, Button, Icon, Checkbox } from "semantic-ui-react";
+import React, {Component} from "react";
+import {
+    Container,
+    Header,
+    Segment,
+    Input,
+    Dropdown,
+    Divider,
+    Radio,
+    Label,
+    Button,
+    Icon,
+    Checkbox
+} from "semantic-ui-react";
 import "./index.scss";
 
 import TabForm from './servicesTabForm';
 
-import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from "client/components/property-services-tab/container";
+import {connect} from "react-redux";
+import {mapStateToProps, mapDispatchToProps} from "client/components/property-services-tab/container";
+
 
 export class PropertyServicesTab extends Component {
 
-    handleChange = (e, { name, value }) => {
-        this.props.updateTab({ [name]: value });
+    handleChange = (e, {name, value}) => {
+        this.props.updateTab({[name]: value});
     };
 
-    handleParking = (e, { name, value }) => {
+    handleParking = (e, {name, value}) => {
         console.log(e, name, value);
         this.props.updateTab({
             parking: {
@@ -23,43 +36,43 @@ export class PropertyServicesTab extends Component {
         })
     };
 
-    handleLanguages = (e, { name, value }) => {
+    handleLanguages = (e, {name, value}) => {
         this.props.updateTab({
             languages: value
         })
     };
 
-    handleFacilities = (e, { name, value }) => {
+    handleFacilities = (e, {name, value}) => {
         !this.props.facilities.includes(value) ?
-        this.props.updateTab({
-            facilities: [
-                ...this.props.facilities,
-                value
-            ]
-        })
-        :
-        this.props.updateTab({
-            facilities: this.props.facilities.filter((facility) => facility !== value)
-        });
+            this.props.updateTab({
+                facilities: [
+                    ...this.props.facilities,
+                    value
+                ]
+            })
+            :
+            this.props.updateTab({
+                facilities: this.props.facilities.filter((facility) => facility !== value)
+            });
     };
 
     parkingOptions = {
         providing: [
-            { key: "1", text: "No", value: "none" },
-            { key: "2", text: "Yes, non-free", value: "non_free" },
-            { key: "3", text: "Yes, for free", value: "free" }
+            {key: "1", text: "No", value: "none"},
+            {key: "2", text: "Yes, non-free", value: "non_free"},
+            {key: "3", text: "Yes, for free", value: "free"}
         ],
         type: [
-            { key: "1", text: "Private", value: "private" },
-            { key: "2", text: "Public", value: "public" }
+            {key: "1", text: "Private", value: "private"},
+            {key: "2", text: "Public", value: "public"}
         ],
         placement: [
-            { key: "1", text: "On territory", value: "on_territory" },
-            { key: "2", text: "Off territory", value: "off_territory" }
+            {key: "1", text: "On territory", value: "on_territory"},
+            {key: "2", text: "Off territory", value: "off_territory"}
         ],
         booking: [
-            { key: "1", text: "Need to book", value: "need" },
-            { key: "2", text: "No need to book", value: "no_need" }
+            {key: "1", text: "Need to book", value: "need"},
+            {key: "2", text: "No need to book", value: "no_need"}
         ],
         priceForDay: ""
     };
@@ -111,7 +124,9 @@ export class PropertyServicesTab extends Component {
                 <Header as="h2">
                     Services
                 </Header>
-                <TabForm {...formProps} handleChange={this.handleChange} handleParking={this.handleParking} handleLanguages={this.handleLanguages} handleFacilities={this.handleFacilities} onSubmit={this.handleContinue} />
+                <TabForm {...formProps} handleChange={this.handleChange} handleParking={this.handleParking}
+                         handleLanguages={this.handleLanguages} handleFacilities={this.handleFacilities}
+                         onSubmit={this.handleContinue}/>
             </Container>
         )
     }

@@ -20,7 +20,5 @@ const orm = new Sequelize(
     DB_OPTIONS
 );
 
-
-
 module.exports = orm;
 
