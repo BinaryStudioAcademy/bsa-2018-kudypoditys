@@ -110,8 +110,8 @@ export class PaymentTab extends Component {
         }
     };
 
-    handleContinue = (data) => {
-        console.log(data);
+    handleContinue = () => {
+        this.props.submitContinue({ from: "paymentTab" });
     };
 
     commissionNames = [
