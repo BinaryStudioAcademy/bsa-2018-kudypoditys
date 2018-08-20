@@ -4,16 +4,13 @@ import {
     Divider,
     Container,
     Segment,
-    Grid,
     Breadcrumb
 } from "semantic-ui-react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import Search from "client/components/search";
 import Header from "client/components/header";
 import AvailabilityPanel from "client/components/availability-panel";
-import Breadcrumbs from "client/components/breadcrumbs";
 import Slider from "client/components/slider";
 import PropertyDescription from "client/components/property-description";
 import { PropertySummary } from "client/components/property-summary";
