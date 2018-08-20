@@ -20,11 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 
-require('./src/api/middleware')(app);//adding jwt and other
-app.use(express.static(path.join(__dirname, "public")));
-app.use(cookieParser());
+require('./src/api/middleware')(app);   // adding jwt and other
 
-require('./src/api/middleware')(app);//adding jwt and other
 const routes = require("./src/api/routes")(app);
 app.get("/*", (req, res) => {
     const fileDirectory = path.join(__dirname, "public");

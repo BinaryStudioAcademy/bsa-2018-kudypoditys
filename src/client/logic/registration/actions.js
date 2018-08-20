@@ -1,5 +1,4 @@
 import {
-    REGISTER_SUBMIT,
     REGISTER_SUCCESS,
     REGISTER_FAILURE
 } from "./actionTypes";

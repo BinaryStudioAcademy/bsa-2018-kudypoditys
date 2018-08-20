@@ -1,4 +1,3 @@
-import {formValues} from 'redux-form';
 export const required = value => (value || typeof value === 'number' ? undefined : 'Required')
 
 export const maxLength = max => value =>

@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {Card, Icon, Image} from "semantic-ui-react";
 import PropTypes from "prop-types";
 
-
 export class MapPropertyItem extends Component {
     nameClicked = () => {
         console.log("Name clicked");
@@ -10,8 +9,25 @@ export class MapPropertyItem extends Component {
 
     render() {
         return (
-            <Card style={{minWidth: "100px"}}>
-                <Image centered src={this.props.imageSrc} size="medium"/>
+            <Card
+                style={{
+                    minWidth: "100px",
+                    margin: "10%"
+                }}
+            >
+                <Image centered src={this.props.imageSrc} size="medium" />
+                <Icon
+                    style={{
+                        position: "absolute",
+                        right: "2%",
+                        top: "2%",
+                        textAlign: "right",
+                        color: "white"
+                    }}
+                    name="close"
+                    size="large"
+                    onClick={this.props.closeClicked}
+                />
                 <Card.Content>
                     <Card.Header>
                         <a tabIndex="0" onClick={this.nameClicked}>

@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import "./index.scss";
 
-import {Button, Modal} from 'semantic-ui-react';
+import { Button, Modal } from "semantic-ui-react";
 import MapView from "../map-view";
-
 
 export default class MapWidgetModal extends Component {
     static defaultProps = {
@@ -16,22 +15,29 @@ export default class MapWidgetModal extends Component {
         return (
             <React.Fragment>
                 <Modal
-                    trigger={<Button basic size='tiny'
-                                     className={this.props.buttonClass}>{this.props.buttonText}</Button>}
+                    trigger={
+                        <Button
+                            basic
+                            size="tiny"
+                            className={this.props.buttonClass}
+                        >
+                            {this.props.buttonText}
+                        </Button>
+                    }
                     closeIcon
-                    className='map-widget-modal'
+                    className="map-widget-modal"
                 >
                     <Modal.Content>
                         <MapView
-                            latitude={this.props.latitude}
-                            longitude={this.props.longitude}
+                            properties={this.props.properties}
+                            startPosition={this.props.startPosition}
                             zoom={12}
                             controlEnable={true}
                         />
+                        );
                     </Modal.Content>
-
                 </Modal>
             </React.Fragment>
-        )
+        );
     }
 }
