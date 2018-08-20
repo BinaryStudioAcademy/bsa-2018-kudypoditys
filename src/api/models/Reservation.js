@@ -6,17 +6,17 @@ let Reservation = orm.define('reservation', {
     dateIn: {
         type: Sequelize.DATE,
         validate: { isDate: true },
-        allowNull: false
+        // allowNull: false
     },
     dateOut: {
         type: Sequelize.DATE,
         validate: { isDate: true },
-        allowNull: false
+        // allowNull: false
     },
     guestsCount: {
         type: Sequelize.INTEGER,
         validate: { min: 1 },
-        allowNull: false
+        // allowNull: false
     }
 });
 

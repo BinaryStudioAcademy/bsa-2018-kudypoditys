@@ -132,10 +132,12 @@ module.exports = () => {
         Message
     }) => {
         Message.create({
-            body: 'Сan i arrive earlier?'
-        }).then(() => {
-            //Message.findAll().then(console.log);
-        });
+            // body: 'Сan i arrive earlier?'
+
+        })
+        //     .then(() => {
+        //     // Message.findAll().then(console.log);
+        // });
     });
 };
 
