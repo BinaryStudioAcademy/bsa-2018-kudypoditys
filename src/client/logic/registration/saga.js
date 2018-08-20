@@ -22,8 +22,7 @@ function* signup(action) {
         yield put({
             type: actionTypes.REGISTER_FAILURE,
             payload: {
-                error: true,
-                message: err.message
+                error: err.message
             }
         });
     }
