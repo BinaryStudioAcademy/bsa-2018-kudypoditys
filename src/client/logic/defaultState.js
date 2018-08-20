@@ -1,8 +1,10 @@
+const checkOutDate = new Date();
+
 const state = {
     search: {
         destination: "Lviv",
-        checkIn: null,
-        checkOut: null,
+        checkIn: new Date(),
+        checkOut: checkOutDate.setDate(checkOutDate.getDate() + 5),
         adults: 1,
         children: 0,
         rooms: 1,
@@ -126,7 +128,6 @@ const state = {
     ],
 
     rooms: {}
-
 };
 
 export default state;
