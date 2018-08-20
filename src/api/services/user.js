@@ -49,7 +49,6 @@ class UserService extends Service {
             if (!bcrypt.compareSync(password, user.password)) {
                 return Promise.reject(new Error('password is invalid'));
             }
-
             return userTokenService.generateForUser(user.id).then((refreshToken) => {
                 return {
                     ...userTokenService.generateAccessToken(user.id),

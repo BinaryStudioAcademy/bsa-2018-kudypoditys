@@ -68,7 +68,6 @@ class Api {
             cookies.set('expiresIn', expiresIn.toString());
         });
     }
-
 }
 
 export default new Api();
