@@ -6,7 +6,7 @@ import {Field, reduxForm} from 'redux-form';
 import {Form} from 'semantic-ui-react';
 
 import semanticSelectorFormField from './semanticSelectorForm';
-
+import './index.scss'
 
 const options = [
     {key: '0', text: 'UAH/Stay', value: 'UAH/Stay'},

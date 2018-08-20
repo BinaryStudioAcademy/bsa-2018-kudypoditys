@@ -1,17 +1,18 @@
-import {propertySubmit} from "client/logic/main-info-tab/actions";
+import {policesTabUpdate} from "client/logic/polices-tab/actions";
 
 
 export function mapStateToProps(state) {
-    const {propertyRegistrationTab} = state;
+    const {propertyPolicesTab} = state;
     return {
-        ...propertyRegistrationTab
-    }
+        ...propertyPolicesTab,
+    };
 }
 
 export function mapDispatchToProps(dispatch) {
     return {
-        registrationTab(data) {
-            dispatch(propertySubmit(data));
+        onSubmit(data) {
+            console.log("mapDispatchToProps dispatch( policesTabUpdate(data)" + JSON.stringify(data))
+            dispatch(policesTabUpdate(data));
         }
     }
 }

@@ -17,6 +17,7 @@ import cityInfos from "client/logic/banner-list/reducer";
 import propertyServicesTab from "client/logic/property-services-tab/reducer";
 import amenitiesTab from './amenities-tab-for-property/reducer';
 import propertySubmit from './main-info-tab/reducer';
+import policesTabReducer from "client/logic/polices-tab/reducer";
 
 export default combineReducers({
     search,
@@ -36,5 +37,6 @@ export default combineReducers({
     roomSummary,
     propertyServicesTab,
     propertySubmit,
-    amenitiesTab
+    amenitiesTab,
+    policesTabReducer
 });

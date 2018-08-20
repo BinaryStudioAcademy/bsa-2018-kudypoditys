@@ -13,7 +13,7 @@ import {connect} from 'react-redux';
 let PolicesForm = props => {
     const {handleSubmit, pristine, submitting} = props;
     return (
-        <Form>
+        <form onSubmit={this.props.handleSubmit}>
             <Card style={{width: '900px'}} color='teal'>
                 <Card.Content>
                     <Card.Description style={{fontSize: '18px'}}>Cancellations.
@@ -49,7 +49,7 @@ let PolicesForm = props => {
 
                 </Card.Content>
             </Card>
-        </Form>
+        </form>
 
     );
 }

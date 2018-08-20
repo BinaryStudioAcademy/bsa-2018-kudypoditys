@@ -1,0 +1,1 @@
+export const POLICES_TAB_UPDATE = 'POLICES_TAB:UPDATE';
