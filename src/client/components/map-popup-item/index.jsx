@@ -29,9 +29,7 @@ export class MapPropertyItem extends Component {
 }
 
 MapPropertyItem.propTypes = {
-    imageSrc: PropTypes.string,
     propertyName: PropTypes.string,
-    propertyAddress: PropTypes.string,
     price: PropTypes.number,
     rating: PropTypes.string
 };
