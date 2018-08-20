@@ -130,31 +130,31 @@ const state = {
         servicesTab: {
             data: "data",
         },
-    },
-    propertyPaymentTab: {
-        paymentType: "cash", // "creditcards"
-        paymentCreditCards: {
-            mastercard: false,
-            visa: false,
-        },
-        vatTaxes: "default", // "none"
-        cityTax: "default", // "individual"
-        cityTaxIndividual: {
-            value: "",
-            type: "percent",
-            includeToPrice: false,
-        },
-        additionalFees: false,
-        additionalFeesOptions: [],
-        commissionName: "Name one",
-        recipientSameAddress: true,
-        recipientActualAddress: {
-            country: "",
-            city: "",
-            address: "",
-            postcode: "",
-        },
-    },
+        propertyPaymentTab: {
+            paymentType: "cash", // "creditcards"
+            paymentCreditCards: {
+                mastercard: false,
+                visa: false,
+            },
+            vatTaxes: "default", // "none"
+            cityTax: "default", // "individual"
+            cityTaxIndividual: {
+                value: "",
+                type: "percent",
+                includeToPrice: false,
+            },
+            additionalFees: false,
+            additionalFeesOptions: [],
+            commissionName: "Name one",
+            recipientSameAddress: true,
+            recipientActualAddress: {
+                country: "",
+                city: "",
+                address: "",
+                postcode: "",
+            }
+        }
+    }
 };
 
 export default state;

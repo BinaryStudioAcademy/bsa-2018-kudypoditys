@@ -1,7 +1,7 @@
 import { paymentTabUpdate } from 'client/logic/property-payment-tab/actions';
 
 export function mapStateToProps(state) {
-    const { propertyPaymentTab } = state;
+    const { propertyPaymentTab } = state.propertyRegistration;
     return {
         ...propertyPaymentTab
     }
