@@ -24,7 +24,7 @@ export class CheckInCheckOut extends React.Component {
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={8}>
-                            <Form>
+                            <Container>
                                 <Header as='h3'>
                                     Guest arrival time
                                     <Header.Subheader>From:</Header.Subheader>
@@ -40,10 +40,10 @@ export class CheckInCheckOut extends React.Component {
 
 
                                 </Form.Group>
-                            </Form>
+                            </Container>
                         </Grid.Column>
                         <Grid.Column width={8}>
-                            <Form>
+                            <Container>
                                 <Header as='h3'>
                                     Guest departure time
                                     <Header.Subheader>From:</Header.Subheader>
@@ -58,13 +58,13 @@ export class CheckInCheckOut extends React.Component {
                                     />
 
                                 </Form.Group>
-                            </Form>
+                            </Container>
                         </Grid.Column>
                     </Grid.Row>
 
                     <Grid.Row>
                         <Grid.Column width={8}>
-                            <Form>
+                            <Container>
                                 <Header as='h3'>
 
                                     <Header.Subheader>To:</Header.Subheader>
@@ -79,10 +79,10 @@ export class CheckInCheckOut extends React.Component {
                                     />
 
                                 </Form.Group>
-                            </Form>
+                            </Container>
                         </Grid.Column>
                         <Grid.Column width={8}>
-                            <Form>
+                            <Container>
                                 <Header as='h3'>
 
                                     <Header.Subheader>To:</Header.Subheader>
@@ -98,7 +98,7 @@ export class CheckInCheckOut extends React.Component {
                                     />
 
                                 </Form.Group>
-                            </Form>
+                            </Container>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

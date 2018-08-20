@@ -1,6 +1,7 @@
 import {LoginComponent} from "../login";
 import React from "react";
 import TabRegistration from '../main-info-tab';
+import TabPolices from "../polices-tab";
 
 
 export const MenuItems = [
@@ -22,7 +23,7 @@ export const MenuItems = [
             subheader: ' Describe the bed options, common spaces, size, and pricing for each of your apartments',
 
             //this is how to USE
-            component: <LoginComponent/>,
+            component: <TabPolices/>,
         }
 
     },
