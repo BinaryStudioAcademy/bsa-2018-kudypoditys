@@ -14,16 +14,10 @@ import {mapDispatchToProps, mapStateToProps} from "../polices-tab/container";
 
 
 class TabPolices extends Component {
-    state = {}
-    handleContextRef = contextRef => this.setState({contextRef});
-    // handleChange = (event, value) => {
-    //     this.props.onSelect(value.value);
-    //
-    // };
+    state = {};
 
     render() {
-        const {name} = this.props;
-        const {contextRef} = this.state
+
         return (
 
             <Form onSubmit={this.props.handleSubmit}>
@@ -39,10 +33,9 @@ class TabPolices extends Component {
                             options={cancelOpt}
 
                             placeholder="1 day before arrival"
-                            // onChange={handleChange}
+
                         />
-                        {/*<Card.Meta><br />Guests will see this name when they search*/}
-                        {/*for a place to stay.</Card.Meta>*/}
+
                     </Card.Content>
                 </Card>
 
@@ -54,8 +47,7 @@ class TabPolices extends Component {
                             name="ChekIN"
                             component={CheckInCheckOut}
                             as={Form.Field}
-                            // options={cancelOpt}
-                            // placeholder="1 day before arrival"
+
 
                         />
 
