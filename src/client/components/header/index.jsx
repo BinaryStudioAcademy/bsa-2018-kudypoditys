@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Dropdown, Button, Menu } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import history from 'client/history';
 
@@ -14,10 +14,16 @@ export class MainHeader extends Component {
     }
 
     login = () => {
-        history.push('/log');
+        history.push('/login');
     }
 
+    state = { activeItem: 'about-us' }
+
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
     render() {
+        const { activeItem } = this.state;
+
         const {
             currencies,
             selectedCurrency,
@@ -26,36 +32,33 @@ export class MainHeader extends Component {
 
         return (
 
-            <Menu size='small' className="main-menu">
+
+            <Menu size='small' id="main-menu" pointing secondary >
                 <Menu.Item className="menu__logo">KudyPoditys</Menu.Item>
 
-                <Menu.Menu position='right'>
+                <Menu.Menu position='right' className="menu__right">
 
-                    <Dropdown
-                        fluid
-                        selection
-                        name='currency'
-                        options={currencies}
-                        value={selectedCurrency}
-                        onChange={(event, input) => this.props.onCurrencyChange(input.value)}
-                        className="menu__dropdown"
-                    />
+                    <Menu.Menu className="menu__languages">
+                        <Menu.Item className="menu__language" >UAH</Menu.Item>
+                        <Menu.Item className="menu__language" >ENG</Menu.Item>
+                    </Menu.Menu>
 
-                    <Menu.Item className="menu__welcome">
-                        {currentUser ?
-                            <Fragment>
-                                Wellcome  {currentUser.fullName}
-                                <Button inverted className="menu__logout" onClick={this.logout}>Logout</Button>
-                            </Fragment> :
-                            <Fragment>
-                                <Button inverted className="menu__login" onClick={this.login}>Login</Button>
-                                <Button inverted className="menu__register">Register</Button>
-                            </Fragment>}
-                    </Menu.Item>
+                    <Menu.Item className="menu__about-us" name='about-us' active={activeItem === 'about-us'}>About us</Menu.Item>
+                    <Menu.Item className="menu__properties" name='propeties'>Properties</Menu.Item>
+
+                    {currentUser ?
+                        <Fragment>
+                            Wellcome  {currentUser.fullName}
+                            <Menu.Item className="menu__logout" onClick={this.logout}>Logout</Menu.Item >
+                        </Fragment> :
+                        <Fragment>
+                            <Menu.Item className="menu__login" onClick={this.login}>Login</Menu.Item >
+                            <Menu.Item className="menu__register">Register</Menu.Item >
+                        </Fragment>}
 
                 </Menu.Menu>
 
-            </Menu>
+            </Menu >
         );
     }
 }

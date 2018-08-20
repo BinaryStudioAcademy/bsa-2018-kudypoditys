@@ -1,18 +1,20 @@
 import {
-    ADD_PROPERTY_FAILURE,
-    ADD_PROPERTY_SUCCESS
+    CREATE_PROPERTY_FAILED,
+    CREATE_PROPERTY_SUCCESS
 } from './actionTypes';
 
 
-export default (state, action) => {
+
+
+export default function propertySubmitReducer(state = {}, action) {
     switch (action.type) {
-        case ADD_PROPERTY_FAILURE: {
+        case CREATE_PROPERTY_FAILED: {
             return {
                 ...state,
                 ...action.payload
             }
         }
-        case ADD_PROPERTY_SUCCESS: {
+        case CREATE_PROPERTY_SUCCESS: {
             return {
                 ...state,
                 ...action.payload

@@ -13,13 +13,13 @@ export default function loginReducer(state = defaultState.login, action) {
         case LOGIN_FAILURE: {
             return {
                 ...state,
-                loginSuccess: false
+                loginSuccess: false,
+                ...action.payload
             };
         }
 
         default: {
             return state;
         }
-
     }
 }
