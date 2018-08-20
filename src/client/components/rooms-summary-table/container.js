@@ -1,6 +1,3 @@
-import {roomSummaryPriceGet} from 'client/logic/rooms-summary-table/actions';
-
-
 export function mapStateToProps(state) {
     // const { rooms } = state.rooms;
     // return {
