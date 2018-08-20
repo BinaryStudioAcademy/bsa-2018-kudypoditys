@@ -4,10 +4,26 @@
 
 .search {
     display: flex;
-    border-radius: 5px;
-    background-color: rgb(254, 187, 2);
+    background-color: #ffffff;
     width: fit-content;
     margin: 0 auto;
+}
+
+.search--view-bar {
+    .ui.input > input {
+        border-top: 0px;
+        border-bottom: 0px;
+        border-left: 0px;
+        border-radius: 0px;
+        // border: 0px !important;
+    }
+}
+
+.btn-wrp > .ui.button {
+    border-radius: 0px;
+    margin-right: 0px;
+    background-color: #dfe3eb;
+    color: #182c4f;
 }
 
 .search--view-bar {
@@ -27,20 +43,10 @@
 .search--view-panel {
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
     background-color: rgb(254, 187, 2);
     padding: 11px;
     min-width: 237px;
     width: fit-content;
-}
-
-.search--view-bar > div {
-    margin: 3px 2px 3px 3px;
-}
-
-.search--view-bar .input input:hover,
-.search--view-panel input:hover {
-    border: 1px solid rgb(229, 169, 4);
 }
 
 table.ui.celled.table tbody td,
@@ -86,7 +92,6 @@ table.ui.celled.table tbody td:hover {
 .search--view-bar > .room-options > .room-selector {
     box-shadow: 0 0 3px 1px #dddddd;
     background-color: white;
-    border-radius: 5px;
     z-index: 2;
     position: absolute;
     margin: 7px;

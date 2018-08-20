@@ -2,7 +2,7 @@ const checkOutDate = new Date();
 
 const state = {
     search: {
-        destination: "Lviv",
+        destination: "",
         checkIn: new Date(),
         checkOut: checkOutDate.setDate(checkOutDate.getDate() + 5),
         adults: 1,
