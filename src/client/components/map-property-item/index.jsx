@@ -15,7 +15,7 @@ export class MapPropertyItem extends Component {
                     margin: "10%"
                 }}
             >
-                <Image centered src={this.props.imageSrc} size="medium" />
+                <Image centered src={this.props.imageSrc} size="medium"/>
                 <Icon
                     style={{
                         position: "absolute",

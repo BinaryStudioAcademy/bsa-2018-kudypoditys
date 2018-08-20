@@ -1,19 +1,18 @@
 import React, {Fragment} from 'react';
 
+import request from 'superagent';
+
 import Dropzone from 'react-dropzone'
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from './container';
+import {UPLOAD_PRESET, UPLOAD_URL} from './config'
 
 
 class PhotoTab extends React.Component {
-    handleRemoveFile = (index) => {
-        const stateFiles = this.state.files;
-        stateFiles.splice(index, 1);
-        this.setState({files: stateFiles});
-    };
     handleDrop = (files) => {
-        const stateFiles = this.state.files;
+        const stateFiles = this.state.files,
+            stateURLS = this.state.URLS;
 
         const filenames = [];
         stateFiles.forEach(file => {
@@ -30,25 +29,60 @@ class PhotoTab extends React.Component {
         this.setState({
             files: stateFiles
         });
+        this.setState({
+            uploadedFile: files[0]
+        });
 
-        this.props.filesUpdate(stateFiles);
+        this.handleImageUpload(files[0]);
+        this.props.filesUpdate(stateURLS)
 
     };
-    handleProceed = (files) => {
-//todo redirect
+
+    handleRemoveFile = (index) => {
+        const stateFiles = this.state.files;
+        stateFiles.splice(index, 1);
+        this.setState({files: stateFiles});
+    };
+    handleProceed = () => {
+        //todo proceed here
+
     }
 
     constructor(props) {
         super(props);
 
         this.state = {
-            files: []
-
+            uploadedFile: null,
+            uploadedFileCloudinaryUrl: '',
+            files: [],
+            URLS: []
         };
     }
 
+    handleImageUpload(file) {
+        let upload = request.post(UPLOAD_URL)
+            .field('upload_preset', UPLOAD_PRESET)
+            .field('file', file);
+        const stateURLS = this.state.URLS;
+        upload.end((err, response) => {
+            if (err) {
+                console.error(err);
+            }
+
+            if (response.body.secure_url !== '') {
+                stateURLS.push(response.body.secure_url);
+
+                this.setState({
+                    uploadedFileCloudinaryUrl: response.body.secure_url,
+                    URLS: stateURLS
+                });
+
+            }
+        });
+    }
+
     render() {
-        console.log(this.props)
+
         return (
             <Fragment>
                 <form>
