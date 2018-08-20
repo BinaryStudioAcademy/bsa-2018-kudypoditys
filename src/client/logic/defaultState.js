@@ -154,7 +154,8 @@ const state = {
                 postcode: "",
             }
         }
-    }
+    },
+    propertyRegistrationOptions: {}
 };
 
 export default state;
