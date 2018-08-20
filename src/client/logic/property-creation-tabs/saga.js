@@ -1,7 +1,6 @@
-import { call, put, takeLatest, all } from 'redux-saga/effects';
+import {call, put, takeLatest, all} from 'redux-saga/effects';
 import propertyService from 'client/services/propertyService';
 import * as actionTypes from './actionTypes';
-
 
 
 function* createProperty(action) {
@@ -16,7 +15,7 @@ function* createProperty(action) {
         });
     }
     catch (error) {
-        yield put({ type: actionTypes.CREATE_PROPERTY_FAILED })
+        yield put({type: actionTypes.CREATE_PROPERTY_FAILED})
     }
 }
 
@@ -29,7 +28,7 @@ function* updateProperty(action) {
         });
     }
     catch (error) {
-        yield put({ type: actionTypes.UPDATE_PROPERTY_FAILED })
+        yield put({type: actionTypes.UPDATE_PROPERTY_FAILED})
     }
 }
 

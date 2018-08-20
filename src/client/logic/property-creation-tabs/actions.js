@@ -1,4 +1,5 @@
-import { CREATE_PROPERTY, UPDATE_PROPERTY } from "./actionTypes";
+import {CREATE_PROPERTY, UPDATE_PROPERTY} from "./actionTypes";
+
 
 export function propertySubmit(payload) {
     return {

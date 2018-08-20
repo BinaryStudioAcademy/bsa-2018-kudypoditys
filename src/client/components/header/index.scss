@@ -1,4 +1,4 @@
-#main-menu{
+#main-menu {
     &.menu {
         border: none;
         background: white;
@@ -7,20 +7,19 @@
         justify-items: center;
         align-items: center;
         padding: 5px 60px;
-        
 
-        .menu__right{
-        .item{
-            color: #5B6D7C;
-            margin-right: 15px;
-            text-transform: uppercase;
-            font-weight: 600;
+        .menu__right {
+            .item {
+                color: #5B6D7C;
+                margin-right: 15px;
+                text-transform: uppercase;
+                font-weight: 600;
             }
-             .menu__language{
+            .menu__language {
                 margin-right: 2px;
                 display: inline-block;
             }
-            .menu__languages{
+            .menu__languages {
                 margin-right: 25px;
             }
         }

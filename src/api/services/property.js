@@ -19,7 +19,7 @@ class PropertyService extends Service {
     }
 
     deleteProperty(id) {
-        return propertyRepository.deleteById({ _id: id });
+        return propertyRepository.deleteById({_id: id});
     }
 }
 
