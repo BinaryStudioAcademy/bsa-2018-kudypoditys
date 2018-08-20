@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { MAPBOX_TOKEN } from "client/constants";
 import { Icon } from "semantic-ui-react";
@@ -9,6 +9,78 @@ import MapPopupItem from "client/components/map-popup-item";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 class MapView extends React.Component {
+    renderPopup = () => {
+        const {popupInfo} = this.state;
+        return (
+            popupInfo && (
+                <Popup
+                    tipSize={15}
+                    anchor="left"
+                    offsetLeft={10}
+                    latitude={popupInfo.latitude}
+                    longitude={popupInfo.longitude}
+                    closeButton={false}
+                    dynamicPosition={true}
+                    onClose={() => this.setState({popupInfo: null})}
+                >
+                    <MapPopupItem
+                        propertyName={popupInfo.name}
+                        price={popupInfo.price}
+                        rating={popupInfo.rating}
+                    />
+                </Popup>
+            )
+        );
+    };
+    resize = () => {
+        this.setState({
+            viewport: {
+                ...this.state.viewport,
+                width: this.props.width || window.innerWidth,
+                height: this.props.height || window.innerHeight
+            }
+        });
+    };
+    renderPropertyMarker = (property, index) => {
+        return (
+            <Marker
+                key={`marker-${index}`}
+                latitude={property.latitude}
+                longitude={property.longitude}
+                offsetLeft={-20}
+                offsetTop={-10}
+            >
+                <Icon
+                    size="big"
+                    name="map marker alternate"
+                    onMouseEnter={() => this.setState({popupInfo: property})}
+                    onMouseLeave={() => this.setState({popupInfo: null})}
+                    onClick={() => {
+                        this.handleMarkerClicked(property);
+                    }}
+                />
+            </Marker>
+        );
+    };
+    handleMarkerClicked = property => {
+        if (this.state.controlEnable) this.setState({propertyInfo: property});
+    };
+    renderInfo = () => {
+        const {propertyInfo} = this.state;
+        return (
+            propertyInfo && (
+                <MapPropertyItem
+                    propertyName={propertyInfo.name}
+                    propertyAddress={propertyInfo.address}
+                    price={propertyInfo.price}
+                    rating={propertyInfo.rating}
+                    imageSrc={propertyInfo.imageSrc}
+                    closeClicked={() => this.setState({propertyInfo: null})}
+                />
+            )
+        );
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -32,82 +104,6 @@ class MapView extends React.Component {
     componentWillUnmount() {
         window.removeEventListener("resize", this.resize);
     }
-
-    resize = () => {
-        this.setState({
-            viewport: {
-                ...this.state.viewport,
-                width: this.props.width || window.innerWidth,
-                height: this.props.height || window.innerHeight
-            }
-        });
-    };
-
-    renderPopup = () => {
-        const { popupInfo } = this.state;
-        return (
-            popupInfo && (
-                <Popup
-                    tipSize={15}
-                    anchor="left"
-                    offsetLeft={10}
-                    latitude={popupInfo.latitude}
-                    longitude={popupInfo.longitude}
-                    closeButton={false}
-                    dynamicPosition={true}
-                    onClose={() => this.setState({ popupInfo: null })}
-                >
-                    <MapPopupItem
-                        propertyName={popupInfo.name}
-                        price={popupInfo.price}
-                        rating={popupInfo.rating}
-                    />
-                </Popup>
-            )
-        );
-    };
-
-    renderPropertyMarker = (property, index) => {
-        return (
-            <Marker
-                key={`marker-${index}`}
-                latitude={property.latitude}
-                longitude={property.longitude}
-                offsetLeft={-20}
-                offsetTop={-10}
-            >
-                <Icon
-                    size="big"
-                    name="map marker alternate"
-                    onMouseEnter={() => this.setState({ popupInfo: property })}
-                    onMouseLeave={() => this.setState({ popupInfo: null })}
-                    onClick={() => {
-                        this.handleMarkerClicked(property);
-                    }}
-                />
-            </Marker>
-        );
-    };
-
-    handleMarkerClicked = property => {
-        if (this.state.controlEnable) this.setState({ propertyInfo: property });
-    };
-
-    renderInfo = () => {
-        const { propertyInfo } = this.state;
-        return (
-            propertyInfo && (
-                <MapPropertyItem
-                    propertyName={propertyInfo.name}
-                    propertyAddress={propertyInfo.address}
-                    price={propertyInfo.price}
-                    rating={propertyInfo.rating}
-                    imageSrc={propertyInfo.imageSrc}
-                    closeClicked={() => this.setState({ propertyInfo: null })}
-                />
-            )
-        );
-    };
 
     handleViewportChange = viewport => {
         if (this.state.controlEnable) this.setState({ viewport });

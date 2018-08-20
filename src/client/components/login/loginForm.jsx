@@ -8,6 +8,7 @@ import {
     Segment,
     Message
 } from "semantic-ui-react";
+import {Button, Form, Header, Grid, Segment} from "semantic-ui-react";
 import renderField from "client/components/input-form/renderField";
 import {
     required,
@@ -40,7 +41,7 @@ let LoginForm = props => {
                             iconPosition="left"
                         />
                         <Field
-                            style={{ marginTop: "4%" }}
+                            style={{marginTop: "4%"}}
                             name="password"
                             type="password"
                             component={renderField}

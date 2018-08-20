@@ -1,6 +1,7 @@
 import {LoginComponent} from "../login";
 import React from "react";
 import TabRegistration from '../main-info-tab';
+import PhotoTab from "client/components/photo-tab-registration-property";
 import AmenitiesTabRegistration from '../amenities-tab';
 
 
@@ -13,7 +14,7 @@ export const MenuItems = [
             content: 'Basic Info',
             header: ' Rooms and pricing',
             subheader: 'Start by telling us your property\'s name, contact details and address.',
-            component:<TabRegistration/>
+            component: <TabRegistration/>
         }
     },
 
@@ -46,9 +47,8 @@ export const MenuItems = [
             header: 'Amenities',
             subheader: ' You are nearly done! We just need a few more details about the extra bed options you provide, plus any\n' +
                 '    //             amenities or specific features and services available.',
-             component:<AmenitiesTabRegistration/>
+            component: <AmenitiesTabRegistration/>
         }
-
 
     },
 
@@ -59,6 +59,7 @@ export const MenuItems = [
             content: 'Property photos',
             header: '  Property photos',
             subheader: 'Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property\'s page on the Booking.com website.',
+            component: <PhotoTab/>
         }
     },
 

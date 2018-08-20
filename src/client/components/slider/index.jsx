@@ -1,11 +1,11 @@
 import SliderSlick from "react-slick";
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
 
 import "slick-carousel/slick/slick.css";
 import "./index.scss";
 
-import { Container, Button, Image, Icon } from "semantic-ui-react";
+import {Container, Button, Image, Icon} from "semantic-ui-react";
 
 export class Slider extends Component {
     pics = [
@@ -29,7 +29,7 @@ export class Slider extends Component {
                             onMouseMove={() => this.slider.slickGoTo(i)}
                             onClick={() => this.slider.slickGoTo(i)}
                         >
-                            <Image src={item} size="mini" />
+                            <Image src={item} size="mini"/>
                         </button>
                     </li>
                 ))}
@@ -56,21 +56,21 @@ export class Slider extends Component {
                     className="slider-c-button slider-c-prev-button"
                     onClick={() => this.slider.slickPrev()}
                 >
-                    <Icon name="arrow alternate circle left" size="large" />
+                    <Icon name="arrow alternate circle left" size="large"/>
                 </Button>
                 <SliderSlick
                     ref={slider => (this.slider = slider)}
                     {...this.settings}
                 >
                     {this.pics.map((item, i) => (
-                        <Image className="slider-c-image" src={item} key={i} />
+                        <Image className="slider-c-image" src={item} key={i}/>
                     ))}
                 </SliderSlick>
                 <Button
                     className="slider-c-button slider-c-next-button"
                     onClick={() => this.slider.slickNext()}
                 >
-                    <Icon name="arrow alternate circle right" size="large" />
+                    <Icon name="arrow alternate circle right" size="large"/>
                 </Button>
             </Container>
         );

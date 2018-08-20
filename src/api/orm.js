@@ -11,7 +11,6 @@ const
         dialect: process.env.DIALECT
     };
 
-
 //Change values above to your OWN (.env file)
 const orm = new Sequelize(
     DB_NAME,
@@ -19,8 +18,6 @@ const orm = new Sequelize(
     DB_PASS,
     DB_OPTIONS
 );
-
-
 
 module.exports = orm;
 

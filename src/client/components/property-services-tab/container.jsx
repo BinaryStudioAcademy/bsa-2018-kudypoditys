@@ -1,7 +1,8 @@
-import { servicesTabUpdate } from "client/logic/property-services-tab/actions";
+import {servicesTabUpdate} from "client/logic/property-services-tab/actions";
+
 
 export function mapStateToProps(state) {
-    const { propertyServicesTab } = state;
+    const {propertyServicesTab} = state;
     return {
         ...propertyServicesTab,
     };

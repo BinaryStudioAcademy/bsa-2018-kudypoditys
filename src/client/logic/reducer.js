@@ -13,6 +13,10 @@ import roomSummary from "client/logic/rooms-summary-table/reducer";
 import header from "client/logic/header/reducer";
 
 import checkInOut from "client/logic/checkIn-checkOut/reducer";
+import roomSummary from "client/logic/rooms-summary-table/reducer"
+import header from 'client/logic/header/reducer';
+import propertyPhoto from 'client/logic/photo-tab/reducer'
+import checkInOut from 'client/logic/checkIn-checkOut/reducer'
 import cityInfos from "client/logic/banner-list/reducer";
 import propertyServicesTab from "client/logic/property-services-tab/reducer";
 import amenitiesTab from './amenities-tab-for-property/reducer';
@@ -36,5 +40,6 @@ export default combineReducers({
     roomSummary,
     propertyServicesTab,
     propertySubmit,
-    amenitiesTab
+    amenitiesTab,
+    propertyPhoto
 });
