@@ -1,10 +1,9 @@
-const jwtMiddleware = require("./jwt.middleware");
-const { unless } = require("../helpers");
-
-const IGNORE_ROUTES = [
-    '/api/login', '/api/signup'
-];
+const passportMiddleware = require("./passport.middleware");
+const { apply } = require("../helpers");
+const AUTH_PATHS = require("../../../config/authPaths");
 
 module.exports = app => {
-    app.use(unless(IGNORE_ROUTES, jwtMiddleware));
+    app.use(apply(AUTH_PATHS, passportMiddleware));
 };
+
+// object(url, method), apply routes

@@ -11,15 +11,24 @@ class PropertyService extends Service {
     }
 
     addProperty(property) {
-        return propertyRepository.create(property);
+        return propertyRepository.createDetails(property);
     }
 
     updateProperty(id, property) {
-        return propertyRepository.updateById({_id: id}, property);
+        return propertyRepository.updateById(id, property);
     }
 
     deleteProperty(id) {
-        return propertyRepository.deleteById({_id: id});
+        return propertyRepository.deleteById({ _id: id });
+    }
+
+    getDetailsById(id) {
+        return propertyRepository.getDetailsById(id).then(_ => {
+            console.log('service then ', _);
+            return _;
+        }).catch(_ => {
+            console.log('service catch ', _)
+        });
     }
 }
 

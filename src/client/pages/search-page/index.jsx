@@ -2,19 +2,17 @@ import React from "react";
 import "./index.scss";
 import {Grid} from "semantic-ui-react";
 
-import Search from "client/components/search";
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
-import PropertyListItem from "../property-list-item";
-import {Pagination} from "../pagination";
-import BasicMapWidget from "../basic-map-widget";
-import Header from "../header";
+import PropertyListItem from "client/components/property-list-item";
+import {Pagination} from "client/components/pagination";
+import BasicMapWidget from "client/components/basic-map-widget";
+import Header from "client/components/header";
 import {Breadcrumb} from "semantic-ui-react";
-import QuickFilter from "../quick-filter";
+import QuickFilter from "client/components/quick-filter";
 import {connect} from "react-redux";
 import {mapStateToProps} from "./container";
-
 
 class SearchPage extends React.Component {
     render() {
@@ -22,7 +20,7 @@ class SearchPage extends React.Component {
             <div className="search-page__wrapper">
                 <Grid>
                     <Grid.Column width={16}>
-                        <Header/>
+                        <Header showSearch={true}/>
                     </Grid.Column>
                     <Grid.Column
                         width={16}
@@ -54,13 +52,6 @@ class SearchPage extends React.Component {
                                 marginLeft: "2%"
                             }}
                         >
-                            <Search
-                                key="Search"
-                                view="panel"
-                                adults={1}
-                                rooms={1}
-                                children={0}
-                            />
                             <QuickFilter/>
                             <div
                                 style={{
@@ -98,6 +89,5 @@ class SearchPage extends React.Component {
         );
     }
 }
-
 
 export default connect(mapStateToProps)(SearchPage);

@@ -17,7 +17,7 @@ import "./index.scss";
 import PropTypes from "prop-types";
 import {mapStateToProps} from "./container";
 import {connect} from "react-redux";
-
+import MapWidgetModal from "client/components/map-widget-modal";
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
         //todo  handleRedirectToMap
@@ -115,9 +115,28 @@ export class PropertyListItem extends React.Component {
                                         size="large"
                                         onClick={this.handleRedirectToMap}
                                     />
-                                    <a href="">
-                                        {propertyItemData.location} Show on map
-                                    </a>{" "}
+                                    <MapWidgetModal
+                                        properties={[
+                                            {
+                                                price: 3000,
+                                                name:
+                                                    "Avangard Kulisha Apartment",
+                                                latitude: 49.8376405,
+                                                longitude: 24.0253219,
+                                                imageSrc:
+                                                    "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg",
+                                                address:
+                                                    "15 Panteleimona Kulisha Street, Львов",
+                                                rating: "8/10"
+                                            }
+                                        ]}
+                                        startPosition={{
+                                            latitude: 49.837089,
+                                            longitude: 24.021161
+                                        }}
+                                        zoom={13}
+                                        controlEnable={true}
+                                    />
                                     {propertyItemData.distanceToCenter} km to
                                     center
                                 </Container>

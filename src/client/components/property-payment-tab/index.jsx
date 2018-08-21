@@ -253,9 +253,6 @@ export class PaymentTab extends Component {
 
         return (
             <Container className='property_payment_tab-wrapper'>
-                <Header as="h2">
-                    Payment
-                </Header>
                 <Container className='property_payment_tab-container'>
                     <TabForm {...formProps} onSubmit={this.handleContinue} />
                 </Container>
