@@ -1,39 +1,74 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './index.scss';
-import { Header, Button, Form, Dropdown } from 'semantic-ui-react';
-import { DateInput } from 'semantic-ui-calendar-react';
-import moment from 'moment';
+import React from "react";
+import PropTypes from "prop-types";
+import "./index.scss";
+import { Header, Button, Form, Dropdown } from "semantic-ui-react";
+// import { DateInput } from 'semantic-ui-calendar-react';
+import moment from "moment";
+import { DateRangePicker } from "react-dates";
 
-import { mapStateToProps, mapDispatchToProps } from './container';
-import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from "./container";
+import { connect } from "react-redux";
 
 export class AvailabilityPanel extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            startDate: moment(),
+            endDate: moment().add(5, "days"),
+            focusedInput: null
+        };
+    }
 
     generateOptions = (from, to) => {
         let options = [];
-        for (let i=from; i<=to; i++) {
+        for (let i = from; i <= to; i++) {
             options.push({
                 text: `${i}`,
                 value: i
             });
         }
         return options;
-    }
+    };
 
-    render () {
-        const { propertyName, checkIn, checkOut, adults, children, rooms } = this.props;
+    render() {
+        const {
+            propertyName,
+            checkIn,
+            checkOut,
+            adults,
+            children,
+            rooms
+        } = this.props;
         const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
 
         return (
-            <div className='availability-panel-wrp'>
-                <Header as='h2'>Availability</Header>
-                <div className='availability-panel'>
+            <div className="availability-panel-wrp">
+                <Header as="h2">Availability</Header>
+                <div className="availability-panel">
                     <p>When would you like to stay at {propertyName}?</p>
-                    <Form className='availability-form' onSubmit={this.props.onAvailabilityCheck}>
-                    <div className='availability-form-midsection'>
-                        <Form.Field>
+                    <Form
+                        className="availability-form"
+                        onSubmit={this.props.onAvailabilityCheck}
+                    >
+                        <div className="availability-form-midsection">
+                            <DateRangePicker
+                                // noBorder={true}
+                                startDateId="startDate"
+                                endDateId="endDate"
+                                required={true}
+                                startDate={this.state.startDate}
+                                endDate={this.state.endDate}
+                                onDatesChange={({ startDate, endDate }) => {
+                                    this.setState({ startDate, endDate });
+                                }}
+                                focusedInput={this.state.focusedInput}
+                                onFocusChange={focusedInput => {
+                                    this.setState({ focusedInput });
+                                }}
+                            />
+
+                            {/* <Form.Field>
                             <label>Check-in Date</label>
                             <DateInput
                                 closable
@@ -70,50 +105,60 @@ export class AvailabilityPanel extends React.Component {
                                 onFocus={this.hideRoomSelector}
                                 onKeyPress={event => event.preventDefault()}
                             />
-                        </Form.Field>
-                        <div className='btn-wrp'>
-                            <Button type='submit' content='Check availability' primary/>
+                        </Form.Field> */}
+                            <div className="btn-wrp">
+                                <Button
+                                    type="submit"
+                                    content="Check availability"
+                                    primary
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <Form.Group className='room-selector'inline>
-                        <Form.Field inline>
-                            <label>Rooms</label>
-                            <Dropdown
-                                fluid
-                                selection
-                                name='rooms'
-                                options={selectOptions}
-                                value={rooms}
-                                onChange={(event, input) => this.props.onRoomsChange(input.value)}
-                            />
-                        </Form.Field>
-                        <Form.Field inline>
-                            <label>Adults</label>
-                            <Dropdown
-                                fluid
-                                selection
-                                name='adults'
-                                options={selectOptions}
-                                value={adults}
-                                onChange={(event, input) => this.props.onAdultsChange(input.value)}
-                            />
-                        </Form.Field>
-                        <Form.Field inline>
-                            <label>Children</label>
-                            <Dropdown
-                                fluid
-                                selection
-                                name='children'
-                                options={childrenOptions}
-                                value={children}
-                                onChange={(event, input) => this.props.onChildrenChange(input.value)}
-                            />
-                        </Form.Field>
-                    </Form.Group>
+                        <Form.Group className="room-selector" inline>
+                            <Form.Field inline>
+                                <label>Rooms</label>
+                                <Dropdown
+                                    fluid
+                                    selection
+                                    name="rooms"
+                                    options={selectOptions}
+                                    value={rooms}
+                                    onChange={(event, input) =>
+                                        this.props.onRoomsChange(input.value)
+                                    }
+                                />
+                            </Form.Field>
+                            <Form.Field inline>
+                                <label>Adults</label>
+                                <Dropdown
+                                    fluid
+                                    selection
+                                    name="adults"
+                                    options={selectOptions}
+                                    value={adults}
+                                    onChange={(event, input) =>
+                                        this.props.onAdultsChange(input.value)
+                                    }
+                                />
+                            </Form.Field>
+                            <Form.Field inline>
+                                <label>Children</label>
+                                <Dropdown
+                                    fluid
+                                    selection
+                                    name="children"
+                                    options={childrenOptions}
+                                    value={children}
+                                    onChange={(event, input) =>
+                                        this.props.onChildrenChange(input.value)
+                                    }
+                                />
+                            </Form.Field>
+                        </Form.Group>
                     </Form>
                 </div>
             </div>
-        )
+        );
     }
 }
 
@@ -130,7 +175,7 @@ AvailabilityPanel.propTypes = {
     onChildrenChange: PropTypes.func.isRequired,
     onRoomsChange: PropTypes.func.isRequired,
     onAvailabilityCheck: PropTypes.func.isRequired
-}
+};
 
 AvailabilityPanel.defaultProps = {
     checkIn: null,
@@ -138,6 +183,9 @@ AvailabilityPanel.defaultProps = {
     adults: 1,
     children: 0,
     rooms: 1
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AvailabilityPanel);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AvailabilityPanel);
