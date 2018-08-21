@@ -121,9 +121,6 @@ export class PropertyServicesTab extends Component {
         };
         return (
             <Container className="property_services_tab-wrapper">
-                <Header as="h2">
-                    Services
-                </Header>
                 <TabForm {...formProps} handleChange={this.handleChange} handleParking={this.handleParking}
                          handleLanguages={this.handleLanguages} handleFacilities={this.handleFacilities}
                          onSubmit={this.handleContinue}/>
