@@ -4,5 +4,5 @@ const { unless } = require("../helpers");
 const IGNORE_ROUTES = ["/api/login", "/api/signup", "/api/refreshtoken"];
 
 module.exports = app => {
-    app.use(unless(IGNORE_ROUTES, passportMiddleware));
+    // app.use(unless(IGNORE_ROUTES, jwtMiddleware));
 };

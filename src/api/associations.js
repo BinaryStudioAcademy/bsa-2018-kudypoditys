@@ -108,6 +108,7 @@ function associations(models) {
     Property.belongsTo(PropertyType);
     Property.belongsTo(PropertyCategory);
     Property.belongsTo(AccommodationRule);
+    Property.belongsTo(PropertyCategory);
 
     Property.hasMany(Favorite);
     Property.hasMany(Review);

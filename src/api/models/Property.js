@@ -11,7 +11,7 @@ let Property = orm.define('property', {
     },
     address: {
         type: Sequelize.STRING,
-        validate: {notEmpty: true}
+        validate: { notEmpty: true }
         // unique: true,
         // allowNull: false
 

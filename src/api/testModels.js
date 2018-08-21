@@ -126,16 +126,6 @@ module.exports = () => {
     });
 
 
-    models.then(({
-        FacilityCategory
-    }) => {
-        FacilityCategory.create({
-            name: 'SPA'
-        })
-        //     .then(() => {
-        //     //FacilityCategory.findAll().then(console.log);
-        // });
-    });
 
 
     models.then(({
