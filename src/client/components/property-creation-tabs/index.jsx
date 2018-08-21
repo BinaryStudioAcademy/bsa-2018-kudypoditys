@@ -6,13 +6,13 @@ import {DrawTab} from "./DrawTab";
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from "./container";
 
+
 export class PropertyCreationTabs extends React.Component {
 
     state = {
         activeIndex: 0
     }
 
-    handleRangeChange = e => this.setState({activeIndex: e.target.value});
     handleTabChange = (e, {activeIndex}) => this.setState({activeIndex});
 
     submitHandle = (...data) => {
@@ -20,7 +20,7 @@ export class PropertyCreationTabs extends React.Component {
         this.setState({
             activeIndex: this.state.activeIndex + 1
         })
-    }
+    };
 
     getPanes() {
         return MenuItems.map((tab) => ({
@@ -33,7 +33,7 @@ export class PropertyCreationTabs extends React.Component {
                     header={tab.menuItem.header}
                     subheader={tab.menuItem.subheader}
                     component={tab.menuItem.component}
-                    changeButton={this.handleTabChange}
+
                     onSubmit={this.submitHandle}
                 />
         }))
