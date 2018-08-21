@@ -131,7 +131,7 @@ const state = {
     ],
 
     rooms: {},
-
+  
     propertyLayoutTab: {
         title: 'Apartment with Garden View',
         amount:'1'
