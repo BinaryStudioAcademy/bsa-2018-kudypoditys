@@ -12,6 +12,10 @@ class PropertyService {
             history.push('/add-property/');
         });
     }
+
+    getDetailsById(id) {
+        return api.sendRequest(`api/property/${id}/details`, 'get').then(response => response.data);
+    }
 }
 
 export default new PropertyService();
