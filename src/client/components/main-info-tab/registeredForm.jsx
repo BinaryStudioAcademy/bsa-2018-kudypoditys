@@ -82,7 +82,7 @@ let RegistrationForm = props => {
                     <CardDescription><br/>Address line 2</CardDescription>
                     <Field
                         component={FormTextInput}
-                        name="address"
+                        name="address1"
                         type="text"
                         label="For example: flat number and etc."
                         icon="map marker"
@@ -90,14 +90,14 @@ let RegistrationForm = props => {
                     <CardDescription><br/>Country/Region</CardDescription>
                     <Field
                         component={FormTextInput}
-                        name="address"
+                        name="address2"
                         type="text"
                         label="Ukraine"
                         icon="map marker"
                         validate={[required, maxLength20]} />
                     <CardDescription><br />City</CardDescription>
                      <Field
-                        name="address"
+                        name="address3"
                         component={semanticSelectorFormField}
                         as={Form.Select}
                         options={cities}
