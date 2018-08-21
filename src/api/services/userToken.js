@@ -2,7 +2,7 @@ const Service = require("./generalService");
 const userRefreshTokenRepository = require("../repositories/userRefreshTokenRepository");
 const jwt = require("jsonwebtoken");
 const settings = require("../../../config/settings");
-const { dateHelpers } = require("../helpers");
+const {dateHelpers} = require("../helpers");
 
 class UserTokenService extends Service {
     getByUserId(userId) {
@@ -12,9 +12,9 @@ class UserTokenService extends Service {
     async generateForUser(userId) {
         const currDate = dateHelpers.toUnixTimeSeconds(new Date());
         const refreshToken = jwt.sign(
-            { userId },
+            {userId},
             settings.jwtRefreshTokenPrivateKey,
-            { expiresIn: settings.refreshTokenLife }
+            {expiresIn: settings.refreshTokenLife}
         );
         const expiryDate = this.getRefreshExpiresDate();
         try {
@@ -61,8 +61,8 @@ class UserTokenService extends Service {
                     //if user singup but not login
                     return Promise.reject(new Error("refresh token not found"));
                 }
-                const { refreshToken } = model.dataValues;
-                const { tillDate } = model.dataValues;
+                const {refreshToken} = model.dataValues;
+                const {tillDate} = model.dataValues;
                 const currDate = dateHelpers.toUnixTimeSeconds(new Date());
 
                 if (refreshToken !== oldRefreshToken) {

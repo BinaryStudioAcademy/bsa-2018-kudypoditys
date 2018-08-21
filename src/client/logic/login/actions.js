@@ -1,4 +1,4 @@
-import { LOGIN, GET_CURRENT_USER } from "./actionTypes";
+import {LOGIN, GET_CURRENT_USER} from "./actionTypes";
 
 export function loginSubmit(payload) {
     return {

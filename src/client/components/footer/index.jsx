@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { List, Header, Grid } from 'semantic-ui-react';
+import React, {Component} from 'react';
+import {List, Header, Grid} from 'semantic-ui-react';
 
 import './index.scss';
 
@@ -30,11 +30,11 @@ export default class Footer extends Component {
                         <Header as='h4'>Contact us</Header>
                         <List>
                             <List.Item>
-                                <List.Icon name='mail' />
+                                <List.Icon name='mail'/>
                                 <List.Content>kudypoditys@gmail.com</List.Content>
                             </List.Item>
                             <List.Item>
-                                <List.Icon name='phone' flipped='horizontally' />
+                                <List.Icon name='phone' flipped='horizontally'/>
                                 <List.Content>+380 63 897 524 62</List.Content>
                             </List.Item>
                         </List>
