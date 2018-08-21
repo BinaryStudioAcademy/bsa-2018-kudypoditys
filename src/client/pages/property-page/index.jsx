@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.scss";
-import {Divider, Container, Segment, Breadcrumb} from "semantic-ui-react";
-import {connect} from "react-redux";
-import {mapStateToProps, mapDispatchToProps} from "./container";
+import { Divider, Container, Segment, Breadcrumb } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 import Search from "client/components/search";
 import Header from "client/components/header";
 import AvailabilityPanel from "client/components/availability-panel";
@@ -40,20 +40,20 @@ export class PropertyPage extends React.Component {
 
         return (
             <div className="mock">
-                <Header showSearch={true}/>
+                <Header showSearch={true} />
                 <div className="property-page__wrapper">
                     <div className="breadcrumb_wrapper">
                         <Segment>
                             <Breadcrumb
                                 icon="right angle"
                                 sections={[
-                                    {key: "Home", content: "Home", href: "#"},
+                                    { key: "Home", content: "Home", href: "#" },
                                     {
                                         key: "Ukraine",
                                         content: "Ukraine",
                                         href: "#"
                                     },
-                                    {key: "Lviv", content: "Lviv", href: "#"},
+                                    { key: "Lviv", content: "Lviv", href: "#" },
                                     {
                                         key: "DREAM Hostel Lviv",
                                         content: "DREAM Hostel Lviv",

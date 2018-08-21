@@ -1,6 +1,6 @@
 const state = {
     search: {
-        destination: "Lviv",
+        destination: "",
         checkIn: null,
         checkOut: null,
         adults: 1,
