@@ -19,7 +19,7 @@ passport.use(
             usernameField: "email",
             passwordField: "password"
         },
-        function (email, password, callback) {
+        function(email, password, callback) {
             userService
                 .getUserByEmail(email)
                 .then(user => {
@@ -45,7 +45,7 @@ passport.use(
 );
 
 passport.use(
-    new JWTStrategy(opts, function (jwtPayload, cb) {
+    new JWTStrategy(opts, function(jwtPayload, cb) {
         return userService
             .findById(jwtPayload.userId)
             .then(user => {
