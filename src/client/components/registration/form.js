@@ -1,6 +1,6 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
-import { Button, Icon, Message } from "semantic-ui-react";
+import {Field, reduxForm} from "redux-form";
+import {Button, Icon, Message} from "semantic-ui-react";
 import "client/components/registration/index.scss";
 import renderField from "client/components/input-form/renderField";
 import {
@@ -12,6 +12,7 @@ import {
     phoneNumber,
     password
 } from "client/regexValidationService";
+
 
 const RegistrationForm = props => {
     const { submitting, registerFeedback } = props;
@@ -31,7 +32,7 @@ const RegistrationForm = props => {
                 label="Username"
                 required="required"
                 className="registration-c-input"
-                style={{ height: "90px" }}
+                style={{height: "90px"}}
                 validate={[required, minLength2, maxLength20]}
             />
 

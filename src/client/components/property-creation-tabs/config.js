@@ -39,7 +39,7 @@ export const MenuItems = [
             content: 'Facilities & services',
             header: ' Facilities & services',
             subheader: 'Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.',
-            component: <ServicesTab />
+            component: <ServicesTab/>
         }
     },
 
