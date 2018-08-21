@@ -8536,14 +8536,6 @@ selfsigned@^1.9.1:
   dependencies:
     node-forge "0.7.5"
 
-semantic-ui-calendar-react@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/semantic-ui-calendar-react/-/semantic-ui-calendar-react-0.8.0.tgz#d47f5dc899228990ad10e59974f6e6b61c5fe0e2"
-  dependencies:
-    lodash "^4.17.10"
-    moment "^2.22.2"
-    prop-types "^15.6.2"
-
 semantic-ui-react@^0.82.1:
   version "0.82.2"
   resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.82.2.tgz#725f6a1a5f007cebff66c2c9f697b165ce1ebceb"
