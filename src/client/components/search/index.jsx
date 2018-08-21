@@ -3,14 +3,8 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import { connect } from "react-redux";
 import { Input, Button, Form, Dropdown, Header } from "semantic-ui-react";
-// import DayPickerRangeController from "react-dates";
-// import { DateInput } from "semantic-ui-calendar-react";
 import "react-dates/initialize";
-import {
-    DateRangePicker,
-    SingleDatePicker,
-    DayPickerRangeController
-} from "react-dates";
+import { DateRangePicker } from "react-dates";
 
 import "react-dates/lib/css/_datepicker.css";
 
@@ -22,9 +16,9 @@ export class Search extends React.Component {
         super(props);
         this.roomSelector = React.createRef();
         this.state = {
-            startDate: null,
-            endDate: null,
-            focusedInput: new Date()
+            startDate: moment(),
+            endDate: moment().add(5, "days"),
+            focusedInput: null
         };
     }
 
@@ -84,7 +78,7 @@ export class Search extends React.Component {
             adults,
             children
         } = this.props;
-
+        console.log(this.state);
         return view === "bar" ? (
             <Form
                 className="search search--view-bar"
@@ -105,62 +99,19 @@ export class Search extends React.Component {
                 <div className="check-in-out">
                     <DateRangePicker
                         noBorder={true}
-                        // showDefaultInputIcon={false}
+                        startDateId="startDate"
+                        endDateId="endDate"
                         required={true}
-                        startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                        startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                        endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                        endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                        onDatesChange={({ startDate, endDate }) =>
-                            this.setState({ startDate, endDate })
-                        } // PropTypes.func.isRequired,
-                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                        onFocusChange={focusedInput =>
-                            this.setState({ focusedInput })
-                        } // PropTypes.func.isRequired,
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        onDatesChange={({ startDate, endDate }) => {
+                            this.setState({ startDate, endDate });
+                        }}
+                        focusedInput={this.state.focusedInput}
+                        onFocusChange={focusedInput => {
+                            this.setState({ focusedInput });
+                        }}
                     />
-                    {/* <DateInput
-                        icon={null}
-                        closable
-                        required
-                        autoComplete="off"
-                        minDate={moment()}
-                        dateFormat="MMM D YYYY"
-                        popupPosition="bottom center"
-                        placeholder="Check-in"
-                        name="checkIn"
-                        value={
-                            checkIn === null
-                                ? ""
-                                : moment(checkIn).format("MMM D YYYY")
-                        }
-                        onChange={(event, input) =>
-                            this.props.onCheckInChange(moment(input.value))
-                        }
-                        onFocus={this.hideRoomSelector}
-                        onKeyPress={event => event.preventDefault()}
-                    /> */}
-                    {/* <DateInput
-                        icon={null}
-                        closable
-                        required
-                        autoComplete="off"
-                        minDate={moment()}
-                        dateFormat="MMM D YYYY"
-                        popupPosition="bottom center"
-                        placeholder="Check-out"
-                        name="checkOut"
-                        value={
-                            checkOut === null
-                                ? ""
-                                : moment(checkOut).format("MMM D YYYY")
-                        }
-                        onChange={(event, input) =>
-                            this.props.onCheckOutChange(moment(input.value))
-                        }
-                        onFocus={this.hideRoomSelector}
-                        onKeyPress={event => event.preventDefault()}
-                    /> */}
                 </div>
                 <div className="room-options">
                     <Input

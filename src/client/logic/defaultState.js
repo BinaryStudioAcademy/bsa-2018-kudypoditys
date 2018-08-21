@@ -1,10 +1,8 @@
-const checkOutDate = new Date();
-
 const state = {
     search: {
         destination: "",
-        checkIn: new Date(),
-        checkOut: checkOutDate.setDate(checkOutDate.getDate() + 5),
+        checkIn: null,
+        checkOut: null,
         adults: 1,
         children: 0,
         rooms: 1,
