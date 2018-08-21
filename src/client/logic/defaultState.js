@@ -130,6 +130,11 @@ const state = {
 
     rooms: {},
 
+    propertyLayoutTab: {
+        title: 'Apartment with Garden View',
+        amount:'1'
+    },
+
     propertyServicesTab: {
         internet: "free", // additional, none
         internetFee: "0",

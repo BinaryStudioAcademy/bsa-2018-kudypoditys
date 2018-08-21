@@ -3,10 +3,9 @@ import {Header, Grid, Rail, Button, Sticky, Segment} from 'semantic-ui-react';
 import CheckboxBedForm from './bedForm';
 import CheckboxAmenitiesForm from './checkboxAmenitiesForm';
 import ButtonTab from './buttonForm';
-import {mapStateToProps, mapDispatchToProps} from './container';
-import {connect} from 'react-redux';
-import {reduxForm, formValueSelector} from 'redux-form';
-
+import { mapStateToProps, mapDispatchToProps } from './container';
+import { connect } from 'react-redux';
+import {  reduxForm } from 'redux-form';
 
 class AmenitiesTabRegistration extends Component {
     state = {}

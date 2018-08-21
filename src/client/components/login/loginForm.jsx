@@ -8,7 +8,6 @@ import {
     Segment,
     Message
 } from "semantic-ui-react";
-import {Button, Form, Header, Grid, Segment} from "semantic-ui-react";
 import renderField from "client/components/input-form/renderField";
 import {
     required,

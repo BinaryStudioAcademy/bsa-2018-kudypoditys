@@ -131,7 +131,7 @@ class PhotoTab extends React.Component {
                     }
 
                 >
-                    
+
                     PROCEED
                 </Button>
             </Fragment>
