@@ -10,7 +10,10 @@ function needsAuth(reqMethod, reqPath, pathes) {
     for (let path of pathes) {
         let methodNeedsAuth = false;
         for (let i = 0; i < path.methods.length; i++) {
-            if (reqMethod.toLowerCase() === path.methods[i].toLowerCase()) {
+            if (
+                reqMethod.toLowerCase() === path.methods[i].toLowerCase() ||
+                path.methods === null
+            ) {
                 methodNeedsAuth = true;
                 break;
             }
