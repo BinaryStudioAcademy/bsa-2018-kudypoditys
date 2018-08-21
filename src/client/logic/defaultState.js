@@ -137,13 +137,13 @@ const state = {
 
     propertyServicesTab: {
         internet: "free", // additional, none
-        internetFee: "0",
+        internetFee: "",
         parking: {
             providing: "none",
             type: "private",
             placement: "on_territory",
             booking: "need",
-            priceForDay: "0"
+            priceForDay: ""
         },
         languages: [
             "ukrainian",

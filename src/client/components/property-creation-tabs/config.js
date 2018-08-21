@@ -5,6 +5,7 @@ import PhotoTab from "client/components/photo-tab-registration-property";
 import AmenitiesTabRegistration from '../amenities-tab';
 import TabPolices from "../polices-tab";
 import RoomItem from '../room-item';
+import ServicesTab from "client/components/property-services-tab";
 
 export const MenuItems = [
 
@@ -47,6 +48,7 @@ export const MenuItems = [
             content: 'Facilities & services',
             header: ' Facilities & services',
             subheader: 'Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.',
+            component: <ServicesTab />
         }
     },
 
