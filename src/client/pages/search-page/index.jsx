@@ -20,7 +20,7 @@ class SearchPage extends React.Component {
             <div className="search-page__wrapper">
                 <Grid>
                     <Grid.Column width={16}>
-                        <Header showSearch={true} />
+                        <Header showSearch={true}/>
                     </Grid.Column>
                     <Grid.Column
                         width={16}
@@ -52,7 +52,7 @@ class SearchPage extends React.Component {
                                 marginLeft: "2%"
                             }}
                         >
-                            <QuickFilter />
+                            <QuickFilter/>
                             <div
                                 style={{
                                     marginTop: "4%"
