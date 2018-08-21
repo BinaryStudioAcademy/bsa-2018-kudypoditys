@@ -30,6 +30,13 @@ export class AvailabilityPanel extends React.Component {
         return options;
     };
 
+    datesChanged = selectedDates => {
+        if (selectedDates.startDate && selectedDates.endDate) {
+            this.props.onDatesChange(selectedDates);
+        }
+        this.setState(selectedDates);
+    };
+
     render() {
         const {
             propertyName,
@@ -51,17 +58,14 @@ export class AvailabilityPanel extends React.Component {
                         className="availability-form"
                         onSubmit={this.props.onAvailabilityCheck}
                     >
-                        <div className="availability-form-midsection">
+                        <div className="availability-form-midsection  onFocus={this.hideRoomSelector}">
                             <DateRangePicker
-                                // noBorder={true}
                                 startDateId="startDate"
                                 endDateId="endDate"
                                 required={true}
                                 startDate={this.state.startDate}
                                 endDate={this.state.endDate}
-                                onDatesChange={({ startDate, endDate }) => {
-                                    this.setState({ startDate, endDate });
-                                }}
+                                onDatesChange={this.datesChanged}
                                 focusedInput={this.state.focusedInput}
                                 onFocusChange={focusedInput => {
                                     this.setState({ focusedInput });
