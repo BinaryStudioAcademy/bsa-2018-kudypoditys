@@ -111,7 +111,7 @@ export class PaymentTab extends Component {
     };
 
     handleContinue = (data) => {
-        console.log(data);
+        this.props.registerProperty();
     };
 
     commissionNames = [

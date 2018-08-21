@@ -32,5 +32,7 @@ export default combineReducers({
     propertyPage,
     quickFilter,
     roomSummary,
-    propertyPaymentTab
+    propertyRegistration: combineReducers({
+        propertyPaymentTab
+    })
 });
