@@ -34,15 +34,14 @@ export class PropertyCreationTabs extends React.Component {
                     subheader={tab.menuItem.subheader}
                     component={tab.menuItem.component}
 
-                    onSubmit={this.submitHandle}
+                    // onSubmit={this.submitHandle}
                 />
         }))
     }
 
     render() {
         const {activeIndex} = this.state;
-        console.log(activeIndex);
-        console.log(this.props)
+
         return (
             <Container>
                 <div className="welcome">

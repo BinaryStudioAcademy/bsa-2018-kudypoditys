@@ -18,7 +18,9 @@ export class DrawTab extends React.Component {
                     {subheader}
 
                 </Header>
-                <div onSubmit={this.props.onSubmit}>
+                <div
+                    // onSubmit={this.props.onSubmit}
+                >
                     {component}
                 </div>
             </Tab.Pane>
