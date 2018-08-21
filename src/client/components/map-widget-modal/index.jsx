@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./index.scss";
 
-import {Button, Modal} from "semantic-ui-react";
+import { Button, Modal } from "semantic-ui-react";
 import MapView from "../map-view";
 
 export default class MapWidgetModal extends Component {
@@ -31,7 +31,7 @@ export default class MapWidgetModal extends Component {
                         <MapView
                             properties={this.props.properties}
                             startPosition={this.props.startPosition}
-                            zoom={12}
+                            zoom={13}
                             controlEnable={true}
                         />
                         );

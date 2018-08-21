@@ -33,8 +33,7 @@ class Api {
     }
 
     getAuthHeader() {
-        const accessToken = cookies.get("accessToken");
-
+        const accessToken = cookies.getAccessToken();
         if (!accessToken) {
             return {};
         }

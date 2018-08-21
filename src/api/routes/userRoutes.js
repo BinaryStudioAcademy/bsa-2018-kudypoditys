@@ -26,7 +26,6 @@ user.route("/")
 
 user.route("/current").get((req, res) => {
     const user = req.user;
-
     userService
         .findById(user.id)
         .then(user => {
@@ -35,6 +34,7 @@ user.route("/current").get((req, res) => {
             res.status(200).send(user);
         })
         .catch(err => {
+            console.log("get user err " + JSON.stringify(err));
             res.status(400).send(err.message);
         });
 });
