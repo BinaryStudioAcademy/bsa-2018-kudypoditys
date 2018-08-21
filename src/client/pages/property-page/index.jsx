@@ -1,11 +1,6 @@
 import React from "react";
 import "./index.scss";
-import {
-    Divider,
-    Container,
-    Segment,
-    Breadcrumb
-} from "semantic-ui-react";
+import { Divider, Container, Segment, Breadcrumb } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import Search from "client/components/search";
@@ -45,39 +40,34 @@ export class PropertyPage extends React.Component {
 
         return (
             <div className="mock">
-                <Header />
+                <Header showSearch={true} />
                 <div className="property-page__wrapper">
-                    <Segment>
-                        <Breadcrumb
-                            icon="right angle"
-                            sections={[
-                                { key: "Home", content: "Home", href: "#" },
-                                {
-                                    key: "Ukraine",
-                                    content: "Ukraine",
-                                    href: "#"
-                                },
-                                { key: "Lviv", content: "Lviv", href: "#" },
-                                {
-                                    key: "DREAM Hostel Lviv",
-                                    content: "DREAM Hostel Lviv",
-                                    href: "#"
-                                }
-                            ]}
-                        />
-                    </Segment>
+                    <div className="breadcrumb_wrapper">
+                        <Segment>
+                            <Breadcrumb
+                                icon="right angle"
+                                sections={[
+                                    { key: "Home", content: "Home", href: "#" },
+                                    {
+                                        key: "Ukraine",
+                                        content: "Ukraine",
+                                        href: "#"
+                                    },
+                                    { key: "Lviv", content: "Lviv", href: "#" },
+                                    {
+                                        key: "DREAM Hostel Lviv",
+                                        content: "DREAM Hostel Lviv",
+                                        href: "#"
+                                    }
+                                ]}
+                            />
+                        </Segment>
+                    </div>
 
                     <Container
                         text
                         className="property-page__wrapper-left_side"
                     >
-                        <Search
-                            key="Search"
-                            view="panel"
-                            adults={1}
-                            rooms={1}
-                            children={0}
-                        />
                         <BasicMapWidget
                             key="BasicMapWidget"
                             location={{ lat: 49.837089, lng: 24.021161 }}
