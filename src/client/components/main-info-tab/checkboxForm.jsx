@@ -11,18 +11,20 @@ class CheckboxForm extends Component {
                 <Button basic>
                     <Field
                         name={name}
+                        id="yes"
                         component="input"
                         type="radio"
-                        value="yes"/>
+                        value="true"/>
                     {' '}
                     Yes
                 </Button>
                 <Button basic>
                     <Field
                         name={name}
+                        id='no'
                         component="input"
                         type="radio"
-                        value="no"/>
+                        value="false"/>
                     {' '}
                     No
                 </Button>
