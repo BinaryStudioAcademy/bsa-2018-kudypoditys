@@ -1,11 +1,20 @@
 #footer {
     background: #CFDEE5;
     color: #5B6D7C;
+    padding-bottom: 0px;
+    .footer__right {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .footer__content {
+        max-width: 1039px;
+        margin: auto;
+    }
     .header {
         color: #5B6D7C;
     }
 
-    padding: 30px 60px;
+    padding: 10px 90px;
 
     .item {
         margin-top: 10px;

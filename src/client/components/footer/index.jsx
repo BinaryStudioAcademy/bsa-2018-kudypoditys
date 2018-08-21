@@ -9,7 +9,7 @@ export default class Footer extends Component {
     render() {
         return (
             <Grid columns={4} id="footer" divided='vertically' padded="horizontally">
-                <Grid.Row>
+                <Grid.Row className="footer__content">
                     <Grid.Column className="footer__logo">
                         <Header as='h2'>KudyPoditys</Header>
                     </Grid.Column>
@@ -41,7 +41,7 @@ export default class Footer extends Component {
                     </Grid.Column>
 
                 </Grid.Row>
-                <Grid.Row centered={true}>
+                <Grid.Row className="footer__right" centered={true}>
                     © Kudypoditys 2018. All right reserved.
                 </Grid.Row>
             </Grid>
