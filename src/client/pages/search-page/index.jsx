@@ -1,18 +1,18 @@
 import React from "react";
 import "./index.scss";
-import {Grid} from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "client/components/property-list-item";
-import {Pagination} from "client/components/pagination";
+import { Pagination } from "client/components/pagination";
 import BasicMapWidget from "client/components/basic-map-widget";
 import Header from "client/components/header";
-import {Breadcrumb} from "semantic-ui-react";
+import { Breadcrumb } from "semantic-ui-react";
 import QuickFilter from "client/components/quick-filter";
-import {connect} from "react-redux";
-import {mapStateToProps} from "./container";
+import { connect } from "react-redux";
+import { mapStateToProps } from "./container";
 
 class SearchPage extends React.Component {
     render() {
@@ -33,13 +33,13 @@ class SearchPage extends React.Component {
                         <Breadcrumb
                             icon="right angle"
                             sections={[
-                                {key: "Home", content: "Home", href: "#"},
+                                { key: "Home", content: "Home", href: "#" },
                                 {
                                     key: "Ukraine",
                                     content: "Ukraine",
                                     href: "#"
                                 },
-                                {key: "Lviv", content: "Lviv", href: "#"}
+                                { key: "Lviv", content: "Lviv", href: "#" }
                             ]}
                         />
                     </Grid.Column>
@@ -75,13 +75,13 @@ class SearchPage extends React.Component {
                                 marginLeft: "2%"
                             }}
                         >
-                            <SearchSummary/>
-                            <RankingBar key="RankingBar"/>
+                            <SearchSummary />
+                            <RankingBar key="RankingBar" />
                             <PropertyListItem
                                 key="PropertyListItem"
                                 id="foundProperty1"
                             />
-                            <Pagination pagesCount={10}/>
+                            <Pagination pagesCount={10} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
