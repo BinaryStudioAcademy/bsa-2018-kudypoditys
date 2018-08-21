@@ -183,42 +183,6 @@ export class Search extends React.Component {
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
-
-                        {/* <label>Rooms</label>
-                        <Dropdown
-                            fluid
-                            selection
-                            name="rooms"
-                            options={selectOptions}
-                            value={rooms}
-                            onChange={(event, input) =>
-                                this.props.onRoomsChange(input.value)
-                            }
-                        />
-
-                        <label>Adults</label>
-                        <Dropdown
-                            fluid
-                            selection
-                            name="adults"
-                            options={selectOptions}
-                            value={adults}
-                            onChange={(event, input) =>
-                                this.props.onAdultsChange(input.value)
-                            }
-                        />
-
-                        <label>Children</label>
-                        <Dropdown
-                            fluid
-                            selection
-                            name="children"
-                            options={childrenOptions}
-                            value={children}
-                            onChange={(event, input) =>
-                                this.props.onChildrenChange(input.value)
-                            }
-                        /> */}
                     </div>
                 </div>
 
