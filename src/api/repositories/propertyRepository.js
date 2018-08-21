@@ -5,18 +5,15 @@ const Facility = require('../models/Facility');
 const PaymentType = require('../models/PaymentType');
 const Room = require('../models/Room');
 const AccommodationRule = require('../models/AccommodationRule');
-const PropertyType = require('../models/PropertyType');
+
 const PropertyCategory = require('../models/PropertyCategory');
 
 const User = require('../models/User');
 const City = require('../models/City');
 const PropertyType = require('../models/PropertyType');
-const PropertyCategory = require('../models/PropertyCategory');
-const AccommodationRule = require('../models/AccommodationRule');
+
 const Review = require('../models/Review');
-const Facility = require('../models/Facility');
-const Room = require('../models/Room');
-const PaymentType = require('../models/PaymentType');
+
 const Favorite = require('../models/Favorite');
 
 class PropertyRepository extends Repository {
