@@ -6,6 +6,7 @@ import AmenitiesTabRegistration from '../amenities-tab';
 import TabPolices from "../polices-tab";
 import RoomItem from '../room-item';
 
+
 export const MenuItems = [
 
     {
@@ -19,17 +20,7 @@ export const MenuItems = [
         }
     },
 
-    {
-        menuItem: {
-            key: 'Layout and pricing', icon: 'usd', content: 'Layout and pricing',
-            header: ' Layout and pricing',
-            subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
 
-            //this is how to USE
-            component: <TabPolices/>,
-        }
-
-    },
     {
         menuItem: {
             key: 'menuItem Room', icon: 'usd', content: 'Layout and pricing', //temporary
@@ -62,7 +53,17 @@ export const MenuItems = [
         }
 
     },
+    {
+        menuItem: {
+            key: 'Rules', icon: 'clipboard list', content: 'Rules',
+            header: ' Polices',
+            subheader: ' Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?',
 
+            //this is how to USE
+            component: <TabPolices/>,
+        }
+
+    },
     {
         menuItem: {
             key: 'Photo',

@@ -1,5 +1,5 @@
 import React from "react";
-import {PropertyCreationTabs} from "client/components/property-creation-tabs";
+import PropertyCreationTabs from "client/components/property-creation-tabs";
 import "./index.scss";
 
 

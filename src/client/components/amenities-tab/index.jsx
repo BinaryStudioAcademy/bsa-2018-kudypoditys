@@ -42,7 +42,9 @@ class AmenitiesTabRegistration extends Component {
                         <Button basic onClick={this.toggleClick.bind(this)}> {buttonName} </Button>
                         <div style={shown}><ButtonTab/></div>
                         <Button color='teal' fluid
-                                type="submit">Continue</Button>
+                                type="submit"
+                                onClick={this.handleTabChange}
+                        >Continue</Button>
                     </form>
                 </Grid.Column>
                 <Grid.Column width={3}>

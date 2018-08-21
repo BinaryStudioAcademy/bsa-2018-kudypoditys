@@ -57,7 +57,9 @@ const state = {
     images: []
 
     ,
-
+    propertySubmit: {
+        activeIndex: 2
+    },
     header: {
         currencies: [],
         selectedCurrency: 1,

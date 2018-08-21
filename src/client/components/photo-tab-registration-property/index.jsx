@@ -3,10 +3,11 @@ import React, {Fragment} from 'react';
 import request from 'superagent';
 
 import Dropzone from 'react-dropzone'
-import {Button} from 'semantic-ui-react';
+import {Button, Icon} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {mapStateToProps, mapDispatchToProps} from './container';
 import {UPLOAD_PRESET, UPLOAD_URL} from './config'
+import './index.scss'
 
 
 class PhotoTab extends React.Component {
@@ -39,14 +40,14 @@ class PhotoTab extends React.Component {
     };
 
     handleRemoveFile = (index) => {
-        const stateFiles = this.state.files;
-        stateFiles.splice(index, 1);
-        this.setState({files: stateFiles});
+        const stateUrls = this.state.URLS;
+        stateUrls.splice(index, 1);
+        this.setState({URLS: stateUrls});
     };
     handleProceed = () => {
         //todo proceed here
 
-    }
+    };
 
     constructor(props) {
         super(props);
@@ -104,20 +105,23 @@ class PhotoTab extends React.Component {
                     </div>
 
                     <ul className="fileInput__files">
-                        {this.state.files.map((file, index) => (
+                        {this.state.URLS.map((URL, index) => (
                             <li
                                 className="fileInput__file"
-                                key={file.name}
+
+
                             >
-                                {file.name} &mdash; {file.size} bytes
-                                <Button
+                                <img src={URL} style={{height: 150, width: 150}}/>
+
+                                <Icon
+                                    name='trash alternate'
                                     onClick={this.handleRemoveFile.bind(this, index)}
                                     style={{cursor: "pointer", margin: 10}
                                     }
 
                                 >
-                                    Remove
-                                </Button>
+
+                                </Icon>
                             </li>
                         ))}
                     </ul>

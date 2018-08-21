@@ -55,7 +55,11 @@ class TabPolices extends Component {
                     </Card.Content>
                 </Card>
                 <Button color='teal' fluid
-                        type="submit">Continue</Button>
+                        type="submit"
+
+                >Continue
+
+                </Button>
             </Form>
 
         );
