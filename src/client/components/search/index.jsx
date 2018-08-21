@@ -70,7 +70,6 @@ export class Search extends React.Component {
         const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
         const {
-            view,
             destination,
             checkIn,
             checkOut,
@@ -79,7 +78,7 @@ export class Search extends React.Component {
             children
         } = this.props;
         console.log(this.state);
-        return view === "bar" ? (
+        return (
             <Form
                 className="search search--view-bar"
                 onSubmit={this.handleSubmit}
@@ -162,115 +161,6 @@ export class Search extends React.Component {
                                 }
                             />
                         </Form.Field>
-                    </div>
-                </div>
-                <div className="btn-wrp">
-                    <Button type="submit" content="Search" primary />
-                </div>
-            </Form>
-        ) : (
-            <Form
-                className="search search--view-panel"
-                onSubmit={this.handleSubmit}
-            >
-                <Header as="h2">Search</Header>
-                <Form.Field className="destination">
-                    <label>Destination/property name:</label>
-                    <input
-                        name="destination"
-                        placeholder="Where are you going?"
-                        value={this.props.destination}
-                        onChange={event =>
-                            this.props.onDestinationChange(
-                                event.currentTarget.value
-                            )
-                        }
-                        required
-                    />
-                </Form.Field>
-                <div className="check-in-out">
-                    <Form.Field>
-                        <label>Check-in date</label>
-                        {/* <DateInput
-                            closable
-                            required
-                            autoComplete="off"
-                            minDate={moment()}
-                            dateFormat="MMM D YYYY"
-                            popupPosition="bottom center"
-                            placeholder="Check-in"
-                            name="checkIn"
-                            value={
-                                checkIn === null
-                                    ? ""
-                                    : moment(checkIn).format("MMM D YYYY")
-                            }
-                            onChange={(event, input) =>
-                                this.props.onCheckInChange(moment(input.value))
-                            }
-                            onKeyPress={event => event.preventDefault()}
-                        /> */}
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Check-out date</label>
-                        {/* <DateInput
-                            closable
-                            required
-                            autoComplete="off"
-                            minDate={moment()}
-                            dateFormat="MMM D YYYY"
-                            popupPosition="bottom center"
-                            placeholder="Check-out"
-                            name="checkOut"
-                            value={
-                                checkOut === null
-                                    ? ""
-                                    : moment(checkOut).format("MMM D YYYY")
-                            }
-                            onChange={(event, input) =>
-                                this.props.onCheckOutChange(moment(input.value))
-                            }
-                            onKeyPress={event => event.preventDefault()}
-                        /> */}
-                    </Form.Field>
-                </div>
-                <div className="room-options">
-                    <div className="room-selector">
-                        <Form.Field>
-                            <Dropdown
-                                fluid
-                                selection
-                                name="adults"
-                                text={this.adultsOutput()}
-                                options={selectOptions}
-                                value={adults}
-                                onChange={(event, input) =>
-                                    this.props.onAdultsChange(input.value)
-                                }
-                            />
-                        </Form.Field>
-                        <Form.Group inline>
-                            <Dropdown
-                                selection
-                                name="children"
-                                text={this.childrenOutput()}
-                                options={childrenOptions}
-                                value={children}
-                                onChange={(event, input) =>
-                                    this.props.onChildrenChange(input.value)
-                                }
-                            />
-                            <Dropdown
-                                selection
-                                name="rooms"
-                                text={this.roomsOutput()}
-                                options={selectOptions}
-                                value={rooms}
-                                onChange={(event, input) =>
-                                    this.props.onRoomsChange(input.value)
-                                }
-                            />
-                        </Form.Group>
                     </div>
                 </div>
                 <div className="btn-wrp">
