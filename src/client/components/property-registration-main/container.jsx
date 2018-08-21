@@ -1,4 +1,4 @@
-import { propertyRegistrationSubmit } from "client/logic/main-info-tab/actions";
+import { propertyRegistrationSubmit } from "client/logic/property-registration-main/actions";
 
 export function mapStateToProps(state) {
     return {};

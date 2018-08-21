@@ -2,7 +2,7 @@ import { all, fork } from 'redux-saga/effects';
 
 import loginSaga from 'client/logic/login/saga';
 import headerSaga from 'client/logic/header/saga';
-import propertyRegistrationSaga from 'client/logic/main-info-tab/saga';
+import propertyRegistrationSaga from 'client/logic/property-registration-main/saga';
 
 export default function* rootSaga() {
     yield all([

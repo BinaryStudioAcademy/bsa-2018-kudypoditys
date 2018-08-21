@@ -21,7 +21,7 @@ import createSagaMidddelware from 'redux-saga';
 import rootSaga from 'client/logic/rootSaga';
 import history from 'client/history';
 
-import MainInfoTab from "client/components/main-info-tab";
+import PropertyRegistration from "client/components/property-registration-main";
 
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [
@@ -34,7 +34,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <Switch>
-                <Route exact path="/" component={MainInfoTab} />
+                <Route exact path="/" component={PropertyRegistration} />
                 <Route exact path="/reg" component={Registration} />
                 <Route exact path="/log" component={Login} />
                 <Route exact path="/checkin-checkout" component={CheckInCheckOut} />
