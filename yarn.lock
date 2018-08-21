@@ -673,6 +673,12 @@ atob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
 
+attr-accept@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/attr-accept/-/attr-accept-1.1.3.tgz#48230c79f93790ef2775fcec4f0db0f5db41ca52"
+  dependencies:
+    core-js "^2.5.0"
+
 autoprefixer@7.1.6:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-7.1.6.tgz#fb933039f74af74a83e71225ce78d9fd58ba84d7"
@@ -2447,7 +2453,7 @@ component-bind@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/component-bind/-/component-bind-1.0.0.tgz#00c608ab7dcd93897c0009651b1d3a8e1e73bbd1"
 
-component-emitter@1.2.1, component-emitter@^1.2.1:
+component-emitter@1.2.1, component-emitter@^1.2.0, component-emitter@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
 
@@ -2553,6 +2559,10 @@ cookie-signature@1.0.6:
 cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
+
+cookiejar@^2.1.0:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/cookiejar/-/cookiejar-2.1.2.tgz#dd8a235530752f988f9a0844f3fc589e3111125c"
 
 copy-concurrently@^1.0.0:
   version "1.0.5"
@@ -3738,7 +3748,7 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     assign-symbols "^1.0.0"
     is-extendable "^1.0.1"
 
-extend@~3.0.0, extend@~3.0.1:
+extend@^3.0.0, extend@~3.0.0, extend@~3.0.1:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
 
@@ -4017,6 +4027,14 @@ forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
 
+form-data@^2.3.1, form-data@~2.3.1:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.3.2.tgz#4970498be604c20c005d4f5c23aecd21d6b49099"
+  dependencies:
+    asynckit "^0.4.0"
+    combined-stream "1.0.6"
+    mime-types "^2.1.12"
+
 form-data@~2.1.1:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.1.4.tgz#33c183acf193276ecaa98143a69e94bfee1750d1"
@@ -4025,13 +4043,9 @@ form-data@~2.1.1:
     combined-stream "^1.0.5"
     mime-types "^2.1.12"
 
-form-data@~2.3.1:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.3.2.tgz#4970498be604c20c005d4f5c23aecd21d6b49099"
-  dependencies:
-    asynckit "^0.4.0"
-    combined-stream "1.0.6"
-    mime-types "^2.1.12"
+formidable@^1.2.0:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.2.1.tgz#70fb7ca0290ee6ff961090415f4b3df3d2082659"
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -5637,7 +5651,7 @@ jsonify@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
 
-jsonwebtoken@^8.3.0:
+jsonwebtoken@^8.2.0, jsonwebtoken@^8.3.0:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.3.0.tgz#056c90eee9a65ed6e6c72ddb0a1d325109aaf643"
   dependencies:
@@ -6131,7 +6145,7 @@ merge@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/merge/-/merge-1.2.0.tgz#7531e39d4949c281a66b8c5a6e0265e8b05894da"
 
-methods@~1.1.2:
+methods@^1.1.1, methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
 
@@ -6920,6 +6934,30 @@ pascalcase@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
 
+passport-jwt@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/passport-jwt/-/passport-jwt-4.0.0.tgz#7f0be7ba942e28b9f5d22c2ebbb8ce96ef7cf065"
+  dependencies:
+    jsonwebtoken "^8.2.0"
+    passport-strategy "^1.0.0"
+
+passport-local@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/passport-local/-/passport-local-1.0.0.tgz#1fe63268c92e75606626437e3b906662c15ba6ee"
+  dependencies:
+    passport-strategy "1.x.x"
+
+passport-strategy@1.x.x, passport-strategy@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/passport-strategy/-/passport-strategy-1.0.0.tgz#b5539aa8fc225a3d1ad179476ddf236b440f52e4"
+
+passport@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/passport/-/passport-0.4.0.tgz#c5095691347bd5ad3b5e180238c3914d16f05811"
+  dependencies:
+    passport-strategy "1.x.x"
+    pause "0.0.1"
+
 path-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-0.0.0.tgz#a0b870729aae214005b7d5032ec2cbbb0fb4451a"
@@ -6977,6 +7015,10 @@ path-type@^2.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-2.0.0.tgz#f012ccb8415b7096fc2daa1054c3d72389594c73"
   dependencies:
     pify "^2.0.0"
+
+pause@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
 
 pbf@^3.0.5:
   version "3.1.0"
@@ -7759,6 +7801,13 @@ react-dom@^16.4.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-dropzone@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-5.0.1.tgz#3ed201215794c0f650c6f25a8311a9d96d35ebb6"
+  dependencies:
+    attr-accept "^1.1.3"
+    prop-types "^15.5.7"
+
 react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
@@ -8004,7 +8053,7 @@ read-pkg@^2.0.0:
     normalize-package-data "^2.3.2"
     path-type "^2.0.0"
 
-"readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.4, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.2.9, readable-stream@^2.3.3, readable-stream@^2.3.6, readable-stream@~2.3.3:
+"readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.4, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.2.9, readable-stream@^2.3.3, readable-stream@^2.3.5, readable-stream@^2.3.6, readable-stream@~2.3.3:
   version "2.3.6"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.6.tgz#b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf"
   dependencies:
@@ -9248,6 +9297,21 @@ styled-components@^2.1.2:
 stylis@^3.4.0:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.5.3.tgz#99fdc46afba6af4deff570825994181a5e6ce546"
+
+superagent@^3.8.3:
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/superagent/-/superagent-3.8.3.tgz#460ea0dbdb7d5b11bc4f78deba565f86a178e128"
+  dependencies:
+    component-emitter "^1.2.0"
+    cookiejar "^2.1.0"
+    debug "^3.1.0"
+    extend "^3.0.0"
+    form-data "^2.3.1"
+    formidable "^1.2.0"
+    methods "^1.1.1"
+    mime "^1.4.1"
+    qs "^6.5.1"
+    readable-stream "^2.3.5"
 
 supercluster@^4.0.1:
   version "4.1.1"

@@ -4,7 +4,6 @@ export const LOGIN_FAILURE = "LOGIN:FAILURE";
 
 export const LOGOUT = "LOGOUT";
 
-export const GET_ME = "GET_ME";
-export const GET_ME_SUCCESS = "GET_ME:SUCCESS";
-export const GET_ME_FAILED = "GET_ME:FAILED";
-
+export const GET_CURRENT_USER = "GET_CURRENT_USER";
+export const GET_CURRENT_USER_SUCCESS = "GET_CURRENT_USER:SUCCESS";
+export const GET_CURRENT_USER_FAILURE = "GET_CURRENT_USER:FAILURE";

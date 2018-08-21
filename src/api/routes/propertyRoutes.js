@@ -22,6 +22,18 @@ property.route('/')
             });
     });
 
+property.route('/page')
+    .get((req, res) => {
+        const {page, recordsOnPage} = req.query;
+        propertyService.findByPage({page, recordsOnPage})
+            .then(list => {
+                res.status(200).send(list);
+            })
+            .catch(err => {
+                res.status(500).send(err);
+            })
+    });
+
 
 property.route('/:id')
     .put((req, res) => {
@@ -49,6 +61,17 @@ property.route('/:id')
             })
             .catch((err) => {
                 res.status(500).send(err);
+            });
+    });
+
+property.route('/:id/details')
+    .get((req, res) => {
+        propertyService.getDetailsById(req.params.id)
+            .then(property => {
+                res.send(property);
+            })
+            .catch((err) => {
+                res.status(404).send(err);
             });
     });
 

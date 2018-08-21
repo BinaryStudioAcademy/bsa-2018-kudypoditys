@@ -1,8 +1,10 @@
-import api from '../helpers/api';
+import api from "../helpers/api";
 
 class UserService {
-    getMe() {
-        return api.sendRequestWithAuth('/api/users/me', 'get').then(response => response.data);
+    getCurrentUser() {
+        return api
+            .sendAuthRequest("/api/users/current", "get")
+            .then(response => response.data);
     }
 }
 

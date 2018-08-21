@@ -8,8 +8,8 @@ import Header from "client/components/header";
 import AvailabilityPanel from "client/components/availability-panel";
 import Slider from "client/components/slider";
 import PropertyDescription from "client/components/property-description";
-import { PropertySummary } from "client/components/property-summary";
-import { NavigationBar } from "client/components/navigation-bar";
+import {PropertySummary} from "client/components/property-summary";
+import {NavigationBar} from "client/components/navigation-bar";
 import BasicMapWidget from "client/components/basic-map-widget";
 import RoomsSummaryTable from "client/components/rooms-summary-table";
 export class PropertyPage extends React.Component {
@@ -27,11 +27,11 @@ export class PropertyPage extends React.Component {
         ];
 
         const sections = [
-            { key: "Main", content: "Main", link: true },
-            { key: "Country", content: "Ukraine", link: true },
-            { key: "Region", content: "Lviv Region", link: true },
-            { key: "City", content: "Lviv", link: true },
-            { key: "Property", content: "DREAM Hostel Lviv", active: true }
+            {key: "Main", content: "Main", link: true},
+            {key: "Country", content: "Ukraine", link: true},
+            {key: "Region", content: "Lviv Region", link: true},
+            {key: "City", content: "Lviv", link: true},
+            {key: "Property", content: "DREAM Hostel Lviv", active: true}
         ];
 
         const handleSlideChange = index => {
@@ -70,7 +70,7 @@ export class PropertyPage extends React.Component {
                     >
                         <BasicMapWidget
                             key="BasicMapWidget"
-                            location={{ lat: 49.837089, lng: 24.021161 }}
+                            location={{lat: 49.837089, lng: 24.021161}}
                             rounded
                             centered
                         />
@@ -80,29 +80,29 @@ export class PropertyPage extends React.Component {
                         text
                         className="property-page__wrapper-right_side"
                     >
-                        <NavigationBar />
+                        <NavigationBar/>
 
-                        <PropertySummary propertyItemData={propertyItemData} />
+                        <PropertySummary propertyItemData={propertyItemData}/>
                         <Slider
                             pics={pics}
                             handleSlideChange={handleSlideChange}
                             slideIndex={0}
                         />
 
-                        <Divider hidden />
+                        <Divider hidden/>
                         <div
                             className="property-page__description"
-                            style={{ width: "100%" }}
+                            style={{width: "100%"}}
                         >
                             <PropertyDescription
                                 id="xyz-1"
-                                style={{ width: "100%" }}
+                                style={{width: "100%"}}
                             />
                         </div>
-                        <Divider hidden />
+                        <Divider hidden/>
 
-                        <AvailabilityPanel style={{ width: "100%" }} />
-                        <RoomsSummaryTable />
+                        <AvailabilityPanel style={{width: "100%"}}/>
+                        <RoomsSummaryTable/>
                     </Container>
                 </div>
             </div>

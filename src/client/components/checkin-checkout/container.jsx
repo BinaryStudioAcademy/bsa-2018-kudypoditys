@@ -1,15 +1,15 @@
-import {checkInOutUpdate} from 'client/logic/checkIn-checkOut/actions';
+import {checkInOutUpdate} from 'client/logic/polices-tab/actions';
 
 
 export function mapStateToProps(state) {
-    const {checkInOut} = state;
+    const {policesTab} = state;
 
     return {
 
-        arrivalFrom: checkInOut.arrivalFrom,
-        arrivalTo: checkInOut.arrivalTo,
-        departureFrom: checkInOut.departureFrom,
-        departureTo: checkInOut.departureTo
+        arrivalFrom: policesTab.arrivalFrom,
+        arrivalTo: policesTab.arrivalTo,
+        departureFrom: policesTab.departureFrom,
+        departureTo: policesTab.departureTo
 
     };
 }

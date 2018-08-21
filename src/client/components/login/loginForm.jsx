@@ -1,6 +1,13 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { Button, Form, Header, Grid, Segment } from "semantic-ui-react";
+import {
+    Button,
+    Form,
+    Header,
+    Grid,
+    Segment,
+    Message
+} from "semantic-ui-react";
 import renderField from "client/components/input-form/renderField";
 import {
     required,
@@ -10,10 +17,15 @@ import {
 } from "client/regexValidationService";
 
 let LoginForm = props => {
-    const { handleSubmit, handleRegisterClicked, handleForgotClicked } = props;
+    const {
+        handleSubmit,
+        handleRegisterClicked,
+        handleForgotClicked,
+        error
+    } = props;
     return (
         <Grid centered columns={3}>
-            <Grid.Column textAlign="center" >
+            <Grid.Column textAlign="center">
                 <Header as="h1">Log-in to your account</Header>
                 <Form onSubmit={handleSubmit}>
                     <Segment stacked secondary>
@@ -28,7 +40,7 @@ let LoginForm = props => {
                             iconPosition="left"
                         />
                         <Field
-                            style={{ marginTop: "4%" }}
+                            style={{marginTop: "4%"}}
                             name="password"
                             type="password"
                             component={renderField}
@@ -58,6 +70,12 @@ let LoginForm = props => {
                         </Button.Group>
                     </Segment>
                 </Form>
+                {error ? (
+                    <Message negative>
+                        <Message.Header>Error</Message.Header>
+                        <p>{error.message}</p>
+                    </Message>
+                ) : null}
             </Grid.Column>
         </Grid>
     );

@@ -17,6 +17,10 @@ export class MainHeader extends Component {
         history.push("/login");
     };
 
+    state = { activeItem: "about-us" };
+
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
     render() {
         const { currencies, selectedCurrency, currentUser } = this.props;
 

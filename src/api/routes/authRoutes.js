@@ -5,57 +5,63 @@ const userTokenService = require("../services/userToken");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const settings = require("../../../config/settings");
+const passport = require("passport");
 
 authRouter.route("/login").post((req, res) => {
-    const data = req.body;
-    userService
-        .login(data.email, data.password)
-        .then(obj => {
-            res.status(200).send(obj);
+    passport.authenticate("local", {session: false}, (err, user, message) => {
+        if (err || !user) {
+            res.status(400).send(message);
+            return;
+        }
+
+        req.login(user, {session: false}, err => {
+            if (err) res.status(400).send(err.message);
+            return;
+        });
+
+        userTokenService
+            .generateForUser(user.id)
+            .then(refreshToken => {
+                const tokenObj = userTokenService.generateAccessToken(user.id);
+                const token = {
+                    accessToken: tokenObj.token,
+                    refreshToken: refreshToken.token,
+                    accessExpiryDate: tokenObj.expiryDate,
+                    refreshExpiryDate: refreshToken.expiryDate
+                };
+                res.status(200).send(token);
+            })
+            .catch(err => {
+                res.status(400).send(err.message);
+            });
+    })(req, res);
+});
+
+authRouter.route("/refreshtoken/:token").get((req, res) => {
+    const token = req.params.token;
+    userTokenService
+        .refreshToken(token)
+        .then(data => {
+            res.status(200).send(data);
         })
         .catch(err => {
             res.status(400).send(err.message);
         });
 });
 
-authRouter.route('/refreshtoken/:token').get((req, res) => {
-    const token = req.params.token;
-
-    userTokenService.refreshToken(token).then(data => {
-        res.status(200).send(data);
-    }).catch(err => {
-        res.status(400).send(err.message);
-    });
-});
-
 authRouter.route("/signup").post((req, res) => {
-    const data = req.body;
-    const hash = bcrypt.hashSync(data.password.trim(), 10);
-    let avatar = data.avatar;
-    if (avatar) avatar = avatar.trim();
-    else avatar = "";
-    const user = {
-        fullName: data.fullName.trim(),
-        password: hash,
-        email: data.email.trim(),
-        phoneNumber: data.phoneNumber.trim(),
-        avatar: avatar
-    };
     userService
-        .addUser(user)
-        .then(() => {
-            userService.getUserByEmail(user.email).then(user => {
-                let obj = {
-                    expiresIn: userTokenService.getExpiresDate()
+        .addUser(req.body)
+        .then(user => {
+            userTokenService.generateForUser(user.id).then(refreshToken => {
+                const tokenObj = userTokenService.generateAccessToken(user.id);
+                const token = {
+                    accessToken: tokenObj.token,
+                    refreshToken: refreshToken.token,
+                    accessExpiryDate: tokenObj.expiryDate,
+                    refreshExpiryDate: refreshToken.expiryDate
                 };
-                obj.token = jwt.sign(
-                    {
-                        id: user.id,
-                        fullName: user.fullName
-                    },
-                    settings.jwtPrivateKey
-                );
-                res.status(200).send(obj);
+                res.status(200).send(token);
             });
         })
         .catch(err => {

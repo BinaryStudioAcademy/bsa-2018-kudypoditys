@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Card, Icon, Image } from "semantic-ui-react";
+import React, {Component} from "react";
+import {Card, Icon, Image} from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 export class MapPropertyItem extends Component {
@@ -15,7 +15,7 @@ export class MapPropertyItem extends Component {
                     margin: "10%"
                 }}
             >
-                <Image centered src={this.props.imageSrc} size="medium" />
+                <Image centered src={this.props.imageSrc} size="medium"/>
                 <Icon
                     style={{
                         position: "absolute",
@@ -41,12 +41,12 @@ export class MapPropertyItem extends Component {
                     </Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
-                    <a style={{ float: "right" }}>
-                        <Icon name="money" />
+                    <a style={{float: "right"}}>
+                        <Icon name="money"/>
                         {this.props.price}
                     </a>
-                    <a style={{ float: "left" }}>
-                        <Icon name="star" />
+                    <a style={{float: "left"}}>
+                        <Icon name="star"/>
                         {this.props.rating}
                     </a>
                 </Card.Content>
