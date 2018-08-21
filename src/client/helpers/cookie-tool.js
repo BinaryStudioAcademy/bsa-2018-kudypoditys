@@ -5,9 +5,7 @@ class CookieTool {
         cookies.set("accessToken", accessToken, {
             expires: new Date(accessExpiryDate)
         });
-        cookies.set("refreshToken", refreshToken, {
-            expires: new Date(refreshExpiryDate)
-        });
+        cookies.set("refreshToken", refreshToken);
     }
 
     getTokens() {

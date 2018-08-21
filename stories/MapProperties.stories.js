@@ -1,8 +1,9 @@
 import React from "react";
 
-import { storiesOf } from "@storybook/react";
+import {storiesOf} from "@storybook/react";
 
 import Map from "client/components/map-view";
+
 
 const properties = [
     {
@@ -59,10 +60,10 @@ const properties = [
 
 storiesOf("Map properties", module)
     .add("Map with markers, popup hover and property info", () => (
-        <div style={{ maxHeight: "100px", maxWidth: "100px" }}>
+        <div style={{maxHeight: "100px", maxWidth: "100px"}}>
             <Map
                 properties={properties}
-                startPosition={{ latitude: 49.837089, longitude: 24.021161 }}
+                startPosition={{latitude: 49.837089, longitude: 24.021161}}
                 zoom={13}
                 controlEnable={true}
             />
@@ -82,7 +83,7 @@ storiesOf("Map properties", module)
                         "https://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg"
                 }
             ]}
-            startPosition={{ latitude: 49.837089, longitude: 24.021161 }}
+            startPosition={{latitude: 49.837089, longitude: 24.021161}}
             zoom={13}
             controlEnable={false}
         />

@@ -40,7 +40,7 @@ let LoginForm = props => {
                             iconPosition="left"
                         />
                         <Field
-                            style={{ marginTop: "4%" }}
+                            style={{marginTop: "4%"}}
                             name="password"
                             type="password"
                             component={renderField}

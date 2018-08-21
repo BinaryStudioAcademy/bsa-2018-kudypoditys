@@ -7,7 +7,6 @@ export class DrawTab extends React.Component {
 
     render() {
         const {header, subheader, component} = this.props;
-
         return (
             <Tab.Pane>
 
@@ -19,7 +18,11 @@ export class DrawTab extends React.Component {
                     {subheader}
 
                 </Header>
-                {component}
+                <div
+                    // onSubmit={this.props.onSubmit}
+                >
+                    {component}
+                </div>
             </Tab.Pane>
         )
     }
