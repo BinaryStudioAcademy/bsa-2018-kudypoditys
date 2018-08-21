@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {List, Header, Grid} from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { List, Header, Grid } from 'semantic-ui-react';
 
 import './index.scss';
 
@@ -9,7 +9,7 @@ export default class Footer extends Component {
     render() {
         return (
             <Grid columns={4} id="footer" divided='vertically' padded="horizontally">
-                <Grid.Row>
+                <Grid.Row className="footer__content">
                     <Grid.Column className="footer__logo">
                         <Header as='h2'>KudyPoditys</Header>
                     </Grid.Column>
@@ -30,18 +30,18 @@ export default class Footer extends Component {
                         <Header as='h4'>Contact us</Header>
                         <List>
                             <List.Item>
-                                <List.Icon name='mail'/>
+                                <List.Icon name='mail' />
                                 <List.Content>kudypoditys@gmail.com</List.Content>
                             </List.Item>
                             <List.Item>
-                                <List.Icon name='phone' flipped='horizontally'/>
+                                <List.Icon name='phone' flipped='horizontally' />
                                 <List.Content>+380 63 897 524 62</List.Content>
                             </List.Item>
                         </List>
                     </Grid.Column>
 
                 </Grid.Row>
-                <Grid.Row centered={true}>
+                <Grid.Row className="footer__right" centered={true}>
                     © Kudypoditys 2018. All right reserved.
                 </Grid.Row>
             </Grid>

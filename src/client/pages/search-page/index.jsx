@@ -2,7 +2,6 @@ import React from "react";
 import "./index.scss";
 import {Grid} from "semantic-ui-react";
 
-import Search from "client/components/search";
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
@@ -21,7 +20,7 @@ class SearchPage extends React.Component {
             <div className="search-page__wrapper">
                 <Grid>
                     <Grid.Column width={16}>
-                        <Header/>
+                        <Header showSearch={true} />
                     </Grid.Column>
                     <Grid.Column
                         width={16}
@@ -53,14 +52,7 @@ class SearchPage extends React.Component {
                                 marginLeft: "2%"
                             }}
                         >
-                            <Search
-                                key="Search"
-                                view="panel"
-                                adults={1}
-                                rooms={1}
-                                children={0}
-                            />
-                            <QuickFilter/>
+                            <QuickFilter />
                             <div
                                 style={{
                                     marginTop: "4%"
