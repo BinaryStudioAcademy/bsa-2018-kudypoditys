@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import {connect} from "react-redux";
-import {Input, Button, Form, Dropdown, Header} from "semantic-ui-react";
+import { connect } from "react-redux";
+import { Input, Button, Form, Dropdown, Header } from "semantic-ui-react";
 import "react-dates/initialize";
-import {DateRangePicker} from "react-dates";
+import { DateRangePicker } from "react-dates";
 
 import "react-dates/lib/css/_datepicker.css";
 
-import {mapStateToProps, mapDispatchToProps} from "./container";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 
 export class Search extends React.Component {
@@ -96,7 +96,7 @@ export class Search extends React.Component {
                         required
                     />
                 </div>
-                <div className="check-in-out">
+                <div className="check-in-out" onFocus={this.hideRoomSelector}>
                     <DateRangePicker
                         noBorder={true}
                         startDateId="startDate"
@@ -104,12 +104,12 @@ export class Search extends React.Component {
                         required={true}
                         startDate={this.state.startDate}
                         endDate={this.state.endDate}
-                        onDatesChange={({startDate, endDate}) => {
-                            this.setState({startDate, endDate});
+                        onDatesChange={({ startDate, endDate }) => {
+                            this.setState({ startDate, endDate });
                         }}
                         focusedInput={this.state.focusedInput}
                         onFocusChange={focusedInput => {
-                            this.setState({focusedInput});
+                            this.setState({ focusedInput });
                         }}
                     />
                 </div>
@@ -165,7 +165,12 @@ export class Search extends React.Component {
                     </div>
                 </div>
                 <div className="btn-wrp">
-                    <Button type="submit" content="Search" primary/>
+                    <Button
+                        // floated={"right"}
+                        type="submit"
+                        content="Search"
+                        primary
+                    />
                 </div>
             </Form>
         );
