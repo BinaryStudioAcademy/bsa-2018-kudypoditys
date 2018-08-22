@@ -63,34 +63,27 @@ class PropertyRepository extends Repository {
     getFilteredProperties(filter) {
         return this.model.findAll({
             where: {
-                filter:filter
+                city: filter.city,
+                checkInDate: filter.checkInDate,
+                checkOutDate: filter.checkOutDate,
+                rooms: filter.rooms,
+                adults: filter.adults,
+                children: filter.children
             },
-            include: [
-                City,
-                PropertyType,
-                RoomType,
-                BedInRoom,
-                Reservation,
-                {
-                    model: Review,
-                    include: [User]
-                },
-                Facility,
-                Room
-            ]
-            // }).then(result => {
-            //     return Property.count({
+            // include: [
+            //     City,
+            //     PropertyType,
+            //     RoomType,
+            //     BedInRoom,
+            //     Reservation,
+            //     Facility,
+            //     Room
+            // ]
+        }).then((properties => {
+            return properties
+        })
+    )
 
-            //         where: {
-            //             propertyId: x.id
-            //         }
-            //     }).then(likes => {
-            //         x.dataValues.likes = likes;
-            //         return x;
-            //     });
-            // });
-        }
-
-    }
 }
+
 module.exports = new PropertyRepository(propertyModel);

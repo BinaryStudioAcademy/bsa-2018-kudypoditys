@@ -15,8 +15,8 @@ searchProperty.route('/')
 
         }
         propertyService.getFilteredProperties(filter)
-            .then(property => {
-                res.send(property);
+            .then(properties => {
+                res.send(properties);
             })
             .catch((err) => {
                 res.status(404).send(err);
