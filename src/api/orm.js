@@ -12,9 +12,5 @@ const DB_NAME = process.env.DB_NAME,
 
 //Change values above to your OWN (.env file)
 const orm = new Sequelize(DB_NAME, DB_USER, DB_PASS, DB_OPTIONS);
-<<<<<<< HEAD
-
-=======
->>>>>>> beta
 
 module.exports = orm;
