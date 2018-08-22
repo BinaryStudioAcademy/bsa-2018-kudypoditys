@@ -58,7 +58,10 @@ export class AvailabilityPanel extends React.Component {
                         className="availability-form"
                         onSubmit={this.props.onAvailabilityCheck}
                     >
-                        <div className="availability-form-midsection  onFocus={this.hideRoomSelector}">
+                        <div
+                            className="availability-form-midsection"
+                            onFocus={this.hideRoomSelector}
+                        >
                             <DateRangePicker
                                 startDateId="startDate"
                                 endDateId="endDate"
