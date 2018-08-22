@@ -1,6 +1,4 @@
-import Reservation from '../models/Reservation';
-import BedInRoom from '../models/BedInRoom';
-import RoomType from '../models/RoomType';
+
 const sequelize = require('sequelize');
 const Repository = require('./generalRepository');
 const propertyModel = require('../models/Property');
@@ -8,8 +6,11 @@ const Facility = require('../models/Facility');
 const PaymentType = require('../models/PaymentType');
 const Room = require('../models/Room');
 const AccommodationRule = require('../models/AccommodationRule');
-
-
+const BedInRoom= require('../models/BedInRoom');
+const Reservation= require('../models/Reservation');
+const Country= require('../models/Country');
+const PropertyCategory = require('../models/PropertyCategory');
+const RoomType =require('../models/RoomType');
 const User = require('../models/User');
 const City = require('../models/City');
 const PropertyType = require('../models/PropertyType');
@@ -62,27 +63,33 @@ class PropertyRepository extends Repository {
     }
     getFilteredProperties(filter) {
         return this.model.findAll({
-            where: {
-                city: filter.city,
-                checkInDate: filter.checkInDate,
-                checkOutDate: filter.checkOutDate,
-                rooms: filter.rooms,
-                adults: filter.adults,
-                children: filter.children
-            },
-            // include: [
-            //     City,
-            //     PropertyType,
-            //     RoomType,
-            //     BedInRoom,
-            //     Reservation,
-            //     Facility,
-            //     Room
-            // ]
+            // where: {
+            //     country:filter.country,
+            //     city: filter.city,
+            //     checkInDate: filter.checkInDate,
+            //     checkOutDate: filter.checkOutDate,
+            //     rooms: filter.rooms,
+            //     adults: filter.adults,
+            //     children: filter.children
+            // },
+
+            include: [
+                {
+                    Country,
+                    City,
+                    Reservation,
+                    Room,
+                    RoomType,
+                    BedInRoom,
+
+
+                }
+             ]
         }).then((properties => {
             return properties
         })
-    )
+        )
+    }
 
 }
 

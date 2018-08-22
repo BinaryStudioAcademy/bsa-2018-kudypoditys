@@ -24,3 +24,4 @@ searchProperty.route('/')
 
     })
 
+    module.exports =searchProperty ;
