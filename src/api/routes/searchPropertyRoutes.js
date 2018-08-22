@@ -7,12 +7,10 @@ searchProperty.route('/')
     .get((req, res) => {
         let filter = {
             city :req.query.city,
-            checkInDate: req.query.checkInDate,
-            checkOutDate : req.query.checkOutDate,
-            rooms : req.query.rooms,
-            adults :req.query.adults,
-            children: req.query.children
-
+            dateIn: req.query.dateIn,
+            dateOut: req.query.dateOut,
+            roomsAmount : req.query.roomsAmount ,
+            bedsCount :req.query.adults// keep in maind we need bads for all children older 2 years
         }
         propertyService.getFilteredProperties(filter)
             .then(properties => {
