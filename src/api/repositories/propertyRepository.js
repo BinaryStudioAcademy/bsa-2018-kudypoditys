@@ -6,7 +6,6 @@ const PaymentType = require('../models/PaymentType');
 const Room = require('../models/Room');
 const AccommodationRule = require('../models/AccommodationRule');
 
-const PropertyCategory = require('../models/PropertyCategory');
 
 const User = require('../models/User');
 const City = require('../models/City');
@@ -25,7 +24,6 @@ class PropertyRepository extends Repository {
             include: [
                 City,
                 PropertyType,
-                PropertyCategory,
                 AccommodationRule,
                 {
                     model: Review,
@@ -52,7 +50,6 @@ class PropertyRepository extends Repository {
         return this.model.create(entity, {
             include: [
                 PropertyType,
-                PropertyCategory,
                 Room,
                 Facility,
                 AccommodationRule,
