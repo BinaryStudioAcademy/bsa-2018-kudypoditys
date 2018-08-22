@@ -18,7 +18,12 @@ function needsAuth(reqMethod, reqPath, pathes) {
                 break;
             }
         }
-        if (methodNeedsAuth && path.url.indexOf(reqPath) === 0) return true;
+        if (
+            methodNeedsAuth &&
+            path.url.indexOf(reqPath) === 0 &&
+            reqPath !== "/"
+        )
+            return true;
     }
     return false;
 }
