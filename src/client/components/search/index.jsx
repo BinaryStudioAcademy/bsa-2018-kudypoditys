@@ -67,6 +67,13 @@ export class Search extends React.Component {
         this.props.onSearch();
     };
 
+    datesChanged = selectedDates => {
+        if (selectedDates.startDate && selectedDates.endDate) {
+            this.props.onDatesChange(selectedDates);
+        }
+        this.setState(selectedDates);
+    };
+
     render() {
         const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
@@ -96,9 +103,7 @@ export class Search extends React.Component {
                         required={true}
                         startDate={this.state.startDate}
                         endDate={this.state.endDate}
-                        onDatesChange={({ startDate, endDate }) => {
-                            this.setState({ startDate, endDate });
-                        }}
+                        onDatesChange={this.datesChanged}
                         focusedInput={this.state.focusedInput}
                         onFocusChange={focusedInput => {
                             this.setState({ focusedInput });
