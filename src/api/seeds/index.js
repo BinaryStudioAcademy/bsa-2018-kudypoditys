@@ -6,7 +6,8 @@ const {
     FACILITY_CATEGORIES,
     REVIEW_CATEGORIES,
     BED_TYPES,
-    ROOM_TYPES
+    ROOM_TYPES,
+    PROPERTY_TYPE
 } = require('./seed');
 
 module.exports = function (models) {
@@ -20,7 +21,8 @@ module.exports = function (models) {
         FacilityCategory,
         Facility,
         ReviewCategory,
-        RoomType
+        RoomType,
+        PropertyType
     } = models;
 
     const SimpleUpsertMap = [
@@ -29,7 +31,8 @@ module.exports = function (models) {
         [Discount, DISCOUNTS],
         [Role, ROLES],
         [ReviewCategory, REVIEW_CATEGORIES],
-        [RoomType, ROOM_TYPES]
+        [RoomType, ROOM_TYPES],
+        [PropertyType, PROPERTY_TYPE]
     ];
 
     for (const mapItem of SimpleUpsertMap) {
