@@ -47,12 +47,13 @@ reservation
     })
     .get((req, res) => {
         reservationService
-            .getReservationById(req.params.id)
+            .findById(req.params.id)
             .then(reservation => {
                 res.send(reservation);
             })
             .catch(err => {
-                res.status(404).send(err);
+                console.log("error");
+                res.status(404).send(err.message);
             });
     })
     .delete((req, res) => {

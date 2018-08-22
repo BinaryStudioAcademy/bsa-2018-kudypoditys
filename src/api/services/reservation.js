@@ -1,14 +1,36 @@
 const Service = require("./generalService");
 const reservationRepository = require("../repositories/reservationRepository");
-const roomService = require(".././services/room");
+const roomService = require("./room");
+const userService = require("./user");
+const paymentTypeService = require("./paymentType");
 
 class ReservationService extends Service {
     getAllReservations() {
         return reservationRepository.findAll();
     }
 
-    getReservationById(id) {
-        return reservationRepository.findById(id);
+    async findById(id) {
+        console.log("find by id: " + id);
+        try {
+            const reservation = await this.repository.findById(id);
+            const user = await userService.findById(reservation.userId);
+            const room = await roomService.findById(reservation.roomId);
+            const paymentType = await paymentTypeService.findById(
+                reservation.paymentTypeId
+            );
+            const response = {
+                id: reservation.id,
+                dateIn: reservation.dateIn,
+                dateOut: reservation.dateOut,
+                guestsCount: reservation.guestsCount,
+                user: user,
+                room: room,
+                paymentType: paymentType
+            };
+            return Promise.resolve(response);
+        } catch (err) {
+            return Promise.reject(err);
+        }
     }
 
     async addReservation(reservation) {
