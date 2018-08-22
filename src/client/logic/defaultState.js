@@ -131,13 +131,14 @@ const state = {
     ],
 
     rooms: {},
-
+  
     propertyLayoutTab: {
         title: 'Apartment with Garden View',
         amount:'1'
     },
 
-    propertyPaymentTab: {
+    propertyRegistration: {
+        // PAYMENT_TAB
         paymentType: "cash", // "creditcards"
         paymentCreditCards: {
             mastercard: false,
@@ -161,10 +162,8 @@ const state = {
             city: "",
             address: "",
             postcode: ""
-        }
-    },
-
-    propertyServicesTab: {
+        },
+        // SERVICES_TAB
         internet: "free", // additional, none
         internetFee: "",
         parking: {

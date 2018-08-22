@@ -1,19 +1,16 @@
-import { paymentTabUpdate, registerProperty } from 'client/logic/property-payment-tab/actions';
+import { propertyUpdate } from 'client/logic/property-creation-tabs/actions';
 
 export function mapStateToProps(state) {
-    const { propertyPaymentTab } = state;
+    const { propertyRegistration } = state;
     return {
-        ...propertyPaymentTab
+        ...propertyRegistration
     }
 }
 
 export function mapDispatchToProps(dispatch) {
     return {
         updateTab(data) {
-            dispatch(paymentTabUpdate(data));
-        },
-        registerProperty() {
-            dispatch(registerProperty());
+            dispatch(propertyUpdate(data));
         }
     }
 }

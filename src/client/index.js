@@ -23,6 +23,8 @@ import history from "client/history";
 import PhotoTab from "./components/photo-tab-registration-property";
 import UserCabinet from "./components/user-cabinet";
 
+import PaymentTab from "./components/property-payment-tab";
+
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
 const store = createStore(
@@ -36,7 +38,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <Switch>
-                <Route exact path="/" component={HomePage}/>
+                <Route exact path="/" component={PaymentTab}/>
                 <Route exact path="/signup" component={RegistrationPage}/>
                 <Route exact path="/login" component={LoginPage}/>
                 <Route

@@ -19,7 +19,7 @@ import amenitiesTab from './amenities-tab-for-property/reducer';
 import propertySubmit from './main-info-tab/reducer';
 import policesTab from "client/logic/polices-tab/reducer";
 import layoutTab from './room-item/rducer';
-import propertyPaymentTab from 'client/logic/property-payment-tab/reducer';
+import propertyRegistration from "client/logic/property-creation-tabs/reducer";
 
 export default combineReducers({
     search,
@@ -37,11 +37,9 @@ export default combineReducers({
     propertyPage,
     quickFilter,
     roomSummary,
-    propertyServicesTab,
-    propertyPaymentTab,
     propertySubmit,
     amenitiesTab,
     policesTab,
     layoutTab,
-
+    propertyRegistration
 });
