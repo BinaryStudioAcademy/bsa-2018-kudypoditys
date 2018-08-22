@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { connect } from "react-redux";
-import { Input, Button, Form, Dropdown, Header, Grid } from "semantic-ui-react";
+import { Input, Button, Form, Dropdown, Grid } from "semantic-ui-react";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 
@@ -67,17 +67,17 @@ export class Search extends React.Component {
         this.props.onSearch();
     };
 
+    datesChanged = selectedDates => {
+        if (selectedDates.startDate && selectedDates.endDate) {
+            this.props.onDatesChange(selectedDates);
+        }
+        this.setState(selectedDates);
+    };
+
     render() {
         const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
-        const {
-            destination,
-            checkIn,
-            checkOut,
-            rooms,
-            adults,
-            children
-        } = this.props;
+        const { destination, rooms, adults, children } = this.props;
         return (
             <Form
                 className="search search--view-bar"
@@ -103,9 +103,7 @@ export class Search extends React.Component {
                         required={true}
                         startDate={this.state.startDate}
                         endDate={this.state.endDate}
-                        onDatesChange={({ startDate, endDate }) => {
-                            this.setState({ startDate, endDate });
-                        }}
+                        onDatesChange={this.datesChanged}
                         focusedInput={this.state.focusedInput}
                         onFocusChange={focusedInput => {
                             this.setState({ focusedInput });
