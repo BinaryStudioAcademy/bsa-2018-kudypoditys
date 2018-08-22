@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { connect } from "react-redux";
-import { Input, Button, Form, Dropdown, Header } from "semantic-ui-react";
+import { Input, Button, Form, Dropdown, Header, Grid } from "semantic-ui-react";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 
@@ -113,6 +113,7 @@ export class Search extends React.Component {
                         }}
                     />
                 </div>
+
                 <div className="room-options">
                     <Input
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
@@ -123,54 +124,70 @@ export class Search extends React.Component {
                         className="room-selector hidden"
                         onMouseLeave={this.hideRoomSelector}
                     >
-                        <Form.Field inline>
-                            <label>Rooms</label>
-                            <Dropdown
-                                fluid
-                                selection
-                                name="rooms"
-                                options={selectOptions}
-                                value={rooms}
-                                onChange={(event, input) =>
-                                    this.props.onRoomsChange(input.value)
-                                }
-                            />
-                        </Form.Field>
-                        <Form.Field inline>
-                            <label>Adults</label>
-                            <Dropdown
-                                fluid
-                                selection
-                                name="adults"
-                                options={selectOptions}
-                                value={adults}
-                                onChange={(event, input) =>
-                                    this.props.onAdultsChange(input.value)
-                                }
-                            />
-                        </Form.Field>
-                        <Form.Field inline>
-                            <label>Children</label>
-                            <Dropdown
-                                fluid
-                                selection
-                                name="children"
-                                options={childrenOptions}
-                                value={children}
-                                onChange={(event, input) =>
-                                    this.props.onChildrenChange(input.value)
-                                }
-                            />
-                        </Form.Field>
+                        <Grid>
+                            <Grid.Row>
+                                <Grid.Column width={4} verticalAlign={"middle"}>
+                                    <label>Rooms</label>
+                                </Grid.Column>
+                                <Grid.Column width={12}>
+                                    <Dropdown
+                                        compact
+                                        selection
+                                        name="rooms"
+                                        options={selectOptions}
+                                        value={rooms}
+                                        onChange={(event, input) =>
+                                            this.props.onRoomsChange(
+                                                input.value
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Grid.Column width={4} verticalAlign={"middle"}>
+                                    <label>Adults</label>
+                                </Grid.Column>
+                                <Grid.Column width={12}>
+                                    <Dropdown
+                                        compact
+                                        selection
+                                        name="adults"
+                                        options={selectOptions}
+                                        value={adults}
+                                        onChange={(event, input) =>
+                                            this.props.onAdultsChange(
+                                                input.value
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Grid.Column width={4} verticalAlign={"middle"}>
+                                    <label>Children</label>
+                                </Grid.Column>
+                                <Grid.Column width={12}>
+                                    <Dropdown
+                                        compact
+                                        selection
+                                        name="children"
+                                        options={childrenOptions}
+                                        value={children}
+                                        onChange={(event, input) =>
+                                            this.props.onChildrenChange(
+                                                input.value
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
                     </div>
                 </div>
+
                 <div className="btn-wrp">
-                    <Button
-                        // floated={"right"}
-                        type="submit"
-                        content="Search"
-                        primary
-                    />
+                    <Button type="submit" content="Search" primary />
                 </div>
             </Form>
         );
