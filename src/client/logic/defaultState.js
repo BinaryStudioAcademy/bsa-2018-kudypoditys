@@ -131,13 +131,39 @@ const state = {
     ],
 
     rooms: {},
-
+  
     propertyLayoutTab: {
         title: 'Apartment with Garden View',
         amount:'1'
     },
 
-    propertyServicesTab: {
+    propertyRegistration: {
+        // PAYMENT_TAB
+        paymentType: "cash", // "creditcards"
+        paymentCreditCards: {
+            mastercard: false,
+            visa: false
+        },
+        vatTaxes: "default", // "none"
+        cityTax: "default", // "individual"
+        cityTaxIndividual: {
+            value: "",
+            type: "percent",
+            includeToPrice: false
+        },
+        additionalFees: false,
+        additionalFeesOptions: [
+
+        ],
+        commissionName: "Name one",
+        recipientSameAddress: true,
+        recipientActualAddress: {
+            country: "",
+            city: "",
+            address: "",
+            postcode: ""
+        },
+        // SERVICES_TAB
         internet: "free", // additional, none
         internetFee: "",
         parking: {
