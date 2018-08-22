@@ -1,4 +1,3 @@
-import BedType from '../models/BedType';
 const sequelize = require("sequelize");
 const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
@@ -64,36 +63,27 @@ class PropertyRepository extends Repository {
         });
     }
     getFilteredProperties(filter) {
-
         return this.model
             .findAll({
                 include: [
                     {
                         model: City,
-                        where:{name:filter.city}
+                        where: { name: filter.city }
                     },
                     {
                         model: Reservation,
                         where: {
-                            dateIn: filter.dateIn, dateOut: filter.dateOut}
+                            dateIn: filter.dateIn,
+                            dateOut: filter.dateOut
+                        }
                     },
                     {
                         model: Room,
                         where: { amount: filter.roomsAmount }
-
                     },
                     {
-                      model:BedInRoom,
-                        where: { count: filter.bedsCount },
-                        // include: [{
-                        //     model: BedType,
-                        //     as: 'BedTypeId',
-                        //     required: false,
-                        //     where: {
-                        //         name: filter.
-                        //       ,
-                        //     },
-                        //   }]
+                        model: BedInRoom,
+                        where: { count: filter.bedsCount }
                     }
                 ]
             })
