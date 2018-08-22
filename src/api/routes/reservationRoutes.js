@@ -6,12 +6,12 @@ reservation
     .route("/")
     .get((req, res) => {
         reservationService
-            .getAllReservations()
-            .then(reservation => {
-                res.send(reservation);
+            .findAll()
+            .then(reservations => {
+                res.send(reservations);
             })
             .catch(err => {
-                res.status(404).send(err);
+                res.status(404).send(err.message);
             });
     })
     .post((req, res) => {
@@ -24,7 +24,7 @@ reservation
             paymentTypeId: Number(req.body.paymentTypeId)
         };
         reservationService
-            .addReservation(newReservation)
+            .create(newReservation)
             .then(reservation => {
                 res.send(reservation);
             })
@@ -36,13 +36,18 @@ reservation
 reservation
     .route("/:id")
     .put((req, res) => {
+        let updateValues = req.body;
+        if (updateValues.dateIn)
+            updateValues.dateIn = new Date(Number(updateValues.dateIn));
+        if (updateValues.dateOut)
+            updateValues.dateOut = new Date(Number(updateValues.dateOut));
         reservationService
-            .updateReservation(req.params.id, req.body)
+            .updateById(req.params.id, updateValues)
             .then(reservation => {
                 res.send(reservation);
             })
             .catch(err => {
-                res.status(500).send(err);
+                res.status(500).send(err.message);
             });
     })
     .get((req, res) => {
@@ -52,18 +57,17 @@ reservation
                 res.send(reservation);
             })
             .catch(err => {
-                console.log("error");
                 res.status(404).send(err.message);
             });
     })
     .delete((req, res) => {
         reservationService
-            .deleteReservation(req.params.id)
+            .deleteById(req.params.id)
             .then(reservation => {
                 res.send(reservation);
             })
             .catch(err => {
-                res.status(500).send(err);
+                res.status(500).send(err.message);
             });
     });
 

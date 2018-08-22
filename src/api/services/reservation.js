@@ -5,35 +5,31 @@ const userService = require("./user");
 const paymentTypeService = require("./paymentType");
 
 class ReservationService extends Service {
-    getAllReservations() {
-        return reservationRepository.findAll();
-    }
-
-    async findById(id) {
-        console.log("find by id: " + id);
+    async findAll() {
         try {
-            const reservation = await this.repository.findById(id);
-            const user = await userService.findById(reservation.userId);
-            const room = await roomService.findById(reservation.roomId);
-            const paymentType = await paymentTypeService.findById(
-                reservation.paymentTypeId
-            );
-            const response = {
-                id: reservation.id,
-                dateIn: reservation.dateIn,
-                dateOut: reservation.dateOut,
-                guestsCount: reservation.guestsCount,
-                user: user,
-                room: room,
-                paymentType: paymentType
-            };
+            const reservations = await super.findAll();
+            let response = [];
+            for (let i = 0; i < reservations.length; i++) {
+                await this.generateFullEntity(reservations[i]).then(data =>
+                    response.push(data)
+                );
+            }
             return Promise.resolve(response);
         } catch (err) {
             return Promise.reject(err);
         }
     }
 
-    async addReservation(reservation) {
+    async findById(id) {
+        try {
+            const reservation = await this.repository.findById(id);
+            return this.generateFullEntity(reservation);
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    }
+
+    async create(reservation) {
         try {
             const bookings = await this.findByOptions({
                 roomId: reservation.roomId
@@ -51,12 +47,47 @@ class ReservationService extends Service {
         }
     }
 
-    updateReservation(id, reservation) {
-        return reservationRepository.updateById({ _id: id }, reservation);
+    async updateById(id, values) {
+        try {
+            await super.updateById(id, values);
+            return this.findById(id);
+        } catch (err) {
+            return Promise.reject(err);
+        }
     }
 
-    deleteReservation(id) {
-        return reservationRepository.deleteById({ _id: id });
+    async deleteById(id) {
+        try {
+            const deletedReservation = await this.findById(id).then(
+                reservation => reservation
+            );
+            super.deleteById(id);
+            return Promise.resolve(deletedReservation);
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    }
+
+    async generateFullEntity(reservation) {
+        try {
+            let user = await userService.findById(reservation.userId);
+            const room = await roomService.findById(reservation.roomId);
+            const paymentType = await paymentTypeService.findById(
+                reservation.paymentTypeId
+            );
+            const response = {
+                id: reservation.id,
+                dateIn: reservation.dateIn,
+                dateOut: reservation.dateOut,
+                guestsCount: reservation.guestsCount,
+                user: user,
+                room: room,
+                paymentType: paymentType
+            };
+            return Promise.resolve(response);
+        } catch (err) {
+            return Promise.reject(err);
+        }
     }
 
     async checkAvailability(reservation, bookings) {
