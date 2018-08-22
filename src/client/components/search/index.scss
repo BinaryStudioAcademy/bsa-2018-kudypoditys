@@ -125,6 +125,10 @@ table.ui.celled.table tbody td:hover {
     height: 210px;
 }
 
+form.Field {
+    align-content: right;
+}
+
 .room-selector > .field {
     display: flex;
     justify-content: space-between;

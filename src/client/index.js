@@ -23,7 +23,6 @@ import history from "client/history";
 import PhotoTab from "./components/photo-tab-registration-property";
 import UserCabinet from "./components/user-cabinet";
 
-
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
 const store = createStore(
