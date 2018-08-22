@@ -14,7 +14,6 @@ import checkInOut from "client/logic/checkIn-checkOut/reducer";
 import propertyPhoto from 'client/logic/photo-tab/reducer';
 import roomSummary from 'client/logic/rooms-summary-table/reducer'
 import cityInfos from "client/logic/banner-list/reducer";
-import propertyServicesTab from "client/logic/property-services-tab/reducer";
 import amenitiesTab from './amenities-tab-for-property/reducer';
 import propertySubmit from './main-info-tab/reducer';
 import policesTab from "client/logic/polices-tab/reducer";
