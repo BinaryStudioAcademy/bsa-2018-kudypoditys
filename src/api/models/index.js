@@ -6,7 +6,8 @@ const
     basename = path.basename(__filename),
     Sequelize = require('sequelize'),
     orm = require(`../orm`),
-    associations = require(`../associations`);
+    associations = require(`../associations`),
+    seed = require('../seeds');
 
 const models = {
     Sequelize,
@@ -24,7 +25,10 @@ fs.readdirSync(__dirname)
 
 associations(models); // make associations
 
-module.exports = orm.sync({force: false}).then(() => models);
+
+module.exports = orm.sync({ force: false }).then(() => {
+    seed(models);
+}).then(() => models);
 
 
 
