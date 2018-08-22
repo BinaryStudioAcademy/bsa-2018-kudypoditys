@@ -1,11 +1,10 @@
-import { propertyUpdate } from "client/logic/property-creation-tabs/actions";
-
+import { propertyUpdate } from 'client/logic/property-creation-tabs/actions';
 
 export function mapStateToProps(state) {
     const { propertyRegistration } = state;
     return {
-        ...propertyRegistration,
-    };
+        ...propertyRegistration
+    }
 }
 
 export function mapDispatchToProps(dispatch) {

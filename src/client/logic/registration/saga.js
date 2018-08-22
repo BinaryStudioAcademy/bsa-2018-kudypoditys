@@ -5,11 +5,15 @@ import authService from "client/services/authService";
 import history from "client/history";
 import {registerSuccess, registerFailure} from "./actions";
 
-
 function* signup(action) {
     try {
         yield call(authService.signup, action.payload);
-        yield put(registerSuccess({error: false, message: "Signed up successfully!"}));
+        yield put(
+            registerSuccess({
+                error: false,
+                message: "Signed up successfully!"
+            })
+        );
         yield put({
             type: LOGIN_SUCCESS
         });
