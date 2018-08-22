@@ -96,7 +96,7 @@ export class Search extends React.Component {
                         required
                     />
                 </div>
-                <div className="check-in-out">
+                <div className="check-in-out" onFocus={this.hideRoomSelector}>
                     <DateRangePicker
                         noBorder={true}
                         startDateId="startDate"
