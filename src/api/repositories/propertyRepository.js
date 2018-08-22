@@ -1,3 +1,6 @@
+import Reservation from '../models/Reservation';
+import BedInRoom from '../models/BedInRoom';
+import RoomType from '../models/RoomType';
 const sequelize = require('sequelize');
 const Repository = require('./generalRepository');
 const propertyModel = require('../models/Property');
@@ -57,6 +60,42 @@ class PropertyRepository extends Repository {
             ]
         });
     }
-}
+    getFilteredProperties(city, checkInDate, checkOutDate, rooms, adults, children) {
+        return this.model.findOne({
+            where: {
+                city: city,
+                checkInDate: checkInDate,
+                checkOutDate: checkOutDate,
+                rooms: rooms,
+                adults: adults,
+                children: children
+            },
+            include: [
+                City,
+                PropertyType,
+                RoomType,
+                BedInRoom,
+                Reservation,
+                {
+                    model: Review,
+                    include: [User]
+                },
+                Facility,
+                Room
+            ]
+            // }).then(result => {
+            //     return Property.count({
 
+            //         where: {
+            //             propertyId: x.id
+            //         }
+            //     }).then(likes => {
+            //         x.dataValues.likes = likes;
+            //         return x;
+            //     });
+            // });
+        }
+
+    }
+}
 module.exports = new PropertyRepository(propertyModel);
