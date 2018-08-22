@@ -1,4 +1,4 @@
-import { searchUpdate } from '../../logic/search/actions';
+import { searchUpdate } from "../../logic/search/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { search } = state;
@@ -17,17 +17,19 @@ export function mapDispatchToProps(dispatch, ownProps) {
         onAvailabilityCheck() {
             //todo server request
             const serverResponse = [
-                { room: 'Available room type' },
-                { room: 'Available room type2' },
-                { room: 'Available room type3' },
+                { room: "Available room type" },
+                { room: "Available room type2" },
+                { room: "Available room type3" }
             ];
-            dispatch(searchUpdate({ results : serverResponse}));
+            dispatch(searchUpdate({ results: serverResponse }));
         },
-        onCheckInChange(value) {
-            dispatch(searchUpdate({ checkIn: value }));
-        },
-        onCheckOutChange(value) {
-            dispatch(searchUpdate({ checkOut: value }));
+        onDatesChange(value) {
+            dispatch(
+                searchUpdate({
+                    checkIn: value.startDate,
+                    checkOut: value.endDate
+                })
+            );
         },
         onAdultsChange(value) {
             dispatch(searchUpdate({ adults: value }));
