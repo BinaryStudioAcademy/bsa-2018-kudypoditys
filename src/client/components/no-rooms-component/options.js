@@ -6,12 +6,12 @@ export const bedType = [
 
   ]
   export const bedAmount = [
-    { key: '1', text: '1', value: 1 },
-    { key: '2', text: '2', value: 2 },
-    { key: '3', text: '3', value: 3 },
-    { key: '5', text: '4', value: 4 },
-    { key: '6', text: '5', value: 5 },
-    { key: '7', text: '6', value: 6 }
+    { key: '0', text: '1', value: '1' },
+    { key: '1', text: '2', value: '2' },
+    { key: '2', text: '3', value: '3' },
+    { key: '3', text: '4', value: '4' },
+    { key: '4', text: '5', value: '5' },
+    { key: '5', text: '6', value: '6' }
   ]
   export const type = [
     { key: '1', text: 'Одномісний', value: 'Одномісний' },

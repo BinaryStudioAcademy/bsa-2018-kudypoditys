@@ -13,29 +13,53 @@ import { Field, reduxForm } from 'redux-form';
 import semanticSelectorFormField from './dropdown-form/semanticSelectorForm.jsx'
 import SelectInput from './selectInput.jsx'
 import { type, smoking} from './options.js';
+//import RoomSquare from './roomSquare';
 class AddRoom extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             roomType:'',
-            roomSmoking:''
+            roomSmoking:'',
+            roomAmount:'',
+            roomSquare:'',
+            roomPrice:''
         }
     }
-    // AddRoom(){
-    //     this.setState({displayAddForm:true});
-    // }
-    // handleChange(field){
-    //     console.log(field)
-    // }
-    handleFormChange(e){
 
-        console.log(e.target.value)
-    }
+    // handleTypeChange(value){
+    //     console.log(value)
+    // }
+    // handleSmokeChange(value){
+    //     console.log(value)
+    // }
+    // handleRoomAmountChange(e){
+    //     console.log(e.target.value)
+    // }
+    // handleRoomSquareChange(e){
+    //     console.log(e.target.value)
+    // }
+    // handleRoomPriceChange(e){
+    //     console.log(e.target.value)
+    // }
+    // handleSubmit(e){
+    //     console.log(e.target)
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    // }
     render(){
         const { value } = 1
         const { handleSubmit, pristine, submitting } = this.props
         return(
-
+            // <reduxForm>
+            //     <Field
+            //         component={ApplyBtn}
+            //         type='text'
+            //         onchange={this.handleFormChange}
+            //         validate={[required, number]}
+            //     />
+            // </reduxForm>
+            // <ApplyBtn onchange={this.handleFormChange}/>
+            <form action="" onSubmit={handleSubmit}>
             <div className='plan-price-form'>
 
              <Fragment key='1'>
@@ -46,11 +70,12 @@ class AddRoom extends React.Component {
                             Виберіть
                         </Card.Description><br />
                             <Field
-                                style={{margin:'0 0 0 10px'}}
+                                style={{margin:'0 0 0 10px', width:'120px'}}
                                 name="type"
                                 component={semanticSelectorFormField}
                                 as={Form.Select}
                                 options={type}
+                                onChange={this.handleTypeChange}
                                 label="Тип номеру"
                                 placeholder="Виберіть"
                                 validate={required}/>
@@ -60,6 +85,7 @@ class AddRoom extends React.Component {
                                 component={semanticSelectorFormField}
                                 as={Form.Select}
                                 options={smoking}
+                                onChange={this.handleSmokeChange}
                                 label="Куріння"
                                 placeholder="Виберіть"
                                 validate={required}/>
@@ -71,7 +97,7 @@ class AddRoom extends React.Component {
                                 as={Form.Input}
                                 name="roomsAmount"
                                 key='roomsAmount'
-                                label=""
+                                onChange={this.handleRoomAmountChange}
                                 type="text"
                                 validate={[required, number, maxLength(3)]} />
                     </Card.Content>
@@ -97,9 +123,10 @@ class AddRoom extends React.Component {
                                 as={Form.Input}
                                 name="roomSquare"
                                 key="roomSquare"
+                                onChange={this.handleRoomSquareChange}
                                 label="кв.м"
                                 type="text"
-                                validate={false} />
+                                validate={number} />
                     </Card.Content>
                 </Card>
                 <Card style={{ width: '900px' }} color='teal'>
@@ -119,16 +146,19 @@ class AddRoom extends React.Component {
                                 as={Form.Input}
                                 name="roomPrice"
                                 key="roomPrice"
+                                onChange={this.handleRoomPriceChange}
                                 label="UAH/ніч"
                                 type="text"
                                 validate={[required, number, maxLength(3)]} />
                     </Card.Content>
                 </Card>
 
-                <Button key='submit' type="submit" color='teal' style={{ width: '750px' }}
+                <Button type="submit" color='teal' style={{ width: '750px', margin:'auto' }}
                 disabled={pristine || submitting} >Continue</Button>
 
             </Fragment>
+
+
 
 
                  {/* <form action="">
@@ -169,8 +199,8 @@ class AddRoom extends React.Component {
                    <ApplyBtn/>
 
                 </form> */}
-            </div>
-
+          </div>
+          </form>
         )
     }
 }

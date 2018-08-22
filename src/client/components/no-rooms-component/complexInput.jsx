@@ -2,25 +2,28 @@ import React from 'react';
 import './index.scss';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react'
-import { fieldArrayMetaPropTypes } from 'redux-form';
-import { required, maxLength20, phoneNumber, number,maxLength } from 'client/regexValidationService';
-import { Field, reduxForm } from 'redux-form';
+import { required} from 'client/regexValidationService';
+import { Field} from 'redux-form';
 import { Icon } from 'semantic-ui-react';
 import {bedType,bedAmount} from './options.js';
 import semanticSelectorFormField from './dropdown-form/semanticSelectorForm'
 
 class ComplexInput extends React.Component {
+
     constructor(props){
         super(props);
         this.state = {
             beds: [
-                {key:0, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:true, button:false},
-                {key:1, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:false, button:true},
-                {key:2, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:false, button:true}
+                {key:0,key1: 3, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:true, button:false},
+                {key:1,key1: 4, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:false, button:true},
+                {key:2,key1: 5, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:false, button:true}
             ],
             guests:1,
             index:0
         }
+    }
+    handleSelect(value, name){
+        console.log(value, name)
     }
     setGuests(){
         let amount = 0;
@@ -30,30 +33,6 @@ class ComplexInput extends React.Component {
             }
         }
         this.setState({guests:amount})
-    }
-    TypeChange(a,field){
-        console.log(a.target)
-        const index = field.name;
-        let beds = this.state.beds;
-        beds[index].value = Number(field.value)
-        this.setState(
-            {beds:beds},()=>this.setGuests()
-        )
-    }
-    handleAmountChange(a,field){
-        console.log(a)
-        const index = Number(field.name)-100;
-        let beds = this.state.beds;
-        beds[index].amount = Number(field.value)
-        this.setState(
-            {beds:beds},()=>this.setGuests()
-        )
-    }
-    optionRender(arr){
-        const res = arr.map((item)=>
-            <option key={item.key} value={item.value}>{item.text}</option>
-        );
-        return res
     }
     handleClickAdd(){
        const index = this.state.index;
@@ -85,39 +64,41 @@ class ComplexInput extends React.Component {
             this.setState({index:index-1},()=>console.log(this.state))
             :
             this.setState({index:index})
-   }
+    }
     render(){
-
-        const bedOptions = this.optionRender(bedType);
-        const multOptions = this.optionRender(bedAmount);
-        const { value } = 1
-
-        const inputs = this.state.beds.map((bed)=>
+            const beds =this.state.beds;
+            const inputs = beds.map((bed)=>(
 
             bed.display===true?
                 <div key={bed.key} className='complex-input'>
+                <div>
                     <Field
-                                style={{margin:'0 0 0 10px'}}
-                                name={String(bed.key)}
-                                component={semanticSelectorFormField}
-                                as={Form.Select}
-                                options={bedType}
-                                label="Тип номеру"
-                                onChange={this.TypeChange}
-                                placeholder="Виберіть"
-                                validate={required}/>
-                                <br />
+                        key={bed.key}
+                        style={{width:'120px', margin:'0 0 0 10px', float:'left'}}
+                        name={'bed'+bed.key}
+                        component={semanticSelectorFormField}
+                        as={Form.Select}
+                        options={bedType}
+                        onChange={this.handleSelect}
+                        label="Тип номеру"
+                        placeholder="Виберіть"
+                        validate={required}
+                    />
+                </div>
                     <p>X</p>
+                    <div>
                     <Field
-                                style={{margin:'0 0 0 10px'}}
-                                name={String(Number(bed.key+100))}
-                                component={semanticSelectorFormField}
-                                as={Form.Select}
-                                options={bedAmount}
-                                label="Тип номеру"
-                                onChange={this.AmountChange}
-                                validate={required}/>
-                                <br />
+                        key={bed.key1}
+                        style={{width:'120px', margin:'0 0 0 10px', float:'left'}}
+                        name={"bed"+bed.key1}
+                        component={semanticSelectorFormField}
+                        as={Form.Select}
+                        options={bedAmount}
+                        onChange={this.handleSelect}
+                        placeholder="Виберіть"
+                        validate={required}
+                    />
+                    </div>
                     {bed.button?
                     <div onClick={this.handleDelete.bind(this)} className='delete-btn'>
                         <Icon name='remove circle' color='red'/>
@@ -129,12 +110,10 @@ class ComplexInput extends React.Component {
                 </div>
                 :
                 null
-        );
+            ));
 
         return(
             <div className='plan-price-form'>
-                <form action="">
-
                     <div name='2' className="plan-price-form-group">
                         <h3>Ліжка</h3>
                         <span>
@@ -153,26 +132,12 @@ class ComplexInput extends React.Component {
                             </div>
                         }
 
-                       <p>Скільки людей можуть зупинитись цьому в номері?</p>
-                        <input name='guestsAmount' onChange={this.handleInputChange.bind(this)} type="text" value={this.state.guests}/>
+                       <p id='guestAmountTitle'>Скільки людей можуть зупинитись цьому в номері?</p>
+                        <input onChange={this.handleInputChange.bind(this)} name='guestsAmount' type="text" value={this.state.guests}/>
                     </div>
-
-                </form>
             </div>
         )
     }
 }
-    // Quickfilter.propTypes = {
-    //     boxes: PropTypes.arrayOf(
-    //         PropTypes.shape({
-    //             id: PropTypes.string,
-    //             ischecked: PropTypes.boolean,
-    //             label:PropTypes.string,
-    //             amount: PropTypes.oneOfType([PropTypes.number],[PropTypes.string]),
-    //             type: PropTypes.string
-    //         })
-    //     ),
-    //     OnQuickFilterChange: PropTypes.func
-    // }
 export default ComplexInput;
 

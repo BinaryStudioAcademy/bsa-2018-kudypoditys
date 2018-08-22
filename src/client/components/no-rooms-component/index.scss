@@ -23,7 +23,7 @@
 .plan-price-form-group{
     background-color: #fff;
     clear: both;
-    width: auto;
+    width: 100%;
     border-radius: 5px;
     overflow: hidden;
     float: left;
@@ -32,8 +32,12 @@
 .plan-price-form-group label,input,select {
     padding: 10px;
     display: block;
-    width: 250px;
+    width: 120px;
     font-size: 15px;
+    float: left;
+}
+.plan-price-form-group label{
+    width: auto;
     float: left;
 }
 .plan-price-form-group select,input{
@@ -48,7 +52,7 @@
 .plan-price-form-group input[name='roomsAmount']{
     width: 50px;
 }
-.plan-price-form-group>p{
+#guestAmountTitle{
     padding: 20px 4px 0px 4px;
     clear: both;
 }
@@ -72,9 +76,9 @@
     float: left;
     margin: 20px 0 0 0;
     clear: both;
-    overflow: hidden;
+    //overflow: hidden;
     width: 100%;
-    clear: both;
+
 }
 .complex-input>select{
     display: block;
@@ -86,8 +90,9 @@
 }
 .complex-input>p{
     display: block;
+    clear: none;
     float: left;
-    padding: 15px 2px 2px 2px
+    padding: 8px 0px 0px 10px
 }
 .plan-price-form-group input[name='guestsAmount'],input[name='roomSquare']{
     display: block;
