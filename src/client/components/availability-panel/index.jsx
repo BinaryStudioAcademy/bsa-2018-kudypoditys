@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./index.scss";
 import { Header, Button, Form, Dropdown } from "semantic-ui-react";
-// import { DateInput } from 'semantic-ui-calendar-react';
 import moment from "moment";
 import { DateRangePicker } from "react-dates";
 
@@ -12,9 +11,11 @@ import { connect } from "react-redux";
 export class AvailabilityPanel extends React.Component {
     constructor(props) {
         super(props);
+        const { checkIn, checkOut } = this.props;
         this.state = {
-            startDate: moment(),
-            endDate: moment().add(5, "days"),
+            startDate: checkIn === null ? moment() : moment(checkIn),
+            endDate:
+                checkOut === null ? moment().add(5, "days") : moment(checkOut),
             focusedInput: null
         };
     }
@@ -34,18 +35,12 @@ export class AvailabilityPanel extends React.Component {
         if (selectedDates.startDate && selectedDates.endDate) {
             this.props.onDatesChange(selectedDates);
         }
+
         this.setState(selectedDates);
     };
 
     render() {
-        const {
-            propertyName,
-            checkIn,
-            checkOut,
-            adults,
-            children,
-            rooms
-        } = this.props;
+        const { propertyName, adults, children, rooms } = this.props;
         const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
 
@@ -74,45 +69,6 @@ export class AvailabilityPanel extends React.Component {
                                     this.setState({ focusedInput });
                                 }}
                             />
-
-                            {/* <Form.Field>
-                            <label>Check-in Date</label>
-                            <DateInput
-                                closable
-                                required
-                                autoComplete='off'
-                                minDate={moment()}
-                                dateFormat='MMM D YYYY'
-                                popupPosition='bottom center'
-                                icon='calendar alternate outline'
-                                iconPosition='left'
-                                placeholder='Check-in'
-                                name='checkIn'
-                                value={checkIn === null ? '' : moment(checkIn).format('MMM D YYYY')}
-                                onChange={(event, input) => this.props.onCheckInChange(moment(input.value))}
-                                onFocus={this.hideRoomSelector}
-                                onKeyPress={event => event.preventDefault()}
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Check-out Date</label>
-                            <DateInput
-                                closable
-                                required
-                                autoComplete='off'
-                                minDate={moment()}
-                                dateFormat='MMM D YYYY'
-                                popupPosition='bottom center'
-                                icon='calendar alternate outline'
-                                iconPosition='left'
-                                placeholder='Check-out'
-                                name='checkOut'
-                                value={checkOut === null ? '' : moment(checkOut).format('MMM D YYYY')}
-                                onChange={(event, input) => this.props.onCheckOutChange(moment(input.value))}
-                                onFocus={this.hideRoomSelector}
-                                onKeyPress={event => event.preventDefault()}
-                            />
-                        </Form.Field> */}
                             <div className="btn-wrp">
                                 <Button
                                     type="submit"
@@ -171,13 +127,12 @@ export class AvailabilityPanel extends React.Component {
 
 AvailabilityPanel.propTypes = {
     propertyName: PropTypes.string.isRequired,
-    checkIn: PropTypes.number,
-    checkOut: PropTypes.number,
+    checkIn: PropTypes.instanceOf(Date),
+    checkOut: PropTypes.instanceOf(Date),
     adults: PropTypes.number,
     children: PropTypes.number,
     rooms: PropTypes.number,
-    onCheckInChange: PropTypes.func.isRequired,
-    onCheckOutChange: PropTypes.func.isRequired,
+    onDatesChange: PropTypes.func.isRequired,
     onAdultsChange: PropTypes.func.isRequired,
     onChildrenChange: PropTypes.func.isRequired,
     onRoomsChange: PropTypes.func.isRequired,
