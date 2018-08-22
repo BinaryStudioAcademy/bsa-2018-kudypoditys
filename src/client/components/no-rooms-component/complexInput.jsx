@@ -1,6 +1,5 @@
 import React from 'react';
 import './index.scss';
-import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react'
 import { required} from 'client/regexValidationService';
 import { Field} from 'redux-form';
@@ -18,22 +17,41 @@ class ComplexInput extends React.Component {
                 {key:1,key1: 4, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:false, button:true},
                 {key:2,key1: 5, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:false, button:true}
             ],
+            addedBeds:{
+                0:{type:'', amount:null},
+                1:{type:'', amount:null},
+                2:{type:'', amount:null}
+            },
             guests:1,
             index:0
         }
     }
-    handleSelect(value, name){
-        console.log(value, name)
+    componentDidMount(){
+        this.props.onChange(this.state.addedBeds,this.state.guests)
     }
-    setGuests(){
-        let amount = 0;
-        for(let bed of this.state.beds){
-            if(bed.display){
-                amount+=bed.value*bed.amount
-            }
+    setBeds(key,value){
+        let beds = this.state.addedBeds
+        if(value.length<=2){
+            beds[key].amount = value
         }
-        this.setState({guests:amount})
+        else{
+            beds[key].type = value
+        }
+        this.setState(
+            {addedBeds:beds},
+            ()=>this.props.onChange(this.state.addedBeds,this.state.guests))
     }
+    handleSelect(e, name){
+        let value = '';
+        for(var sym in e){
+        value += typeof(e[sym]) === 'string'?
+            e[sym]
+        :
+            ''
+        }
+        this.setBeds(name,value);
+    }
+
     handleClickAdd(){
        const index = this.state.index;
        this.state.index<2
@@ -43,14 +61,16 @@ class ComplexInput extends React.Component {
                 beds[this.state.index].display = true;
                 this.setState({
                     beds:beds,
-                 },()=>this.setGuests())
+                 })
             })
         :
         this.setState({index:index})
     }
     handleInputChange(e){
         const value = e.target.value;
-        this.setState({guests:value})
+        this.setState(
+            {guests:value},
+            ()=>this.props.onChange(this.state.addedBeds,this.state.guests))
     }
     handleDelete(){
        const index = this.state.index;
@@ -58,10 +78,10 @@ class ComplexInput extends React.Component {
        beds[this.state.index].display = false;
        this.setState({
            beds:beds,
-        },()=>this.setGuests())
+        })
         this.state.index>0
             ?
-            this.setState({index:index-1},()=>console.log(this.state))
+            this.setState({index:index-1})
             :
             this.setState({index:index})
     }
@@ -79,7 +99,7 @@ class ComplexInput extends React.Component {
                         component={semanticSelectorFormField}
                         as={Form.Select}
                         options={bedType}
-                        onChange={this.handleSelect}
+                        onChange={(e)=>this.handleSelect(e,bed.key)}
                         label="Тип номеру"
                         placeholder="Виберіть"
                         validate={required}
@@ -94,7 +114,7 @@ class ComplexInput extends React.Component {
                         component={semanticSelectorFormField}
                         as={Form.Select}
                         options={bedAmount}
-                        onChange={this.handleSelect}
+                        onChange={(e)=>this.handleSelect(e,bed.key)}
                         placeholder="Виберіть"
                         validate={required}
                     />

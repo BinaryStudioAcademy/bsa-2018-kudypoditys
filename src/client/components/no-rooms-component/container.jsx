@@ -10,7 +10,7 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        createProperty(data) {
+        handleSubmit(data) {
             dispatch(tabSubmit(data))
         }
     }

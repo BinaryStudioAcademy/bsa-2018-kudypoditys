@@ -1,19 +1,12 @@
 import React, { Fragment } from "react";
 import './index.scss';
-import { Card, CardDescription, Button, Form } from "semantic-ui-react";
-import PropTypes from 'prop-types';
-import { fieldArrayMetaPropTypes } from 'redux-form';
+import { Card, Button, Form } from "semantic-ui-react";
 import ComplexInput from './complexInput.jsx';
-import RoomSquare from './roomSquare.jsx';
-import BasePriceForm from './basePrice.jsx';
-import ApplyBtn from './applyButton.jsx';
 import FormTextInput from './input-form';
-import { required, maxLength20, phoneNumber, number,maxLength } from 'client/regexValidationService';
+import { required, number,maxLength } from 'client/regexValidationService';
 import { Field, reduxForm } from 'redux-form';
 import semanticSelectorFormField from './dropdown-form/semanticSelectorForm.jsx'
-import SelectInput from './selectInput.jsx'
 import { type, smoking} from './options.js';
-//import RoomSquare from './roomSquare';
 class AddRoom extends React.Component {
     constructor(props){
         super(props);
@@ -22,47 +15,56 @@ class AddRoom extends React.Component {
             roomSmoking:'',
             roomAmount:'',
             roomSquare:'',
-            roomPrice:''
+            roomPrice:'',
+            beds:{},
+            maxGuests:''
         }
     }
+    valToString(val){
+        var value = ''
+        for(var sym in val){
+            value += typeof(val[sym]) === 'string'?
+                val[sym]
+            :
+                ''
+            }
+        return value
+    }
+    handleTypeChange(e){
+        const value = this.valToString(e);
+        this.setState({roomType: value})
+    }
+    handleSmokeChange(e){
+        const value = this.valToString(e);
+        this.setState({roomSmoking: value})
+    }
+    handleRoomAmountChange(e){
+        const value = e.target.value
+        this.setState({roomAmount:value})
+    }
+    handleRoomSquareChange(e){
+        const value = e.target.value
+        this.setState({roomSquare:value})
+    }
+    handleRoomPriceChange(e){
+        const value = e.target.value
+        this.setState({roomPrice:value})
+    }
+    handleSubmit(e){
+        this.props.createProperty(this.state)
+    }
+    handleComplexInputChange(beds,guests){
+        this.setState({beds:beds})
+        this.setState({maxGuests:guests})
+    }
 
-    // handleTypeChange(value){
-    //     console.log(value)
-    // }
-    // handleSmokeChange(value){
-    //     console.log(value)
-    // }
-    // handleRoomAmountChange(e){
-    //     console.log(e.target.value)
-    // }
-    // handleRoomSquareChange(e){
-    //     console.log(e.target.value)
-    // }
-    // handleRoomPriceChange(e){
-    //     console.log(e.target.value)
-    // }
-    // handleSubmit(e){
-    //     console.log(e.target)
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    // }
     render(){
-        const { value } = 1
         const { handleSubmit, pristine, submitting } = this.props
         return(
-            // <reduxForm>
-            //     <Field
-            //         component={ApplyBtn}
-            //         type='text'
-            //         onchange={this.handleFormChange}
-            //         validate={[required, number]}
-            //     />
-            // </reduxForm>
-            // <ApplyBtn onchange={this.handleFormChange}/>
-            <form action="" onSubmit={handleSubmit}>
+            <form action="" onSubmit={handleSubmit(this.state)}>
             <div className='plan-price-form'>
 
-             <Fragment key='1'>
+             <Fragment>
 
                 <Card style={{ width: '900px' }} color='teal'>
                     <Card.Content>
@@ -75,7 +77,7 @@ class AddRoom extends React.Component {
                                 component={semanticSelectorFormField}
                                 as={Form.Select}
                                 options={type}
-                                onChange={this.handleTypeChange}
+                                onChange={this.handleTypeChange.bind(this)}
                                 label="Тип номеру"
                                 placeholder="Виберіть"
                                 validate={required}/>
@@ -85,7 +87,7 @@ class AddRoom extends React.Component {
                                 component={semanticSelectorFormField}
                                 as={Form.Select}
                                 options={smoking}
-                                onChange={this.handleSmokeChange}
+                                onChange={this.handleSmokeChange.bind(this)}
                                 label="Куріння"
                                 placeholder="Виберіть"
                                 validate={required}/>
@@ -97,7 +99,7 @@ class AddRoom extends React.Component {
                                 as={Form.Input}
                                 name="roomsAmount"
                                 key='roomsAmount'
-                                onChange={this.handleRoomAmountChange}
+                                onChange={this.handleRoomAmountChange.bind(this)}
                                 type="text"
                                 validate={[required, number, maxLength(3)]} />
                     </Card.Content>
@@ -108,7 +110,7 @@ class AddRoom extends React.Component {
                         <Card.Description style={{ fontSize: '18px' }}>
                             Ліжка
                         </Card.Description><br />
-                        <ComplexInput/>
+                        <ComplexInput onChange={this.handleComplexInputChange.bind(this)}/>
                     </Card.Content>
                 </Card>
 
@@ -123,7 +125,7 @@ class AddRoom extends React.Component {
                                 as={Form.Input}
                                 name="roomSquare"
                                 key="roomSquare"
-                                onChange={this.handleRoomSquareChange}
+                                onChange={this.handleRoomSquareChange.bind(this)}
                                 label="кв.м"
                                 type="text"
                                 validate={number} />
@@ -146,7 +148,7 @@ class AddRoom extends React.Component {
                                 as={Form.Input}
                                 name="roomPrice"
                                 key="roomPrice"
-                                onChange={this.handleRoomPriceChange}
+                                onChange={this.handleRoomPriceChange.bind(this)}
                                 label="UAH/ніч"
                                 type="text"
                                 validate={[required, number, maxLength(3)]} />
@@ -157,48 +159,6 @@ class AddRoom extends React.Component {
                 disabled={pristine || submitting} >Continue</Button>
 
             </Fragment>
-
-
-
-
-                 {/* <form action="">
-                    <div name='1' className="plan-price-form-group" onClick={this.onFocusHandler}>
-                        <h3>Виберіть</h3>
-                        <SelectInput
-                            name='type'
-                            options={typeOptions}
-                            label='Тип номеру'
-                            onchange={this.handleFormChange.bind(this)}
-                        />
-                        <label  htmlFor="type"className='plan-price-form-label'>Тип номеру</label>
-                        <select name='type' className='plan-price-form-select'>
-                            {typeOptions}
-                        </select>
-
-                        <label htmlFor="smoking" className='plan-price-form-label' >Куріння</label>
-                        <select name='smoking' className='plan-price-form-select' placeholder='Виберіть' >
-                            {smokingOptions}
-                        </select>
-                        <label  htmlFor="roomsAmount" className='plan-price-form-label'>Кількість номерів (цього типу)</label>
-                        <input name='roomsAmount'type="text"/>
-                        <reduxForm >
-                            <Field
-                            component={FormTextInput}
-                            name="PropertyName"
-                            label="Property name"
-                            type="text"
-                            validate={[required, maxLength20]} />
-
-                        </reduxForm >
-
-                        </div>
-
-                   <ComplexInput onFocus={this.onFocusHandler.bind(this)} />
-                   <RoomSquare />
-                   <BasePriceForm/>
-                   <ApplyBtn/>
-
-                </form> */}
           </div>
           </form>
         )
@@ -207,18 +167,5 @@ class AddRoom extends React.Component {
 AddRoom = reduxForm({
     form: "TabRegistration"
 })(AddRoom);
-    // Quickfilter.propTypes = {
-    //     boxes: PropTypes.arrayOf(
-    //         PropTypes.shape({
-    //             id: PropTypes.string,
-    //             ischecked: PropTypes.boolean,
-    //             label:PropTypes.string,
-    //             amount: PropTypes.oneOfType([PropTypes.number],[PropTypes.string]),
-    //             type: PropTypes.string
-    //         })
-    //     ),
-    //     OnQuickFilterChange: PropTypes.func
-    // }
-
 export default AddRoom;
 
