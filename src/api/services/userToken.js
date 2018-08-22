@@ -91,12 +91,12 @@ class UserTokenService extends Service {
 
     getAccessExpiresDate() {
         const secondsFromUnixEpoch = dateHelpers.toUnixTimeSeconds(new Date());
-        return secondsFromUnixEpoch + settings.accessTokenLife;
+        return (secondsFromUnixEpoch + settings.accessTokenLife) * 1000;
     }
 
     getRefreshExpiresDate() {
         const secondsFromUnixEpoch = dateHelpers.toUnixTimeSeconds(new Date());
-        return secondsFromUnixEpoch + settings.refreshTokenLife;
+        return (secondsFromUnixEpoch + settings.refreshTokenLife) * 1000;
     }
 }
 

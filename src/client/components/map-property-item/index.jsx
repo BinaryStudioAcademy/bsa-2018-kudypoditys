@@ -12,15 +12,15 @@ export class MapPropertyItem extends Component {
             <Card
                 style={{
                     minWidth: "100px",
-                    margin: "10%"
+                    margin: "3%"
                 }}
             >
                 <Image centered src={this.props.imageSrc} size="medium"/>
                 <Icon
                     style={{
                         position: "absolute",
-                        right: "2%",
-                        top: "2%",
+                        right: "1%",
+                        top: "1%",
                         textAlign: "right",
                         color: "white"
                     }}
@@ -29,7 +29,7 @@ export class MapPropertyItem extends Component {
                     onClick={this.props.closeClicked}
                 />
                 <Card.Content>
-                    <Card.Header>
+                    <Card.Header style={{textAlight: "center"}}>
                         <a tabIndex="0" onClick={this.nameClicked}>
                             {this.props.propertyName}
                         </a>

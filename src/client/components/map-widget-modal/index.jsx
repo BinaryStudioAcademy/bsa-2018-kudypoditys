@@ -31,7 +31,7 @@ export default class MapWidgetModal extends Component {
                         <MapView
                             properties={this.props.properties}
                             startPosition={this.props.startPosition}
-                            zoom={12}
+                            zoom={13}
                             controlEnable={true}
                         />
                         );

@@ -3,7 +3,7 @@ import {policesTabUpdate} from "client/logic/polices-tab/actions";
 
 export function mapStateToProps(state) {
     const {policesTab} = state;
-    console.log(policesTab)
+
     return {
         arrivalFrom: policesTab.arrivalFrom,
         arrivalTo: policesTab.arrivalTo,

@@ -57,7 +57,9 @@ const state = {
     images: []
 
     ,
-
+    propertySubmit: {
+        activeIndex: 2
+    },
     header: {
         currencies: [],
         selectedCurrency: 1,
@@ -129,21 +131,47 @@ const state = {
     ],
 
     rooms: {},
-
+  
     propertyLayoutTab: {
         title: 'Apartment with Garden View',
         amount:'1'
     },
 
-    propertyServicesTab: {
+    propertyRegistration: {
+        // PAYMENT_TAB
+        paymentType: "cash", // "creditcards"
+        paymentCreditCards: {
+            mastercard: false,
+            visa: false
+        },
+        vatTaxes: "default", // "none"
+        cityTax: "default", // "individual"
+        cityTaxIndividual: {
+            value: "",
+            type: "percent",
+            includeToPrice: false
+        },
+        additionalFees: false,
+        additionalFeesOptions: [
+
+        ],
+        commissionName: "Name one",
+        recipientSameAddress: true,
+        recipientActualAddress: {
+            country: "",
+            city: "",
+            address: "",
+            postcode: ""
+        },
+        // SERVICES_TAB
         internet: "free", // additional, none
-        internetFee: "0",
+        internetFee: "",
         parking: {
             providing: "none",
             type: "private",
             placement: "on_territory",
             booking: "need",
-            priceForDay: "0"
+            priceForDay: ""
         },
         languages: [
             "ukrainian",

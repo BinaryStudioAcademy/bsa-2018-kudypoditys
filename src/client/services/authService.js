@@ -51,9 +51,8 @@ class AuthService {
     }
 
     logout() {
-        cookies.erase("accessToken");
-        cookies.erase("refreshToken");
-        history.push("/log");
+        cookies.clearTokens();
+        history.push("/login");
     }
 }
 

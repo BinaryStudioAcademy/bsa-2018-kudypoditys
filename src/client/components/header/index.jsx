@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { Dropdown, Button, Menu, Grid } from "semantic-ui-react";
+import React, {Component, Fragment} from "react";
+import {connect} from "react-redux";
+import {Dropdown, Button, Menu, Grid} from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import Search from "client/components/search";
 
 import "./index.scss";
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 
 export class MainHeader extends Component {
     logout = () => {
@@ -17,12 +17,12 @@ export class MainHeader extends Component {
         history.push("/login");
     };
 
-    state = { activeItem: "about-us" };
+    state = {activeItem: "about-us"};
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+    handleItemClick = (e, {name}) => this.setState({activeItem: name});
 
     render() {
-        const { currencies, selectedCurrency, currentUser } = this.props;
+        const {currencies, selectedCurrency, currentUser} = this.props;
 
         return (
             <div className="header--wraper">
@@ -32,13 +32,13 @@ export class MainHeader extends Component {
                             Kudypoditys
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-                            <a style={{ marginRight: "24px" }}>EN</a>{" "}
+                            <a style={{marginRight: "24px"}}>EN</a>{" "}
                             <a onClick={this.login}>Login</a>
                         </Grid.Column>
                     </Grid.Row>
                     {this.props.showSearch ? (
                         <Grid.Row centered columns={1}>
-                            <Grid.Column width={16} centered>
+                            <Grid.Column width={16}>
                                 <Search
                                     view="bar"
                                     destination="Lviv"
