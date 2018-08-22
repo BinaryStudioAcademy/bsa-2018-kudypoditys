@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Grid } from "semantic-ui-react";
 import PropTypes from "prop-types";
@@ -9,12 +9,20 @@ import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 
 export class MainHeader extends Component {
-    logout = () => {
+    logoutClicked = () => {
         this.props.logout();
     };
 
-    login = () => {
+    loginClicked = () => {
         history.push("/login");
+    };
+
+    registerClicked = () => {
+        history.push("/signup");
+    };
+
+    logoClicked = () => {
+        history.push("/");
     };
 
     state = { activeItem: "about-us" };
@@ -22,18 +30,44 @@ export class MainHeader extends Component {
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
     render() {
-        const { currencies, selectedCurrency, currentUser } = this.props;
-
+        const { currentUser } = this.props;
         return (
             <div className="header--wraper">
                 <Grid centered className={"grid--main"}>
                     <Grid.Row columns={2} className={"row--inform"}>
                         <Grid.Column width={8} textAlign={"left"}>
-                            Kudypoditys
+                            <div
+                                className="header-logo"
+                                onClick={this.logoClicked}
+                            >
+                                Kudypoditys
+                            </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-                            <a style={{ marginRight: "24px" }}>EN</a>{" "}
-                            <a onClick={this.login}>Login</a>
+                            <a style={{ marginRight: "24px" }}>EN</a>
+                            {currentUser ? (
+                                <Fragment>
+                                    Wellcome {currentUser.fullName}
+                                    <a
+                                        style={{ marginLeft: "24px" }}
+                                        onClick={this.logoutClicked}
+                                    >
+                                        Logout
+                                    </a>
+                                </Fragment>
+                            ) : (
+                                <Fragment>
+                                    <a
+                                        style={{ marginRight: "24px" }}
+                                        onClick={this.loginClicked}
+                                    >
+                                        Login
+                                    </a>
+                                    <a onClick={this.registerClicked}>
+                                        Register
+                                    </a>
+                                </Fragment>
+                            )}
                         </Grid.Column>
                     </Grid.Row>
                     {this.props.showSearch ? (
