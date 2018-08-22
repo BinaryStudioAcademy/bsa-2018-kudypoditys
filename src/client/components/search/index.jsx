@@ -78,7 +78,6 @@ export class Search extends React.Component {
             adults,
             children
         } = this.props;
-        console.log(this.state);
         return (
             <Form
                 className="search search--view-bar"
