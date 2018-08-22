@@ -92,7 +92,6 @@ function associations(models) {
 
     // PropertyType associations
     PropertyType.hasMany(Property);
-    PropertyType.hasMany(PropertyPaymentType);
 
     // PropertyPaymentType associations - проміжна таблиця
     PropertyPaymentType.belongsTo(Property);
