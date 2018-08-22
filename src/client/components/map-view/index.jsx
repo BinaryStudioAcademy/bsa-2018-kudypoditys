@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { MAPBOX_TOKEN } from "client/constants";
 import { Icon } from "semantic-ui-react";
@@ -9,9 +9,24 @@ import MapPopupItem from "client/components/map-popup-item";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 class MapView extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            viewport: {
+                latitude: this.props.startPosition.latitude,
+                longitude: this.props.startPosition.longitude,
+                zoom: this.props.zoom,
+                mapboxApiAccessToken: MAPBOX_TOKEN
+            },
+            controlEnable: this.props.controlEnable,
+            popupInfo: null,
+            propertyInfo: null
+        };
+    }
     renderPopup = () => {
-        const {popupInfo} = this.state;
+        const { popupInfo, controlEnable } = this.state;
         return (
+            controlEnable &&
             popupInfo && (
                 <Popup
                     tipSize={15}
@@ -21,7 +36,7 @@ class MapView extends React.Component {
                     longitude={popupInfo.longitude}
                     closeButton={false}
                     dynamicPosition={true}
-                    onClose={() => this.setState({popupInfo: null})}
+                    onClose={() => this.setState({ popupInfo: null })}
                 >
                     <MapPopupItem
                         propertyName={popupInfo.name}
@@ -53,8 +68,8 @@ class MapView extends React.Component {
                 <Icon
                     size="big"
                     name="map marker alternate"
-                    onMouseEnter={() => this.setState({popupInfo: property})}
-                    onMouseLeave={() => this.setState({popupInfo: null})}
+                    onMouseEnter={() => this.setState({ popupInfo: property })}
+                    onMouseLeave={() => this.setState({ popupInfo: null })}
                     onClick={() => {
                         this.handleMarkerClicked(property);
                     }}
@@ -63,10 +78,10 @@ class MapView extends React.Component {
         );
     };
     handleMarkerClicked = property => {
-        if (this.state.controlEnable) this.setState({propertyInfo: property});
+        if (this.state.controlEnable) this.setState({ propertyInfo: property });
     };
     renderInfo = () => {
-        const {propertyInfo} = this.state;
+        const { propertyInfo } = this.state;
         return (
             propertyInfo && (
                 <MapPropertyItem
@@ -75,26 +90,11 @@ class MapView extends React.Component {
                     price={propertyInfo.price}
                     rating={propertyInfo.rating}
                     imageSrc={propertyInfo.imageSrc}
-                    closeClicked={() => this.setState({propertyInfo: null})}
+                    closeClicked={() => this.setState({ propertyInfo: null })}
                 />
             )
         );
     };
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            viewport: {
-                latitude: this.props.startPosition.latitude,
-                longitude: this.props.startPosition.longitude,
-                zoom: this.props.zoom,
-                mapboxApiAccessToken: MAPBOX_TOKEN
-            },
-            controlEnable: this.props.controlEnable,
-            popupInfo: null,
-            propertyInfo: null
-        };
-    }
 
     componentDidMount() {
         window.addEventListener("resize", this.resize);

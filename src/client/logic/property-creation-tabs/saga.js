@@ -33,7 +33,7 @@ function* updateProperty(action) {
 
 export default function* propertySaga() {
     yield all([
-        takeLatest(actionTypes.CREATE_PROPERTY, createProperty),
-        takeLatest(actionTypes.UPDATE_PROPERTY, updateProperty)
+        takeLatest(actionTypes.CREATE_PROPERTY, createProperty)
+        // takeLatest(actionTypes.UPDATE_PROPERTY, updateProperty)
     ])
 }

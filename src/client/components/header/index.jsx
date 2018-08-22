@@ -38,7 +38,7 @@ export class MainHeader extends Component {
                     </Grid.Row>
                     {this.props.showSearch ? (
                         <Grid.Row centered columns={1}>
-                            <Grid.Column width={16} centered>
+                            <Grid.Column width={16}>
                                 <Search
                                     view="bar"
                                     destination="Lviv"

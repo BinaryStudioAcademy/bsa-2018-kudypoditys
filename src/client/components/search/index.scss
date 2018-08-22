@@ -7,7 +7,6 @@
     background-color: #ffffff;
     width: fit-content;
     margin: 0 auto;
-
     size: 16px !important;
     margin-top: 84px;
 }
@@ -124,6 +123,10 @@ table.ui.celled.table tbody td:hover {
     justify-content: space-evenly;
     width: 30%;
     height: 210px;
+}
+
+form.Field {
+    align-content: right;
 }
 
 .room-selector > .field {
