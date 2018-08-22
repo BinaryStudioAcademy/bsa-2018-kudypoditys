@@ -9,7 +9,7 @@ const authPaths = [
     },
     {
         url: "/api/reservation",
-        methods: ["post"]
+        methods: null
     }
 ];
 
