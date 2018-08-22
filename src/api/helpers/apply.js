@@ -9,11 +9,12 @@ const apply = (pathes, middleware) => {
 function needsAuth(reqMethod, reqPath, pathes) {
     for (let path of pathes) {
         let methodNeedsAuth = false;
+        if (path.methods === null) {
+            if (path.url.indexOf(reqPath) === 0) return true;
+            return false;
+        }
         for (let i = 0; i < path.methods.length; i++) {
-            if (
-                reqMethod.toLowerCase() === path.methods[i].toLowerCase() ||
-                path.methods === null
-            ) {
+            if (reqMethod.toLowerCase() === path.methods[i].toLowerCase()) {
                 methodNeedsAuth = true;
                 break;
             }
