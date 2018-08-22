@@ -16,12 +16,12 @@ reservation
     })
     .post((req, res) => {
         const newReservation = {
-            dateIn: req.body.dateIn,
-            dateOut: req.body.dateOut,
-            guestCount: req.body.guestCount,
+            dateIn: new Date(Number(req.body.dateIn)),
+            dateOut: new Date(Number(req.body.dateOut)),
+            guestsCount: req.body.guestsCount,
             userId: req.user.id,
-            roomId: req.roomId,
-            paymentTypeId: req.body.paymentTypeId
+            roomId: Number(req.body.roomId),
+            paymentTypeId: Number(req.body.paymentTypeId)
         };
         reservationService
             .addReservation(newReservation)
@@ -29,7 +29,7 @@ reservation
                 res.send(reservation);
             })
             .catch(err => {
-                res.status(500).send(err);
+                res.status(500).send(err.message);
             });
     });
 

@@ -21,7 +21,9 @@ class ReservationService extends Service {
                 bookings
             );
             if (available) return this.repository.create(reservation);
-            throw new Error("No such rooms available for these dates");
+            return Promise.reject(
+                new Error("No such rooms available for these dates")
+            );
         } catch (err) {
             return Promise.reject(err);
         }
@@ -39,11 +41,10 @@ class ReservationService extends Service {
         if (!bookings || !bookings.length) return Promise.resolve(true);
         try {
             const room = await roomService.findById(reservation.roomId);
-            let roomAmount = room.amount;
             if (!room) throw new Error("Wrong room id: room type not found");
+            let roomAmount = room.amount;
             for (let i = 0; i < bookings.length; i++) {
                 if (
-                    bookings[i].roomId === room.id &&
                     this.datesIntersect(
                         bookings[i].dateIn,
                         bookings[i].dateOut,
