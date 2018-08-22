@@ -60,15 +60,10 @@ class PropertyRepository extends Repository {
             ]
         });
     }
-    getFilteredProperties(city, checkInDate, checkOutDate, rooms, adults, children) {
-        return this.model.findOne({
+    getFilteredProperties(filter) {
+        return this.model.findAll({
             where: {
-                city: city,
-                checkInDate: checkInDate,
-                checkOutDate: checkOutDate,
-                rooms: rooms,
-                adults: adults,
-                children: children
+                filter:filter
             },
             include: [
                 City,

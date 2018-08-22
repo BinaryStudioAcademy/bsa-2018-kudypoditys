@@ -30,11 +30,8 @@ class PropertyService extends Service {
             console.log('service catch ', _)
         });
     }
-    getFilteredProperties(city, checkInDate, checkOutDate, rooms, adults, children) {
-        return propertyRepository.getFilteredProperties({
-            city: city, checkInDate: checkInDate,
-            checkOutDate: checkOutDate, rooms: rooms, adults:adults,children:children
-        })
+    getFilteredProperties(filter) {
+        return propertyRepository.getFilteredProperties(filter)
     }
 }
 
