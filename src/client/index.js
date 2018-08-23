@@ -50,13 +50,13 @@ ReactDOM.render(
                 <Route
                     path="/add-property/"
                     component={() => (
-                        <AuthHOC component={PropertyCreationTabs} />
+                        <AuthHOC Component={PropertyCreationTabs} />
                     )}
                 />
                 <Route path="/404" component={NotFoundPage} />
                 <Route
                     path="/user-cabinet"
-                    component={() => <AuthHOC component={UserCabinet} />}
+                    component={() => <AuthHOC Component={UserCabinet} />}
                 />
                 <Route component={NotFoundPage} />
             </Switch>
