@@ -22,7 +22,7 @@ class SearchPage extends React.Component {
                 <Header showSearch={true}/>
                 <div className="search-page__wrapper">
                     <div className="breadcrumb_wrapper">
-                        <Segment>
+                        <Segment className="breadcrumb__segment">
                             <Breadcrumb
                                 icon="right angle"
                                 sections={[

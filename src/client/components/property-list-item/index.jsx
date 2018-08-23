@@ -55,15 +55,15 @@ export class PropertyListItem extends React.Component {
         }
 
         return (
-            <Card
-                fluid
-                style={{
+            <Card className="property_card"
+                  fluid
+                  style={{
                     padding: 0,
 
                 }}
             >
                 <CardContent>
-                    <Grid>
+                    <Grid className="search_page__grid">
 
                         <Grid.Column style={{width: "20%"}}>
                             <Label
@@ -184,7 +184,9 @@ export class PropertyListItem extends React.Component {
                                 </div>
 
 
-                                <div className="price">
+                                {/*<div className="price"style={{*/}
+                                {/*padding: 10*/}
+                                {/*}} >*/}
                                      <span className="priceInfo">
 
                                             {propertyItemData.priceFrom}
@@ -193,7 +195,7 @@ export class PropertyListItem extends React.Component {
                                         </span>
 
 
-                                </div>
+                                {/*</div>*/}
 
                             </div>
 
