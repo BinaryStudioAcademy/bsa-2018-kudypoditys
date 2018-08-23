@@ -3,7 +3,7 @@ import { searchUpdate } from "../../logic/search/actions";
 export function mapStateToProps(state, ownProps) {
     const { search } = state;
     return {
-        destination: search.destination,
+        //destination: search.destination,
         checkIn: search.checkIn,
         checkOut: search.checkOut,
         adults: search.adults,
@@ -32,8 +32,11 @@ export function mapDispatchToProps(dispatch, ownProps) {
             ];
             dispatch(searchUpdate({ results: serverResponse }));
         },
-        onDestinationChange(value) {
-            dispatch(searchUpdate({ destination: value }));
+        onSearchChange(value) {
+            dispatch(searchUpdate());
+        },
+        onResultSelect(value) {
+            dispatch(searchUpdate());
         },
         onDatesChange(value) {
             dispatch(
