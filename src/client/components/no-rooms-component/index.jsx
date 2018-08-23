@@ -16,7 +16,7 @@ class PricesTab extends React.Component {
         this.setState({displayAddForm:true});
     }
     handleSubmit(data){
-        this.props.submitTab(data)
+        // todo this.props.submitTab(data)
     }
     render() {
 
