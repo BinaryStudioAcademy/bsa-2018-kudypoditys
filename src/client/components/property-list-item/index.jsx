@@ -64,7 +64,8 @@ export class PropertyListItem extends React.Component {
             >
                 <CardContent>
                     <Grid>
-                        <Grid.Column style={{width: "24%"}}>
+
+                        <Grid.Column style={{width: "20%"}}>
                             <Label
                                 as="a"
                                 color="orange"
@@ -88,15 +89,18 @@ export class PropertyListItem extends React.Component {
                                 }}
                             />
                         </Grid.Column>
-                        <Grid.Column width={8}>
-                            <Header
-                                as="h3"
 
+                        <Grid.Column style={{width: "80%"}}>
+                            <div className="card_row">
+                                <div className="header_grd">
+                                    <Header
+                                        as="h3"
+                                        style={{
+                                            marginBottom: 6
+                                        }}
 
-                                onClick={this.handleRedirectToDetails}
-                            >
-
-                                <Header.Content
+                                        onClick={this.handleRedirectToDetails}
+                                    > <Header.Content
                                     style={{
                                         fontSize: 24,
                                         fontWeight: "bold",
@@ -107,21 +111,41 @@ export class PropertyListItem extends React.Component {
                                 >
                                     {propertyItemData.name}
                                 </Header.Content>
-                            </Header>
-                            <Rating defaultRating={propertyItemData.propertyStars} maxRating={5} disabled/>
-                            <CardMeta
-                                style={{
-                                    marginTop: 4
-                                }}
-                            >
-                                <Container className="location__span">
+
+                                    </Header>
+                                    <Rating defaultRating={propertyItemData.propertyStars} maxRating={5} disabled/>
+                                </div>
+                                <div className="rating_block">
+                                    <div style={{
+                                        textAlign: "center",
+                                        display: "flex",
+                                        flexDirection: "column"
+                                    }}>
+                                        <div className="ratingName">
+                                            {" "}
+                                            {ratingStatus}
+                                        </div>
+                                        <br/>
+                                        <span className="reviewsNumber">{propertyItemData.reviewsNamber} reviews</span>
+
+                                    </div>
+
+
+                                    <div className="rating_num"> {propertyItemData.rating}</div>
+                                </div>
+                            </div>
+                            <div className="card_row__location">
+
+                                <div className="location__span">
                                     <Icon
                                         name="map marker alternate"
                                         size="small"
                                         onClick={this.handleRedirectToMap}
                                     />
 
-                                    {propertyItemData.location}
+                                    {propertyItemData.location} {" - "}
+
+
                                     <MapWidgetModal
                                         properties={[
                                             {
@@ -145,100 +169,96 @@ export class PropertyListItem extends React.Component {
                                         controlEnable={true}
                                         buttonClass={"searchMapButton"}
                                     />
-                                    <span className="Property_list__distanceToCenter">({propertyItemData.distanceToCenter} km from center)</span>
-                                </Container>
-                            </CardMeta>
+                                    <span
+                                        className="Property_list__distanceToCenter">({propertyItemData.distanceToCenter} km from center)</span>
+                                </div>
 
-                            <Message className='search_result__message'
-                                style={{
-                                    color: "red",
-                                    display:
-                                        propertyItemData.availableRoomsCount ===
-                                        0
-                                            ? "block"
-                                            : "none"
-                                }}
-                            >
-                                Unfortunately we do not have any available rooms
-                            </Message>
-                            <Message className='search_result__message'
-                                style={{
-                                    color: "red",
-                                    display:
-                                        propertyItemData.availableRoomsCount ===
-                                        1
-                                            ? "block"
-                                            : "none"
-                                }}
-                            >
-                                The last available room!!!
-                            </Message>
-                        </Grid.Column>
-                        <Grid.Column style={{width: "24%"}}>
-                            <Grid columns={2}>
-                                <Grid.Column>
-                                    <Container style={{textAlign: "center"}}>
-                                        <span className="ratingName">
-                                            {" "}
-                                            {ratingStatus}
-                                        </span>
-                                        <br/>
-                                        <span className="reviewsNumber">{propertyItemData.reviewsNamber} reviews</span>
 
-                                    </Container>
-                                </Grid.Column>
-                                <Grid.Column style={{textAlign: "right"}}>
+                            </div>
 
-                                    <span className="rating"> {propertyItemData.rating}</span>
-                                </Grid.Column>
-                            </Grid>
-                            <Grid columns={1}>
-                                <Grid.Column>
+                            <div className="card_row__price">
+                                <div className="roomType">
+                                    <Icon name="add user"/>
 
-                                    <Container
-                                        floated="right"
-                                        textAlign="right"
-                                        style={{
+                                    {propertyItemData.roomType}
+                                </div>
 
-                                            display:
-                                                propertyItemData.availableRoomsCount ===
-                                                0
-                                                    ? "none"
-                                                    : "block"
-                                        }}
-                                    >
-                                        <span className="priceInfo">
+
+                                <div className="price">
+                                     <span className="priceInfo">
 
                                             {propertyItemData.priceFrom}
 
-                                            {propertyItemData.curency}
+                                         {propertyItemData.curency}
                                         </span>
 
-                                        <Button
-                                            className="search-page__main-button"
-                                            color={
-                                                propertyItemData.availableRoomsCount ===
-                                                0
-                                                    ? "grey"
-                                                    : "blue"
-                                            }
-                                            floated="right"
 
-                                            onClick={
-                                                propertyItemData.availableRoomsCount ===
-                                                0
-                                                    ? ""
-                                                    : this
-                                                        .handleRedirectToDetails
-                                            }
-                                        >
-                                            Choose room
-                                        </Button>
-                                    </Container>
-                                </Grid.Column>
-                            </Grid>
+                                </div>
+
+                            </div>
+
+
+                            <div className="card_row__order">
+                                <div className="search-page__messages">
+                                    <Message className='search_result__message'
+                                             style={{
+
+                                                 display:
+                                                     propertyItemData.availableRoomsCount ===
+                                                     0
+                                                         ? "block"
+                                                         : "none"
+                                             }}
+                                    >
+                                        Unfortunately we do not have any available rooms
+                                    </Message>
+                                    <Message className='search_result__message'
+                                             style={{
+
+                                                 display:
+                                                     propertyItemData.availableRoomsCount ===
+                                                     1
+                                                         ? "block"
+                                                         : "none"
+                                             }}
+                                    >
+                                        The last available room!!!
+                                    </Message>
+
+                                </div>
+
+
+                                <Button
+                                    className="search-page__main-button"
+                                    color={
+                                        propertyItemData.availableRoomsCount ===
+                                        0
+                                            ? "grey"
+                                            : "blue"
+                                    }
+                                    floated="right"
+
+                                    onClick={
+                                        propertyItemData.availableRoomsCount ===
+                                        0
+                                            ? ""
+                                            : this
+                                                .handleRedirectToDetails
+                                    }
+                                >
+                                    Choose your room
+                                </Button>
+                            </div>
+
                         </Grid.Column>
-                    </Grid>
+
+
+
+
+
+
+                            </Grid>
+
                 </CardContent>
             </Card>
         );
