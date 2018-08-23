@@ -2,6 +2,17 @@ const express = require("express");
 const user = express.Router();
 const userService = require("../services/user");
 
+user.route("/verifyemail")
+    .get((req, res) => {
+        userService.verifyEmail(req.user)
+            .then(() => {
+                res.send(true);
+            })
+            .catch(err => {
+                res.status(500).send(err);
+            });
+    });
+
 user.route("/")
     .get((req, res) => {
         userService

@@ -1,10 +1,13 @@
 const Service = require("./generalService");
 const userRepository = require("../repositories/userRepository");
-const jwt = require("jsonwebtoken");
 const settings = require("../../../config/settings");
+const { dateHelpers } = require('../helpers');
 const bcrypt = require("bcrypt");
-const {dateHelpers} = require("../helpers");
 const userTokenService = require("./userToken");
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
+
+require("dotenv").config();
 
 class UserService extends Service {
     addUser(user) {
@@ -56,6 +59,41 @@ class UserService extends Service {
                     };
                 });
         });
+    }
+
+    verifyEmail(user) {
+
+
+        const EMAIL_UESER = process.env.EMAIL_UESER;
+        const EMAIL_PASS = process.env.EMAIL_PASS;
+        const BASE_URL = process.env.BASE_URL;
+        const verifyString = this.generateRundomString();
+
+        const currentDate = dateHelpers.toUnixTimeSeconds(new Date());
+        userRepository.updateById(user.id, {
+            verifyEmailToken: verifyString,
+            verifyEmailTokenTillDate: currentDate + settings.verifyEmailTokenLife
+        });
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: EMAIL_UESER,
+                pass: EMAIL_PASS
+            }
+        });
+        const mailOptions = {
+            from: EMAIL_UESER,
+            to: user.email,
+            subject: 'VerifyEmail Kudypoditys',
+            html: `<a href="${BASE_URL}/verifyemail/${verifyString}">Verify your email Kudypoditys</a>`
+        };
+
+        return transporter.sendMail(mailOptions).then(() => true);
+    }
+
+    generateRundomString() {
+        return crypto.randomBytes(64).toString('hex');
     }
 }
 

@@ -10,6 +10,10 @@ const authPaths = [
     {
         url: "/api/reservation",
         methods: null
+    },
+    {
+        url: '/api/users/verifyemail',
+        methods: ['get']
     }
 ];
 
