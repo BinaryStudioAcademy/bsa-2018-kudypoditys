@@ -3,11 +3,13 @@ const Sequelize = require("sequelize"),
 
 let Reservation = orm.define("reservation", {
     dateIn: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: { isDate: true }
         // allowNull: false
     },
     dateOut: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        validate: { isDate: true }
         // allowNull: false
     },
     guestsCount: {
