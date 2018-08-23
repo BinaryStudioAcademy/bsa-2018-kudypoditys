@@ -7,9 +7,8 @@
     background-color: #ffffff;
     width: fit-content;
     margin: 0 auto;
-
     size: 16px !important;
-    margin-top: 84px;
+    margin-top: 60px;
 }
 
 .DateRangePickerInput_arrow {
@@ -46,21 +45,8 @@
     margin-right: 0px;
     background-color: #dfe3eb;
     color: #182c4f;
-    text-align: right;
-}
-
-.search--view-bar {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.search--view-bar > .check-in-out {
-    align-items: center;
-}
-
-.search--view-bar > .check-in-out > .field {
-    margin: 0;
+    text-align: center;
+    width: 109%;
 }
 
 .search--view-panel {
@@ -70,46 +56,6 @@
     padding: 11px;
     min-width: 237px;
     width: fit-content;
-}
-
-table.ui.celled.table tbody td,
-table.ui.celled.table thead th,
-table.ui.celled.table thead th {
-    padding: 4px;
-}
-
-table.ui.celled.table tbody td.active,
-table.ui.celled.table tbody td:hover {
-    background-color: rgb(0, 119, 204) !important;
-    color: white !important;
-    cursor: pointer;
-}
-
-.ui.suir-calendar {
-    padding: 0;
-    margin: 0;
-}
-
-.check-in-out {
-    display: flex;
-}
-
-.search--view-panel .check-in-out {
-    flex-direction: column;
-}
-
-.search--view-panel .check-in-out > div {
-    flex-direction: column;
-    width: 100%;
-}
-
-.check-in-out > div {
-    width: fit-content;
-}
-
-.btn-wrp {
-    display: flex;
-    align-content: center;
 }
 
 .search--view-bar > .room-options > .room-selector {
@@ -124,6 +70,10 @@ table.ui.celled.table tbody td:hover {
     justify-content: space-evenly;
     width: 30%;
     height: 210px;
+}
+
+form.Field {
+    align-content: right;
 }
 
 .room-selector > .field {

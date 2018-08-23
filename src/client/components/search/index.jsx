@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import {connect} from "react-redux";
-import {Input, Button, Form, Dropdown, Header} from "semantic-ui-react";
+import { connect } from "react-redux";
+import { Input, Button, Form, Dropdown, Grid } from "semantic-ui-react";
 import "react-dates/initialize";
-import {DateRangePicker} from "react-dates";
+import { DateRangePicker } from "react-dates";
 
 import "react-dates/lib/css/_datepicker.css";
 
-import {mapStateToProps, mapDispatchToProps} from "./container";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 
 export class Search extends React.Component {
@@ -67,18 +67,18 @@ export class Search extends React.Component {
         this.props.onSearch();
     };
 
+    datesChanged = selectedDates => {
+        if (selectedDates.startDate && selectedDates.endDate) {
+            this.props.onDatesChange(selectedDates);
+        }
+        this.setState(selectedDates);
+    };
+
     render() {
-        const selectOptions = this.generateOptions(1, 10);
+        const selectOptionsRooms = this.generateOptions(1, 30);
+        const selectOptionsAdults = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
-        const {
-            destination,
-            checkIn,
-            checkOut,
-            rooms,
-            adults,
-            children
-        } = this.props;
-        console.log(this.state);
+        const { destination, rooms, adults, children } = this.props;
         return (
             <Form
                 className="search search--view-bar"
@@ -96,7 +96,7 @@ export class Search extends React.Component {
                         required
                     />
                 </div>
-                <div className="check-in-out">
+                <div className="check-in-out" onFocus={this.hideRoomSelector}>
                     <DateRangePicker
                         noBorder={true}
                         startDateId="startDate"
@@ -104,15 +104,14 @@ export class Search extends React.Component {
                         required={true}
                         startDate={this.state.startDate}
                         endDate={this.state.endDate}
-                        onDatesChange={({startDate, endDate}) => {
-                            this.setState({startDate, endDate});
-                        }}
+                        onDatesChange={this.datesChanged}
                         focusedInput={this.state.focusedInput}
                         onFocusChange={focusedInput => {
-                            this.setState({focusedInput});
+                            this.setState({ focusedInput });
                         }}
                     />
                 </div>
+
                 <div className="room-options">
                     <Input
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
@@ -123,49 +122,70 @@ export class Search extends React.Component {
                         className="room-selector hidden"
                         onMouseLeave={this.hideRoomSelector}
                     >
-                        <Form.Field inline>
-                            <label>Rooms</label>
-                            <Dropdown
-                                fluid
-                                selection
-                                name="rooms"
-                                options={selectOptions}
-                                value={rooms}
-                                onChange={(event, input) =>
-                                    this.props.onRoomsChange(input.value)
-                                }
-                            />
-                        </Form.Field>
-                        <Form.Field inline>
-                            <label>Adults</label>
-                            <Dropdown
-                                fluid
-                                selection
-                                name="adults"
-                                options={selectOptions}
-                                value={adults}
-                                onChange={(event, input) =>
-                                    this.props.onAdultsChange(input.value)
-                                }
-                            />
-                        </Form.Field>
-                        <Form.Field inline>
-                            <label>Children</label>
-                            <Dropdown
-                                fluid
-                                selection
-                                name="children"
-                                options={childrenOptions}
-                                value={children}
-                                onChange={(event, input) =>
-                                    this.props.onChildrenChange(input.value)
-                                }
-                            />
-                        </Form.Field>
+                        <Grid>
+                            <Grid.Row>
+                                <Grid.Column width={4} verticalAlign={"middle"}>
+                                    <label>Rooms</label>
+                                </Grid.Column>
+                                <Grid.Column width={12}>
+                                    <Dropdown
+                                        compact
+                                        selection
+                                        name="rooms"
+                                        options={selectOptionsRooms}
+                                        value={rooms}
+                                        onChange={(event, input) =>
+                                            this.props.onRoomsChange(
+                                                input.value
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Grid.Column width={4} verticalAlign={"middle"}>
+                                    <label>Adults</label>
+                                </Grid.Column>
+                                <Grid.Column width={12}>
+                                    <Dropdown
+                                        compact
+                                        selection
+                                        name="adults"
+                                        options={selectOptionsAdults}
+                                        value={adults}
+                                        onChange={(event, input) =>
+                                            this.props.onAdultsChange(
+                                                input.value
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row>
+                                <Grid.Column width={4} verticalAlign={"middle"}>
+                                    <label>Children</label>
+                                </Grid.Column>
+                                <Grid.Column width={12}>
+                                    <Dropdown
+                                        compact
+                                        selection
+                                        name="children"
+                                        options={childrenOptions}
+                                        value={children}
+                                        onChange={(event, input) =>
+                                            this.props.onChildrenChange(
+                                                input.value
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
                     </div>
                 </div>
+
                 <div className="btn-wrp">
-                    <Button type="submit" content="Search" primary/>
+                    <Button type="submit" content="Search" primary />
                 </div>
             </Form>
         );
