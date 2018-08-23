@@ -1,20 +1,12 @@
 const Service = require("./generalService");
 const reservationRepository = require("../repositories/reservationRepository");
 const roomService = require("./room");
-const userService = require("./user");
-const paymentTypeService = require("./paymentType");
 
 class ReservationService extends Service {
     async findAll() {
         try {
-            const reservations = await super.findAll();
-            let response = [];
-            for (let i = 0; i < reservations.length; i++) {
-                await this.generateFullEntity(reservations[i]).then(data =>
-                    response.push(data)
-                );
-            }
-            return Promise.resolve(response);
+            const reservations = await this.repository.findAll();
+            return Promise.resolve(reservations);
         } catch (err) {
             return Promise.reject(err);
         }
@@ -23,7 +15,7 @@ class ReservationService extends Service {
     async findById(id) {
         try {
             const reservation = await this.repository.findById(id);
-            return this.generateFullEntity(reservation);
+            return Promise.resolve(reservation);
         } catch (err) {
             return Promise.reject(err);
         }
@@ -63,28 +55,6 @@ class ReservationService extends Service {
             );
             super.deleteById(id);
             return Promise.resolve(deletedReservation);
-        } catch (err) {
-            return Promise.reject(err);
-        }
-    }
-
-    async generateFullEntity(reservation) {
-        try {
-            let user = await userService.findById(reservation.userId);
-            const room = await roomService.findById(reservation.roomId);
-            const paymentType = await paymentTypeService.findById(
-                reservation.paymentTypeId
-            );
-            const response = {
-                id: reservation.id,
-                dateIn: reservation.dateIn,
-                dateOut: reservation.dateOut,
-                guestsCount: reservation.guestsCount,
-                user: user,
-                room: room,
-                paymentType: paymentType
-            };
-            return Promise.resolve(response);
         } catch (err) {
             return Promise.reject(err);
         }
