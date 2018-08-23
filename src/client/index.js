@@ -21,7 +21,7 @@ import createSagaMidddelware from "redux-saga";
 import rootSaga from "client/logic/rootSaga";
 import history from "client/history";
 import PhotoTab from "./components/photo-tab-registration-property";
-import UserCabinet from "./components/user-cabinet";
+import UserCabinet from "./pages/user-cabinet";
 import AuthHOC from "./components/auth-hoc";
 
 const sagaMiddelware = createSagaMidddelware();
@@ -47,10 +47,17 @@ ReactDOM.render(
                 />
                 <Route path="/search-page" component={SearchPage} />
                 <Route path="/property-page" component={PropertyPage} />
-                <Route path="/add-property/" component={PropertyCreationTabs} />
+                <Route
+                    path="/add-property/"
+                    component={() => (
+                        <AuthHOC component={PropertyCreationTabs} />
+                    )}
+                />
                 <Route path="/404" component={NotFoundPage} />
-                <Route path="/user-cabinet" component={UserCabinet} />
-
+                <Route
+                    path="/user-cabinet"
+                    component={() => <AuthHOC component={UserCabinet} />}
+                />
                 <Route component={NotFoundPage} />
             </Switch>
         </Router>
