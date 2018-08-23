@@ -125,7 +125,8 @@ export class PropertyListItem extends React.Component {
                                     <div style={{
                                         textAlign: "center",
                                         display: "flex",
-                                        flexDirection: "column"
+                                        flexDirection: "column",
+                                        paddingRight: 10
                                     }}>
                                         <div className="ratingName">
                                             {" "}
