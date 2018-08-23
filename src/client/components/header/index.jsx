@@ -1,61 +1,117 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { Dropdown, Button, Menu } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
-import history from 'client/history';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { Grid } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import history from "client/history";
+import Search from "client/components/search";
 
-import './index.scss';
-import { mapStateToProps, mapDispatchToProps } from './container';
+import "./index.scss";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 
 export class MainHeader extends Component {
-
-    logout = () => {
+    logoutClicked = () => {
         this.props.logout();
-    }
+    };
 
-    login = () => {
-        history.push('/log');
-    }
+    loginClicked = () => {
+        history.push("/login");
+    };
+
+    registerClicked = () => {
+        history.push("/signup");
+    };
+
+    logoClicked = () => {
+        history.push("/");
+    };
+
+    state = { activeItem: "about-us" };
+
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
     render() {
-        const {
-            currencies,
-            selectedCurrency,
-            currentUser
-        } = this.props;
-
+        const { currentUser } = this.props;
         return (
-
-            <Menu size='small' className="main-menu">
-                <Menu.Item className="menu__logo">KudyPoditys</Menu.Item>
-
-                <Menu.Menu position='right'>
-
-                    <Dropdown
-                        fluid
-                        selection
-                        name='currency'
-                        options={currencies}
-                        value={selectedCurrency}
-                        onChange={(event, input) => this.props.onCurrencyChange(input.value)}
-                        className="menu__dropdown"
-                    />
-
-                    <Menu.Item className="menu__welcome">
-                        {currentUser ?
-                            <Fragment>
-                                Wellcome  {currentUser.fullName}
-                                <Button inverted className="menu__logout" onClick={this.logout}>Logout</Button>
-                            </Fragment> :
-                            <Fragment>
-                                <Button inverted className="menu__login" onClick={this.login}>Login</Button>
-                                <Button inverted className="menu__register">Register</Button>
-                            </Fragment>}
-                    </Menu.Item>
-
-                </Menu.Menu>
-
-            </Menu>
+            <div className="header--wraper">
+                <Grid centered className={"grid--main"}>
+                    <Grid.Row columns={2} className={"row--inform"}>
+                        <Grid.Column width={8} textAlign={"left"}>
+                            <div
+                                className="header-logo"
+                                onClick={this.logoClicked}
+                            >
+                                Kudypoditys
+                            </div>
+                        </Grid.Column>
+                        <Grid.Column width={8} textAlign={"right"}>
+                            <a style={{ marginRight: "24px" }}>EN</a>
+                            {currentUser ? (
+                                <Fragment>
+                                    Wellcome {currentUser.fullName}
+                                    <a
+                                        style={{ marginLeft: "24px" }}
+                                        onClick={this.logoutClicked}
+                                    >
+                                        Logout
+                                    </a>
+                                </Fragment>
+                            ) : (
+                                <Fragment>
+                                    <a
+                                        style={{ marginRight: "24px" }}
+                                        onClick={this.loginClicked}
+                                    >
+                                        Login
+                                    </a>
+                                    <a onClick={this.registerClicked}>
+                                        Register
+                                    </a>
+                                </Fragment>
+                            )}
+                        </Grid.Column>
+                    </Grid.Row>
+                    {this.props.showSearch ? (
+                        <Grid.Row centered columns={1}>
+                            <Grid.Column width={16}>
+                                <Search
+                                    view="bar"
+                                    destination="Lviv"
+                                    checkIn={new Date("Aug 14 2018")}
+                                    checkOut={new Date("Aug 16 2018")}
+                                    adults={1}
+                                    rooms={1}
+                                    children={0}
+                                    onDestinationChange={value =>
+                                        console.log(`destination: ${value}`)
+                                    }
+                                    onCheckInChange={value =>
+                                        console.log(
+                                            `check-in: ${new Date(value)}`
+                                        )
+                                    }
+                                    onCheckOutChange={value =>
+                                        console.log(
+                                            `check-in: ${new Date(value)}`
+                                        )
+                                    }
+                                    onAdultsChange={value =>
+                                        console.log(`adults: ${value}`)
+                                    }
+                                    onChildrenChange={value =>
+                                        console.log(`children: ${value}`)
+                                    }
+                                    onRoomsChange={value =>
+                                        console.log(`rooms: ${value}`)
+                                    }
+                                    onSearch={() =>
+                                        console.log("Search propeties!")
+                                    }
+                                />
+                            </Grid.Column>
+                        </Grid.Row>
+                    ) : null}
+                </Grid>
+            </div>
         );
     }
 }
@@ -72,4 +128,7 @@ MainHeader.propTypes = {
     })
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainHeader);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MainHeader);

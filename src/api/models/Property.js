@@ -7,19 +7,19 @@ let Property = orm.define('property', {
     name: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
-        allowNull: false
+
     },
     address: {
         type: Sequelize.STRING,
-        validate: { notEmpty: true },
-        unique: true,
-        allowNull: false
+        validate: { notEmpty: true }
+        // unique: true,
+        // allowNull: false
 
     },
     description: {
         type: Sequelize.TEXT,
         validate: { notEmpty: true },
-        allowNull: true
+        // allowNull: true
     },
     taxes: {
         type: Sequelize.FLOAT,
@@ -28,20 +28,20 @@ let Property = orm.define('property', {
     },
     coordinates: {
         type: Sequelize.JSON,
-        allowNull: false
+        // allowNull: false
     },
     rating: {
         type: Sequelize.FLOAT,
         validate: { min: 0, max: 10, isFloat: true },
-        allowNull: true
+        // allowNull: true
     },
     contactPersonName: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
+        // allowNull: false
     },
     contactPhone: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
+        // allowNull: false
     }
 });
 

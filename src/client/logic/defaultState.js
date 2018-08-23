@@ -1,18 +1,18 @@
 const state = {
     search: {
-        destination: "Lviv",
+        destination: "",
         checkIn: null,
         checkOut: null,
         adults: 1,
         children: 0,
         rooms: 1,
-        results: []
+        results: [],
     },
     login: {
         email: "",
         password: "",
         errors: [],
-        loginSuccess: false
+        loginSuccess: false,
     },
     foundProperties: {
         foundProperty1: {
@@ -37,28 +37,33 @@ const state = {
                 "Airport shuttle",
                 "Family rooms",
                 "Pets allowed",
-                "Bar"
-            ]
+                "Bar",
+            ],
         },
         id1: {
-            _id: 1
-        }
+            _id: 1,
+        },
     },
 
     sortType: {
-        activeItem: "price"
+        activeItem: "price",
     },
     addProperty: {
         arrivalFrom: "10:00",
         arrivalTo: "12:00",
         departureFrom: "10:00",
-        departureTo: "12:00"
+        departureTo: "12:00",
     },
+    images: []
 
+    ,
+    propertySubmit: {
+        activeIndex: 2
+    },
     header: {
         currencies: [],
         selectedCurrency: 1,
-        currentUser: null
+        currentUser: null,
     },
     shownProperties: {
         "xyz-1": {
@@ -82,16 +87,16 @@ const state = {
                 "Airport shuttle",
                 "Family rooms",
                 "Pets allowed",
-                "Bar"
-            ]
+                "Bar",
+            ],
         },
-        "xyz-2": {}
+        "xyz-2": {},
     },
     searchResults: {
         destination: "Lviv",
         totalCount: 1,
         shownFrom: 1,
-        shownTo: 5
+        shownTo: 5,
     },
     cityInfos: [],
     filters: [
@@ -100,33 +105,85 @@ const state = {
             ischecked: true,
             label: "Pool",
             amount: 321,
-            type: "Facility"
+            type: "Facility",
         },
         {
             id: "2",
             ischecked: false,
             label: "Very good location: 8+",
             amount: 658,
-            type: "Review Score"
+            type: "Review Score",
         },
         {
             id: "4",
             ischecked: false,
             label: "Hotel",
             amount: 658,
-            type: "Property Type"
+            type: "Property Type",
         },
         {
             id: "3",
             ischecked: false,
             label: "Hostel",
             amount: 658,
-            type: "Property Type"
-        }
+            type: "Property Type",
+        },
     ],
 
-    rooms: {}
+    rooms: {},
+  
+    propertyLayoutTab: {
+        title: 'Apartment with Garden View',
+        amount:'1'
+    },
 
+    propertyRegistration: {
+        // PAYMENT_TAB
+        paymentType: "cash", // "creditcards"
+        paymentCreditCards: {
+            mastercard: false,
+            visa: false
+        },
+        vatTaxes: "default", // "none"
+        cityTax: "default", // "individual"
+        cityTaxIndividual: {
+            value: "",
+            type: "percent",
+            includeToPrice: false
+        },
+        additionalFees: false,
+        additionalFeesOptions: [
+
+        ],
+        commissionName: "Name one",
+        recipientSameAddress: true,
+        recipientActualAddress: {
+            country: "",
+            city: "",
+            address: "",
+            postcode: ""
+        },
+        // SERVICES_TAB
+        internet: "free", // additional, none
+        internetFee: "",
+        parking: {
+            providing: "none",
+            type: "private",
+            placement: "on_territory",
+            booking: "need",
+            priceForDay: ""
+        },
+        languages: [
+            "ukrainian",
+            "russian",
+            "english"
+        ],
+        facilities: [
+            "Bar",
+            "Sauna",
+            "Pool"
+        ]
+    }
 };
 
 export default state;

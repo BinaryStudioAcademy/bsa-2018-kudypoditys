@@ -4,89 +4,63 @@
 
 .search {
     display: flex;
-    border-radius: 5px;
-    background-color: rgb(254, 187, 2);
+    background-color: #ffffff;
     width: fit-content;
     margin: 0 auto;
+    size: 16px !important;
+    margin-top: 60px;
+}
+
+.DateRangePickerInput_arrow {
+    display: none;
+}
+
+.DateInput_input_1 {
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    border-top: 0px !important;
+    border-bottom: 0px !important;
+    border-left: 0px !important;
+    border-radius: 0px !important;
 }
 
 .search--view-bar {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    width: 1000px;
+    max-width: 1000px !important;
+    .ui.input > input {
+        border-top: 0px;
+        border-bottom: 0px;
+        border-left: 0px;
+        border-radius: 0px;
+    }
 }
 
-.search--view-bar > .check-in-out {
-    align-items: center;
+.destination {
+    input {
+        min-width: 470px;
+    }
 }
 
-.search--view-bar > .check-in-out > .field {
-    margin: 0;
+.btn-wrp > .ui.button {
+    border-radius: 0px;
+    margin-right: 0px;
+    background-color: #dfe3eb;
+    color: #182c4f;
+    text-align: center;
+    width: 109%;
 }
 
 .search--view-panel {
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
     background-color: rgb(254, 187, 2);
     padding: 11px;
     min-width: 237px;
     width: fit-content;
 }
 
-.search--view-bar > div {
-    margin: 3px 2px 3px 3px;
-}
-
-.search--view-bar .input input:hover,
-.search--view-panel input:hover {
-    border: 1px solid rgb(229, 169, 4);
-}
-
-table.ui.celled.table tbody td,
-table.ui.celled.table thead th,
-table.ui.celled.table thead th {
-    padding: 4px;
-}
-
-table.ui.celled.table tbody td.active,
-table.ui.celled.table tbody td:hover {
-    background-color: rgb(0, 119, 204) !important;
-    color: white !important;
-    cursor: pointer;
-}
-
-.ui.suir-calendar {
-    padding: 0;
-    margin: 0;
-}
-
-.check-in-out {
-    display: flex;
-}
-
-.search--view-panel .check-in-out {
-    flex-direction: column;
-}
-
-.search--view-panel .check-in-out > div {
-    flex-direction: column;
-    width: 100%;
-}
-
-.check-in-out > div {
-    width: fit-content;
-}
-
-.btn-wrp {
-    display: flex;
-    align-content: center;
-}
-
 .search--view-bar > .room-options > .room-selector {
     box-shadow: 0 0 3px 1px #dddddd;
     background-color: white;
-    border-radius: 5px;
     z-index: 2;
     position: absolute;
     margin: 7px;
@@ -96,6 +70,10 @@ table.ui.celled.table tbody td:hover {
     justify-content: space-evenly;
     width: 30%;
     height: 210px;
+}
+
+form.Field {
+    align-content: right;
 }
 
 .room-selector > .field {

@@ -1,3 +1,17 @@
+@font-face {
+    font-family: "EuropaGroteskSH-BolExt";
+    font-style: normal;
+    src: local("EuropaGroteskSH-BolExt"),
+        url(./EuropaGroteskSH-BolExt.ttf) format("ttf");
+}
+
+.header-logo {
+    font-weight: 900;
+    font-family: EuropaGroteskSH-BolExt, sans-serif;
+    font-size: 34px;
+    letter-spacing: 1px;
+}
+
 .ui.small.main-menu.menu {
     border: none;
     padding: 1rem;
@@ -6,6 +20,23 @@
     display: flex;
     justify-items: center;
     align-items: center;
+}
+
+.row--inform > .right > a {
+    color: #ffffff;
+}
+
+.header--wraper {
+    background-image: url("https://s3.eu-central-1.amazonaws.com/kudypoditys/img/application/home-background.jpg");
+    background-size: cover;
+    min-height: 100px;
+}
+
+.row--inform {
+    color: #ffffff;
+    font-size: 20px !important;
+    margin-top: 23px;
+    max-width: 1021px !important;
 }
 
 .dropdown.icon {

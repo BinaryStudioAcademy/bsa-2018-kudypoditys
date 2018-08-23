@@ -14,7 +14,6 @@ function associations(models) {
         Message,
         PaymentType,
         Property,
-        PropertyCategory,
         PropertyPaymentType,
         PropertyType,
         Reservation,
@@ -92,13 +91,11 @@ function associations(models) {
 
     // PropertyType associations
     PropertyType.hasMany(Property);
-    PropertyType.hasMany(PropertyPaymentType);
 
     // PropertyPaymentType associations - проміжна таблиця
     PropertyPaymentType.belongsTo(Property);
     PropertyPaymentType.belongsTo(PaymentType);
 
-    // PropertyCategory ???
 
     // Property associations
     Property.belongsTo(User);

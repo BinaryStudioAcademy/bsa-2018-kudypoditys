@@ -20,23 +20,19 @@ let AccommodationRule = orm.define('accommodationRule', {
         allowNull: false
     },
     arrivalTimeStart: {
-        type: Sequelize.DATE,
-        validate: { isDate: true },
+        type: Sequelize.TIME,
         allowNull: false
     },
     arrivalTimeEnd: {
-        type: Sequelize.DATE,
-        validate: { isDate: true },
+        type: Sequelize.TIME,
         allowNull: false
     },
     departureTimeStart: {
-        type: Sequelize.DATE,
-        validate: { isDate: true },
+        type: Sequelize.TIME,
         allowNull: false
     },
     departureTimeEnd: {
-        type: Sequelize.DATE,
-        validate: { isDate: true },
+        type: Sequelize.TIME,
         allowNull: false
     }
 });

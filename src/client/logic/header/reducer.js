@@ -1,11 +1,7 @@
-import defaultState from 'client/logic/defaultState';
-import {
-    CURENCY_SELECT,
-    CURRENCIES_GET,
-    LOGOUT_SUCCESS
-} from './actionTypes';
+import defaultState from "client/logic/defaultState";
+import {CURENCY_SELECT, CURRENCIES_GET, LOGOUT_SUCCESS} from "./actionTypes";
 
-import { GET_ME_SUCCESS } from 'client/logic/login/actionTypes';
+import {GET_CURRENT_USER_SUCCESS} from "../login/actionTypes";
 
 function headerReducer(state = defaultState.header, action) {
     switch (action.type) {
@@ -14,7 +10,7 @@ function headerReducer(state = defaultState.header, action) {
         case CURRENCIES_GET:
             return { ...state, currencies: [...MOCK_CURRENCIES] };
 
-        case GET_ME_SUCCESS:
+        case GET_CURRENT_USER_SUCCESS:
             return { ...state, currentUser: action.payload };
 
         case LOGOUT_SUCCESS:
@@ -27,10 +23,13 @@ function headerReducer(state = defaultState.header, action) {
 
 export default headerReducer;
 
-const MOCK_CURRENCIES = [{
-    text: 'UA',
-    value: 1
-}, {
-    text: 'USA',
-    value: 2
-}];
+const MOCK_CURRENCIES = [
+    {
+        text: "UA",
+        value: 1
+    },
+    {
+        text: "USA",
+        value: 2
+    }
+];
