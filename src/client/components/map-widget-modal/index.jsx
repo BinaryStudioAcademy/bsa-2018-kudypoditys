@@ -8,7 +8,7 @@ export default class MapWidgetModal extends Component {
     static defaultProps = {
         latitude: -34.397,
         longitude: 150.644,
-        buttonText: "ShowOnMap"
+        buttonText: "Show on map"
     };
 
     render() {
@@ -20,6 +20,7 @@ export default class MapWidgetModal extends Component {
                             basic
                             size="tiny"
                             className={this.props.buttonClass}
+                            style={{border: 0, }}
                         >
                             {this.props.buttonText}
                         </Button>
