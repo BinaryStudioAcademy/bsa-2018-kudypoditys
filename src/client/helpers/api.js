@@ -1,11 +1,13 @@
 import axios from "axios";
 import dateHelpers from "./date-helpers";
 import cookies from "./cookie-tool";
+import { SERVER_HOST } from "./config";
 // TODO: implement servers url
-const baseUrl = "http://127.0.0.1:5000";
+const baseUrl = SERVER_HOST;
 
 class Api {
     constructor() {
+        console.log(`base url ${baseUrl}`);
         this.adapter = axios.create({
             baseURL: baseUrl
         });
