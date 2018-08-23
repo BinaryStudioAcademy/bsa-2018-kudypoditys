@@ -43,3 +43,9 @@
 .search-page__pagination {
     text-align: center;
 }
+.ui.grid>.column:not(.row), .ui.grid>.row>.column {
+
+
+     padding-left: 0 !important;
+
+}

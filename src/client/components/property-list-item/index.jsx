@@ -145,6 +145,7 @@ export class PropertyListItem extends React.Component {
                                         controlEnable={true}
                                         buttonClass={"searchMapButton"}
                                     />
+                                    <span className="Property_list__distanceToCenter">({propertyItemData.distanceToCenter} km from center)</span>
                                 </Container>
                             </CardMeta>
 
