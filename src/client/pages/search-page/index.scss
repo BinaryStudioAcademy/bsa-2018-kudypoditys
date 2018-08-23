@@ -1,19 +1,32 @@
-.ui.segment {
+//.ui.segment {
+//    position: relative;
+//    background: #fff;
+//    -webkit-box-shadow: none;
+//    box-shadow: none;
+//    margin: 1rem 0;
+//    padding: 1em 1em;
+//     border-radius: 0;
+//    border: none;
+//    border-bottom: solid 1px #979797;
+//}
+//.ui.card {
+//    margin: 0 0;
+//
+//}
+
+.ui.segment.breadcrumb__segment {
     position: relative;
     background: #fff;
     -webkit-box-shadow: none;
     box-shadow: none;
     margin: 1rem 0;
     padding: 1em 1em;
-     border-radius: 0;
+    border-radius: 0;
     border: none;
     border-bottom: solid 1px #979797;
 }
-.ui.card {
-    margin: 0 0;
 
-}
-.ui.card, .ui.cards>.card {
+.card.property_card {
 
     border-radius: 0;
     -webkit-box-shadow: none;
@@ -24,7 +37,8 @@
     transition: box-shadow .1s ease,transform .1s ease,-webkit-box-shadow .1s ease,-webkit-transform .1s ease;
 
 }
-.ui.card>.content, .ui.cards>.card>.content {
+
+.ui.card.property_card > .content {
 
     border: none;
     border-radius: 0;
@@ -43,7 +57,8 @@
 .search-page__pagination {
     text-align: center;
 }
-.ui.grid>.column:not(.row), .ui.grid>.row>.column {
+
+.ui.grid.search_page__grid > .column:not(.row), .ui.grid.search_page__grid > .row > .column {
 
 
      padding-left: 0 !important;

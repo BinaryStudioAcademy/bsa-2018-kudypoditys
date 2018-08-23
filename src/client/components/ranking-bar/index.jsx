@@ -18,7 +18,7 @@ export class RankingBar extends React.Component {
         const {activeItem} = this.props;
         return (
             <div className="sorting-bar">
-                <Menu>
+                <Menu className="ranking-dropDown">
 
                     <Menu.Item
 
@@ -39,12 +39,15 @@ export class RankingBar extends React.Component {
 
 
                     <Dropdown
+
                         item
                         text="Stars"
                         simple
                         icon='caret down'
                     >
-                        <Dropdown.Menu>
+                        <Dropdown.Menu
+
+                        >
 
                             <Dropdown.Item
                                 value={HIGH_RANK}

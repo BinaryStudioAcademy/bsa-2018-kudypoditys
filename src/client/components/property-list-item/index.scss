@@ -1,6 +1,5 @@
 .ratingName {
-    width: 87px;
-    height: 24px;
+
     opacity: 0.5;
     font-family: Arial, sans-serif;
     font-size: 16px;
@@ -12,12 +11,11 @@
     text-align: left;
     color: #182c4f;
     position: relative;
-    top: 20%;
+    top: -5%;
 }
 
 .reviewsNumber {
-    width: 68px;
-    height: 12px;
+
     opacity: 0.27;
     font-family: Arial, sans-serif;
     font-size: 11px;
@@ -30,7 +28,7 @@
     color: #182c4f;
     white-space: nowrap;
     position: relative;
-    top: -25%;
+    top: -50%;
 }
 
 .rating_num {
@@ -41,16 +39,16 @@
     font-weight: 900;
     font-style: normal;
     font-stretch: normal;
-    line-height: normal;
+
     letter-spacing: normal;
     text-align: left;
     color: #182c4f;
     //padding-left: 10px;
 }
 
-.ui.grid > .column:not(.row), .ui.grid > .row > .column {
+.ui.grid.search_page__grid > .row > .column {
 
-    padding-left: 1rem;
+    padding-left: 0;
     padding-right: 0
 
 }
@@ -74,6 +72,7 @@
     text-align: center;
     color: #00a882;
     padding-right: 25px;
+    padding-top: 3px;
 
 }
 
@@ -109,7 +108,7 @@
     color: #005dff;
 }
 
-.ui.basic.button, .ui.basic.buttons .button.searchMapButton {
+.ui.button.searchMapButton {
     color: #005dff !important;
     background: transparent none !important;
 
@@ -123,7 +122,7 @@
     font-size: 14px;
 }
 
-.ui.basic.button:hover, .ui.basic.buttons .button.searchMapButton:hover {
+.button.searchMapButton:hover {
     background: #fff !important;
     color: #005dff !important;
     -webkit-box-shadow: none;
@@ -172,6 +171,7 @@
     text-align: left;
     color: #d0021b;
 }
+
 .Property_list__distanceToCenter {
 
     opacity: 0.5;
@@ -194,12 +194,13 @@
 .card_row {
     display: flex;
     justify-content: space-between;
-    margin-left: 25px;
+    margin-left: 20px;
+    height: 45px;
 }
 
 .card_row__location {
     display: flex;
-    margin-left: 25px;
+    margin-left: 20px;
 }
 
 .rating_block {
@@ -214,7 +215,7 @@
     background-color: #eceef0;
     display: flex;
     justify-content: space-between;
-    margin-left: 25px;
+    margin-left: 20px;
 }
 
 .roomType {
@@ -235,9 +236,9 @@
 
 .card_row__order {
     display: flex;
-    margin-top: 6px;
+    margin-top: 10px;
     justify-content: space-between;
-    margin-left: 25px;
+    margin-left: 20px;
 }
 
 .pad20 {

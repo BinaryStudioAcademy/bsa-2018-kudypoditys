@@ -22,7 +22,7 @@ class SearchPage extends React.Component {
                 <Header showSearch={true}/>
                 <div className="search-page__wrapper">
                     <div className="breadcrumb_wrapper">
-                        <Segment>
+                        <Segment className="breadcrumb__segment">
                             <Breadcrumb
                                 icon="right angle"
                                 sections={[
@@ -94,13 +94,13 @@ class SearchPage extends React.Component {
                             id="foundProperty2"
                         />
 
-                       <div className="search-page__pagination">
-                        <Pagination pagesCount={10}/>
-                       </div>
+                        <div className="search-page__pagination">
+                            <Pagination pagesCount={10}/>
+                        </div>
 
                     </Container>
 
-            </div>
+                </div>
             </div>
 
         );
