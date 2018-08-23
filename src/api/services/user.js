@@ -24,7 +24,16 @@ class UserService extends Service {
                     new Error("user with this email already exists")
                 );
             else {
-                return this.create(newUser);
+                return this.create(newUser).then(data => {
+                    if(data) {
+                        this.verifyEmailSend(data);
+                        return data;
+                    } else {
+                        return Promise.reject(
+                            new Error("Couldn't add user.")
+                        );
+                    }
+                });
             }
         });
     }
@@ -61,10 +70,10 @@ class UserService extends Service {
         });
     }
 
-    verifyEmail(user) {
+    verifyEmailSend(user) {
 
 
-        const EMAIL_UESER = process.env.EMAIL_UESER;
+        const EMAIL_USER = process.env.EMAIL_USER;
         const EMAIL_PASS = process.env.EMAIL_PASS;
         const BASE_URL = process.env.BASE_URL;
         const verifyString = this.generateRundomString();
@@ -78,18 +87,38 @@ class UserService extends Service {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: EMAIL_UESER,
+                user: EMAIL_USER,
                 pass: EMAIL_PASS
             }
         });
+
         const mailOptions = {
-            from: EMAIL_UESER,
+            from: EMAIL_USER,
             to: user.email,
-            subject: 'VerifyEmail Kudypoditys',
-            html: `<a href="${BASE_URL}/verifyemail/${verifyString}">Verify your email Kudypoditys</a>`
+            subject: 'Email Verification - Kudypoditys',
+            html: `<a href="http://localhost:3000/verifyemail?email=${user.email}&token=${verifyString}">Verify your email for Kudypoditys</a>`
         };
 
         return transporter.sendMail(mailOptions).then(() => true);
+    }
+
+    verifyEmailCheck(email, token) {
+        const currentDate = dateHelpers.toUnixTimeSeconds(new Date());
+        return userRepository.getUserByEmail(email).then((user) => {
+           if(user) {
+               if(user.verifyEmailToken === token && user.verifyEmailTokenTillDate > currentDate) {
+                   userRepository.updateById(user.id, {
+                       verifyEmailToken: "verified"
+                   });
+
+                   return Promise.resolve({ verified: true });
+               } else {
+                   return Promise.reject(new Error("VerifyEmailToken is out of date."));
+               }
+           }  else {
+               return Promise.reject(new Error("Couldn't find user by this email."));
+           }
+        });
     }
 
     generateRundomString() {

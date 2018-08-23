@@ -23,6 +23,8 @@ import history from "client/history";
 import PhotoTab from "./components/photo-tab-registration-property";
 import UserCabinet from "./components/user-cabinet";
 
+import VerifyEmail from "client/components/verify-email";
+
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
 const store = createStore(
@@ -38,6 +40,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/signup" component={RegistrationPage} />
+                <Route exact path="/verifyemail" component={VerifyEmail} />
                 <Route exact path="/login" component={LoginPage} />
                 <Route
                     exact

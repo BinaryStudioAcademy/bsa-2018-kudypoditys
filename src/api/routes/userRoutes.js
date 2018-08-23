@@ -2,15 +2,31 @@ const express = require("express");
 const user = express.Router();
 const userService = require("../services/user");
 
-user.route("/verifyemail")
+user.route("/getemailverified")
     .get((req, res) => {
-        userService.verifyEmail(req.user)
+        userService.verifyEmailSend(req.user)
             .then(() => {
                 res.send(true);
             })
             .catch(err => {
                 res.status(500).send(err);
             });
+    });
+
+user.route("/verifyemail")
+    .get((req, res) => {
+        console.log(req.query.email, req.query.token);
+        userService.verifyEmailCheck(req.query.email, req.query.token)
+            .then((resolve, reject) => {
+                if(resolve) {
+                    res.send({ verified: true });
+                } else {
+                    res.status(500).send(reject)
+                }
+            })
+            .catch(err => {
+                res.status(500).send(err);
+            })
     });
 
 user.route("/")
