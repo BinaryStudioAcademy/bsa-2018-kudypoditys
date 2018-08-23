@@ -35,7 +35,6 @@ export class AvailabilityPanel extends React.Component {
         if (selectedDates.startDate && selectedDates.endDate) {
             this.props.onDatesChange(selectedDates);
         }
-
         this.setState(selectedDates);
     };
 
