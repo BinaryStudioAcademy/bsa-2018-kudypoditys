@@ -7,10 +7,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
-import NoRoom from "client/components/no-rooms-component";
-// import Search from "client/components/search";
-// import Registration from "client/components/registration";
-// import LoginComponent from "./components/login";
 
 import RegistrationPage from "client/pages/registration-page";
 import PropertyCreationTabs from "client/pages/add-property-page";
@@ -37,17 +33,9 @@ const store = createStore(
 );
 sagaMiddelware.run(rootSaga);
 
-
-const store = createStore(reducer, composeWithDevTools());
-
-// TODO: add corresponding pages to routes components
 ReactDOM.render(
     <Provider store={store}>
-        <NoRoom/>
-    </Provider>,
-    document.getElementById("root")
-);
- /* <BrowserRouter>
+        <Router history={history}>
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/signup" component={RegistrationPage} />
@@ -72,4 +60,7 @@ ReactDOM.render(
                 />
                 <Route component={NotFoundPage} />
             </Switch>
-        </BrowserRouter> */
+        </Router>
+    </Provider>,
+    document.getElementById("root")
+);
