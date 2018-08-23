@@ -22,6 +22,7 @@ module.exports = function (models) {
         Facility,
         ReviewCategory,
         RoomType,
+        PropertyType,
         User
     } = models;
 
