@@ -42,5 +42,9 @@ export const isValidZip = value =>
         : undefined;
 export const password = value =>
     value && !/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))/.test(value)
-        ? "Password must contain uppercase, downcase letter and at least 1 number"
-        : undefined;
+        ? 'Password must contain uppercase, downcase letter and at least 1 number'
+        : undefined
+export const number = value =>
+    value && !/[0-9]/i.test(value)
+    ? 'Must be a number'
+    : undefined
