@@ -75,7 +75,8 @@ export class Search extends React.Component {
     };
 
     render() {
-        const selectOptions = this.generateOptions(1, 10);
+        const selectOptionsRooms = this.generateOptions(1, 30);
+        const selectOptionsAdults = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
         const { destination, rooms, adults, children } = this.props;
         return (
@@ -131,7 +132,7 @@ export class Search extends React.Component {
                                         compact
                                         selection
                                         name="rooms"
-                                        options={selectOptions}
+                                        options={selectOptionsRooms}
                                         value={rooms}
                                         onChange={(event, input) =>
                                             this.props.onRoomsChange(
@@ -150,7 +151,7 @@ export class Search extends React.Component {
                                         compact
                                         selection
                                         name="adults"
-                                        options={selectOptions}
+                                        options={selectOptionsAdults}
                                         value={adults}
                                         onChange={(event, input) =>
                                             this.props.onAdultsChange(
