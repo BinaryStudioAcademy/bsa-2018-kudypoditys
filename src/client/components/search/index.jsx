@@ -10,6 +10,16 @@ import "react-dates/lib/css/_datepicker.css";
 
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
+import _ from 'lodash'
+import faker from 'faker'
+
+
+const source = _.times(5, () => ({
+    title: faker.company.companyName(),
+    image: faker.internet.avatar(),
+    description: faker.company.catchPhrase()
+  }))
+
 
 export class Search extends React.Component {
     constructor(props) {
