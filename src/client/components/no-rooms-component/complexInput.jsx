@@ -13,9 +13,9 @@ class ComplexInput extends React.Component {
         super(props);
         this.state = {
             beds: [
-                {key:0,key1: 3, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:true, button:false},
-                {key:1,key1: 4, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:false, button:true},
-                {key:2,key1: 5, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:false, button:true}
+                {key:0, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:true, button:false},
+                {key:1, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:false, button:true},
+                {key:2, value:1, amount:1, type:'Односпальне / (ширина 90-130см)', display:false, button:true}
             ],
             addedBeds:{
                 0:{type:'', amount:null},
@@ -26,20 +26,21 @@ class ComplexInput extends React.Component {
             index:0
         }
     }
-    componentDidMount(){
-        this.props.onChange(this.state.addedBeds,this.state.guests)
+
+    componentWillMount(){
+        this.props.onchange(this.state.addedBeds,this.state.guests)
     }
     setBeds(key,value){
         let beds = this.state.addedBeds
-        if(value.length<=2){
+        if(value.length<=6){
             beds[key].amount = value
         }
         else{
             beds[key].type = value
         }
         this.setState(
-            {addedBeds:beds},
-            ()=>this.props.onChange(this.state.addedBeds,this.state.guests))
+            {addedBeds:beds}
+        )
     }
     handleSelect(e, name){
         let value = '';
@@ -69,8 +70,7 @@ class ComplexInput extends React.Component {
     handleInputChange(e){
         const value = e.target.value;
         this.setState(
-            {guests:value},
-            ()=>this.props.onChange(this.state.addedBeds,this.state.guests))
+            {guests:value})
     }
     handleDelete(){
        const index = this.state.index;
@@ -93,13 +93,13 @@ class ComplexInput extends React.Component {
                 <div key={bed.key} className='complex-input'>
                 <div>
                     <Field
-                        key={bed.key}
-                        style={{width:'120px', margin:'0 0 0 10px', float:'left'}}
+                        key={'bed' + bed.key}
+                        style={{width:'120px', margin:'0 0 0 10px', float:'left', Zindex:'100'}}
                         name={'bed'+bed.key}
                         component={semanticSelectorFormField}
                         as={Form.Select}
                         options={bedType}
-                        onChange={(e)=>this.handleSelect(e,bed.key)}
+                        onChange={(e)=>this.handleSelect(e, bed.key)}
                         label="Тип номеру"
                         placeholder="Виберіть"
                         validate={required}
@@ -108,13 +108,13 @@ class ComplexInput extends React.Component {
                     <p>X</p>
                     <div>
                     <Field
-                        key={bed.key1}
-                        style={{width:'120px', margin:'0 0 0 10px', float:'left'}}
-                        name={"bed"+bed.key1}
+                        key={'amount' + bed.key}
+                        style={{width:'120px', margin:'0 0 0 10px', float:'left', Zindex:'100'}}
+                        name={'amount'+bed.key}
                         component={semanticSelectorFormField}
                         as={Form.Select}
                         options={bedAmount}
-                        onChange={(e)=>this.handleSelect(e,bed.key)}
+                        onChange={(e)=>this.handleSelect(e, bed.key)}
                         placeholder="Виберіть"
                         validate={required}
                     />

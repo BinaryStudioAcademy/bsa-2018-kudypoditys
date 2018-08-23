@@ -50,9 +50,6 @@ class AddRoom extends React.Component {
         const value = e.target.value
         this.setState({roomPrice:value})
     }
-    handleSubmit(e){
-        this.props.createProperty(this.state)
-    }
     handleComplexInputChange(beds,guests){
         this.setState({beds:beds})
         this.setState({maxGuests:guests})
@@ -110,7 +107,7 @@ class AddRoom extends React.Component {
                         <Card.Description style={{ fontSize: '18px' }}>
                             Ліжка
                         </Card.Description><br />
-                        <ComplexInput onChange={this.handleComplexInputChange.bind(this)}/>
+                        <ComplexInput onchange={this.handleComplexInputChange.bind(this)}/>
                     </Card.Content>
                 </Card>
 
@@ -155,7 +152,7 @@ class AddRoom extends React.Component {
                     </Card.Content>
                 </Card>
 
-                <Button type="submit" color='teal' style={{ width: '750px', margin:'auto' }}
+                <Button type="submit" color='teal' style={{ width: '800px', margin:'auto' }}
                 disabled={pristine || submitting} >Continue</Button>
 
             </Fragment>

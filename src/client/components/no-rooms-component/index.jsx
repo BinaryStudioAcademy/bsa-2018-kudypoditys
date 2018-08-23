@@ -1,17 +1,22 @@
 import React from 'react';
 import './index.scss';
 import DefaultContainer from './defaultContainer.jsx';
-import AddRoom from './addRoomForm.jsx'
+import AddRoom from './addRoomForm.jsx';
+import {connect} from 'react-redux';
+import {mapStateToProps, mapDispatchToProps} from './container';
 
-class NoRoom extends React.Component {
+class PricesTab extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            displayAddForm: true
+            displayAddForm: false
         }
     }
     AddRoom(){
         this.setState({displayAddForm:true});
+    }
+    handleSubmit(data){
+        this.props.submitTab(data)
     }
     render() {
 
@@ -20,11 +25,11 @@ class NoRoom extends React.Component {
             {this.state.displayAddForm === false?
                <DefaultContainer AddRoom = {this.AddRoom.bind(this)}/>
             :
-                <AddRoom />
+                <AddRoom handleSubmit={this.handleSubmit}/>
             }
             </div>
         )
     }
 }
-export default NoRoom;
+export default connect(mapStateToProps, mapDispatchToProps)(PricesTab)
 
