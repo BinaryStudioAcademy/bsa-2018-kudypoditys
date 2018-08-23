@@ -35,15 +35,16 @@ export class RankingBar extends React.Component {
                         active={activeItem === DISTANCE}
                         onClick={this.handleItemClick}
                     />
+
+
                     <Dropdown
                         item
                         text="Stars"
+                        simple
+                        icon='caret down'
                     >
                         <Dropdown.Menu>
-                            <Dropdown.Header
 
-
-                            >Rating</Dropdown.Header>
                             <Dropdown.Item
                                 value={HIGH_RANK}
                                 active={activeItem === HIGH_RANK}

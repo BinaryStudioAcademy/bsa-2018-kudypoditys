@@ -11,13 +11,16 @@ import {
     Container,
     Icon,
     Header,
-    Label
+    Label,
+    Rating
 } from "semantic-ui-react";
 import "./index.scss";
 import PropTypes from "prop-types";
 import {mapStateToProps} from "./container";
 import {connect} from "react-redux";
 import MapWidgetModal from "client/components/map-widget-modal";
+
+
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
         //todo  handleRedirectToMap
@@ -55,13 +58,13 @@ export class PropertyListItem extends React.Component {
             <Card
                 fluid
                 style={{
-                    padding: "0.5rem",
-                    border: "groove"
+                    padding: 0,
+
                 }}
             >
                 <CardContent>
                     <Grid>
-                        <Grid.Column width={3}>
+                        <Grid.Column style={{width: "24%"}}>
                             <Label
                                 as="a"
                                 color="orange"
@@ -76,45 +79,49 @@ export class PropertyListItem extends React.Component {
                                 {propertyItemData.mealType}
                             </Label>
                             <Image
-                                rounded
+
                                 src={propertyItemData.image}
                                 floated="left"
+                                style={{
+                                    width: 150,
+                                    height: 150
+                                }}
                             />
                         </Grid.Column>
-                        <Grid.Column width={9}>
+                        <Grid.Column width={8}>
                             <Header
                                 as="h3"
-                                style={{ marginTop: "1.5rem" }}
-                                color="blue"
+
+
                                 onClick={this.handleRedirectToDetails}
                             >
-                                <Icon
-                                    size="mini"
-                                    color="black"
-                                    name="heart"
-                                    onClick={this.handleAddToFavorites}
-                                />
-                                <Icon
-                                    size="tiny"
-                                    color="black"
-                                    name="balance scale"
-                                    onClick={this.handleAddToComparison}
-                                />
-                                <Header.Content>
+
+                                <Header.Content
+                                    style={{
+                                        fontSize: 24,
+                                        fontWeight: "bold",
+                                        color: "#182c4f",
+                                        opacity: 0.8
+
+                                    }}
+                                >
                                     {propertyItemData.name}
                                 </Header.Content>
                             </Header>
+                            <Rating defaultRating={propertyItemData.propertyStars} maxRating={5} disabled/>
                             <CardMeta
                                 style={{
-                                    marginTop: "0.5rem"
+                                    marginTop: 4
                                 }}
                             >
-                                <Container className="qqq">
+                                <Container className="location__span">
                                     <Icon
-                                        name="map marker"
-                                        size="large"
+                                        name="map marker alternate"
+                                        size="small"
                                         onClick={this.handleRedirectToMap}
                                     />
+
+                                    {propertyItemData.location}
                                     <MapWidgetModal
                                         properties={[
                                             {
@@ -136,21 +143,13 @@ export class PropertyListItem extends React.Component {
                                         }}
                                         zoom={13}
                                         controlEnable={true}
+                                        buttonClass={"searchMapButton"}
                                     />
-                                    {propertyItemData.distanceToCenter} km to
-                                    center
+                                    <span className="Property_list__distanceToCenter">({propertyItemData.distanceToCenter} km from center)</span>
                                 </Container>
                             </CardMeta>
-                            <CardDescription
-                                textAlign="left"
-                                floated="right"
-                                style={{
-                                    marginTop: "0.5rem"
-                                }}
-                            >
-                                {propertyItemData.description}
-                            </CardDescription>
-                            <Message
+
+                            <Message className='search_result__message'
                                 style={{
                                     color: "red",
                                     display:
@@ -162,7 +161,7 @@ export class PropertyListItem extends React.Component {
                             >
                                 Unfortunately we do not have any available rooms
                             </Message>
-                            <Message
+                            <Message className='search_result__message'
                                 style={{
                                     color: "red",
                                     display:
@@ -175,52 +174,32 @@ export class PropertyListItem extends React.Component {
                                 The last available room!!!
                             </Message>
                         </Grid.Column>
-                        <Grid.Column width={3}>
+                        <Grid.Column style={{width: "24%"}}>
                             <Grid columns={2}>
                                 <Grid.Column>
-                                    <Container textAlign="right">
+                                    <Container style={{textAlign: "center"}}>
                                         <span className="ratingName">
                                             {" "}
                                             {ratingStatus}
                                         </span>
                                         <br/>
-                                        {propertyItemData.reviewsNamber} reviews
+                                        <span className="reviewsNumber">{propertyItemData.reviewsNamber} reviews</span>
+
                                     </Container>
                                 </Grid.Column>
-                                <Grid.Column>
-                                    <Label
-                                        size="big"
-                                        color={
-                                            propertyItemData.rating > 5
-                                                ? "blue"
-                                                : "grey"
-                                        }
-                                    >
-                                        {propertyItemData.rating}
-                                    </Label>
+                                <Grid.Column style={{textAlign: "right"}}>
+
+                                    <span className="rating"> {propertyItemData.rating}</span>
                                 </Grid.Column>
                             </Grid>
                             <Grid columns={1}>
                                 <Grid.Column>
-                                    <Header
-                                        as="h5"
-                                        color="blue"
-                                        textAlign="right"
-                                    >
-                                        <Header.Content
-                                            style={{
-                                                marginRight: "2.5rem"
-                                            }}
-                                        >
-                                            location{" "}
-                                            {propertyItemData.locationRating}
-                                        </Header.Content>
-                                    </Header>
+
                                     <Container
                                         floated="right"
                                         textAlign="right"
                                         style={{
-                                            marginTop: "5rem",
+
                                             display:
                                                 propertyItemData.availableRoomsCount ===
                                                 0
@@ -229,13 +208,14 @@ export class PropertyListItem extends React.Component {
                                         }}
                                     >
                                         <span className="priceInfo">
-                                            prise from{" "}
-                                            {propertyItemData.priceFrom} to{" "}
-                                            {propertyItemData.priceTo}{" "}
+
+                                            {propertyItemData.priceFrom}
+
                                             {propertyItemData.curency}
                                         </span>
 
                                         <Button
+                                            className="search-page__main-button"
                                             color={
                                                 propertyItemData.availableRoomsCount ===
                                                 0
@@ -243,10 +223,7 @@ export class PropertyListItem extends React.Component {
                                                     : "blue"
                                             }
                                             floated="right"
-                                            style={{
-                                                marginTop: "0.5rem"
-                                                // display: 'none'
-                                            }}
+
                                             onClick={
                                                 propertyItemData.availableRoomsCount ===
                                                 0
@@ -267,6 +244,7 @@ export class PropertyListItem extends React.Component {
         );
     }
 }
+
 PropertyListItem.propTypes = {
     propertyItemData: PropTypes.shape({
         image: PropTypes.string.isRequired,
