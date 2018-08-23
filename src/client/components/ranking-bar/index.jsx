@@ -18,19 +18,20 @@ export class RankingBar extends React.Component {
         const {activeItem} = this.props;
         return (
             <div className="sorting-bar">
-                <Menu widths="3">
+                <Menu>
 
                     <Menu.Item
-                        icon="usd"
-                        name="Lowest price first"
 
+                        name="Lowest price first"
+                        content='Lowest price first'
                         value={PRICE}
                         active={activeItem === PRICE}
                         onClick={this.handleItemClick}
                     />
                     <Menu.Item
-                        icon="map marker alternate"
+
                         name="Distance from city centre"
+                        content='Distance from city centre'
                         value={DISTANCE}
                         active={activeItem === DISTANCE}
                         onClick={this.handleItemClick}
