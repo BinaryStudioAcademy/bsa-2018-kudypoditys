@@ -65,7 +65,10 @@ export class PropertyListItem extends React.Component {
                 <CardContent>
                     <Grid className="search_page__grid">
 
-                        <Grid.Column style={{width: "20%"}}>
+                        <Grid.Column style={{
+                            width: "20%", paddingLeft: 0,
+                            paddingRight: 0
+                        }}>
                             <Label
                                 as="a"
                                 color="orange"
@@ -90,7 +93,10 @@ export class PropertyListItem extends React.Component {
                             />
                         </Grid.Column>
 
-                        <Grid.Column style={{width: "80%"}}>
+                        <Grid.Column style={{
+                            width: "80%", paddingLeft: 0,
+                            paddingRight: 0
+                        }}>
                             <div className="card_row">
                                 <div className="header_grd">
                                     <Header

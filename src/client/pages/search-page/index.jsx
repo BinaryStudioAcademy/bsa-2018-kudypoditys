@@ -94,13 +94,13 @@ class SearchPage extends React.Component {
                             id="foundProperty2"
                         />
 
-                       <div className="search-page__pagination">
-                        <Pagination pagesCount={10}/>
-                       </div>
+                        <div className="search-page__pagination">
+                            <Pagination pagesCount={10}/>
+                        </div>
 
                     </Container>
 
-            </div>
+                </div>
             </div>
 
         );
