@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Grid } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
-import Search from "client/components/search";
+import MainSearch from "client/components/search";
 
 import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
@@ -76,8 +76,7 @@ export class MainHeader extends Component {
                     {this.props.showSearch ? (
                         <Grid.Row centered columns={1}>
                             <Grid.Column width={16}>
-                                <Search
-                                    style={{marginBottom: 40}}
+                                <MainSearch
                                     view="bar"
                                     destination="Lviv"
                                     checkIn={new Date("Aug 14 2018")}

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { connect } from "react-redux";
-import { Input, Button, Form, Dropdown, Grid } from "semantic-ui-react";
+import { Input, Button, Form, Dropdown, Grid, Search } from 'semantic-ui-react';
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 
@@ -10,8 +10,18 @@ import "react-dates/lib/css/_datepicker.css";
 
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
+import _ from 'lodash'
+import faker from 'faker'
 
-export class Search extends React.Component {
+
+const source = _.times(5, () => ({
+    title: faker.company.companyName(),
+    description: faker.company.catchPhrase(),
+    image: faker.internet.avatar(),
+  }))
+
+
+export class MainSearch extends React.Component {
     constructor(props) {
         super(props);
         this.roomSelector = React.createRef();
@@ -21,7 +31,29 @@ export class Search extends React.Component {
             focusedInput: null
         };
     }
+    componentWillMount() {
+        this.resetComponent()
+      }
 
+      resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
+
+      handleResultSelect = (e, { result }) => this.setState({ value: result.title })
+
+      handleSearchChange = (e, { value }) => {
+        this.setState({ isLoading: true, value })
+
+        setTimeout(() => {
+          if (this.state.value.length < 1) return this.resetComponent()
+
+          const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
+          const isMatch = result => re.test(result.title)
+
+          this.setState({
+            isLoading: false,
+            results: _.filter(source, isMatch),
+          })
+        }, 300)
+      }
     generateOptions = (from, to) => {
         let options = [];
         for (let i = from; i <= to; i++) {
@@ -77,23 +109,25 @@ export class Search extends React.Component {
     render() {
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
+        const { isLoading, value, results } = this.state
+        const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
-        const { destination, rooms, adults, children } = this.props;
+        const { rooms, adults, children } = this.props;
         return (
             <Form
                 className="search search--view-bar"
                 onSubmit={this.handleSubmit}
             >
                 <div className="destination">
-                    <Input
-                        style={{height: 60}}
+                    <Search
                         name="destination"
                         placeholder="Where are you going?"
-                        value={destination}
-                        onChange={(event, input) =>
-                            this.props.onDestinationChange(input.value)
-                        }
-                        onFocus={this.hideRoomSelector}
+                        loading={isLoading}
+                        onResultSelect={this.handleResultSelect}
+                        onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
+                        results={results}
+                        value={value}
+                        {...this.props}
                         required
                     />
                 </div>
@@ -115,7 +149,7 @@ export class Search extends React.Component {
                 </div>
 
                 <div className="room-options">
-                    <Input
+                    <Input style={{height:"40px"}}
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
@@ -194,7 +228,7 @@ export class Search extends React.Component {
     }
 }
 
-Search.propTypes = {
+MainSearch.propTypes = {
     view: PropTypes.string.isRequired,
     destination: PropTypes.string,
     checkIn: PropTypes.number,
@@ -210,7 +244,7 @@ Search.propTypes = {
     onRoomsChange: PropTypes.func.isRequired
 };
 
-Search.defaultProps = {
+MainSearch.defaultProps = {
     destination: "",
     checkIn: null,
     checkOut: null,
@@ -222,4 +256,4 @@ Search.defaultProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Search);
+)(MainSearch);
