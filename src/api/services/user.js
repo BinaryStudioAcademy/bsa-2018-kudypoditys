@@ -1,11 +1,11 @@
 const Service = require("./generalService");
 const userRepository = require("../repositories/userRepository");
 const settings = require("../../../config/settings");
-const { dateHelpers } = require('../helpers');
+const { dateHelpers } = require("../helpers");
 const bcrypt = require("bcrypt");
 const userTokenService = require("./userToken");
-const nodemailer = require('nodemailer');
-const crypto = require('crypto');
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
 
 require("dotenv").config();
 
@@ -16,22 +16,27 @@ class UserService extends Service {
             fullName: user.fullName.trim(),
             password: hash,
             email: user.email.trim(),
-            phoneNumber: user.phoneNumber.trim()
+            phoneNumber: user.phoneNumber.trim(),
         };
         return this.repository.getUserByEmail(newUser.email).then(data => {
             if (data)
                 return Promise.reject(
-                    new Error("user with this email already exists")
+                    new Error("user with this email already exists"),
                 );
             else {
-                return this.create(newUser).then(data => {
-                    if(data) {
-                        this.verifyEmailSend(data);
-                        return data;
-                    } else {
-                        return Promise.reject(
-                            new Error("Couldn't add user.")
+                return this.create(newUser).then(dbUser => {
+                    if (dbUser) {
+                        return this.getEmailVerifyLink(dbUser).then(
+                            ({ error, data }) => {
+                                if (!error) {
+                                    return data;
+                                } else {
+                                    return Promise.reject(new Error(data));
+                                }
+                            },
                         );
+                    } else {
+                        return Promise.reject(new Error("Couldn't add user."));
                     }
                 });
             }
@@ -64,65 +69,82 @@ class UserService extends Service {
                 .then(refreshToken => {
                     return {
                         ...userTokenService.generateAccessToken(user.id),
-                        refreshToken: refreshToken
+                        refreshToken: refreshToken,
                     };
                 });
         });
     }
 
-    verifyEmailSend(user) {
-
-
+    getEmailVerifyLink(user) {
         const EMAIL_USER = process.env.EMAIL_USER;
         const EMAIL_PASS = process.env.EMAIL_PASS;
-        const BASE_URL = process.env.BASE_URL;
-        const verifyString = this.generateRundomString();
-
+        const verifyString = this.generateRandomString();
         const currentDate = dateHelpers.toUnixTimeSeconds(new Date());
-        userRepository.updateById(user.id, {
-            verifyEmailToken: verifyString,
-            verifyEmailTokenTillDate: currentDate + settings.verifyEmailTokenLife
-        });
 
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            service: "gmail",
             auth: {
                 user: EMAIL_USER,
-                pass: EMAIL_PASS
-            }
+                pass: EMAIL_PASS,
+            },
         });
 
         const mailOptions = {
             from: EMAIL_USER,
             to: user.email,
-            subject: 'Email Verification - Kudypoditys',
-            html: `<a href="http://localhost:3000/verifyemail?email=${user.email}&token=${verifyString}">Verify your email for Kudypoditys</a>`
+            subject: "Email Verification - Kudypoditys",
+            html: `<a href="http://localhost:3000/verifyemail?email=${user.email}&token=${verifyString}">Verify your email for Kudypoditys</a>`,
         };
 
-        return transporter.sendMail(mailOptions).then(() => true);
+        return userRepository
+            .updateById(user.id, {
+                verifyEmailToken: verifyString,
+                verifyEmailTokenTillDate:
+                    currentDate + settings.verifyEmailTokenLife,
+            })
+            .then(data => {
+                if (data) {
+                    return userRepository.findById(user.id).then(user => {
+                        transporter.sendMail(mailOptions).then(() => true);
+                        return { error: false, data: user };
+                    });
+                } else {
+                    return {
+                        error: true,
+                        data: "Couldn't update user by email.",
+                    };
+                }
+            });
     }
 
-    verifyEmailCheck(email, token) {
+    verifyEmail(email, token) {
         const currentDate = dateHelpers.toUnixTimeSeconds(new Date());
-        return userRepository.getUserByEmail(email).then((user) => {
-           if(user) {
-               if(user.verifyEmailToken === token && user.verifyEmailTokenTillDate > currentDate) {
-                   userRepository.updateById(user.id, {
-                       verifyEmailToken: "verified"
-                   });
+        return userRepository.getUserByEmail(email).then(user => {
+            if (user) {
+                if (
+                    user.verifyEmailToken === token &&
+                    user.verifyEmailTokenTillDate > currentDate
+                ) {
+                    userRepository.updateById(user.id, {
+                        verifyEmailToken: "verified",
+                    });
 
-                   return Promise.resolve({ verified: true });
-               } else {
-                   return Promise.reject(new Error("VerifyEmailToken is out of date."));
-               }
-           }  else {
-               return Promise.reject(new Error("Couldn't find user by this email."));
-           }
+                    return { verified: true };
+                } else {
+                    return Promise.reject(
+                        new Error("VerifyEmailToken is out of date."),
+                    );
+                }
+            } else {
+                return Promise.reject(
+                    new Error("Couldn't find user by this email."),
+                );
+            }
         });
     }
 
-    generateRundomString() {
-        return crypto.randomBytes(64).toString('hex');
+    generateRandomString() {
+        return crypto.randomBytes(64).toString("hex");
     }
 }
 

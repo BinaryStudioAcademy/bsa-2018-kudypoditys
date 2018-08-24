@@ -4,7 +4,7 @@ const userService = require("../services/user");
 
 user.route("/getemailverified")
     .get((req, res) => {
-        userService.verifyEmailSend(req.user)
+        userService.getEmailVerifyLink(req.user)
             .then(() => {
                 res.send(true);
             })
@@ -16,12 +16,12 @@ user.route("/getemailverified")
 user.route("/verifyemail")
     .get((req, res) => {
         console.log(req.query.email, req.query.token);
-        userService.verifyEmailCheck(req.query.email, req.query.token)
-            .then((resolve, reject) => {
-                if(resolve) {
+        userService.verifyEmail(req.query.email, req.query.token)
+            .then(data => {
+                if(data) {
                     res.send({ verified: true });
                 } else {
-                    res.status(500).send(reject)
+                    res.status(500).send("Error verifying email.");
                 }
             })
             .catch(err => {
