@@ -98,7 +98,6 @@ authRouter.route("/forgot").post((req, res, next) => {
 
                     const smtpTransport = nodemailer.createTransport({
 
-
                         //TODO HIde pass in to .env
                         service: 'Gmail',
                         auth: {
@@ -127,9 +126,60 @@ authRouter.route("/forgot").post((req, res, next) => {
 
     ], function (err) {
         if (err) return next(err);
-        console.log('OK')
+        res.status(200).send("OK");
     });
 
+});
+//TODO take out mailer to separate class/helper
+authRouter.route("/reset/:token").post((req, res, next) => {
+    async.waterfall([
+        function (done) {
+            userService.getUserByResetPasswordLink(req.params.token).then(function (user) {
+                console.log(user);
+
+                if (!user) {
+
+                    return res.status(200).send('Password reset token is invalid or has expired.');
+                }
+                if (req.body.password === req.body.confirm) {
+                    console.log(req.body.password);
+                    const hash = bcrypt.hashSync(req.body.password.trim(), 10);
+
+                    user.password = hash;
+                    user.resetPasswordLink = null;
+                    user.save().then(user => {
+
+                        const smtpTransport = nodemailer.createTransport({
+                            service: 'Gmail',
+                            auth: {
+                                user: 'kudypoditys@gmail.com',
+                                pass: "-=kudypoditys=-"
+                            }
+                        });
+                        const mailOptions = {
+                            to: user.email,
+                            from: 'kudypoditys@gmail.com',
+                            subject: 'Your password has been changed',
+                            text: 'Hello,\n\n' +
+                                'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+                        };
+                        smtpTransport.sendMail(mailOptions, function (err) {
+                            console.log('success', 'Success! Your password has been changed.');
+                            done(err);
+                        });
+
+                    })
+
+                } else {
+                    return res.status(200).send("Passwords do not match.");
+
+                }
+            });
+        },
+
+    ], function (err) {
+        res.status(200).send(err)
+    });
 });
 
 module.exports = authRouter;
