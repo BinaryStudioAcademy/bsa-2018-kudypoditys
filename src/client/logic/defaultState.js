@@ -164,7 +164,10 @@ const state = {
     ],
 
     rooms: {},
-  
+    propertyRegistrationTab: {
+        userName:'User Name'
+    },
+
     propertyLayoutTab: {
         title: 'Apartment with Garden View',
         amount:'1'
