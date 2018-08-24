@@ -107,4 +107,5 @@ class SearchPage extends React.Component {
     }
 }
 
+
 export default connect(mapStateToProps)(SearchPage);

@@ -29,6 +29,10 @@ let User = orm.define('user', {
     avatar: {
         type: Sequelize.STRING,
         allowNull: true
+    },
+    resetPasswordLink: {
+        type: Sequelize.STRING,
+        select: false
     }
 });
 

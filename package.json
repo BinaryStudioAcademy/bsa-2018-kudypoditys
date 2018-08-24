@@ -23,6 +23,7 @@
     "author": "Dmytro Kostiuk",
     "license": "ISC",
     "dependencies": {
+        "async": "^2.6.1",
         "autoprefixer": "7.1.6",
         "axios": "^0.18.0",
         "babel-core": "6.26.0",
@@ -62,6 +63,7 @@
         "mapbox-gl": "^0.47.0",
         "moment": "^2.22.2",
         "node-sass": "^4.9.2",
+        "nodemailer": "^4.6.8",
         "object-assign": "^4.1.1",
         "passport": "^0.4.0",
         "passport-jwt": "^4.0.0",
