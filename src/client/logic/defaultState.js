@@ -6,13 +6,13 @@ const state = {
         adults: 1,
         children: 0,
         rooms: 1,
-        results: [],
+        results: []
     },
     login: {
         email: "",
         password: "",
         errors: [],
-        loginSuccess: false,
+        loginSuccess: false
     },
     foundProperties: {
         foundProperty1: {
@@ -39,8 +39,8 @@ const state = {
                 "Airport shuttle",
                 "Family rooms",
                 "Pets allowed",
-                "Bar",
-            ],
+                "Bar"
+            ]
         },
         foundProperty2: {
             _id: 1,
@@ -66,30 +66,29 @@ const state = {
                 "Airport shuttle",
                 "Family rooms",
                 "Pets allowed",
-                "Bar",
-            ],
-        },
+                "Bar"
+            ]
+        }
     },
 
     sortType: {
-        activeItem: "price",
+        activeItem: "price"
     },
     addProperty: {
         arrivalFrom: "10:00",
         arrivalTo: "12:00",
         departureFrom: "10:00",
-        departureTo: "12:00",
+        departureTo: "12:00"
     },
-    images: []
+    images: [],
 
-    ,
     propertySubmit: {
         activeIndex: 2
     },
     header: {
         currencies: [],
         selectedCurrency: 1,
-        currentUser: null,
+        currentUser: null
     },
     shownProperties: {
         "xyz-1": {
@@ -113,16 +112,16 @@ const state = {
                 "Airport shuttle",
                 "Family rooms",
                 "Pets allowed",
-                "Bar",
-            ],
+                "Bar"
+            ]
         },
-        "xyz-2": {},
+        "xyz-2": {}
     },
     searchResults: {
         destination: "Lviv",
         totalCount: 1,
         shownFrom: 1,
-        shownTo: 5,
+        shownTo: 5
     },
     cityInfos: [],
     filters: [
@@ -131,43 +130,43 @@ const state = {
             ischecked: true,
             label: "Pool",
             amount: 321,
-            type: "Facility",
+            type: "Facility"
         },
         {
             id: "2",
             ischecked: false,
             label: "Very good location: 8+",
             amount: 658,
-            type: "Review Score",
+            type: "Review Score"
         },
         {
             id: "4",
             ischecked: false,
             label: "Hotel",
             amount: 658,
-            type: "Property Type",
+            type: "Property Type"
         },
         {
             id: "3",
             ischecked: false,
             label: "Hostel",
             amount: 658,
-            type: "Property Type",
+            type: "Property Type"
         },
         {
             id: "4",
             ischecked: false,
             label: "4-star hotel",
             amount: 658,
-            type: "Hotel Class",
-        },
+            type: "Hotel Class"
+        }
     ],
 
     rooms: {},
-  
+
     propertyLayoutTab: {
-        title: 'Apartment with Garden View',
-        amount:'1'
+        title: "Apartment with Garden View",
+        amount: "1"
     },
 
     propertyRegistration: {
@@ -185,9 +184,7 @@ const state = {
             includeToPrice: false
         },
         additionalFees: false,
-        additionalFeesOptions: [
-
-        ],
+        additionalFeesOptions: [],
         commissionName: "Name one",
         recipientSameAddress: true,
         recipientActualAddress: {
@@ -206,16 +203,12 @@ const state = {
             booking: "need",
             priceForDay: ""
         },
-        languages: [
-            "ukrainian",
-            "russian",
-            "english"
-        ],
-        facilities: [
-            "Bar",
-            "Sauna",
-            "Pool"
-        ]
+        languages: ["ukrainian", "russian", "english"],
+        facilities: ["Bar", "Sauna", "Pool"]
+    },
+
+    userCabinet: {
+        user: null
     }
 };
 

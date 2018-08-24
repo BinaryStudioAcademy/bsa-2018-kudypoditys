@@ -6,6 +6,15 @@ import { MenuItems } from "./config";
 import { Container, Tab } from "semantic-ui-react";
 
 export class UserCabinet extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            activeIndex: 0
+        };
+    }
+
+    handleTabChange = (e, { activeIndex }) => this.setState({ activeIndex });
+
     getPanes() {
         return MenuItems.map(tab => ({
             menuItem: tab.menuItem,
@@ -23,12 +32,14 @@ export class UserCabinet extends React.Component {
     }
 
     render() {
+        const { activeIndex } = this.state;
         return (
             <Container>
                 <Tab
                     menu={{ fluid: true, secondary: true, pointing: true }}
-                    menuPosition="top"
                     panes={this.getPanes()}
+                    activeIndex={activeIndex}
+                    onTabChange={this.handleTabChange}
                 />
             </Container>
         );
