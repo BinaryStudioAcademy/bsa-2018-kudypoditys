@@ -13,7 +13,7 @@ export class SearchSummary extends React.Component {
             numbers = formatNumber(numbersToPrettify);
 
         return (
-            <Header as="h1" style={{fontSize: 23, lineHeight: 1.2}}>
+            <Header as="search-summary__header">
                 {destination}: {numbers} property found
             </Header>
         );

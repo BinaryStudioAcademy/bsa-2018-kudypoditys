@@ -36,9 +36,9 @@ class Quickfilter extends React.Component {
                         {box.label}{" "}
                     </label>
                 </div>
-                <label className="box_amount" htmlFor={box.id}>
-                    {box.amount}
-                </label>
+                {/*<label className="box_amount" htmlFor={box.id}>*/}
+                {/*{box.amount}*/}
+                {/*</label>*/}
             </div>
         ));
         return temp;
@@ -47,18 +47,20 @@ class Quickfilter extends React.Component {
         const PropertyType = this.sortByType("Property Type");
         const Facility = this.sortByType("Facility");
         const ReviewScore = this.sortByType("Review Score");
+        const HotelClass = this.sortByType("Hotel Class");
 
         const list1 = this.drawBoxes(PropertyType);
         const list2 = this.drawBoxes(Facility);
         const list3 = this.drawBoxes(ReviewScore);
+        const list4 = this.drawBoxes(HotelClass);
 
         return (
             <div className="box">
                 <div className="box_header">
-                    <h2>Filter by</h2>
+                    <div className="Clear__filter">Clear filters</div>
                 </div>
-                <p className="box_group">Property Type</p>
-                {list1}
+                <p className="box_group">Hotel Class</p>
+                {list4}
                 <p className="box_group">Facility</p>
                 {list2}
                 <p className="box_group">Review Score</p>

@@ -18,32 +18,37 @@ export class RankingBar extends React.Component {
         const {activeItem} = this.props;
         return (
             <div className="sorting-bar">
-                <Menu widths="3">
+                <Menu className="ranking-dropDown">
 
                     <Menu.Item
-                        icon="usd"
-                        name="Lowest price first"
 
+                        name="Lowest price first"
+                        content='Lowest price first'
                         value={PRICE}
                         active={activeItem === PRICE}
                         onClick={this.handleItemClick}
                     />
                     <Menu.Item
-                        icon="map marker alternate"
+
                         name="Distance from city centre"
+                        content='Distance from city centre'
                         value={DISTANCE}
                         active={activeItem === DISTANCE}
                         onClick={this.handleItemClick}
                     />
+
+
                     <Dropdown
+
                         item
                         text="Stars"
+                        simple
+                        icon='caret down'
                     >
-                        <Dropdown.Menu>
-                            <Dropdown.Header
+                        <Dropdown.Menu
 
+                        >
 
-                            >Rating</Dropdown.Header>
                             <Dropdown.Item
                                 value={HIGH_RANK}
                                 active={activeItem === HIGH_RANK}
