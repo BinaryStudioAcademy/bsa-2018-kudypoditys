@@ -3,7 +3,7 @@ const client = new elasticsearch.Client({
     host: 'localhost:9200',
     log: 'trace'
 });
-var indexname = "world"
+let indexname = "world"
   const payload ={
     "index": indexname,
     "body": {  "settings": {
@@ -36,11 +36,6 @@ var indexname = "world"
               "search_analyzer": "search_analyze"
             },
             "property": {
-              "type": "string",
-              "analyzer":"indexing_analyzer",
-              "search_analyzer": "search_analyze"
-            },
-            "country": {
               "type": "string",
               "analyzer":"indexing_analyzer",
               "search_analyzer": "search_analyze"

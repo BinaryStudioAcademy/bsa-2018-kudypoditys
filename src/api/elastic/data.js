@@ -1,4 +1,3 @@
-
 const elasticsearch = require('elasticsearch');
 const PropertyService = require('./../services/property');
 const CityService = require('./../services/city');
@@ -10,7 +9,7 @@ const elasticClient = new elasticsearch.Client({
 const properties = PropertyService.getAllProperties()
 const cities =CityService.getAllCities()
 
-var propertiesBulk = [];
+let propertiesBulk = [];
 properties.forEach(property =>{
     propertiesBulk.push({index:{
      _index:"elastic_properties",
@@ -25,7 +24,7 @@ propertiesBulk.push({
         country:property.country
   })
 })
-var citiesBulk = [];
+let citiesBulk = [];
 cities.forEach(city =>{
     citiesBulk.push({index:{
                  _index:"elastic_cities",
@@ -33,20 +32,21 @@ cities.forEach(city =>{
              }
          })
          citiesBulk.push({
-        name: city.name,
+             name: city.name,
+             country:city.country
   })
 })
 elasticClient.bulk({body:propertiesBulk}, function( err, response  ){
          if( err ){
              console.log("Failed Bulk operation".red, err)
          } else {
-             console.log("Successfully imported %s".green, properties.length);
+             console.log("Successfully imported properties %s".green, properties.length);
          }
 });
 elasticClient.bulk({body:citiesBulk}, function( err, response  ){
     if( err ){
         console.log("Failed Bulk operation".red, err)
     } else {
-        console.log("Successfully imported %s".green, cities.length);
+        console.log("Successfully imported cities %s".green, cities.length);
     }
 });

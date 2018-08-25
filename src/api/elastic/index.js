@@ -152,6 +152,23 @@ module.exports = {
             },
         );
     },
+    autocompleteSearch: (req, res, _index, _body) => {
+        elasticClient
+        .search({
+          index: _index,
+          body: {
+            query: {
+              multi_match: {
+                query: req.query.search,
+                fields: ["city", "property"]
+              }
+            }
+          }
+        }, function (error, response) {
+          res.json({result: response});
+        });
+    },
+
 
     deleteAll: (req, res) => {
         elasticClient.indices.delete(
