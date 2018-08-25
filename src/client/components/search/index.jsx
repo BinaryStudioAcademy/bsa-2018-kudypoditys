@@ -2,24 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { connect } from "react-redux";
-import { Input, Button, Form, Dropdown, Grid, Search } from 'semantic-ui-react';
+import { Input, Button, Form, Dropdown, Grid, Search } from "semantic-ui-react";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 
 import "react-dates/lib/css/_datepicker.css";
-
+import axios from "axios";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
-import _ from 'lodash'
-import faker from 'faker'
+import _ from "lodash";
+import Suggestions from '/suggestions'
+//import faker from "faker";
 
-
-const source = _.times(5, () => ({
-    title: faker.company.companyName(),
-    description: faker.company.catchPhrase(),
-    image: faker.internet.avatar(),
-  }))
-
+// const source = _.times(5, () => ({
+//     title: faker.company.companyName(),
+//     description: faker.company.catchPhrase(),
+//     image: faker.internet.avatar()
+// }));
 
 export class MainSearch extends React.Component {
     constructor(props) {
@@ -28,32 +27,72 @@ export class MainSearch extends React.Component {
         this.state = {
             startDate: moment(),
             endDate: moment().add(5, "days"),
-            focusedInput: null
+            focusedInput: null,
+            query: "",
+            results: []
         };
     }
+    getInfo = () => {
+        axios
+            .get("http://127.0.0.1:3000/search?q=" + this.state.query)
+            .then(({ response }) => {
+                this.setState({
+                   // { name: '', results: [{ title: '', description: '' }]
+
+                    results: response.data, //todo
+                    isLoading: false
+                });
+            });
+    };
+    // handleInputChange = () => {
+    //     this.setState(
+    //         {isLoading: true,
+    //             query: this.search.value
+    //         },
+    //         () => {
+    //             if (this.state.query && this.state.query.length > 1) {
+    //                 if (this.state.query.length % 2 === 0) {
+    //                     this.getInfo();
+    //                 }
+    //             }
+    //         }
+    //     );
+    // };
     componentWillMount() {
-        this.resetComponent()
-      }
+        this.resetComponent();
+    }
 
-      resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
+    resetComponent = () =>
+        this.setState({ isLoading: false, results: [], value: "" });
 
-      handleResultSelect = (e, { result }) => this.setState({ value: result.title })
+    handleResultSelect = (e, { result }) =>
+        this.setState({ value: result.title });
 
-      handleSearchChange = (e, { value }) => {
-        this.setState({ isLoading: true, value })
+    handleSearchChange = (e, { value }) => {
+        this.setState(
+            {
+                isLoading: true,
+                query: this.search.value
+            },
+            () => {
+                if (this.state.query && this.state.query.length > 1) {
+                        this.getInfo();
 
-        setTimeout(() => {
-          if (this.state.value.length < 1) return this.resetComponent()
+                }
+            }
+        );
+        // setTimeout(() => {
+        //     if (this.state.value.length < 1) return this.resetComponent();
 
-          const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-          const isMatch = result => re.test(result.title)
+        //     const re = new RegExp(_.escapeRegExp(this.state.value), "i");
+        //     const isMatch = result => re.test(result.title);
 
-          this.setState({
-            isLoading: false,
-            results: _.filter(source, isMatch),
-          })
-        }, 300)
-      }
+        //     this.setState({
+        //         isLoading: false,
+        //         results: _.filter(+, isMatch)
+        //     });
+        // }, 300);
+    };
     generateOptions = (from, to) => {
         let options = [];
         for (let i = from; i <= to; i++) {
@@ -109,8 +148,7 @@ export class MainSearch extends React.Component {
     render() {
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
-        const { isLoading, value, results } = this.state
-        const selectOptions = this.generateOptions(1, 10);
+        const { isLoading, value, results } = this.state;
         const childrenOptions = this.generateOptions(0, 10);
         const { rooms, adults, children } = this.props;
         return (
@@ -124,14 +162,19 @@ export class MainSearch extends React.Component {
                         placeholder="Where are you going?"
                         loading={isLoading}
                         onResultSelect={this.handleResultSelect}
-                        onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
+                        onSearchChange={_.debounce(
+                            this.handleSearchChange,
+                            500,
+                            { leading: true }
+                        )}
                         results={results}
                         value={value}
                         {...this.props}
                         required
                     />
+                <Suggestions results={this.state.results} />
                 </div>
-                <div className="check-in-out"  onFocus={this.hideRoomSelector}>
+                <div className="check-in-out" onFocus={this.hideRoomSelector}>
                     <DateRangePicker
                         noBorder={true}
                         startDateId="startDate"
@@ -148,7 +191,8 @@ export class MainSearch extends React.Component {
                 </div>
 
                 <div className="room-options">
-                    <Input style={{height:"20px"}}
+                    <Input
+                        style={{ height: "20px" }}
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
@@ -219,8 +263,13 @@ export class MainSearch extends React.Component {
                     </div>
                 </div>
 
-                <div className="btn-wrp" style={{height: 40, width: 134}}>
-                    <Button style={{height: 40}} type="submit" content="Search" primary/>
+                <div className="btn-wrp" style={{ height: 40, width: 134 }}>
+                    <Button
+                        style={{ height: 40 }}
+                        type="submit"
+                        content="Search"
+                        primary
+                    />
                 </div>
             </Form>
         );
