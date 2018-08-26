@@ -10,8 +10,6 @@ import "react-dates/lib/css/_datepicker.css";
 import axios from "axios";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
-import _ from "lodash";
-
 
 export class MainSearch extends React.Component {
     constructor(props) {
@@ -26,42 +24,39 @@ export class MainSearch extends React.Component {
         };
     }
     getInfo = () => {
-       // axios
-        //    .get("http://127.0.0.1:3000/search?q=" + this.state.query)
-         //   .then(({ response }) => {
+        let resultsData = [];
+        let index ="properties"
+        axios.get(
+                `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.state.query}`
+            )
+            .then(propertiesResponse => {
+                console.log("response Roperties= " + JSON.stringify(propertiesResponse));
+                propertiesResponse.data.forEach(element => {
+                    resultsData.push({
+                        title: element._source.name,
+                        description: element._source.description,
+                        image:element._source.image
+                    });
+                });
+
+                index="cities"
+                return axios.get(`http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.state.query}`)
+            }).then(citiesResponse => {
+                console.log("response Cities= " + JSON.stringify(citiesResponse));
+                citiesResponse.data.forEach(element => {
+                    resultsData.push({
+                        title: element._source.city,
+                        description: element._source.country,
+                    });
+                });
                 this.setState({
-                    results:[ {
-                        title: 'Dnister',
-                        description: 'nice hotel, Lviv, Ukrain ',
-                        image: "https://s-ec.bstatic.com/xdata/images/hotel/square600/106661913.jpg"
-                    },
-                    {
-                        title: 'Lviv',
-                        description: 'Ukrain',
-                    }],
-                        // name: 'typeProperty',
-                        // results: [{
-                        //     title: 'Dzordz', description: 'nice hotel',
-                        //     image: "https://s-ec.bstatic.com/xdata/images/hotel/square600/106661913.jpg"
-                        // }]},//response.data, //todo
+                    results: resultsData,
                     isLoading: false
                 });
-           // });
+            })
+
     };
-    // handleInputChange = () => {
-    //     this.setState(
-    //         {isLoading: true,
-    //             query: this.search.value
-    //         },
-    //         () => {
-    //             if (this.state.query && this.state.query.length > 1) {
-    //                 if (this.state.query.length % 2 === 0) {
-    //                     this.getInfo();
-    //                 }
-    //             }
-    //         }
-    //     );
-    // };
+
     componentWillMount() {
         this.resetComponent();
     }
@@ -72,7 +67,7 @@ export class MainSearch extends React.Component {
     handleResultSelect = (e, { result }) =>
         this.setState({
             query: result.title,
-        isLoading:false
+            isLoading: false
         });
 
     handleSearchChange = (e, { value }) => {
@@ -82,23 +77,11 @@ export class MainSearch extends React.Component {
                 query: value
             },
             () => {
-                if (this.state.query && this.state.query.length > 1) {
-                        this.getInfo();
-
+                if (this.state.query && this.state.query.length > 0) {
+                    this.getInfo();
                 }
             }
         );
-        // setTimeout(() => {
-        //     if (this.state.value.length < 1) return this.resetComponent();
-
-        //     const re = new RegExp(_.escapeRegExp(this.state.value), "i");
-        //     const isMatch = result => re.test(result.title);
-
-        //     this.setState({
-        //         isLoading: false,
-        //         results: _.filter(+, isMatch)
-        //     });
-        // }, 300);
     };
     generateOptions = (from, to) => {
         let options = [];
@@ -169,11 +152,7 @@ export class MainSearch extends React.Component {
                         placeholder="Where are you going?"
                         loading={isLoading}
                         onResultSelect={this.handleResultSelect}
-                        onSearchChange={_.debounce(
-                            this.handleSearchChange,
-                            500,
-                            { leading: true }
-                        )}
+                        onSearchChange={this.handleSearchChange}
                         results={results}
                         value={query}
                         {...this.props}

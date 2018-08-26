@@ -63,8 +63,9 @@ elastic.route("/search")
     });
 
 elastic.route("/autocomplete")
-    .post((req, res) => {
-        const { index, type, query, fields } = req.body;
+    .get((req, res) => {
+        const { index, type, query } = req.query;
+        const fields=["city","name"]
         ES_service.autocompleteSearch(req, res, index, type, query, fields);
     });
 

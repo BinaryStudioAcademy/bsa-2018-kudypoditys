@@ -123,6 +123,7 @@ module.exports = {
     },
 
     search: (req, res, _index, _type, _body) => {
+
         elasticClient
             .search({
                 index: _index,
@@ -172,7 +173,7 @@ module.exports = {
             })
             .then(
                 resp => {
-                    return res.json(resp);
+                    return res.send(resp.hits.hits)//res.json(resp);
                 },
                 err => {
                     return res.json(err.message);

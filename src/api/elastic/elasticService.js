@@ -1,5 +1,6 @@
 const elasticRepository = require("./index");
 const init = require("./init");
+const indexData = require("./data");
 
 module.exports = {
     initService: async (req, res) => {
@@ -8,13 +9,13 @@ module.exports = {
             city: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
             },
             country: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
-            },
+                search_analyzer: "standard"
+            }
         };
 
         var propertiesInit = init.initIndex.body;
@@ -22,23 +23,23 @@ module.exports = {
             city: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
             },
             country: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
             },
             name: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
             },
             description: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
-            },
+                search_analyzer: "standard"
+            }
         };
 
         await elasticRepository.initIndex(req, res, "cities", citiesInit);
@@ -46,11 +47,12 @@ module.exports = {
             req,
             res,
             "properties",
-            propertiesInit,
+            propertiesInit
         );
     },
 
     addService: (req, res) => {
+        //indexData()
         const properties = [
             {
                 id: 1,
@@ -58,8 +60,10 @@ module.exports = {
                     city: "Lviv",
                     country: "Ukraine",
                     name: "Hotel Cisar",
-                    description: "Beautiful hotel in Lviv"
-                },
+                    description: "Beautiful hotel in Lviv",
+                    image:
+                        "https://s-ec.bstatic.com/xdata/images/hotel/square600/154109872.jpg"
+                }
             },
             {
                 id: 2,
@@ -67,8 +71,11 @@ module.exports = {
                     city: "Mogadishu",
                     country: "Somali",
                     name: "Palm Roof Hat",
-                    description: "Not so beautiful hotel, but maybe the most dangerous."
-                },
+                    description:
+                        "Not so beautiful hotel, but maybe the most dangerous.",
+                    image:
+                        "https://t-ec.bstatic.com/xdata/images/hotel/square600/75459034.jpg"
+                }
             },
             {
                 id: 3,
@@ -76,9 +83,11 @@ module.exports = {
                     city: "New York",
                     country: "USA",
                     name: "Hotel Plaza",
-                    description: "The most expensive hotel in New York"
-                },
-            },
+                    description: "The most expensive hotel in New York",
+                    image:
+                        "https://t-ec.bstatic.com/xdata/images/hotel/square600/29574899.jpg"
+                }
+            }
         ];
 
         const cities = [
@@ -102,15 +111,29 @@ module.exports = {
                     city: "New York",
                     country: "USA"
                 }
-            },
+            }
         ];
 
         properties.map((prop, i) => {
-            elasticRepository.addDocument(req, res, "properties", prop.id, "document", prop.body);
+            elasticRepository.addDocument(
+                req,
+                res,
+                "properties",
+                prop.id,
+                "document",
+                prop.body
+            );
         });
 
         cities.map((city, i) => {
-            elasticRepository.addDocument(req, res, "cities", city.id, "document", city.body);
-        })
-    },
+            elasticRepository.addDocument(
+                req,
+                res,
+                "cities",
+                city.id,
+                "document",
+                city.body
+            );
+        });
+    }
 };
