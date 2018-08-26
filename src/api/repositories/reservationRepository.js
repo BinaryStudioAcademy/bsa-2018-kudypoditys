@@ -25,7 +25,12 @@ class ReservationRepository extends Repository {
                         },
                         {
                             model: Property,
-                            attributes: ["id", "name"]
+                            attributes: [
+                                "id",
+                                "name",
+                                "address",
+                                "contactPhone"
+                            ]
                         }
                     ]
                 },
@@ -55,7 +60,12 @@ class ReservationRepository extends Repository {
                         },
                         {
                             model: Property,
-                            attributes: ["id", "name"]
+                            attributes: [
+                                "id",
+                                "name",
+                                "address",
+                                "contactPhone"
+                            ]
                         }
                     ]
                 },
