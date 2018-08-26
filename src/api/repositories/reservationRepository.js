@@ -21,7 +21,7 @@ class ReservationRepository extends Repository {
                     include: [
                         {
                             model: RoomType,
-                            attributes: ["name"]
+                            attributes: ["id", "name"]
                         },
                         {
                             model: Property,
@@ -56,7 +56,7 @@ class ReservationRepository extends Repository {
                     include: [
                         {
                             model: RoomType,
-                            attributes: ["name"]
+                            attributes: ["id", "name"]
                         },
                         {
                             model: Property,
