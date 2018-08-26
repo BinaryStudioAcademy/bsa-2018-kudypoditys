@@ -4,6 +4,8 @@ const elasticClient = new elasticsearch.Client({
     log: "trace",
 });
 
+const init = require("./init");
+
 module.exports = {
     ping: (req, res) => {
         elasticClient.ping(
@@ -28,10 +30,11 @@ module.exports = {
         );
     },
 
-    initIndex: (req, res, _index) => {
+    initIndex: (req, res, _index, _body) => {
         elasticClient.indices
             .create({
                 index: _index,
+                body: _body,
             })
             .then(
                 resp => {
@@ -67,7 +70,7 @@ module.exports = {
             .putMapping({
                 index: _index,
                 type: _type,
-                body: _body,
+                body: _body
             })
             .then(
                 resp => {
@@ -152,23 +155,30 @@ module.exports = {
             },
         );
     },
-    autocompleteSearch: (req, res, _index, _body) => {
-        elasticClient
-        .search({
-          index: _index,
-          body: {
-            query: {
-              multi_match: {
-                query: req.query.search,
-                fields: ["city", "property"]
-              }
-            }
-          }
-        }, function (error, response) {
-          res.json({result: response});
-        });
-    },
 
+    autocompleteSearch: (req, res, _index, _type, _query, _fields) => {
+        elasticClient
+            .search({
+                index: _index,
+                type: _type,
+                body: {
+                    query: {
+                        multi_match: {
+                            query: _query,
+                            fields: _fields,
+                        },
+                    },
+                },
+            })
+            .then(
+                resp => {
+                    return res.json(resp);
+                },
+                err => {
+                    return res.json(err.message);
+                },
+            );
+    },
 
     deleteAll: (req, res) => {
         elasticClient.indices.delete(

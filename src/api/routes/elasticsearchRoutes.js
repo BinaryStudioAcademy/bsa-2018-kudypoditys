@@ -2,6 +2,8 @@ const express = require('express');
 const elastic = express.Router();
 const ES_service = require("../elastic");
 
+const elasticService = require("../elastic/elasticService");
+
 elastic.route("/ping")
     .get((req, res) => {
         ES_service.ping(req, res);
@@ -14,6 +16,22 @@ elastic.route("/index/init")
        ES_service.initIndex(req, res, index);
     });
 
+// - - - - - - - - - - - - - - - - - - - - - -
+// TEMPORARY ROUTES FOR TESTING:
+
+elastic.route("/index/init_test")
+    .post((req, res) => {
+        elasticService.initService(req, res);
+    });
+
+elastic.route("/index/add_test")
+    .post((req, res) => {
+        elasticService.addService(req, res);
+    });
+
+//  THIS WILL BE REMOVED ^^
+// - - - - - - - - - - - - - - - - - - - - - -
+
 elastic.route("/index/check")
     .post((req, res) => {
         const { index } =  req.body;
@@ -22,8 +40,8 @@ elastic.route("/index/check")
 
 elastic.route("/index/mapping")
     .post((req, res) => {
-        const { index, type, body } = req.body;
-        ES_service.initMapping(req, res, index, type, body);
+        const { index, type } = req.body;
+        ES_service.initMapping(req, res, index, type);
     });
 
 elastic.route("/add")
@@ -42,6 +60,12 @@ elastic.route("/search")
     .post((req, res) => {
         const { index, type, body } = req.body;
         ES_service.search(req, res, index, type, body);
+    });
+
+elastic.route("/autocomplete")
+    .post((req, res) => {
+        const { index, type, query, fields } = req.body;
+        ES_service.autocompleteSearch(req, res, index, type, query, fields);
     });
 
 elastic.route("/delete_document")
