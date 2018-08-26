@@ -1,0 +1,18 @@
+.booking-container {
+    padding: 10px;
+    margin: 15px;
+}
+
+.booking {
+    overflow: hidden;
+}
+
+.ui.grid.booking > div.row.booking-footer {
+    max-height: 50px;
+    background-color: rgb(238, 238, 238);
+    padding: 5px 0;
+}
+
+.booking-footer img.booking-image {
+    min-width: 150px;
+}
