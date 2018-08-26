@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "whatwg-fetch";
-import {createStore, applyMiddleware} from "redux";
-import {Provider} from "react-redux";
-import {composeWithDevTools} from "redux-devtools-extension";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
@@ -44,13 +44,20 @@ ReactDOM.render(
                     path="/checkin-checkout"
                     component={CheckInCheckOut}
                 />
-                <Route path="/search-page" component={SearchPage}/>
-                <Route path="/property-page" component={PropertyPage}/>
-                <Route path="/add-property/" component={PropertyCreationTabs}/>
-                <Route path="/404" component={NotFoundPage}/>
-                <Route path="/user-cabinet" component={UserCabinet}/>
-
-                <Route component={NotFoundPage}/>
+                <Route path="/search-page" component={SearchPage} />
+                <Route path="/property-page" component={PropertyPage} />
+                <Route
+                    path="/add-property/"
+                    component={() => (
+                        <AuthHOC Component={PropertyCreationTabs} />
+                    )}
+                />
+                <Route path="/404" component={NotFoundPage} />
+                <Route
+                    path="/user-cabinet"
+                    component={() => <AuthHOC Component={UserCabinet} />}
+                />
+                <Route component={NotFoundPage} />
             </Switch>
         </Router> */}
     <ForgotPassword/>

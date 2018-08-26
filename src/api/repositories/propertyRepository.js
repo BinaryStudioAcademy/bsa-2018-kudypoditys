@@ -8,7 +8,6 @@ const AccommodationRule = require("../models/AccommodationRule");
 const BedInRoom = require("../models/BedInRoom");
 const Reservation = require("../models/Reservation");
 const Country = require("../models/Country");
-const PropertyCategory = require("../models/PropertyCategory");
 const RoomType = require("../models/RoomType");
 const User = require("../models/User");
 const City = require("../models/City");
@@ -28,7 +27,6 @@ class PropertyRepository extends Repository {
                 include: [
                     City,
                     PropertyType,
-                    PropertyCategory,
                     AccommodationRule,
                     {
                         model: Review,

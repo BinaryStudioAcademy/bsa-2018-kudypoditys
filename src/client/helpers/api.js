@@ -7,7 +7,6 @@ const baseUrl = SERVER_HOST;
 
 class Api {
     constructor() {
-        console.log(`base url ${baseUrl}`);
         this.adapter = axios.create({
             baseURL: baseUrl
         });

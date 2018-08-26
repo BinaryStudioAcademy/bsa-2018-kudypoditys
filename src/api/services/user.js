@@ -29,6 +29,9 @@ class UserService extends Service {
     getUserByEmail(email) {
         return this.repository.getUserByEmail(email);
     }
+    getUserByResetPasswordLink(ResetPasswordLink) {
+        return this.repository.getUserByResetPasswordLink(ResetPasswordLink);
+    }
 
     updateUser(id, user) {
         return userRepository.updateById(id, user);
