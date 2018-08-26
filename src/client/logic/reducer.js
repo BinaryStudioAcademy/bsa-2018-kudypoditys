@@ -19,7 +19,7 @@ import propertySubmit from './main-info-tab/reducer';
 import policesTab from "client/logic/polices-tab/reducer";
 import layoutTab from './room-item/rducer';
 import propertyRegistration from "client/logic/property-creation-tabs/reducer";
-
+import emailInputReducer from "client/logic/forgot-password/reducer"
 export default combineReducers({
     search,
     sortType,
@@ -40,5 +40,6 @@ export default combineReducers({
     amenitiesTab,
     policesTab,
     layoutTab,
-    propertyRegistration
+    propertyRegistration,
+    emailInputReducer
 });

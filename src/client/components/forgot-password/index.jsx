@@ -5,6 +5,9 @@ import { email } from 'client/regexValidationService';
 import { Field, reduxForm } from 'redux-form';
 import { Card, Button, Form } from "semantic-ui-react";
 import ResetPassword from 'client/components/reset-password'
+import {connect} from 'react-redux';
+import {mapStateToProps, mapDispatchToProps} from "./container";
+
 class ForgotPassword extends React.Component {
     constructor(props){
         super(props)
@@ -13,8 +16,8 @@ class ForgotPassword extends React.Component {
         }
     }
     handleEmailChange(e){
-        const value = e.target.value
-        this.setState({email:value}, ()=>console.log(this.state))
+        const email = e.target.value
+        this.props.inputEmail(email);
     }
     render(){
         return(
@@ -35,7 +38,7 @@ class ForgotPassword extends React.Component {
                     validate={email} />
 
             </ModalComponent>
-            <ResetPassword/>
+            {/* <ResetPassword/> */}
         </div>
 
         )
@@ -44,4 +47,4 @@ class ForgotPassword extends React.Component {
 ForgotPassword = reduxForm({
     form: "TabRegistration"
 })(ForgotPassword);
-export default ForgotPassword;
+export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword);
