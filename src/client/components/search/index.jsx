@@ -11,14 +11,7 @@ import axios from "axios";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 import _ from "lodash";
-import Suggestions from '/suggestions'
-//import faker from "faker";
 
-// const source = _.times(5, () => ({
-//     title: faker.company.companyName(),
-//     description: faker.company.catchPhrase(),
-//     image: faker.internet.avatar()
-// }));
 
 export class MainSearch extends React.Component {
     constructor(props) {
@@ -33,16 +26,27 @@ export class MainSearch extends React.Component {
         };
     }
     getInfo = () => {
-        axios
-            .get("http://127.0.0.1:3000/search?q=" + this.state.query)
-            .then(({ response }) => {
+       // axios
+        //    .get("http://127.0.0.1:3000/search?q=" + this.state.query)
+         //   .then(({ response }) => {
                 this.setState({
-                   // { name: '', results: [{ title: '', description: '' }]
-
-                    results: response.data, //todo
+                    results:[ {
+                        title: 'Dnister',
+                        description: 'nice hotel, Lviv, Ukrain ',
+                        image: "https://s-ec.bstatic.com/xdata/images/hotel/square600/106661913.jpg"
+                    },
+                    {
+                        title: 'Lviv',
+                        description: 'Ukrain',
+                    }],
+                        // name: 'typeProperty',
+                        // results: [{
+                        //     title: 'Dzordz', description: 'nice hotel',
+                        //     image: "https://s-ec.bstatic.com/xdata/images/hotel/square600/106661913.jpg"
+                        // }]},//response.data, //todo
                     isLoading: false
                 });
-            });
+           // });
     };
     // handleInputChange = () => {
     //     this.setState(
@@ -66,13 +70,16 @@ export class MainSearch extends React.Component {
         this.setState({ isLoading: false, results: [], value: "" });
 
     handleResultSelect = (e, { result }) =>
-        this.setState({ value: result.title });
+        this.setState({
+            query: result.title,
+        isLoading:false
+        });
 
     handleSearchChange = (e, { value }) => {
         this.setState(
             {
                 isLoading: true,
-                query: this.search.value
+                query: value
             },
             () => {
                 if (this.state.query && this.state.query.length > 1) {
@@ -148,7 +155,7 @@ export class MainSearch extends React.Component {
     render() {
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
-        const { isLoading, value, results } = this.state;
+        const { isLoading, query, results } = this.state;
         const childrenOptions = this.generateOptions(0, 10);
         const { rooms, adults, children } = this.props;
         return (
@@ -168,11 +175,10 @@ export class MainSearch extends React.Component {
                             { leading: true }
                         )}
                         results={results}
-                        value={value}
+                        value={query}
                         {...this.props}
                         required
                     />
-                <Suggestions results={this.state.results} />
                 </div>
                 <div className="check-in-out" onFocus={this.hideRoomSelector}>
                     <DateRangePicker
