@@ -3,9 +3,8 @@ const Sequelize = require("sequelize"),
 
 module.exports = orm.define("availability", {
     amount: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
+        type: Sequelize.INTEGER,
+        allowNull: false
     },
     availabilityStart: {
         type: Sequelize.DATE,

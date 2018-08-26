@@ -1,4 +1,4 @@
-const Service = require('./generalService');
+const Service = require("./generalService");
 const roomRepository = require("../repositories/roomRepository");
 
 class RoomService extends Service {
@@ -15,11 +15,15 @@ class RoomService extends Service {
     }
 
     updateRoom(id, room) {
-        return roomRepository.updateById({_id: id}, room);
+        return roomRepository.updateById({ _id: id }, room);
     }
 
     deleteRoom(id) {
-        return roomRepository.deleteById({_id: id});
+        return roomRepository.deleteById({ _id: id });
+    }
+
+    getRoomAvailabilityInform(id) {
+        return roomRepository.getRoomWithavailability(id);
     }
 }
 
