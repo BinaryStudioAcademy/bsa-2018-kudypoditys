@@ -11,7 +11,7 @@ function* login(action) {
         yield put({
             type: actionTypes.LOGIN_SUCCESS
         });
-        history.push("/user-cabinet");
+        history.push("/");
     } catch (err) {
         yield put({
             type: actionTypes.LOGIN_FAILURE,
@@ -33,7 +33,6 @@ function* getCurrentUser(action) {
         yield put({
             type: actionTypes.GET_CURRENT_USER_FAILURE
         });
-        history.push("/login");
     }
 }
 
