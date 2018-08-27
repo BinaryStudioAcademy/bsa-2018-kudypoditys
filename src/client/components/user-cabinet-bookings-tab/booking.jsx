@@ -1,20 +1,74 @@
 import React from "react";
-import { Container, Grid, Image, Button } from "semantic-ui-react";
+import {
+    Container,
+    Grid,
+    Image,
+    Button,
+    Header,
+    Icon
+} from "semantic-ui-react";
 import "./booking.scss";
+import moment from "moment";
 
 export class Booking extends React.Component {
+    viewBooking = (event, id) => {
+        event.preventDefault();
+        this.props.viewBooking(id);
+    };
+
     render() {
         const { image, booking } = this.props;
+        const dateIn = new Date(Number(booking.dateIn)),
+            dateOut = new Date(Number(booking.dateOut));
+        const price =
+            booking.room.price * (dateOut.getDate() - dateIn.getDate());
         return (
             <Container fluid className="booking-container">
                 <Grid className="booking">
                     <Grid.Row className="booking-header">
                         <Grid.Column width={4} textAlign="left" />
-                        <Grid.Column width={7}>
-                            <h1>Info-column</h1>
+                        <Grid.Column width={7} className="booking-info">
+                            <Header as="h4">
+                                {booking.room.property.name}
+                            </Header>
+                            <p className="booking-address">
+                                <Icon name="map marker alternate" />
+                                {booking.room.property.address}
+                            </p>
+                            <p className="booking-phone">
+                                <Icon name="phone" />
+                                {booking.room.property.contactPhone}
+                            </p>
+                            <p className="booking-price">
+                                <Icon name="dollar sign" />
+                                UAH {price}
+                            </p>
                         </Grid.Column>
                         <Grid.Column width={5} floated="right">
-                            <h1>Check-in-out column</h1>
+                            <Grid columns={2} divided>
+                                <Grid.Column
+                                    className="check-date"
+                                    textAlign="center"
+                                >
+                                    <p>CHECK-IN</p>
+                                    <Header as="h2">
+                                        {moment(dateIn).format("MMM DD")}
+                                    </Header>
+                                    <p>{moment(dateIn).format("dddd, YYYY")}</p>
+                                </Grid.Column>
+                                <Grid.Column
+                                    className="check-date"
+                                    textAlign="center"
+                                >
+                                    <p>CHECK-OUT</p>
+                                    <Header as="h2">
+                                        {moment(dateOut).format("MMM DD")}
+                                    </Header>
+                                    <p>
+                                        {moment(dateOut).format("dddd, YYYY")}
+                                    </p>
+                                </Grid.Column>
+                            </Grid>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row className="booking-footer" verticalAlign="bottom">
@@ -23,7 +77,13 @@ export class Booking extends React.Component {
                         </Grid.Column>
 
                         <Grid.Column width={12}>
-                            <Button primary content="View booking" />
+                            <Button
+                                primary
+                                content="View booking"
+                                onClick={event =>
+                                    this.viewBooking(event, booking.id)
+                                }
+                            />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
