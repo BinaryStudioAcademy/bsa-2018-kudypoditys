@@ -122,22 +122,28 @@ module.exports = {
         );
     },
 
-    search: (req, res, _index, _type, _body) => {
-
+    search: (req, res, _index, _type, _query) => {
         elasticClient
-            .search({
-                index: _index,
-                type: _type,
-                body: _body,
-            })
-            .then(
-                resp => {
-                    return res.json(resp);
+        .search({
+            index: _index,
+            type: _type,
+            body: {
+                query: {
+                    multi_match: {
+                        query: _query,
+                        fields: ["name","city","country"]
+                    },
                 },
-                err => {
-                    return res.json(err.message);
-                },
-            );
+            },
+        })
+        .then(
+            resp => {
+                return res.send(resp.hits.hits)//res.json(resp);
+            },
+            err => {
+                return res.json(err.message);
+            },
+        );
     },
 
     deleteDocument: (req, res, _index, _id, _type) => {

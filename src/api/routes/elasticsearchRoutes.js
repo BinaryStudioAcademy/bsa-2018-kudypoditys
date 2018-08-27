@@ -57,10 +57,11 @@ elastic.route("/update")
     });
 
 elastic.route("/search")
-    .post((req, res) => {
-        const { index, type, body } = req.body;
-        ES_service.search(req, res, index, type, body);
-    });
+.get((req, res) => {
+    const { index, type, query } = req.query;
+    const fields=["name","city","country"]
+    ES_service.search(req, res, index, type, query, fields);
+});
 
 elastic.route("/autocomplete")
     .get((req, res) => {
