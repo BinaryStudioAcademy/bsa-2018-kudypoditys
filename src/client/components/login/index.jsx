@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import LoginForm from "./loginForm";
 import { Message, Grid } from "semantic-ui-react";
+import history from "client/history";
 
 export class LoginComponent extends React.Component {
     handleForgotClicked = () => {
@@ -10,7 +11,7 @@ export class LoginComponent extends React.Component {
     };
 
     handleRegisterClicked = () => {
-        console.log("Register clicked");
+        history.push("/signup");
     };
 
     render() {
