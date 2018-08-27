@@ -2,6 +2,33 @@ const express = require("express");
 const user = express.Router();
 const userService = require("../services/user");
 
+user.route("/getemailverified")
+    .get((req, res) => {
+        userService.getEmailVerifyLink(req.user)
+            .then(() => {
+                res.send(true);
+            })
+            .catch(err => {
+                res.status(500).send(err);
+            });
+    });
+
+user.route("/verifyemail")
+    .get((req, res) => {
+        console.log(req.query.email, req.query.token);
+        userService.verifyEmail(req.query.email, req.query.token)
+            .then(data => {
+                if(data) {
+                    res.send({ verified: true });
+                } else {
+                    res.status(500).send("Error verifying email.");
+                }
+            })
+            .catch(err => {
+                res.status(500).send(err);
+            })
+    });
+
 user.route("/")
     .get((req, res) => {
         userService

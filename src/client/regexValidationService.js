@@ -22,8 +22,8 @@ export const email = value =>
         : undefined;
 
 export const phoneNumber = value =>
-    value && !/^0[1-9][0-9]{8}$/i.test(value)
-        ? "Invalid phone number, must be 10 digits"
+    value && !/^[0-9]{2,3}[0-9]{9}$/i.test(value)
+        ? "Invalid phone number format"
         : undefined;
 
 export const alphaNumeric = value =>
@@ -42,5 +42,9 @@ export const isValidZip = value =>
         : undefined;
 export const password = value =>
     value && !/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))/.test(value)
-        ? "Password must contain uppercase, downcase letter and at least 1 number"
-        : undefined;
+        ? 'Password must contain uppercase, downcase letter and at least 1 number'
+        : undefined
+export const number = value =>
+    value && !/[0-9]/i.test(value)
+    ? 'Must be a number'
+    : undefined

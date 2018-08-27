@@ -5,6 +5,8 @@
             200px
         ) minmax(100px, 200px) auto;
     grid-gap: 14px;
+    box-shadow: 2px 2px 30px -4px #0000001f !important;
+    border: none !important;
 }
 
 .personal_settings-segment-header {
@@ -87,6 +89,25 @@
 
 .personal_settings-creditcard-label {
     grid-column: 1/4;
+    position: relative;
+}
+
+.personal_settings-creditcard-label div {
+    font-size: 14px;
+    font-weight: 300;
+    color: #545454;
+    padding: 4px 10px;
+}
+
+.personal_settings-creditcard-label-div-type {
+    font-weight: 600 !important;
+    font-size: 18px !important;
+}
+
+.personal_settings-creditcard-label a.ui.label {
+    position: absolute;
+    top: 4px;
+    right: 4px;
 }
 
 .personal_settings-add-credit {
@@ -104,8 +125,11 @@
     width: 100%;
 }
 
-.personal_settings-adding-creditcard div.dropdown,
-.personal_settings-adding-creditcard div.input {
+.personal_settings-adding-creditcard div {
+    grid-column: 2/4;
+}
+
+.personal_settings-adding-creditcard div.input, .personal_settings-adding-creditcard div.dropdown {
     grid-column: 2/4;
     height: 38px;
 }

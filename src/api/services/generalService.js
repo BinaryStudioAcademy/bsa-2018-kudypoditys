@@ -11,6 +11,10 @@ class Service {
         return this.repository.findAll();
     }
 
+    findByOptions(options) {
+        return this.repository.findByOptions(options);
+    }
+
     findById(id) {
         return this.repository.findById(id);
     }
@@ -32,7 +36,12 @@ class Service {
     */
     findByPage(options) {
         const { page, recordsOnPage, sortField, sortDirection } = options;
-        return this.repository.findByPage(page, recordsOnPage, sortField, sortDirection);
+        return this.repository.findByPage(
+            page,
+            recordsOnPage,
+            sortField,
+            sortDirection
+        );
     }
 }
 

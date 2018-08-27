@@ -20,6 +20,13 @@ let User = orm.define('user', {
         allowNull: false,
         unique: true
     },
+    verifyEmailToken: {
+        type: Sequelize.STRING
+    },
+
+    verifyEmailTokenTillDate: {
+        type: Sequelize.INTEGER
+    },
     phoneNumber: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },

@@ -1,20 +1,29 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Grid } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
-import Search from "client/components/search";
+import MainSearch from "client/components/search";
+import AuthHOC from 'client/components/auth-hoc';
 
 import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 
 export class MainHeader extends Component {
-    logout = () => {
+    logoutClicked = () => {
         this.props.logout();
     };
 
-    login = () => {
+    loginClicked = () => {
         history.push("/login");
+    };
+
+    registerClicked = () => {
+        history.push("/signup");
+    };
+
+    logoClicked = () => {
+        history.push("/");
     };
 
     state = { activeItem: "about-us" };
@@ -22,24 +31,49 @@ export class MainHeader extends Component {
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
     render() {
-        const { currencies, selectedCurrency, currentUser } = this.props;
-
+        const { currentUser } = this.props;
         return (
             <div className="header--wraper">
                 <Grid centered className={"grid--main"}>
                     <Grid.Row columns={2} className={"row--inform"}>
                         <Grid.Column width={8} textAlign={"left"}>
-                            Kudypoditys
+                            <div
+                                className="header-logo"
+                                onClick={this.logoClicked}
+                            >
+                                Kudypoditys
+                            </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-                            <a style={{ marginRight: "24px" }}>EN</a>{" "}
-                            <a onClick={this.login}>Login</a>
+                            <a style={{ marginRight: "24px", fontSize: 16, opacity: 0.8 }}>EN</a>
+
+                            <AuthHOC Component={() => {
+                                return <Fragment>
+                                    Wellcome {currentUser.fullName}
+                                    <a
+                                        style={{ marginLeft: "24px", fontSize: 16, opacity: 0.8 }}
+                                        onClick={this.logoutClicked}
+                                    >Logout</a>
+                                </Fragment>
+                            }} ElseComponent={() => {
+                                return <Fragment>
+                                    <a
+                                        style={{ marginRight: "24px", fontSize: 16, opacity: 0.8 }}
+                                        onClick={this.loginClicked}
+                                    > Login</a>
+                                    <a
+                                        style={{ fontSize: 16, opacity: 0.8 }}
+
+                                        onClick={this.registerClicked}
+                                    >Register</a>
+                                </Fragment>
+                            }} />
                         </Grid.Column>
                     </Grid.Row>
-                    {this.props.showSearch ? (
+                    {this.props.showSearch ?
                         <Grid.Row centered columns={1}>
                             <Grid.Column width={16}>
-                                <Search
+                                <MainSearch
                                     view="bar"
                                     destination="Lviv"
                                     checkIn={new Date("Aug 14 2018")}
@@ -75,7 +109,7 @@ export class MainHeader extends Component {
                                 />
                             </Grid.Column>
                         </Grid.Row>
-                    ) : null}
+                        : null}
                 </Grid>
             </div>
         );

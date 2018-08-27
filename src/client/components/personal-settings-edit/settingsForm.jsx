@@ -7,6 +7,7 @@ import inputField from "./input";
 import {
     Form,
     Header,
+    Icon,
     Segment,
     Label,
     Dropdown,
@@ -115,6 +116,11 @@ export class SettingsForm extends Component {
                 usedForBooking: "",
                 transferRemuneration: "",
             },
+        });
+    };
+    removeCreditCard = (e, { name, value }) => {
+        this.updateSettings({
+            creditCards: this.props.creditCards.filter((creditcard) => creditcard.number != name)
         });
     };
     //
@@ -432,21 +438,29 @@ export class SettingsForm extends Component {
                             basic
                             key={i}
                         >
-                            <div>{creditcard.type}</div>
-                            <div>{creditcard.number}</div>
-                            <div>{creditcard.owner}</div>
-                            <div>{creditcard.expirationDay}</div>
-                            <div>{creditcard.expirationYear}</div>
-                            <div>
+                            <div className="personal_settings-creditcard-label-div-type">{creditcard.type}</div>
+                            <div className="personal_settings-creditcard-label-div-number">Number: {creditcard.number}</div>
+                            <div className="personal_settings-creditcard-label-div-owner">Owner: {creditcard.owner}</div>
+                            <div className="personal_settings-creditcard-label-div-expiration">Expiration: {creditcard.expirationDay} - {creditcard.expirationYear}</div>
+                            <div className="personal_settings-creditcard-label-div-usedForBooking">
                                 {creditcard.usedForBooking
                                     ? "Used for booking"
                                     : "Not used for booking"}
                             </div>
-                            <div>
+                            <div className="personal_settings-creditcard-label-div-transferRemuneration">
                                 {creditcard.transferRemuneration
                                     ? "Transfer remuneration"
                                     : "Do not transfer remuneration"}
                             </div>
+                            <Label
+                                name={creditcard.number}
+                                as="a"
+                                basic
+                                onClick={this.removeCreditCard}
+                            >
+                                <Icon name="close" />
+                                Remove
+                            </Label>
                         </Label>
                     ))}
                     {this.state.addingCreditcard ? (
@@ -789,18 +803,6 @@ export class SettingsForm extends Component {
                                     content="Save"
                                     onClick={this.saveFacilities}
                                     color="blue"
-                                    className="personal_settings-btn"
-                                />
-                                <Label
-                                    as="a"
-                                    content="Undo"
-                                    onClick={() =>
-                                        this.addingItem(
-                                            "addingFacilities",
-                                            false,
-                                        )
-                                    }
-                                    basic
                                     className="personal_settings-btn"
                                 />
                             </div>

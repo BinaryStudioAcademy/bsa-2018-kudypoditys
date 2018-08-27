@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 class Breadcrumbs extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             breadcrumbsSections: [
                 {key: 'Home', content: 'Home', href: '#'},

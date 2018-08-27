@@ -8,15 +8,16 @@ import {
 } from "client/regexValidationService";
 import { Field, reduxForm } from "redux-form";
 import CheckboxForm from "./checkboxForm";
-import semanticSelectorFormField from "client/components/dropdown-form/semanticSelectorForm";
+// import semanticSelectorFormField from "client/components/dropdown-form/semanticSelectorForm";
 
-const cities = [
-    { key: "0", text: "Lviv", value: "Lviv" },
-    { key: "1", text: "Kyiv", value: "Kyiv" },
-    { key: "2", text: "Odessa", value: "Odessa" },
-    { key: "3", text: "Dnipro", value: "Dnipro" },
-    { key: "4", text: "Ternopil", value: "Ternopil" }
-];
+// const cities = [
+//     { key: "0", text: "Lviv", value: "Lviv" },
+//     { key: "1", text: "Kyiv", value: "Kyiv" },
+//     { key: "2", text: "Odessa", value: "Odessa" },
+//     { key: "3", text: "Dnipro", value: "Dnipro" },
+//     { key: "4", text: "Ternopil", value: "Ternopil" }
+//     { key: "5", text: "Dnipro", value: "Dnipro" },
+// ];
 
 let RegistrationForm = props => {
     const { pristine, submitting, handleSubmit } = props;
@@ -134,12 +135,12 @@ let RegistrationForm = props => {
                         City
                     </CardDescription>
                     <Field
-                        name="address3"
-                        component={semanticSelectorFormField}
-                        as={Form.Select}
-                        options={cities}
-                        placeholder="Select city"
-                        validate={required}
+                         component={FormTextInput}
+                         name="address3"
+                         type="text"
+                         label="Ukraine"
+                         icon="map marker"
+                         validate={[required, maxLength20]}
                     />
                 </Card.Content>
             </Card>
