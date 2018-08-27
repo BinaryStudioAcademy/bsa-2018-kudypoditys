@@ -17,9 +17,13 @@ class ForgotPassword extends React.Component {
     }
     handleEmailChange(e){
         const email = e.target.value
-        this.props.inputEmail(email);
+        this.setState({email: email})
+    }
+    handleSubmit(){
+        this.props.inputEmail(this.state.email);
     }
     render(){
+        const { pristine, submitting} = this.props;
         return(
         <div>
             <ModalComponent
@@ -27,7 +31,7 @@ class ForgotPassword extends React.Component {
                 header = 'Hello'
             >
               <label htmlFor="roomsAmount">Кількість номерів цього типу</label>
-
+            <form onSubmit={this.handleSubmit}>
                 <Field
                     component={FormTextInput}
                     as={Form.Input}
@@ -36,7 +40,13 @@ class ForgotPassword extends React.Component {
                     onChange={this.handleEmailChange.bind(this)}
                     type="text"
                     validate={email} />
-
+                    <Button
+                        color="teal"
+                        fluid
+                        disabled={pristine || submitting}
+                        type="submit"
+                    >Send message</Button>
+            </form>
             </ModalComponent>
             {/* <ResetPassword/> */}
         </div>

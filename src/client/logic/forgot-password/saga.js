@@ -6,20 +6,29 @@ import { RESET_EMAIL_SUCSESS,
         } from './actionTypes';
 
 function* sendEmail(action) {
+    console.log(action.payload)
     const URL = 'http://127.0.0.1:5000/api/forgot';
     const BODY = {
-            "email": "minzdarov@gmail.com"
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email: action.payload})
+
     }
+
     try {
-        console.log("saga createProperty")
-        // const propetyResponse = yield call(fetch, URL, BODY);
-        // console.log(propetyResponse);
+        //console.log("saga createProperty")
+        const propetyResponse = yield call(fetch, URL, BODY);
+        console.log(propetyResponse);
         yield put({
             type:RESET_EMAIL_SUCSESS,
             payload: action.payload
         });
     }
     catch (error) {
+        console.log(error)
         yield put({ type:RESET_EMAIL_FAILED})
     }
 }
