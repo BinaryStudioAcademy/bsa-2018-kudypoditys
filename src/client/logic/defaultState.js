@@ -119,7 +119,7 @@ const state = {
     },
     searchResults: {
         destination: "Lviv",
-        totalCount: 1,
+        totalCount: 2,
         shownFrom: 1,
         shownTo: 5
     },
