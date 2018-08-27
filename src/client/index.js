@@ -8,20 +8,23 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
 import ForgotPassword from 'client/components/forgot-password'
-// import RegistrationPage from "client/pages/registration-page";
-// import PropertyCreationTabs from "client/pages/add-property-page";
-// import {Router, Route, Switch} from "react-router-dom";
-// import CheckInCheckOut from "client/pages/checkin-checkout-page";
-// import {HomePage} from "client/pages/home-page";
-// import PropertyPage from "client/pages/property-page";
-// import LoginPage from "client/pages/login-page";
-// import SearchPage from "client/pages/search-page";
-// import {NotFoundPage} from "client/pages/404-page";
+import RegistrationPage from "client/pages/registration-page";
+import PropertyCreationTabs from "client/pages/add-property-page";
+import { Router, Route, Switch } from "react-router-dom";
+import CheckInCheckOut from "client/pages/checkin-checkout-page";
+import { HomePage } from "client/pages/home-page";
+import PropertyPage from "client/pages/property-page";
+import LoginPage from "client/pages/login-page";
+import SearchPage from "client/pages/search-page";
+import { NotFoundPage } from "client/pages/404-page";
 import createSagaMidddelware from "redux-saga";
 import rootSaga from "client/logic/rootSaga";
-// import history from "client/history";
-// import PhotoTab from "./components/photo-tab-registration-property";
-// import UserCabinet from "./components/user-cabinet";
+import history from "client/history";
+import PhotoTab from "./components/photo-tab-registration-property";
+import UserCabinet from "./pages/user-cabinet";
+import AuthHOC from "./components/auth-hoc";
+
+import VerifyEmail from "client/components/verify-email";
 
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
@@ -33,12 +36,14 @@ const store = createStore(
 sagaMiddelware.run(rootSaga);
 
 ReactDOM.render(
-     <Provider store={store}>
-         {/* <Router history={history}>
-         <Switch>
-                <Route exact path="/" component={HomePage}/>
-                <Route exact path="/signup" component={RegistrationPage}/>
-                <Route exact path="/login" component={LoginPage}/>
+    <Provider store={store}>
+        <Router history={history}>
+            <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/signup" component={RegistrationPage} />
+                <Route exact path="/verifyemail" component={VerifyEmail} />
+                <Route exact path="/login" component={LoginPage} />
+                <Route exact path="/forgot" component={<ForgotPassword/>} />
                 <Route
                     exact
                     path="/checkin-checkout"
@@ -59,9 +64,7 @@ ReactDOM.render(
                 />
                 <Route component={NotFoundPage} />
             </Switch>
-        </Router> */}
-    <ForgotPassword/>
-    </Provider>
-    ,
+        </Router>
+    </Provider>,
     document.getElementById("root")
 );

@@ -11,13 +11,13 @@ const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 
 authRouter.route("/login").post((req, res) => {
-    passport.authenticate("local", {session: false}, (err, user, message) => {
+    passport.authenticate("local", { session: false }, (err, user, message) => {
         if (err || !user) {
             res.status(400).send(message);
             return;
         }
 
-        req.login(user, {session: false}, err => {
+        req.login(user, { session: false }, err => {
             if (err) res.status(400).send(err.message);
             return;
         });
