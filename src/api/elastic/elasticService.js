@@ -1,7 +1,6 @@
 const elasticRepository = require("./index");
 const elasticsearch = require("elasticsearch");
 const init = require("./init");
-const indexData = require("./data");
 const PropertyService = require("./../services/property");
 const CityService = require("./../services/city");
 const elasticClient = new elasticsearch.Client({
@@ -61,34 +60,34 @@ module.exports = {
         PropertyService.getAllProperties()
             .then(properties => {
                 console.log(`properties!!!!: ${JSON.stringify(properties) }`)
-                // let propertiesBulk = [];
-                // properties.forEach(property => {
-                //     propertiesBulk.push({
-                //         index: {
-                //             _index: "properties",
-                //             _type: "document"
-                //         }
-                //     });
-                //     propertiesBulk.push({
-                //         name: property.name,
-                //         rating: property.rating,
-                //         image: property.image,
-                //         city: property.city,
-                //         country: property.country,
-                //         description: property.description
-                //     });
-                // });
-                // elasticClient.bulk({ body: propertiesBulk }, function (err, response) {
-                //     if (err) {
-                //         console.log("Failed Bulk operation".red, err);
-                //     } else {
-                //         console.log(
-                //             "Successfully imported properties %s".green,
-                //             properties.length
-                //         );
-                //     }
-                // });
-                //
+                let propertiesBulk = [];
+                properties.forEach(property => {
+                    propertiesBulk.push({
+                        index: {
+                            _index: "properties",
+                            _type: "document"
+                        }
+                    });
+                    propertiesBulk.push({
+                        name: property.name,
+                        rating: property.rating,
+                        image: property.image,
+                        city: property.city,
+                        country: property.country,
+                        description: property.description
+                    });
+                });
+                elasticClient.bulk({ body: propertiesBulk }, function (err, response) {
+                    if (err) {
+                        console.log("Failed Bulk operation".red, err);
+                    } else {
+                        console.log(
+                            "Successfully imported properties %s".green,
+                            properties.length
+                        );
+                    }
+                });
+
             })
                 //   return CityService.getAllCities();
                 //     }).then(cities => {
