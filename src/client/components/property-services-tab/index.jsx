@@ -46,7 +46,7 @@ export class PropertyServicesTab extends Component {
 
     handleContinue = () => {
         this.props.updateTab({
-            activeIndex: 2
+            activeIndex: 3
         });
     };
 

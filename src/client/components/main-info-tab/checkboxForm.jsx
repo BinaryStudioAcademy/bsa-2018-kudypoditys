@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from "react";
-import {Button} from "semantic-ui-react";
+import {Button, Radio, Segment} from "semantic-ui-react";
 import {Field, reduxForm} from 'redux-form';
 
 

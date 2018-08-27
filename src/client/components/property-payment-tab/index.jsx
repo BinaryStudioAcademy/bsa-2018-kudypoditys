@@ -113,7 +113,7 @@ export class PaymentTab extends Component {
 
     handleContinue = () => {
         this.props.updateTab({
-            activeIndex: 6
+            activeIndex: 2
         });
     };
 

@@ -22,7 +22,7 @@ class TabPolices extends Component {
 
 
         this.props.updateTab({
-            activeIndex: 1
+            activeIndex: 5
         });
 
     };
