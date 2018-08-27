@@ -26,8 +26,6 @@ import AuthHOC from "./components/auth-hoc";
 
 import VerifyEmail from "client/components/verify-email";
 
-import PersonalSettings from "client/components/personal-settings-edit";
-
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
 const store = createStore(
