@@ -14,11 +14,16 @@ import checkInOut from "client/logic/checkIn-checkOut/reducer";
 import propertyPhoto from 'client/logic/photo-tab/reducer';
 import roomSummary from 'client/logic/rooms-summary-table/reducer'
 import cityInfos from "client/logic/banner-list/reducer";
+import amenitiesTab from "./amenities-tab-for-property/reducer";
+import propertySubmit from "./main-info-tab/reducer";
+import policesTab from "client/logic/polices-tab/reducer";
+import layoutTab from "./room-item/rducer";
 import amenitiesTab from './amenities-tab-for-property/reducer';
 import propertySubmit from './main-info-tab/reducer';
 // import policesTab from "client/logic/polices-tab/reducer";
 import layoutTab from './room-item/rducer';
 import propertyRegistration from "client/logic/property-creation-tabs/reducer";
+import userVerified from "client/logic/verify-email/reducer";
 
 export default combineReducers({
     search,
@@ -30,9 +35,9 @@ export default combineReducers({
     foundProperties,
     // checkInOut,
     form: formReducer.plugin({
-        registration: registration,
-        login: login,
+        registration: registration
     }),
+    login,
     propertyPage,
     quickFilter,
     roomSummary,
@@ -40,5 +45,8 @@ export default combineReducers({
     amenitiesTab,
     // policesTab,
     // layoutTab,
-    propertyRegistration
+    propertyRegistration,
+
+
+    userVerified
 });
