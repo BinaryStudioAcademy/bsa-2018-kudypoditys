@@ -214,7 +214,7 @@ const state = {
         // Photo Tab
         images: [],
         //tab Index
-        activeIndex: 1,
+        activeIndex: 0,
         //    POLICES TAB
 
         arrivalFrom: "10:00",
