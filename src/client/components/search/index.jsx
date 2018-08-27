@@ -13,17 +13,8 @@ import "./index.scss";
 import history from "client/history";
 
 export class MainSearch extends React.Component {
-    constructor(props) {
-        super(props);
-        this.roomSelector = React.createRef();
-        this.state = {
-            startDate: moment(),
-            endDate: moment().add(5, "days"),
-            focusedInput: null,
-            query: "",
-            results: []
-        };
-    }
+    resetComponent = () =>
+        this.setState({isLoading: false, results: [], value: ""});
     getInfo = () => {
         let resultsData = [];
         let index = "properties"
@@ -57,23 +48,14 @@ export class MainSearch extends React.Component {
         })
 
     };
-
-    componentWillMount() {
-        this.resetComponent();
-    }
-
-    resetComponent = () =>
-        this.setState({ isLoading: false, results: [], value: "" });
-
-    handleResultSelect = (e, { result }) => {
-             this.setState({
+    handleResultSelect = (e, {result}) => {
+        this.setState({
             query: result.title,
             isLoading: false
 
         });
     }
-
-    handleSearchChange = (e, { value }) => {
+    handleSearchChange = (e, {value}) => {
         this.setState(
             {
                 isLoading: true,
@@ -86,6 +68,23 @@ export class MainSearch extends React.Component {
             }
         );
     };
+    handleSubmit = () => {
+        let path = `/search-page`;
+        history.push(path)
+        this.props.onSearch();
+    };
+
+    constructor(props) {
+        super(props);
+        this.roomSelector = React.createRef();
+        this.state = {
+            startDate: moment(),
+            endDate: moment().add(5, "days"),
+            focusedInput: null,
+            query: "",
+            results: []
+        };
+    }
     generateOptions = (from, to) => {
         let options = [];
         for (let i = from; i <= to; i++) {
@@ -127,11 +126,9 @@ export class MainSearch extends React.Component {
         return `${this.props.rooms} Rooms`;
     };
 
-    handleSubmit = () => {
-        let path = `/search-page`;
-        history.push(path)
-        this.props.onSearch();
-    };
+    componentWillMount() {
+        this.resetComponent();
+    }
 
     datesChanged = selectedDates => {
         if (selectedDates.startDate && selectedDates.endDate) {
@@ -183,7 +180,7 @@ export class MainSearch extends React.Component {
 
                 <div className="room-options">
                     <Input
-                        style={{ height: "20px" }}
+                        style={{height: "20px"}}
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
