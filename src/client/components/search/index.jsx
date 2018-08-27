@@ -10,6 +10,7 @@ import "react-dates/lib/css/_datepicker.css";
 import axios from "axios";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
+import history from "client/history";
 
 export class MainSearch extends React.Component {
     constructor(props) {
@@ -64,11 +65,13 @@ export class MainSearch extends React.Component {
     resetComponent = () =>
         this.setState({ isLoading: false, results: [], value: "" });
 
-    handleResultSelect = (e, { result }) =>
-        this.setState({
+    handleResultSelect = (e, { result }) => {
+             this.setState({
             query: result.title,
             isLoading: false
+
         });
+    }
 
     handleSearchChange = (e, { value }) => {
         this.setState(
@@ -125,6 +128,8 @@ export class MainSearch extends React.Component {
     };
 
     handleSubmit = () => {
+        let path = `/search-page`;
+        history.push(path)
         this.props.onSearch();
     };
 
@@ -254,6 +259,7 @@ export class MainSearch extends React.Component {
                         type="submit"
                         content="Search"
                         primary
+                        onClick={this.handleSubmit}
                     />
                 </div>
             </Form>
