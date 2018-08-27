@@ -36,9 +36,9 @@ class Quickfilter extends React.Component {
                         {box.label}{" "}
                     </label>
                 </div>
-                <label className="box_amount" htmlFor={box.id}>
-                    {box.amount}
-                </label>
+                {/*<label className="box_amount" htmlFor={box.id}>*/}
+                {/*{box.amount}*/}
+                {/*</label>*/}
             </div>
         ));
         return temp;

@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import {Container, Grid, Segment} from "semantic-ui-react";
+import {Container, Grid, Segment, Icon} from "semantic-ui-react";
 
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
@@ -20,9 +20,9 @@ class SearchPage extends React.Component {
         return (
             <div className="mock">
                 <Header showSearch={true}/>
-                <div className="property-page__wrapper">
+                <div className="search-page__wrapper">
                     <div className="breadcrumb_wrapper">
-                        <Segment>
+                        <Segment className="breadcrumb__segment">
                             <Breadcrumb
                                 icon="right angle"
                                 sections={[
@@ -44,8 +44,8 @@ class SearchPage extends React.Component {
                     </div>
 
                     <Container
-                        text
-                        className="property-page__wrapper-left_side"
+
+                        className="search-page__wrapper-left_side"
                     >
                         <QuickFilter/>
                         <div
@@ -63,23 +63,44 @@ class SearchPage extends React.Component {
                         </div>
                     </Container>
                     <Container
-                        text
-                        className="property-page__wrapper-right_side"
+
+                        className="search-page__wrapper-right_side"
                     >
-                        <SearchSummary/>
+                        <div className="search-page__row">
+                            <SearchSummary/>
+                            <div className="switch">
+                                <div className='list_btn'>
+                                    <Icon
+                                        name="list ul"
+                                        color="white"
+                                    />List
+                                </div>
+                                <div className='map_btn'>
+                                    <Icon
+                                        name="world"
+
+                                    />
+                                    Map
+                                </div>
+                            </div>
+                        </div>
                         <RankingBar key="RankingBar"/>
                         <PropertyListItem
                             key="PropertyListItem"
                             id="foundProperty1"
                         />
+                        <PropertyListItem
+                            key="PropertyListItem"
+                            id="foundProperty2"
+                        />
 
-                       <div className="search-page__pagination">
-                        <Pagination pagesCount={10}/>
-                       </div>
+                        <div className="search-page__pagination">
+                            <Pagination pagesCount={10}/>
+                        </div>
 
                     </Container>
 
-            </div>
+                </div>
             </div>
 
         );

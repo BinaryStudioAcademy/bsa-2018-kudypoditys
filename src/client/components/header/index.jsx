@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Grid } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
-import Search from "client/components/search";
+import MainSearch from "client/components/search";
 
 import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
@@ -44,12 +44,12 @@ export class MainHeader extends Component {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-                            <a style={{ marginRight: "24px" }}>EN</a>
+                            <a style={{marginRight: "24px", fontSize: 16, opacity: 0.8}}>EN</a>
                             {currentUser ? (
                                 <Fragment>
                                     Wellcome {currentUser.fullName}
                                     <a
-                                        style={{ marginLeft: "24px" }}
+                                        style={{marginLeft: "24px", fontSize: 16, opacity: 0.8}}
                                         onClick={this.logoutClicked}
                                     >
                                         Logout
@@ -58,12 +58,15 @@ export class MainHeader extends Component {
                             ) : (
                                 <Fragment>
                                     <a
-                                        style={{ marginRight: "24px" }}
+                                        style={{marginRight: "24px", fontSize: 16, opacity: 0.8}}
                                         onClick={this.loginClicked}
                                     >
                                         Login
                                     </a>
-                                    <a onClick={this.registerClicked}>
+                                    <a
+                                        style={{fontSize: 16, opacity: 0.8}}
+
+                                        onClick={this.registerClicked}>
                                         Register
                                     </a>
                                 </Fragment>
@@ -73,7 +76,7 @@ export class MainHeader extends Component {
                     {this.props.showSearch ? (
                         <Grid.Row centered columns={1}>
                             <Grid.Column width={16}>
-                                <Search
+                                <MainSearch
                                     view="bar"
                                     destination="Lviv"
                                     checkIn={new Date("Aug 14 2018")}

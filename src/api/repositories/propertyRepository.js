@@ -28,7 +28,6 @@ class PropertyRepository extends Repository {
                 include: [
                     City,
                     PropertyType,
-                    PropertyCategory,
                     AccommodationRule,
                     {
                         model: Review,
