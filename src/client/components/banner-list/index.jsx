@@ -31,13 +31,17 @@ export class BannerList extends Component {
 
         return (
             <Grid >
-                <Grid.Row columns={2}>
+                <Grid.Row columns='equal'>
                     <Grid.Column>
                         <Banner cityInfo={city1} onClick={() => this.onCardClick(city1.id)} />
                     </Grid.Column>
                     <Grid.Column >
                         <Banner cityInfo={city2} onClick={() => this.onCardClick(city2.id)} />
                     </Grid.Column>
+                    <Grid.Column width={8} >
+                        <Banner cityInfo={city2} onClick={() => this.onCardClick(city2.id)} />
+                    </Grid.Column>
+
                 </Grid.Row>
 
                 <Grid.Row columns={3}>
