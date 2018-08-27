@@ -12,6 +12,8 @@ const Country = require("../models/Country");
 const RoomType = require("../models/RoomType");
 const User = require("../models/User");
 const City = require("../models/City");
+const Image = require("../models/Image");
+
 const PropertyType = require("../models/PropertyType");
 
 const Review = require("../models/Review");
@@ -84,6 +86,19 @@ class PropertyRepository extends Repository {
                         model: BedInRoom,
                         where: { count: filter.bedsCount }
                     }
+                ]
+            })
+            .then(properties => {
+                return properties;
+            });
+    }
+    findAll() {
+        return this.model
+            .findAll({
+                include: [
+                    {
+                        model: City,
+                    },
                 ]
             })
             .then(properties => {
