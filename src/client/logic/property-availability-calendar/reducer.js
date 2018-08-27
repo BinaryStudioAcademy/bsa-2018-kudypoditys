@@ -1,12 +1,18 @@
 import defaultState from "client/logic/defaultState";
-import { PROPERTY_CALENDAR_UPDATE } from "./actionTypes";
+import {
+    PROPERTY_CALENDAR_UPDATE,
+    AVAILABILITY_UPDATE_SUBMIT
+} from "./actionTypes";
 
-function propertyCalendarReducer(
-    state = defaultState.propertyCalendar,
-    action
-) {
+export default (state = defaultState.availabilityCalendar, action) => {
     switch (action.type) {
         case PROPERTY_CALENDAR_UPDATE: {
+            return {
+                ...state,
+                ...action.payload
+            };
+        }
+        case AVAILABILITY_UPDATE_SUBMIT: {
             return {
                 ...state,
                 ...action.payload
@@ -16,6 +22,4 @@ function propertyCalendarReducer(
             return state;
         }
     }
-}
-
-export default propertyCalendarReducer;
+};

@@ -1,16 +1,16 @@
-@font-face {
-    font-family: "Arial-BoldMT";
-    font-style: normal;
-    src: local("Arial-BoldMT"),
-    url(./49025597.ttf) format("ttf");
-}
+// @font-face {
+//     font-family: "Arial-BoldMT";
+//     font-style: normal;
+//     src: local("Arial-BoldMT"),
+//     url(./49025597.ttf) format("ttf");
+// }
 
-@font-face {
-    font-family: "ArialMT";
-    font-style: normal;
-    src: local("ArialMT"),
-    url(./83998502.ttf) format("ttf");
-}
+// @font-face {
+//     font-family: "ArialMT";
+//     font-style: normal;
+//     src: local("ArialMT"),
+//     url(./83998502.ttf) format("ttf");
+// }
 
 .ui.menu {
     display: -webkit-box;
@@ -37,7 +37,6 @@
 }
 
 .ui.menu.ranking-dropDown .item {
-
     color: #182c4f;
     font-weight: normal;
     text-decoration: none;
@@ -47,7 +46,6 @@
 }
 
 .ui.menu.ranking-dropDown .item:before {
-
     background: none;
 }
 
@@ -58,7 +56,8 @@
     text-decoration: underline;
 }
 
-.ui.menu.ranking-dropDown .active.item:hover, .ui.vertical.menu .active.item:hover {
+.ui.menu.ranking-dropDown .active.item:hover,
+.ui.vertical.menu .active.item:hover {
     background-color: #fff !important;
     color: #182c4f !important;
     text-decoration: underline;

@@ -1,4 +1,3 @@
-import "./index.scss";
 import React from "react";
 import { Table, Button, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
@@ -9,12 +8,24 @@ import { DrawReservations } from "./drawReservations";
 import { DrawPrices } from "./drawPrices";
 import { DrawStatus } from "./drawStatus";
 
+import "./index.scss";
+
 export class AvailabilityCalendar extends React.Component {
-    submitHandle = (...data) => {
-        console.log(data);
+    submitHandle = data => {
+        console.log(data.value);
+    };
+
+    roomAmountChanged = data => {
+        // console.log(data.target.value);
+        console.log(this.props);
+        console.log(this.state);
+        // console.log(mapStateToProps);
+        // this.props.handleUpdate(data);
     };
 
     render() {
+        console.log(this.props);
+        console.log(this.state);
         return (
             <div style={{ overflow: "auto" }}>
                 <Table compact celled padded>
@@ -32,7 +43,10 @@ export class AvailabilityCalendar extends React.Component {
                         </Table.Row>
                         <Table.Row>
                             <Table.Cell collapsing>Number of rooms</Table.Cell>
-                            <DrawCount />
+                            <DrawCount
+                                onAmountChange={this.roomAmountChanged}
+                                roomsAmount={this.props.amount}
+                            />
                         </Table.Row>
                         <Table.Row>
                             <Table.Cell collapsing>
@@ -42,7 +56,7 @@ export class AvailabilityCalendar extends React.Component {
                         </Table.Row>
                         <Table.Row>
                             <Table.Cell collapsing>Price</Table.Cell>
-                            <DrawPrices />
+                            <DrawPrices price={this.props.price} />
                         </Table.Row>
                     </Table.Body>
 
@@ -56,6 +70,7 @@ export class AvailabilityCalendar extends React.Component {
                                     labelPosition="left"
                                     primary
                                     size="small"
+                                    onClick={this.submitHandle}
                                 >
                                     <Icon name="save outline" /> Save
                                 </Button>
@@ -68,7 +83,7 @@ export class AvailabilityCalendar extends React.Component {
     }
 }
 
-// export default connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-// )(AvailabilityCalendar);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AvailabilityCalendar);
