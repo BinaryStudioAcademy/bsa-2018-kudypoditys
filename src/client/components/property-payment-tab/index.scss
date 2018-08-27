@@ -177,6 +177,9 @@
     background-color: #465672;
 }
 
+.ui.checkbox input:checked:focus ~ .box:after, .ui.checkbox input:checked:focus ~ label:after, .ui.checkbox input:not([type=radio]):indeterminate:focus ~ .box:after, .ui.checkbox input:not([type=radio]):indeterminate:focus ~ label:after {
+    color: #ffff;
+}
 
 @media only screen and (max-width: 980px) {
     .property_payment_tab-city-tax {

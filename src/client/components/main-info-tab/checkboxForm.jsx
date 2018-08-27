@@ -27,7 +27,7 @@ class CheckboxForm extends Component {
                         component="input"
                         type="radio"
                         value="false"
-
+                        onClick={handleChange}
 
                     />
                     {' '}
