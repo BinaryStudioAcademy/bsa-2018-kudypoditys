@@ -92,6 +92,7 @@ class PropertyRepository extends Repository {
                 return properties;
             });
     }
+
     findAll() {
         return this.model
             .findAll({

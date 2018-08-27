@@ -10,13 +10,13 @@ import reducer from "client/logic/reducer";
 import ForgotPassword from 'client/components/forgot-password'
 import RegistrationPage from "client/pages/registration-page";
 import PropertyCreationTabs from "client/pages/add-property-page";
-import { Router, Route, Switch } from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
 import CheckInCheckOut from "client/pages/checkin-checkout-page";
-import { HomePage } from "client/pages/home-page";
+import {HomePage} from "client/pages/home-page";
 import PropertyPage from "client/pages/property-page";
 import LoginPage from "client/pages/login-page";
 import SearchPage from "client/pages/search-page";
-import { NotFoundPage } from "client/pages/404-page";
+import {NotFoundPage} from "client/pages/404-page";
 import createSagaMidddelware from "redux-saga";
 import rootSaga from "client/logic/rootSaga";
 import history from "client/history";
@@ -39,11 +39,11 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/signup" component={RegistrationPage} />
-                <Route exact path="/verifyemail" component={VerifyEmail} />
-                <Route exact path="/login" component={LoginPage} />
-                <Route exact path="/forgot" component={<ForgotPassword/>} />
+                <Route exact path="/" component={HomePage}/>
+                <Route exact path="/signup" component={RegistrationPage}/>
+                <Route exact path="/verifyemail" component={VerifyEmail}/>
+                <Route exact path="/login" component={LoginPage}/>
+                <Route exact path="/forgot" component={ForgotPassword}/>
                 <Route
                     exact
                     path="/checkin-checkout"
