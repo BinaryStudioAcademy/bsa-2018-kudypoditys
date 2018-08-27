@@ -6,7 +6,7 @@ const state = {
         adults: 1,
         children: 0,
         rooms: 1,
-        results: [],
+        results: []
     },
     login: {
         email: "",
