@@ -1,16 +1,16 @@
 import React from "react";
 import {
     Container,
+    Segment,
     Grid,
     Image,
     Button,
     Header,
     Icon
 } from "semantic-ui-react";
-import "./booking.scss";
 import moment from "moment";
 
-export class Booking extends React.Component {
+export class BookingSegment extends React.Component {
     viewBooking = (event, id) => {
         event.preventDefault();
         this.props.viewBooking(id);
@@ -23,7 +23,7 @@ export class Booking extends React.Component {
         const price =
             booking.room.price * (dateOut.getDate() - dateIn.getDate());
         return (
-            <Container fluid className="booking-container">
+            <Segment className="booking-container">
                 <Grid className="booking">
                     <Grid.Row className="booking-header">
                         <Grid.Column width={4} textAlign="left" />
@@ -41,7 +41,7 @@ export class Booking extends React.Component {
                             </p>
                             <p className="booking-price">
                                 <Icon name="dollar sign" />
-                                UAH {price}
+                                USD {price}
                             </p>
                         </Grid.Column>
                         <Grid.Column width={5} floated="right">
@@ -87,7 +87,7 @@ export class Booking extends React.Component {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
-            </Container>
+            </Segment>
         );
     }
 }

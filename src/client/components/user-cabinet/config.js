@@ -1,4 +1,5 @@
 import React from "react";
+import BookingTab from "../user-cabinet-bookings-tab";
 
 export const MenuItems = [
     {
@@ -20,7 +21,7 @@ export const MenuItems = [
             content: "User content",
             component: (
                 <React.Fragment>
-                    <h1>Hello booking tab</h1>
+                    <h1>Hello user tab</h1>
                 </React.Fragment>
             )
         }

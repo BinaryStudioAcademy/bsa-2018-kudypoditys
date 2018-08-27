@@ -4,6 +4,7 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import { DrawTab } from "./DrawTab";
 import { MenuItems } from "./config";
 import { Container, Tab } from "semantic-ui-react";
+import Header from "../header";
 
 export class UserCabinet extends React.Component {
     constructor() {
@@ -35,6 +36,7 @@ export class UserCabinet extends React.Component {
         const { activeIndex } = this.state;
         return (
             <Container>
+                <Header />
                 <Tab
                     menu={{ fluid: true, secondary: true, pointing: true }}
                     panes={this.getPanes()}
