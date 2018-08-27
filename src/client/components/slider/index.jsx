@@ -8,13 +8,13 @@ import "./index.scss";
 import {Container, Button, Image, Icon} from "semantic-ui-react";
 
 export class Slider extends Component {
-    pics = [
-        "https://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg",
-        "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg",
-        "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-10.jpg",
-        "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg",
-        "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-12.jpg"
-    ];
+    // pics = [
+    //     "https://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg",
+    //     "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg",
+    //     "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-10.jpg",
+    //     "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg",
+    //     "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-12.jpg"
+    // ];
     picsThumbnails = pics => {
         return (
             <ul>
@@ -44,7 +44,7 @@ export class Slider extends Component {
         slidesToScroll: 1,
         centerMode: true,
         accessibility: false,
-        appendDots: () => this.picsThumbnails(this.pics),
+        appendDots: () => this.picsThumbnails(this.props.pics),
         beforeChange: (curr, next) => (this.slideIndex = next)
     };
 
@@ -62,7 +62,7 @@ export class Slider extends Component {
                     ref={slider => (this.slider = slider)}
                     {...this.settings}
                 >
-                    {this.pics.map((item, i) => (
+                    {this.props.pics.map((item, i) => (
                         <Image className="slider-c-image" src={item} key={i}/>
                     ))}
                 </SliderSlick>
