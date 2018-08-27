@@ -5,7 +5,7 @@ import history from "client/history";
 class AuthService {
     signup(user) {
         return api
-            .sendRequest("/api/signup", "post", user)
+            .sendRequest("/api/users", "post", user)
             .then(response => {
                 const {
                     accessToken,
@@ -53,6 +53,13 @@ class AuthService {
     logout() {
         cookies.clearTokens();
         history.push("/login");
+    }
+
+    verifyEmail(string) {
+        return api.sendRequest(`/api/users/verifyemail${string}`, "get")
+            .then(response => {
+                return response;
+            });
     }
 }
 
