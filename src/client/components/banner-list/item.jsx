@@ -12,7 +12,7 @@ export class Banner extends Component {
         const { cityInfo, onCardClick } = this.props;
         const imgStyles = (url) => ({
             background: `url(${url})`,
-            // backgroundSize: 'cover',
+            backgroundSize: 'cover',
         });
 
         return (
@@ -23,11 +23,12 @@ export class Banner extends Component {
                     <Card.Content className="banner__content" style={imgStyles(cityInfo.pictureUrl)}>
                         <Card.Header className="banner__title">
                             {cityInfo.city}
-                            <img className="banner___flag" src={cityInfo.flagUrl} alt="/" style={{ width: 55, height: 30 }} />
+
                         </Card.Header>
                         <Card.Meta>
                             <h5 className="banner__subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
                         </Card.Meta>
+                        <div className="banner___flag" style={imgStyles(cityInfo.flagUrl)} />
                     </Card.Content>
                         <Card.Description className="banner__avgprice" >
                             <span>Average price</span>
