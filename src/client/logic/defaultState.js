@@ -160,9 +160,10 @@ const state = {
         userName: 'User Name'
     },
 
+
     propertyLayoutTab: {
-        title: 'Apartment with Garden View',
-        amount: '1'
+        title: "Apartment with Garden View",
+        amount: "1"
     },
 
     propertyRegistration: {
@@ -223,7 +224,9 @@ const state = {
         cancellation: "1 day before",
 
     },
-
+    userCabinet: {
+        user: null
+    }
 };
 
 export default state;
