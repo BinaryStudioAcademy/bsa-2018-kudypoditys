@@ -74,12 +74,7 @@ const state = {
     sortType: {
         activeItem: "price",
     },
-    addProperty: {
-        arrivalFrom: "10:00",
-        arrivalTo: "12:00",
-        departureFrom: "10:00",
-        departureTo: "12:00",
-    },
+
     images: []
 
     ,
@@ -165,12 +160,12 @@ const state = {
 
     rooms: {},
     propertyRegistrationTab: {
-        userName:'User Name'
+        userName: 'User Name'
     },
 
     propertyLayoutTab: {
         title: 'Apartment with Garden View',
-        amount:'1'
+        amount: '1'
     },
 
     propertyRegistration: {
@@ -188,9 +183,7 @@ const state = {
             includeToPrice: false
         },
         additionalFees: false,
-        additionalFeesOptions: [
-
-        ],
+        additionalFeesOptions: [],
         commissionName: "Name one",
         recipientSameAddress: true,
         recipientActualAddress: {
@@ -218,8 +211,22 @@ const state = {
             "Bar",
             "Sauna",
             "Pool"
-        ]
-    }
+        ],
+
+        // Photo Tab
+        images: [],
+        //tab Index
+        activeIndex: 1,
+        //    POLICES TAB
+
+        arrivalFrom: "10:00",
+        arrivalTo: "13:00",
+        departureFrom: "13:00",
+        departureTo: "12:00",
+        cancellation: "1 day before",
+
+    },
+
 };
 
 export default state;

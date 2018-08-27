@@ -6,6 +6,7 @@ import AmenitiesTabRegistration from '../amenities-tab';
 import TabPolices from "../polices-tab";
 import RoomItem from '../room-item';
 import ServicesTab from "client/components/property-services-tab";
+import PaymentTab from 'client/components/property-payment-tab'
 
 
 export const MenuItems = [
@@ -23,12 +24,12 @@ export const MenuItems = [
 
 
     {
-    //     menuItem: {
-    //         key: 'menuItem Room', icon: 'usd', content: 'Layout and pricing', //temporary
-    //         header: ' Layout and pricing',
-    //         subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
-    //         component: <RoomItem title="Nice title" amount="5" />,
-    //     }
+        menuItem: {
+             key: 'menuItem Room', icon: 'usd', content: 'Layout and pricing', //temporary
+            header: ' Layout and pricing',
+           subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
+             component: <PaymentTab/>,
+        }
 
      },
 
