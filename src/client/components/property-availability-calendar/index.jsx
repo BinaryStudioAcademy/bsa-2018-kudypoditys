@@ -12,20 +12,17 @@ import "./index.scss";
 
 export class AvailabilityCalendar extends React.Component {
     submitHandle = data => {
-        console.log(data.value);
+        console.log("Submit");
     };
 
     roomAmountChanged = data => {
         // console.log(data.target.value);
         console.log(this.props);
-        console.log(this.state);
         // console.log(mapStateToProps);
         // this.props.handleUpdate(data);
     };
 
     render() {
-        console.log(this.props);
-        console.log(this.state);
         return (
             <div style={{ overflow: "auto" }}>
                 <Table compact celled padded>
@@ -52,7 +49,9 @@ export class AvailabilityCalendar extends React.Component {
                             <Table.Cell collapsing>
                                 Active reservations
                             </Table.Cell>
-                            <DrawReservations />
+                            <DrawReservations
+                                reservations={this.props.reservations}
+                            />
                         </Table.Row>
                         <Table.Row>
                             <Table.Cell collapsing>Price</Table.Cell>

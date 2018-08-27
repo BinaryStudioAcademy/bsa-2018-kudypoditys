@@ -3,8 +3,8 @@ import { Table } from "semantic-ui-react";
 import moment from "moment";
 
 function getDaysArrayByMonth() {
-    var daysInMonth = moment().daysInMonth();
-    var arrDays = [];
+    let daysInMonth = moment().daysInMonth();
+    const arrDays = [];
 
     while (daysInMonth) {
         let current = {

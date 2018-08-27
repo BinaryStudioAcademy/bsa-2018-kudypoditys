@@ -1,11 +1,14 @@
 import React from "react";
 import { Table, Label } from "semantic-ui-react";
+import moment from "moment";
 
-const count = 31;
+const daysInMonth = moment().daysInMonth();
 
-const reservationsInput = count => {
+const { reservations } = this.props;
+
+const reservationsInput = () => {
     const inputs = [];
-    for (let index = 0; index < count; index++) {
+    for (let index = 0; index < daysInMonth; index++) {
         const element = (
             <Table.Cell key={index}>
                 <Label className={"table-reservations-label"}>0</Label>
@@ -16,7 +19,7 @@ const reservationsInput = count => {
     return inputs;
 };
 
-const listItems = reservationsInput(count);
+const listItems = reservationsInput();
 
 export class DrawReservations extends React.Component {
     render() {
