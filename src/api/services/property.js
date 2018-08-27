@@ -30,6 +30,9 @@ class PropertyService extends Service {
             console.log('service catch ', _)
         });
     }
+    getFilteredProperties(filter) {
+        return propertyRepository.getFilteredProperties(filter)
+    }
 }
 
 

@@ -1,8 +1,9 @@
 import axios from "axios";
 import dateHelpers from "./date-helpers";
 import cookies from "./cookie-tool";
+import { SERVER_HOST } from "./config";
 // TODO: implement servers url
-const baseUrl = "/";
+const baseUrl = SERVER_HOST;
 
 class Api {
     constructor() {

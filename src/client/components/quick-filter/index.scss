@@ -1,16 +1,26 @@
 .box {
-    margin-top: 4%;
+
     width: 250px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
+
+    border-right: 1px solid #979797;
     background-color: #fff;
-    box-shadow: #ccc 1px 2px 3px;
+
 }
 
 .box_header {
-    color: #fff;
+
     padding: 5px 10px;
-    background-color: rgb(0, 192, 192);
+    background-color: #fff;;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: end;
+    color: #182c4f;
 }
 
 .box_item {
@@ -26,11 +36,20 @@
 }
 
 .box_group {
-    font-size: 1rem;
-    color: #484848;
+    border-top: 1px solid #979797;
+    margin-right: 20px;
+    font-size:20px;
     margin-bottom: 0;
-    padding: 3px 10px 0px 10px;
+    opacity: 0.8;
+    font-family: Arial, sans-serif;
     font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #182c4f;
+    padding: 5px 10px 10px;
 }
 
 .ui .checkbox label {
@@ -41,6 +60,19 @@
 .box .box_item .box_label {
     cursor: pointer;
     margin-top: -3px;
+    width: 123px;
+    height: 17px;
+    opacity: 0.8;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #182c4f;
+    white-space: nowrap;
 }
 
 .box_amount {
@@ -49,3 +81,40 @@
     float: right;
     cursor: pointer;
 }
+.Clear__filter {
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+
+    color: #182c4f;
+}
+.Clear__filter:hover {
+   text-decoration: underline;
+}
+
+.ui.checkbox input:checked~.box:before, .ui.checkbox input:checked~label:before {
+    background: #465672;
+    border-color: #465672;
+    border-radius: 0;
+}
+.ui.checkbox input:checked~.box:after, .ui.checkbox input:checked~label:after {
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.ui.checkbox .box:after, .ui.checkbox label:after {
+
+    font-size: 11px;
+}
+
+.ui.checkbox .box:before, .ui.checkbox label:before {
+    border-radius: 0;
+}
+

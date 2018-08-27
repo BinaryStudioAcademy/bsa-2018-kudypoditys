@@ -1,6 +1,246 @@
-.ratingName{
-    color: blue;
-    font-size: 140%;
-    font-weight: bold;
+.ratingName {
 
+    opacity: 0.5;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #182c4f;
+    position: relative;
+    top: -5%;
+}
+
+.reviewsNumber {
+
+    opacity: 0.27;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+
+    color: #182c4f;
+    white-space: nowrap;
+    position: relative;
+    top: -50%;
+}
+
+.rating_num {
+
+    opacity: 0.8;
+    font-family: Arial, sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+
+    letter-spacing: normal;
+    text-align: left;
+    color: #182c4f;
+    //padding-left: 10px;
+}
+
+.ui.grid.search_page__grid > .row > .column {
+
+    padding-left: 0;
+    padding-right: 0
+
+}
+
+.ui.grid > * {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.priceInfo {
+
+    width: 150px;
+    height: 27px;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #00a882;
+    padding-right: 25px;
+    padding-top: 3px;
+
+}
+
+.ui.blue.button.search-page__main-button {
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    width: 150px;
+    height: 33px;
+    background-color: #465672;
+    border-radius: 0;
+    padding: 1px;
+}
+
+.location__span {
+
+    opacity: 0.8;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #005dff;
+}
+
+.ui.button.searchMapButton {
+    color: #005dff !important;
+    background: transparent none !important;
+
+    font-weight: 400;
+    border-radius: .28571429rem;
+    text-transform: none;
+    text-shadow: none !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 4px 0 10px;
+    font-size: 14px;
+}
+
+.button.searchMapButton:hover {
+    background: #fff !important;
+    color: #005dff !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-decoration: underline;
+
+}
+
+.ui.rating {
+    color: #8b95a7;
+}
+
+.ui.rating .active.icon {
+    background: 0 0;
+    color: #8b95a7;
+}
+
+.image__column {
+    width: 24%;
+}
+
+.ui.message.search_result__message {
+
+    position: relative;
+    min-height: 1em;
+    margin: 0 0;
+    background: #ffffff;
+    padding: 5px 0 0 0 !important;
+
+    color: rgba(0, 0, 0, .87);
+    -webkit-transition: opacity .1s ease, color .1s ease, background .1s ease, -webkit-box-shadow .1s ease;
+    transition: opacity .1s ease, color .1s ease, background .1s ease, -webkit-box-shadow .1s ease;
+    transition: opacity .1s ease, color .1s ease, background .1s ease, box-shadow .1s ease;
+    transition: opacity .1s ease, color .1s ease, background .1s ease, box-shadow .1s ease, -webkit-box-shadow .1s ease;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;;
+    opacity: 0.8;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #d0021b;
+}
+
+.Property_list__distanceToCenter {
+
+    opacity: 0.5;
+    font-family: ArialMT, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #465672;
+
+}
+
+.header_grd {
+    display: inline-block;
+}
+
+.card_row {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    height: 45px;
+}
+
+.card_row__location {
+    display: flex;
+    margin-left: 20px;
+}
+
+.rating_block {
+    display: flex;
+
+}
+
+.card_row__price {
+    //width: 589px;
+    height: 32px;
+
+    background-color: #eceef0;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.roomType {
+
+    opacity: 0.8;
+    font-family: ArialMT, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #182c4f;
+    padding-top: 8px;
+    padding-left: 14px;
+}
+
+.card_row__order {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.pad20 {
+    padding-left: 20px;
 }

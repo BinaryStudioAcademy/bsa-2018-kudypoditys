@@ -1,3 +1,4 @@
+
 .search--view-bar > .room-options > .room-selector.hidden {
     display: none;
 }
@@ -9,6 +10,9 @@
     margin: 0 auto;
     size: 16px !important;
     margin-top: 60px;
+    margin-bottom: 50px;
+    height: 40px;
+
 }
 
 .DateRangePickerInput_arrow {
@@ -21,23 +25,34 @@
     border-bottom: 0px !important;
     border-left: 0px !important;
     border-radius: 0px !important;
+    height: 40px;
+    font-family: ArialMT, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #182c4f;
+    opacity: 0.8;
+
 }
 
 .search--view-bar {
     width: 1000px;
-    max-width: 1000px !important;
-    .ui.input > input {
-        border-top: 0px;
-        border-bottom: 0px;
-        border-left: 0px;
-        border-radius: 0px;
-    }
+    height: 40px;
+
 }
 
 .destination {
-    input {
-        min-width: 470px;
+    margin-top: -60px;
+
+    input{
+        min-width: 420px;
+        height: 40px
     }
+
 }
 
 .btn-wrp > .ui.button {
@@ -47,8 +62,8 @@
     color: #182c4f;
     text-align: center;
     width: 107%;
+    height: 40px;
 }
-
 .search--view-panel {
     display: flex;
     flex-direction: column;
@@ -88,6 +103,7 @@ form.Field {
 
 .search--view-panel .room-selector {
     margin-top: 10px;
+
 }
 
 .search--view-panel > .room-options > .room-selector {
@@ -107,4 +123,22 @@ form.Field {
 .search--view-panel .btn-wrp {
     display: flex;
     justify-content: flex-end;
+}
+
+.ui.input {
+    height: 40px
+}
+
+.ui.grid > .row {
+
+    padding-left: 10px;
+}
+
+.search--view-bar .ui.input > input {
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-radius: 0px;
+    opacity: 0.8;
+    height: 40px;
 }
