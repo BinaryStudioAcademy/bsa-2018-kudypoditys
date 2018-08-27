@@ -153,6 +153,7 @@ export class MainSearch extends React.Component {
             >
                 <div className="destination">
                     <Search
+                        style={{height: 60}}
                         name="destination"
                         placeholder="Where are you going?"
                         loading={isLoading}
@@ -164,7 +165,7 @@ export class MainSearch extends React.Component {
                         required
                     />
                 </div>
-                <div className="check-in-out" onFocus={this.hideRoomSelector}>
+                <div className="check-in-out" style={{height: 60}} onFocus={this.hideRoomSelector}>
                     <DateRangePicker
                         noBorder={true}
                         startDateId="startDate"
@@ -182,7 +183,6 @@ export class MainSearch extends React.Component {
 
                 <div className="room-options">
                     <Input
-                        style={{ height: "20px" }}
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
@@ -253,9 +253,9 @@ export class MainSearch extends React.Component {
                     </div>
                 </div>
 
-                <div className="btn-wrp" style={{ height: 40, width: 134 }}>
+                <div className="btn-wrp" style={{ height: 60, width: 134 }}>
                     <Button
-                        style={{ height: 40 }}
+                        style={{ height: 60 }}
                         type="submit"
                         content="Search"
                         primary
