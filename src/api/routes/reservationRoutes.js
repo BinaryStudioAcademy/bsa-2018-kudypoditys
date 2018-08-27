@@ -19,7 +19,7 @@ reservation
             dateIn: new Date(Number(req.body.dateIn)),
             dateOut: new Date(Number(req.body.dateOut)),
             guestsCount: req.body.guestsCount,
-            userId: req.user.id,
+            userId: 1,
             roomId: Number(req.body.roomId),
             paymentTypeId: Number(req.body.paymentTypeId)
         };

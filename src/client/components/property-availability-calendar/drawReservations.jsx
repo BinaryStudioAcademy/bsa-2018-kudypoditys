@@ -4,25 +4,22 @@ import moment from "moment";
 
 const daysInMonth = moment().daysInMonth();
 
-const { reservations } = this.props;
-
-const reservationsInput = () => {
-    const inputs = [];
-    for (let index = 0; index < daysInMonth; index++) {
-        const element = (
-            <Table.Cell key={index}>
-                <Label className={"table-reservations-label"}>0</Label>
-            </Table.Cell>
-        );
-        inputs.push(element);
-    }
-    return inputs;
-};
-
-const listItems = reservationsInput();
-
 export class DrawReservations extends React.Component {
+    reservationsInput = () => {
+        const { reservations } = this.props;
+        const labels = [];
+        for (let index = 0; index < daysInMonth; index++) {
+            const element = (
+                <Table.Cell key={index}>
+                    <Label className={"table-reservations-label"}>0</Label>
+                </Table.Cell>
+            );
+            labels.push(element);
+        }
+        return labels;
+    };
+
     render() {
-        return listItems;
+        return this.reservationsInput();
     }
 }

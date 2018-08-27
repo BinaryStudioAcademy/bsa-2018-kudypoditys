@@ -208,14 +208,14 @@ const state = {
     },
     availabilityCalendar: {
         id: 1,
-        price: 1000,
         amount: 15,
         area: 10,
-        description: "Test",
-        createdAt: "2018-08-26T12:51:59.738Z",
-        updatedAt: "2018-08-26T12:51:59.738Z",
-        roomTypeId: 1,
-        propertyId: 4,
+        price: 1000,
+        description: null,
+        createdAt: "2018-08-27T17:44:33.118Z",
+        updatedAt: "2018-08-27T17:44:33.118Z",
+        roomTypeId: null,
+        propertyId: 3,
         availabilities: [
             {
                 id: 4,
@@ -230,11 +230,55 @@ const state = {
         reservations: [
             {
                 id: 1,
-                dateIn: "2018-08-26T13:17:47.062Z",
-                dateOut: "2018-08-26T13:17:47.062Z",
+                dateIn: "1970-01-01T00:00:00.005Z",
+                dateOut: "1970-01-01T00:00:00.006Z",
                 guestsCount: 1,
-                createdAt: "2018-08-26T15:34:24.005Z",
-                updatedAt: "2018-08-26T15:34:24.005Z",
+                createdAt: "2018-08-27T17:54:55.517Z",
+                updatedAt: "2018-08-27T17:54:55.517Z",
+                userId: 1,
+                roomId: 1,
+                paymentTypeId: 1
+            },
+            {
+                id: 2,
+                dateIn: "2018-08-27T20:57:00.000Z",
+                dateOut: "2018-08-28T20:57:00.000Z",
+                guestsCount: 1,
+                createdAt: "2018-08-27T17:58:05.165Z",
+                updatedAt: "2018-08-27T17:58:05.165Z",
+                userId: 1,
+                roomId: 1,
+                paymentTypeId: 1
+            },
+            {
+                id: 3,
+                dateIn: "2018-08-27T20:57:00.000Z",
+                dateOut: "2018-08-28T20:57:00.000Z",
+                guestsCount: 1,
+                createdAt: "2018-08-27T17:58:13.764Z",
+                updatedAt: "2018-08-27T17:58:13.764Z",
+                userId: 1,
+                roomId: 1,
+                paymentTypeId: 1
+            },
+            {
+                id: 4,
+                dateIn: "2018-08-27T20:57:00.000Z",
+                dateOut: "2018-08-28T20:57:00.000Z",
+                guestsCount: 1,
+                createdAt: "2018-08-27T17:58:33.229Z",
+                updatedAt: "2018-08-27T17:58:33.229Z",
+                userId: 1,
+                roomId: 1,
+                paymentTypeId: 1
+            },
+            {
+                id: 5,
+                dateIn: "2018-08-29T20:57:00.000Z",
+                dateOut: "2018-08-30T20:57:00.000Z",
+                guestsCount: 1,
+                createdAt: "2018-08-27T17:58:53.697Z",
+                updatedAt: "2018-08-27T17:58:53.697Z",
                 userId: 1,
                 roomId: 1,
                 paymentTypeId: 1
