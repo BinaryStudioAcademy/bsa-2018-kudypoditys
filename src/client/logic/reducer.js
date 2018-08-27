@@ -47,6 +47,5 @@ export default combineReducers({
     // layoutTab,
     propertyRegistration,
 
-
     userVerified
 });

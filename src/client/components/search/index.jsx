@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { connect } from "react-redux";
-import { Input, Button, Form, Dropdown, Grid, Search } from "semantic-ui-react";
+import {Input, Button, Form, Dropdown, Grid, Search} from "semantic-ui-react";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 
@@ -12,65 +12,47 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 
 export class MainSearch extends React.Component {
-    constructor(props) {
-        super(props);
-        this.roomSelector = React.createRef();
-        this.state = {
-            startDate: moment(),
-            endDate: moment().add(5, "days"),
-            focusedInput: null,
-            query: "",
-            results: []
-        };
-    }
     getInfo = () => {
         let resultsData = [];
-        let index ="properties"
+        let index = "properties"
         axios.get(
-                `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.state.query}`
-            )
+            `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.state.query}`
+        )
             .then(propertiesResponse => {
                 console.log("response Roperties= " + JSON.stringify(propertiesResponse));
                 propertiesResponse.data.forEach(element => {
                     resultsData.push({
                         title: element._source.name,
                         description: element._source.description,
-                        image:element._source.image
+                        image: element._source.image
                     });
                 });
 
-                index="cities"
+                index = "cities"
                 return axios.get(`http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.state.query}`)
             }).then(citiesResponse => {
-                console.log("response Cities= " + JSON.stringify(citiesResponse));
-                citiesResponse.data.forEach(element => {
-                    resultsData.push({
-                        title: element._source.city,
-                        description: element._source.country,
-                    });
+            console.log("response Cities= " + JSON.stringify(citiesResponse));
+            citiesResponse.data.forEach(element => {
+                resultsData.push({
+                    title: element._source.city,
+                    description: element._source.country,
                 });
-                this.setState({
-                    results: resultsData,
-                    isLoading: false
-                });
-            })
+            });
+            this.setState({
+                results: resultsData,
+                isLoading: false
+            });
+        })
 
     };
-
-    componentWillMount() {
-        this.resetComponent();
-    }
-
     resetComponent = () =>
-        this.setState({ isLoading: false, results: [], value: "" });
-
-    handleResultSelect = (e, { result }) =>
+        this.setState({isLoading: false, results: [], value: ""});
+    handleResultSelect = (e, {result}) =>
         this.setState({
             query: result.title,
             isLoading: false
         });
-
-    handleSearchChange = (e, { value }) => {
+    handleSearchChange = (e, {value}) => {
         this.setState(
             {
                 isLoading: true,
@@ -83,6 +65,22 @@ export class MainSearch extends React.Component {
             }
         );
     };
+
+    constructor(props) {
+        super(props);
+        this.roomSelector = React.createRef();
+        this.state = {
+            startDate: moment(),
+            endDate: moment().add(5, "days"),
+            focusedInput: null,
+            query: "",
+            results: []
+        };
+    }
+
+    componentWillMount() {
+        this.resetComponent();
+    }
     generateOptions = (from, to) => {
         let options = [];
         for (let i = from; i <= to; i++) {
@@ -138,7 +136,7 @@ export class MainSearch extends React.Component {
     render() {
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
-        const { isLoading, query, results } = this.state;
+        const {isLoading, query, results} = this.state;
         const childrenOptions = this.generateOptions(0, 10);
         const { rooms, adults, children } = this.props;
         return (
@@ -248,9 +246,9 @@ export class MainSearch extends React.Component {
                     </div>
                 </div>
 
-                <div className="btn-wrp" style={{ height: 60, width: 134 }}>
+                <div className="btn-wrp" style={{height: 60, width: 134}}>
                     <Button
-                        style={{ height: 60 }}
+                        style={{height: 60}}
                         type="submit"
                         content="Search"
                         primary

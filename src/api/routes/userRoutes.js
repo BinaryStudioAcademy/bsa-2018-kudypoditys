@@ -18,8 +18,8 @@ user.route("/verifyemail")
         console.log(req.query.email, req.query.token);
         userService.verifyEmail(req.query.email, req.query.token)
             .then(data => {
-                if(data) {
-                    res.send({ verified: true });
+                if (data) {
+                    res.send({verified: true});
                 } else {
                     res.status(500).send("Error verifying email.");
                 }

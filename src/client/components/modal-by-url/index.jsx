@@ -1,17 +1,18 @@
 import React from "react";
-import { Button, Icon, Modal } from "semantic-ui-react";
+import {Button, Icon, Modal} from "semantic-ui-react";
 import history from "client/history";
 
+
 export default ({
-    openBy,
-    className,
-    cancelTo,
-    submitTo,
-    cancelText,
-    submitText,
-    heading,
-    content,
-}) => {
+                    openBy,
+                    className,
+                    cancelTo,
+                    submitTo,
+                    cancelText,
+                    submitText,
+                    heading,
+                    content,
+                }) => {
     return (
         <Modal open={openBy} className={className}>
             {heading ? <Modal.Header>{heading}</Modal.Header> : null}
@@ -27,7 +28,7 @@ export default ({
                         color="red"
                         inverted
                     >
-                        <Icon name="remove" /> {cancelText}
+                        <Icon name="remove"/> {cancelText}
                     </Button>
                 ) : null}
                 {submitTo || submitText ? (
@@ -36,7 +37,7 @@ export default ({
                         color="green"
                         inverted
                     >
-                        <Icon name="checkmark" /> {submitText}
+                        <Icon name="checkmark"/> {submitText}
                     </Button>
                 ) : null}
             </Modal.Actions>

@@ -1,7 +1,8 @@
-import { sendVerificationData } from "client/logic/verify-email/actions";
+import {sendVerificationData} from "client/logic/verify-email/actions";
+
 
 export function mapStateToProps(state) {
-    const { userVerified } = state;
+    const {userVerified} = state;
     return {
         ...userVerified
     };

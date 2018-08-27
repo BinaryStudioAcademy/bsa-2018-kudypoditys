@@ -1,7 +1,7 @@
 const Service = require("./generalService");
 const userRepository = require("../repositories/userRepository");
 const settings = require("../../../config/settings");
-const { dateHelpers } = require("../helpers");
+const {dateHelpers} = require("../helpers");
 const bcrypt = require("bcrypt");
 const userTokenService = require("./userToken");
 const nodemailer = require("nodemailer");
@@ -27,7 +27,7 @@ class UserService extends Service {
                 return this.create(newUser).then(dbUser => {
                     if (dbUser) {
                         return this.getEmailVerifyLink(dbUser).then(
-                            ({ error, data }) => {
+                            ({error, data}) => {
                                 if (!error) {
                                     return data;
                                 } else {
@@ -106,7 +106,7 @@ class UserService extends Service {
                 if (data) {
                     return userRepository.findById(user.id).then(user => {
                         transporter.sendMail(mailOptions).then(() => true);
-                        return { error: false, data: user };
+                        return {error: false, data: user};
                     });
                 } else {
                     return {
@@ -129,7 +129,7 @@ class UserService extends Service {
                         verifyEmailToken: "verified",
                     });
 
-                    return { verified: true };
+                    return {verified: true};
                 } else {
                     return Promise.reject(
                         new Error("VerifyEmailToken is out of date."),
