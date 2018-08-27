@@ -20,7 +20,7 @@ import CheckboxForm from "./checkboxForm";
 // ];
 
 let RegistrationForm = props => {
-    const { pristine, submitting, handleSubmit } = props;
+    const { pristine, submitting, handleSubmit, handleChange } = props;
     return (
         <form onSubmit={handleSubmit}>
             <Card style={{ width: "900px" }} color="teal">
@@ -73,7 +73,7 @@ let RegistrationForm = props => {
                         <br /> Do you own multiple apartments, or are you part
                         of a property management company or group?
                     </CardDescription>
-                    <CheckboxForm name="select1" />
+                    <CheckboxForm name="select1" onChange={handleChange}/>
                 </Card.Content>
             </Card>
             <Card style={{ width: "900px" }} color="teal">

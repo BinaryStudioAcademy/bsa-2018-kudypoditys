@@ -5,7 +5,7 @@ import {Field, reduxForm} from 'redux-form';
 
 class CheckboxForm extends Component {
     render() {
-        const {name} = this.props
+        const {name, handleChange} = this.props
         return (
             <Fragment>
                 <Button basic>
@@ -14,7 +14,9 @@ class CheckboxForm extends Component {
                         id="yes"
                         component="input"
                         type="radio"
-                        value="true"/>
+                        value="true"
+                        onChange={handleChange}
+                    />
                     {' '}
                     Yes
                 </Button>
@@ -24,7 +26,10 @@ class CheckboxForm extends Component {
                         id='no'
                         component="input"
                         type="radio"
-                        value="false"/>
+                        value="false"
+
+
+                    />
                     {' '}
                     No
                 </Button>
