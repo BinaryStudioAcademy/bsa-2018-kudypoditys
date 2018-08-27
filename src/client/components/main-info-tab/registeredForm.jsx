@@ -73,7 +73,7 @@ let RegistrationForm = props => {
                         <br /> Do you own multiple apartments, or are you part
                         of a property management company or group?
                     </CardDescription>
-                    <CheckboxForm name="select1" onChange={handleChange}/>
+                    <CheckboxForm name="own multiple apartments" handleChange={handleChange}/>
                 </Card.Content>
             </Card>
             <Card style={{ width: "900px" }} color="teal">
@@ -86,7 +86,7 @@ let RegistrationForm = props => {
                         Do you work with a channel manager or XML provider to
                         manage your pricing and availability?
                     </CardDescription>
-                    <CheckboxForm name="select2" />
+                    <CheckboxForm name="channel manager" handleChange={handleChange}/>
                 </Card.Content>
             </Card>
             <Card style={{ width: "900px" }} color="teal">
@@ -151,11 +151,11 @@ let RegistrationForm = props => {
                     </Card.Description>
                     <CardDescription>
                         <br />
-                        Were you contacted by a Booking.com representative in
+                        Were you contacted by a kydypoditys.com representative in
                         the past two weeks before starting your registration
                         process?
                     </CardDescription>
-                    <CheckboxForm name="select3" />
+                    <CheckboxForm name="was contacted" handleChange={handleChange}/>
                 </Card.Content>
             </Card>
             <Button

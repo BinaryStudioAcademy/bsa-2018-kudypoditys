@@ -6,11 +6,11 @@ import {mapStateToProps, mapDispatchToProps} from "./container";
 
 
 class TabRegistration extends Component {
-    handleChange = (e,  name, value ) => {
+    handleChange = (e, { value } ) => {
 
-        console.log( value.values)
+        console.log("handleChange"+ value )
         // console.log( e)
-        this.props.updateTab(value.values);
+        this.props.updateTab(value);
     };
     handleProceed = () => {
 
@@ -27,7 +27,7 @@ class TabRegistration extends Component {
                 <Grid.Column width={10}>
                     <Container>
                         <Header as='h2'>Welcome {userName}!</Header>
-                        <RegistrationForm onSubmit={this.handleProceed} onChange={this.handleChange}/>
+                        <RegistrationForm onSubmit={this.handleProceed} handleChange={this.handleChange}/>
                     </Container>
                 </Grid.Column>
             </Grid>
