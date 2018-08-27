@@ -33,7 +33,7 @@ export class EditPersonalSettings extends Component {
             ...this.props
         };
         return (
-            <Container>
+            <Container fluid>
                 <SettingsForm {...formProps} onSubmit={this.handleSubmit} updateSettings={this.handleUpdate} sendSettings={this.handleSend}/>
             </Container>
         );

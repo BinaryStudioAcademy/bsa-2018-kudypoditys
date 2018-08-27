@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import ImageUploader from "react-images-upload";
 import { phoneNumber, email } from "client/regexValidationService";
-import inputField from "client/components/input-form";
+import inputField from "./input";
 
 import {
     Form,
@@ -18,6 +18,21 @@ import {
 export class SettingsForm extends Component {
     state = {
         pic: "",
+        address: {
+            address: "",
+            city: "",
+            addressCountry: "",
+            postcode: "",
+        },
+        creditCard: {
+            type: "",
+            number: "",
+            owner: "",
+            expirationDay: "",
+            expirationYear: "",
+            usedForBooking: "",
+            transferRemuneration: "",
+        },
     };
 
     updateSettings = data => {
@@ -26,8 +41,106 @@ export class SettingsForm extends Component {
 
     sendSettings = (e, { name, value }) => {
         console.log("SEND TO BACKEND:", name, value);
+        this.updateSettings({ [name]: value });
     };
 
+    // Address mini-form handlers:
+    handleAddressChange = (e, { name, value }) => {
+        this.setState({
+            address: {
+                ...this.state.address,
+                [name]: value,
+            },
+        });
+    };
+    saveAddress = () => {
+        const data = {
+            ...this.state.address,
+        };
+
+        this.props.updateSettings({
+            ...data,
+        });
+    };
+    //
+
+    // Credit cards mini-form handlers:
+    handleCreditCardsChange = (e, { name, value }) => {
+        this.setState({
+            creditCard: {
+                ...this.state.creditCard,
+                [name]: value,
+            },
+        });
+    };
+    saveCreditCard = () => {
+        const data = {
+            ...this.state.creditCard,
+        };
+        if (
+            !data.type ||
+            data.type.length < 1 ||
+            !data.number ||
+            data.number.length < 1 ||
+            !data.owner ||
+            data.owner.length < 1 ||
+            !data.expirationDay ||
+            data.expirationDay.length < 1 ||
+            !data.expirationYear ||
+            data.expirationYear.length < 1
+        ) {
+            this.setState({
+                addingCreditcard: {
+                    error: true,
+                },
+            });
+
+            return;
+        }
+        this.props.updateSettings({
+            creditCards: [...this.props.creditCards, { ...data }],
+        });
+
+        this.addingItem("addingCreditcard", false);
+        this.cancelCreditCard();
+    };
+    cancelCreditCard = () => {
+        this.setState({
+            creditCard: {
+                type: "",
+                number: "",
+                owner: "",
+                expirationDay: "",
+                expirationYear: "",
+                usedForBooking: "",
+                transferRemuneration: "",
+            },
+        });
+    };
+    //
+
+    //
+    handleFacilitiesChange = value => {
+        console.log(value);
+        if (this.props.additionalFacilities.includes(value)) {
+            this.props.updateSettings({
+                additionalFacilities: this.props.additionalFacilities.filter(
+                    facility => facility !== value,
+                ),
+            });
+        } else {
+            this.props.updateSettings({
+                additionalFacilities: [
+                    ...this.props.additionalFacilities,
+                    value,
+                ],
+            });
+        }
+    };
+
+    saveFacilities = () => {
+        this.addingItem("addingFacilities", false);
+    };
     //
 
     handleChange = (e, { name, value }) => {
@@ -70,43 +183,7 @@ export class SettingsForm extends Component {
             currencyOptions,
             appealOptions,
             payForAccommodationOptions,
-            //
-            avatarUrl,
-            // nickname,
-            // birthdayDay,
-            // birthdayMonth,
-            // birthdayYear,
-            // country,
-            // //
-            // appeal,
-            // firstName,
-            // secondName,
-            // phone,
-            // email,
-            // address,
-            // city,
-            // postcode,
-            // creditCards,
-            // onlinePaymentMethod,
-            // whenToPayForAccomodation,
-            // smokingInRooms,
-            // starCounts,
-            // disabledFacilities,
-            // favoriteFacilities, // [ "Bar", "Sauna" ]
-            // forWhomBook,
-            // currency
         } = this.props;
-        // const creditCards = {
-        //     card0: {
-        //         type: "visa",
-        //         number: "",
-        //         owner: "",
-        //         expirationDay: "",
-        //         expirationYear: "",
-        //         userForBooking: "",
-        //         transferRemuneration: ""
-        //     }
-        // }
         return (
             <Form onSubmit={handleSubmit}>
                 <Segment className="personal_settings-segment">
@@ -122,7 +199,7 @@ export class SettingsForm extends Component {
                     <Image
                         style={{ width: "150px", height: "150px" }}
                         src={
-                            avatarUrl ||
+                            this.props.avatarUrl ||
                             "https://www.mautic.org/media/images/default_avatar.png"
                         }
                         alt="Photo"
@@ -147,6 +224,7 @@ export class SettingsForm extends Component {
                         type="text"
                         min={4}
                         max={32}
+                        val={this.props.nickname}
                         onChange={e => this.handleChange(e, e.target)}
                         onBlur={e => this.sendSettings(e, e.target)}
                     />
@@ -155,6 +233,7 @@ export class SettingsForm extends Component {
                         name="dateDay"
                         fluid
                         selection
+                        defaultValue={this.props.dateDay}
                         options={dateOptions.days}
                         onChange={this.sendSettings}
                     />
@@ -162,6 +241,7 @@ export class SettingsForm extends Component {
                         name="dateMonth"
                         fluid
                         selection
+                        defaultValue={this.props.dateMonth}
                         options={dateOptions.months}
                         onChange={this.sendSettings}
                     />
@@ -169,6 +249,7 @@ export class SettingsForm extends Component {
                         name="dateYear"
                         fluid
                         selection
+                        defaultValue={this.props.dateYear}
                         options={dateOptions.years}
                         onChange={this.sendSettings}
                     />
@@ -177,6 +258,7 @@ export class SettingsForm extends Component {
                         name="country"
                         fluid
                         selection
+                        defaultValue={this.props.country}
                         options={countryOptions}
                         onChange={this.sendSettings}
                     />
@@ -197,6 +279,7 @@ export class SettingsForm extends Component {
                         name="appeal"
                         fluid
                         selection
+                        defaultValue={this.props.appeal}
                         options={appealOptions}
                         onChange={this.sendSettings}
                     />
@@ -208,17 +291,19 @@ export class SettingsForm extends Component {
                         type="text"
                         min={4}
                         max={16}
+                        val={this.props.firstName}
                         onChange={e => this.handleChange(e, e.target)}
                         onBlur={e => this.sendSettings(e, e.target)}
                     />
                     <p className="personal_settings-p">Second name</p>
                     <Field
                         component={inputField}
-                        name="secondName"
+                        name="lastName"
                         label="Second name"
                         type="text"
                         min={4}
                         max={16}
+                        val={this.props.lastName}
                         onChange={e => this.handleChange(e, e.target)}
                         onBlur={e => this.sendSettings(e, e.target)}
                     />
@@ -230,6 +315,9 @@ export class SettingsForm extends Component {
                         type="number"
                         min={4}
                         max={16}
+                        className="personal_settings-field"
+                        pointing="left"
+                        val={this.props.phone}
                         validate={[phoneNumber]}
                         onChange={e => this.handleChange(e, e.target)}
                         onBlur={e => this.sendSettings(e, e.target)}
@@ -242,6 +330,9 @@ export class SettingsForm extends Component {
                         type="email"
                         min={4}
                         max={16}
+                        className="personal_settings-field"
+                        pointing="left"
+                        val={this.props.email}
                         validate={[email]}
                         onChange={e => this.handleChange(e, e.target)}
                         onBlur={e => this.sendSettings(e, e.target)}
@@ -257,9 +348,8 @@ export class SettingsForm extends Component {
                                     label="Address"
                                     type="text"
                                     onChange={e =>
-                                        this.handleChange(e, e.target)
+                                        this.handleAddressChange(e, e.target)
                                     }
-                                    onBlur={e => this.sendSettings(e, e.target)}
                                 />
                                 <p>City</p>
                                 <Field
@@ -268,15 +358,17 @@ export class SettingsForm extends Component {
                                     label="City"
                                     type="text"
                                     onChange={e =>
-                                        this.handleChange(e, e.target)
+                                        this.handleAddressChange(e, e.target)
                                     }
-                                    onBlur={e => this.sendSettings(e, e.target)}
                                 />
                                 <p>Country / Territory</p>
                                 <Dropdown
+                                    name="addressCountry"
                                     fluid
                                     selection
+                                    defaultValue={this.props.country}
                                     options={countryOptions}
+                                    onChange={this.handleAddressChange}
                                 />
                                 <p>Postcode</p>
                                 <Field
@@ -285,9 +377,8 @@ export class SettingsForm extends Component {
                                     label="Postcode"
                                     type="number"
                                     onChange={e =>
-                                        this.handleChange(e, e.target)
+                                        this.handleAddressChange(e, e.target)
                                     }
-                                    onBlur={e => this.sendSettings(e, e.target)}
                                 />
                                 <div className="personal_settings-submit">
                                     <Label
@@ -325,7 +416,8 @@ export class SettingsForm extends Component {
                         />
                     )}
                     <Label basic>
-                        Washigton Street 21, 123456, New-York, USA
+                        {this.props.address},{this.props.postcode},
+                        {this.props.city},{this.props.addressCountry}
                     </Label>
                 </Segment>
 
@@ -334,52 +426,105 @@ export class SettingsForm extends Component {
                         <Header as="h2">Credit cards</Header>
                         <span>Your payment information is kept secure.</span>
                     </div>
+                    {this.props.creditCards.map((creditcard, i) => (
+                        <Label
+                            className="personal_settings-creditcard-label"
+                            basic
+                            key={i}
+                        >
+                            <div>{creditcard.type}</div>
+                            <div>{creditcard.number}</div>
+                            <div>{creditcard.owner}</div>
+                            <div>{creditcard.expirationDay}</div>
+                            <div>{creditcard.expirationYear}</div>
+                            <div>
+                                {creditcard.usedForBooking
+                                    ? "Used for booking"
+                                    : "Not used for booking"}
+                            </div>
+                            <div>
+                                {creditcard.transferRemuneration
+                                    ? "Transfer remuneration"
+                                    : "Do not transfer remuneration"}
+                            </div>
+                        </Label>
+                    ))}
                     {this.state.addingCreditcard ? (
                         <div className="personal_settings-adding-creditcard">
+                            {this.state.addingCreditcard.error ? (
+                                <Label color="red">
+                                    Please, specify the correct data
+                                </Label>
+                            ) : null}
                             <p>Type of credit card</p>
                             <Dropdown
+                                name="type"
                                 fluid
                                 selection
+                                placeholder="Select creditcard"
                                 options={paymentOptions}
+                                onChange={this.handleCreditCardsChange}
                             />
                             <p>Number of credit card</p>
                             <Field
                                 component={inputField}
-                                name="creditcardNumber"
+                                name="number"
                                 label="Creditcard number"
                                 type="number"
-                                onChange={e => this.handleChange(e, e.target)}
-                                onBlur={e => this.sendSettings(e, e.target)}
+                                onChange={e =>
+                                    this.handleCreditCardsChange(e, e.target)
+                                }
                             />
                             <p>Name of credit card owner</p>
                             <Field
                                 component={inputField}
-                                name="creditcardOwnerName"
+                                name="owner"
                                 label="Creditcard owner name"
                                 type="text"
-                                onChange={e => this.handleChange(e, e.target)}
-                                onBlur={e => this.sendSettings(e, e.target)}
+                                onChange={e =>
+                                    this.handleCreditCardsChange(e, e.target)
+                                }
                             />
                             <p>Expiration date</p>
                             <Dropdown
+                                name="expirationDay"
                                 fluid
                                 selection
+                                placeholder="Exp.day"
                                 options={dateOptions.days}
                                 className="personal_settings-date-dropdown-left"
+                                onChange={this.handleCreditCardsChange}
                             />
                             <Dropdown
+                                name="expirationYear"
                                 fluid
                                 selection
+                                placeholder="Exp.year"
                                 options={dateOptions.years}
                                 className="personal_settings-date-dropdown-right"
+                                onChange={this.handleCreditCardsChange}
                             />
                             <Checkbox
-                                name="bookBussinessTrip"
+                                name="usedForBooking"
                                 label="Use for booking business trips"
+                                onChange={e =>
+                                    this.handleCreditCardsChange(e, {
+                                        name: "usedForBooking",
+                                        value: !this.state.creditCard
+                                            .usedForBooking,
+                                    })
+                                }
                             />
                             <Checkbox
-                                name="transferRemunerationForThisCard"
+                                name="transferRemuneration"
                                 label="Transfer remuneration for this card"
+                                onChange={e =>
+                                    this.handleCreditCardsChange(e, {
+                                        name: "transferRemuneration",
+                                        value: !this.state.creditCard
+                                            .transferRemuneration,
+                                    })
+                                }
                             />
                         </div>
                     ) : null}
@@ -389,7 +534,7 @@ export class SettingsForm extends Component {
                                 as="a"
                                 content="Save"
                                 icon="save"
-                                onClick={this.saveCreditcard}
+                                onClick={this.saveCreditCard}
                                 color="blue"
                                 className="personal_settings-btn"
                             />
@@ -397,9 +542,10 @@ export class SettingsForm extends Component {
                                 as="a"
                                 content="Cancel"
                                 icon="cancel"
-                                onClick={() =>
-                                    this.addingItem("addingCreditcard", false)
-                                }
+                                onClick={() => (
+                                    this.addingItem("addingCreditcard", false),
+                                    this.cancelCreditCard()
+                                )}
                                 basic
                                 className="personal_settings-btn"
                             />
@@ -413,7 +559,7 @@ export class SettingsForm extends Component {
                                 this.addingItem("addingCreditcard", true)
                             }
                             color="blue"
-                            className="personal_settings-btn"
+                            className="personal_settings-btn personal_settings-add-credit"
                         />
                     )}
                 </Segment>
@@ -427,10 +573,11 @@ export class SettingsForm extends Component {
                         What payment type do you prefer?
                     </p>
                     <Dropdown
-                        name="onlinePaymentType"
+                        name="paymentType"
                         className="personal_settings-dropdown-regular"
                         fluid
                         selection
+                        defaultValue={this.props.paymentType}
                         options={paymentOptions}
                         onChange={this.sendSettings}
                     />
@@ -438,10 +585,11 @@ export class SettingsForm extends Component {
                         When do you prefer to pay for accommodation?
                     </p>
                     <Dropdown
-                        name="whenToPayForAccomodation"
+                        name="payForAccommodation"
                         className="personal_settings-dropdown-regular"
                         fluid
                         selection
+                        defaultValue={this.props.payForAccommodation}
                         options={payForAccommodationOptions}
                         onChange={this.sendSettings}
                     />
@@ -456,31 +604,185 @@ export class SettingsForm extends Component {
                         </span>
                     </div>
                     <p className="personal_settings-p">Smoking in rooms</p>
-                    <Dropdown fluid selection options={smokingInRoomsOptions} />
+                    <Dropdown
+                        name="smokingInRooms"
+                        fluid
+                        selection
+                        defaultValue={this.props.smokingInRooms}
+                        options={smokingInRoomsOptions}
+                        onChange={this.sendSettings}
+                    />
                     <p className="personal_settings-p">Count of stars</p>
-                    <Dropdown fluid selection options={starsOptions} />
+                    <Dropdown
+                        name="countOfStars"
+                        fluid
+                        selection
+                        defaultValue={this.props.countOfStars}
+                        options={starsOptions}
+                        onChange={this.sendSettings}
+                    />
                     <p className="personal_settings-p">
                         Facilities for disabled guests
                     </p>
-                    <Checkbox label="Show options with disabled facilities" />
+                    <Checkbox
+                        name="showWithDisabledFacilities"
+                        label="Show options with disabled facilities"
+                        checked={this.props.showWithDisabledFacilities}
+                        onChange={e =>
+                            this.sendSettings(e, {
+                                name: "showWithDisabledFacilities",
+                                value: !this.props.showWithDisabledFacilities,
+                            })
+                        }
+                    />
                     <p className="personal_settings-p">Favorite facilities</p>
                     {this.state.addingFacilities ? (
                         <div className="personal_settings-facilities">
-                            <Checkbox label="Restaurant" />
-                            <Checkbox label="Non-smoking rooms" />
-                            <Checkbox label="Family rooms" />
-                            <Checkbox label="Parking space" />
-                            <Checkbox label="Wi-Fi" />
-                            <Checkbox label="Transfer from / to the airport" />
-                            <Checkbox label="Bar" />
-                            <Checkbox label="24-hour fron desk" />
-                            <Checkbox label="Internet" />
-                            <Checkbox label="Fitness Center" />
-                            <Checkbox label="Pets allowed" />
-                            <Checkbox label="Spa & Wellness Center" />
-                            <Checkbox label="Pool" />
-                            <Checkbox label="Free Wi-Fi" />
-                            <Checkbox label="Luggage Store" />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Restaurant",
+                                )}
+                                label="Restaurant"
+                                onChange={() =>
+                                    this.handleFacilitiesChange("Restaurant")
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Non-smoking rooms",
+                                )}
+                                label="Non-smoking rooms"
+                                onChange={() =>
+                                    this.handleFacilitiesChange(
+                                        "Non-smoking rooms",
+                                    )
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Family rooms",
+                                )}
+                                label="Family rooms"
+                                onChange={() =>
+                                    this.handleFacilitiesChange("Family rooms")
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Parking space",
+                                )}
+                                label="Parking space"
+                                onChange={() =>
+                                    this.handleFacilitiesChange("Parking space")
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Wi-Fi",
+                                )}
+                                label="Wi-Fi"
+                                onChange={() =>
+                                    this.handleFacilitiesChange("Wi-Fi")
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Transfer from / to the airport",
+                                )}
+                                label="Transfer from / to the airport"
+                                onChange={() =>
+                                    this.handleFacilitiesChange(
+                                        "Transfer from / to the airport",
+                                    )
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Bar",
+                                )}
+                                label="Bar"
+                                onChange={() =>
+                                    this.handleFacilitiesChange("Bar")
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "24-hour fron desk",
+                                )}
+                                label="24-hour fron desk"
+                                onChange={() =>
+                                    this.handleFacilitiesChange(
+                                        "24-hour fron desk",
+                                    )
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Internet",
+                                )}
+                                label="Internet"
+                                onChange={() =>
+                                    this.handleFacilitiesChange("Internet")
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Fitness Center",
+                                )}
+                                label="Fitness Center"
+                                onChange={() =>
+                                    this.handleFacilitiesChange(
+                                        "Fitness Center",
+                                    )
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Pets allowed",
+                                )}
+                                label="Pets allowed"
+                                onChange={() =>
+                                    this.handleFacilitiesChange("Pets allowed")
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Spa & Wellness Center",
+                                )}
+                                label="Spa & Wellness Center"
+                                onChange={() =>
+                                    this.handleFacilitiesChange(
+                                        "Spa & Wellness Center",
+                                    )
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Pool",
+                                )}
+                                label="Pool"
+                                onChange={() =>
+                                    this.handleFacilitiesChange("Pool")
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Free Wi-Fi",
+                                )}
+                                label="Free Wi-Fi"
+                                onChange={() =>
+                                    this.handleFacilitiesChange("Free Wi-Fi")
+                                }
+                            />
+                            <Checkbox
+                                checked={this.props.additionalFacilities.includes(
+                                    "Luggage Store",
+                                )}
+                                label="Luggage Store"
+                                onChange={() =>
+                                    this.handleFacilitiesChange("Luggage Store")
+                                }
+                            />
                             <div className="personal_settings-submit">
                                 <Label
                                     as="a"
@@ -517,9 +819,29 @@ export class SettingsForm extends Component {
                     )}
                     <p className="personal_settings-p">For whom do ou book?</p>
                     <div className="personal_settings-radio-booking">
-                        <Radio name="bookFor" label="For myself" />
-                        <Radio name="bookFor" label="For others" />
-                        <Radio name="bookFor" label="For me and others" />
+                        <Radio
+                            checked={this.props.bookForWhom === "For myself"}
+                            name="bookForWhom"
+                            value="For myself"
+                            label="For myself"
+                            onChange={this.handleChange}
+                        />
+                        <Radio
+                            checked={this.props.bookForWhom === "For others"}
+                            name="bookForWhom"
+                            value="For others"
+                            label="For others"
+                            onChange={this.handleChange}
+                        />
+                        <Radio
+                            checked={
+                                this.props.bookForWhom === "For me and others"
+                            }
+                            name="bookForWhom"
+                            value="For me and others"
+                            label="For me and others"
+                            onChange={this.handleChange}
+                        />
                     </div>
                 </Segment>
 
@@ -528,7 +850,14 @@ export class SettingsForm extends Component {
                         <Header as="h2">Password and currency</Header>
                     </div>
                     <p className="personal_settings-p">Currency</p>
-                    <Dropdown fluid selection options={currencyOptions} />
+                    <Dropdown
+                        name="currency"
+                        fluid
+                        selection
+                        defaultValue={this.props.currency}
+                        options={currencyOptions}
+                        onChange={this.sendSettings}
+                    />
                     <p className="personal_settings-p">Password</p>
                     <Label as="a" basic>
                         Change password

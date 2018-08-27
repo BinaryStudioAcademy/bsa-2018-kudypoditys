@@ -85,6 +85,25 @@
     grid-column: 1;
 }
 
+.personal_settings-creditcard-label {
+    grid-column: 1/4;
+}
+
+.personal_settings-add-credit {
+    grid-column: 1;
+}
+
+.personal_settings-field {
+    position: relative;
+}
+
+.personal_settings-field div.ui.red.label {
+    position: absolute;
+    z-index: 99;
+    left: 100%;
+    width: 100%;
+}
+
 .personal_settings-adding-creditcard div.dropdown,
 .personal_settings-adding-creditcard div.input {
     grid-column: 2/4;
