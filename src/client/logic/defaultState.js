@@ -173,6 +173,7 @@ const state = {
             mastercard: false,
             visa: false
         },
+        rating: 8.8,
         vatTaxes: "default", // "none"
         cityTax: "default", // "individual"
         cityTaxIndividual: {

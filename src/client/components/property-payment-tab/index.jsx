@@ -139,7 +139,8 @@ export class PaymentTab extends Component {
             address: this.props.address,
             contactPersonName: this.props.contactPersonName,
             contactPhone: this.props.contactPhone,
-            facilities: [this.props.facilities]
+            rating: this.props.rating,
+            // facilities: [this.props.facilities]
             // accommodationRule: {
             //     arrivalTimeStart: this.props.arrivalFrom,
             //     arrivalTimeEnd: this.props.arrivalTo,
