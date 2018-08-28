@@ -45,6 +45,6 @@ export default combineReducers({
     layoutTab,
     propertyRegistration,
     userVerified,
-    userSettings
-    userCabinet,
+    userSettings,
+    userCabinet
 });
