@@ -28,20 +28,21 @@ export class MainSearch extends React.Component {
         let resultsData = [];
         let index ="properties"
         axios.get(
-                `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.state.query}`
+                `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.props.destination}`
             )
             .then(propertiesResponse => {
-                console.log("response Roperties= " + JSON.stringify(propertiesResponse));
+                console.log("response Roperties= ");
+                console.log(propertiesResponse);
                 propertiesResponse.data.forEach(element => {
                     resultsData.push({
                         title: element._source.name,
-                        description: element._source.description,
+                        description: element._source.city,
                         image:element._source.image
                     });
                 });
 
                 index="cities"
-                return axios.get(`http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.state.query}`)
+                return axios.get(`http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.props.destination}`)
             }).then(citiesResponse => {
                 console.log("response Cities= " + JSON.stringify(citiesResponse));
                 citiesResponse.data.forEach(element => {
@@ -74,17 +75,18 @@ export class MainSearch extends React.Component {
     }
 
     handleSearchChange = (e, { value }) => {
-        this.setState(
-            {
-                isLoading: true,
-                query: value
-            },
-            () => {
-                if (this.state.query && this.state.query.length > 0) {
-                    this.getInfo();
-                }
-            }
-        );
+        // this.setState(
+        //     {
+        //         isLoading: true,
+        //         query: value
+        //     },
+        //     () => {
+        //     }
+        // );
+        this.props.onDestinationChange(value);
+        if (this.props.destination && this.props.destination.length > 0) {
+            this.getInfo();
+        }
     };
     generateOptions = (from, to) => {
         let options = [];
@@ -128,9 +130,11 @@ export class MainSearch extends React.Component {
     };
 
     handleSubmit = () => {
-        let path = `/search-page`;
+        let path = `/search-page?query=${this.props.destination}`;
         history.push(path)
-        this.props.onSearch();
+        // this.props.onSearch();
+        // this.props.onSearch(this.props.destination);
+
     };
 
     datesChanged = selectedDates => {
@@ -143,9 +147,12 @@ export class MainSearch extends React.Component {
     render() {
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
-        const { isLoading, query, results } = this.state;
+        const { isLoading, results } = this.state;
         const childrenOptions = this.generateOptions(0, 10);
         const { rooms, adults, children } = this.props;
+
+        const { destination } = this.props;
+
         return (
             <Form
                 className="search search--view-bar"
@@ -159,7 +166,7 @@ export class MainSearch extends React.Component {
                         onResultSelect={this.handleResultSelect}
                         onSearchChange={this.handleSearchChange}
                         results={results}
-                        value={query}
+                        value={destination}
                         {...this.props}
                         required
                     />

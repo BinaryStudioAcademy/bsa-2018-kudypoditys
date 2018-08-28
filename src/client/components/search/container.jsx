@@ -14,7 +14,7 @@ export function mapStateToProps(state, ownProps) {
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
-        onSearch() {
+        onSearch(data) {
             //todo server request
             const serverResponse = [
                 {
