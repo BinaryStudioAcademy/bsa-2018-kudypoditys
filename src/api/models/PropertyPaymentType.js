@@ -5,8 +5,7 @@ const
 let PropertyPaymentType = orm.define('propertyPaymentType', {
     name: {
         type: Sequelize.STRING,
-        // unique: true,
-        allowNull: true
+
     }
 });
 
