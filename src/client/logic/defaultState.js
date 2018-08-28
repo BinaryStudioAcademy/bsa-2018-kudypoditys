@@ -229,17 +229,6 @@ const state = {
         ],
         reservations: [
             {
-                id: 1,
-                dateIn: "1970-01-01T00:00:00.005Z",
-                dateOut: "1970-01-01T00:00:00.006Z",
-                guestsCount: 1,
-                createdAt: "2018-08-27T17:54:55.517Z",
-                updatedAt: "2018-08-27T17:54:55.517Z",
-                userId: 1,
-                roomId: 1,
-                paymentTypeId: 1
-            },
-            {
                 id: 2,
                 dateIn: "2018-08-27T20:57:00.000Z",
                 dateOut: "2018-08-28T20:57:00.000Z",

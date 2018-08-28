@@ -3,7 +3,6 @@ const roomModel = require("../models/Room");
 const Availability = require("../models/Availability");
 const Reservation = require("../models/Reservation");
 class RoomRepository extends Repository {
-    //todo additional methods for repository
     getRoomWithavailability(id) {
         console.log(id);
         return this.model.findOne({
