@@ -55,7 +55,7 @@ module.exports = {
             propertiesInit,
         );
 
-        return res.json({ message: "ELASTICSEARCH::INIT_SERVICE => SUCCESS" });
+        return res.json({message: "ELASTICSEARCH::INIT_SERVICE => SUCCESS"});
     },
 
     addService: (req, res) => {
@@ -78,7 +78,7 @@ module.exports = {
                     description: property.description,
                 });
             });
-            return elasticClient.bulk({ body: propertiesBulk }, function(
+            return elasticClient.bulk({body: propertiesBulk}, function (
                 err,
                 resp,
             ) {
@@ -106,10 +106,10 @@ module.exports = {
                 });
 
                 citiesBulk.push({
-                    city:city.name,
+                    city: city.name,
                 });
             });
-            return elasticClient.bulk({ body: citiesBulk }, function(
+            return elasticClient.bulk({body: citiesBulk}, function (
                 err,
                 resp,
             ) {
@@ -125,6 +125,6 @@ module.exports = {
             });
         });
 
-        return res.json({ message: "ELASTICSEARCH::ADD_SERVICE => SUCCESS" });
+        return res.json({message: "ELASTICSEARCH::ADD_SERVICE => SUCCESS"});
     },
 };

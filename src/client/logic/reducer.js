@@ -33,7 +33,9 @@ export default combineReducers({
     foundProperties,
     // checkInOut,
     form: formReducer.plugin({
-        registration: registration
+
+        registration: registration,
+        login: login,
     }),
     login,
     propertyPage,
@@ -41,9 +43,10 @@ export default combineReducers({
     roomSummary,
     propertySubmit,
     amenitiesTab,
-    policesTab,
-    layoutTab,
+    // policesTab,
+    // layoutTab,
     propertyRegistration,
+
     userVerified,
     userSettings,
     userCabinet

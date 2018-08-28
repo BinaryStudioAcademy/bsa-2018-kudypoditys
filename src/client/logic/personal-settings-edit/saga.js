@@ -1,5 +1,6 @@
 import {USER_SETTINGS_SEND} from "./actionTypes";
-import { all, call, takeLatest, put } from "redux-saga/effects";
+import {all, call, takeLatest, put} from "redux-saga/effects";
+
 
 function* sendSettings(action) {
     try {

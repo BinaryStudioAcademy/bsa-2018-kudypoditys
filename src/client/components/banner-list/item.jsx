@@ -18,7 +18,7 @@ export class Banner extends Component {
         return (
 
             cityInfo ?
-                < Container onClick={onCardClick} className="banner"  >
+                < Container onClick={onCardClick} className="banner">
 
                     <Card.Content className="banner__content" style={imgStyles(cityInfo.pictureUrl)}>
                         <Card.Header className="banner__title">
@@ -28,9 +28,9 @@ export class Banner extends Component {
                         <Card.Meta>
                             <h5 className="banner__subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
                         </Card.Meta>
-                        <div className="banner___flag" style={imgStyles(cityInfo.flagUrl)} />
+                        <div className="banner___flag" style={imgStyles(cityInfo.flagUrl)}/>
                     </Card.Content>
-                        <Card.Description className="banner__avgprice" >
+                    <Card.Description className="banner__avgprice">
                             <span>Average price</span>
                             <span> UAH  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}</span>
                         </Card.Description>

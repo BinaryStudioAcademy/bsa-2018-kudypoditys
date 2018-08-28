@@ -16,8 +16,8 @@ import {
 } from "semantic-ui-react";
 import "./index.scss";
 import PropTypes from "prop-types";
-import { mapStateToProps } from "./container";
-import { connect } from "react-redux";
+import {mapStateToProps} from "./container";
+import {connect} from "react-redux";
 import MapWidgetModal from "client/components/map-widget-modal";
 import history from 'client/history';
 
@@ -42,7 +42,7 @@ export class PropertyListItem extends React.Component {
     }
 
     render() {
-        const { propertyItemData } = this.props;
+        const {propertyItemData} = this.props;
         console.log(propertyItemData);
 
         let ratingStatus = "";
@@ -58,8 +58,8 @@ export class PropertyListItem extends React.Component {
 
         return (
             <Card className="property_card"
-                fluid
-                style={{
+                  fluid
+                  style={{
                     padding: 0,
 
                 }}
@@ -118,11 +118,11 @@ export class PropertyListItem extends React.Component {
 
                                         }} onClick={this.handleRedirectToDetails}
                                     >
-                                            {propertyItemData.name}
-                                        </Header.Content>
+                                        {propertyItemData.name}
+                                    </Header.Content>
 
                                     </Header>
-                                    <Rating defaultRating={propertyItemData.propertyStars} maxRating={5} disabled />
+                                    <Rating defaultRating={propertyItemData.propertyStars} maxRating={5} disabled/>
                                 </div>
                                 <div className="rating_block">
                                     <div style={{
@@ -135,7 +135,7 @@ export class PropertyListItem extends React.Component {
                                             {" "}
                                             {ratingStatus}
                                         </div>
-                                        <br />
+                                        <br/>
                                         <span className="reviewsNumber">{propertyItemData.reviewsNamber} reviews</span>
 
                                     </div>
@@ -188,7 +188,7 @@ export class PropertyListItem extends React.Component {
 
                             <div className="card_row__price">
                                 <div className="roomType">
-                                    <Icon name="add user" />
+                                    <Icon name="add user"/>
 
                                     {propertyItemData.roomType}
                                 </div>
@@ -213,26 +213,26 @@ export class PropertyListItem extends React.Component {
                             <div className="card_row__order">
                                 <div className="search-page__messages">
                                     <Message className='search_result__message'
-                                        style={{
+                                             style={{
 
-                                            display:
-                                                propertyItemData.availableRoomsCount ===
-                                                    0
-                                                    ? "block"
-                                                    : "none"
-                                        }}
+                                                 display:
+                                                     propertyItemData.availableRoomsCount ===
+                                                     0
+                                                         ? "block"
+                                                         : "none"
+                                             }}
                                     >
                                         Unfortunately we do not have any available rooms
                                     </Message>
                                     <Message className='search_result__message'
-                                        style={{
+                                             style={{
 
-                                            display:
-                                                propertyItemData.availableRoomsCount ===
-                                                    1
-                                                    ? "block"
-                                                    : "none"
-                                        }}
+                                                 display:
+                                                     propertyItemData.availableRoomsCount ===
+                                                     1
+                                                         ? "block"
+                                                         : "none"
+                                             }}
                                     >
                                         The last available room!!!
                                     </Message>
@@ -244,7 +244,7 @@ export class PropertyListItem extends React.Component {
                                     className="search-page__main-button"
                                     color={
                                         propertyItemData.availableRoomsCount ===
-                                            0
+                                        0
                                             ? "grey"
                                             : "blue"
                                     }
@@ -252,7 +252,7 @@ export class PropertyListItem extends React.Component {
 
                                     onClick={
                                         propertyItemData.availableRoomsCount ===
-                                            0
+                                        0
                                             ? ""
                                             : this
                                                 .handleRedirectToDetails
@@ -263,10 +263,6 @@ export class PropertyListItem extends React.Component {
                             </div>
 
                         </Grid.Column>
-
-
-
-
 
 
                     </Grid>

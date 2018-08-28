@@ -1,5 +1,6 @@
-import { USER_SETTINGS_UPDATE } from "./actionTypes";
+import {USER_SETTINGS_UPDATE} from "./actionTypes";
 import defaultState from "client/logic/defaultState";
+
 
 export default function userSettingsReducer(state = defaultState.personalSettings, action) {
     switch (action.type) {
