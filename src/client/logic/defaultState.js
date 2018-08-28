@@ -11,7 +11,7 @@ const state = {
     login: {
         email: "",
         password: "",
-        errors: [],
+        error: "",
         loginSuccess: false
     },
     foundProperties: {
@@ -119,7 +119,7 @@ const state = {
     },
     searchResults: {
         destination: "Lviv",
-        totalCount: 1,
+        totalCount: 2,
         shownFrom: 1,
         shownTo: 5
     },
@@ -163,6 +163,10 @@ const state = {
     ],
 
     rooms: {},
+    propertyRegistrationTab: {
+        userName: "User Name"
+    },
+
 
     propertyLayoutTab: {
         title: "Apartment with Garden View",
@@ -211,6 +215,7 @@ const state = {
         user: null,
         activeBooking: null,
         bookings: []
+
     }
 };
 
