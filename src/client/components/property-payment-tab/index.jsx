@@ -135,19 +135,30 @@ export class PaymentTab extends Component {
         console.log(this.props.paymentType);
 
         const images = [];
+        const facilities = [];
+        const paymentTypes = [];
+        const description = 'This 4-bedroom holiday home comes with a seating area, a TV and a kitchen with a dishwasher. The bathroom features a bath or shower.\n' +
+            '\n' +
+            'Orsay Museum is 3.1 km from the holiday home, while Tuileries Garden is 3.5 km from the property. Paris - Orly Airport is 14 km away. \n' +
+            '\n' +
+            '15th arr. is a great choice for travellers interested in romance, sightseeing and monuments.\n' +
+            '\n' +
+            'This is our guests\' favourite part of Paris, according to independent reviews.\n' +
+            '\n' +
+            'We speak your language!'
 
         this.props.images.forEach(function(item) {
             images.push({
                 url: item,
             });
         });
-        const facilities = [];
+
         this.props.facilities.forEach(function(i) {
             facilities.push({
                 name: i,
             });
         });
-        const paymentTypes = [];
+
 
         const TempPaymentTypes = {
             name: this.props.paymentType,
@@ -155,6 +166,7 @@ export class PaymentTab extends Component {
         paymentTypes.push(TempPaymentTypes);
         console.log({paymentTypes: paymentTypes});
         this.props.registerProperty({
+            description: description,
             userId: this.props.user.id,
             name: this.props.name,
             address: this.props.address,
