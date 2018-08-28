@@ -3,7 +3,6 @@ const searchProperty = express.Router();
 const propertyService = require("../services/property");
 
 searchProperty.route("/").get((req, res) => {
-    console.log(req.query.city);
     let filter = {
         city: req.query.city
         // dateIn: req.query.dateIn,

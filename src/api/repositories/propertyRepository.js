@@ -70,6 +70,9 @@ class PropertyRepository extends Repository {
                     {
                         model: City,
                         where: { name: filter.city }
+                    },
+                    {
+                        model: Image
                     }
                 ]
             })
