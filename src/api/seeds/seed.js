@@ -64,6 +64,8 @@ const IMAGES = [
 const RESERVATIONS = [
     {
         id: 1,
+        dateIn: "2018-08-29",
+        dateOut: "2018-08-30",
         guestsCount: 3,
         userId: 1,
         roomId: 1,
@@ -71,6 +73,8 @@ const RESERVATIONS = [
     },
     {
         id: 2,
+        dateIn: "2018-08-31",
+        dateOut: "2018-09-01",
         guestsCount: 2,
         userId: 1,
         roomId: 2,
