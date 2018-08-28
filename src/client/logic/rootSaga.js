@@ -5,6 +5,7 @@ import headerSaga from "client/logic/header/saga";
 import userCabinetSaga from "./user-cabinet/saga";
 import propertySaga from './property-creation-tabs/saga';
 import emailVerificationSaga from "client/logic/verify-email/saga";
+import personalSettings from 'client/logic/personal-settings-edit/saga';
 
 export default function* rootSaga() {
     yield all([
@@ -12,6 +13,7 @@ export default function* rootSaga() {
         fork(headerSaga),
         fork(propertySaga),
         fork(signupSaga),
+        fork(personalSettings),
         fork(userCabinetSaga),
         fork(emailVerificationSaga)
     ]);
