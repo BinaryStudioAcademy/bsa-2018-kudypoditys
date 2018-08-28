@@ -99,6 +99,9 @@ class PropertyRepository extends Repository {
                     {
                         model: City,
                     },
+                    {
+                        model: Image,
+                    },
                 ]
             })
             .then(properties => {
