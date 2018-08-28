@@ -75,7 +75,6 @@ module.exports = {
                     rating: property.rating,
                     image: property.image,
                     city: property.city.name,
-                    country: property.country,
                     description: property.description,
                 });
             });
@@ -96,9 +95,9 @@ module.exports = {
         });
 
         // ADD CITIES FROM PROPERTIES TO ELASTICSEARCH
-        PropertyService.getAllProperties().then(properties => {
+        CityService.getAllCities().then(cities => {
             let citiesBulk = [];
-            properties.forEach(property => {
+            cities.forEach(city => {
                 citiesBulk.push({
                     index: {
                         _index: "cities",
@@ -107,7 +106,7 @@ module.exports = {
                 });
 
                 citiesBulk.push({
-                    city: property.city.name,
+                    city:city.name,
                 });
             });
             return elasticClient.bulk({ body: citiesBulk }, function(
@@ -120,7 +119,7 @@ module.exports = {
                 } else {
                     console.log(
                         "Successfully imported cities",
-                        properties.length,
+                        cities.length,
                     );
                 }
             });
