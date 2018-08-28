@@ -5,6 +5,7 @@ import { DrawTab } from "./DrawTab";
 import { MenuItems } from "./config";
 import { Container, Tab } from "semantic-ui-react";
 import Header from "../header";
+import "./index.scss";
 
 export class UserCabinet extends React.Component {
     constructor() {
@@ -35,15 +36,21 @@ export class UserCabinet extends React.Component {
     render() {
         const { activeIndex } = this.state;
         return (
-            <Container>
+            <React.Fragment>
                 <Header />
-                <Tab
-                    menu={{ fluid: true, secondary: true, pointing: true }}
-                    panes={this.getPanes()}
-                    activeIndex={activeIndex}
-                    onTabChange={this.handleTabChange}
-                />
-            </Container>
+                <Container style={{ marginTop: "25px" }}>
+                    <Tab
+                        menu={{
+                            fluid: true,
+                            secondary: true,
+                            pointing: true
+                        }}
+                        panes={this.getPanes()}
+                        activeIndex={activeIndex}
+                        onTabChange={this.handleTabChange}
+                    />
+                </Container>
+            </React.Fragment>
         );
     }
 }

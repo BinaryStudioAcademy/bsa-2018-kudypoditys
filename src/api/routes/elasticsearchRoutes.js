@@ -56,7 +56,8 @@ elastic.route("/update")
         ES_service.updateDocument(req, res, index, id, type, body);
     });
 
-elastic.route("/search")
+
+    elastic.route("/search")
     .post((req, res) => {
         const {index, type, body} = req.body;
         ES_service.search(req, res, index, type, body);
