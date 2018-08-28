@@ -30,6 +30,10 @@ export class MainHeader extends Component {
         history.push("/");
     };
 
+    onWellcomeClicked = () => {
+        history.push("/user-cabinet");
+    };
+
     state = { activeItem: "about-us" };
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
