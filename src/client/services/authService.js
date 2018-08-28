@@ -21,7 +21,7 @@ class AuthService {
                 );
             })
             .catch(err => {
-                return Promise.reject(new Error(err.response.data));
+                return Promise.reject(new Error(err.message));
             });
     }
 
@@ -53,6 +53,13 @@ class AuthService {
     logout() {
         cookies.clearTokens();
         history.push("/login");
+    }
+
+    verifyEmail(string) {
+        return api.sendRequest(`/api/users/verifyemail${string}`, "get")
+            .then(response => {
+                return response;
+            });
     }
 }
 

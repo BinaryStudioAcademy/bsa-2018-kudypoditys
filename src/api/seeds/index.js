@@ -22,7 +22,8 @@ module.exports = function (models) {
         Facility,
         ReviewCategory,
         RoomType,
-        PropertyType
+        PropertyType,
+        User
     } = models;
 
     const SimpleUpsertMap = [
@@ -70,5 +71,13 @@ module.exports = function (models) {
     for (const f of FACILITY) {
         Facility.upsert(f);
     }
+
+    // User.upsert({
+    //     fullName: 'Doctor Strange',
+    //     password: '$2b$10$tT5Nz5oq3OuImIMaxqRt5eu9gPmVOH5yJgKIR88CjvfiKl9itpu/a', // 1234
+    //     email: 'nata737mail@gmail.com',
+    //     phoneNumber: '0123412312',
+    //     avatar: 'https://avatar.com'
+    // });
 
 };
