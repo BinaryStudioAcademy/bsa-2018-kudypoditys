@@ -36,18 +36,18 @@ export const MenuItems = [
         }
     },
 
-    {
-        menuItem: {
-            key: 'Amenities',
-            icon: 'tv',
-            content: 'Amenities',
-            header: 'Amenities',
-            subheader: ' You are nearly done! We just need a few more details about the extra bed options you provide, plus any\n' +
-                '    //             amenities or specific features and services available.',
-            component: <AmenitiesTabRegistration/>
-        }
-
-    },
+    // {
+    //     menuItem: {
+    //         key: 'Amenities',
+    //         icon: 'tv',
+    //         content: 'Amenities',
+    //         header: 'Amenities',
+    //         subheader: ' You are nearly done! We just need a few more details about the extra bed options you provide, plus any\n' +
+    //             '    //             amenities or specific features and services available.',
+    //         component: <AmenitiesTabRegistration/>
+    //     }
+    //
+    // },
     {
         menuItem: {
             key: 'Rules', icon: 'clipboard list', content: 'Rules',

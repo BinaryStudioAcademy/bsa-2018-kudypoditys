@@ -4,7 +4,10 @@ import history from 'client/history';
 class PropertyService {
     createProperty(data) {
         return api.sendAuthRequest('/api/property/', 'post', data).then(response => {
-            history.push('/add-property/');
+           if(response.status === 200){
+               history.push('/');
+           }
+
             console.log(response)
             return response
         });
