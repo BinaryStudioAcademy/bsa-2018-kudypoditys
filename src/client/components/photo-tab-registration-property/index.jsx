@@ -12,8 +12,7 @@ import './index.scss'
 
 class PhotoTab extends React.Component {
     handleDrop = (files) => {
-        const stateFiles = this.state.files,
-            stateURLS = this.state.URLS;
+        const stateFiles = this.state.files;
 
         const filenames = [];
         stateFiles.forEach(file => {
@@ -35,7 +34,12 @@ class PhotoTab extends React.Component {
         });
 
         this.handleImageUpload(files[0]);
-        this.props.filesUpdate(stateURLS)
+        const stateURLS = this.state.images,
+            images = {
+                images: stateURLS
+            };
+
+        this.props.updateTab(images);
 
     };
 
@@ -45,7 +49,11 @@ class PhotoTab extends React.Component {
         this.setState({URLS: stateUrls});
     };
     handleProceed = () => {
-        //todo proceed here
+
+
+        this.props.updateTab({
+            activeIndex: 4
+        });
 
     };
 
@@ -56,7 +64,7 @@ class PhotoTab extends React.Component {
             uploadedFile: null,
             uploadedFileCloudinaryUrl: '',
             files: [],
-            URLS: []
+            images: []
         };
     }
 
@@ -64,7 +72,7 @@ class PhotoTab extends React.Component {
         let upload = request.post(UPLOAD_URL)
             .field('upload_preset', UPLOAD_PRESET)
             .field('file', file);
-        const stateURLS = this.state.URLS;
+        const stateURLS = this.state.images;
         upload.end((err, response) => {
             if (err) {
                 console.error(err);
@@ -75,7 +83,7 @@ class PhotoTab extends React.Component {
 
                 this.setState({
                     uploadedFileCloudinaryUrl: response.body.secure_url,
-                    URLS: stateURLS
+                    images: stateURLS
                 });
 
             }
@@ -105,7 +113,7 @@ class PhotoTab extends React.Component {
                     </div>
 
                     <ul className="fileInput__files">
-                        {this.state.URLS.map((URL, index) => (
+                        {this.state.images.map((URL, index) => (
                             <li
                                 className="fileInput__file"
 
@@ -130,7 +138,7 @@ class PhotoTab extends React.Component {
                 </form>
                 <Button
                     color='teal'
-                    onClick={this.handleProceed()}
+                    onClick={this.handleProceed}
                     style={{cursor: "pointer", marginLeft: 10, width: '100%'}
                     }
 

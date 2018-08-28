@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { reduxForm, Field } from "redux-form";
+import React, {Component} from "react";
+import {reduxForm, Field} from "redux-form";
 import ImageUploader from "react-images-upload";
-import { phoneNumber, email } from "client/regexValidationService";
+import {phoneNumber, email} from "client/regexValidationService";
 import inputField from "./input";
 
 import {
@@ -15,6 +15,7 @@ import {
     Radio,
     Image,
 } from "semantic-ui-react";
+
 
 export class SettingsForm extends Component {
     state = {
@@ -40,13 +41,13 @@ export class SettingsForm extends Component {
         this.props.updateSettings(data);
     };
 
-    sendSettings = (e, { name, value }) => {
+    sendSettings = (e, {name, value}) => {
         console.log("SEND TO BACKEND:", name, value);
-        this.updateSettings({ [name]: value });
+        this.updateSettings({[name]: value});
     };
 
     // Address mini-form handlers:
-    handleAddressChange = (e, { name, value }) => {
+    handleAddressChange = (e, {name, value}) => {
         this.setState({
             address: {
                 ...this.state.address,
@@ -66,7 +67,7 @@ export class SettingsForm extends Component {
     //
 
     // Credit cards mini-form handlers:
-    handleCreditCardsChange = (e, { name, value }) => {
+    handleCreditCardsChange = (e, {name, value}) => {
         this.setState({
             creditCard: {
                 ...this.state.creditCard,
@@ -99,7 +100,7 @@ export class SettingsForm extends Component {
             return;
         }
         this.props.updateSettings({
-            creditCards: [...this.props.creditCards, { ...data }],
+            creditCards: [...this.props.creditCards, {...data}],
         });
 
         this.addingItem("addingCreditcard", false);
@@ -118,7 +119,7 @@ export class SettingsForm extends Component {
             },
         });
     };
-    removeCreditCard = (e, { name, value }) => {
+    removeCreditCard = (e, {name, value}) => {
         this.updateSettings({
             creditCards: this.props.creditCards.filter((creditcard) => creditcard.number != name)
         });
@@ -149,7 +150,7 @@ export class SettingsForm extends Component {
     };
     //
 
-    handleChange = (e, { name, value }) => {
+    handleChange = (e, {name, value}) => {
         console.log(e, name, value);
 
         const data = {
@@ -203,7 +204,7 @@ export class SettingsForm extends Component {
                     </div>
                     <p className="personal_settings-p">Main photo</p>
                     <Image
-                        style={{ width: "150px", height: "150px" }}
+                        style={{width: "150px", height: "150px"}}
                         src={
                             this.props.avatarUrl ||
                             "https://www.mautic.org/media/images/default_avatar.png"
@@ -439,9 +440,12 @@ export class SettingsForm extends Component {
                             key={i}
                         >
                             <div className="personal_settings-creditcard-label-div-type">{creditcard.type}</div>
-                            <div className="personal_settings-creditcard-label-div-number">Number: {creditcard.number}</div>
-                            <div className="personal_settings-creditcard-label-div-owner">Owner: {creditcard.owner}</div>
-                            <div className="personal_settings-creditcard-label-div-expiration">Expiration: {creditcard.expirationDay} - {creditcard.expirationYear}</div>
+                            <div
+                                className="personal_settings-creditcard-label-div-number">Number: {creditcard.number}</div>
+                            <div
+                                className="personal_settings-creditcard-label-div-owner">Owner: {creditcard.owner}</div>
+                            <div
+                                className="personal_settings-creditcard-label-div-expiration">Expiration: {creditcard.expirationDay} - {creditcard.expirationYear}</div>
                             <div className="personal_settings-creditcard-label-div-usedForBooking">
                                 {creditcard.usedForBooking
                                     ? "Used for booking"
@@ -458,7 +462,7 @@ export class SettingsForm extends Component {
                                 basic
                                 onClick={this.removeCreditCard}
                             >
-                                <Icon name="close" />
+                                <Icon name="close"/>
                                 Remove
                             </Label>
                         </Label>
@@ -558,7 +562,7 @@ export class SettingsForm extends Component {
                                 icon="cancel"
                                 onClick={() => (
                                     this.addingItem("addingCreditcard", false),
-                                    this.cancelCreditCard()
+                                        this.cancelCreditCard()
                                 )}
                                 basic
                                 className="personal_settings-btn"

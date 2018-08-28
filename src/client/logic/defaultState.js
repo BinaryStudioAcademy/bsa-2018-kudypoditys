@@ -74,13 +74,6 @@ const state = {
     sortType: {
         activeItem: "price"
     },
-    addProperty: {
-        arrivalFrom: "10:00",
-        arrivalTo: "12:00",
-        departureFrom: "10:00",
-        departureTo: "12:00"
-    },
-    images: [],
 
     propertySubmit: {
         activeIndex: 2
@@ -164,7 +157,7 @@ const state = {
 
     rooms: {},
     propertyRegistrationTab: {
-        userName: "User Name"
+        userName: 'User Name'
     },
 
 
@@ -180,6 +173,7 @@ const state = {
             mastercard: false,
             visa: false
         },
+        rating: 8.8,
         vatTaxes: "default", // "none"
         cityTax: "default", // "individual"
         cityTaxIndividual: {
@@ -207,8 +201,29 @@ const state = {
             booking: "need",
             priceForDay: ""
         },
-        languages: ["ukrainian", "russian", "english"],
-        facilities: ["Bar", "Sauna", "Pool"],
+        languages: [
+            "ukrainian",
+            "russian",
+            "english"
+        ],
+        facilities: [
+            "Bar",
+            "Sauna",
+            "Pool"
+        ],
+
+        // Photo Tab
+        images: [],
+        //tab Index
+        activeIndex: 0,
+        //    POLICES TAB
+
+        arrivalFrom: "10:00",
+        arrivalTo: "13:00",
+        departureFrom: "13:00",
+        departureTo: "12:00",
+        cancellation: "1 day before",
+
     },
 
     personalSettings: {
@@ -218,23 +233,23 @@ const state = {
         dateMonth: "January",
         dateYear: "2010",
         country: "Ukraine",
-    //
+        //
         address: "Some Insane Street",
         city: "Lviv",
         addressCountry: "Ukraine",
         postcode: "12345",
-    //
+        //
         appeal: "Mr.",
         firstName: "John",
         lastName: "Doe",
         phone: "0123453453",
         email: "john.doe@gmail.com",
-    //
+        //
         additionalFacilities: [
             "Bar",
             "Sauna"
         ],
-    //
+        //
         creditCards: [
             {
                 type: "Visa",
@@ -246,16 +261,16 @@ const state = {
                 transferRemuneration: false,
             }
         ],
-    //
+        //
         paymentType: "Mastercard",
         payForAccommodation: "During stay",
-    //
+        //
         smokingInRooms: "No",
         countOfStars: "Any",
-    //
+        //
         showWithDisabledFacilities: true,
         bookForWhom: "For myself",
-    //
+        //
         currency: "USD Dollar"
     },
 

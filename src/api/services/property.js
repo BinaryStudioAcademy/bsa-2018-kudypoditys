@@ -11,7 +11,7 @@ class PropertyService extends Service {
     }
 
     addProperty(property) {
-        return propertyRepository.createDetails(property);
+        return propertyRepository.createDetails(property)
     }
 
     updateProperty(id, property) {

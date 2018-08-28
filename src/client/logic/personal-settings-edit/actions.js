@@ -1,4 +1,5 @@
-import { USER_SETTINGS_UPDATE, USER_SETTINGS_SEND } from "./actionTypes";
+import {USER_SETTINGS_UPDATE, USER_SETTINGS_SEND} from "./actionTypes";
+
 
 export function updateUserSettings(payload) {
     return {

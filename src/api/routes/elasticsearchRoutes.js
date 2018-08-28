@@ -11,9 +11,9 @@ elastic.route("/ping")
 
 elastic.route("/index/init")
     .post((req, res) => {
-       const { index } =  req.body;
-       console.log(index);
-       ES_service.initIndex(req, res, index);
+        const {index} = req.body;
+        console.log(index);
+        ES_service.initIndex(req, res, index);
     });
 
 // - - - - - - - - - - - - - - - - - - - - - -
@@ -34,45 +34,44 @@ elastic.route("/index/add_test")
 
 elastic.route("/index/check")
     .post((req, res) => {
-        const { index } =  req.body;
+        const {index} = req.body;
         ES_service.indexExists(req, res, index);
     });
 
 elastic.route("/index/mapping")
     .post((req, res) => {
-        const { index, type } = req.body;
+        const {index, type} = req.body;
         ES_service.initMapping(req, res, index, type);
     });
 
 elastic.route("/add")
     .post((req, res) => {
-        const { index, id, type, body } = req.body;
+        const {index, id, type, body} = req.body;
         ES_service.addDocument(req, res, index, id, type, body);
     });
 
 elastic.route("/update")
     .post((req, res) => {
-        const { index, id, type, body } = req.body;
+        const {index, id, type, body} = req.body;
         ES_service.updateDocument(req, res, index, id, type, body);
     });
 
-
-    elastic.route("/search")
+elastic.route("/search")
     .post((req, res) => {
-        const { index, type, body } = req.body;
+        const {index, type, body} = req.body;
         ES_service.search(req, res, index, type, body);
     });
 
 elastic.route("/autocomplete")
     .get((req, res) => {
-        const { index, type, query } = req.query;
-        const fields=["city","name"]
+        const {index, type, query} = req.query;
+        const fields = ["city", "name"]
         ES_service.autocompleteSearch(req, res, index, type, query, fields);
     });
 
 elastic.route("/delete_document")
     .post((req, res) => {
-        const { index, id, type } = req.body;
+        const {index, id, type} = req.body;
         ES_service.deleteDocument(req, res, index, id, type);
     });
 
