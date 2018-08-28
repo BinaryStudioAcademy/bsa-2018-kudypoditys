@@ -73,7 +73,7 @@ module.exports = {
                 propertiesBulk.push({
                     name: property.name,
                     rating: property.rating,
-                    image: property.image,
+                    images: property.images,
                     city: property.city.name,
                     description: property.description,
                 });
