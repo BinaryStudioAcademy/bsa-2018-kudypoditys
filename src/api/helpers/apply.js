@@ -10,7 +10,7 @@ function needsAuth(reqMethod, reqPath, pathes) {
     return pathes.reduce((accum, path) => {
         const regex = new RegExp(path.url);
         reqMethod = reqMethod.toLowerCase();
-        return accum || regex.test(reqPath) && path.methods && path.methods.includes(reqMethod);
+        return accum || regex.test(reqPath) && (!path.methods || path.methods.includes(reqMethod));
     }, false);
 }
 
