@@ -119,7 +119,7 @@ const state = {
     },
     searchResults: {
         destination: "Lviv",
-        totalCount: 1,
+        totalCount: 2,
         shownFrom: 1,
         shownTo: 5
     },
@@ -166,6 +166,7 @@ const state = {
     propertyRegistrationTab: {
         userName: "User Name"
     },
+
 
     propertyLayoutTab: {
         title: "Apartment with Garden View",
@@ -256,6 +257,12 @@ const state = {
         bookForWhom: "For myself",
     //
         currency: "USD Dollar"
+    },
+
+    userCabinet: {
+        user: null,
+        activeBooking: null,
+        bookings: []
     }
 };
 
