@@ -112,8 +112,9 @@ export class PaymentTab extends Component {
     };
 
     handleContinue = () => {
-     console.log(this.props)
-        this.props.registerProperty(this.props)
+        console.log(this.props)
+        console.log(this.props.name)
+        this.props.registerProperty({name: this.props.name})
     };
 
     render() {
