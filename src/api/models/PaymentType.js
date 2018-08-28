@@ -5,7 +5,7 @@ const
 let PaymentType = orm.define('paymentType', {
     name: {
         type: Sequelize.STRING,
-        unique: true,
+        // unique: true,
         allowNull: false
     }
 });

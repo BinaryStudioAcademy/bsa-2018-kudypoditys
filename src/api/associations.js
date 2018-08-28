@@ -109,6 +109,7 @@ function associations(models) {
     Property.hasMany(FacilityList);
     Property.hasMany(PropertyPaymentType);
     Property.hasMany(Room);
+    Property.hasMany(Image);
 
 
     // PaymentType associations

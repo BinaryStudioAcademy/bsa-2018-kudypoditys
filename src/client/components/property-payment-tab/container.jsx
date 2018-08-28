@@ -2,8 +2,10 @@ import { propertyUpdate } from 'client/logic/property-creation-tabs/actions';
 import { propertySubmit } from 'client/logic/property-creation-tabs/actions';
 export function mapStateToProps(state) {
     const { propertyRegistration } = state;
+    const {userCabinet} = state
     return {
-        ...propertyRegistration
+        ...propertyRegistration,
+        ...userCabinet
     }
 }
 

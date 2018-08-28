@@ -59,7 +59,8 @@ class PropertyRepository extends Repository {
                 Room,
                 Facility,
                 AccommodationRule,
-                PaymentType
+                PaymentType,
+                Image
             ]
         });
     }
@@ -107,5 +108,6 @@ class PropertyRepository extends Repository {
             });
     }
 }
+
 
 module.exports = new PropertyRepository(propertyModel);
