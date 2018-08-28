@@ -33,7 +33,6 @@ function* getCurrentUser(action) {
         yield put({
             type: actionTypes.GET_CURRENT_USER_FAILURE
         });
-        history.push("/login");
     }
 }
 

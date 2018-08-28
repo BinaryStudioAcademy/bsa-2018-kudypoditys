@@ -167,6 +167,7 @@ const state = {
         userName: "User Name"
     },
 
+
     propertyLayoutTab: {
         title: "Apartment with Garden View",
         amount: "1"
@@ -208,6 +209,13 @@ const state = {
         },
         languages: ["ukrainian", "russian", "english"],
         facilities: ["Bar", "Sauna", "Pool"]
+    },
+
+    userCabinet: {
+        user: null,
+        activeBooking: null,
+        bookings: []
+
     }
 };
 

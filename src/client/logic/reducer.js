@@ -19,6 +19,7 @@ import propertySubmit from "./main-info-tab/reducer";
 import policesTab from "client/logic/polices-tab/reducer";
 import layoutTab from "./room-item/rducer";
 import propertyRegistration from "client/logic/property-creation-tabs/reducer";
+import userCabinet from "./user-cabinet/reducer";
 import userVerified from "client/logic/verify-email/reducer";
 
 export default combineReducers({
@@ -42,5 +43,6 @@ export default combineReducers({
     policesTab,
     layoutTab,
     propertyRegistration,
+    userCabinet,
     userVerified
 });

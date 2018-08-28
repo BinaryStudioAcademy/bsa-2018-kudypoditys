@@ -4,6 +4,7 @@ import { Grid } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
+import AuthHOC from 'client/components/auth-hoc';
 
 import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
@@ -44,38 +45,34 @@ export class MainHeader extends Component {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-                            <a style={{marginRight: "24px", fontSize: 16, opacity: 0.8}}>EN</a>
-                            {currentUser ? (
-                                <Fragment>
+                            <a style={{ marginRight: "24px", fontSize: 16, opacity: 0.8 }}>EN</a>
+
+                            <AuthHOC Component={() => {
+                                return <Fragment>
                                     Wellcome {currentUser.fullName}
                                     <a
-                                        style={{marginLeft: "24px", fontSize: 16, opacity: 0.8}}
+                                        style={{ marginLeft: "24px", fontSize: 16, opacity: 0.8 }}
                                         onClick={this.logoutClicked}
-                                    >
-                                        Logout
-                                    </a>
+                                    >Logout</a>
                                 </Fragment>
-                            ) : (
-                                <Fragment>
+                            }} ElseComponent={() => {
+                                return <Fragment>
                                     <a
-                                        style={{marginRight: "24px", fontSize: 16, opacity: 0.8}}
+                                        style={{ marginRight: "24px", fontSize: 16, opacity: 0.8 }}
                                         onClick={this.loginClicked}
-                                    >
-                                        Login
-                                    </a>
+                                    > Login</a>
                                     <a
-                                        style={{fontSize: 16, opacity: 0.8}}
+                                        style={{ fontSize: 16, opacity: 0.8 }}
 
-                                        onClick={this.registerClicked}>
-                                        Register
-                                    </a>
+                                        onClick={this.registerClicked}
+                                    >Register</a>
                                 </Fragment>
-                            )}
+                            }} />
                         </Grid.Column>
                     </Grid.Row>
-                    {this.props.showSearch ? (
+                    {this.props.showSearch ?
                         <Grid.Row centered columns={1}>
-                            <Grid.Column width={16}>
+                            <Grid.Column width={16} style={{marginTop: 45}}>
                                 <MainSearch
                                     view="bar"
                                     destination="Lviv"
@@ -112,7 +109,7 @@ export class MainHeader extends Component {
                                 />
                             </Grid.Column>
                         </Grid.Row>
-                    ) : null}
+                        : null}
                 </Grid>
             </div>
         );

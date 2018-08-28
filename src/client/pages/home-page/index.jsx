@@ -3,7 +3,7 @@ import Header from "client/components/header";
 import "./index.scss";
 import history from "client/history";
 import ModalByUrl from "client/components/modal-by-url";
-
+import BannerList from "client/components/banner-list";
 export class HomePage extends Component {
     render() {
         return (
@@ -19,6 +19,8 @@ export class HomePage extends Component {
                     heading={"Thank You! Your email is verified."}
                     content={"Now you can login."}
                 />
+
+                <BannerList/>
             </div>
         );
     }
