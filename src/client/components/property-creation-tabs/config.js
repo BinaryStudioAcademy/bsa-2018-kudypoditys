@@ -23,15 +23,7 @@ export const MenuItems = [
     },
 
 
-    {
-        menuItem: {
-             key: 'menuItem Room', icon: 'usd', content: 'Layout and pricing', //temporary
-            header: ' Layout and pricing',
-           subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
-             component: <PaymentTab/>,
-        }
 
-     },
 
     {
         menuItem: {
@@ -76,6 +68,15 @@ export const MenuItems = [
             subheader: 'Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property\'s page on the Booking.com website.',
             component: <PhotoTab/>
         }
+    },
+    {
+        menuItem: {
+            key: 'menuItem Room', icon: 'usd', content: 'Layout and pricing', //temporary
+            header: ' Layout and pricing',
+            subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
+            component: <PaymentTab/>,
+        }
+
     },
 
 ];

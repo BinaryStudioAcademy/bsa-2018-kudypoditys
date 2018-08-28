@@ -112,9 +112,9 @@ export class PaymentTab extends Component {
     };
 
     handleContinue = () => {
-        this.props.updateTab({
-            activeIndex: 2
-        });
+        // this.props.updateTab({
+        //     activeIndex: 2
+        // });
     };
 
     render() {

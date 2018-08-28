@@ -10,7 +10,7 @@ class TabRegistration extends Component {
 
         console.log("handleChange"+ value )
         // console.log( e)
-        this.props.updateTab(value);
+        this.props.updateTab(value.values);
     };
     handleProceed = () => {
 

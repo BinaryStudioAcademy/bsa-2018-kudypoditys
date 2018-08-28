@@ -52,7 +52,7 @@ class PhotoTab extends React.Component {
 
 
         this.props.updateTab({
-            activeIndex: 1
+            activeIndex: 5
         });
 
     };
