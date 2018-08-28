@@ -45,7 +45,6 @@ To run your storybook, type:
 yarn storybook
 ```
 To run elasticsearch make in postman :
-
 http://127.0.0.1:5000/elastic/delete_all
 http://127.0.0.1:5000/elastic/index/init_test
 http://127.0.0.1:5000/elastic/index/add_test
