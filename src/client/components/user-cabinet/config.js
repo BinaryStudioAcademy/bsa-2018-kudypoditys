@@ -7,7 +7,7 @@ export const MenuItems = [
             key: "Bookings tab",
             header: "My bookings",
             content: "My bookings",
-            component: <BookingTab />
+            component: <BookingTab/>
         }
     },
     {

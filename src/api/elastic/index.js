@@ -140,7 +140,6 @@ module.exports = {
             );
     },
 
-
     deleteDocument: (req, res, _index, _id, _type) => {
         elasticClient.delete(
             {

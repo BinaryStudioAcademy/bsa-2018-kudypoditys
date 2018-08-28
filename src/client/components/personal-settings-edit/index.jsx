@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { Container } from "semantic-ui-react";
+import React, {Component} from "react";
+import {Container} from "semantic-ui-react";
 import SettingsForm from "./settingsForm.jsx";
 import * as staticData from "./staticData";
-import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import {connect} from "react-redux";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 import "./index.scss";
+
 
 export class EditPersonalSettings extends Component {
     handleSubmit = data => {
@@ -34,7 +35,8 @@ export class EditPersonalSettings extends Component {
         };
         return (
             <Container fluid>
-                <SettingsForm {...formProps} onSubmit={this.handleSubmit} updateSettings={this.handleUpdate} sendSettings={this.handleSend}/>
+                <SettingsForm {...formProps} onSubmit={this.handleSubmit} updateSettings={this.handleUpdate}
+                              sendSettings={this.handleSend}/>
             </Container>
         );
     }

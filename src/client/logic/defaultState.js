@@ -233,23 +233,23 @@ const state = {
         dateMonth: "January",
         dateYear: "2010",
         country: "Ukraine",
-    //
+        //
         address: "Some Insane Street",
         city: "Lviv",
         addressCountry: "Ukraine",
         postcode: "12345",
-    //
+        //
         appeal: "Mr.",
         firstName: "John",
         lastName: "Doe",
         phone: "0123453453",
         email: "john.doe@gmail.com",
-    //
+        //
         additionalFacilities: [
             "Bar",
             "Sauna"
         ],
-    //
+        //
         creditCards: [
             {
                 type: "Visa",
@@ -261,21 +261,20 @@ const state = {
                 transferRemuneration: false,
             }
         ],
-    //
+        //
         paymentType: "Mastercard",
         payForAccommodation: "During stay",
-    //
+        //
         smokingInRooms: "No",
         countOfStars: "Any",
-    //
+        //
         showWithDisabledFacilities: true,
         bookForWhom: "For myself",
-    //
+        //
         currency: "USD Dollar"
     },
 
-
-    	userCabinet: {
+    userCabinet: {
         user: null,
         activeBooking: null,
         bookings: []

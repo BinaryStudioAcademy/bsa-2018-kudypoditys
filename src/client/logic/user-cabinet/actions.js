@@ -4,6 +4,7 @@ import {
     UNCHOOSE_BOOKING
 } from "./actionTypes";
 
+
 export function getUserBookings() {
     return {
         type: GET_USER_BOOKINGS

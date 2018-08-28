@@ -1,9 +1,17 @@
-import React, { Component } from "react";
-import { reduxForm, Field} from "redux-form";
-import { Dropdown, Label } from "semantic-ui-react";
+import React, {Component} from "react";
+import {reduxForm, Field} from "redux-form";
+import {Dropdown, Label} from "semantic-ui-react";
 import renderField from "client/components/input-form/renderField";
 
+
 export class AddressForm extends Component {
+    handleChange = (e, {name, value}) => {
+        console.log(name, value);
+        this.setState({
+            [name]: value
+        })
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -14,16 +22,9 @@ export class AddressForm extends Component {
         }
     }
 
-    handleChange = (e, { name, value }) => {
-        console.log(name, value);
-        this.setState({
-            [name]: value
-        })
-    };
-
     render() {
-        const { address, city, country, postcode } = this.state;
-        const { countryOptions } = this.props;
+        const {address, city, country, postcode} = this.state;
+        const {countryOptions} = this.props;
         return (
             <form onSubmit={this.props.handleSubmit}>
                 <div className="personal_settings-adding-address">
