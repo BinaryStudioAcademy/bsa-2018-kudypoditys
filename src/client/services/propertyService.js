@@ -5,6 +5,7 @@ class PropertyService {
     createProperty(data) {
         return api.sendAuthRequest('/api/property/', 'post', data).then(response => {
             history.push('/add-property/');
+            console.log(response)
             return response
         });
     }

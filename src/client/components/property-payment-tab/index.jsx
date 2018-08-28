@@ -140,18 +140,19 @@ export class PaymentTab extends Component {
             contactPersonName: this.props.contactPersonName,
             contactPhone: this.props.contactPhone,
             rating: this.props.rating,
-            // facilities: [this.props.facilities]
-            // accommodationRule: {
-            //     arrivalTimeStart: this.props.arrivalFrom,
-            //     arrivalTimeEnd: this.props.arrivalTo,
-            //     departureTimeStart: this.props.departureFrom,
-            //     departureTimeEnd: this.props.departureFrom,
-            //     cancelReservation: this.props.cancellation
-            // },
-            // paymentTypes: [this.props.paymentType],
+            images: [this.props.images],
 
 
-        });
+        },
+            // {accommodationRule: {
+            //         arrivalTimeStart: this.props.arrivalFrom,
+            //         //     arrivalTimeEnd: this.props.arrivalTo,
+            //         //     departureTimeStart: this.props.departureFrom,
+            //         //     departureTimeEnd: this.props.departureFrom,
+            //         //     cancelReservation: this.props.cancellation
+            //     },}
+
+        );
     };
 
     render() {
