@@ -26,6 +26,10 @@ export class MainHeader extends Component {
         history.push("/");
     };
 
+    onWellcomeClicked = () => {
+        history.push('/user-cabinet');
+    }
+
     state = { activeItem: "about-us" };
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
@@ -49,7 +53,7 @@ export class MainHeader extends Component {
 
                             <AuthHOC Component={() => {
                                 return <Fragment>
-                                    Wellcome {currentUser.fullName}
+                                    <a onClick={this.onWellcomeClicked}>Wellcome {currentUser.fullName}</a>
                                     <a
                                         style={{ marginLeft: "24px", fontSize: 16, opacity: 0.8 }}
                                         onClick={this.logoutClicked}
@@ -72,7 +76,7 @@ export class MainHeader extends Component {
                     </Grid.Row>
                     {this.props.showSearch ?
                         <Grid.Row centered columns={1}>
-                            <Grid.Column width={16} style={{marginTop: 45}}>
+                            <Grid.Column width={16} style={{ marginTop: 45 }}>
                                 <MainSearch
                                     view="bar"
                                     destination="Lviv"
