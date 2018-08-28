@@ -21,7 +21,6 @@ export class BookingSegment extends React.Component {
         const { images, booking } = this.props;
         const dateIn = new Date(booking.dateIn),
             dateOut = new Date(booking.dateOut);
-        console.log("dateIN: " + booking.dateIn);
         const price =
             Number(booking.room.price) * (dateOut.getDate() - dateIn.getDate());
         return (

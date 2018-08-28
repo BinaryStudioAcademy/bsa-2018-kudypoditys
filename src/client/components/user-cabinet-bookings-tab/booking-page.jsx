@@ -6,10 +6,10 @@ import moment from "moment";
 export class BookingPage extends React.Component {
     render() {
         const { booking, images } = this.props;
-        const dateIn = new Date(Number(booking.dateIn)),
-            dateOut = new Date(Number(booking.dateOut));
+        const dateIn = new Date(booking.dateIn),
+            dateOut = new Date(booking.dateOut);
         const price =
-            booking.room.price * (dateOut.getDate() - dateIn.getDate());
+            Number(booking.room.price) * (dateOut.getDate() - dateIn.getDate());
         return (
             <Container>
                 <Button
