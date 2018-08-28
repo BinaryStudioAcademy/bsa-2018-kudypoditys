@@ -8,6 +8,7 @@ import {
     Header,
     Icon
 } from "semantic-ui-react";
+import "./booking-segment.scss";
 import moment from "moment";
 
 export class BookingSegment extends React.Component {
@@ -17,11 +18,11 @@ export class BookingSegment extends React.Component {
     };
 
     render() {
-        const { image, booking } = this.props;
+        const { images, booking } = this.props;
         const dateIn = new Date(Number(booking.dateIn)),
             dateOut = new Date(Number(booking.dateOut));
         const price =
-            booking.room.price * (dateOut.getDate() - dateIn.getDate());
+            Number(booking.room.price) * (dateOut.getDate() - dateIn.getDate());
         return (
             <Segment className="booking-container">
                 <Grid className="booking">
@@ -73,7 +74,10 @@ export class BookingSegment extends React.Component {
                     </Grid.Row>
                     <Grid.Row className="booking-footer" verticalAlign="bottom">
                         <Grid.Column width={4}>
-                            <Image src={image} className="booking-image" />
+                            <Image
+                                src={images[0].url}
+                                className="booking-image"
+                            />
                         </Grid.Column>
 
                         <Grid.Column width={12}>

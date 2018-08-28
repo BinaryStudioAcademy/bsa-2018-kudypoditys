@@ -208,7 +208,9 @@ const state = {
     },
 
     userCabinet: {
-        user: null
+        user: null,
+        activeBooking: null,
+        bookings: []
     }
 };
 

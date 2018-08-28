@@ -7,11 +7,7 @@ export const MenuItems = [
             key: "Bookings tab",
             header: "My bookings",
             content: "My bookings",
-            component: (
-                <React.Fragment>
-                    <h1>Hello booking tab</h1>
-                </React.Fragment>
-            )
+            component: <BookingTab />
         }
     },
     {
