@@ -10,18 +10,17 @@ function needsAuth(reqMethod, reqPath, pathes) {
     for (let path of pathes) {
         let methodNeedsAuth = false;
         if (path.methods === null) {
-            if (path.url.indexOf(reqPath) === 0) return true;
+            if (reqPath.indexOf(path.url) === 0) return true;
             return false;
         }
         for (let i = 0; i < path.methods.length; i++) {
             if (reqMethod.toLowerCase() === path.methods[i].toLowerCase()) {
                 methodNeedsAuth = true;
-                break;
             }
         }
         if (
             methodNeedsAuth &&
-            path.url.indexOf(reqPath) === 0 &&
+            reqPath.indexOf(path.url) === 0 &&
             reqPath !== "/"
         )
             return true;
