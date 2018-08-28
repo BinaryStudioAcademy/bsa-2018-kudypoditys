@@ -25,6 +25,11 @@ module.exports = {
 
         var propertiesInit = init.initIndex.body;
         propertiesInit.mappings.document.properties = {
+            id: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard",
+            },
             city: {
                 type: "text",
                 analyzer: "autocomplete",
@@ -45,6 +50,11 @@ module.exports = {
                 analyzer: "autocomplete",
                 search_analyzer: "standard",
             },
+            location: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard",
+            }
         };
 
         await elasticRepository.initIndex(req, res, "cities", citiesInit);
@@ -127,4 +137,19 @@ module.exports = {
 
         return res.json({message: "ELASTICSEARCH::ADD_SERVICE => SUCCESS"});
     },
+
+    addOneProperty: (req, res, property) => {
+        const index = "properties";
+        const id = property.id;
+        const type = "document";
+        const body = {
+            id: property.id,
+            name: property.name,
+            city: property.city,
+            country: property.country,
+            location: property.location
+        };
+
+        return elasticClient.index({ index, id, type, body });
+    }
 };
