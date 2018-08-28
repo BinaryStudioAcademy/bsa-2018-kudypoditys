@@ -14,18 +14,14 @@ class Api {
 
     sendAuthRequest = (url, type, payload) => {
         return this.checkAccessToken().then(() =>
-            this.adapter
-                .request({
-                    url: url, // url
-                    method: type.toUpperCase(), // 'get' -> 'GET'
-                    data: payload, // body
-                    headers: {
-                        ...this.getAuthHeader()
-                    }
-                })
-                .then(response => {
-                    return response;
-                })
+            this.adapter.request({
+                url: url, // url
+                method: type.toUpperCase(), // 'get' -> 'GET'
+                data: payload, // body
+                headers: {
+                    ...this.getAuthHeader()
+                }
+            })
         );
     };
 
