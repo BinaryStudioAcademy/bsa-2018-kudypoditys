@@ -1,9 +1,9 @@
 import { logout } from "../../logic/header/actions";
 
 export function mapStateToProps(state, ownProps) {
-    const { currentUser } = state.header;
+    const { user } = state.userCabinet;
     return {
-        user: currentUser
+        user: user
     };
 }
 
