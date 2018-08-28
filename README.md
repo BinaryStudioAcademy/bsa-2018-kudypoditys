@@ -2,7 +2,7 @@
 
 ## Project setup
 
-Make sure you have `nodejs 10.7.x` and `npm 6.2.x`. 
+Make sure you have `nodejs 10.7.x` and `npm 6.2.x`.
 
 Install the following packages globally (prepend `sudo` if using Unix system):
 ```bash
@@ -12,7 +12,7 @@ npm i -g @storybook/cli
 ```
 
 Clone repository:
-```bash	
+```bash
 git clone https://github.com/BinaryStudioAcademy/bsa-2018-kudypoditys.git
 cd bsa-2018-kudypoditys
 ```
@@ -44,6 +44,10 @@ To run your storybook, type:
 ```bash
 yarn storybook
 ```
+To run elasticsearch make in postman :
+http://127.0.0.1:5000/elastic/delete_all
+http://127.0.0.1:5000/elastic/index/init_test
+http://127.0.0.1:5000/elastic/index/add_test
 
 ## Recommended extensions
 It's recommened that you install the following Chrome extensions:
