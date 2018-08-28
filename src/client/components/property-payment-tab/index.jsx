@@ -185,6 +185,7 @@ export class PaymentTab extends Component {
                 departureTimeEnd: this.props.departureTo,
             },
             // paymentTypes: paymentTypes,
+            cityId: '1'
         });
     };
 

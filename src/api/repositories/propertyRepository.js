@@ -55,6 +55,8 @@ class PropertyRepository extends Repository {
     createDetails(entity) {
         return this.model.create(entity, {
             include: [
+
+                // City,
                 PropertyType,
                 Room,
                 Facility,
