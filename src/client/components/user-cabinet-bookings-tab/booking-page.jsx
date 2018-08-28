@@ -42,7 +42,7 @@ export class BookingPage extends React.Component {
                         </Grid.Column>
                         <Grid.Column width={6}>
                             Check-out:{" "}
-                            {moment(booking.dateIn).format("MMMM Do YYYY")}
+                            {moment(booking.dateOut).format("MMMM Do YYYY")}
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
