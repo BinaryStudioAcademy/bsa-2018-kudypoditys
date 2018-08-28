@@ -180,7 +180,7 @@ export class MainSearch extends React.Component {
 
                 <div className="room-options">
                     <Input
-                        style={{height: "20px"}}
+
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
