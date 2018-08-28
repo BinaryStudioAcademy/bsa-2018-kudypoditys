@@ -11,8 +11,8 @@ import {
     Label,
 } from 'semantic-ui-react';
 import './index.scss';
-import { connect } from 'react-redux';
-import { mapStateToProps, mapDispatchToProps } from './container';
+import {connect} from 'react-redux';
+import {mapStateToProps, mapDispatchToProps} from './container';
 import {
     commissionNames,
     cityTaxTypes,
@@ -20,14 +20,15 @@ import {
 } from './staticData';
 import TabForm from './servicesTabForm';
 
+
 export class PaymentTab extends Component {
-    handleChange = (e, { name, value }) => {
+    handleChange = (e, {name, value}) => {
         if (value === 'true') {
             value = true;
         } else if (value === 'false') {
             value = false;
         }
-        this.props.updateTab({ [name]: value });
+        this.props.updateTab({[name]: value});
     };
 
     toggleCreditCardsCheck = card => {
@@ -81,7 +82,7 @@ export class PaymentTab extends Component {
         });
     };
 
-    handleAdditionalFees = (e, { name, value }) => {
+    handleAdditionalFees = (e, {name, value}) => {
         console.log(e, name, value);
         const id = Number(name.split(' ')[0]);
         const name_ = name.split(' ')[1];
@@ -138,6 +139,17 @@ export class PaymentTab extends Component {
             address: this.props.address,
             contactPersonName: this.props.contactPersonName,
             contactPhone: this.props.contactPhone,
+            facilities: [this.props.facilities]
+            // accommodationRule: {
+            //     arrivalTimeStart: this.props.arrivalFrom,
+            //     arrivalTimeEnd: this.props.arrivalTo,
+            //     departureTimeStart: this.props.departureFrom,
+            //     departureTimeEnd: this.props.departureFrom,
+            //     cancelReservation: this.props.cancellation
+            // },
+            // paymentTypes: [this.props.paymentType],
+
+
         });
     };
 
@@ -168,7 +180,7 @@ export class PaymentTab extends Component {
         return (
             <Container className="property_payment_tab-wrapper">
                 <Container className="property_payment_tab-container">
-                    <TabForm {...formProps} onSubmit={this.handleContinue} />
+                    <TabForm {...formProps} onSubmit={this.handleContinue}/>
                 </Container>
             </Container>
         );
