@@ -12,18 +12,22 @@ class Api {
         });
     }
 
-    sendAuthRequest(url, type, payload) {
+    sendAuthRequest = (url, type, payload) => {
         return this.checkAccessToken().then(() =>
-            this.adapter.request({
-                url: url, // url
-                method: type.toUpperCase(), // 'get' -> 'GET'
-                data: payload, // body
-                headers: {
-                    ...this.getAuthHeader()
-                }
-            })
+            this.adapter
+                .request({
+                    url: url, // url
+                    method: type.toUpperCase(), // 'get' -> 'GET'
+                    data: payload, // body
+                    headers: {
+                        ...this.getAuthHeader()
+                    }
+                })
+                .then(response => {
+                    return response;
+                })
         );
-    }
+    };
 
     sendRequest(url, type, payload) {
         return this.adapter.request({
