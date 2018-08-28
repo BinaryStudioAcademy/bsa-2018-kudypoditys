@@ -67,7 +67,7 @@ export class MainHeader extends Component {
                                 Component={() => {
                                     return (
                                         <Fragment>
-                                            Wellcome {currentUser.fullName}
+                                            <span onClick={this.onWellcomeClicked}>Wellcome {currentUser.fullName}</span>
                                             <a
                                                 style={{
                                                     cursor: "pointer",
