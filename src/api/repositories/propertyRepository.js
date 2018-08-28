@@ -70,21 +70,6 @@ class PropertyRepository extends Repository {
                     {
                         model: City,
                         where: { name: filter.city }
-                    },
-                    {
-                        model: Reservation,
-                        where: {
-                            dateIn: filter.dateIn,
-                            dateOut: filter.dateOut
-                        }
-                    },
-                    {
-                        model: Room,
-                        where: { amount: filter.roomsAmount }
-                    },
-                    {
-                        model: BedInRoom,
-                        where: { count: filter.bedsCount }
                     }
                 ]
             })
@@ -97,11 +82,11 @@ class PropertyRepository extends Repository {
             .findAll({
                 include: [
                     {
-                        model: City,
+                        model: City
                     },
                     {
-                        model: Image,
-                    },
+                        model: Image
+                    }
                 ]
             })
             .then(properties => {
