@@ -6,15 +6,27 @@ import {mapStateToProps, mapDispatchToProps} from "./container";
 
 
 class TabRegistration extends Component {
-    handleChange = (e, { value } ) => {
 
-        console.log("handleChange"+ value )
-        // console.log( e)
-        this.props.updateTab(value.values);
+
+        handleChange = (e, { name, value }) => {
+            if(value === "true") {
+                value = true
+            }
+            else if (value === "false") {
+                value = false
+            }
+            this.props.updateTab({ [name]: value });
+        };
+    handleChange2 = (e, { name, value }) => {
+       console.log(name)
+        console.log(value)
+        console.log(e)
+        // this.props.updateTab({ [name]: value });
     };
-    handleProceed = () => {
 
+    handleProceed = (value) => {
 
+        this.props.updateTab(value)
         this.props.updateTab({
             activeIndex: 1
         });

@@ -35,6 +35,7 @@ let RegistrationForm = props => {
                         label="Property name"
                         type="text"
                         validate={[required, maxLength20]}
+
                     />
                     <Card.Meta>
                         <br />
@@ -56,6 +57,7 @@ let RegistrationForm = props => {
                         type="text"
                         icon="user"
                         validate={[required, maxLength20]}
+
                     />
                     <CardDescription>
                         <br />
@@ -68,6 +70,7 @@ let RegistrationForm = props => {
                         type="tel"
                         icon="phone"
                         validate={[required, phoneNumber]}
+
                     />
                     <CardDescription>
                         <br /> Do you own multiple apartments, or are you part
@@ -105,6 +108,7 @@ let RegistrationForm = props => {
                         label="For example:10 Zelena street"
                         icon="map marker"
                         validate={[required, maxLength20]}
+
                     />
                     <CardDescription>
                         <br />
@@ -117,6 +121,7 @@ let RegistrationForm = props => {
                         label="For example: flat number and etc."
                         icon="map marker"
                         validate={[required, maxLength20]}
+
                     />
                     <CardDescription>
                         <br />
@@ -129,6 +134,7 @@ let RegistrationForm = props => {
                         label="Ukraine"
                         icon="map marker"
                         validate={[required, maxLength20]}
+
                     />
                     <CardDescription>
                         <br />
@@ -141,6 +147,7 @@ let RegistrationForm = props => {
                          label="Ukraine"
                          icon="map marker"
                          validate={[required, maxLength20]}
+
                     />
                 </Card.Content>
             </Card>
