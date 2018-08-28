@@ -59,7 +59,8 @@ class PropertyRepository extends Repository {
                 Room,
                 Facility,
                 AccommodationRule,
-                PaymentType
+                PaymentType,
+                Image
             ]
         });
     }
