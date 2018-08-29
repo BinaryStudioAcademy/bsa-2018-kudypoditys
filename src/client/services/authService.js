@@ -61,6 +61,14 @@ class AuthService {
                 return response;
             });
     }
+    resetPassword(string) {
+        return api.sendRequest(`/api/reset/${string}`, "post",{
+
+        })
+            .then(response => {
+                return response;
+            });
+    }
 }
 
 export default new AuthService();

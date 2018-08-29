@@ -8,7 +8,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
 import ForgotPassword from 'client/components/forgot-password'
-import ResetPassword from 'client/components/reset-password'
 import RegistrationPage from "client/pages/registration-page";
 import PropertyCreationTabs from "client/pages/add-property-page";
 import {Router, Route, Switch} from "react-router-dom";
@@ -22,8 +21,10 @@ import createSagaMidddelware from "redux-saga";
 import rootSaga from "client/logic/rootSaga";
 import history from "client/history";
 import PhotoTab from "./components/photo-tab-registration-property";
-import UserCabinet from "./components/user-cabinet";
-import ResetPassword from 'client/components/reset-password';
+import UserCabinet from "./pages/user-cabinet";
+import AuthHOC from "./components/auth-hoc";
+
+import VerifyEmail from "client/components/verify-email";
 
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
@@ -60,6 +61,10 @@ ReactDOM.render(
                 <Route
                     path="/user-cabinet"
                     component={() => <AuthHOC Component={UserCabinet} />}
+                />
+                <Route
+                    path="/new-password/:token"
+                    component={UserCabinet}
                 />
                 <Route component={NotFoundPage} />
             </Switch>
