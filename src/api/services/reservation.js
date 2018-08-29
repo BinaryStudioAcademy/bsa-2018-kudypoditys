@@ -12,6 +12,15 @@ class ReservationService extends Service {
         }
     }
 
+    async findByOptions(options) {
+        try {
+            const reservations = await this.repository.findByOptions(options);
+            return Promise.resolve(reservations);
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    }
+
     async findById(id) {
         try {
             const reservation = await this.repository.findById(id);

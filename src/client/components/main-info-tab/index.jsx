@@ -6,29 +6,35 @@ import {mapStateToProps, mapDispatchToProps} from "./container";
 
 
 class TabRegistration extends Component {
-    state = {}
-    handleContextRef = contextRef => this.setState({contextRef})
 
+
+        handleChange = (e, { name, value }) => {
+            if(value === "true") {
+                value = true
+            }
+            else if (value === "false") {
+                value = false
+            }
+            this.props.updateTab({ [name]: value });
+        };
+
+    handleProceed = (value) => {
+
+        this.props.updateTab(value)
+        this.props.updateTab({
+            activeIndex: 1
+        });
+
+    };
     render() {
-        const {name} = this.props;
-        const {contextRef} = this.state
+        const {userName} = this.props;
         return (
             <Grid width={13}>
                 <Grid.Column width={10}>
                     <Container>
-                        <Header as='h2'>Welcome {name}!</Header>
-                        <RegistrationForm onSubmit={this.props.createProperty}/>
+                        <Header as='h2'>Welcome {userName}!</Header>
+                        <RegistrationForm onSubmit={this.handleProceed} handleChange={this.handleChange}/>
                     </Container>
-                </Grid.Column>
-                <Grid.Column width={3}>
-                    <Rail position='right' style={{marginTop: '50px'}}>
-                        <Sticky context={contextRef}>
-                            <Segment secondary>
-                                After you complete registration you'll be able to
-                                make changes to your listing before it goes live
-                            </Segment>
-                        </Sticky>
-                    </Rail>
                 </Grid.Column>
             </Grid>
         );

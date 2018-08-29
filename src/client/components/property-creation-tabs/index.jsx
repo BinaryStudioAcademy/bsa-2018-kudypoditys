@@ -9,18 +9,14 @@ import {mapDispatchToProps, mapStateToProps} from "./container";
 
 export class PropertyCreationTabs extends React.Component {
 
-    state = {
-        activeIndex: 0
-    }
+    // state = {
+    //     activeIndex: this.props.activeIndex
+    // }
 
-    handleTabChange = (e, {activeIndex}) => this.setState({activeIndex});
+    handleTabChange = (e, {activeIndex}) => this.props.updateTab({activeIndex});
+        // this.setState({activeIndex});
 
-    submitHandle = (...data) => {
-        console.log(data);
-        this.setState({
-            activeIndex: this.state.activeIndex + 1
-        })
-    };
+
 
     getPanes() {
         return MenuItems.map((tab) => ({
@@ -40,7 +36,9 @@ export class PropertyCreationTabs extends React.Component {
     }
 
     render() {
-        const {activeIndex} = this.state;
+
+        console.log(this.props)
+        const {activeIndex} = this.props;
 
         return (
             <Container>
@@ -48,7 +46,7 @@ export class PropertyCreationTabs extends React.Component {
 
                 </div>
                 <Tab menu={{fluid: true, vertical: true}} menuPosition="left" panes={this.getPanes()}
-                     activeIndex={activeIndex} onTabChange={this.handleTabChange}/>
+                     activeIndex={activeIndex} onTabChange={this.handleTabChange} />
             </Container>
         )
     }
