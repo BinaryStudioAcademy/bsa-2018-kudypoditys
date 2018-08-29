@@ -60,6 +60,12 @@ const IMAGES = [
         url:
             "https://www.publicdomainpictures.net/pictures/10000/velka/947-1262818585EUqs.jpg",
         propertyId: 2
+    },
+    {
+        id: 3,
+        url:
+            "https://www.publicdomainpictures.net/pictures/10000/velka/947-1262818585EUqs.jpg",
+        propertyId: 2
     }
 ];
 
