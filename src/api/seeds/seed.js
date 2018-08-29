@@ -7,6 +7,13 @@ const USERS = [
         password: bcrypt.hashSync("nata1NATA", 10),
         email: "natalya@gmail.com",
         phoneNumber: "0504958671"
+    },
+    {
+        id: 2,
+        fullName: "Nikolay Datsko",
+        password: bcrypt.hashSync("102938abC", 10),
+        email: "lorem@lorem.com",
+        phoneNumber: "80954568261"
     }
 ];
 
