@@ -13,17 +13,8 @@ import "./index.scss";
 import history from "client/history";
 
 export class MainSearch extends React.Component {
-    constructor(props) {
-        super(props);
-        this.roomSelector = React.createRef();
-        this.state = {
-            startDate: moment(),
-            endDate: moment().add(5, "days"),
-            focusedInput: null,
-            query: "",
-            results: []
-        };
-    }
+    resetComponent = () =>
+        this.setState({ isLoading: false, results: [], value: "" });
     getInfo = () => {
         let resultsData = [];
         let index = "properties";
@@ -68,21 +59,12 @@ export class MainSearch extends React.Component {
                 });
             });
     };
-
-    componentWillMount() {
-        this.resetComponent();
-    }
-
-    resetComponent = () =>
-        this.setState({ isLoading: false, results: [], value: "" });
-
     handleResultSelect = (e, { result }) => {
         this.setState({
             query: result.title,
             isLoading: false
         });
     };
-
     handleSearchChange = (e, { value }) => {
         this.setState(
             {
@@ -96,6 +78,23 @@ export class MainSearch extends React.Component {
             }
         );
     };
+    handleSubmit = () => {
+        let path = `/search-page`;
+        history.push(path);
+        this.props.onSearch();
+    };
+
+    constructor(props) {
+        super(props);
+        this.roomSelector = React.createRef();
+        this.state = {
+            startDate: moment(),
+            endDate: moment().add(5, "days"),
+            focusedInput: null,
+            query: "",
+            results: []
+        };
+    }
     generateOptions = (from, to) => {
         let options = [];
         for (let i = from; i <= to; i++) {
@@ -137,11 +136,9 @@ export class MainSearch extends React.Component {
         return `${this.props.rooms} Rooms`;
     };
 
-    handleSubmit = () => {
-        let path = `/search-page`;
-        history.push(path);
-        this.props.onSearch();
-    };
+    componentWillMount() {
+        this.resetComponent();
+    }
 
     datesChanged = selectedDates => {
         if (selectedDates.startDate && selectedDates.endDate) {
@@ -163,6 +160,7 @@ export class MainSearch extends React.Component {
             >
                 <div className="destination">
                     <Search
+                        style={{ height: 60 }}
                         name="destination"
                         placeholder="Where are you going?"
                         loading={isLoading}
@@ -174,7 +172,11 @@ export class MainSearch extends React.Component {
                         required
                     />
                 </div>
-                <div className="check-in-out" onFocus={this.hideRoomSelector}>
+                <div
+                    className="check-in-out"
+                    style={{ height: 60 }}
+                    onFocus={this.hideRoomSelector}
+                >
                     <DateRangePicker
                         noBorder={true}
                         startDateId="startDate"
@@ -192,7 +194,6 @@ export class MainSearch extends React.Component {
 
                 <div className="room-options">
                     <Input
-                        style={{ height: "20px" }}
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
@@ -263,9 +264,9 @@ export class MainSearch extends React.Component {
                     </div>
                 </div>
 
-                <div className="btn-wrp" style={{ height: 40, width: 134 }}>
+                <div className="btn-wrp" style={{ height: 60, width: 134 }}>
                     <Button
-                        style={{ height: 40 }}
+                        style={{ height: 60 }}
                         type="submit"
                         content="Search"
                         primary
