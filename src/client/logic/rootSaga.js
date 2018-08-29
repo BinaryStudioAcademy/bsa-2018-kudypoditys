@@ -3,6 +3,7 @@ import loginSaga from "client/logic/login/saga";
 import signupSaga from "client/logic/registration/saga";
 import headerSaga from "client/logic/header/saga";
 import propertySaga from './property-creation-tabs/saga';
+import emailVerificationSaga from "client/logic/verify-email/saga";
 import forgotPasswordSaga from './forgot-password/saga';
 
 export default function* rootSaga() {
@@ -11,6 +12,8 @@ export default function* rootSaga() {
         fork(headerSaga),
         fork(propertySaga),
         fork(signupSaga),
+        fork(emailVerificationSaga),
+
         fork(forgotPasswordSaga)
     ])
 }

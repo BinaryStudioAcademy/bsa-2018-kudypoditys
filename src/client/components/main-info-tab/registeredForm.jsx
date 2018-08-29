@@ -135,12 +135,12 @@ let RegistrationForm = props => {
                         City
                     </CardDescription>
                     <Field
-                         component={FormTextInput}
-                         name="address3"
-                         type="text"
-                         label="Ukraine"
-                         icon="map marker"
-                         validate={[required, maxLength20]}
+                        component={FormTextInput}
+                        name="address3"
+                        type="text"
+                        label="Ukraine"
+                        icon="map marker"
+                        validate={[required, maxLength20]}
                     />
                 </Card.Content>
             </Card>

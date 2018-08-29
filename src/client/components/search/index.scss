@@ -48,7 +48,7 @@
 .destination {
     margin-top: -60px;
 
-    input{
+    input {
         min-width: 420px;
         height: 40px
     }
@@ -87,9 +87,9 @@
     height: 210px;
 }
 
-form.Field {
-    align-content: right;
-}
+//form.Field {
+//    align-content: flex-end;
+//}
 
 .room-selector > .field {
     display: flex;
