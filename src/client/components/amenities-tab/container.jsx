@@ -1,17 +1,35 @@
-import {amenitiesTabUpdate} from "client/logic/amenities-tab-for-property/actions";
+// import {amenitiesTabUpdate} from "client/logic/amenities-tab-for-property/actions";
+//
+//
+// export function mapStateToProps(state) {
+//     const {propertyAmenitiesTab} = state;
+//     return {
+//         ...propertyAmenitiesTab,
+//     };
+// }
+//
+// export function mapDispatchToProps(dispatch) {
+//     return {
+//         onSubmit(data) {
+//             dispatch(amenitiesTabUpdate(data));
+//         }
+//     }
+// }
+import {propertyUpdate} from 'client/logic/property-creation-tabs/actions';
 
 
 export function mapStateToProps(state) {
-    const {propertyAmenitiesTab} = state;
+    const {propertyRegistration} = state;
     return {
-        ...propertyAmenitiesTab,
-    };
+        ...propertyRegistration
+    }
 }
 
 export function mapDispatchToProps(dispatch) {
     return {
-        onSubmit(data) {
-            dispatch(amenitiesTabUpdate(data));
+
+        updateTab(data) {
+            dispatch(propertyUpdate(data));
         }
     }
 }
