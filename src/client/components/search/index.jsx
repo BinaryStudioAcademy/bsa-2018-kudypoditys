@@ -144,6 +144,11 @@ export class MainSearch extends React.Component {
         this.props.onChildrenChange(count);
     };
 
+    onChildrenSelected = count => {
+        this.setState({ children: count });
+        this.props.onChildrenChange(count);
+    };
+
     onRoomsSelected = count => {
         this.setState({ rooms: count });
         this.props.onRoomsChange(count);
