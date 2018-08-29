@@ -26,36 +26,47 @@ export class MainSearch extends React.Component {
     }
     getInfo = () => {
         let resultsData = [];
-        let index ="properties"
-        axios.get(
-                `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.state.query}`
+        let index = "properties";
+        axios
+            .get(
+                `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
+                    this.state.query
+                }`
             )
             .then(propertiesResponse => {
-                console.log("response Roperties= " + JSON.stringify(propertiesResponse));
+                console.log(
+                    "response Roperties= " + JSON.stringify(propertiesResponse)
+                );
                 propertiesResponse.data.forEach(element => {
                     resultsData.push({
                         title: element._source.name,
                         description: element._source.description,
-                        image:element._source.image
+                        image: element._source.image
                     });
                 });
 
-                index="cities"
-                return axios.get(`http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${this.state.query}`)
-            }).then(citiesResponse => {
-                console.log("response Cities= " + JSON.stringify(citiesResponse));
+                index = "cities";
+                return axios.get(
+                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
+                        this.state.query
+                    }`
+                );
+            })
+            .then(citiesResponse => {
+                console.log(
+                    "response Cities= " + JSON.stringify(citiesResponse)
+                );
                 citiesResponse.data.forEach(element => {
                     resultsData.push({
                         title: element._source.city,
-                        description: element._source.country,
+                        description: element._source.country
                     });
                 });
                 this.setState({
                     results: resultsData,
                     isLoading: false
                 });
-            })
-
+            });
     };
 
     componentWillMount() {
@@ -66,12 +77,11 @@ export class MainSearch extends React.Component {
         this.setState({ isLoading: false, results: [], value: "" });
 
     handleResultSelect = (e, { result }) => {
-             this.setState({
+        this.setState({
             query: result.title,
             isLoading: false
-
         });
-    }
+    };
 
     handleSearchChange = (e, { value }) => {
         this.setState(
@@ -129,7 +139,7 @@ export class MainSearch extends React.Component {
 
     handleSubmit = () => {
         let path = `/search-page`;
-        history.push(path)
+        history.push(path);
         this.props.onSearch();
     };
 
@@ -142,7 +152,7 @@ export class MainSearch extends React.Component {
 
     render() {
         const selectOptionsRooms = this.generateOptions(1, 30);
-        const selectOptionsAdults = this.generateOptions(1, 10);
+        const selectOptionsAdults = this.generateOptions(1, 30);
         const { isLoading, query, results } = this.state;
         const childrenOptions = this.generateOptions(0, 10);
         const { rooms, adults, children } = this.props;
