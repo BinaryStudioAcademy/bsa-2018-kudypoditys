@@ -9,7 +9,7 @@ const properties = PropertyService.getAllProperties();
 const cities = CityService.getAllCities();
 
 module.exports = {
-    indexData: function() {
+    indexData: function () {
         let propertiesBulk = [];
         properties.forEach(property => {
             propertiesBulk.push({
@@ -39,7 +39,7 @@ module.exports = {
                 country: city.country
             });
         });
-        elasticClient.bulk({ body: propertiesBulk }, function(err, response) {
+        elasticClient.bulk({body: propertiesBulk}, function (err, response) {
             if (err) {
                 console.log("Failed Bulk operation".red, err);
             } else {
@@ -49,7 +49,7 @@ module.exports = {
                 );
             }
         });
-        elasticClient.bulk({ body: citiesBulk }, function(err, response) {
+        elasticClient.bulk({body: citiesBulk}, function (err, response) {
             if (err) {
                 console.log("Failed Bulk operation".red, err);
             } else {

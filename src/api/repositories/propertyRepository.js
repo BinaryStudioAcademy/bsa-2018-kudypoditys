@@ -55,11 +55,14 @@ class PropertyRepository extends Repository {
     createDetails(entity) {
         return this.model.create(entity, {
             include: [
+
+                // City,
                 PropertyType,
                 Room,
                 Facility,
                 AccommodationRule,
-                PaymentType
+                PaymentType,
+                Image
             ]
         });
     }
@@ -92,12 +95,16 @@ class PropertyRepository extends Repository {
                 return properties;
             });
     }
+
     findAll() {
         return this.model
             .findAll({
                 include: [
                     {
                         model: City,
+                    },
+                    {
+                        model: Image,
                     },
                 ]
             })
@@ -106,5 +113,6 @@ class PropertyRepository extends Repository {
             });
     }
 }
+
 
 module.exports = new PropertyRepository(propertyModel);
