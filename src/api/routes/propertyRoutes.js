@@ -1,6 +1,7 @@
 const express = require('express');
 const property = express.Router();
 const propertyService = require('../services/property');
+const elasticService = require("../elastic/elasticService");
 
 property.route('/')
     .get((req, res) => {
@@ -15,6 +16,8 @@ property.route('/')
     .post((req, res) => {
         propertyService.addProperty(req.body)
             .then(property => {
+                elasticService.addOneProperty(req, res, property);
+                console.log(property.name, property.id);
                 res.send(property);
             })
             .catch((err) => {
@@ -24,8 +27,8 @@ property.route('/')
 
 property.route('/page')
     .get((req, res) => {
-        const { page, recordsOnPage } = req.query;
-        propertyService.findByPage({ page, recordsOnPage })
+        const {page, recordsOnPage} = req.query;
+        propertyService.findByPage({page, recordsOnPage})
             .then(list => {
                 res.status(200).send(list);
             })

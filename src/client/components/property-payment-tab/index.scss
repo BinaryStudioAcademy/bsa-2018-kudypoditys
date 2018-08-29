@@ -43,10 +43,14 @@
 
 .property_payment_tab-radio-segment:nth-child(odd) {
     grid-column: 1;
+    border-radius: 0;
+    border: none;
 }
 
 .property_payment_tab-radio-segment:nth-child(even) {
     grid-column: 2;
+    border-radius: 0;
+    border: none;
 }
 
 .property_payment_tab-switched-segment {
@@ -147,6 +151,34 @@
 .property_services_tab-continue-btn {
     background-color: #50E3C2 !important;
     margin-top: 10px !important;
+}
+.property_payment_tab-radio-segment.ui.radio.checkbox .box:before, .property_payment_tab-radio-segment.ui.radio.checkbox label:before {
+
+}
+.ui.checkbox input:checked:focus~.box:before, .ui.checkbox input:checked:focus~label:before, .ui.checkbox input:not([type=radio]):indeterminate:focus~.box:before, .ui.checkbox input:not([type=radio]):indeterminate:focus~label:before {
+    background: #465672;
+    border-color: #465672;
+    border-radius: 0;
+    color: #ffff;
+}
+
+
+.ui.radio.checkbox .box:before, .ui.radio.checkbox label:before {
+    content: '';
+    -webkit-transform: none;
+    transform: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 0;
+    top: 1px;
+    left: 0;
+}
+.ui.radio.checkbox input:checked~.box:after, .ui.radio.checkbox input:checked~label:after {
+    background-color: #465672;
+}
+
+.ui.checkbox input:checked:focus ~ .box:after, .ui.checkbox input:checked:focus ~ label:after, .ui.checkbox input:not([type=radio]):indeterminate:focus ~ .box:after, .ui.checkbox input:not([type=radio]):indeterminate:focus ~ label:after {
+    color: #ffff;
 }
 
 @media only screen and (max-width: 980px) {

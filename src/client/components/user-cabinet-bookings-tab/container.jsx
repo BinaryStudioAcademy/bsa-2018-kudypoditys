@@ -4,8 +4,9 @@ import {
     unchooseBooking
 } from "../../logic/user-cabinet/actions";
 
+
 export function mapStateToProps(state, ownProps) {
-    const { user, bookings, activeBooking } = state.userCabinet;
+    const {user, bookings, activeBooking} = state.userCabinet;
     return {
         user: user,
         bookings: bookings,

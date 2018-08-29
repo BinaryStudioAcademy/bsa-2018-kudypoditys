@@ -4,7 +4,7 @@ import { Grid } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
-import AuthHOC from 'client/components/auth-hoc';
+import AuthHOC from "client/components/auth-hoc";
 
 import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
@@ -12,6 +12,10 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 export class MainHeader extends Component {
     logoutClicked = () => {
         this.props.logout();
+    };
+
+    addPropertyClicked = () => {
+        history.push("/add-property");
     };
 
     loginClicked = () => {
@@ -24,6 +28,10 @@ export class MainHeader extends Component {
 
     logoClicked = () => {
         history.push("/");
+    };
+
+    onWellcomeClicked = () => {
+        history.push("/user-cabinet");
     };
 
     state = { activeItem: "about-us" };
@@ -45,34 +53,82 @@ export class MainHeader extends Component {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-                            <a style={{ marginRight: "24px", fontSize: 16, opacity: 0.8 }}>EN</a>
+                            <a
+                                style={{
+                                    marginRight: "24px",
+                                    fontSize: 16,
+                                    opacity: 0.8
+                                }}
+                            >
+                                EN
+                            </a>
 
-                            <AuthHOC Component={() => {
-                                return <Fragment>
-                                    Wellcome {currentUser.fullName}
-                                    <a
-                                        style={{ marginLeft: "24px", fontSize: 16, opacity: 0.8 }}
-                                        onClick={this.logoutClicked}
-                                    >Logout</a>
-                                </Fragment>
-                            }} ElseComponent={() => {
-                                return <Fragment>
-                                    <a
-                                        style={{ marginRight: "24px", fontSize: 16, opacity: 0.8 }}
-                                        onClick={this.loginClicked}
-                                    > Login</a>
-                                    <a
-                                        style={{ fontSize: 16, opacity: 0.8 }}
-
-                                        onClick={this.registerClicked}
-                                    >Register</a>
-                                </Fragment>
-                            }} />
+                            <AuthHOC
+                                Component={() => {
+                                    return (
+                                        <Fragment>
+                                            <span onClick={this.onWellcomeClicked}>Wellcome {currentUser.fullName}</span>
+                                            <a
+                                                style={{
+                                                    cursor: "pointer",
+                                                    fontSize: 16,
+                                                    marginLeft: "24px",
+                                                    opacity: 0.8
+                                                }}
+                                                onClick={
+                                                    this.addPropertyClicked
+                                                }
+                                            >
+                                                Add Property
+                                            </a>
+                                            <a
+                                                style={{
+                                                    cursor: "pointer",
+                                                    marginLeft: "8px",
+                                                    fontSize: 16,
+                                                    opacity: 0.8
+                                                }}
+                                                onClick={this.logoutClicked}
+                                            >
+                                                Logout
+                                            </a>
+                                        </Fragment>
+                                    );
+                                }}
+                                ElseComponent={() => {
+                                    return (
+                                        <Fragment>
+                                            <a
+                                                style={{
+                                                    cursor: "pointer",
+                                                    marginRight: "24px",
+                                                    fontSize: 16,
+                                                    opacity: 0.8
+                                                }}
+                                                onClick={this.loginClicked}
+                                            >
+                                                {" "}
+                                                Login
+                                            </a>
+                                            <a
+                                                style={{
+                                                    cursor: "pointer",
+                                                    fontSize: 16,
+                                                    opacity: 0.8
+                                                }}
+                                                onClick={this.registerClicked}
+                                            >
+                                                Register
+                                            </a>
+                                        </Fragment>
+                                    );
+                                }}
+                            />
                         </Grid.Column>
                     </Grid.Row>
-                    {this.props.showSearch ?
+                    {this.props.showSearch ? (
                         <Grid.Row centered columns={1}>
-                            <Grid.Column width={16} style={{marginTop: 45}}>
+                            <Grid.Column width={16} style={{ marginTop: 45 }}>
                                 <MainSearch
                                     view="bar"
                                     destination="Lviv"
@@ -109,7 +165,7 @@ export class MainHeader extends Component {
                                 />
                             </Grid.Column>
                         </Grid.Row>
-                        : null}
+                    ) : null}
                 </Grid>
             </div>
         );

@@ -2,23 +2,17 @@ import React from "react";
 import "./index.scss";
 import { BookingSegment } from "./booking-segment";
 import { Container } from "semantic-ui-react";
-import { BookingPage } from "./booking-page";
-import { mapStateToProps, mapDispatchToProps } from "./container";
-import { connect } from "react-redux";
+import {BookingPage} from "./booking-page";
+import {mapStateToProps, mapDispatchToProps} from "./container";
+import {connect} from "react-redux";
 
 export class BookingsTab extends React.Component {
-    componentWillMount() {
-        this.props.getBookings();
-    }
-
     viewBooking = booking => {
         this.props.chooseBooking(booking);
     };
-
     backToAllBookings = () => {
         this.props.unchooseBooking();
     };
-
     getBookings = bookings => {
         if (!this.props.bookings) return null;
         return bookings.map((booking, index) => {
@@ -32,7 +26,6 @@ export class BookingsTab extends React.Component {
             );
         });
     };
-
     getBookingImages = booking => {
         let images = [];
         for (let i = 0; i < booking.room.property.images.length; i++) {
@@ -41,8 +34,12 @@ export class BookingsTab extends React.Component {
         return images;
     };
 
+    componentWillMount() {
+        this.props.getBookings();
+    }
+
     render() {
-        const { bookings, activeBooking } = this.props;
+        const {bookings, activeBooking} = this.props;
         //console.log(JSON.stringify(bookings));
         return activeBooking ? (
             <Container fluid>

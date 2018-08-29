@@ -3,11 +3,13 @@
     background: #dfe3eb;
     padding: 17px;
     position: relative;
+    cursor: pointer;
 }
+
 .banner:hover, a:focus {
-    top:-4px;
-    left:-4px;
-    box-shadow:4px 4px 0px 0px rgba(0,0,0,0.2);
+    top: -4px;
+    left: -4px;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.2);
 }
 .banner__content{
     padding:20px;

@@ -18,11 +18,15 @@ export class BookingSegment extends React.Component {
     };
 
     render() {
-        const { images, booking } = this.props;
+        const {images, booking} = this.props;
         const dateIn = new Date(booking.dateIn),
             dateOut = new Date(booking.dateOut);
-        const price =
-            Number(booking.room.price) * (dateOut.getDate() - dateIn.getDate());
+
+        const start = moment(dateIn);
+        const end = moment(dateOut);
+        const duration = moment.duration(end.diff(start));
+        const days = Math.round(duration.asDays());
+        const price = Number(booking.room.price) * days;
         return (
             <Segment className="booking-container">
                 <Grid className="booking">
