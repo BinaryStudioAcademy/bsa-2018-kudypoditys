@@ -2,10 +2,7 @@ const Service = require('./generalService');
 const cityRepository = require("../repositories/cityRepository");
 
 class CityService extends Service {
-    getAllCities() {
-        return cityRepository.findAll();
-    }
-
+    // todo add service logic
 }
 
 module.exports = new CityService(cityRepository);

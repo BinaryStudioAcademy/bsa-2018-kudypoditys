@@ -12,7 +12,7 @@ class Api {
         });
     }
 
-    sendAuthRequest = (url, type, payload) => {
+    sendAuthRequest(url, type, payload) {
         return this.checkAccessToken().then(() =>
             this.adapter.request({
                 url: url, // url
@@ -23,7 +23,7 @@ class Api {
                 }
             })
         );
-    };
+    }
 
     sendRequest(url, type, payload) {
         return this.adapter.request({

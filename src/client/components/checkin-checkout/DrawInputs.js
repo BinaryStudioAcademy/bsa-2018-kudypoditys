@@ -38,7 +38,7 @@ export class DrawInputs extends React.Component {
                 {Buttons}
                 <Form.Select
                     basic
-                    placeholder='Other'
+                    placeholder='Other Time'
                     options={options}
                     onChange={this.handleClick}
                     type={type}

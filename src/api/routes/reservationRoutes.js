@@ -33,17 +33,6 @@ reservation
             });
     });
 
-reservation.route("/byuser").get((req, res) => {
-    reservationService
-        .findByOptions({userId: req.user.id})
-        .then(reservations => {
-            res.send(reservations);
-        })
-        .catch(err => {
-            res.status(404).send(err.message);
-        });
-});
-
 reservation
     .route("/:id")
     .put((req, res) => {

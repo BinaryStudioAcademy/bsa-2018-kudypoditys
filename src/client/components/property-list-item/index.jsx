@@ -19,7 +19,6 @@ import PropTypes from "prop-types";
 import {mapStateToProps} from "./container";
 import {connect} from "react-redux";
 import MapWidgetModal from "client/components/map-widget-modal";
-import history from 'client/history';
 
 
 export class PropertyListItem extends React.Component {
@@ -33,7 +32,6 @@ export class PropertyListItem extends React.Component {
         //todo
     };
     handleRedirectToDetails = id => {
-        history.push('/property-page');
         // this.props.actions.redirectToDetails(id)
     };
 
@@ -109,17 +107,16 @@ export class PropertyListItem extends React.Component {
 
                                         onClick={this.handleRedirectToDetails}
                                     > <Header.Content
-                                        style={{
-                                            fontSize: 24,
-                                            fontWeight: "bold",
-                                            color: "#182c4f",
-                                            opacity: 0.8,
-                                            cursor: 'pointer'
+                                    style={{
+                                        fontSize: 24,
+                                        fontWeight: "bold",
+                                        color: "#182c4f",
+                                        opacity: 0.8
 
-                                        }} onClick={this.handleRedirectToDetails}
-                                    >
-                                        {propertyItemData.name}
-                                    </Header.Content>
+                                    }}
+                                >
+                                    {propertyItemData.name}
+                                </Header.Content>
 
                                     </Header>
                                     <Rating defaultRating={propertyItemData.propertyStars} maxRating={5} disabled/>
@@ -197,12 +194,12 @@ export class PropertyListItem extends React.Component {
                                 {/*<div className="price"style={{*/}
                                 {/*padding: 10*/}
                                 {/*}} >*/}
-                                <span className="priceInfo">
+                                     <span className="priceInfo">
 
-                                    {propertyItemData.priceFrom}
+                                            {propertyItemData.priceFrom}
 
-                                    {propertyItemData.curency}
-                                </span>
+                                         {propertyItemData.curency}
+                                        </span>
 
 
                                 {/*</div>*/}
@@ -265,7 +262,11 @@ export class PropertyListItem extends React.Component {
                         </Grid.Column>
 
 
-                    </Grid>
+
+
+
+
+                            </Grid>
 
                 </CardContent>
             </Card>

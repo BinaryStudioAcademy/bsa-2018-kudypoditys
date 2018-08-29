@@ -5,7 +5,6 @@ const Room = require("../models/Room");
 const RoomType = require("../models/RoomType");
 const PaymentType = require("../models/PaymentType");
 const Property = require("../models/Property");
-const Image = require(".././models/Image");
 
 class ReservationRepository extends Repository {
     findAll() {
@@ -22,70 +21,11 @@ class ReservationRepository extends Repository {
                     include: [
                         {
                             model: RoomType,
-                            attributes: ["id", "name"]
+                            attributes: ["name"]
                         },
                         {
                             model: Property,
-                            include: {
-                                model: Image,
-                                attributes: [
-                                    "id",
-                                    "url",
-                                    "propertyId",
-                                    "roomId"
-                                ]
-                            },
-                            attributes: [
-                                "id",
-                                "name",
-                                "address",
-                                "contactPhone"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    model: PaymentType,
-                    attributes: ["id", "name"]
-                }
-            ]
-        });
-    }
-
-    findByOptions(options) {
-        return this.model.findAll({
-            where: options,
-            attributes: ["id", "dateIn", "dateOut", "guestsCount"],
-            include: [
-                {
-                    model: User,
-                    attributes: ["id", "fullName", "email", "avatar"]
-                },
-                {
-                    model: Room,
-                    attributes: ["id", "description", "price", "area"],
-                    include: [
-                        {
-                            model: RoomType,
                             attributes: ["id", "name"]
-                        },
-                        {
-                            model: Property,
-                            include: {
-                                model: Image,
-                                attributes: [
-                                    "id",
-                                    "url",
-                                    "propertyId",
-                                    "roomId"
-                                ]
-                            },
-                            attributes: [
-                                "id",
-                                "name",
-                                "address",
-                                "contactPhone"
-                            ]
                         }
                     ]
                 },
@@ -111,25 +51,11 @@ class ReservationRepository extends Repository {
                     include: [
                         {
                             model: RoomType,
-                            attributes: ["id", "name"]
+                            attributes: ["name"]
                         },
                         {
                             model: Property,
-                            include: {
-                                model: Image,
-                                attributes: [
-                                    "id",
-                                    "url",
-                                    "propertyId",
-                                    "roomId"
-                                ]
-                            },
-                            attributes: [
-                                "id",
-                                "name",
-                                "address",
-                                "contactPhone"
-                            ]
+                            attributes: ["id", "name"]
                         }
                     ]
                 },

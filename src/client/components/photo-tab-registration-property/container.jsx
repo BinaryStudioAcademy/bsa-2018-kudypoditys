@@ -1,17 +1,17 @@
-import {propertyUpdate} from 'client/logic/property-creation-tabs/actions';
+import {imageUpdate} from "client/logic/photo-tab/actions";
 
 
 export function mapStateToProps(state) {
-    const {propertyRegistration} = state;
+    const {propertyPhoto} = state;
     return {
-        ...propertyRegistration
+        ...propertyPhoto
     }
 }
 
 export function mapDispatchToProps(dispatch) {
     return {
-        updateTab(data) {
-            dispatch(propertyUpdate(data));
+        filesUpdate(data) {
+            dispatch(imageUpdate(data));
         }
     }
 }

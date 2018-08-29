@@ -51,7 +51,7 @@ const RegistrationForm = props => {
                 name="phoneNumber"
                 type="text"
                 icon="phone"
-                label="Phone (ex. 222444666888)"
+                label="Phone"
                 required="required"
                 className="registration-c-input"
                 validate={[required, phoneNumber]}

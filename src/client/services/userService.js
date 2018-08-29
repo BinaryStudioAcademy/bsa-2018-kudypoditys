@@ -7,7 +7,7 @@ class UserService {
             .sendAuthRequest("/api/users/current", "get")
             .then(response => response.data)
             .catch(err => {
-                //history.push("/login");
+                history.push("/login");
             });
     }
 }

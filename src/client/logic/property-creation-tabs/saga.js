@@ -14,7 +14,6 @@ function* createProperty(action) {
         });
     }
     catch (error) {
-        console.log(error.message)
         yield put({ type:actionTypes.CREATE_PROPERTY_FAILED})
     }
 }

@@ -6,7 +6,6 @@ import AmenitiesTabRegistration from '../amenities-tab';
 import TabPolices from "../polices-tab";
 import RoomItem from '../room-item';
 import ServicesTab from "client/components/property-services-tab";
-import PaymentTab from 'client/components/property-payment-tab'
 
 
 export const MenuItems = [
@@ -23,7 +22,15 @@ export const MenuItems = [
     },
 
 
+    {
+    //     menuItem: {
+    //         key: 'menuItem Room', icon: 'usd', content: 'Layout and pricing', //temporary
+    //         header: ' Layout and pricing',
+    //         subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
+    //         component: <RoomItem title="Nice title" amount="5" />,
+    //     }
 
+     },
 
     {
         menuItem: {
@@ -36,18 +43,18 @@ export const MenuItems = [
         }
     },
 
-    // {
-    //     menuItem: {
-    //         key: 'Amenities',
-    //         icon: 'tv',
-    //         content: 'Amenities',
-    //         header: 'Amenities',
-    //         subheader: ' You are nearly done! We just need a few more details about the extra bed options you provide, plus any\n' +
-    //             '    //             amenities or specific features and services available.',
-    //         component: <AmenitiesTabRegistration/>
-    //     }
-    //
-    // },
+    {
+        menuItem: {
+            key: 'Amenities',
+            icon: 'tv',
+            content: 'Amenities',
+            header: 'Amenities',
+            subheader: ' You are nearly done! We just need a few more details about the extra bed options you provide, plus any\n' +
+                '    //             amenities or specific features and services available.',
+            component: <AmenitiesTabRegistration/>
+        }
+
+    },
     {
         menuItem: {
             key: 'Rules', icon: 'clipboard list', content: 'Rules',
@@ -68,15 +75,6 @@ export const MenuItems = [
             subheader: 'Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property\'s page on the Booking.com website.',
             component: <PhotoTab/>
         }
-    },
-    {
-        menuItem: {
-            key: 'menuItem Room', icon: 'usd', content: 'Layout and pricing', //temporary
-            header: ' Layout and pricing',
-            subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
-            component: <PaymentTab/>,
-        }
-
     },
 
 ];

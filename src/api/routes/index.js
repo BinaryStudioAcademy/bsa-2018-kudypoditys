@@ -15,11 +15,8 @@ const bedInRoom = require("./bedInRoomRoutes");
 const searchProperty = require("./searchPropertyRoutes");
 const availability = require("./availabilityRoutes");
 
-const elasticsearch = require("./elasticsearchRoutes");
-
 module.exports = function(app) {
     app.use("/api", auth);
-    app.use("/elastic", elasticsearch);
     app.use("/api/users", user);
     app.use("/api/property", property);
     app.use("/api/message", message);

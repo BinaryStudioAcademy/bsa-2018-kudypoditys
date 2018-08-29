@@ -20,9 +20,6 @@ import policesTab from "client/logic/polices-tab/reducer";
 import layoutTab from "./room-item/rducer";
 import propertyRegistration from "client/logic/property-creation-tabs/reducer";
 import propertyCalendar from "client/logic/property-availability-calendar/reducer";
-import userSettings from "client/logic/personal-settings-edit/reducer";
-import userCabinet from "./user-cabinet/reducer";
-import userVerified from "client/logic/verify-email/reducer";
 
 export default combineReducers({
     propertyCalendar,
@@ -38,17 +35,12 @@ export default combineReducers({
         registration: registration,
         login: login
     }),
-    login,
     propertyPage,
     quickFilter,
     roomSummary,
     propertySubmit,
     amenitiesTab,
-    // policesTab,
-    // layoutTab,
-    propertyRegistration,
-
-    userVerified,
-    userSettings,
-    userCabinet
+    policesTab,
+    layoutTab,
+    propertyRegistration
 });

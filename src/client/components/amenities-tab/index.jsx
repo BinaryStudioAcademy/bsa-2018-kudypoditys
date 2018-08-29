@@ -8,6 +8,9 @@ import { connect } from 'react-redux';
 import {  reduxForm } from 'redux-form';
 
 class AmenitiesTabRegistration extends Component {
+    state = {}
+    handleContextRef = contextRef => this.setState({contextRef})
+
     constructor() {
         super();
         this.state = {
@@ -27,6 +30,7 @@ class AmenitiesTabRegistration extends Component {
             display: this.state.shown ? "block" : "none"
         };
         let buttonName = this.state.shown ? "Hide all amenities" : "Show all amenities"
+        const {contextRef} = this.state
         return (
             <Grid width={13}>
                 <Grid.Column width={10}>
@@ -41,6 +45,16 @@ class AmenitiesTabRegistration extends Component {
                                 type="submit"
                         >Continue</Button>
                     </form>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                    <Rail position='right' style={{marginTop: '15px'}}>
+                        <Sticky context={contextRef}>
+                            <Segment secondary>
+                                After you complete registration you'll be able to
+                                make changes to your listing before it goes live
+                            </Segment>
+                        </Sticky>
+                    </Rail>
                 </Grid.Column>
             </Grid>
         );
