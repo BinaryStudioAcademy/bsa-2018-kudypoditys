@@ -24,7 +24,8 @@ const PROPERTIES = [
         address: "Koval street 16, Kyiv",
         description: "Hotel Ukraine description.",
         contactPhone: "0509832174",
-        coordinates: { lat: 49.837089, lng: 24.021161 }
+        coordinates: { lat: 49.837089, lng: 24.021161 },
+        rating: 8.1
     },
     {
         id: 2,

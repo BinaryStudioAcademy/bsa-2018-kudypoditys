@@ -11,20 +11,22 @@ import {
 import { Slider } from "../slider";
 import moment from "moment";
 import "./booking-page.scss";
-import BasicMapWidget from "../basic-map-widget";
-import Modal from "../modal";
+import MapWidgetModal from "client/components/map-widget-modal";
 
 export class BookingPage extends React.Component {
+    cancelBooking = (event, booking) => {
+        this.props.cancelBooking(booking);
+    };
     render() {
         const { booking, images } = this.props;
-        console.log(JSON.stringify(images));
+        const { room } = booking;
         const dateIn = new Date(booking.dateIn),
             dateOut = new Date(booking.dateOut);
         const start = moment(dateIn);
         const end = moment(dateOut);
         const duration = moment.duration(end.diff(start));
         const days = Math.round(duration.asDays());
-        const price = Number(booking.room.price) * days;
+        const price = Number(room.price) * days;
         return (
             <Container>
                 <a
@@ -39,6 +41,10 @@ export class BookingPage extends React.Component {
                         Back to all bookings
                     </span>
                 </a>
+
+                <div className="property-images">
+                    <Slider pics={images} />
+                </div>
 
                 <div className="booking-page-top-section">
                     <Table collapsing celled className="booking-info">
@@ -58,9 +64,7 @@ export class BookingPage extends React.Component {
                                     <Icon name="bed" />
                                     Room
                                 </Table.Cell>
-                                <Table.Cell>
-                                    {booking.room.roomType.name}
-                                </Table.Cell>
+                                <Table.Cell>{room.roomType.name}</Table.Cell>
                             </Table.Row>
                             <Table.Row>
                                 <Table.Cell>
@@ -91,6 +95,19 @@ export class BookingPage extends React.Component {
                                 </Table.Cell>
                                 <Table.Cell>{price} USD</Table.Cell>
                             </Table.Row>
+                            <Table.Row>
+                                <Table.Cell colSpan="2">
+                                    <Button
+                                        negative
+                                        fluid
+                                        onClick={event =>
+                                            this.cancelBooking(event, booking)
+                                        }
+                                    >
+                                        Cancel your booking
+                                    </Button>
+                                </Table.Cell>
+                            </Table.Row>
                         </Table.Body>
                     </Table>
 
@@ -101,41 +118,41 @@ export class BookingPage extends React.Component {
                             as="h2"
                         >
                             <a style={{ color: "#465672", cursor: "pointer" }}>
-                                {booking.room.property.name}
+                                {room.property.name}
                             </a>
                         </Header>
                         <p>
                             <Icon name="map marker alternate" />
-                            {booking.room.property.address}
+                            {room.property.address}
                             {" –"}
-                            <Modal
-                                trigger={
-                                    <a
-                                        style={{
-                                            cursor: "pointer",
-                                            marginLeft: "5px"
-                                        }}
-                                    >
-                                        Show on map
-                                    </a>
-                                }
-                            >
-                                <BasicMapWidget
-                                    location={booking.room.property.coordinates}
-                                    rounded
-                                    centered
-                                />
-                            </Modal>
+                            <MapWidgetModal
+                                properties={[
+                                    {
+                                        price: room.price,
+                                        name: room.property.name,
+                                        latitude: room.property.coordinates.lat,
+                                        longitude:
+                                            room.property.coordinates.lng,
+                                        imageSrc: room.property.images[0].url,
+                                        address: room.property.address,
+                                        rating: room.property.rating
+                                    }
+                                ]}
+                                startPosition={{
+                                    latitude: 49.837089,
+                                    longitude: 24.021161
+                                }}
+                                zoom={13}
+                                controlEnable={true}
+                                buttonClass={"searchMapButton"}
+                            />
                         </p>
                         <p>
                             <Icon name="phone" />
-                            {booking.room.property.contactPhone}
+                            {room.property.contactPhone}
                         </p>
-                        <p>{booking.room.property.description}</p>
+                        <p>{room.property.description}</p>
                     </div>
-                </div>
-                <div className="property-images">
-                    <Slider pics={images} />
                 </div>
             </Container>
         );
