@@ -1,7 +1,16 @@
-const Service = require('./generalService');
+const Service = require("./generalService");
 const propertyRepository = require("../repositories/propertyRepository");
 
 class PropertyService extends Service {
+    async findById(id) {
+        try {
+            const property = await this.repository.findById(id);
+            return Promise.resolve(property);
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    }
+
     getAllProperties() {
         return propertyRepository.findAll();
     }
@@ -11,7 +20,7 @@ class PropertyService extends Service {
     }
 
     addProperty(property) {
-        return propertyRepository.createDetails(property)
+        return propertyRepository.createDetails(property);
     }
 
     updateProperty(id, property) {
@@ -23,17 +32,19 @@ class PropertyService extends Service {
     }
 
     getDetailsById(id) {
-        return propertyRepository.getDetailsById(id).then(_ => {
-            console.log('service then ', _);
-            return _;
-        }).catch(_ => {
-            console.log('service catch ', _)
-        });
+        return propertyRepository
+            .getDetailsById(id)
+            .then(_ => {
+                console.log("service then ", _);
+                return _;
+            })
+            .catch(_ => {
+                console.log("service catch ", _);
+            });
     }
     getFilteredProperties(filter) {
-        return propertyRepository.getFilteredProperties(filter)
+        return propertyRepository.getFilteredProperties(filter);
     }
 }
-
 
 module.exports = new PropertyService(propertyRepository);
