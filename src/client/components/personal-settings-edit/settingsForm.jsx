@@ -14,7 +14,8 @@ import {
     Checkbox,
     Radio,
     Image,
-    Button
+    Button,
+    Input
 } from "semantic-ui-react";
 
 export class SettingsForm extends Component {
@@ -292,27 +293,15 @@ export class SettingsForm extends Component {
                         options={appealOptions}
                         onChange={this.sendSettings}
                     />
-                    <p className="personal_settings-p">First name</p>
+                    <p className="personal_settings-p">Full name</p>
                     <Field
                         component={inputField}
-                        name="firstName"
-                        label="First name"
+                        name="fullName"
+                        label="Full Name"
                         type="text"
                         min={4}
                         max={16}
-                        val={this.props.firstName}
-                        onChange={e => this.handleChange(e, e.target)}
-                        onBlur={e => this.sendSettings(e, e.target)}
-                    />
-                    <p className="personal_settings-p">Last name</p>
-                    <Field
-                        component={inputField}
-                        name="lastName"
-                        label="Last name"
-                        type="text"
-                        min={4}
-                        max={16}
-                        val={this.props.lastName}
+                        val={this.props.fullName}
                         onChange={e => this.handleChange(e, e.target)}
                         onBlur={e => this.sendSettings(e, e.target)}
                     />
@@ -326,7 +315,7 @@ export class SettingsForm extends Component {
                         max={16}
                         className="personal_settings-field"
                         pointing="left"
-                        val={this.props.phone}
+                        val={this.props.phoneNumber}
                         validate={[phoneNumber]}
                         onChange={e => this.handleChange(e, e.target)}
                         onBlur={e => this.sendSettings(e, e.target)}
@@ -347,87 +336,15 @@ export class SettingsForm extends Component {
                         onBlur={e => this.sendSettings(e, e.target)}
                     />
                     <p className="personal_settings-p">Address</p>
-                    {this.state.addingAddress ? (
-                        <React.Fragment>
-                            <div className="personal_settings-adding-address">
-                                <p>Address</p>
-                                <Field
-                                    component={inputField}
-                                    name="address"
-                                    label="Address"
-                                    type="text"
-                                    onChange={e =>
-                                        this.handleAddressChange(e, e.target)
-                                    }
-                                />
-                                <p>City</p>
-                                <Field
-                                    component={inputField}
-                                    name="city"
-                                    label="City"
-                                    type="text"
-                                    onChange={e =>
-                                        this.handleAddressChange(e, e.target)
-                                    }
-                                />
-                                <p>Country / Territory</p>
-                                <Dropdown
-                                    name="addressCountry"
-                                    fluid
-                                    selection
-                                    defaultValue={this.props.country}
-                                    options={countryOptions}
-                                    onChange={this.handleAddressChange}
-                                />
-                                <p>Postcode</p>
-                                <Field
-                                    component={inputField}
-                                    name="postcode"
-                                    label="Postcode"
-                                    type="number"
-                                    onChange={e =>
-                                        this.handleAddressChange(e, e.target)
-                                    }
-                                />
-                                <div className="personal_settings-submit">
-                                    <Label
-                                        as="a"
-                                        content="Save"
-                                        onClick={this.saveAddress}
-                                        color="blue"
-                                        className="personal_settings-btn"
-                                    />
-                                    <Label
-                                        as="a"
-                                        content="Undo"
-                                        onClick={() =>
-                                            this.addingItem(
-                                                "addingAddress",
-                                                false
-                                            )
-                                        }
-                                        basic
-                                        className="personal_settings-btn"
-                                    />
-                                </div>
-                            </div>
-                        </React.Fragment>
-                    ) : (
-                        <Label
-                            as="a"
-                            content="Add address"
-                            icon="plus square"
-                            onClick={() =>
-                                this.addingItem("addingAddress", true)
-                            }
-                            color="blue"
-                            className="personal_settings-btn"
-                        />
-                    )}
-                    <Label basic>
-                        {this.props.address},{this.props.postcode},
-                        {this.props.city},{this.props.addressCountry}
-                    </Label>
+                    <Field
+                        component={inputField}
+                        name="address"
+                        label="Address"
+                        type="text"
+                        val={this.props.address}
+                        onChange={e => this.handleChange(e, e.target)}
+                        onBlur={e => this.sendSettings(e, e.target)}
+                    />
                 </Segment>
 
                 <Segment className="personal_settings-segment">
