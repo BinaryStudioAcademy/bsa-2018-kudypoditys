@@ -10,7 +10,6 @@ export default function* propertyPageSaga() {
                 `/api/property/${action.payload}`,
                 "get"
             );
-            console.log(JSON.stringify(response.data));
             yield put({
                 type: actionTypes.GET_PROPERTY_INFO_SUCCESS,
                 payload: response.data
