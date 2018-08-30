@@ -1,0 +1,25 @@
+.booking-page-top-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 10px;
+    align-content: center;
+}
+
+.property-info {
+    min-width: 500px;
+    color: #465672;
+}
+
+.property-info a {
+    color: #465672;
+}
+
+.property-images {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    max-width: 700px;
+}
