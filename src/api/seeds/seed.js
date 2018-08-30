@@ -7,6 +7,13 @@ const USERS = [
         password: bcrypt.hashSync("nata1NATA", 10),
         email: "natalya@gmail.com",
         phoneNumber: "0504958671"
+    },
+    {
+        id: 2,
+        fullName: "Nikolay Datsko",
+        password: bcrypt.hashSync("102938abC", 10),
+        email: "lorem@lorem.com",
+        phoneNumber: "80954568261"
     }
 ];
 
@@ -16,14 +23,16 @@ const PROPERTIES = [
         name: "Hotel Ukraine",
         address: "Koval street 16, Kyiv",
         description: "Hotel Ukraine description.",
-        contactPhone: "0509832174"
+        contactPhone: "0509832174",
+        coordinates: { lat: 49.837089, lng: 24.021161 }
     },
     {
         id: 2,
         name: "Hotel Dolynskyi",
         address: "Koval street 16, Lviv",
         description: "Hotel Dolynskyi description. Located in Lviv.",
-        contactPhone: "0509842174"
+        contactPhone: "0509842174",
+        coordinates: { lat: 49.837089, lng: 24.021161 }
     }
 ];
 
@@ -55,6 +64,12 @@ const IMAGES = [
     },
     {
         id: 2,
+        url:
+            "https://www.publicdomainpictures.net/pictures/10000/velka/947-1262818585EUqs.jpg",
+        propertyId: 2
+    },
+    {
+        id: 3,
         url:
             "https://www.publicdomainpictures.net/pictures/10000/velka/947-1262818585EUqs.jpg",
         propertyId: 2
