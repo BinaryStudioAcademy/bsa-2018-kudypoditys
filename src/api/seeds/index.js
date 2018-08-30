@@ -1,6 +1,7 @@
 const {
     USERS,
     PROPERTIES,
+    ACCOMMODATION_RULES,
     ROOMS,
     IMAGES,
     RESERVATIONS,
@@ -29,6 +30,7 @@ module.exports = function(models) {
         RoomType,
         PropertyType,
         Property,
+        AccommodationRule,
         Room,
         Reservation,
         Image,
@@ -43,6 +45,7 @@ module.exports = function(models) {
         [ReviewCategory, REVIEW_CATEGORIES],
         [RoomType, ROOM_TYPES],
         [PropertyType, PROPERTY_TYPE],
+        [AccommodationRule, ACCOMMODATION_RULES],
         [Property, PROPERTIES],
         [Room, ROOMS],
         [Image, IMAGES],

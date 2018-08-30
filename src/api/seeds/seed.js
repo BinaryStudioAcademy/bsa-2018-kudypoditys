@@ -24,7 +24,10 @@ const PROPERTIES = [
         address: "Koval street 16, Kyiv",
         description: "Hotel Ukraine description.",
         contactPhone: "0509832174",
-        coordinates: { lat: 49.837089, lng: 24.021161 }
+        coordinates: { lat: 49.837089, lng: 24.021161 },
+        propertyTypeId: 9,
+        cityId: 2,
+        accommodationRuleId: 1
     },
     {
         id: 2,
@@ -32,7 +35,23 @@ const PROPERTIES = [
         address: "Koval street 16, Lviv",
         description: "Hotel Dolynskyi description. Located in Lviv.",
         contactPhone: "0509842174",
-        coordinates: { lat: 49.837089, lng: 24.021161 }
+        coordinates: { lat: 49.837089, lng: 24.021161 },
+        propertyTypeId: 9,
+        cityId: 1,
+        accommodationRuleId: 1
+    }
+];
+
+const ACCOMMODATION_RULES = [
+    {
+        id: 1,
+        allowPets: false,
+        cancelReservation: true,
+        minimumStay: 1,
+        arrivalTimeStart: "10:00",
+        arrivalTimeEnd: "14:00",
+        departureTimeStart: "10:00",
+        departureTimeEnd: "12:00"
     }
 ];
 
@@ -630,6 +649,7 @@ const ROOM_TYPES = [
 module.exports = {
     USERS,
     PROPERTIES,
+    ACCOMMODATION_RULES,
     ROOMS,
     RESERVATIONS,
     IMAGES,
