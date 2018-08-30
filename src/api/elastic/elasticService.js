@@ -95,7 +95,7 @@ module.exports = {
                     name: property.name,
                     rating: property.rating,
                     image: property.images[0].url,
-                    city: "Lviv", //property.city.name,
+                    city: property.city.name,
                     description: property.description
                 });
             });

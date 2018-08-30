@@ -134,6 +134,10 @@ export class MainSearch extends React.Component {
                 return `${this.state.children} Children`;
         }
     };
+    onAdultsSelected = count => {
+        this.setState({ adults: count });
+        this.props.onAdultsChange(count);
+    };
 
     onChildrenSelected = count => {
         this.setState({ children: count });
@@ -250,9 +254,7 @@ export class MainSearch extends React.Component {
                                         options={selectOptionsAdults}
                                         value={adults}
                                         onChange={(event, input) =>
-                                            this.props.onAdultsChange(
-                                                input.value
-                                            )
+                                            this.onAdultsSelected(input.value)
                                         }
                                     />
                                 </Grid.Column>
