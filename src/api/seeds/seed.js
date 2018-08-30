@@ -118,6 +118,29 @@ const RESERVATIONS = [
     }
 ];
 
+const FACILITY_LISTS = [
+    {
+        id: 1,
+        propertyId: 1,
+        facilityId: 1
+    },
+    {
+        id: 2,
+        propertyId: 2,
+        facilityId: 4
+    },
+    {
+        id: 3,
+        propertyId: 1,
+        facilityId: 3
+    },
+    {
+        id: 4,
+        propertyId: 2,
+        facilityId: 2
+    }
+];
+
 const COUNTRIES = [
     {
         id: 1,
@@ -652,6 +675,7 @@ module.exports = {
     USERS,
     PROPERTIES,
     ACCOMMODATION_RULES,
+    FACILITY_LISTS,
     ROOMS,
     RESERVATIONS,
     IMAGES,
