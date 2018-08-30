@@ -48,6 +48,14 @@ let User = orm.define("user", {
     address: {
         type: Sequelize.STRING,
         allowNull: true
+    },
+    nickName: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    preferredCurrency: {
+        type: Sequelize.STRING,
+        allowNull: true
     }
 });
 
