@@ -72,6 +72,7 @@ const includeOptions = [
     },
     {
         model: FacilityList,
+        attributes: ["belongsToProperty"],
         include: [
             {
                 model: Facility,
