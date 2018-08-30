@@ -1,7 +1,7 @@
-import React, {Component} from "react";
-import {reduxForm, Field} from "redux-form";
+import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form";
 import ImageUploader from "react-images-upload";
-import {phoneNumber, email} from "client/regexValidationService";
+import { phoneNumber, email } from "client/regexValidationService";
 import inputField from "./input";
 
 import {
@@ -13,9 +13,8 @@ import {
     Dropdown,
     Checkbox,
     Radio,
-    Image,
+    Image
 } from "semantic-ui-react";
-
 
 export class SettingsForm extends Component {
     state = {
@@ -24,7 +23,7 @@ export class SettingsForm extends Component {
             address: "",
             city: "",
             addressCountry: "",
-            postcode: "",
+            postcode: ""
         },
         creditCard: {
             type: "",
@@ -33,51 +32,51 @@ export class SettingsForm extends Component {
             expirationDay: "",
             expirationYear: "",
             usedForBooking: "",
-            transferRemuneration: "",
-        },
+            transferRemuneration: ""
+        }
     };
 
     updateSettings = data => {
         this.props.updateSettings(data);
     };
 
-    sendSettings = (e, {name, value}) => {
+    sendSettings = (e, { name, value }) => {
         console.log("SEND TO BACKEND:", name, value);
-        this.updateSettings({[name]: value});
+        this.updateSettings({ [name]: value });
     };
 
     // Address mini-form handlers:
-    handleAddressChange = (e, {name, value}) => {
+    handleAddressChange = (e, { name, value }) => {
         this.setState({
             address: {
                 ...this.state.address,
-                [name]: value,
-            },
+                [name]: value
+            }
         });
     };
     saveAddress = () => {
         const data = {
-            ...this.state.address,
+            ...this.state.address
         };
 
         this.props.updateSettings({
-            ...data,
+            ...data
         });
     };
     //
 
     // Credit cards mini-form handlers:
-    handleCreditCardsChange = (e, {name, value}) => {
+    handleCreditCardsChange = (e, { name, value }) => {
         this.setState({
             creditCard: {
                 ...this.state.creditCard,
-                [name]: value,
-            },
+                [name]: value
+            }
         });
     };
     saveCreditCard = () => {
         const data = {
-            ...this.state.creditCard,
+            ...this.state.creditCard
         };
         if (
             !data.type ||
@@ -93,14 +92,14 @@ export class SettingsForm extends Component {
         ) {
             this.setState({
                 addingCreditcard: {
-                    error: true,
-                },
+                    error: true
+                }
             });
 
             return;
         }
         this.props.updateSettings({
-            creditCards: [...this.props.creditCards, {...data}],
+            creditCards: [...this.props.creditCards, { ...data }]
         });
 
         this.addingItem("addingCreditcard", false);
@@ -115,13 +114,15 @@ export class SettingsForm extends Component {
                 expirationDay: "",
                 expirationYear: "",
                 usedForBooking: "",
-                transferRemuneration: "",
-            },
+                transferRemuneration: ""
+            }
         });
     };
-    removeCreditCard = (e, {name, value}) => {
+    removeCreditCard = (e, { name, value }) => {
         this.updateSettings({
-            creditCards: this.props.creditCards.filter((creditcard) => creditcard.number != name)
+            creditCards: this.props.creditCards.filter(
+                creditcard => creditcard.number != name
+            )
         });
     };
     //
@@ -132,15 +133,15 @@ export class SettingsForm extends Component {
         if (this.props.additionalFacilities.includes(value)) {
             this.props.updateSettings({
                 additionalFacilities: this.props.additionalFacilities.filter(
-                    facility => facility !== value,
-                ),
+                    facility => facility !== value
+                )
             });
         } else {
             this.props.updateSettings({
                 additionalFacilities: [
                     ...this.props.additionalFacilities,
-                    value,
-                ],
+                    value
+                ]
             });
         }
     };
@@ -150,11 +151,11 @@ export class SettingsForm extends Component {
     };
     //
 
-    handleChange = (e, {name, value}) => {
+    handleChange = (e, { name, value }) => {
         console.log(e, name, value);
 
         const data = {
-            [name]: value,
+            [name]: value
         };
 
         this.updateSettings(data);
@@ -162,7 +163,7 @@ export class SettingsForm extends Component {
 
     onDrop = pic => {
         this.setState({
-            pic: pic,
+            pic: pic
         });
     };
 
@@ -170,11 +171,11 @@ export class SettingsForm extends Component {
         console.log(item, bool);
         if (bool) {
             this.setState({
-                [item]: true,
+                [item]: true
             });
         } else if (!bool) {
             this.setState({
-                [item]: false,
+                [item]: false
             });
         }
     };
@@ -189,7 +190,7 @@ export class SettingsForm extends Component {
             starsOptions,
             currencyOptions,
             appealOptions,
-            payForAccommodationOptions,
+            payForAccommodationOptions
         } = this.props;
         return (
             <Form onSubmit={handleSubmit}>
@@ -204,7 +205,7 @@ export class SettingsForm extends Component {
                     </div>
                     <p className="personal_settings-p">Main photo</p>
                     <Image
-                        style={{width: "150px", height: "150px"}}
+                        style={{ width: "150px", height: "150px" }}
                         src={
                             this.props.avatarUrl ||
                             "https://www.mautic.org/media/images/default_avatar.png"
@@ -302,11 +303,11 @@ export class SettingsForm extends Component {
                         onChange={e => this.handleChange(e, e.target)}
                         onBlur={e => this.sendSettings(e, e.target)}
                     />
-                    <p className="personal_settings-p">Second name</p>
+                    <p className="personal_settings-p">Last name</p>
                     <Field
                         component={inputField}
                         name="lastName"
-                        label="Second name"
+                        label="Last name"
                         type="text"
                         min={4}
                         max={16}
@@ -401,7 +402,7 @@ export class SettingsForm extends Component {
                                         onClick={() =>
                                             this.addingItem(
                                                 "addingAddress",
-                                                false,
+                                                false
                                             )
                                         }
                                         basic
@@ -439,13 +440,19 @@ export class SettingsForm extends Component {
                             basic
                             key={i}
                         >
-                            <div className="personal_settings-creditcard-label-div-type">{creditcard.type}</div>
-                            <div
-                                className="personal_settings-creditcard-label-div-number">Number: {creditcard.number}</div>
-                            <div
-                                className="personal_settings-creditcard-label-div-owner">Owner: {creditcard.owner}</div>
-                            <div
-                                className="personal_settings-creditcard-label-div-expiration">Expiration: {creditcard.expirationDay} - {creditcard.expirationYear}</div>
+                            <div className="personal_settings-creditcard-label-div-type">
+                                {creditcard.type}
+                            </div>
+                            <div className="personal_settings-creditcard-label-div-number">
+                                Number: {creditcard.number}
+                            </div>
+                            <div className="personal_settings-creditcard-label-div-owner">
+                                Owner: {creditcard.owner}
+                            </div>
+                            <div className="personal_settings-creditcard-label-div-expiration">
+                                Expiration: {creditcard.expirationDay} -{" "}
+                                {creditcard.expirationYear}
+                            </div>
                             <div className="personal_settings-creditcard-label-div-usedForBooking">
                                 {creditcard.usedForBooking
                                     ? "Used for booking"
@@ -462,7 +469,7 @@ export class SettingsForm extends Component {
                                 basic
                                 onClick={this.removeCreditCard}
                             >
-                                <Icon name="close"/>
+                                <Icon name="close" />
                                 Remove
                             </Label>
                         </Label>
@@ -529,7 +536,7 @@ export class SettingsForm extends Component {
                                     this.handleCreditCardsChange(e, {
                                         name: "usedForBooking",
                                         value: !this.state.creditCard
-                                            .usedForBooking,
+                                            .usedForBooking
                                     })
                                 }
                             />
@@ -540,7 +547,7 @@ export class SettingsForm extends Component {
                                     this.handleCreditCardsChange(e, {
                                         name: "transferRemuneration",
                                         value: !this.state.creditCard
-                                            .transferRemuneration,
+                                            .transferRemuneration
                                     })
                                 }
                             />
@@ -562,7 +569,7 @@ export class SettingsForm extends Component {
                                 icon="cancel"
                                 onClick={() => (
                                     this.addingItem("addingCreditcard", false),
-                                        this.cancelCreditCard()
+                                    this.cancelCreditCard()
                                 )}
                                 basic
                                 className="personal_settings-btn"
@@ -599,258 +606,7 @@ export class SettingsForm extends Component {
                         options={paymentOptions}
                         onChange={this.sendSettings}
                     />
-                    <p className="personal_settings-p">
-                        When do you prefer to pay for accommodation?
-                    </p>
-                    <Dropdown
-                        name="payForAccommodation"
-                        className="personal_settings-dropdown-regular"
-                        fluid
-                        selection
-                        defaultValue={this.props.payForAccommodation}
-                        options={payForAccommodationOptions}
-                        onChange={this.sendSettings}
-                    />
                 </Segment>
-
-                <Segment className="personal_settings-segment">
-                    <div className="personal_settings-segment-header">
-                        <Header as="h2">How do you travel</Header>
-                        <span>
-                            Tell us about how you usually travel so that we can
-                            customize the search parameters for you.
-                        </span>
-                    </div>
-                    <p className="personal_settings-p">Smoking in rooms</p>
-                    <Dropdown
-                        name="smokingInRooms"
-                        fluid
-                        selection
-                        defaultValue={this.props.smokingInRooms}
-                        options={smokingInRoomsOptions}
-                        onChange={this.sendSettings}
-                    />
-                    <p className="personal_settings-p">Count of stars</p>
-                    <Dropdown
-                        name="countOfStars"
-                        fluid
-                        selection
-                        defaultValue={this.props.countOfStars}
-                        options={starsOptions}
-                        onChange={this.sendSettings}
-                    />
-                    <p className="personal_settings-p">
-                        Facilities for disabled guests
-                    </p>
-                    <Checkbox
-                        name="showWithDisabledFacilities"
-                        label="Show options with disabled facilities"
-                        checked={this.props.showWithDisabledFacilities}
-                        onChange={e =>
-                            this.sendSettings(e, {
-                                name: "showWithDisabledFacilities",
-                                value: !this.props.showWithDisabledFacilities,
-                            })
-                        }
-                    />
-                    <p className="personal_settings-p">Favorite facilities</p>
-                    {this.state.addingFacilities ? (
-                        <div className="personal_settings-facilities">
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Restaurant",
-                                )}
-                                label="Restaurant"
-                                onChange={() =>
-                                    this.handleFacilitiesChange("Restaurant")
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Non-smoking rooms",
-                                )}
-                                label="Non-smoking rooms"
-                                onChange={() =>
-                                    this.handleFacilitiesChange(
-                                        "Non-smoking rooms",
-                                    )
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Family rooms",
-                                )}
-                                label="Family rooms"
-                                onChange={() =>
-                                    this.handleFacilitiesChange("Family rooms")
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Parking space",
-                                )}
-                                label="Parking space"
-                                onChange={() =>
-                                    this.handleFacilitiesChange("Parking space")
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Wi-Fi",
-                                )}
-                                label="Wi-Fi"
-                                onChange={() =>
-                                    this.handleFacilitiesChange("Wi-Fi")
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Transfer from / to the airport",
-                                )}
-                                label="Transfer from / to the airport"
-                                onChange={() =>
-                                    this.handleFacilitiesChange(
-                                        "Transfer from / to the airport",
-                                    )
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Bar",
-                                )}
-                                label="Bar"
-                                onChange={() =>
-                                    this.handleFacilitiesChange("Bar")
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "24-hour fron desk",
-                                )}
-                                label="24-hour fron desk"
-                                onChange={() =>
-                                    this.handleFacilitiesChange(
-                                        "24-hour fron desk",
-                                    )
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Internet",
-                                )}
-                                label="Internet"
-                                onChange={() =>
-                                    this.handleFacilitiesChange("Internet")
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Fitness Center",
-                                )}
-                                label="Fitness Center"
-                                onChange={() =>
-                                    this.handleFacilitiesChange(
-                                        "Fitness Center",
-                                    )
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Pets allowed",
-                                )}
-                                label="Pets allowed"
-                                onChange={() =>
-                                    this.handleFacilitiesChange("Pets allowed")
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Spa & Wellness Center",
-                                )}
-                                label="Spa & Wellness Center"
-                                onChange={() =>
-                                    this.handleFacilitiesChange(
-                                        "Spa & Wellness Center",
-                                    )
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Pool",
-                                )}
-                                label="Pool"
-                                onChange={() =>
-                                    this.handleFacilitiesChange("Pool")
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Free Wi-Fi",
-                                )}
-                                label="Free Wi-Fi"
-                                onChange={() =>
-                                    this.handleFacilitiesChange("Free Wi-Fi")
-                                }
-                            />
-                            <Checkbox
-                                checked={this.props.additionalFacilities.includes(
-                                    "Luggage Store",
-                                )}
-                                label="Luggage Store"
-                                onChange={() =>
-                                    this.handleFacilitiesChange("Luggage Store")
-                                }
-                            />
-                            <div className="personal_settings-submit">
-                                <Label
-                                    as="a"
-                                    content="Save"
-                                    onClick={this.saveFacilities}
-                                    color="blue"
-                                    className="personal_settings-btn"
-                                />
-                            </div>
-                        </div>
-                    ) : (
-                        <Label
-                            as="a"
-                            content="Add facility"
-                            icon="plus square"
-                            onClick={() =>
-                                this.addingItem("addingFacilities", true)
-                            }
-                            color="blue"
-                            className="personal_settings-btn"
-                        />
-                    )}
-                    <p className="personal_settings-p">For whom do ou book?</p>
-                    <div className="personal_settings-radio-booking">
-                        <Radio
-                            checked={this.props.bookForWhom === "For myself"}
-                            name="bookForWhom"
-                            value="For myself"
-                            label="For myself"
-                            onChange={this.handleChange}
-                        />
-                        <Radio
-                            checked={this.props.bookForWhom === "For others"}
-                            name="bookForWhom"
-                            value="For others"
-                            label="For others"
-                            onChange={this.handleChange}
-                        />
-                        <Radio
-                            checked={
-                                this.props.bookForWhom === "For me and others"
-                            }
-                            name="bookForWhom"
-                            value="For me and others"
-                            label="For me and others"
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                </Segment>
-
                 <Segment className="personal_settings-segment">
                     <div className="personal_settings-segment-header">
                         <Header as="h2">Password and currency</Header>
@@ -869,21 +625,11 @@ export class SettingsForm extends Component {
                         Change password
                     </Label>
                 </Segment>
-
-                <Segment className="personal_settings-segment">
-                    <div className="personal_settings-segment-header">
-                        <Header as="h2">Privacy</Header>
-                    </div>
-                    <p className="personal_settings-p">Active sessions</p>
-                    <Label as="a" basic>
-                        Quit on another sessions
-                    </Label>
-                </Segment>
             </Form>
         );
     }
 }
 
 export default reduxForm({
-    form: "personalSettings",
+    form: "personalSettings"
 })(SettingsForm);
