@@ -160,7 +160,9 @@ const state = {
         userName: "User Name"
     },
 
-    activeProperty: null,
+    propertyPage: {
+        property: null
+    },
 
     propertyLayoutTab: {
         title: "Apartment with Garden View",
