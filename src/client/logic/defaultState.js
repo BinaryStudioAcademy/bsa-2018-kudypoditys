@@ -161,7 +161,14 @@ const state = {
     },
 
     propertyPage: {
-        property: null
+        property: null,
+        availabilityInput: {
+            checkIn: null,
+            checkOut: null,
+            adults: 2,
+            rooms: 1,
+            children: 0
+        }
     },
 
     propertyLayoutTab: {

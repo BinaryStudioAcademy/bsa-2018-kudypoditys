@@ -1,5 +1,8 @@
 import defaultState from "client/logic/defaultState";
-import { GET_PROPERTY_INFO_SUCCESS } from "./actionTypes";
+import {
+    GET_PROPERTY_INFO_SUCCESS,
+    AVAILABILITY_INPUT_UPDATE
+} from "./actionTypes";
 
 function propertyPageReducer(state = defaultState.propertyPage, action) {
     switch (action.type) {
@@ -7,6 +10,15 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
             return {
                 ...state,
                 property: action.payload
+            };
+        }
+        case AVAILABILITY_INPUT_UPDATE: {
+            return {
+                ...state,
+                availabilityInput: {
+                    ...state.availabilityInput,
+                    ...action.payload
+                }
             };
         }
         default: {

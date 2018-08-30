@@ -1,11 +1,12 @@
 import { getPropertyInfoById } from "../../logic/property-page/actions";
 
 export function mapStateToProps(state, ownProps) {
-    const { shownProperties } = state;
+    const { user } = state.userCabinet;
     const { property } = state.propertyPage;
+
     return {
-        propertyItemData: shownProperties[ownProps.id],
-        property: property
+        property: property,
+        user: user
     };
 }
 
