@@ -49,7 +49,7 @@ let User = orm.define("user", {
         type: Sequelize.STRING,
         allowNull: true
     },
-    nickName: {
+    nickname: {
         type: Sequelize.STRING,
         allowNull: false
     },

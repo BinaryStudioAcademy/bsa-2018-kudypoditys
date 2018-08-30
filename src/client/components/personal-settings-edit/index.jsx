@@ -19,6 +19,10 @@ export class EditPersonalSettings extends Component {
         this.props.sendSettings(data);
     };
 
+    componentWillMount() {
+        this.props.getUserSettings();
+    }
+
     render() {
         const formProps = {
             dateOptions: staticData.dateOptions,

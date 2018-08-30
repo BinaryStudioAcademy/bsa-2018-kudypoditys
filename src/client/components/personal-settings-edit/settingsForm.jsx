@@ -13,7 +13,8 @@ import {
     Dropdown,
     Checkbox,
     Radio,
-    Image
+    Image,
+    Button
 } from "semantic-ui-react";
 
 export class SettingsForm extends Component {

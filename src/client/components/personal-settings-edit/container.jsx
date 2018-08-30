@@ -1,11 +1,14 @@
-import {updateUserSettings, sendUserSettings} from "client/logic/personal-settings-edit/actions";
-
+import {
+    updateUserSettings,
+    sendUserSettings,
+    getUserSettings
+} from "client/logic/personal-settings-edit/actions";
 
 export function mapStateToProps(state) {
-    const {userSettings} = state;
+    const { userSettings } = state;
     return {
         ...userSettings
-    }
+    };
 }
 
 export function mapDispatchToProps(dispatch) {
@@ -15,6 +18,9 @@ export function mapDispatchToProps(dispatch) {
         },
         updateSettings(data) {
             dispatch(updateUserSettings(data));
+        },
+        getUserSettings() {
+            dispatch(getUserSettings());
         }
-    }
+    };
 }
