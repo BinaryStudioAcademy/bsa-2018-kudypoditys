@@ -39,7 +39,8 @@ class ReservationRepository extends Repository {
                                 "id",
                                 "name",
                                 "address",
-                                "contactPhone"
+                                "contactPhone",
+                                "description"
                             ]
                         }
                     ]
@@ -84,7 +85,8 @@ class ReservationRepository extends Repository {
                                 "id",
                                 "name",
                                 "address",
-                                "contactPhone"
+                                "contactPhone",
+                                "description"
                             ]
                         }
                     ]
@@ -128,7 +130,8 @@ class ReservationRepository extends Repository {
                                 "id",
                                 "name",
                                 "address",
-                                "contactPhone"
+                                "contactPhone",
+                                "description"
                             ]
                         }
                     ]
