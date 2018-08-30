@@ -2,9 +2,9 @@ import React from "react";
 import "./index.scss";
 import { BookingSegment } from "./booking-segment";
 import { Container } from "semantic-ui-react";
-import {BookingPage} from "./booking-page";
-import {mapStateToProps, mapDispatchToProps} from "./container";
-import {connect} from "react-redux";
+import { BookingPage } from "./booking-page";
+import { mapStateToProps, mapDispatchToProps } from "./container";
+import { connect } from "react-redux";
 
 export class BookingsTab extends React.Component {
     viewBooking = booking => {
@@ -39,11 +39,12 @@ export class BookingsTab extends React.Component {
     }
 
     render() {
-        const {bookings, activeBooking} = this.props;
+        const { bookings, activeBooking } = this.props;
         //console.log(JSON.stringify(bookings));
         return activeBooking ? (
             <Container fluid>
                 <BookingPage
+                    cancelBooking={this.props.cancelBooking}
                     backToAllBookings={this.backToAllBookings}
                     booking={activeBooking}
                     images={this.getBookingImages(activeBooking)}

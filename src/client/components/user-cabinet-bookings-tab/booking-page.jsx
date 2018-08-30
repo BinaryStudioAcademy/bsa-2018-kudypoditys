@@ -14,10 +14,13 @@ import "./booking-page.scss";
 import MapWidgetModal from "client/components/map-widget-modal";
 
 export class BookingPage extends React.Component {
+    cancelBooking = (event, booking) => {
+        event.preventDefault();
+        // console.log(id);
+        this.props.cancelBooking(booking);
+    };
     render() {
         const { booking, images } = this.props;
-        console.log(booking.room.property);
-        console.log(JSON.stringify(images));
         const dateIn = new Date(booking.dateIn),
             dateOut = new Date(booking.dateOut);
         const start = moment(dateIn);
@@ -39,6 +42,10 @@ export class BookingPage extends React.Component {
                         Back to all bookings
                     </span>
                 </a>
+
+                <div className="property-images">
+                    <Slider pics={images} />
+                </div>
 
                 <div className="booking-page-top-section">
                     <Table collapsing celled className="booking-info">
@@ -91,6 +98,19 @@ export class BookingPage extends React.Component {
                                 </Table.Cell>
                                 <Table.Cell>{price} USD</Table.Cell>
                             </Table.Row>
+                            <Table.Row>
+                                <Table.Cell colSpan="2">
+                                    <Button
+                                        negative
+                                        fluid
+                                        onClick={event =>
+                                            this.cancelBooking(event, booking)
+                                        }
+                                    >
+                                        Cancel your booking
+                                    </Button>
+                                </Table.Cell>
+                            </Table.Row>
                         </Table.Body>
                     </Table>
 
@@ -140,9 +160,6 @@ export class BookingPage extends React.Component {
                         </p>
                         <p>{booking.room.property.description}</p>
                     </div>
-                </div>
-                <div className="property-images">
-                    <Slider pics={images} />
                 </div>
             </Container>
         );
