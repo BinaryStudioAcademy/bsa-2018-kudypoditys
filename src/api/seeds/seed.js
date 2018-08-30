@@ -21,18 +21,39 @@ const PROPERTIES = [
     {
         id: 1,
         name: "Hotel Ukraine",
+        rating: 4.5,
         address: "Koval street 16, Kyiv",
         description: "Hotel Ukraine description.",
         contactPhone: "0509832174",
-        coordinates: { lat: 49.837089, lng: 24.021161 }
+        coordinates: { lat: 49.837089, lng: 24.021161 },
+        propertyTypeId: 9,
+        cityId: 2,
+        accommodationRuleId: 1
     },
     {
         id: 2,
         name: "Hotel Dolynskyi",
+        rating: 4.9,
         address: "Koval street 16, Lviv",
         description: "Hotel Dolynskyi description. Located in Lviv.",
         contactPhone: "0509842174",
-        coordinates: { lat: 49.837089, lng: 24.021161 }
+        coordinates: { lat: 49.837089, lng: 24.021161 },
+        propertyTypeId: 9,
+        cityId: 1,
+        accommodationRuleId: 1
+    }
+];
+
+const ACCOMMODATION_RULES = [
+    {
+        id: 1,
+        allowPets: false,
+        cancelReservation: true,
+        minimumStay: 1,
+        arrivalTimeStart: "10:00",
+        arrivalTimeEnd: "14:00",
+        departureTimeStart: "10:00",
+        departureTimeEnd: "12:00"
     }
 ];
 
@@ -94,6 +115,47 @@ const RESERVATIONS = [
         userId: 1,
         roomId: 2,
         paymentTypeId: 1
+    }
+];
+
+const FACILITY_LISTS = [
+    {
+        id: 1,
+        propertyId: 1,
+        facilityId: 1
+    },
+    {
+        id: 2,
+        propertyId: 2,
+        facilityId: 4
+    },
+    {
+        id: 3,
+        propertyId: 1,
+        facilityId: 3
+    },
+    {
+        id: 4,
+        propertyId: 2,
+        facilityId: 2
+    }
+];
+
+const BED_IN_ROOMS = [
+    {
+        count: 1,
+        roomId: 1,
+        bedTypeId: 1
+    },
+    {
+        count: 1,
+        roomId: 2,
+        bedTypeId: 2
+    },
+    {
+        count: 1,
+        roomId: 2,
+        bedTypeId: 1
     }
 ];
 
@@ -630,6 +692,8 @@ const ROOM_TYPES = [
 module.exports = {
     USERS,
     PROPERTIES,
+    ACCOMMODATION_RULES,
+    FACILITY_LISTS,
     ROOMS,
     RESERVATIONS,
     IMAGES,
@@ -639,6 +703,7 @@ module.exports = {
     ROLES,
     FACILITY_CATEGORIES,
     REVIEW_CATEGORIES,
+    BED_IN_ROOMS,
     BED_TYPES,
     ROOM_TYPES,
     PROPERTY_TYPE
