@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 import history from "client/history";
+
 
 export class VerifyEmail extends Component {
     handleVerifySend = () => {
@@ -12,8 +13,8 @@ export class VerifyEmail extends Component {
         this.handleVerifySend();
     }
 
-    componentDidUpdate(){
-        if(this.props.verified) {
+    componentDidUpdate() {
+        if (this.props.verified) {
             setTimeout(() => {
                 console.log("redirecting");
                 history.push("/?verified");
@@ -29,8 +30,8 @@ export class VerifyEmail extends Component {
             <div>
                 {
                     this.props.verified ? (
-                        <p>Email verified! Redirecting ...</p>
-                    )
+                            <p>Email verified! Redirecting ...</p>
+                        )
                         :
                         (
                             <p>Verificating email...</p>

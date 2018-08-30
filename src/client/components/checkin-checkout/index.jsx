@@ -13,11 +13,13 @@ export class CheckInCheckOut extends React.Component {
     handleClick = (event, value) => {
         this.props.onSelectTime(value.value, value.type);
 
+
     };
 
     render() {
+        console.log(this.props )
         const {arrivalFrom, arrivalTo, departureFrom, departureTo} = this.props;
-
+console.log(arrivalFrom)
         return (
             <Container>
 

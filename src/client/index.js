@@ -41,7 +41,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/signup" component={RegistrationPage} />
-                <Route exact path="/verifyemail" component={VerifyEmail} />
+                <Route exact path="/verifyemail" component={VerifyEmail}/>
                 <Route exact path="/login" component={LoginPage} />
                 <Route
                     exact

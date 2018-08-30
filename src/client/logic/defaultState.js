@@ -6,13 +6,13 @@ const state = {
         adults: 1,
         children: 0,
         rooms: 1,
-        results: [],
+        results: []
     },
     login: {
         email: "",
         password: "",
-        errors: [],
-        loginSuccess: false,
+        error: "",
+        loginSuccess: false
     },
     foundProperties: {
         foundProperty1: {
@@ -39,8 +39,8 @@ const state = {
                 "Airport shuttle",
                 "Family rooms",
                 "Pets allowed",
-                "Bar",
-            ],
+                "Bar"
+            ]
         },
         foundProperty2: {
             _id: 1,
@@ -66,30 +66,22 @@ const state = {
                 "Airport shuttle",
                 "Family rooms",
                 "Pets allowed",
-                "Bar",
-            ],
-        },
+                "Bar"
+            ]
+        }
     },
 
     sortType: {
-        activeItem: "price",
+        activeItem: "price"
     },
-    addProperty: {
-        arrivalFrom: "10:00",
-        arrivalTo: "12:00",
-        departureFrom: "10:00",
-        departureTo: "12:00",
-    },
-    images: []
 
-    ,
     propertySubmit: {
         activeIndex: 2
     },
     header: {
         currencies: [],
         selectedCurrency: 1,
-        currentUser: null,
+        currentUser: null
     },
     shownProperties: {
         "xyz-1": {
@@ -113,16 +105,16 @@ const state = {
                 "Airport shuttle",
                 "Family rooms",
                 "Pets allowed",
-                "Bar",
-            ],
+                "Bar"
+            ]
         },
-        "xyz-2": {},
+        "xyz-2": {}
     },
     searchResults: {
         destination: "Lviv",
-        totalCount: 1,
+        totalCount: 2,
         shownFrom: 1,
-        shownTo: 5,
+        shownTo: 5
     },
     cityInfos: [],
     filters: [
@@ -131,46 +123,47 @@ const state = {
             ischecked: true,
             label: "Pool",
             amount: 321,
-            type: "Facility",
+            type: "Facility"
         },
         {
             id: "2",
             ischecked: false,
             label: "Very good location: 8+",
             amount: 658,
-            type: "Review Score",
+            type: "Review Score"
         },
         {
             id: "4",
             ischecked: false,
             label: "Hotel",
             amount: 658,
-            type: "Property Type",
+            type: "Property Type"
         },
         {
             id: "3",
             ischecked: false,
             label: "Hostel",
             amount: 658,
-            type: "Property Type",
+            type: "Property Type"
         },
         {
             id: "4",
             ischecked: false,
             label: "4-star hotel",
             amount: 658,
-            type: "Hotel Class",
-        },
+            type: "Hotel Class"
+        }
     ],
 
     rooms: {},
     propertyRegistrationTab: {
-        userName:'User Name'
+        userName: 'User Name'
     },
 
+
     propertyLayoutTab: {
-        title: 'Apartment with Garden View',
-        amount:'1'
+        title: "Apartment with Garden View",
+        amount: "1"
     },
 
     propertyRegistration: {
@@ -180,6 +173,7 @@ const state = {
             mastercard: false,
             visa: false
         },
+        rating: 8.8,
         vatTaxes: "default", // "none"
         cityTax: "default", // "individual"
         cityTaxIndividual: {
@@ -188,9 +182,7 @@ const state = {
             includeToPrice: false
         },
         additionalFees: false,
-        additionalFeesOptions: [
-
-        ],
+        additionalFeesOptions: [],
         commissionName: "Name one",
         recipientSameAddress: true,
         recipientActualAddress: {
@@ -218,7 +210,74 @@ const state = {
             "Bar",
             "Sauna",
             "Pool"
-        ]
+        ],
+
+        // Photo Tab
+        images: [],
+        //tab Index
+        activeIndex: 0,
+        //    POLICES TAB
+
+        arrivalFrom: "10:00",
+        arrivalTo: "13:00",
+        departureFrom: "13:00",
+        departureTo: "12:00",
+        cancellation: "1 day before",
+
+    },
+
+    personalSettings: {
+        avatarUrl: "",
+        nickname: "Nickname0",
+        dateDay: "5",
+        dateMonth: "January",
+        dateYear: "2010",
+        country: "Ukraine",
+        //
+        address: "Some Insane Street",
+        city: "Lviv",
+        addressCountry: "Ukraine",
+        postcode: "12345",
+        //
+        appeal: "Mr.",
+        firstName: "John",
+        lastName: "Doe",
+        phone: "0123453453",
+        email: "john.doe@gmail.com",
+        //
+        additionalFacilities: [
+            "Bar",
+            "Sauna"
+        ],
+        //
+        creditCards: [
+            {
+                type: "Visa",
+                number: "1293-1235-1235-9595",
+                owner: "John Doe",
+                expirationDay: "6",
+                expirationYear: "2022",
+                usedForBooking: true,
+                transferRemuneration: false,
+            }
+        ],
+        //
+        paymentType: "Mastercard",
+        payForAccommodation: "During stay",
+        //
+        smokingInRooms: "No",
+        countOfStars: "Any",
+        //
+        showWithDisabledFacilities: true,
+        bookForWhom: "For myself",
+        //
+        currency: "USD Dollar"
+    },
+
+    userCabinet: {
+        user: null,
+        activeBooking: null,
+        bookings: []
     }
 };
 

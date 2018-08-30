@@ -1,4 +1,11 @@
 const {
+    USERS,
+    PROPERTIES,
+    ACCOMMODATION_RULES,
+    FACILITY_LISTS,
+    ROOMS,
+    IMAGES,
+    RESERVATIONS,
     COUNTRIES,
     DISCOUNTS,
     PAYMENT_TYPES,
@@ -8,9 +15,9 @@ const {
     BED_TYPES,
     ROOM_TYPES,
     PROPERTY_TYPE
-} = require('./seed');
+} = require("./seed");
 
-module.exports = function (models) {
+module.exports = function(models) {
     const {
         Country,
         City,
@@ -23,6 +30,12 @@ module.exports = function (models) {
         ReviewCategory,
         RoomType,
         PropertyType,
+        Property,
+        AccommodationRule,
+        FacilityList,
+        Room,
+        Reservation,
+        Image,
         User
     } = models;
 
@@ -33,18 +46,22 @@ module.exports = function (models) {
         [Role, ROLES],
         [ReviewCategory, REVIEW_CATEGORIES],
         [RoomType, ROOM_TYPES],
-        [PropertyType, PROPERTY_TYPE]
+        [PropertyType, PROPERTY_TYPE],
+        [AccommodationRule, ACCOMMODATION_RULES],
+        [Property, PROPERTIES],
+        [FacilityList, FACILITY_LISTS],
+        [Room, ROOMS],
+        [Image, IMAGES],
+        [User, USERS],
+        [Reservation, RESERVATIONS]
     ];
-
-    for (const mapItem of SimpleUpsertMap) {
-        for (const itemToInsert of mapItem[1]) {
-            mapItem[0].upsert(itemToInsert);
-        }
-    }
 
     //Country & City
     const CITIES = COUNTRIES.reduce((accumulator, country) => {
-        const citiesWithCountry = country.cities.map(x => ({ ...x, countryId: country.id }));
+        const citiesWithCountry = country.cities.map(x => ({
+            ...x,
+            countryId: country.id
+        }));
         return [...accumulator, ...citiesWithCountry];
     }, []);
 
@@ -57,12 +74,18 @@ module.exports = function (models) {
     }
 
     //Facility & FacilityCategory
-    const FACILITY = FACILITY_CATEGORIES.reduce((accumulator, facilityCategory) => {
-        const facilityWithFacilityCategory = facilityCategory.facilities.map(x => ({
-            ...x, facilityCategoryId: facilityCategory.id
-        }));
-        return [...accumulator, ...facilityWithFacilityCategory];
-    }, []);
+    const FACILITY = FACILITY_CATEGORIES.reduce(
+        (accumulator, facilityCategory) => {
+            const facilityWithFacilityCategory = facilityCategory.facilities.map(
+                x => ({
+                    ...x,
+                    facilityCategoryId: facilityCategory.id
+                })
+            );
+            return [...accumulator, ...facilityWithFacilityCategory];
+        },
+        []
+    );
 
     for (const fc of FACILITY_CATEGORIES) {
         FacilityCategory.upsert(fc);
@@ -72,6 +95,12 @@ module.exports = function (models) {
         Facility.upsert(f);
     }
 
+    for (const mapItem of SimpleUpsertMap) {
+        for (const itemToInsert of mapItem[1]) {
+            mapItem[0].upsert(itemToInsert);
+        }
+    }
+
     // User.upsert({
     //     fullName: 'Doctor Strange',
     //     password: '$2b$10$tT5Nz5oq3OuImIMaxqRt5eu9gPmVOH5yJgKIR88CjvfiKl9itpu/a', // 1234
@@ -79,5 +108,4 @@ module.exports = function (models) {
     //     phoneNumber: '0123412312',
     //     avatar: 'https://avatar.com'
     // });
-
 };

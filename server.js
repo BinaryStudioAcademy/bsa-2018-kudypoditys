@@ -8,7 +8,7 @@ const path = require("path"),
     server = require("http").Server(app);
 // routes = require(`${apiRoot}/testModels`);
 
-const io = require("socket.io")(server, { serveClient: true });
+const io = require("socket.io")(server, {serveClient: true});
 
 const apiRoot = path.resolve(path.join(__dirname, "src/api"));
 

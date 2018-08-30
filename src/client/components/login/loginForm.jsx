@@ -17,12 +17,7 @@ import {
 } from "client/regexValidationService";
 
 let LoginForm = props => {
-    const {
-        handleSubmit,
-        handleRegisterClicked,
-        handleForgotClicked,
-        error
-    } = props;
+    const {handleSubmit, handleRegisterClicked, handleForgotClicked} = props;
     return (
         <Grid centered columns={3}>
             <Grid.Column textAlign="center">
@@ -40,7 +35,7 @@ let LoginForm = props => {
                             iconPosition="left"
                         />
                         <Field
-                            style={{marginTop: "4%"}}
+                            style={{marginTop: "5%"}}
                             name="password"
                             type="password"
                             component={renderField}
@@ -70,12 +65,6 @@ let LoginForm = props => {
                         </Button.Group>
                     </Segment>
                 </Form>
-                {error ? (
-                    <Message negative>
-                        <Message.Header>Error</Message.Header>
-                        <p>{error.message}</p>
-                    </Message>
-                ) : null}
             </Grid.Column>
         </Grid>
     );
