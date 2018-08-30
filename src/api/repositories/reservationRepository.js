@@ -86,7 +86,9 @@ class ReservationRepository extends Repository {
                                 "name",
                                 "address",
                                 "contactPhone",
-                                "description"
+                                "description",
+                                "coordinates",
+                                "rating"
                             ]
                         }
                     ]

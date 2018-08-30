@@ -11,12 +11,12 @@ import {
 import { Slider } from "../slider";
 import moment from "moment";
 import "./booking-page.scss";
-import BasicMapWidget from "../basic-map-widget";
-import Modal from "../modal";
+import MapWidgetModal from "client/components/map-widget-modal";
 
 export class BookingPage extends React.Component {
     render() {
         const { booking, images } = this.props;
+        console.log(booking.room.property);
         console.log(JSON.stringify(images));
         const dateIn = new Date(booking.dateIn),
             dateOut = new Date(booking.dateOut);
@@ -108,24 +108,31 @@ export class BookingPage extends React.Component {
                             <Icon name="map marker alternate" />
                             {booking.room.property.address}
                             {" –"}
-                            <Modal
-                                trigger={
-                                    <a
-                                        style={{
-                                            cursor: "pointer",
-                                            marginLeft: "5px"
-                                        }}
-                                    >
-                                        Show on map
-                                    </a>
-                                }
-                            >
-                                <BasicMapWidget
-                                    location={booking.room.property.coordinates}
-                                    rounded
-                                    centered
-                                />
-                            </Modal>
+                            <MapWidgetModal
+                                properties={[
+                                    {
+                                        price: booking.room.price,
+                                        name: booking.room.property.name,
+                                        latitude:
+                                            booking.room.property.coordinates
+                                                .lat,
+                                        longitude:
+                                            booking.room.property.coordinates
+                                                .lng,
+                                        imageSrc:
+                                            booking.room.property.images[0].url,
+                                        address: booking.room.property.address,
+                                        rating: booking.room.property.rating
+                                    }
+                                ]}
+                                startPosition={{
+                                    latitude: 49.837089,
+                                    longitude: 24.021161
+                                }}
+                                zoom={13}
+                                controlEnable={true}
+                                buttonClass={"searchMapButton"}
+                            />
                         </p>
                         <p>
                             <Icon name="phone" />
