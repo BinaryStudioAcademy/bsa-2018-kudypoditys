@@ -15,19 +15,18 @@ import MapWidgetModal from "client/components/map-widget-modal";
 
 export class BookingPage extends React.Component {
     cancelBooking = (event, booking) => {
-        event.preventDefault();
-        // console.log(id);
         this.props.cancelBooking(booking);
     };
     render() {
         const { booking, images } = this.props;
+        const { room } = booking;
         const dateIn = new Date(booking.dateIn),
             dateOut = new Date(booking.dateOut);
         const start = moment(dateIn);
         const end = moment(dateOut);
         const duration = moment.duration(end.diff(start));
         const days = Math.round(duration.asDays());
-        const price = Number(booking.room.price) * days;
+        const price = Number(room.price) * days;
         return (
             <Container>
                 <a
@@ -65,9 +64,7 @@ export class BookingPage extends React.Component {
                                     <Icon name="bed" />
                                     Room
                                 </Table.Cell>
-                                <Table.Cell>
-                                    {booking.room.roomType.name}
-                                </Table.Cell>
+                                <Table.Cell>{room.roomType.name}</Table.Cell>
                             </Table.Row>
                             <Table.Row>
                                 <Table.Cell>
@@ -121,28 +118,24 @@ export class BookingPage extends React.Component {
                             as="h2"
                         >
                             <a style={{ color: "#465672", cursor: "pointer" }}>
-                                {booking.room.property.name}
+                                {room.property.name}
                             </a>
                         </Header>
                         <p>
                             <Icon name="map marker alternate" />
-                            {booking.room.property.address}
+                            {room.property.address}
                             {" –"}
                             <MapWidgetModal
                                 properties={[
                                     {
-                                        price: booking.room.price,
-                                        name: booking.room.property.name,
-                                        latitude:
-                                            booking.room.property.coordinates
-                                                .lat,
+                                        price: room.price,
+                                        name: room.property.name,
+                                        latitude: room.property.coordinates.lat,
                                         longitude:
-                                            booking.room.property.coordinates
-                                                .lng,
-                                        imageSrc:
-                                            booking.room.property.images[0].url,
-                                        address: booking.room.property.address,
-                                        rating: booking.room.property.rating
+                                            room.property.coordinates.lng,
+                                        imageSrc: room.property.images[0].url,
+                                        address: room.property.address,
+                                        rating: room.property.rating
                                     }
                                 ]}
                                 startPosition={{
@@ -156,9 +149,9 @@ export class BookingPage extends React.Component {
                         </p>
                         <p>
                             <Icon name="phone" />
-                            {booking.room.property.contactPhone}
+                            {room.property.contactPhone}
                         </p>
-                        <p>{booking.room.property.description}</p>
+                        <p>{room.property.description}</p>
                     </div>
                 </div>
             </Container>
