@@ -21,19 +21,6 @@ function* submitSearch(action) {
     }
 }
 
-// function* updateSearch(action) {
-//     try {
-//         yield call(searchService.updateSearch, action.payload);
-//         yield put({
-//             type:actionTypes.SEARCH_UPDATE_SUCCESS,
-//             payload: action.payload
-//         });
-//     }
-//     catch (error) {
-//         yield put({ type:actionTypes.SEARCH_UPDATE_FAILED})
-//     }
-// }
-
 export default function* searchSaga() {
     yield all([
         takeLatest(actionTypes.SEARCH_SUBMIT, submitSearch)
