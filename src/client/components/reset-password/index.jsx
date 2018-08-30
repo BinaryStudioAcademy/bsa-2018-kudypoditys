@@ -24,7 +24,7 @@ class ResetPassword extends React.Component {
         const data = {
             password: this.state.password,
             confirm:this.state.confirm,
-            token: this.props.match.params.token
+            token: this.props.token
         }
         this.props.resetPassword(data)
         e.preventDefault();

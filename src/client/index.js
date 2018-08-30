@@ -23,7 +23,7 @@ import history from "client/history";
 import PhotoTab from "./components/photo-tab-registration-property";
 import UserCabinet from "./pages/user-cabinet";
 import AuthHOC from "./components/auth-hoc";
-
+import ResetPasswordPage from './pages/reset-password-page'
 import VerifyEmail from "client/components/verify-email";
 
 const sagaMiddelware = createSagaMidddelware();
@@ -62,9 +62,10 @@ ReactDOM.render(
                     path="/user-cabinet"
                     component={() => <AuthHOC Component={UserCabinet} />}
                 />
+
                 <Route
                     path="/new-password/:token"
-                    component={UserCabinet}
+                    component={ResetPasswordPage}
                 />
                 <Route component={NotFoundPage} />
             </Switch>
