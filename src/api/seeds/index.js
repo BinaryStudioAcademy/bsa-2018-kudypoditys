@@ -1,6 +1,8 @@
 const {
     USERS,
     PROPERTIES,
+    ACCOMMODATION_RULES,
+    FACILITY_LISTS,
     ROOMS,
     IMAGES,
     RESERVATIONS,
@@ -29,6 +31,8 @@ module.exports = function(models) {
         RoomType,
         PropertyType,
         Property,
+        AccommodationRule,
+        FacilityList,
         Room,
         Reservation,
         Image,
@@ -43,18 +47,14 @@ module.exports = function(models) {
         [ReviewCategory, REVIEW_CATEGORIES],
         [RoomType, ROOM_TYPES],
         [PropertyType, PROPERTY_TYPE],
+        [AccommodationRule, ACCOMMODATION_RULES],
         [Property, PROPERTIES],
+        [FacilityList, FACILITY_LISTS],
         [Room, ROOMS],
         [Image, IMAGES],
         [User, USERS],
         [Reservation, RESERVATIONS]
     ];
-
-    for (const mapItem of SimpleUpsertMap) {
-        for (const itemToInsert of mapItem[1]) {
-            mapItem[0].upsert(itemToInsert);
-        }
-    }
 
     //Country & City
     const CITIES = COUNTRIES.reduce((accumulator, country) => {
@@ -93,6 +93,12 @@ module.exports = function(models) {
 
     for (const f of FACILITY) {
         Facility.upsert(f);
+    }
+
+    for (const mapItem of SimpleUpsertMap) {
+        for (const itemToInsert of mapItem[1]) {
+            mapItem[0].upsert(itemToInsert);
+        }
     }
 
     // User.upsert({
