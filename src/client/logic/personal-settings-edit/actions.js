@@ -1,7 +1,8 @@
 import {
     USER_SETTINGS_UPDATE,
     USER_SETTINGS_SEND,
-    GET_CURRENT_USER
+    GET_CURRENT_USER,
+    UPLOAD_USER_AVATAR
 } from "./actionTypes";
 
 export function updateUserSettings(payload) {
@@ -21,5 +22,12 @@ export function sendUserSettings(payload) {
 export function getUserSettings() {
     return {
         type: GET_CURRENT_USER
+    };
+}
+
+export function uploadAvatar(payload) {
+    return {
+        type: UPLOAD_USER_AVATAR,
+        payload
     };
 }

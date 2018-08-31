@@ -25,10 +25,27 @@ function* getCurrentUser(action) {
     }
 }
 
+function* uploadAvatar(action) {
+    try {
+        const avatar = yield call(userService.uploadAvatar(action));
+        yield put({
+            type: actionTypes.UPLOAD_USER_AVATAR_SUCCESS,
+            payload: {
+                avatarUrl: avatar.body.secure_url
+            }
+        });
+    } catch (err) {
+        console.log(err);
+        yield put({
+            type: actionTypes.UPLOAD_USER_AVATAR_FAILURE
+        });
+    }
+}
+
 export default function* personalSettingsSaga() {
     yield all([
         takeLatest(actionTypes.USER_SETTINGS_SEND, sendSettings),
-
-        takeLatest(actionTypes.GET_CURRENT_USER, getCurrentUser)
+        takeLatest(actionTypes.GET_CURRENT_USER, getCurrentUser),
+        takeLatest(actionTypes.UPLOAD_USER_AVATAR, uploadAvatar)
     ]);
 }

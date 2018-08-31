@@ -23,6 +23,10 @@ export class EditPersonalSettings extends Component {
         this.props.getUserSettings();
     }
 
+    handleImageUpload(file) {
+        this.props.uploadAvatar(file);
+    }
+
     render() {
         const formProps = {
             dateOptions: staticData.dateOptions,
@@ -39,6 +43,7 @@ export class EditPersonalSettings extends Component {
             <Container fluid>
                 <SettingsForm
                     {...formProps}
+                    handleImageUpload={this.handleImageUpload}
                     onSubmit={this.handleSubmit}
                     updateSettings={this.handleUpdate}
                     sendSettings={this.handleSend}

@@ -12,10 +12,9 @@ import {
     Label,
     Dropdown,
     Checkbox,
-    Radio,
     Image,
     Button,
-    Input
+    Message
 } from "semantic-ui-react";
 
 export class SettingsForm extends Component {
@@ -164,9 +163,7 @@ export class SettingsForm extends Component {
     };
 
     onDrop = pic => {
-        this.setState({
-            pic: pic
-        });
+        this.props.uploadAvatar(pic);
     };
 
     addingItem = (item, bool) => {
@@ -199,11 +196,11 @@ export class SettingsForm extends Component {
                 <Segment className="personal_settings-segment">
                     <div className="personal_settings-segment-header">
                         <Header as="h2">Your account</Header>
-                        <span>
+                        <Message info>
                             This data is displayed next to your posted reviews,
                             ratings, photos, etc. Any changes you make will also
                             be visible in previous publications.
-                        </span>
+                        </Message>
                     </div>
                     <p className="personal_settings-p">Main photo</p>
                     <Image
@@ -277,12 +274,12 @@ export class SettingsForm extends Component {
                 <Segment className="personal_settings-segment">
                     <div className="personal_settings-segment-header">
                         <Header as="h2">For reservation</Header>
-                        <span>
+                        <Message info>
                             This data is needed only to automatically fill in
                             the appropriate fields and speed up the booking
                             process. Your information is kept safe, it is not
                             transferred to third parties.
-                        </span>
+                        </Message>
                     </div>
                     <p className="personal_settings-p">Appeal</p>
                     <Dropdown
@@ -350,7 +347,9 @@ export class SettingsForm extends Component {
                 <Segment className="personal_settings-segment">
                     <div className="personal_settings-segment-header">
                         <Header as="h2">Credit cards</Header>
-                        <span>Your payment information is kept secure.</span>
+                        <Message info>
+                            Your payment information is kept secure.
+                        </Message>
                     </div>
                     {this.props.creditCards.map((creditcard, i) => (
                         <Label
@@ -510,7 +509,7 @@ export class SettingsForm extends Component {
                 <Segment className="personal_settings-segment">
                     <div className="personal_settings-segment-header">
                         <Header as="h2">Prepayment preferences</Header>
-                        <span>Your payment information.</span>
+                        <Message info>Your payment information.</Message>
                     </div>
                     <p className="personal_settings-p">
                         What payment type do you prefer?
@@ -542,6 +541,12 @@ export class SettingsForm extends Component {
                     <Label as="a" basic>
                         Change password
                     </Label>
+                </Segment>
+                <Segment>
+                    <Button primary>
+                        <Icon name="save outline" />
+                        Save
+                    </Button>
                 </Segment>
             </Form>
         );

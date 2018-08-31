@@ -157,9 +157,8 @@ const state = {
 
     rooms: {},
     propertyRegistrationTab: {
-        userName: 'User Name'
+        userName: "User Name"
     },
-
 
     propertyLayoutTab: {
         title: "Apartment with Garden View",
@@ -201,16 +200,8 @@ const state = {
             booking: "need",
             priceForDay: ""
         },
-        languages: [
-            "ukrainian",
-            "russian",
-            "english"
-        ],
-        facilities: [
-            "Bar",
-            "Sauna",
-            "Pool"
-        ],
+        languages: ["ukrainian", "russian", "english"],
+        facilities: ["Bar", "Sauna", "Pool"],
 
         // Photo Tab
         images: [],
@@ -222,8 +213,7 @@ const state = {
         arrivalTo: "13:00",
         departureFrom: "13:00",
         departureTo: "12:00",
-        cancellation: "1 day before",
-
+        cancellation: "1 day before"
     },
 
     personalSettings: {
@@ -245,20 +235,17 @@ const state = {
         phone: "0123453453",
         email: "john.doe@gmail.com",
         //
-        additionalFacilities: [
-            "Bar",
-            "Sauna"
-        ],
+        additionalFacilities: ["Bar", "Sauna"],
         //
         creditCards: [
             {
                 type: "Visa",
-                number: "1293-1235-1235-9595",
+                number: "XXXX-XXXX-XXXX-9595",
                 owner: "John Doe",
                 expirationDay: "6",
                 expirationYear: "2022",
                 usedForBooking: true,
-                transferRemuneration: false,
+                transferRemuneration: false
             }
         ],
         //
