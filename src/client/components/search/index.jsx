@@ -64,6 +64,7 @@ export class MainSearch extends React.Component {
             query: result.title,
             isLoading: false
         });
+        this.props.onQueryChange(this.state.query);
     };
     handleSearchChange = (e, { value }) => {
         this.setState(
@@ -91,6 +92,9 @@ export class MainSearch extends React.Component {
             startDate: moment(),
             endDate: moment().add(5, "days"),
             focusedInput: null,
+            rooms: 1,
+            adults: 1,
+            children: 1,
             query: "",
             results: []
         };
@@ -116,24 +120,33 @@ export class MainSearch extends React.Component {
     };
 
     adultsOutput = () => {
-        if (this.props.adults === 1) return "1 Adult";
-        return `${this.props.adults} Adults`;
+        if (this.state.adults === 1) return "1 Adult";
+        return `${this.state.adults} Adults`;
     };
 
     childrenOutput = () => {
-        switch (this.props.children) {
+        switch (this.state.children) {
             case 0:
                 return "No children";
             case 1:
                 return "1 Child";
             default:
-                return `${this.props.children} Children`;
+                return `${this.state.children} Children`;
         }
     };
+    onAdultsSelected = count => {
+        this.setState({ adults: count });
+        this.props.onAdultsChange(count);
+    };
 
-    roomsOutput = () => {
-        if (this.props.rooms === 1) return "1 Room";
-        return `${this.props.rooms} Rooms`;
+    onChildrenSelected = count => {
+        this.setState({ children: count });
+        this.props.onChildrenChange(count);
+    };
+
+    onRoomsSelected = count => {
+        this.setState({ rooms: count });
+        this.props.onRoomsChange(count);
     };
 
     componentWillMount() {
@@ -148,11 +161,20 @@ export class MainSearch extends React.Component {
     };
 
     render() {
+        console.log("state=" + JSON.stringify(this.state));
+
         const selectOptionsRooms = this.generateOptions(1, 30);
-        const selectOptionsAdults = this.generateOptions(1, 30);
-        const { isLoading, query, results } = this.state;
+        const selectOptionsAdults = this.generateOptions(1, 10);
+        const {
+            isLoading,
+            query,
+            results,
+            rooms,
+            adults,
+            children
+        } = this.state;
         const childrenOptions = this.generateOptions(0, 10);
-        const { rooms, adults, children } = this.props;
+
         return (
             <Form
                 className="search search--view-bar"
@@ -215,9 +237,7 @@ export class MainSearch extends React.Component {
                                         options={selectOptionsRooms}
                                         value={rooms}
                                         onChange={(event, input) =>
-                                            this.props.onRoomsChange(
-                                                input.value
-                                            )
+                                            this.onRoomsSelected(input.value)
                                         }
                                     />
                                 </Grid.Column>
@@ -234,9 +254,7 @@ export class MainSearch extends React.Component {
                                         options={selectOptionsAdults}
                                         value={adults}
                                         onChange={(event, input) =>
-                                            this.props.onAdultsChange(
-                                                input.value
-                                            )
+                                            this.onAdultsSelected(input.value)
                                         }
                                     />
                                 </Grid.Column>
@@ -253,9 +271,7 @@ export class MainSearch extends React.Component {
                                         options={childrenOptions}
                                         value={children}
                                         onChange={(event, input) =>
-                                            this.props.onChildrenChange(
-                                                input.value
-                                            )
+                                            this.onChildrenSelected(input.value)
                                         }
                                     />
                                 </Grid.Column>
