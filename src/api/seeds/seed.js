@@ -57,6 +57,29 @@ const ACCOMMODATION_RULES = [
     }
 ];
 
+const PROPERTY_PAYMENT_TYPES = [
+    {
+        propertyId: 1,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 1,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 1,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 2,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 2,
+        paymentTypeId: 3
+    }
+];
+
 const ROOMS = [
     {
         id: 1,
@@ -700,6 +723,7 @@ module.exports = {
     COUNTRIES,
     DISCOUNTS,
     PAYMENT_TYPES,
+    PROPERTY_PAYMENT_TYPES,
     ROLES,
     FACILITY_CATEGORIES,
     REVIEW_CATEGORIES,
