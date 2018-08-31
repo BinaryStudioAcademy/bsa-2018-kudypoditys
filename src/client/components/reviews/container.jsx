@@ -1,14 +1,20 @@
-import { cityInfosGet } from 'client/logic/banner-list/actions';
+import { reviewSubmit, reviewUpdate } from 'client/logic/reviews/actions';
 
 export function mapStateToProps(state, ownProps) {
-
-    return ownProps;
+        const reviewData = state.reviewData;
+    return  {
+        ...reviewData,
+        // ...ownProps
+    }
 }
 
-export function mapDispatchToProps(dispatch, ownProps) {
+export function mapDispatchToProps(dispatch) {
     return {
-        getCityInfos() {
-            dispatch(cityInfosGet());
+        submitReview(data) {
+            dispatch(reviewSubmit(data));
+        },
+        updateReview(data) {
+            dispatch(reviewUpdate(data));
         }
     };
 }

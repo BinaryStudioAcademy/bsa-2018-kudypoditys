@@ -278,6 +278,9 @@ const state = {
         user: null,
         activeBooking: null,
         bookings: []
+    },
+    reviewData: {
+        value: ''
     }
 };
 
