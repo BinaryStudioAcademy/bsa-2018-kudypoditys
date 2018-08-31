@@ -17,6 +17,21 @@ function* sendSettings(action) {
     }
 }
 
+function* resetUserPassword(action) {
+    try {
+        const user = yield call(userService.resetUserPassword, action);
+        yield put({
+            type: actionTypes.USER_PASSWORD_RESET_SUCCESS,
+            payload: user
+        });
+    } catch (err) {
+        console.log(err);
+        yield put({
+            type: actionTypes.USER_PASSWORD_RESET_FAILURE
+        });
+    }
+}
+
 function* getCurrentUser(action) {
     try {
         const user = yield call(userService.getCurrentUser);
@@ -38,7 +53,7 @@ function* uploadAvatar(action) {
         yield put({
             type: actionTypes.UPLOAD_USER_AVATAR_SUCCESS,
             payload: {
-                avatarUrl: avatar.body.secure_url
+                avatar: avatar.body.secure_url
             }
         });
     } catch (err) {
@@ -53,6 +68,7 @@ export default function* personalSettingsSaga() {
     yield all([
         takeLatest(actionTypes.USER_SETTINGS_SEND, sendSettings),
         takeLatest(actionTypes.GET_CURRENT_USER, getCurrentUser),
-        takeLatest(actionTypes.UPLOAD_USER_AVATAR, uploadAvatar)
+        takeLatest(actionTypes.UPLOAD_USER_AVATAR, uploadAvatar),
+        takeLatest(actionTypes.USER_PASSWORD_RESET, resetUserPassword)
     ]);
 }

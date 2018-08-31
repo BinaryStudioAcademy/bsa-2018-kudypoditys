@@ -2,7 +2,8 @@ import {
     updateUserSettings,
     sendUserSettings,
     getUserSettings,
-    uploadAvatar
+    uploadAvatar,
+    resetPassword
 } from "client/logic/personal-settings-edit/actions";
 
 export function mapStateToProps(state) {
@@ -25,6 +26,9 @@ export function mapDispatchToProps(dispatch) {
         },
         uploadAvatar(data) {
             dispatch(uploadAvatar(data));
+        },
+        resetPassword(mail) {
+            dispatch(resetPassword(mail));
         }
     };
 }

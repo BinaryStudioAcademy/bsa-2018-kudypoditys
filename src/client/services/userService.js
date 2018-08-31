@@ -28,6 +28,11 @@ class UserService {
             )
             .then(response => response.data);
     }
+    resetUserPassword(action) {
+        return api
+            .sendRequest("/api/forgot", "post", action.payload)
+            .then(response => response.data);
+    }
 }
 
 export default new UserService();

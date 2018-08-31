@@ -45,6 +45,10 @@ export class SettingsForm extends Component {
         this.props.sendSettings();
     };
 
+    resetPassword = () => {
+        this.props.resetPassword(this.props.email);
+    };
+
     // Address mini-form handlers:
     handleAddressChange = (e, { name, value }) => {
         this.setState({
@@ -205,7 +209,7 @@ export class SettingsForm extends Component {
                     <Image
                         style={{ width: "150px", height: "150px" }}
                         src={
-                            this.props.avatarUrl ||
+                            this.props.avatar ||
                             "https://www.mautic.org/media/images/default_avatar.png"
                         }
                         alt="Photo"
@@ -537,9 +541,10 @@ export class SettingsForm extends Component {
                         // onChange={this.sendSettings}
                     />
                     <p className="personal_settings-p">Password</p>
-                    <Label as="a" basic>
+                    <Button primary onClick={this.resetPassword}>
+                        <Icon name="erase" />
                         Change password
-                    </Label>
+                    </Button>
                 </Segment>
                 <Segment>
                     <Button primary onClick={this.sendSettings}>
