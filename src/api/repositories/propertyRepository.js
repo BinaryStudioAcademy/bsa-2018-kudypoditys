@@ -50,8 +50,8 @@ const includeOptions = [
     },
     {
         model: Review,
-        attributes: ["id", "content"],
-        inlcude: [
+        attributes: ["id", "content", "createdAt" ],
+        include: [
             {
                 model: User,
                 attributes: ["id", "fullName", "email", "avatar", "phoneNumber"]

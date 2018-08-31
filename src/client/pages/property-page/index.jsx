@@ -18,6 +18,7 @@ import Reviews from "client/components/reviews";
 export class PropertyPage extends React.Component {
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
+
     }
 
     getImagesArray(propertyImages) {
@@ -30,6 +31,7 @@ export class PropertyPage extends React.Component {
 
     render() {
         const {property} = this.props;
+        console.log(property);
 
         const handleSlideChange = index => {
             console.log(`Slide changed to ${index}`);
@@ -130,7 +132,7 @@ export class PropertyPage extends React.Component {
 
                         <AvailabilityPanel style={{width: "100%"}}/>
                         <RoomsSummaryTable rooms={property.rooms}/>
-                        <Reviews/>
+                        <Reviews property={property}/>
                     </Container>
                 </div>
             </div>

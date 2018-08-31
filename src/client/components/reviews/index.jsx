@@ -1,83 +1,113 @@
 import React from 'react';
-import {Header, Comment, Form, Button, Checkbox} from 'semantic-ui-react';
+import {
+    Header,
+    Comment,
+    Form,
+    Button,
+    Checkbox,
+    Transition,
+} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import './index.scss';
 
 import Review from './item';
-import {mapStateToProps, mapDispatchToProps} from './container';
-
+import { mapStateToProps, mapDispatchToProps } from './container';
 
 export class Reviews extends React.Component {
     constructor(props) {
         super(props);
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.state = {
+            visible: true,
+        };
     }
 
-
-    handleChange = (event) => {
-        let data = {content: event.target.value};
+    handleChange = event => {
+        let data = { content: event.target.value };
         this.props.updateReview(data);
-        console.log(this.props)
-        };
+        console.log(this.props);
+    };
+    toggleVisibility = () =>
+        this.setState({
+            visible: !this.state.visible,
+        });
+    handleSubmit = event => {
+        let { content } = this.props;
+        let { user } = this.props;
+        let { property } = this.props;
 
-
-    handleSubmit= (event) => {
-        let {content} = this.props;
-        let {user} = this.props;
-
-
-
-
+        property.reviews.push({
+            content: content,
+            createdAt: new Date(),
+            user: user,
+        });
 
         console.log(content);
         this.props.submitReview({
             content: content,
-            userId: user.id
-        })
-
-
-
-    }
+            userId: user.id,
+            propertyId: property.id,
+        });
+    };
 
     // handleCheckbox = (e, {checked}) => this.setState({collapsed: checked});
 
     render() {
-        console.log(this.props)
-        const {reviews} = this.props;
+        console.log(this.props);
+        const { property, user } = this.props;
+        const { visible } = this.state;
 
         return (
-
-            <Comment.Group size='large' style={{marginBottom: 20}}>
+            <Comment.Group size="large" style={{ marginBottom: 20 }}>
                 {/*<Checkbox defaultChecked label='Show reviews' />*/}
-                <Header as='h3' dividing>
-                    There are no reviews yet. Be the first to review
-                </Header>
-                {reviews.map(review => (
-                    <Review reviewData={review}/>
-
-                ))}
-
-
-                <Form reply onSubmit={this.handleSubmit}>
-                    <Form.TextArea onChange={this.handleChange}/>
-                    {/*<Button content='Add review' labelPosition='left' icon='edit' primary />*/}
-                    <Button
-                        color="teal"
-                        fluid
-                        content='Add review'
-                        labelPosition='left'
-                        icon='edit'
-                        type="submit"
+                {property.reviews.length === 0 ? (
+                    <Header as="h3" dividing>
+                        There are no reviews yet. Be the first to review{' '}
+                        {property.name}
+                    </Header>
+                ) : (
+                    property.reviews.map(review => (
+                        <Review reviewData={review} />
+                    ))
+                )}{' '}
+                <Transition visible={!visible} animation="scale" duration={500}>
+                    <Header as="h3" dividing>
+                        Dear Traveler. Thank you for your review and for
+                        choosing our hotel.
+                    </Header>
+                </Transition>
+                {user === undefined ? (
+                    <Header as="h3" dividing>
+                        Dear Traveler, You must be logged in to post a review.
+                    </Header>
+                ) : (
+                    <Transition
+                        visible={visible}
+                        animation="scale"
+                        duration={500}
                     >
-                        Continue
-                    </Button>
-                </Form>
+                        <Form reply onSubmit={this.handleSubmit}>
+                            <Form.TextArea onChange={this.handleChange} />
+
+                            <Button
+                                primary
+                                color="teal"
+                                fluid
+                                content="Add review"
+                                labelPosition="left"
+                                icon="edit"
+                                type="submit"
+                                onClick={this.toggleVisibility}
+                            />
+                        </Form>
+                    </Transition>
+                )}
             </Comment.Group>
         );
-
     }
 }
 
@@ -96,6 +126,7 @@ export class Reviews extends React.Component {
 
 Reviews.defaultProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Reviews);
-
-
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(Reviews);
