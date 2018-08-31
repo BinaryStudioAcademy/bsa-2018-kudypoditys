@@ -79,6 +79,10 @@ const includeOptions = [
                 attributes: ["id", "name"]
             }
         ]
+    },
+    {
+        model: PaymentType,
+        attributes: ["name", "id"]
     }
 ];
 
