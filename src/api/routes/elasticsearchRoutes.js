@@ -51,9 +51,10 @@ elastic.route("/update").post((req, res) => {
     ES_service.updateDocument(req, res, index, id, type, body);
 });
 
-elastic.route("/search").post((req, res) => {
-    const { index, type, body } = req.body;
-    ES_service.search(req, res, index, type, body);
+elastic.route("/search").get((req, res) => {
+  const { index, type, query } = req.query;
+    const fields = [ "name"];
+    ES_service.autocompleteSearch(req, res, index, type, query, fields)
 });
 
 elastic.route("/autocomplete").get((req, res) => {
