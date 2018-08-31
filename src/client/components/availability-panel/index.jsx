@@ -11,11 +11,7 @@ import { connect } from "react-redux";
 export class AvailabilityPanel extends React.Component {
     constructor(props) {
         super(props);
-        const { checkIn, checkOut } = this.props;
         this.state = {
-            startDate: checkIn === null ? moment() : moment(checkIn),
-            endDate:
-                checkOut === null ? moment().add(5, "days") : moment(checkOut),
             focusedInput: null
         };
     }
@@ -32,16 +28,29 @@ export class AvailabilityPanel extends React.Component {
     };
 
     datesChanged = selectedDates => {
-        if (selectedDates.startDate && selectedDates.endDate) {
+        if (
+            selectedDates.startDate &&
+            selectedDates.endDate &&
+            selectedDates.startDate < selectedDates.endDate
+        ) {
             this.props.onDatesChange(selectedDates);
         }
-        this.setState(selectedDates);
     };
 
     render() {
-        const { propertyName, adults, children, rooms } = this.props;
+        const {
+            propertyName,
+            adults,
+            children,
+            rooms,
+            checkIn,
+            checkOut
+        } = this.props;
         const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
+        const startDate = checkIn === null ? moment() : moment(checkIn);
+        const endDate =
+            checkOut === null ? moment().add(1, "days") : moment(checkOut);
 
         return (
             <div className="availability-panel-wrp">
@@ -60,8 +69,8 @@ export class AvailabilityPanel extends React.Component {
                                 startDateId="startDate"
                                 endDateId="endDate"
                                 required={true}
-                                startDate={this.state.startDate}
-                                endDate={this.state.endDate}
+                                startDate={startDate}
+                                endDate={endDate}
                                 onDatesChange={this.datesChanged}
                                 focusedInput={this.state.focusedInput}
                                 onFocusChange={focusedInput => {

@@ -141,6 +141,24 @@ const FACILITY_LISTS = [
     }
 ];
 
+const BED_IN_ROOMS = [
+    {
+        count: 1,
+        roomId: 1,
+        bedTypeId: 1
+    },
+    {
+        count: 1,
+        roomId: 2,
+        bedTypeId: 2
+    },
+    {
+        count: 1,
+        roomId: 2,
+        bedTypeId: 1
+    }
+];
+
 const COUNTRIES = [
     {
         id: 1,
@@ -685,6 +703,7 @@ module.exports = {
     ROLES,
     FACILITY_CATEGORIES,
     REVIEW_CATEGORIES,
+    BED_IN_ROOMS,
     BED_TYPES,
     ROOM_TYPES,
     PROPERTY_TYPE
