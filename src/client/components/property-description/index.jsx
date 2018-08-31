@@ -2,16 +2,14 @@ import React from "react";
 import "./index.scss";
 import { Divider, Container } from "semantic-ui-react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { mapStateToProps } from "./container";
 
-export class PropertyDescription extends React.Component {
+export default class PropertyDescription extends React.Component {
     // todo add icons to every facility regarding of type
 
     render() {
-        const { propertyItemData } = this.props,
-            description = propertyItemData.description,
-            facilities = propertyItemData.facilities;
+        const { property } = this.props,
+            description = property.description,
+            facilities = property.facilityLists;
 
         return (
             <Container text>
@@ -26,7 +24,7 @@ export class PropertyDescription extends React.Component {
                         color: "green"
                     }}
                 >
-                    {facilities.map((facility, i) => {
+                    {facilities.map((item, i) => {
                         return (
                             <span
                                 key={i}
@@ -38,7 +36,7 @@ export class PropertyDescription extends React.Component {
                                     color: "green"
                                 }}
                             >
-                                {facility}
+                                {item.facility.name}
                             </span>
                         );
                     })}
@@ -49,9 +47,8 @@ export class PropertyDescription extends React.Component {
 }
 
 PropertyDescription.propTypes = {
-    propertyItemData: PropTypes.shape({
+    property: PropTypes.shape({
         description: PropTypes.string.isRequired,
-        facilities: PropTypes.array.isRequired
+        facilityLists: PropTypes.array.isRequired
     })
 };
-export default connect(mapStateToProps)(PropertyDescription);
