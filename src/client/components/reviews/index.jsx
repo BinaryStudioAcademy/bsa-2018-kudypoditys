@@ -5,81 +5,71 @@ import {connect} from 'react-redux';
 
 import './index.scss';
 
-import {Review} from './item';
+import Review from './item';
 import {mapStateToProps, mapDispatchToProps} from './container';
-// import {reviewSubmit} from "../../logic/reviews/actions";
 
 
 export class Reviews extends React.Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.props.getCityInfos();
-    // }
 
-    // onCardClick = (cityId) => {
-    //     // some logic ...
-    //
-    // }
+    handleChange = (event) => {
+        let data = {content: event.target.value};
+        this.props.updateReview(data);
+        console.log(this.props)
+        };
 
 
-
-    // state = {collapsed: true};
-
-handleChange(event) {
-    let data = {value: event.target.value};
-   this.props.updateReview(data);
-
-}
-
-// handleSubmit(event) {
-//     alert('A name was submitted: ' + this.state.value);
-//     event.preventDefault();
-// }
+    handleSubmit= (event) => {
+        let {content} = this.props;
+        let {user} = this.props;
 
 
-    handleCheckbox = (e, {checked}) => this.setState({collapsed: checked});
-    // handleSubmit(event, target, value) {
-    //     console.log(event)
-    //     console.log(target)
-    //     console.log(value)
-    // }
-    // handleChange(value) {
-    //
-    // }
+
+
+
+        console.log(content);
+        this.props.submitReview({
+            content: content,
+            userId: user.id
+        })
+
+
+
+    }
+
+    // handleCheckbox = (e, {checked}) => this.setState({collapsed: checked});
+
     render() {
         console.log(this.props)
         const {reviews} = this.props;
-        // const {collapsed} = this.state;
-
-
-
-
 
         return (
 
             <Comment.Group size='large' style={{marginBottom: 20}}>
-                <Checkbox defaultChecked label='Show reviews' onChange={this.handleCheckbox}/>
+                {/*<Checkbox defaultChecked label='Show reviews' />*/}
                 <Header as='h3' dividing>
                     There are no reviews yet. Be the first to review
                 </Header>
                 {reviews.map(review => (
-                    <Review reviewData={review} />
+                    <Review reviewData={review}/>
 
                 ))}
 
 
                 <Form reply onSubmit={this.handleSubmit}>
-                    <Form.TextArea  onChange={this.handleChange}/>
+                    <Form.TextArea onChange={this.handleChange}/>
                     {/*<Button content='Add review' labelPosition='left' icon='edit' primary />*/}
                     <Button
                         color="teal"
                         fluid
-
+                        content='Add review'
+                        labelPosition='left'
+                        icon='edit'
                         type="submit"
                     >
                         Continue
@@ -104,9 +94,7 @@ handleChange(event) {
 //     ).isRequired
 // };
 
-Reviews.defaultProps = {
-    // cityInfos: []
-};
+Reviews.defaultProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reviews);
 

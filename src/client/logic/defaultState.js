@@ -280,7 +280,7 @@ const state = {
         bookings: []
     },
     reviewData: {
-        value: ''
+        content: ''
     }
 };
 

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import './index.scss';
 
 
-export class Review extends Component {
+export default class Review extends Component {
 
     render() {
 
