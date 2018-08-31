@@ -80,9 +80,24 @@ export class MainSearch extends React.Component {
         );
     };
     handleSubmit = () => {
+        console.log("handleSubmit trigered")
         let path = `/search-page`;
         history.push(path);
-        this.props.onSearch();
+        const {
+            query,
+            rooms,
+            adults,
+            children,
+            startDate,
+            endDate
+        } = this.state;
+        this.props.onSearch({
+            query:query,
+            rooms:rooms,
+            adults:adults,
+            children:children,
+            startDate:startDate,
+            endDate:endDate});
     };
 
     constructor(props) {
@@ -137,6 +152,11 @@ export class MainSearch extends React.Component {
     onAdultsSelected = count => {
         this.setState({ adults: count });
         this.props.onAdultsChange(count);
+    };
+
+    onChildrenSelected = count => {
+        this.setState({ children: count });
+        this.props.onChildrenChange(count);
     };
 
     onChildrenSelected = count => {
