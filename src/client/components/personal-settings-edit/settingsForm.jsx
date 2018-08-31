@@ -19,13 +19,6 @@ import {
 
 export class SettingsForm extends Component {
     state = {
-        pic: "",
-        address: {
-            address: "",
-            city: "",
-            addressCountry: "",
-            postcode: ""
-        },
         creditCard: {
             type: "",
             number: "",
@@ -48,26 +41,6 @@ export class SettingsForm extends Component {
     resetPassword = () => {
         this.props.resetPassword(this.props.email);
     };
-
-    // Address mini-form handlers:
-    handleAddressChange = (e, { name, value }) => {
-        this.setState({
-            address: {
-                ...this.state.address,
-                [name]: value
-            }
-        });
-    };
-    saveAddress = () => {
-        const data = {
-            ...this.state.address
-        };
-
-        this.props.updateSettings({
-            ...data
-        });
-    };
-    //
 
     // Credit cards mini-form handlers:
     handleCreditCardsChange = (e, { name, value }) => {
@@ -125,13 +98,11 @@ export class SettingsForm extends Component {
     removeCreditCard = (e, { name, value }) => {
         this.updateSettings({
             creditCards: this.props.creditCards.filter(
-                creditcard => creditcard.number != name
+                creditcard => creditcard.number !== name
             )
         });
     };
-    //
 
-    //
     handleFacilitiesChange = value => {
         console.log(value);
         if (this.props.additionalFacilities.includes(value)) {
@@ -153,11 +124,9 @@ export class SettingsForm extends Component {
     saveFacilities = () => {
         this.addingItem("addingFacilities", false);
     };
-    //
 
     handleChange = (e, { name, value }) => {
-        console.log(e, name, value);
-
+        // console.log(e, name, value);
         const data = {
             [name]: value
         };
@@ -188,11 +157,8 @@ export class SettingsForm extends Component {
             dateOptions,
             countryOptions,
             paymentOptions,
-            smokingInRoomsOptions,
-            starsOptions,
             currencyOptions,
-            appealOptions,
-            payForAccommodationOptions
+            appealOptions
         } = this.props;
         return (
             <Form onSubmit={handleSubmit}>
@@ -207,6 +173,7 @@ export class SettingsForm extends Component {
                     </div>
                     <p className="personal_settings-p">Main photo</p>
                     <Image
+                        circular
                         style={{ width: "150px", height: "150px" }}
                         src={
                             this.props.avatar ||
@@ -310,7 +277,7 @@ export class SettingsForm extends Component {
                         component={inputField}
                         name="phone"
                         label="Phone number"
-                        type="number"
+                        type="tel"
                         min={4}
                         max={16}
                         className="personal_settings-field"

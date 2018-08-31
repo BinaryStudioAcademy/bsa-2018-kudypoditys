@@ -20,7 +20,7 @@ const USERS = [
         password: bcrypt.hashSync("102938abC", 10),
         email: "lorem@lorem.com",
         phoneNumber: "80954568261",
-        nickName: "Lorem"
+        nickname: "Lorem"
     }
 ];
 
