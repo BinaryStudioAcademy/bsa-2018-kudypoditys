@@ -32,8 +32,8 @@ export function mapDispatchToProps(dispatch, ownProps) {
             ];
             dispatch(searchUpdate({ results: serverResponse }));
         },
-        onDestinationChange(value) {
-            dispatch(searchUpdate({ destination: value }));
+        onQueryChange(value) {
+            dispatch(searchUpdate({ query: value }));
         },
         onDatesChange(value) {
             dispatch(
