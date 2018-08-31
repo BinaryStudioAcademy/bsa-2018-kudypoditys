@@ -108,6 +108,7 @@ export class PropertyPage extends React.Component {
                                     </div>
                                 </div>
                             }
+                            onClose={this.props.clearBookingForm}
                         >
                             <BookingForm
                                 onBook={this.onBookSubmit}
