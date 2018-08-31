@@ -1,23 +1,16 @@
-import api from '../helpers/api';
-import history from 'client/history';
+import api from "../helpers/api";
+
 
 class SearchService {
     submitSearch(data) {
-        return api.sendAuthRequest('/api/search/', 'get').then(response => {
-           if(response.status === 200){
-               history.push('/');
-           }
-
-            console.log(response)
-            return response
-        });
+        console.log("SearchService submitSearch  - " + JSON.stringify(data));
+        return api.sendRequest(
+            "/elastic/search/?index=properties&type=document&query=" +
+                data.query,
+            "get",
+            ""
+        );
     }
-    updateSearch(data) {
-        return api.sendRequest(`/api/search/`, 'put', data).then(response => {
-            history.push('/search/');
-        });
-    }
-
 }
 
 export default new SearchService();

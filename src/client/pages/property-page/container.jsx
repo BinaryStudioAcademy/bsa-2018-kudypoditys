@@ -1,11 +1,19 @@
-export function mapStateToProps(state, ownProps) {
-    const {shownProperties} = state;
-    return {
-        propertyItemData: shownProperties[ownProps.id],
+import { getPropertyInfoById } from "../../logic/property-page/actions";
 
+export function mapStateToProps(state, ownProps) {
+    const { user } = state.userCabinet;
+    const { property } = state.propertyPage;
+
+    return {
+        property: property,
+        user: user
     };
 }
 
-export function mapDispatchToProps(dispatch) {
-    return {};
+export function mapDispatchToProps(dispatch, ownProps) {
+    return {
+        getProperty(id) {
+            dispatch(getPropertyInfoById(id));
+        }
+    };
 }

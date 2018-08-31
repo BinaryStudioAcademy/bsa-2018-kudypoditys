@@ -33,9 +33,8 @@ export default combineReducers({
     foundProperties,
     // checkInOut,
     form: formReducer.plugin({
-
         registration: registration,
-        login: login,
+        login: login
     }),
     login,
     propertyPage,

@@ -1,10 +1,26 @@
 import {
-    PROPERTY_DESCRIPTION_UPDATE
-} from './actionTypes';
+    GET_PROPERTY_INFO,
+    PROPERTY_DESCRIPTION_UPDATE,
+    AVAILABILITY_INPUT_UPDATE
+} from "./actionTypes";
 
 export function descriptionUpdate(payload) {
     return {
         type: PROPERTY_DESCRIPTION_UPDATE,
         payload
+    };
+}
+
+export function availabilityInputUpdate(value) {
+    return {
+        type: AVAILABILITY_INPUT_UPDATE,
+        payload: value
+    };
+}
+
+export function getPropertyInfoById(id) {
+    return {
+        type: GET_PROPERTY_INFO,
+        payload: id
     };
 }
