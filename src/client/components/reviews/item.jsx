@@ -8,9 +8,9 @@ import defaultUserPic from './img/matt.jpg';
 
 export default class Review extends Component {
     render() {
-        const { reviewData } = this.props,
-            { collapsed } = this.props,
-            date = new Date(reviewData.createdAt).toLocaleString();
+        const {reviewData, collapsed} = this.props;
+        console.log(this.props)
+        const date = new Date(reviewData.createdAt).toLocaleString();
         console.log(date);
         return (
             <Fragment>

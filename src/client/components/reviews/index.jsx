@@ -71,7 +71,7 @@ export class Reviews extends React.Component {
                     </Header>
                 ) : (
                     property.reviews.map(review => (
-                        <Review reviewData={review} />
+                        <Review key={review.createdAt} reviewData={review}/>
                     ))
                 )}{' '}
                 <Transition visible={!visible} animation="scale" duration={500}>
