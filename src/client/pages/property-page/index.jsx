@@ -39,7 +39,7 @@ export class PropertyPage extends React.Component {
     };
 
     render() {
-        const { property } = this.props;
+        const { property, user } = this.props;
 
         const handleSlideChange = index => {
             console.log(`Slide changed to ${index}`);
@@ -93,29 +93,34 @@ export class PropertyPage extends React.Component {
                             rounded
                             centered
                         />
-                        <Modal
-                            trigger={
-                                <div
-                                    className="book-btn"
-                                    style={{ height: "33px" }}
-                                >
-                                    <button>Book now</button>
+                        {user ? (
+                            <Modal
+                                trigger={
                                     <div
-                                        className="book-icon"
-                                        style={{ cursor: "pointer" }}
+                                        className="book-btn"
+                                        style={{ height: "33px" }}
                                     >
-                                        <Icon name="bookmark" size="large" />
+                                        <button>Book now</button>
+                                        <div
+                                            className="book-icon"
+                                            style={{ cursor: "pointer" }}
+                                        >
+                                            <Icon
+                                                name="bookmark"
+                                                size="large"
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                            }
-                            onClose={this.props.clearBookingForm}
-                        >
-                            <BookingForm
-                                onBook={this.onBookSubmit}
-                                rooms={property.rooms}
-                                paymentTypes={property.paymentTypes}
-                            />
-                        </Modal>
+                                }
+                                onClose={this.props.clearBookingForm}
+                            >
+                                <BookingForm
+                                    onBook={this.onBookSubmit}
+                                    rooms={property.rooms}
+                                    paymentTypes={property.paymentTypes}
+                                />
+                            </Modal>
+                        ) : null}
                     </div>
                     <Container
                         text
