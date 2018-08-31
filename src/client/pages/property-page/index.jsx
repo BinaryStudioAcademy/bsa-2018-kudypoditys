@@ -1,6 +1,12 @@
 import React from "react";
 import "./index.scss";
-import { Divider, Container, Segment, Breadcrumb } from "semantic-ui-react";
+import {
+    Divider,
+    Container,
+    Segment,
+    Breadcrumb,
+    Icon
+} from "semantic-ui-react";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import Search from "client/components/search";
@@ -12,6 +18,9 @@ import { PropertySummary } from "client/components/property-summary";
 import { NavigationBar } from "client/components/navigation-bar";
 import BasicMapWidget from "client/components/basic-map-widget";
 import RoomsSummaryTable from "client/components/rooms-summary-table";
+import Modal from "../../components/modal";
+import BookingForm from "../../components/booking-form";
+
 export class PropertyPage extends React.Component {
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
@@ -24,6 +33,10 @@ export class PropertyPage extends React.Component {
         }
         return images;
     }
+
+    onBookSubmit = event => {
+        console.log("book!");
+    };
 
     render() {
         const { property } = this.props;
@@ -68,38 +81,41 @@ export class PropertyPage extends React.Component {
                         <Segment>
                             <Breadcrumb
                                 icon="right angle"
-                                sections={
-                                    sections /*[
-                                    { key: "Home", content: "Home", href: "/" },
-                                    {
-                                        key: "Ukraine",
-                                        content: "Ukraine",
-                                        href: "#"
-                                    },
-                                    { key: "Lviv", content: "Lviv", href: "#" },
-                                    {
-                                        key: "DREAM Hostel Lviv",
-                                        content: "DREAM Hostel Lviv",
-                                        href: "#"
-                                    }
-                                ]*/
-                                }
+                                sections={sections}
                             />
                         </Segment>
                     </div>
 
-                    <Container
-                        text
-                        className="property-page__wrapper-left_side"
-                    >
+                    <div text className="property-page__wrapper-left_side">
                         <BasicMapWidget
                             key="BasicMapWidget"
                             location={property.coordinates}
                             rounded
                             centered
                         />
-                    </Container>
-
+                        <Modal
+                            trigger={
+                                <div
+                                    className="book-btn"
+                                    style={{ height: "33px" }}
+                                >
+                                    <button>Book now</button>
+                                    <div
+                                        className="book-icon"
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        <Icon name="bookmark" size="large" />
+                                    </div>
+                                </div>
+                            }
+                        >
+                            <BookingForm
+                                onBook={this.onBookSubmit}
+                                rooms={property.rooms}
+                                paymentTypes={property.paymentTypes}
+                            />
+                        </Modal>
+                    </div>
                     <Container
                         text
                         className="property-page__wrapper-right_side"

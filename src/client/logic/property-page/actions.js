@@ -1,7 +1,8 @@
 import {
     GET_PROPERTY_INFO,
     PROPERTY_DESCRIPTION_UPDATE,
-    AVAILABILITY_INPUT_UPDATE
+    AVAILABILITY_INPUT_UPDATE,
+    BOOKING_INPUT_UPDATE
 } from "./actionTypes";
 
 export function descriptionUpdate(payload) {
@@ -14,6 +15,13 @@ export function descriptionUpdate(payload) {
 export function availabilityInputUpdate(value) {
     return {
         type: AVAILABILITY_INPUT_UPDATE,
+        payload: value
+    };
+}
+
+export function bookingInputUpdate(value) {
+    return {
+        type: BOOKING_INPUT_UPDATE,
         payload: value
     };
 }

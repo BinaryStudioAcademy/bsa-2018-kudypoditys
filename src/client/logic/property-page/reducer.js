@@ -1,7 +1,8 @@
 import defaultState from "client/logic/defaultState";
 import {
     GET_PROPERTY_INFO_SUCCESS,
-    AVAILABILITY_INPUT_UPDATE
+    AVAILABILITY_INPUT_UPDATE,
+    BOOKING_INPUT_UPDATE
 } from "./actionTypes";
 
 function propertyPageReducer(state = defaultState.propertyPage, action) {
@@ -12,6 +13,17 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                 property: action.payload
             };
         }
+
+        case BOOKING_INPUT_UPDATE: {
+            return {
+                ...state,
+                bookingInput: {
+                    ...state.bookingInput,
+                    ...action.payload
+                }
+            };
+        }
+
         case AVAILABILITY_INPUT_UPDATE: {
             return {
                 ...state,
@@ -21,6 +33,7 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                 }
             };
         }
+
         default: {
             return state;
         }
