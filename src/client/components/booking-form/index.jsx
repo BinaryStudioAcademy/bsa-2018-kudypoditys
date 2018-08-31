@@ -65,7 +65,8 @@ export class BookingForm extends React.Component {
             paymentTypes,
             rooms,
             propertyName,
-            error
+            error,
+            message
         } = this.props;
         const startDate = checkIn === null ? moment() : moment(checkIn);
         const endDate =
@@ -84,7 +85,18 @@ export class BookingForm extends React.Component {
                     Make your booking at {propertyName}
                 </Header>
                 <Form
-                    onSubmit={this.props.onBooking}
+                    onSubmit={event => {
+                        event.preventDefault();
+                        this.props.onBooking({
+                            dateIn: Number(startDate),
+                            dateOut: Number(endDate),
+                            adults: adults,
+                            children: children,
+                            roomId: roomId || roomOptions[0].value,
+                            paymentTypeId:
+                                paymentTypeId || paymentOptions[0].value
+                        });
+                    }}
                     style={{
                         margin: "0 5px 5px 5px",
                         padding: "15px",
@@ -179,9 +191,8 @@ export class BookingForm extends React.Component {
                             />
                         </Form.Field>
                     </Form.Group>
-                    {error ? (
-                        <Message negative>Can`t add booking!</Message>
-                    ) : null}
+                    {error ? <Message negative>{error}</Message> : null}
+                    {message ? <Message positive>{message}</Message> : null}
                     <button className="book-btn" type="submit">
                         Book now
                     </button>

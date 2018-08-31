@@ -23,5 +23,28 @@ export default function* propertyPageSaga() {
         }
     }
 
-    yield all([takeLatest(actionTypes.GET_PROPERTY_INFO, getPropertyInfo)]);
+    function* bookProperty(action) {
+        try {
+            const response = yield call(
+                api.sendAuthRequest,
+                "/api/reservation",
+                "post",
+                action.payload
+            );
+            yield put({
+                type: actionTypes.BOOK_PROPERTY_SUCCESS,
+                payload: "Your booking was a success!"
+            });
+        } catch (err) {
+            return yield put({
+                type: actionTypes.BOOK_PROPERTY_FAILURE,
+                payload: err.response.data
+            });
+        }
+    }
+
+    yield all([
+        takeLatest(actionTypes.GET_PROPERTY_INFO, getPropertyInfo),
+        takeLatest(actionTypes.BOOK_PROPERTY, bookProperty)
+    ]);
 }

@@ -1,4 +1,7 @@
-import { bookingInputUpdate } from "../../logic/property-page/actions";
+import {
+    bookingInputUpdate,
+    bookProperty
+} from "../../logic/property-page/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { property, bookingInput } = state.propertyPage;
@@ -10,12 +13,17 @@ export function mapStateToProps(state, ownProps) {
         children: bookingInput.children,
         roomId: bookingInput.roomId,
         paymentTypeId: bookingInput.paymentTypeId,
-        error: bookingInput.error
+        error: bookingInput.error,
+        message: bookingInput.message
     };
 }
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
+        onBooking(value) {
+            dispatch(bookProperty(value));
+        },
+
         onDatesChange(value) {
             dispatch(
                 bookingInputUpdate({

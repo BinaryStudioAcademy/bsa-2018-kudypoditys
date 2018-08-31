@@ -176,7 +176,8 @@ const state = {
             children: 0,
             roomId: null,
             paymentTypeId: null,
-            error: ""
+            error: "",
+            message: ""
         }
     },
 
