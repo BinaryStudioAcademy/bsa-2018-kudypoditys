@@ -1,4 +1,4 @@
-import { searchUpdate,searchSubmit } from "../../logic/search/actions";
+import {searchUpdate, searchSubmit} from "../../logic/search/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { search } = state;
@@ -16,7 +16,7 @@ export function mapDispatchToProps(dispatch, ownProps) {
     return {
         onSearch(data) {
 
-            console.log("gone dispatch data: "+JSON.stringify(data))
+            console.log("gone dispatch data: " + JSON.stringify(data))
             dispatch(searchSubmit(data));
         },
         onQueryChange(value) {

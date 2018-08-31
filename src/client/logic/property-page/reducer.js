@@ -4,6 +4,7 @@ import {
     AVAILABILITY_INPUT_UPDATE
 } from "./actionTypes";
 
+
 function propertyPageReducer(state = defaultState.propertyPage, action) {
     switch (action.type) {
         case GET_PROPERTY_INFO_SUCCESS: {

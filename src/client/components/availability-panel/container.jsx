@@ -1,7 +1,7 @@
-import { availabilityInputUpdate } from "../../logic/property-page/actions";
+import {availabilityInputUpdate} from "../../logic/property-page/actions";
 
 export function mapStateToProps(state, ownProps) {
-    const { property, availabilityInput } = state.propertyPage;
+    const {property, availabilityInput} = state.propertyPage;
     return {
         propertyName: property.name,
         checkIn: availabilityInput.checkIn,
@@ -23,13 +23,13 @@ export function mapDispatchToProps(dispatch, ownProps) {
             );
         },
         onAdultsChange(value) {
-            dispatch(availabilityInputUpdate({ adults: value }));
+            dispatch(availabilityInputUpdate({adults: value}));
         },
         onChildrenChange(value) {
-            dispatch(availabilityInputUpdate({ children: value }));
+            dispatch(availabilityInputUpdate({children: value}));
         },
         onRoomsChange(value) {
-            dispatch(availabilityInputUpdate({ rooms: value }));
+            dispatch(availabilityInputUpdate({rooms: value}));
         }
     };
 }

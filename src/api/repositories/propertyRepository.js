@@ -29,7 +29,7 @@ const includeOptions = [
     {
         model: City,
         attributes: ["id", "name"],
-        include: [{ model: Country, attributes: ["id", "name"] }]
+        include: [{model: Country, attributes: ["id", "name"]}]
     },
     {
         model: AccommodationRule,
@@ -62,11 +62,11 @@ const includeOptions = [
         model: Room,
         attributes: ["id", "price", "amount", "area", "description"],
         include: [
-            { model: RoomType, attributes: ["id", "name"] },
+            {model: RoomType, attributes: ["id", "name"]},
             {
                 model: BedInRoom,
                 attributes: ["count"],
-                include: [{ model: BedType, attributes: ["id", "name"] }]
+                include: [{model: BedType, attributes: ["id", "name"]}]
             }
         ]
     },
