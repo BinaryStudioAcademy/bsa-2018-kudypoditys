@@ -90,8 +90,7 @@ export class BookingForm extends React.Component {
                         this.props.onBooking({
                             dateIn: Number(startDate),
                             dateOut: Number(endDate),
-                            adults: adults,
-                            children: children,
+                            guestsCount: adults + children,
                             roomId: roomId || roomOptions[0].value,
                             paymentTypeId:
                                 paymentTypeId || paymentOptions[0].value
