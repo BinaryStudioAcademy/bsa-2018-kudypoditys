@@ -4,9 +4,16 @@ import userService from "client/services/userService";
 
 function* sendSettings(action) {
     try {
-        yield call();
+        const user = yield call(userService.updateUser, action);
+        yield put({
+            type: actionTypes.USER_SETTINGS_SEND_SUCCES,
+            payload: user
+        });
     } catch (err) {
         console.log(err);
+        yield put({
+            type: actionTypes.USER_SETTINGS_SEND_FAILURE
+        });
     }
 }
 

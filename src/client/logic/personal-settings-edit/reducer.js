@@ -1,7 +1,8 @@
 import {
     USER_SETTINGS_UPDATE,
     GET_CURRENT_USER_SUCCESS,
-    UPLOAD_USER_AVATAR_SUCCESS
+    UPLOAD_USER_AVATAR_SUCCESS,
+    USER_SETTINGS_SEND_SUCCES
 } from "./actionTypes";
 import defaultState from "client/logic/defaultState";
 
@@ -23,7 +24,12 @@ export default function userSettingsReducer(
             };
         }
         case UPLOAD_USER_AVATAR_SUCCESS: {
-            console.log("UPLOAD_USER_AVATAR_SUCCESS", action.payload);
+            return {
+                ...state,
+                ...action.payload
+            };
+        }
+        case USER_SETTINGS_SEND_SUCCES: {
             return {
                 ...state,
                 ...action.payload

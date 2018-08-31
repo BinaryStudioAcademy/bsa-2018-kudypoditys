@@ -42,8 +42,7 @@ export class SettingsForm extends Component {
     };
 
     sendSettings = (e, { name, value }) => {
-        console.log("SEND TO BACKEND:", name, value);
-        this.updateSettings({ [name]: value });
+        this.props.sendSettings();
     };
 
     // Address mini-form handlers:
@@ -233,7 +232,7 @@ export class SettingsForm extends Component {
                         max={32}
                         val={this.props.nickname}
                         onChange={e => this.handleChange(e, e.target)}
-                        onBlur={e => this.sendSettings(e, e.target)}
+                        // onBlur={e => this.sendSettings(e, e.target)}
                     />
                     <p className="personal_settings-p">Your birthday</p>
                     <Dropdown
@@ -242,7 +241,7 @@ export class SettingsForm extends Component {
                         selection
                         defaultValue={this.props.dateDay}
                         options={dateOptions.days}
-                        onChange={this.sendSettings}
+                        // onChange={this.sendSettings}
                     />
                     <Dropdown
                         name="dateMonth"
@@ -250,7 +249,7 @@ export class SettingsForm extends Component {
                         selection
                         defaultValue={this.props.dateMonth}
                         options={dateOptions.months}
-                        onChange={this.sendSettings}
+                        // onChange={this.sendSettings}
                     />
                     <Dropdown
                         name="dateYear"
@@ -258,7 +257,7 @@ export class SettingsForm extends Component {
                         selection
                         defaultValue={this.props.dateYear}
                         options={dateOptions.years}
-                        onChange={this.sendSettings}
+                        // onChange={this.sendSettings}
                     />
                     <p className="personal_settings-p">Country / Territory</p>
                     <Dropdown
@@ -267,7 +266,7 @@ export class SettingsForm extends Component {
                         selection
                         defaultValue={this.props.country}
                         options={countryOptions}
-                        onChange={this.sendSettings}
+                        // onChange={this.sendSettings}
                     />
                 </Segment>
 
@@ -288,7 +287,7 @@ export class SettingsForm extends Component {
                         selection
                         defaultValue={this.props.appeal}
                         options={appealOptions}
-                        onChange={this.sendSettings}
+                        // onChange={this.sendSettings}
                     />
                     <p className="personal_settings-p">Full name</p>
                     <Field
@@ -300,7 +299,7 @@ export class SettingsForm extends Component {
                         max={16}
                         val={this.props.fullName}
                         onChange={e => this.handleChange(e, e.target)}
-                        onBlur={e => this.sendSettings(e, e.target)}
+                        // onBlur={e => this.sendSettings(e, e.target)}
                     />
                     <p className="personal_settings-p">Phone</p>
                     <Field
@@ -315,7 +314,7 @@ export class SettingsForm extends Component {
                         val={this.props.phoneNumber}
                         validate={[phoneNumber]}
                         onChange={e => this.handleChange(e, e.target)}
-                        onBlur={e => this.sendSettings(e, e.target)}
+                        // onBlur={e => this.sendSettings(e, e.target)}
                     />
                     <p className="personal_settings-p">E-mail</p>
                     <Field
@@ -330,7 +329,7 @@ export class SettingsForm extends Component {
                         val={this.props.email}
                         validate={[email]}
                         onChange={e => this.handleChange(e, e.target)}
-                        onBlur={e => this.sendSettings(e, e.target)}
+                        // onBlur={e => this.sendSettings(e, e.target)}
                     />
                     <p className="personal_settings-p">Address</p>
                     <Field
@@ -340,7 +339,7 @@ export class SettingsForm extends Component {
                         type="text"
                         val={this.props.address}
                         onChange={e => this.handleChange(e, e.target)}
-                        onBlur={e => this.sendSettings(e, e.target)}
+                        // onBlur={e => this.sendSettings(e, e.target)}
                     />
                 </Segment>
 
@@ -521,7 +520,7 @@ export class SettingsForm extends Component {
                         selection
                         defaultValue={this.props.paymentType}
                         options={paymentOptions}
-                        onChange={this.sendSettings}
+                        // onChange={this.sendSettings}
                     />
                 </Segment>
                 <Segment className="personal_settings-segment">
@@ -535,7 +534,7 @@ export class SettingsForm extends Component {
                         selection
                         defaultValue={this.props.currency}
                         options={currencyOptions}
-                        onChange={this.sendSettings}
+                        // onChange={this.sendSettings}
                     />
                     <p className="personal_settings-p">Password</p>
                     <Label as="a" basic>
@@ -543,7 +542,7 @@ export class SettingsForm extends Component {
                     </Label>
                 </Segment>
                 <Segment>
-                    <Button primary>
+                    <Button primary onClick={this.sendSettings}>
                         <Icon name="save outline" />
                         Save
                     </Button>

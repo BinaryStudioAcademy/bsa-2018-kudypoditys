@@ -15,8 +15,8 @@ export class EditPersonalSettings extends Component {
         this.props.updateSettings(data);
     };
 
-    handleSend = data => {
-        this.props.sendSettings(data);
+    handleSend = () => {
+        this.props.sendSettings(this.props);
     };
 
     componentWillMount() {

@@ -18,15 +18,15 @@ class UserService {
                 .post(UPLOAD_URL)
                 .field("upload_preset", UPLOAD_PRESET)
                 .field("file", action.payload[0]);
-        // .then((err, response) => {
-        //     if (err) {
-        //         console.log(err)
-        //     }
-        //     if (response.body.secure_url !== "") {
-        //       return response.body.secure_url;
-        //     }
-        // });
-        // const res = yield req;
+    }
+    updateUser(action) {
+        return api
+            .sendRequest(
+                `/api/users/${action.payload.id}`,
+                "put",
+                action.payload
+            )
+            .then(response => response.data);
     }
 }
 
