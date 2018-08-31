@@ -12,6 +12,9 @@ import {PropertySummary} from "client/components/property-summary";
 import {NavigationBar} from "client/components/navigation-bar";
 import BasicMapWidget from "client/components/basic-map-widget";
 import RoomsSummaryTable from "client/components/rooms-summary-table";
+import Reviews from "client/components/reviews";
+
+
 export class PropertyPage extends React.Component {
     render() {
         let propertyItemData = {
@@ -24,6 +27,59 @@ export class PropertyPage extends React.Component {
             "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-10.jpg",
             "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg",
             "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-12.jpg"
+        ];
+
+        const reviews = [
+            {
+                id: 1,
+                content: "review",
+                user:
+                    {
+                        fullName: "Name",
+                        contactPhone: "0504329839",
+                        avatar: 'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg'
+                    }
+            },
+            {
+                id: 1,
+                content: "review",
+                user:
+                    {
+                        fullName: "Name",
+                        contactPhone: "0504329839",
+                        avatar: 'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg'
+                    },
+            },
+            {
+                id: 1,
+                content: "review",
+                user:
+                    {
+                        fullName: "Name",
+                        contactPhone: "0504329839",
+                        avatar: 'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg'
+                    },
+            },
+            {
+                id: 1,
+                content: "review",
+                user:
+                    {
+                        fullName: "Name",
+                        contactPhone: "0504329839",
+                        avatar: 'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg'
+                    },
+            },
+            {
+                id: 1,
+                content: "review",
+                user:
+                    {
+                        fullName: "Name",
+                        contactPhone: "0504329839",
+                        avatar: 'https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg'
+                    },
+            },
         ];
 
         const sections = [
@@ -103,6 +159,8 @@ export class PropertyPage extends React.Component {
 
                         <AvailabilityPanel style={{width: "100%"}}/>
                         <RoomsSummaryTable/>
+                        <Reviews reviews={reviews} />
+
                     </Container>
                 </div>
             </div>
