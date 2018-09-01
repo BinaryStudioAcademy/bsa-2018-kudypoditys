@@ -184,7 +184,12 @@ class PropertyRepository extends Repository {
                         model: City
                     },
                     {
-                        model: Image
+                        model: Image,
+                    },
+
+                    {
+                        model: Room,
+                        include: [RoomType]
                     }
                 ]
             })

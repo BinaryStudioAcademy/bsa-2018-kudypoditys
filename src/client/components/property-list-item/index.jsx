@@ -122,7 +122,7 @@ export class PropertyListItem extends React.Component {
                                     </Header.Content>
 
                                     </Header>
-                                    <Rating defaultRating={propertyItemData.propertyStars} maxRating={5} disabled/>
+                                    <Rating defaultRating={propertyItemData.rating} maxRating={5} disabled/>
                                 </div>
                                 <div className="rating_block">
                                     <div style={{
@@ -161,8 +161,8 @@ export class PropertyListItem extends React.Component {
                                                 price: 3000,
                                                 name:
                                                     "Avangard Kulisha Apartment",
-                                                latitude: 49.8376405,
-                                                longitude: 24.0253219,
+                                                latitude: propertyItemData.coordinatesLat,
+                                                longitude: propertyItemData.coordinatesLng,
                                                 imageSrc:
                                                     "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg",
                                                 address:
@@ -187,7 +187,7 @@ export class PropertyListItem extends React.Component {
                                 <div className="roomType">
                                     <Icon name="add user"/>
 
-                                    {propertyItemData.roomType}
+                                    {propertyItemData.rooms[0].roomType}
                                 </div>
 
 
@@ -196,7 +196,7 @@ export class PropertyListItem extends React.Component {
                                 {/*}} >*/}
                                 <span className="priceInfo">
 
-                                  US ${propertyItemData.price}
+                                  US ${propertyItemData.rooms[0].roomPrice}
                                 </span>
 
 
