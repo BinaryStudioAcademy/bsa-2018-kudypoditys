@@ -168,6 +168,16 @@ const state = {
             adults: 2,
             rooms: 1,
             children: 0
+        },
+        bookingInput: {
+            checkIn: null,
+            checkOut: null,
+            adults: 2,
+            children: 0,
+            roomId: null,
+            paymentTypeId: null,
+            error: "",
+            message: ""
         }
     },
 

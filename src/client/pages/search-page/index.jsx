@@ -21,6 +21,28 @@ class SearchPage extends React.Component {
             <div className="mock">
                 <Header showSearch={true}/>
                 <div className="search-page__wrapper">
+                    <div className="breadcrumb_wrapper">
+                        <Segment className="breadcrumb__segment">
+                            <Breadcrumb
+                                icon="right angle"
+                                sections={[
+                                    {key: "Home", content: "Home", href: "#"},
+                                    {
+                                        key: "Ukraine",
+                                        content: "Ukraine",
+                                        href: "#"
+                                    },
+                                    {key: "Lviv", content: "Lviv", href: "#"},
+                                    {
+                                        key: "DREAM Hostel Lviv",
+                                        content: "DREAM Hostel Lviv",
+                                        href: "#"
+                                    }
+                                ]}
+                            />
+                        </Segment>
+                    </div>
+
                     <Container
 
                         className="search-page__wrapper-left_side"
