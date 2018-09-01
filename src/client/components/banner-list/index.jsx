@@ -26,29 +26,33 @@ export class BannerList extends Component {
         const { cityInfos } = this.props;
         const [
             city1, city2,
-            city3, city4, city5
+            city3, city4, city5, city6
         ] = cityInfos;
 
         return (
             <Grid >
-                <Grid.Row columns={2}>
+                <Grid.Row columns='equal'>
                     <Grid.Column>
                         <Banner cityInfo={city1} onClick={() => this.onCardClick(city1.id)} />
                     </Grid.Column>
                     <Grid.Column >
                         <Banner cityInfo={city2} onClick={() => this.onCardClick(city2.id)} />
                     </Grid.Column>
+                    <Grid.Column width={8}>
+                        <Banner cityInfo={city3} onClick={() => this.onCardClick(city3.id)} />
+                    </Grid.Column>
+
                 </Grid.Row>
 
                 <Grid.Row columns={3}>
-                    <Grid.Column >
-                        <Banner cityInfo={city3} onClick={() => this.onCardClick(city3.id)} />
-                    </Grid.Column>
                     <Grid.Column >
                         <Banner cityInfo={city4} onClick={() => this.onCardClick(city4.id)} />
                     </Grid.Column>
                     <Grid.Column >
                         <Banner cityInfo={city5} onClick={() => this.onCardClick(city5.id)} />
+                    </Grid.Column>
+                    <Grid.Column>
+                        <Banner cityInfo={city6} onClick={() => this.onCardClick(city6.id)}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

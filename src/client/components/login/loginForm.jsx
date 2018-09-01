@@ -6,14 +6,11 @@ import {
     Header,
     Grid,
     Segment,
-    Message
 } from "semantic-ui-react";
 import renderField from "client/components/input-form/renderField";
 import {
     required,
     email,
-    password,
-    minLength8
 } from "client/regexValidationService";
 
 let LoginForm = props => {

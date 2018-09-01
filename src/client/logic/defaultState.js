@@ -74,13 +74,6 @@ const state = {
     sortType: {
         activeItem: "price"
     },
-    addProperty: {
-        arrivalFrom: "10:00",
-        arrivalTo: "12:00",
-        departureFrom: "10:00",
-        departureTo: "12:00"
-    },
-    images: [],
 
     propertySubmit: {
         activeIndex: 2
@@ -119,7 +112,7 @@ const state = {
     },
     searchResults: {
         destination: "Lviv",
-        totalCount: 1,
+        totalCount: 2,
         shownFrom: 1,
         shownTo: 5
     },
@@ -167,6 +160,27 @@ const state = {
         userName: "User Name"
     },
 
+    propertyPage: {
+        property: null,
+        availabilityInput: {
+            checkIn: null,
+            checkOut: null,
+            adults: 2,
+            rooms: 1,
+            children: 0
+        },
+        bookingInput: {
+            checkIn: null,
+            checkOut: null,
+            adults: 2,
+            children: 0,
+            roomId: null,
+            paymentTypeId: null,
+            error: "",
+            message: ""
+        }
+    },
+
     propertyLayoutTab: {
         title: "Apartment with Garden View",
         amount: "1"
@@ -179,6 +193,7 @@ const state = {
             mastercard: false,
             visa: false
         },
+        rating: 8.8,
         vatTaxes: "default", // "none"
         cityTax: "default", // "individual"
         cityTaxIndividual: {
@@ -207,8 +222,72 @@ const state = {
             priceForDay: ""
         },
         languages: ["ukrainian", "russian", "english"],
-        facilities: ["Bar", "Sauna", "Pool"]
+        facilities: ["Bar", "Sauna", "Pool"],
+
+        // Photo Tab
+        images: [],
+        //tab Index
+        activeIndex: 0,
+        //    POLICES TAB
+
+        arrivalFrom: "10:00",
+        arrivalTo: "13:00",
+        departureFrom: "13:00",
+        departureTo: "12:00",
+        cancellation: "1 day before"
     },
+
+    personalSettings: {
+        avatarUrl: "",
+        nickname: "Nickname0",
+        dateDay: "5",
+        dateMonth: "January",
+        dateYear: "2010",
+        country: "Ukraine",
+        //
+        address: "Some Insane Street",
+        city: "Lviv",
+        addressCountry: "Ukraine",
+        postcode: "12345",
+        //
+        appeal: "Mr.",
+        firstName: "John",
+        lastName: "Doe",
+        phone: "0123453453",
+        email: "john.doe@gmail.com",
+        //
+        additionalFacilities: ["Bar", "Sauna"],
+        //
+        creditCards: [
+            {
+                type: "Visa",
+                number: "1293-1235-1235-9595",
+                owner: "John Doe",
+                expirationDay: "6",
+                expirationYear: "2022",
+                usedForBooking: true,
+                transferRemuneration: false
+            }
+        ],
+        //
+        paymentType: "Mastercard",
+        payForAccommodation: "During stay",
+        //
+        smokingInRooms: "No",
+        countOfStars: "Any",
+        //
+        showWithDisabledFacilities: true,
+        bookForWhom: "For myself",
+        //
+        currency: "USD Dollar"
+    },
+
+    userCabinet: {
+        user: null,
+        activeBooking: null,
+        bookings: []
+    },
+
     resetPassword: {
         passwordReseted: false,
         email: undefined,
@@ -216,6 +295,7 @@ const state = {
         isLoading: false,
         error: undefined
     },
+
     forgotPassword: {
         isLoading: false,
         error: undefined,

@@ -10,16 +10,13 @@ import login from "client/logic/login/reducer";
 import { reducer as formReducer } from "redux-form";
 import quickFilter from "client/logic/quick-filter/reducer";
 import header from "client/logic/header/reducer";
-import checkInOut from "client/logic/checkIn-checkOut/reducer";
-import propertyPhoto from "client/logic/photo-tab/reducer";
 import roomSummary from "client/logic/rooms-summary-table/reducer";
 import cityInfos from "client/logic/banner-list/reducer";
 import amenitiesTab from "./amenities-tab-for-property/reducer";
 import propertySubmit from "./main-info-tab/reducer";
-import policesTab from "client/logic/polices-tab/reducer";
-import layoutTab from "./room-item/rducer";
 import propertyRegistration from "client/logic/property-creation-tabs/reducer";
-import emailInputReducer from "client/logic/forgot-password/reducer"
+import userSettings from "client/logic/personal-settings-edit/reducer";
+import userCabinet from "./user-cabinet/reducer";
 import userVerified from "client/logic/verify-email/reducer";
 import resetPassword from 'client/logic/reset-password/reducer';
 import forgotPassword from 'client/logic/forgot-password/reducer';
@@ -34,7 +31,8 @@ export default combineReducers({
     foundProperties,
     // checkInOut,
     form: formReducer.plugin({
-        registration: registration
+        registration: registration,
+        login: login
     }),
     login,
     propertyPage,
@@ -42,11 +40,12 @@ export default combineReducers({
     roomSummary,
     propertySubmit,
     amenitiesTab,
-    policesTab,
-    layoutTab,
+    // policesTab,
+    // layoutTab,
     propertyRegistration,
-    emailInputReducer,
     userVerified,
+    userSettings,
+    userCabinet,
     resetPassword,
     forgotPassword,
 });

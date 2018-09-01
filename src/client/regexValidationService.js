@@ -22,8 +22,8 @@ export const email = value =>
         : undefined;
 
 export const phoneNumber = value =>
-    value && !/^0[1-9][0-9]{8}$/i.test(value)
-        ? "Invalid phone number, must be 10 digits"
+    value && !/^[0-9]{2,3}[0-9]{9}$/i.test(value)
+        ? "Invalid phone number format"
         : undefined;
 
 export const alphaNumeric = value =>
@@ -51,7 +51,7 @@ export const number = value =>
 
 export const isEqualToFields = (...fields) => (value, allValues) => {
     for (const field of fields) {
-        if (allValues[field] != value) {
+        if (allValues[field] !== value) {
             return 'Should be equal to ' + field;
         }
     }

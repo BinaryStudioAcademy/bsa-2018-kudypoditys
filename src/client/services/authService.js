@@ -5,7 +5,7 @@ import history from "client/history";
 class AuthService {
     signup(user) {
         return api
-            .sendRequest("/api/users", "post", user)
+            .sendRequest("/api/signup", "post", user)
             .then(response => {
                 const {
                     accessToken,
@@ -21,7 +21,7 @@ class AuthService {
                 );
             })
             .catch(err => {
-                return Promise.reject(new Error(err.response.data));
+                return Promise.reject(new Error(err.message));
             });
     }
 

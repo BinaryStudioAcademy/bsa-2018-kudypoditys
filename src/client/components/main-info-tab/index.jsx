@@ -7,6 +7,25 @@ import {mapStateToProps, mapDispatchToProps} from "./container";
 
 class TabRegistration extends Component {
 
+
+        handleChange = (e, { name, value }) => {
+            if(value === "true") {
+                value = true
+            }
+            else if (value === "false") {
+                value = false
+            }
+            this.props.updateTab({ [name]: value });
+        };
+
+    handleProceed = (value) => {
+
+        this.props.updateTab(value)
+        this.props.updateTab({
+            activeIndex: 1
+        });
+
+    };
     render() {
         const {userName} = this.props;
         return (
@@ -14,7 +33,7 @@ class TabRegistration extends Component {
                 <Grid.Column width={10}>
                     <Container>
                         <Header as='h2'>Welcome {userName}!</Header>
-                        <RegistrationForm onSubmit={this.props.createProperty}/>
+                        <RegistrationForm onSubmit={this.handleProceed} handleChange={this.handleChange}/>
                     </Container>
                 </Grid.Column>
             </Grid>

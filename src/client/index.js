@@ -51,7 +51,7 @@ ReactDOM.render(
                     component={CheckInCheckOut}
                 />
                 <Route path="/search-page" component={SearchPage} />
-                <Route path="/property-page" component={PropertyPage} />
+                <Route path="/property/:id" component={PropertyPage} />
                 <Route
                     path="/add-property/"
                     component={() => (

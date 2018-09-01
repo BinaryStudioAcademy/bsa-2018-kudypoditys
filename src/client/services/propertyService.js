@@ -2,9 +2,14 @@ import api from '../helpers/api';
 import history from 'client/history';
 
 class PropertyService {
-    createPropery(data) {
-        return api.sendRequest('/api/add-property/', 'post', data).then(response => {
-            history.push('/add-property/');
+    createProperty(data) {
+        return api.sendAuthRequest('/api/property/', 'post', data).then(response => {
+           if(response.status === 200){
+               history.push('/');
+           }
+
+            console.log(response)
+            return response
         });
     }
     updatePropery(data) {

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 import history from "client/history";
 
 
@@ -30,8 +30,8 @@ export class VerifyEmail extends Component {
             <div>
                 {
                     this.props.verified ? (
-                        <p>Email verified! Redirecting ...</p>
-                    )
+                            <p>Email verified! Redirecting ...</p>
+                        )
                         :
                         (
                             <p>Verificating email...</p>
