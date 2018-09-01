@@ -11,7 +11,7 @@ function* submitSearch(action) {
         yield put({
             type:actionTypes.SEARCH_SUBMIT_SUCCESS,
             payload: {
-                ...searchResponse.data
+                ...searchResponse
             }
         });
     }
