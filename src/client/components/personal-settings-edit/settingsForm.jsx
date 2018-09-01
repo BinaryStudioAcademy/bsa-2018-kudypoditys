@@ -104,6 +104,7 @@ export class SettingsForm extends Component {
     };
 
     handleChange = (e, { name, value }) => {
+        console.log(e);
         const data = {
             [name]: value
         };
@@ -182,33 +183,16 @@ export class SettingsForm extends Component {
                         onChange={e => this.handleChange(e, e.target)}
                     />
                     <p className="personal_settings-p">Your birthday</p>
+
+                    <p className="personal_settings-p">Country</p>
                     <Dropdown
-                        name="dateDay"
+                        name="countryId"
                         fluid
                         selection
-                        defaultValue={this.props.dateDay}
-                        options={dateOptions.days}
-                    />
-                    <Dropdown
-                        name="dateMonth"
-                        fluid
-                        selection
-                        defaultValue={this.props.dateMonth}
-                        options={dateOptions.months}
-                    />
-                    <Dropdown
-                        name="dateYear"
-                        fluid
-                        selection
-                        defaultValue={this.props.dateYear}
-                        options={dateOptions.years}
-                    />
-                    <p className="personal_settings-p">Country / Territory</p>
-                    <Dropdown
-                        name="country"
-                        fluid
-                        selection
-                        defaultValue={this.props.country}
+                        onChange={this.handleChange}
+                        defaultValue={
+                            paymentOptions[this.props.countryId - 1].value
+                        }
                         options={countryOptions}
                     />
                 </Segment>
@@ -452,11 +436,14 @@ export class SettingsForm extends Component {
                         What payment type do you prefer?
                     </p>
                     <Dropdown
-                        name="paymentType"
+                        name="paymentTypeId"
                         className="personal_settings-dropdown-regular"
                         fluid
                         selection
-                        defaultValue={this.props.paymentType}
+                        onChange={this.handleChange}
+                        defaultValue={
+                            paymentOptions[this.props.paymentTypeId - 1].value
+                        }
                         options={paymentOptions}
                     />
                 </Segment>
@@ -466,10 +453,11 @@ export class SettingsForm extends Component {
                     </div>
                     <p className="personal_settings-p">Currency</p>
                     <Dropdown
-                        name="currency"
+                        name="preferredCurrency"
                         fluid
                         selection
-                        defaultValue={this.props.currency}
+                        onChange={this.handleChange}
+                        defaultValue={this.props.preferredCurrency}
                         options={currencyOptions}
                     />
                     <p className="personal_settings-p">Password</p>
