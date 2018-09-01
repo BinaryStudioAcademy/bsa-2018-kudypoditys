@@ -1,10 +1,10 @@
 import {
-    RESET_EMAIL_POST
+    SEND_RESET_PASSWORD_EMAIL
 } from './actionTypes';
 
-export const emailInput = (email) => {
+export const emailResetPasswordSend = (payload) => {
     return {
-        type: RESET_EMAIL_POST,
-        payload: email
+        type: SEND_RESET_PASSWORD_EMAIL,
+        payload
     }
 };

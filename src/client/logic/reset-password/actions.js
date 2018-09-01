@@ -1,10 +1,15 @@
-import {
-    RESET_EMAIL_POST
-} from './actionTypes';
+import { RESET_PASSWORD, SAVE_URL_QUERY } from './actionTypes';
 
-export const submitPassword = (data) => {
+export const passwordReset = (payload) => {
     return {
-        type: RESET_EMAIL_POST,
-        payload: data
+        type: RESET_PASSWORD,
+        payload
     }
 };
+
+export const urlQuerySave = (payload) => {
+    return {
+        type: SAVE_URL_QUERY,
+        payload
+    };
+}

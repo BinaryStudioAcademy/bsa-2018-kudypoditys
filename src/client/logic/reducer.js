@@ -21,6 +21,8 @@ import layoutTab from "./room-item/rducer";
 import propertyRegistration from "client/logic/property-creation-tabs/reducer";
 import emailInputReducer from "client/logic/forgot-password/reducer"
 import userVerified from "client/logic/verify-email/reducer";
+import resetPassword from 'client/logic/reset-password/reducer';
+import forgotPassword from 'client/logic/forgot-password/reducer';
 
 export default combineReducers({
     search,
@@ -44,6 +46,7 @@ export default combineReducers({
     layoutTab,
     propertyRegistration,
     emailInputReducer,
-
-    userVerified
+    userVerified,
+    resetPassword,
+    forgotPassword,
 });

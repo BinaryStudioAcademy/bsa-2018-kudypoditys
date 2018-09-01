@@ -7,24 +7,24 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
-import ForgotPassword from 'client/components/forgot-password'
+import ResetPasswordPage from 'client/pages/reset-password-page'
 import RegistrationPage from "client/pages/registration-page";
 import PropertyCreationTabs from "client/pages/add-property-page";
-import {Router, Route, Switch} from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import CheckInCheckOut from "client/pages/checkin-checkout-page";
-import {HomePage} from "client/pages/home-page";
+import { HomePage } from "client/pages/home-page";
 import PropertyPage from "client/pages/property-page";
 import LoginPage from "client/pages/login-page";
 import SearchPage from "client/pages/search-page";
-import {NotFoundPage} from "client/pages/404-page";
+import { NotFoundPage } from "client/pages/404-page";
 import createSagaMidddelware from "redux-saga";
 import rootSaga from "client/logic/rootSaga";
 import history from "client/history";
 import PhotoTab from "./components/photo-tab-registration-property";
 import UserCabinet from "./pages/user-cabinet";
 import AuthHOC from "./components/auth-hoc";
-import ResetPasswordPage from './pages/reset-password-page'
 import VerifyEmail from "client/components/verify-email";
+import ForgotPasswordPage from "client/pages/forgot-password-page";
 
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
@@ -39,11 +39,12 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <Switch>
-                <Route exact path="/" component={HomePage}/>
-                <Route exact path="/signup" component={RegistrationPage}/>
-                <Route exact path="/verifyemail" component={VerifyEmail}/>
-                <Route exact path="/login" component={LoginPage}/>
-                <Route exact path="/forgot" component={ForgotPassword}/>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/signup" component={RegistrationPage} />
+                <Route exact path="/verifyemail" component={VerifyEmail} />
+                <Route exact path="/login" component={LoginPage} />
+                <Route exact path="/resetpassword" component={ResetPasswordPage} />
+                <Route exact path="/forgotpassword" component={ForgotPasswordPage} />
                 <Route
                     exact
                     path="/checkin-checkout"
@@ -61,11 +62,6 @@ ReactDOM.render(
                 <Route
                     path="/user-cabinet"
                     component={() => <AuthHOC Component={UserCabinet} />}
-                />
-
-                <Route
-                    path="/new-password/:token"
-                    component={ResetPasswordPage}
                 />
                 <Route component={NotFoundPage} />
             </Switch>

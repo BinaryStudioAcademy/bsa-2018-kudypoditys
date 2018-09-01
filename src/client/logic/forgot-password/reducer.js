@@ -1,23 +1,31 @@
 import defaultState from 'client/logic/defaultState';
 import {
-    RESET_EMAIL_SUCSESS,
-    RESET_EMAIL_FAILED,
-    RESET_EMAIL_POST
+    SEND_RESET_PASSWORD_EMAIL,
+    SEND_RESET_PASSWORD_EMAIL_SUCCESS,
+    SEND_RESET_PASSWORD_EMAIL_FAILED
 } from './actionTypes';
-import { emailInput } from './actions'
 
-function emailInputReducer(state = defaultState, action) {
+function forgotPasswordReducer(state = defaultState.forgotPassword, action) {
     switch (action.type) {
-        case RESET_EMAIL_SUCSESS:
-            console.log('0000')
+        case SEND_RESET_PASSWORD_EMAIL:
             return {
-                ...state.rooms,
-                ...action.payload
-            }
+                ...state,
+                isLoading: true
+            };
+        case SEND_RESET_PASSWORD_EMAIL_SUCCESS:
+            return {
+                emailSendSuccess: true,
+                isLoading: false
+            };
+        case SEND_RESET_PASSWORD_EMAIL_FAILED:
+            return {
+                isLoading: false,
+                emailSendSuccess: false,
+                error: action.payload
+            };
         default:
             return state;
-
     }
 }
 
-export default emailInputReducer;
+export default forgotPasswordReducer;

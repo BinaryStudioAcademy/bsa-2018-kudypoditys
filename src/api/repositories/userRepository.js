@@ -10,15 +10,6 @@ class UserRepository extends Repository {
         });
     }
 
-    getUserByResetPasswordLink(token) {
-        return this.model.findOne({
-            where: {
-                resetPasswordLink: token
-            }
-        });
-
-    }
-
 }
 
 module.exports = new UserRepository(userModel);

@@ -1,41 +1,25 @@
-import { call, put, takeLatest,all } from 'redux-saga/effects';
-import { RESET_PASSWORD_POST,
-         RESET_PASSWORD_SUCSESS,
-         RESET_PASSWORD_FAILED
-        } from './actionTypes';
+import { call, put, takeLatest, all } from 'redux-saga/effects';
+
+import { RESET_PASSWORD, RESET_PASSWORD_SUCSESS, RESET_PASSWORD_FAILED } from './actionTypes';
+import authService from 'client/services/authService';
 
 function* resetPassword(action) {
-    console.log(action.payload)
-    const URL = 'http://127.0.0.1:5000/api/reset/' + action.payload.data.token;
-    const BODY = {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            password: action.payload.data.password,
-            confirm: action.payload.data.confirm
-        })
-
-    }
-
     try {
-        const propetyResponse = yield call(fetch, URL, BODY);
-        console.log(111);
+        const { email, token, newPassword } = action.payload;
+        yield call(authService.resetPassword, email, token, newPassword);
         yield put({
-            type:RESET_PASSWORD_SUCSESS,
-            payload: action.payload
+            type: RESET_PASSWORD_SUCSESS
         });
-    }
-    catch (error) {
-        console.log(error)
-        yield put({ type:RESET_PASSWORD_FAILED})
+    } catch (err) {
+        yield put({
+            type: RESET_PASSWORD_FAILED,
+            payload: err.message
+        });
     }
 }
 
-export default function* forgotPasswordSaga() {
+export default function* resetPasswordSaga() {
     yield all([
-        takeLatest(RESET_PASSWORD_POST, resetPassword)
+        takeLatest(RESET_PASSWORD, resetPassword)
     ])
 }

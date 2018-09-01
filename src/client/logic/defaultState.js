@@ -208,6 +208,18 @@ const state = {
         },
         languages: ["ukrainian", "russian", "english"],
         facilities: ["Bar", "Sauna", "Pool"]
+    },
+    resetPassword: {
+        passwordReseted: false,
+        email: undefined,
+        token: undefined,
+        isLoading: false,
+        error: undefined
+    },
+    forgotPassword: {
+        isLoading: false,
+        error: undefined,
+        sendEmailSuccess: false
     }
 };
 

@@ -17,7 +17,7 @@ import {
 } from "client/regexValidationService";
 
 let LoginForm = props => {
-    const {handleSubmit, handleRegisterClicked, handleForgotClicked} = props;
+    const { handleSubmit, handleRegisterClicked, handleForgotClicked } = props;
     return (
         <Grid centered columns={3}>
             <Grid.Column textAlign="center">
@@ -35,12 +35,12 @@ let LoginForm = props => {
                             iconPosition="left"
                         />
                         <Field
-                            style={{marginTop: "5%"}}
+                            style={{ marginTop: "5%" }}
                             name="password"
                             type="password"
                             component={renderField}
                             label="Password"
-                            validate={[required, password, minLength8]}
+                            validate={[required]}
                             icon="lock"
                             className="login-password-input"
                             iconPosition="left"

@@ -1,10 +1,10 @@
 const Service = require("./generalService");
 const userRepository = require("../repositories/userRepository");
 const settings = require("../../../config/settings");
-const {dateHelpers} = require("../helpers");
+const { dateHelpers } = require("../helpers");
 const bcrypt = require("bcrypt");
 const userTokenService = require("./userToken");
-const nodemailer = require("nodemailer");
+const mailService = require("./mail");
 const crypto = require("crypto");
 
 require("dotenv").config();
@@ -27,7 +27,7 @@ class UserService extends Service {
                 return this.create(newUser).then(dbUser => {
                     if (dbUser) {
                         return this.getEmailVerifyLink(dbUser).then(
-                            ({error, data}) => {
+                            ({ error, data }) => {
                                 if (!error) {
                                     return data;
                                 } else {
@@ -45,9 +45,6 @@ class UserService extends Service {
 
     getUserByEmail(email) {
         return this.repository.getUserByEmail(email);
-    }
-    getUserByResetPasswordLink(ResetPasswordLink) {
-        return this.repository.getUserByResetPasswordLink(ResetPasswordLink);
     }
 
     updateUser(id, user) {
@@ -79,25 +76,14 @@ class UserService extends Service {
     }
 
     getEmailVerifyLink(user) {
-        const EMAIL_USER = process.env.EMAIL_USER;
-        const EMAIL_PASS = process.env.EMAIL_PASS;
         const verifyString = this.generateRandomString();
         const currentDate = dateHelpers.toUnixTimeSeconds(new Date());
-
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: EMAIL_USER,
-                pass: EMAIL_PASS,
-            },
-        });
-
-        const mailOptions = {
-            from: EMAIL_USER,
-            to: user.email,
+        const action = "verifyemail";
+        const mailOptionsParam = {
             subject: "Email Verification - Kudypoditys",
-            html: `<a href="http://localhost:3000/verifyemail?email=${user.email}&token=${verifyString}">Verify your email for Kudypoditys</a>`,
-        };
+            message: "Verify your email for Kudypoditys",
+            verifyStringParam: verifyString
+        }
 
         return userRepository
             .updateById(user.id, {
@@ -108,8 +94,8 @@ class UserService extends Service {
             .then(data => {
                 if (data) {
                     return userRepository.findById(user.id).then(user => {
-                        transporter.sendMail(mailOptions).then(() => true);
-                        return {error: false, data: user};
+                        mailService.sendMail(user, mailOptionsParam, action).then(() => true);
+                        return { error: false, data: user };
                     });
                 } else {
                     return {
@@ -118,6 +104,33 @@ class UserService extends Service {
                     };
                 }
             });
+    }
+
+    getForgotPasswordLink(email) {
+        const resetPasswordString = this.generateRandomString();
+        const action = "resetpassword";
+        const mailOptions = {
+            subject: "KudyPoditys password reset",
+            message: `You are receiving this because you (or someone else)
+                      have requested the reset of the password for your account.
+                      Please click on the following link, or paste this into your
+                      browser to complete the process:`,
+            verifyStringParam: resetPasswordString
+        }
+
+        return userRepository.getUserByEmail(email).then(user => {
+            if (!user) {
+                return Promise.reject(new Error('User with such email, does not exists'));
+            }
+
+            return user;
+        }).then(user =>
+            userRepository.updateById(user.id, {
+                resetPasswordToken: resetPasswordString
+            }).then(_ => user)
+        ).then(user => {
+            mailService.sendMail(user, mailOptions, action);
+        }).then(_ => true);
     }
 
     verifyEmail(email, token) {
@@ -132,7 +145,7 @@ class UserService extends Service {
                         verifyEmailToken: "verified",
                     });
 
-                    return {verified: true};
+                    return { verified: true };
                 } else {
                     return Promise.reject(
                         new Error("VerifyEmailToken is out of date."),
@@ -144,6 +157,24 @@ class UserService extends Service {
                 );
             }
         });
+    }
+
+    resetPassword(email, token, newPassword) {
+        return userRepository.getUserByEmail(email).then(user => {
+            if (!user) {
+                return Promise.reject(new Error('User with such email, does not exists'));
+            }
+
+            return user;
+        }).then(user => {
+            if (user.resetPasswordToken !== token) {
+                return Promise.reject(new Error('Reset token is invalid'));
+            }
+            return userRepository.updateById(user.id, {
+                resetPasswordToken: null,
+                password: bcrypt.hashSync(newPassword, 10)
+            });
+        }).then(_ => true);
     }
 
     generateRandomString() {

@@ -1,5 +1,4 @@
 const
-    // apiRoot = '/api',
     Sequelize = require('sequelize'),
     orm = require('../orm');
 
@@ -37,7 +36,7 @@ let User = orm.define('user', {
         type: Sequelize.STRING,
         allowNull: true
     },
-    resetPasswordLink: {
+    resetPasswordToken: {
         type: Sequelize.STRING,
         select: false
     }

@@ -22,7 +22,7 @@ class Api {
                     ...this.getAuthHeader()
                 }
             })
-        );
+        ).catch(this.handleApiError);
     }
 
     sendRequest(url, type, payload) {
@@ -30,7 +30,7 @@ class Api {
             url: url, // url
             method: type.toUpperCase(), // 'get' -> 'GET'
             data: payload // body
-        });
+        }).catch(this.handleApiError);
     }
 
     getAuthHeader() {
@@ -75,6 +75,14 @@ class Api {
                 refreshExpiryDate
             );
         });
+    }
+
+    handleApiError(err) {
+        if (err.response && err.response.data) {
+            return Promise.reject(new Error(err.response.data));
+        }
+
+        return Promise.reject(new Error(err.message));
     }
 }
 
