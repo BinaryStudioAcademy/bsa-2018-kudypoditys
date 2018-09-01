@@ -14,9 +14,9 @@ function* signup(action) {
                 message: "Signed up successfully!"
             })
         );
-        // yield put({
-        //     type: LOGIN_SUCCESS
-        // });
+        yield put({
+            type: LOGIN_SUCCESS
+        });
         history.push("/");
     } catch (err) {
         yield put(registerFailure({error: true, message: err.message}));
