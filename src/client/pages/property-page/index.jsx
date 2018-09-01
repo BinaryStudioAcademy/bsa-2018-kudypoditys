@@ -1,6 +1,12 @@
 import React from "react";
 import "./index.scss";
-import { Divider, Container, Segment, Breadcrumb } from "semantic-ui-react";
+import {
+    Divider,
+    Container,
+    Segment,
+    Breadcrumb,
+    Icon
+} from "semantic-ui-react";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import Search from "client/components/search";
@@ -12,6 +18,9 @@ import { PropertySummary } from "client/components/property-summary";
 import { NavigationBar } from "client/components/navigation-bar";
 import BasicMapWidget from "client/components/basic-map-widget";
 import RoomsSummaryTable from "client/components/rooms-summary-table";
+import Modal from "../../components/modal";
+import BookingForm from "../../components/booking-form";
+
 export class PropertyPage extends React.Component {
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
@@ -25,8 +34,12 @@ export class PropertyPage extends React.Component {
         return images;
     }
 
+    onBookSubmit = event => {
+        console.log("book!");
+    };
+
     render() {
-        const { property } = this.props;
+        const { property, user } = this.props;
 
         const handleSlideChange = index => {
             console.log(`Slide changed to ${index}`);
@@ -64,18 +77,51 @@ export class PropertyPage extends React.Component {
             <div className="mock">
                 <Header showSearch={true} />
                 <div className="property-page__wrapper">
-                    <Container
-                        text
-                        className="property-page__wrapper-left_side"
-                    >
+                    <div className="breadcrumb_wrapper">
+                        <Segment>
+                            <Breadcrumb
+                                icon="right angle"
+                                sections={sections}
+                            />
+                        </Segment>
+                    </div>
+
+                    <div text className="property-page__wrapper-left_side">
                         <BasicMapWidget
                             key="BasicMapWidget"
                             location={property.coordinates}
                             rounded
                             centered
                         />
-                    </Container>
-
+                        {user ? (
+                            <Modal
+                                trigger={
+                                    <div
+                                        className="book-btn"
+                                        style={{ height: "33px" }}
+                                    >
+                                        <button>Book now</button>
+                                        <div
+                                            className="book-icon"
+                                            style={{ cursor: "pointer" }}
+                                        >
+                                            <Icon
+                                                name="bookmark"
+                                                size="large"
+                                            />
+                                        </div>
+                                    </div>
+                                }
+                                onClose={this.props.clearBookingForm}
+                            >
+                                <BookingForm
+                                    onBook={this.onBookSubmit}
+                                    rooms={property.rooms}
+                                    paymentTypes={property.paymentTypes}
+                                />
+                            </Modal>
+                        ) : null}
+                    </div>
                     <Container
                         text
                         className="property-page__wrapper-right_side"
