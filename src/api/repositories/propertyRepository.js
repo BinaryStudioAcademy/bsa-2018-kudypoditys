@@ -106,6 +106,12 @@ class PropertyRepository extends Repository {
                     {
                         model: Image,
                     },
+
+                    {
+                        model: Room,
+                        include: [RoomType]
+
+                    }
                 ]
             })
             .then(properties => {

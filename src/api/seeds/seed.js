@@ -21,7 +21,7 @@ const PROPERTIES = [
     {
         id: 1,
         name: "Hotel Ukraine",
-        rating: 4.5,
+        rating: 5,
         address: "Koval street 16, Kyiv",
         description: "Hotel Ukraine description.",
         contactPhone: "0509832174",
@@ -29,11 +29,12 @@ const PROPERTIES = [
         propertyTypeId: 9,
         cityId: 2,
         accommodationRuleId: 1
+
     },
     {
         id: 2,
         name: "Hotel Dolynskyi",
-        rating: 4.9,
+        rating: 4,
         address: "Koval street 16, Lviv",
         description: "Hotel Dolynskyi description. Located in Lviv.",
         contactPhone: "0509842174",
@@ -42,7 +43,7 @@ const PROPERTIES = [
         cityId: 1,
         accommodationRuleId: 1
     }
-];
+]
 
 const ACCOMMODATION_RULES = [
     {
@@ -73,6 +74,14 @@ const ROOMS = [
         area: 20,
         roomTypeId: 2,
         propertyId: 2
+    },
+    {
+        id: 3,
+        price: 30,
+        amount: 4,
+        area: 20,
+        roomTypeId: 2,
+        propertyId: 1
     }
 ];
 

@@ -94,14 +94,7 @@ class SearchPage extends React.Component {
                             </div>
                         </div>
                         <RankingBar key="RankingBar" />
-                        {/* <PropertyListItem
-                            key="PropertyListItem"
-                            id="foundProperty1"
-                        />
-                        <PropertyListItem
-                            key="PropertyListItem"
-                            id="foundProperty2"
-                        /> */}
+
                         {this.state.listItems}
                         <div className="search-page__pagination">
                             <Pagination pagesCount={10} />

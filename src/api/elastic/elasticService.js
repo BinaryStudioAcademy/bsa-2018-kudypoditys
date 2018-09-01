@@ -70,10 +70,28 @@ module.exports = {
                 analyzer: "autocomplete",
                 search_analyzer: "standard"
             },
-            coordinates:{
+            coordinates: {
                 type: "text",
                 analyzer: "autocomplete",
                 search_analyzer: "standard"
+            },
+            roomPrice: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            roomType: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            roomsAmount: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            rooms: {
+                type: "nested"
             }
         };
 
@@ -109,7 +127,14 @@ module.exports = {
                     description: property.description,
                     address: property.address,
                     coordinatesLat: property.coordinates.lat,
-                    coordinatesLng: property.coordinates.lng
+                    coordinatesLng: property.coordinates.lng,
+                    rooms: property.rooms.map(room => {
+                        return {
+                            roomType: room.roomType.name,
+                            roomPrice: room.price,
+                            roomsAmount:room.amount
+                        };
+                    })
                 });
             });
             return elasticClient.bulk({ body: propertiesBulk }, function(
