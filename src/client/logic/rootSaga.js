@@ -14,7 +14,6 @@ export default function* rootSaga() {
         fork(headerSaga),
         fork(propertySaga),
         fork(signupSaga),
-        fork(personalSettings),
         fork(userCabinetSaga),
         fork(propertyPageSaga),
         fork(emailVerificationSaga),

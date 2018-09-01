@@ -66,13 +66,15 @@
 }
 
 .search-page__wrapper {
-    display: block;
-    margin: 10px auto;
+    display: flex;
+    margin: 14px auto;
     width: 1050px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .search-page__wrapper-left_side {
-    float: left;
+    //float: left;
     width: 270px;
     margin-right: 1rem !important;
 }
@@ -83,7 +85,7 @@
 }
 
 .search-page__wrapper-right_side {
-    float: right;
+    //float: right;
     margin-left: 0px !important;
     background-color: white;
     padding: 0;

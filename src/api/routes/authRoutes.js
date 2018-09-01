@@ -14,6 +14,11 @@ authRouter.route("/login").post((req, res) => {
             return;
         }
 
+        if(user.verifyEmailToken !== 'verified') {
+            res.status(400).json('You need to verify your email address before proceed');
+            return;
+        }
+
         req.login(user, {session: false}, err => {
             if (err) res.status(400).send(err.message);
             return;
@@ -53,16 +58,19 @@ authRouter.route("/signup").post((req, res) => {
     userService
         .addUser(req.body)
         .then(user => {
-            userTokenService.generateForUser(user.id).then(refreshToken => {
-                const tokenObj = userTokenService.generateAccessToken(user.id);
-                const token = {
-                    accessToken: tokenObj.token,
-                    refreshToken: refreshToken.token,
-                    accessExpiryDate: tokenObj.expiryDate,
-                    refreshExpiryDate: refreshToken.expiryDate
-                };
-                res.status(200).send(token);
-            });
+            console.log('USER SIGNUP RETURNED DATA::');
+            console.log(user);
+            // userTokenService.generateForUser(user.id).then(refreshToken => {
+            //     const tokenObj = userTokenService.generateAccessToken(user.id);
+            //     const token = {
+            //         accessToken: tokenObj.token,
+            //         refreshToken: refreshToken.token,
+            //         accessExpiryDate: tokenObj.expiryDate,
+            //         refreshExpiryDate: refreshToken.expiryDate
+            //     };
+            //     res.status(200).send(token);
+            // });
+            res.status(200).send({ registered: true });
         })
         .catch(err => {
             res.status(400).send(err.message);
