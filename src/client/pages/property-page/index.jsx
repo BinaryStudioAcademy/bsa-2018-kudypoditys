@@ -7,8 +7,8 @@ import {
     Breadcrumb,
     Icon
 } from "semantic-ui-react";
-import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import {connect} from "react-redux";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 import Search from "client/components/search";
 import Header from "client/components/header";
 import AvailabilityPanel from "client/components/availability-panel";
@@ -43,7 +43,7 @@ export class PropertyPage extends React.Component {
     };
 
     render() {
-        const { property, user } = this.props;
+        const {property, user} = this.props;
 
         const handleSlideChange = index => {
             console.log(`Slide changed to ${index}`);
@@ -102,12 +102,12 @@ export class PropertyPage extends React.Component {
                                 trigger={
                                     <div
                                         className="book-btn"
-                                        style={{ height: "33px" }}
+                                        style={{height: "33px"}}
                                     >
                                         <button>Book now</button>
                                         <div
                                             className="book-icon"
-                                            style={{ cursor: "pointer" }}
+                                            style={{cursor: "pointer"}}
                                         >
                                             <Icon
                                                 name="bookmark"

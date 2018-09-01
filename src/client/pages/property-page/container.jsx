@@ -20,7 +20,7 @@ export function mapDispatchToProps(dispatch, ownProps) {
             dispatch(getPropertyInfoById(id));
         },
         clearBookingForm() {
-            dispatch(bookingInputUpdate({ message: "", error: "" }));
+            dispatch(bookingInputUpdate({message: "", error: ""}));
         }
     };
 }
