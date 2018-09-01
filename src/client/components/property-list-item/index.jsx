@@ -152,8 +152,7 @@ export class PropertyListItem extends React.Component {
                                         size="small"
                                         onClick={this.handleRedirectToMap}
                                     />
-
-                                    {propertyItemData.location} {" - "}
+                                    {propertyItemData.address +" - "}
 
 
                                     <MapWidgetModal
@@ -171,15 +170,13 @@ export class PropertyListItem extends React.Component {
                                                 rating: "8/10"
                                             }
                                         ]}
-                                        startPosition={{
-                                            latitude: 49.837089,
-                                            longitude: 24.021161
-                                        }}
+                                       // startPosition= {propertyItemData.coordinates}
                                         zoom={13}
                                         controlEnable={true}
                                         buttonClass={"searchMapButton"}
                                     />
                                     <span
+
                                         className="Property_list__distanceToCenter">({propertyItemData.distanceToCenter} km from center)</span>
                                 </div>
 
@@ -199,9 +196,7 @@ export class PropertyListItem extends React.Component {
                                 {/*}} >*/}
                                 <span className="priceInfo">
 
-                                    {propertyItemData.priceFrom}
-
-                                    {propertyItemData.curency}
+                                  US ${propertyItemData.price}
                                 </span>
 
 
@@ -279,7 +274,8 @@ PropertyListItem.propTypes = {
         name: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         rating: PropTypes.number.isRequired,
-        location: PropTypes.string.isRequired,
+        address: PropTypes.string.isRequired,
+        coordinates: PropTypes.string.isRequired,
         distanceToCenter: PropTypes.number.isRequired,
         priceTo: PropTypes.number.isRequired,
         priceFrom: PropTypes.number.isRequired,

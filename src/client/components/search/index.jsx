@@ -80,7 +80,7 @@ export class MainSearch extends React.Component {
         );
     };
     handleSubmit = () => {
-        console.log("handleSubmit trigered")
+        console.log("handleSubmit trigered");
         let path = `/search-page`;
         history.push(path);
         const {
@@ -92,12 +92,13 @@ export class MainSearch extends React.Component {
             endDate
         } = this.state;
         this.props.onSearch({
-            query:query,
-            rooms:rooms,
-            adults:adults,
-            children:children,
-            startDate:startDate,
-            endDate:endDate});
+            query: query,
+            rooms: rooms,
+            adults: adults,
+            children: children,
+            startDate: startDate,
+            endDate: endDate
+        });
     };
 
     constructor(props) {
@@ -181,7 +182,7 @@ export class MainSearch extends React.Component {
     };
 
     render() {
-        console.log("state=" + JSON.stringify(this.state));
+        // console.log("state=" + JSON.stringify(this.state));
 
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
@@ -193,6 +194,17 @@ export class MainSearch extends React.Component {
             adults,
             children
         } = this.state;
+        console.log("props!!!=" + JSON.stringify(this.props));
+        if (this.props.search.data !== undefined) {
+            const { data } = this.props.search;
+
+            // console.log("search state" + JSON.stringify(this.state));
+
+            if (data !== undefined && data !== "" && data.length > 0) {
+                console.log("searchResults" + JSON.stringify(data));
+                this.props.handleSearchResults(data);
+            }
+        }
         const childrenOptions = this.generateOptions(0, 10);
 
         return (
@@ -327,7 +339,9 @@ MainSearch.propTypes = {
     onCheckOutChange: PropTypes.func.isRequired,
     onAdultsChange: PropTypes.func.isRequired,
     onChildrenChange: PropTypes.func.isRequired,
-    onRoomsChange: PropTypes.func.isRequired
+    onRoomsChange: PropTypes.func.isRequired,
+    handleSearchResults: PropTypes.func.isRequired,
+    data: PropTypes.array
 };
 
 MainSearch.defaultProps = {

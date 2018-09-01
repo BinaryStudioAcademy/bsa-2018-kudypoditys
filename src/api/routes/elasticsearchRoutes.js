@@ -53,7 +53,7 @@ elastic.route("/update").post((req, res) => {
 
 elastic.route("/search").get((req, res) => {
   const { index, type, query } = req.query;
-    const fields = [ "name"];
+    const fields = [ "name","city"];
     ES_service.autocompleteSearch(req, res, index, type, query, fields)
 });
 

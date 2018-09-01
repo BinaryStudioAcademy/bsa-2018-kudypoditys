@@ -1,38 +1,58 @@
 import React from "react";
 import "./index.scss";
-import {Container, Grid, Segment, Icon} from "semantic-ui-react";
+import { Container, Grid, Segment, Icon } from "semantic-ui-react";
 
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "client/components/property-list-item";
-import {Pagination} from "client/components/pagination";
+import { Pagination } from "client/components/pagination";
 import BasicMapWidget from "client/components/basic-map-widget";
 import Header from "client/components/header";
-import {Breadcrumb} from "semantic-ui-react";
+import { Breadcrumb } from "semantic-ui-react";
 import QuickFilter from "client/components/quick-filter";
-import {connect} from "react-redux";
-import {mapStateToProps} from "./container";
-
+import { connect } from "react-redux";
+import { mapStateToProps } from "./container";
 
 class SearchPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+    handleSearchResults = searchResults => {
+        console.log(
+            "hello form search page ;)  searchResults -  " +
+                JSON.stringify(searchResults)
+        );
+        const listItems = searchResults.map(property => (
+            <PropertyListItem
+                key={property._source.id}
+                propertyItemData={property._source}
+            />
+        ));
+        this.setState({ listItems: listItems });
+    };
+
     render() {
         return (
             <div className="mock">
-                <Header showSearch={true}/>
+                <Header
+                    handleSearchResults={this.handleSearchResults}
+                    showSearch={true}
+                />
                 <div className="search-page__wrapper">
                     <div className="breadcrumb_wrapper">
                         <Segment className="breadcrumb__segment">
                             <Breadcrumb
                                 icon="right angle"
                                 sections={[
-                                    {key: "Home", content: "Home", href: "#"},
+                                    { key: "Home", content: "Home", href: "#" },
                                     {
                                         key: "Ukraine",
                                         content: "Ukraine",
                                         href: "#"
                                     },
-                                    {key: "Lviv", content: "Lviv", href: "#"},
+                                    { key: "Lviv", content: "Lviv", href: "#" },
                                     {
                                         key: "DREAM Hostel Lviv",
                                         content: "DREAM Hostel Lviv",
@@ -43,11 +63,8 @@ class SearchPage extends React.Component {
                         </Segment>
                     </div>
 
-                    <Container
-
-                        className="search-page__wrapper-left_side"
-                    >
-                        <QuickFilter/>
+                    <Container className="search-page__wrapper-left_side">
+                        <QuickFilter />
                         <div
                             style={{
                                 marginTop: "4%"
@@ -62,47 +79,36 @@ class SearchPage extends React.Component {
                             />
                         </div>
                     </Container>
-                    <Container
-
-                        className="search-page__wrapper-right_side"
-                    >
+                    <Container className="search-page__wrapper-right_side">
                         <div className="search-page__row">
-                            <SearchSummary/>
+                            <SearchSummary />
                             <div className="switch">
-                                <div className='list_btn'>
-                                    <Icon
-                                        name="list ul"
-                                        color="white"
-                                    />List
+                                <div className="list_btn">
+                                    <Icon name="list ul" color="white" />
+                                    List
                                 </div>
-                                <div className='map_btn'>
-                                    <Icon
-                                        name="world"
-
-                                    />
+                                <div className="map_btn">
+                                    <Icon name="world" />
                                     Map
                                 </div>
                             </div>
                         </div>
-                        <RankingBar key="RankingBar"/>
-                        <PropertyListItem
+                        <RankingBar key="RankingBar" />
+                        {/* <PropertyListItem
                             key="PropertyListItem"
                             id="foundProperty1"
                         />
                         <PropertyListItem
                             key="PropertyListItem"
                             id="foundProperty2"
-                        />
-
+                        /> */}
+                        {this.state.listItems}
                         <div className="search-page__pagination">
-                            <Pagination pagesCount={10}/>
+                            <Pagination pagesCount={10} />
                         </div>
-
                     </Container>
-
                 </div>
             </div>
-
         );
     }
 }

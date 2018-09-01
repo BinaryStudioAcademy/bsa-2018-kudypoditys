@@ -2,13 +2,18 @@ import { searchUpdate,searchSubmit } from "../../logic/search/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { search } = state;
+    //console.log("mapStateToProps" + JSON.stringify(state));
+    console.log("mapStateToProps" + JSON.stringify(search.data));
+
     return {
-        destination: search.destination,
-        checkIn: search.checkIn,
-        checkOut: search.checkOut,
-        adults: search.adults,
-        children: search.children,
-        rooms: search.rooms
+        search
+        // destination: search.destination,
+        // checkIn: search.checkIn,
+        // checkOut: search.checkOut,
+        // adults: search.adults,
+        // children: search.children,
+        // rooms: search.rooms,
+        // data:search.data
     };
 }
 

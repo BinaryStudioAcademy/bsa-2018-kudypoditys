@@ -129,7 +129,7 @@ export class MainHeader extends Component {
                     {this.props.showSearch ? (
                         <Grid.Row centered columns={1}>
                             <Grid.Column width={16} style={{ marginTop: 45 }}>
-                                <MainSearch
+                                <MainSearch handleSearchResults= {this.props.handleSearchResults}
                                     view="bar"
                                     destination="Lviv"
                                     checkIn={new Date("Aug 14 2018")}
