@@ -7,6 +7,7 @@ import propertySaga from "./property-creation-tabs/saga";
 import emailVerificationSaga from "client/logic/verify-email/saga";
 import propertyPageSaga from "./property-page/saga";
 import searchSaga from "./search/saga";
+import personalSettings from "./personal-settings-edit/saga";
 
 export default function* rootSaga() {
     yield all([
