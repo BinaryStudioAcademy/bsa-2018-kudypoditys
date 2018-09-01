@@ -19,7 +19,6 @@ export class BannerList extends Component {
     }
 
     onCardClick = (query) => {
-        console.log("handleSubmit trigered")
         console.log(query)
         let path = `/search-page`;
         history.push(path);
