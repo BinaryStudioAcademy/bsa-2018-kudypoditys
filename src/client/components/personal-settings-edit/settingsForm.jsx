@@ -182,8 +182,6 @@ export class SettingsForm extends Component {
                         val={this.props.nickname}
                         onChange={e => this.handleChange(e, e.target)}
                     />
-                    <p className="personal_settings-p">Your birthday</p>
-
                     <p className="personal_settings-p">Country</p>
                     <Dropdown
                         name="countryId"
@@ -236,7 +234,7 @@ export class SettingsForm extends Component {
                         max={16}
                         className="personal_settings-field"
                         pointing="left"
-                        val={this.props.phone}
+                        val={this.props.phoneNumber}
                         validate={[phoneNumber]}
                         onChange={e => this.handleChange(e, e.target)}
                     />
