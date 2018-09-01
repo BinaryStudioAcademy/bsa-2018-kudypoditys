@@ -42,28 +42,6 @@ export class PropertyPage extends React.Component {
             <div className="mock">
                 <Header showSearch={true}/>
                 <div className="property-page__wrapper">
-                    <div className="breadcrumb_wrapper">
-                        <Segment>
-                            <Breadcrumb
-                                icon="right angle"
-                                sections={[
-                                    {key: "Home", content: "Home", href: "#"},
-                                    {
-                                        key: "Ukraine",
-                                        content: "Ukraine",
-                                        href: "#"
-                                    },
-                                    {key: "Lviv", content: "Lviv", href: "#"},
-                                    {
-                                        key: "DREAM Hostel Lviv",
-                                        content: "DREAM Hostel Lviv",
-                                        href: "#"
-                                    }
-                                ]}
-                            />
-                        </Segment>
-                    </div>
-
                     <Container
                         text
                         className="property-page__wrapper-left_side"
