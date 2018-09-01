@@ -4,7 +4,7 @@ const USERS = [
     {
         id: 1,
         fullName: "Natalya",
-        password: bcrypt.hashSync("nata1NATA", 10),
+        password: bcrypt.hashSync("102938abC", 10),
         email: "sayber1990@gmail.com",
         phoneNumber: "0504958671",
         nickname: "Nata1ya",

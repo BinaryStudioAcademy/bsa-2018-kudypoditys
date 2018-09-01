@@ -32,11 +32,8 @@ export class EditPersonalSettings extends Component {
             dateOptions: staticData.dateOptions,
             countryOptions: staticData.countryOptions,
             paymentOptions: staticData.paymentOptions,
-            smokingInRoomsOptions: staticData.smokingInRoomsOptions,
-            starsOptions: staticData.starsOptions,
             currencyOptions: staticData.currencyOptions,
             appealOptions: staticData.appealOptions,
-            //
             ...this.props
         };
         return (
