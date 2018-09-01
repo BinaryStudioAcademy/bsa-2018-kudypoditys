@@ -8,8 +8,12 @@ import shortParagraphImg from './img/short-paragraph.png';
 
 export class Banner extends Component {
 
+    handleClick(cityInfo){
+        console.log('Hello from item')
+        this.props.onClick(cityInfo)
+    }
     render() {
-        const { cityInfo, onCardClick } = this.props;
+        const { cityInfo } = this.props;
         const imgStyles = (url) => ({
             background: `url(${url})`,
             backgroundSize: 'cover',
@@ -18,7 +22,7 @@ export class Banner extends Component {
         return (
 
             cityInfo ?
-                < Container onClick={onCardClick} className="banner">
+                < Container onClick={()=>this.handleClick(cityInfo)} className="banner">
 
                     <Card.Content className="banner__content" style={imgStyles(cityInfo.pictureUrl)}>
                         <Card.Header className="banner__title">
