@@ -149,27 +149,24 @@ class PropertyRepository extends Repository {
     getFilteredProperties(filter) {
         return this.model
             .findAll({
+                where: {
+                    id:  {$in: filter.propertiesIds}
+                },
                 include: [
                     {
                         model: City,
-                        where: { name: filter.city }
                     },
                     {
-                        model: Reservation,
-                        where: {
-                            dateIn: filter.dateIn,
-                            dateOut: filter.dateOut
-                        }
+                        model: Image,
                     },
+
                     {
                         model: Room,
-                        where: { amount: filter.roomsAmount }
-                    },
-                    {
-                        model: BedInRoom,
-                        where: { count: filter.bedsCount }
+                        include: [RoomType]
+
                     }
                 ]
+
             })
             .then(properties => {
                 return properties;
