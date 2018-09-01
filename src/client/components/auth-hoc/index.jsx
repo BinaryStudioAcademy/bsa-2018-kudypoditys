@@ -9,7 +9,9 @@ class AuthHOC extends React.Component {
 
     render() {
         const { Component, ElseComponent, user } = this.props;
-        
+        console.log("USER - - - - - - - - - ");
+        console.log(user);
+
         if (!user) {
             return ElseComponent ? <ElseComponent /> : null;
         }

@@ -77,16 +77,10 @@ export class PropertyPage extends React.Component {
             <div className="mock">
                 <Header showSearch={true} />
                 <div className="property-page__wrapper">
-                    <div className="breadcrumb_wrapper">
-                        <Segment>
-                            <Breadcrumb
-                                icon="right angle"
-                                sections={sections}
-                            />
-                        </Segment>
-                    </div>
-
-                    <div text className="property-page__wrapper-left_side">
+                    <Container
+                        text
+                        className="property-page__wrapper-left_side"
+                    >
                         <BasicMapWidget
                             key="BasicMapWidget"
                             location={property.coordinates}
