@@ -14,7 +14,8 @@ import {
     Checkbox,
     Image,
     Button,
-    Message
+    Message,
+    Input
 } from "semantic-ui-react";
 
 export class SettingsForm extends Component {
@@ -239,7 +240,7 @@ export class SettingsForm extends Component {
                         onChange={e => this.handleChange(e, e.target)}
                     />
                     <p className="personal_settings-p">E-mail</p>
-                    <Field
+                    {/* <Field
                         component={inputField}
                         name="email"
                         label="E-mail"
@@ -251,6 +252,12 @@ export class SettingsForm extends Component {
                         val={this.props.email}
                         validate={[email]}
                         onChange={e => this.handleChange(e, e.target)}
+                    /> */}
+                    <Input
+                        name="email"
+                        placeholder="E-mail"
+                        disabled
+                        defaultValue={this.props.email}
                     />
                     <p className="personal_settings-p">Address</p>
                     <Field

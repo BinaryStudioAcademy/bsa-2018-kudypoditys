@@ -4,6 +4,7 @@ import {
 } from "client/logic/property-availability-calendar/actions";
 
 export function mapStateToProps(state, ownprops) {
+    console.log(this.props);
     const { propertyCalendar } = state;
     return {
         ...propertyCalendar
