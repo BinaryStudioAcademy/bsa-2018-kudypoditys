@@ -1,7 +1,7 @@
 import React from "react";
 import BookingTab from "../user-cabinet-bookings-tab";
 import SettingsTab from "../personal-settings-edit";
-
+import AvailabilityCalendar from "../property-availability-calendar";
 export const MenuItems = [
     {
         menuItem: {
@@ -36,9 +36,8 @@ export const MenuItems = [
             key: "My Properties ",
             header: "My Properties ",
             content: "My Properties ",
-            icon: "building outline"
-            // ,
-            // component: <SettingsTab />
+            icon: "building outline",
+            component: <AvailabilityCalendar />
         }
     }
 ];
