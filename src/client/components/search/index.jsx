@@ -194,15 +194,15 @@ export class MainSearch extends React.Component {
             adults,
             children
         } = this.state;
-        console.log("props!!!=" + JSON.stringify(this.props));
+       // console.log("props!!!=" + JSON.stringify(this.props));
         if (this.props.search.data !== undefined) {
             const { data } = this.props.search;
 
             // console.log("search state" + JSON.stringify(this.state));
 
             if (data !== undefined && data !== "" && data.length > 0) {
-                console.log("searchResults" + JSON.stringify(data));
-                this.props.handleSearchResults(data);
+               // console.log("searchResults" + JSON.stringify(data));
+                this.props.handleSearchResults({ searchResults:data ,query:this.state.query});
             }
         }
         const childrenOptions = this.generateOptions(0, 10);

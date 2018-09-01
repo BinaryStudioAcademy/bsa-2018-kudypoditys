@@ -17,20 +17,28 @@ import { mapStateToProps } from "./container";
 class SearchPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            listItems: [],
+            itemCount: 0,
+            query:" "
+        };
     }
-    handleSearchResults = searchResults => {
-        console.log(
-            "hello form search page ;)  searchResults -  " +
-                JSON.stringify(searchResults)
-        );
-        const listItems = searchResults.map(property => (
+    handleSearchResults = searchData => {
+
+        const listItems = searchData.searchResults.map(property => (
             <PropertyListItem
                 key={property._source.id}
                 propertyItemData={property._source}
             />
         ));
-        this.setState({ listItems: listItems });
+        this.setState({
+            listItems: listItems,
+            itemCount: searchData.searchResults.length,
+            query:searchData.query
+        });
+    };
+    onSortingSelected = value => {
+        this.setState({ sortBy: value });
     };
 
     render() {
@@ -81,7 +89,8 @@ class SearchPage extends React.Component {
                     </Container>
                     <Container className="search-page__wrapper-right_side">
                         <div className="search-page__row">
-                            <SearchSummary />
+                            <SearchSummary totalCount={this.state.itemCount}
+                                destination={this.state.query}/>
                             <div className="switch">
                                 <div className="list_btn">
                                     <Icon name="list ul" color="white" />
@@ -94,7 +103,6 @@ class SearchPage extends React.Component {
                             </div>
                         </div>
                         <RankingBar key="RankingBar" />
-
                         {this.state.listItems}
                         <div className="search-page__pagination">
                             <Pagination pagesCount={10} />
