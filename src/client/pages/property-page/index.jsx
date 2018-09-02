@@ -5,8 +5,13 @@ import {
     Container,
     Segment,
     Breadcrumb,
-    Icon
+    Icon,
+    TransitionablePortal,
+    Button,
+    Image,
+    // Modal
 } from "semantic-ui-react";
+import _ from 'lodash'
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from "./container";
 import Search from "client/components/search";
@@ -25,8 +30,16 @@ import Reviews from "client/components/reviews";
 
 
 export class PropertyPage extends React.Component {
+
+
+    state = { open: false }
+
+    handleOpen = () => this.setState({ open: true })
+
+    handleClose = () => this.setState({ open: false })
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
+        console.log(this.props.match.params.id)
 
     }
 
@@ -40,7 +53,9 @@ export class PropertyPage extends React.Component {
 
     onBookSubmit = event => {
         console.log("book!");
+
     };
+
 
     render() {
         const {property, user} = this.props;
@@ -76,7 +91,7 @@ export class PropertyPage extends React.Component {
                 active: true
             }
         ];
-
+        const { open } = this.state
         return (
             <div className="mock">
                 <Header showSearch={true}/>
@@ -130,8 +145,29 @@ export class PropertyPage extends React.Component {
                         text
                         className="property-page__wrapper-right_side"
                     >
-                        <NavigationBar/>
-
+                        <NavigationBar property={property}/>
+                        <Modal
+                            trigger={
+                                <div
+                                    className="book-btn"
+                                    style={{height: "33px"}}
+                                >
+                                    <button>Book now</button>
+                                    <div
+                                        className="book-icon"
+                                        style={{cursor: "pointer"}}
+                                    >
+                                        <Icon
+                                            name="bookmark"
+                                            size="large"
+                                        />
+                                    </div>
+                                </div>
+                            }
+                            // onClose={this.props.clearBookingForm}
+                        >
+                            <Reviews property={property}/>
+                        </Modal>
                         <PropertySummary property={property}/>
                         <Slider
                             pics={pics}
@@ -153,7 +189,9 @@ export class PropertyPage extends React.Component {
 
                         <AvailabilityPanel style={{width: "100%"}}/>
                         <RoomsSummaryTable rooms={property.rooms}/>
-                        <Reviews property={property}/>
+
+
+
                     </Container>
                 </div>
             </div>

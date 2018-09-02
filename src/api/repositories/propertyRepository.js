@@ -1,104 +1,121 @@
-const sequelize = require("sequelize");
-const Repository = require("./generalRepository");
-const propertyModel = require("../models/Property");
-const Facility = require("../models/Facility");
-const PaymentType = require("../models/PaymentType");
+const sequelize = require('sequelize');
+const Repository = require('./generalRepository');
+const propertyModel = require('../models/Property');
+const Facility = require('../models/Facility');
+const PaymentType = require('../models/PaymentType');
 
-const Reservation = require("../models/Reservation");
+const Reservation = require('../models/Reservation');
 // const PropertyCategory = require("../models/PropertyCategory");
-const RoomType = require("../models/RoomType");
-const Image = require("../models/Image");
-const Favorite = require("../models/Favorite");
+const RoomType = require('../models/RoomType');
+const Image = require('../models/Image');
+const Favorite = require('../models/Favorite');
 
-const AccommodationRule = require("../models/AccommodationRule");
-const PropertyType = require("../models/PropertyType");
-const Country = require("../models/Country");
-const City = require("../models/City");
-const Review = require("../models/Review");
-const User = require("../models/User");
-const Room = require("../models/Room");
-const FacilityList = require("../models/FacilityList");
-const BedInRoom = require("../models/BedInRoom");
-const BedType = require("../models/BedType");
+const AccommodationRule = require('../models/AccommodationRule');
+const PropertyType = require('../models/PropertyType');
+const Country = require('../models/Country');
+const City = require('../models/City');
+const Review = require('../models/Review');
+const User = require('../models/User');
+const Room = require('../models/Room');
+const FacilityList = require('../models/FacilityList');
+const BedInRoom = require('../models/BedInRoom');
+const BedType = require('../models/BedType');
 
 const includeOptions = [
     {
         model: PropertyType,
-        attributes: ["id", "name", "description"]
+        attributes: ['id', 'name', 'description'],
     },
     {
         model: City,
-        attributes: ["id", "name"],
-        include: [{model: Country, attributes: ["id", "name"]}]
+        attributes: ['id', 'name'],
+        include: [{ model: Country, attributes: ['id', 'name'] }],
     },
     {
         model: AccommodationRule,
         attributes: [
-            "id",
-            "allowPets",
-            "cancelReservation",
-            "minimumStay",
-            "arrivalTimeStart",
-            "arrivalTimeEnd",
-            "departureTimeStart",
-            "departureTimeEnd"
-        ]
+            'id',
+            'allowPets',
+            'cancelReservation',
+            'minimumStay',
+            'arrivalTimeStart',
+            'arrivalTimeEnd',
+            'departureTimeStart',
+            'departureTimeEnd',
+        ],
     },
     {
         model: Image,
-        attributes: ["id", "url", "propertyId", "roomId"]
+        attributes: ['id', 'url', 'propertyId', 'roomId'],
     },
     {
         model: Review,
-        attributes: ["id", "content", "createdAt" ],
+        attributes: [
+            'id',
+            'pros',
+            'cons',
+            'createdAt',
+            'Cleanliness',
+            'Price',
+            'Comfort',
+            'Facilities',
+            'Location',
+            'avgReview',
+        ],
         include: [
             {
                 model: User,
-                attributes: ["id", "fullName", "email", "avatar", "phoneNumber"]
-            }
-        ]
+                attributes: [
+                    'id',
+                    'fullName',
+                    'email',
+                    'avatar',
+                    'phoneNumber',
+                ],
+            },
+        ],
     },
     {
         model: Room,
-        attributes: ["id", "price", "amount", "area", "description"],
+        attributes: ['id', 'price', 'amount', 'area', 'description'],
         include: [
-            {model: RoomType, attributes: ["id", "name"]},
+            { model: RoomType, attributes: ['id', 'name'] },
             {
                 model: BedInRoom,
-                attributes: ["count"],
-                include: [{model: BedType, attributes: ["id", "name"]}]
-            }
-        ]
+                attributes: ['count'],
+                include: [{ model: BedType, attributes: ['id', 'name'] }],
+            },
+        ],
     },
     {
         model: FacilityList,
-        attributes: ["belongsToProperty"],
+        attributes: ['belongsToProperty'],
         include: [
             {
                 model: Facility,
-                attributes: ["id", "name"]
-            }
-        ]
+                attributes: ['id', 'name'],
+            },
+        ],
     },
     {
         model: PaymentType,
-        attributes: ["name", "id"]
-    }
+        attributes: ['name', 'id'],
+    },
 ];
 
 class PropertyRepository extends Repository {
     findById(id) {
         return this.model.findById(id, {
             attributes: [
-                "id",
-                "name",
-                "address",
-                "rating",
-                "description",
-                "coordinates",
-                "contactPhone"
+                'id',
+                'name',
+                'address',
+                'rating',
+                'description',
+                'coordinates',
+                'contactPhone',
             ],
-            include: includeOptions
+            include: includeOptions,
         });
     }
 
@@ -106,7 +123,7 @@ class PropertyRepository extends Repository {
         return this.model
             .findOne({
                 where: {
-                    id: id
+                    id: id,
                 },
                 include: [
                     City,
@@ -114,18 +131,18 @@ class PropertyRepository extends Repository {
                     AccommodationRule,
                     {
                         model: Review,
-                        include: [User]
+                        include: [User],
                     },
                     Facility,
                     Room,
-                    PaymentType
-                ]
+                    PaymentType,
+                ],
             })
             .then(x => {
                 return Favorite.count({
                     where: {
-                        propertyId: x.id
-                    }
+                        propertyId: x.id,
+                    },
                 }).then(likes => {
                     x.dataValues.likes = likes;
                     return x;
@@ -142,8 +159,8 @@ class PropertyRepository extends Repository {
                 Facility,
                 AccommodationRule,
                 PaymentType,
-                Image
-            ]
+                Image,
+            ],
         });
     }
     getFilteredProperties(filter) {
@@ -152,24 +169,24 @@ class PropertyRepository extends Repository {
                 include: [
                     {
                         model: City,
-                        where: { name: filter.city }
+                        where: { name: filter.city },
                     },
                     {
                         model: Reservation,
                         where: {
                             dateIn: filter.dateIn,
-                            dateOut: filter.dateOut
-                        }
+                            dateOut: filter.dateOut,
+                        },
                     },
                     {
                         model: Room,
-                        where: { amount: filter.roomsAmount }
+                        where: { amount: filter.roomsAmount },
                     },
                     {
                         model: BedInRoom,
-                        where: { count: filter.bedsCount }
-                    }
-                ]
+                        where: { count: filter.bedsCount },
+                    },
+                ],
             })
             .then(properties => {
                 return properties;
@@ -181,12 +198,12 @@ class PropertyRepository extends Repository {
             .findAll({
                 include: [
                     {
-                        model: City
+                        model: City,
                     },
                     {
-                        model: Image
-                    }
-                ]
+                        model: Image,
+                    },
+                ],
             })
             .then(properties => {
                 return properties;

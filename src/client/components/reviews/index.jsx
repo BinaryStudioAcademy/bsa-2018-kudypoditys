@@ -26,33 +26,12 @@ export class Reviews extends React.Component {
         };
     }
 
-    handleChange = event => {
-        let data = { content: event.target.value };
-        this.props.updateReview(data);
-        console.log(this.props);
-    };
+
     toggleVisibility = () =>
         this.setState({
             visible: !this.state.visible,
         });
-    handleSubmit = event => {
-        let { content } = this.props;
-        let { user } = this.props;
-        let { property } = this.props;
 
-        property.reviews.push({
-            content: content,
-            createdAt: new Date(),
-            user: user,
-        });
-
-        console.log(content);
-        this.props.submitReview({
-            content: content,
-            userId: user.id,
-            propertyId: property.id,
-        });
-    };
 
     // handleCheckbox = (e, {checked}) => this.setState({collapsed: checked});
 
@@ -90,7 +69,7 @@ export class Reviews extends React.Component {
                         animation="scale"
                         duration={500}
                     >
-                       <ReviewForm onSubmit={this.handleSubmit } onChange={this.handleChange} />
+                       <ReviewForm property={property}  />
                     </Transition>
                 )}
             </Comment.Group>

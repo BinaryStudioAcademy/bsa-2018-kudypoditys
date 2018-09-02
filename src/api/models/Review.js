@@ -3,13 +3,35 @@ const
     orm = require('../orm');
 
 let Review = orm.define('review', {
-    content: {
+    pros: {
         type: Sequelize.TEXT
 
     },
-    // rating: {
-    //     type: Sequelize.NUMBER
-    // }
+    cons: {
+        type: Sequelize.TEXT
+
+    },
+
+    Cleanliness: {
+        type: Sequelize.FLOAT,
+    },
+    Price: {
+        type: Sequelize.FLOAT,
+    },
+    Comfort: {
+        type: Sequelize.FLOAT,
+    },
+    Facilities: {
+        type: Sequelize.FLOAT,
+    },
+    Location: {
+        type: Sequelize.FLOAT,
+    },
+
+    avgReview: {
+        type: Sequelize.FLOAT,
+    }
+
 });
 
 module.exports = Review;

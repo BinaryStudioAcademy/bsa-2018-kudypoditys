@@ -5,13 +5,16 @@ import { Menu, Label } from 'semantic-ui-react';
 export class NavigationBar extends React.Component {
 
     render() {
+        console.log(this.props.property.reviews.length)
         return (
             <Menu stackable fluid widths={4}>
                 <Menu.Item
                     name='info-and-price'
                     onClick={this.props.infoClick}
                     children='Room info and price'
+
                 />
+
                 <Menu.Item
                     name='facilities'
                     onClick={this.props.facilitiesClick}
@@ -25,7 +28,9 @@ export class NavigationBar extends React.Component {
                 <Menu.Item name='reviews'
                     onClick={this.props.reviewsClick}>
                     Guest reviews
-                    <Label color='teal'>{this.props.reviewsCount}</Label>
+                    <Label color='teal'>
+                        {this.props.property.reviews.length}
+                    </Label>
                 </Menu.Item>
             </Menu>
         )

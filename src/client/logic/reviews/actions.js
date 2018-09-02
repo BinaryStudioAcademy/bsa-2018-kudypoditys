@@ -1,4 +1,4 @@
-import {CREATE_REVIEW, UPDATE_REVIEW} from "./actionTypes";
+import {CREATE_REVIEW, UPDATE_RATING, UPDATE_REVIEW} from "./actionTypes";
 
 
 export function reviewSubmit(payload) {
@@ -15,3 +15,9 @@ export function reviewUpdate(payload) {
     };
 }
 
+export function ratingUpdate(payload) {
+    return {
+        type: UPDATE_RATING,
+        payload
+    };
+}
