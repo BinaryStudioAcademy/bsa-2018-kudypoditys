@@ -31,7 +31,7 @@ export class MainSearch extends React.Component {
                 propertiesResponse.data.forEach(element => {
                     resultsData.push({
                         title: element._source.name,
-                        description: element._source.description,
+                        description: element._source.address,
                         image: element._source.image
                     });
                 });
@@ -200,7 +200,7 @@ export class MainSearch extends React.Component {
 
             //console.log("search state" + JSON.stringify(this.state));
 
-            if (data !== undefined && data !== "" && data.length > 0) {
+            if (data !== undefined) {
                 // console.log("searchResults" + JSON.stringify(data));
                 this.props.handleSearchResults({
                     searchResults: data,

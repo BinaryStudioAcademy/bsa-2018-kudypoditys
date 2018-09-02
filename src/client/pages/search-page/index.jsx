@@ -24,17 +24,13 @@ class SearchPage extends React.Component {
         };
     }
     handleSearchResults = searchData => {
-
         const listItems = searchData.searchResults.map(property => (
-            <PropertyListItem
-                key={property.id}
-                propertyItemData={property}
-            />
+            <PropertyListItem key={property.id} propertyItemData={property} />
         ));
         this.setState({
             listItems: listItems,
             itemCount: searchData.searchResults.length,
-            searchRequest:searchData.searchRequest
+            searchRequest: searchData.searchRequest
         });
     };
     onSortingSelected = value => {
@@ -80,8 +76,7 @@ class SearchPage extends React.Component {
                         >
                             <BasicMapWidget
                                 key="BasicMapWidget"
-                                latitude={49.837089}
-                                longitude={24.021161}
+                                coordinates={{ lat: 49.837089, lng: 24.021161 }}
                                 rounded
                                 centered
                             />
@@ -89,8 +84,10 @@ class SearchPage extends React.Component {
                     </Container>
                     <Container className="search-page__wrapper-right_side">
                         <div className="search-page__row">
-                            <SearchSummary totalCount={this.state.itemCount}
-                                destination={this.state.searchRequest.query}/>
+                            <SearchSummary
+                                totalCount={this.state.itemCount}
+                                destination={this.state.searchRequest.query}
+                            />
                             <div className="switch">
                                 <div className="list_btn">
                                     <Icon name="list ul" color="white" />
@@ -102,7 +99,10 @@ class SearchPage extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <RankingBar key="RankingBar" searchRequest={this.state.searchRequest} />
+                        <RankingBar
+                            key="RankingBar"
+                            searchRequest={this.state.searchRequest}
+                        />
                         {this.state.listItems}
                         <div className="search-page__pagination">
                             <Pagination pagesCount={10} />

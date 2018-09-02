@@ -21,7 +21,6 @@ const FacilityList = require("../models/FacilityList");
 const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
 
-
 const includeOptions = [
     {
         model: PropertyType,
@@ -157,7 +156,7 @@ class PropertyRepository extends Repository {
         let sortingOption;
         switch (filter.sortBy) {
             case SORT_VALUE.PRICE:
-                sortingOption = [[Room, "price", "DESC"]];
+                sortingOption = [[Room, "price", "ASC"]];
                 break;
             case SORT_VALUE.LOW_RANK:
                 sortingOption = [["rating", "ASC"]];
@@ -170,6 +169,25 @@ class PropertyRepository extends Repository {
             default:
                 sortingOption = [["rating", "DESC"]];
         }
+        const roomIncludeOption =
+            filter.bedsCount !== 2
+                ? [
+                      RoomType,
+                      {
+                          model: BedInRoom,
+                          where: {
+                              count: { $gte: filter.bedsCount }
+                          }
+                      },
+                      {
+                          model: Reservation
+                          //    where: {
+                          // dateIn: { $gte: moment().subtract(10, 'days').toDate()},
+                          //dateOut: { $lte: moment().add(5, 'days').toDate()}
+                          //   }
+                      }
+                  ]
+                : [RoomType];
 
         return this.model
             .findAll({
@@ -186,22 +204,7 @@ class PropertyRepository extends Repository {
 
                     {
                         model: Room,
-                        include: [
-                            RoomType,
-                            {
-                                model: BedInRoom,
-                                where: {
-                                    count: { $gte: filter.bedsCount }
-                                }
-                            },
-                            {
-                                model: Reservation,
-                                 where: {
-                                 dateIn: { $gte: moment().subtract(10, 'days').toDate()},
-                                 dateOut: { $lte: moment().add(5, 'days').toDate()}
-                             }
-                            }
-                        ],
+                        include: roomIncludeOption,
                         where: {
                             amount: { $gte: filter.rooms }
                         }
@@ -227,7 +230,22 @@ class PropertyRepository extends Repository {
 
                     {
                         model: Room,
-                        include: [RoomType]
+                        include: [
+                            RoomType,
+                            {
+                                model: BedInRoom
+                                // where: {
+                                //     count: { $gte: filter.bedsCount }
+                                // }
+                            },
+                            {
+                                model: Reservation
+                                //    where: {
+                                // dateIn: { $gte: moment().subtract(10, 'days').toDate()},
+                                //dateOut: { $lte: moment().add(5, 'days').toDate()}
+                                //   }
+                            }
+                        ]
                     }
                 ]
             })
