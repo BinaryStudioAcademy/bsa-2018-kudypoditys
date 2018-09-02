@@ -26,6 +26,7 @@ export class AvailabilityCalendar extends React.Component {
     render() {
         return (
             <div style={{ overflow: "auto" }}>
+                {console.log(this.props.rooms[0])}
                 <Table compact celled padded>
                     <Table.Header>
                         <Table.Row style={{ textAlign: "center" }}>

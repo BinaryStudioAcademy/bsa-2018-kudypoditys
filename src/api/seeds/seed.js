@@ -20,7 +20,11 @@ const USERS = [
         password: bcrypt.hashSync("102938abC", 10),
         email: "lorem@lorem.com",
         phoneNumber: "80954568261",
-        nickname: "Lorem"
+        nickname: "Lorem",
+        appeal: "Mrs.",
+        preferredCurrency: "USD",
+        countryId: 1,
+        paymentTypeId: 1
     }
 ];
 
@@ -42,7 +46,7 @@ const PROPERTIES = [
         description: "Hotel Dolynskyi description. Located in Lviv.",
         contactPhone: "0509842174",
         coordinates: { lat: 49.837089, lng: 24.021161 },
-        userId: 1
+        userId: 2
     }
 ];
 
