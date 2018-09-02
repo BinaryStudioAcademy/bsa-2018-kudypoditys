@@ -9,7 +9,7 @@ import resetPasswordSaga from 'client/logic/reset-password/saga';
 import forgotPasswordSaga from 'client/logic/forgot-password/saga';
 import propertyPageSaga from "client/logic/property-page/saga";
 import searchSaga from "client/logic/search/saga";
-import personalSettings from 'client/logic/personal-settings-edit/saga';
+import personalSettingsSaga from 'client/logic/personal-settings-edit/saga';
 import countriesSaga from 'client/logic/countries/saga';
 
 export default function* rootSaga() {
@@ -18,7 +18,7 @@ export default function* rootSaga() {
         fork(headerSaga),
         fork(propertySaga),
         fork(signupSaga),
-        fork(personalSettings),
+        fork(personalSettingsSaga),
         fork(userCabinetSaga),
         fork(propertyPageSaga),
         fork(emailVerificationSaga),

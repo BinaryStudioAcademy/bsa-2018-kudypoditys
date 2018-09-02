@@ -26,6 +26,8 @@ import AuthHOC from "./components/auth-hoc";
 import VerifyEmail from "client/components/verify-email";
 import ForgotPasswordPage from "client/pages/forgot-password-page";
 
+import ErrorBoundary from "client/components/error-boundary-handler";
+
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
 const store = createStore(

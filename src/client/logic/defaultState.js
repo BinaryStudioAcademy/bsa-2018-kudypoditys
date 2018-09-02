@@ -167,7 +167,9 @@ const state = {
             checkOut: null,
             adults: 2,
             rooms: 1,
-            children: 0
+            children: 0,
+            result: null,
+            error: ""
         },
         bookingInput: {
             checkIn: null,

@@ -4,7 +4,9 @@ import {
     AVAILABILITY_INPUT_UPDATE,
     BOOKING_INPUT_UPDATE,
     BOOK_PROPERTY_SUCCESS,
-    BOOK_PROPERTY_FAILURE
+    BOOK_PROPERTY_FAILURE,
+    CHECK_AVAILABILITY_SUCCESS,
+    CHECK_AVAILABILITY_FAILURE
 } from "./actionTypes";
 
 function propertyPageReducer(state = defaultState.propertyPage, action) {
@@ -13,6 +15,28 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
             return {
                 ...state,
                 property: action.payload
+            };
+        }
+
+        case CHECK_AVAILABILITY_SUCCESS: {
+            return {
+                ...state,
+                availabilityInput: {
+                    ...state.availabilityInput,
+                    result: action.payload,
+                    error: ""
+                }
+            };
+        }
+
+        case CHECK_AVAILABILITY_FAILURE: {
+            return {
+                ...state,
+                availabilityInput: {
+                    ...state.availabilityInput,
+                    result: null,
+                    error: action.payload
+                }
             };
         }
 
@@ -55,7 +79,9 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                 ...state,
                 availabilityInput: {
                     ...state.availabilityInput,
-                    ...action.payload
+                    ...action.payload,
+                    error: "",
+                    result: null
                 }
             };
         }

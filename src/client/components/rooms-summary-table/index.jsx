@@ -74,7 +74,6 @@ export default class RoomsSummaryTable extends React.Component {
                         }
                         content={this.getBedsSummary(room.bedInRooms)}
                         hoverable
-                        pointing
                     />
                 </Table.Cell>
                 <Table.Cell className="room-info">
