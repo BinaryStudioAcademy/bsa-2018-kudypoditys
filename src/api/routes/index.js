@@ -32,6 +32,6 @@ module.exports = function (app) {
     app.use("/api/discount", discount);
     app.use("/api/room-discount", roomDiscount);
     app.use("/api/bed-in-room", bedInRoom);
-    app.use('/api/search-property',searchProperty)
+    app.use('/api/search-property',searchProperty);
 
 };

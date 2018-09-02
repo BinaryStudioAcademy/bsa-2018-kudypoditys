@@ -84,4 +84,24 @@ property.route("/:id/details").get((req, res) => {
         });
 });
 
+
+property
+    .route("/city-info/:city").get((req, res) => {
+        // res.send(req.params.city)
+        const filter ={
+            city: req.params.city
+        }
+        console.log('CITY NAME:' + filter.city)
+        propertyService
+            .getAllProperties(filter)
+            .then(properties => {
+                console.log('PROPERTY ROUTES HERE' + properties)
+                res.send(properties);
+            })
+            .catch(err => {
+                res.status(404).send(err.message);
+            });
+    })
+
+
 module.exports = property;

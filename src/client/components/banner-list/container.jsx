@@ -9,6 +9,7 @@ export function mapStateToProps(state, ownProps) {
 export function mapDispatchToProps(dispatch, ownProps,data) {
     return {
         getCityInfos() {
+            console.log('gone get city info')
             dispatch(cityInfosGet());
         },
         onSearch(data) {
