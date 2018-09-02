@@ -5,10 +5,10 @@ import {
 } from "client/logic/property-availability-calendar/actions";
 
 export function mapStateToProps(state, ownprops) {
-    const { propertyCalendar } = state;
-    console.log("mapStateToProps", this.propertyCalendar);
+    const { availabilityCalendar } = state;
+    console.log("mapStateToProps   ", state);
     return {
-        ...propertyCalendar
+        ...availabilityCalendar
     };
 }
 

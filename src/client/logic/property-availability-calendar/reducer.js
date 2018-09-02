@@ -5,7 +5,7 @@ import {
     GET_CURRENT_USER_INFO_SUCCESS
 } from "./actionTypes";
 
-export default (state = {}, action) => {
+export default (state = defaultState.availabilityCalendar, action) => {
     switch (action.type) {
         case PROPERTY_CALENDAR_UPDATE: {
             return {

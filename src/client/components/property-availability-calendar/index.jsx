@@ -47,20 +47,20 @@ export class AvailabilityCalendar extends React.Component {
                             <Table.Cell collapsing>Number of rooms</Table.Cell>
                             <DrawCount
                                 onAmountChange={this.roomAmountChanged}
-                                roomsAmount={this.props.amount}
+                                roomsAmount={this.props.rooms[0].amount}
                             />
                         </Table.Row>
                         <Table.Row>
                             <Table.Cell collapsing>
                                 Active reservations
                             </Table.Cell>
-                            {/* <DrawReservations
+                            <DrawReservations
                                 reservations={this.props.rooms[0].reservations}
-                            /> */}
+                            />
                         </Table.Row>
                         <Table.Row>
                             <Table.Cell collapsing>Price</Table.Cell>
-                            {/* <DrawPrices price={this.props.rooms[0].price} /> */}
+                            <DrawPrices price={this.props.rooms[0].price} />
                         </Table.Row>
                     </Table.Body>
 
