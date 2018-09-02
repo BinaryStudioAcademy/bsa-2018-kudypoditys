@@ -22,7 +22,7 @@ import propertyRegistration from "client/logic/property-creation-tabs/reducer";
 import userSettings from "client/logic/personal-settings-edit/reducer";
 import userCabinet from "./user-cabinet/reducer";
 import userVerified from "client/logic/verify-email/reducer";
-
+import review from "client/logic/reviews/reducer";
 export default combineReducers({
     search,
     sortType,
@@ -45,6 +45,7 @@ export default combineReducers({
     // policesTab,
     // layoutTab,
     propertyRegistration,
+    review,
     userVerified,
     userSettings,
     userCabinet

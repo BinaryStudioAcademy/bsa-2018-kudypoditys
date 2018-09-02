@@ -6,7 +6,7 @@ class SearchService {
         console.log("SearchService submitSearch  - " + JSON.stringify(data));
         return api.sendRequest(
             "/elastic/search/?index=properties&type=document&query=" +
-                data.query,
+            data.query,
             "get",
             ""
         );

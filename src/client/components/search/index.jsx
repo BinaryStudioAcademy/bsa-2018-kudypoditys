@@ -92,12 +92,13 @@ export class MainSearch extends React.Component {
             endDate
         } = this.state;
         this.props.onSearch({
-            query:query,
-            rooms:rooms,
-            adults:adults,
-            children:children,
-            startDate:startDate,
-            endDate:endDate});
+            query: query,
+            rooms: rooms,
+            adults: adults,
+            children: children,
+            startDate: startDate,
+            endDate: endDate
+        });
     };
 
     constructor(props) {
@@ -155,7 +156,7 @@ export class MainSearch extends React.Component {
     };
 
     onChildrenSelected = count => {
-        this.setState({ children: count });
+        this.setState({children: count});
         this.props.onChildrenChange(count);
     };
 

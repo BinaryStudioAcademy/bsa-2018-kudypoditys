@@ -41,29 +41,29 @@ ReactDOM.render(
         <ErrorBoundary>
             <Router history={history}>
                 <Switch>
-                    <Route exact path="/" component={HomePage} />
-                    <Route exact path="/signup" component={RegistrationPage} />
-                    <Route exact path="/verifyemail" component={VerifyEmail} />
-                    <Route exact path="/login" component={LoginPage} />
+                    <Route exact path="/" component={HomePage}/>
+                    <Route exact path="/signup" component={RegistrationPage}/>
+                    <Route exact path="/verifyemail" component={VerifyEmail}/>
+                    <Route exact path="/login" component={LoginPage}/>
                     <Route
                         exact
                         path="/checkin-checkout"
                         component={CheckInCheckOut}
                     />
-                    <Route path="/search-page" component={SearchPage} />
-                    <Route path="/property/:id" component={PropertyPage} />
+                    <Route path="/search-page" component={SearchPage}/>
+                    <Route path="/property/:id" component={PropertyPage}/>
                     <Route
                         path="/add-property/"
                         component={() => (
-                            <AuthHOC Component={PropertyCreationTabs} />
+                            <AuthHOC Component={PropertyCreationTabs}/>
                         )}
                     />
-                    <Route path="/404" component={NotFoundPage} />
+                    <Route path="/404" component={NotFoundPage}/>
                     <Route
                         path="/user-cabinet"
-                        component={() => <AuthHOC Component={UserCabinet} />}
+                        component={() => <AuthHOC Component={UserCabinet}/>}
                     />
-                    <Route component={NotFoundPage} />
+                    <Route component={NotFoundPage}/>
                 </Switch>
             </Router>
         </ErrorBoundary>

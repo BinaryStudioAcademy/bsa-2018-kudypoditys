@@ -8,17 +8,29 @@ import AppHeader from "client/components/header";
 import AvailabilityPanel from "client/components/availability-panel";
 import Slider from "client/components/slider";
 import PropertyDescription from "client/components/property-description";
-import { PropertySummary } from "client/components/property-summary";
-import { NavigationBar } from "client/components/navigation-bar";
+import {PropertySummary} from "client/components/property-summary";
+import {NavigationBar} from "client/components/navigation-bar";
 import BasicMapWidget from "client/components/basic-map-widget";
 import RoomsSummaryTable from "client/components/rooms-summary-table";
 import Modal from "../../components/modal";
 import BookingForm from "../../components/booking-form";
 import ReactDOM from "react-dom";
 
+import Reviews from "client/components/reviews";
+
+
 export class PropertyPage extends React.Component {
+
+
+    state = { open: false }
+
+    handleOpen = () => this.setState({ open: true })
+
+    handleClose = () => this.setState({ open: false })
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
+        console.log(this.props.match.params.id)
+
     }
 
     getImagesArray(propertyImages) {
@@ -31,6 +43,7 @@ export class PropertyPage extends React.Component {
 
     onBookSubmit = event => {
         console.log("book!");
+
     };
 
     scrollTo = targetRef => {
@@ -39,7 +52,7 @@ export class PropertyPage extends React.Component {
     };
 
     render() {
-        const { property, user } = this.props;
+        const {property, user} = this.props;
 
         const handleSlideChange = index => {
             console.log(`Slide changed to ${index}`);
@@ -65,12 +78,12 @@ export class PropertyPage extends React.Component {
                                 trigger={
                                     <div
                                         className="book-btn"
-                                        style={{ height: "33px" }}
+                                        style={{height: "33px"}}
                                     >
                                         <button>Book now</button>
                                         <div
                                             className="book-icon"
-                                            style={{ cursor: "pointer" }}
+                                            style={{cursor: "pointer"}}
                                         >
                                             <Icon
                                                 name="bookmark"

@@ -49,7 +49,7 @@ const PROPERTIES = [
         address: "Prospekt Shevchenka 27, Lviv",
         description: "Hotel Atlas Deluxe is located in the heart of Lviv, within a 2-minute walk of Ploshcha Rynok Square and a 10-minute walk of Ivana Franko Park. It offers a sauna, fitness center and concierge service.",
         contactPhone: "0678674908",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: {lat: 49.837089, lng: 24.021161},
         propertyTypeId: 9,
         cityId: 1,
         accommodationRuleId: 1
@@ -61,7 +61,7 @@ const PROPERTIES = [
         address: "12A Hnatiuka St, Lviv",
         description: "Located in the city center of Lviv, less than a 2-minute walk from Svobody Prospekt and a 5-minute walk from Market Square, Rius hotel features free Wi-Fi throughout the property.",
         contactPhone: "0955679712",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: {lat: 49.837089, lng: 24.021161},
         propertyTypeId: 9,
         cityId: 1,
         accommodationRuleId: 1
@@ -73,7 +73,7 @@ const PROPERTIES = [
         address: "Nalyvaika Street 18, Lviv",
         description: "This hotel is located in the historic center of Lviv, just a 10-minute walk from Ploschad Rynok Square. Free Wi-Fi and a 24-hour reception are featured at British Club Lviv.",
         contactPhone: "0509842174",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: {lat: 49.837089, lng: 24.021161},
         propertyTypeId: 9,
         cityId: 1,
         accommodationRuleId: 1
@@ -85,7 +85,7 @@ const PROPERTIES = [
         address: "Pereulok Kravtsova 13 V, Kharkov",
         description: "This guest house is located in the center of Kharkov, a 5-minute walk from Konstitutsii Square. Free Wi-Fi, a 24-hour reception and private parking are featured at Complimente Guest House.",
         contactPhone: "0674569222",
-        coordinates: { lat: 49.988358, lng: 36.232845 },
+        coordinates: {lat: 49.988358, lng: 36.232845},
         propertyTypeId: 5,
         cityId: 5,
         accommodationRuleId: 1
@@ -97,7 +97,7 @@ const PROPERTIES = [
         address: "Kooperatyvna St. 6/8 (entrance from Pletnevskiy lane), Kharkov",
         description: "Featuring free WiFi throughout the property, Pletnevskiy Inn offers accommodations in the historical building in the center of Kharkov. Guests can enjoy the on-site restaurant.",
         contactPhone: "0896789099",
-        coordinates: { lat: 49.988358, lng: 36.232845 },
+        coordinates: {lat: 49.988358, lng: 36.232845},
         propertyTypeId: 6,
         cityId: 5,
         accommodationRuleId: 1
@@ -109,7 +109,7 @@ const PROPERTIES = [
         address: "Primorskiy Boulevard 11, Odessa",
         description: "This property is a 6-minute walk from the beach. Offering great views of the Black Sea, this historic, classical-style hotel is within a 10-minute walk of Deribasovskaya street, Potemkin Stairs and Duke de Richelieu monument. Opera and Ballet Theater is 300 m away.",
         contactPhone: "05089079871",
-        coordinates: { lat: 46.469391, lng: 30.740883 },
+        coordinates: {lat: 46.469391, lng: 30.740883},
         propertyTypeId: 16,
         cityId: 4,
         accommodationRuleId: 1
@@ -121,7 +121,7 @@ const PROPERTIES = [
         address: "Rishelievskaya Street 17, Odessa",
         description: "Stylish rooms with free WiFi and unique décor, UNO Design Hotel is just a 2-minute walk from Deribasovskaya Street and 801 m from the sandy Black Sea Coast.",
         contactPhone: "0509842174",
-        coordinates: { lat: 46.469391, lng: 30.740883 },
+        coordinates: {lat: 46.469391, lng: 30.740883},
         propertyTypeId: 9,
         cityId: 4,
         accommodationRuleId: 1
@@ -133,7 +133,7 @@ const PROPERTIES = [
         address: "Plyazh Lanzheron 25, Odessa",
         description: "This property is a 2-minute walk from the beach. Featuring the on-site Dolphinarium, Oceanarium and the Dolphin assisted therapy center, Resort & SPA Hotel NEMO with dolphins is set in the historical center of Odessa, on Lanzheron Beach. It offers 9 heated sea-water swimming pools, fitness & spa zone, a 24-hour room service and free WiFi.",
         contactPhone: "05066789078",
-        coordinates: { lat: 46.469391, lng: 30.740883 },
+        coordinates: {lat: 46.469391, lng: 30.740883},
         propertyTypeId: 16,
         cityId: 4,
         accommodationRuleId: 1
@@ -145,7 +145,7 @@ const PROPERTIES = [
         address: "Troitskaya Street, 21, Odessa",
         description: "This hostel in Odessa city center is only 15 minutes’ walk from Odessa Central Train Station. It features a lounge area with a TV, a well-equipped kitchen and free Wi-Fi.",
         contactPhone: "09565789091",
-        coordinates: { lat: 46.469391, lng: 30.740883 },
+        coordinates: {lat: 46.469391, lng: 30.740883},
         propertyTypeId: 13,
         cityId: 4,
         accommodationRuleId: 1
@@ -157,7 +157,7 @@ const PROPERTIES = [
         address: "Krushelnytskoi Street 1, Ternopilʼ",
         description: "This property is a 6-minute walk from the beach. Located in Ternopilʼ in the Ternopil' region, Apartment on Krushelnytskoi Street features a balcony and lake views. The property has free WiFi.",
         contactPhone: "0674589485",
-        coordinates: { lat: 49.553516, lng: 25.594767 },
+        coordinates: {lat: 49.553516, lng: 25.594767},
         propertyTypeId: 1,
         cityId: 3,
         accommodationRuleId: 1
@@ -169,7 +169,7 @@ const PROPERTIES = [
         address: "Zamkova Street 14, Ternopilʼ",
         description: "A 2-minute walk from Ternopil Lake, this hotel offers air-conditioned rooms with free Wi-Fi. Hotel Ternopil provides individually furnished rooms and suites with cable TV. Wooden flooring, large windows and pastel color schemes create a bright atmosphere.",
         contactPhone: "0956786121",
-        coordinates: { lat: 49.553516, lng: 25.594767 },
+        coordinates: {lat: 49.553516, lng: 25.594767},
         propertyTypeId: 9,
         cityId: 3,
         accommodationRuleId: 1
@@ -181,7 +181,7 @@ const PROPERTIES = [
         address: "Ob'yizdna Street 6 , Ternopilʼ",
         description: "Located 8 minutes’ drive from Ternopil’s 16th-century castle, this hotel offers a sauna and air-conditioned rooms with a flat-screen TV. There is also a 24-hour reception.",
         contactPhone: "0906786876",
-        coordinates: { lat: 49.553516, lng: 25.594767 },
+        coordinates: {lat: 49.553516, lng: 25.594767},
         propertyTypeId: 2,
         cityId: 3,
         accommodationRuleId: 1
@@ -193,7 +193,7 @@ const PROPERTIES = [
         address: "Petropavlivs'ka Street 24, Petropavlivs'ka Borshchahivka, Kiev",
         description: "Featuring free Wi-Fi and a restaurant with a terrace, this hotel is 7 minutes’ drive from Zhitomirskaya Metro Station in Kiev. It offers air-conditioned rooms with a flat-screen TV. All the classic-style rooms at Hotel Verhovina include a seating area and a work desk. A hairdryer is provided in the bathrooms.",
         contactPhone: "0678909456",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: {lat: 50.471626, lng: 30.453608},
         propertyTypeId: 9,
         cityId: 2,
         accommodationRuleId: 1
@@ -205,7 +205,7 @@ const PROPERTIES = [
         address: "R. Okipnoi Street 2, Kiev",
         description: "This property is a 9-minute walk from the beach. Located beside Livoberezhna Metro Station in Kiev, this modern, 3-star hotel offers 2 international restaurants, and a 24-hour reception. The International Exhibition Center is a 7-minute walk away.",
         contactPhone: "0908909422",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: {lat: 50.471626, lng: 30.453608},
         propertyTypeId: 9,
         cityId: 2,
         accommodationRuleId: 1
@@ -217,7 +217,7 @@ const PROPERTIES = [
         address: "Hrushevskogo Street 26/1, Kiev",
         description: "Centrally located in Kiev, each room at this hotel features balconies with views of the park. The Verkovna Rada building is a 2-minute walk away, and guests enjoy 24-hour access to the reception.",
         contactPhone: "09567893241",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: {lat: 50.471626, lng: 30.453608},
         propertyTypeId: 9,
         cityId: 2,
         accommodationRuleId: 1
@@ -229,7 +229,7 @@ const PROPERTIES = [
         address: "Velyka Kiltseva str. 5,  Petropavlovskaya Borshagovka, Kiev",
         description: "Featuring equipped conference rooms and other business facilities, City Holiday Resort & SPA offers accommodations in Kiev, 7.4 mi from Khreshchatyk and Maidan Nezalezhnosti. Free private parking is available on site and free WiFi is provided throughout the property. There is also a free charging station for electric cars at the City Holiday Resort & SPA.",
         contactPhone: "0674594012",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: {lat: 50.471626, lng: 30.453608},
         propertyTypeId: 16,
         cityId: 2,
         accommodationRuleId: 1
@@ -241,7 +241,7 @@ const PROPERTIES = [
         address: "39 Mashynobudivna Street, Kiev",
         description: "Located within 6.1 km of St. Volodymyr's Cathedral and 6.4 km of Saint Sophia Cathedral in Kiev, MarySmart has accommodations with a kitchenette. Complimentary WiFi is featured.",
         contactPhone: "0674099409",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: {lat: 50.471626, lng: 30.453608},
         propertyTypeId: 6,
         cityId: 2,
         accommodationRuleId: 1
@@ -253,7 +253,7 @@ const PROPERTIES = [
         address: "Vozdvyzhens'ka Street 60 B, Kiev",
         description: "Andreevsky Guest House is located in Kiev, 0.6 km from St. Michael's Golden-Domed Monastery and a 9-minute walk from Saint Sophia Cathedral. The property is around 1.8 km from St. Volodymyr's Cathedral and 2.9 km from Olympic Stadium. Kiev Pechersk Lavra is 4 km from the hotel and International Exhibition Centre is 5.5 km away.",
         contactPhone: "0955589762",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: {lat: 50.471626, lng: 30.453608},
         propertyTypeId: 11,
         cityId: 2,
         accommodationRuleId: 1
@@ -265,7 +265,7 @@ const PROPERTIES = [
         address: "Naberezhnaya Pobedy 9B, Dnipro",
         description: "This property is 1 minute walk from the beach. Bartolomeo Best River Resort in the city of Dnepropetrovsk offers 2-story wooden bungalows apartments directly on the River Dnepr. For your comfort you will find a cable TV and safe in every room. Free WiFi is available throughout the property.",
         contactPhone: "0678007800",
-        coordinates: { lat: 48.4500000, lng: 34.9833300 },
+        coordinates: {lat: 48.4500000, lng: 34.9833300},
         propertyTypeId: 9,
         cityId: 6,
         accommodationRuleId: 1
@@ -277,7 +277,7 @@ const PROPERTIES = [
         address: "Oktyabrska Pl.12A, Dnipro",
         description: "This property is a 13-minute walk from the beach. This 5-star spa hotel with pool stands beside the Savior's Transfiguration Cathedral, in the historic center of Dnipro. It offers free Wi-Fi, healthy cuisine and various spa and fitness facilities.",
         contactPhone: "0674108900",
-        coordinates: { lat: 48.4500000, lng: 34.9833300 },
+        coordinates: {lat: 48.4500000, lng: 34.9833300},
         propertyTypeId: 17,
         cityId: 6,
         accommodationRuleId: 1
@@ -289,7 +289,7 @@ const PROPERTIES = [
         address: "Kirova Prospekt  27D, Dnipro",
         description: "Located 5 minutes’ walk from Dnipro Arena and 10 minutes’ walk from the Central Park, these apartments in Dnipropetrovsk feature free Wi-Fi and a fully equipped kitchen.",
         contactPhone: "0904118899",
-        coordinates: { lat: 48.4500000, lng: 34.9833300 },
+        coordinates: {lat: 48.4500000, lng: 34.9833300},
         propertyTypeId: 1,
         cityId: 6,
         accommodationRuleId: 1
@@ -301,7 +301,7 @@ const PROPERTIES = [
         address: "Area of Rynok Plosha , Lviv",
         description: "Located in the historic center of Lviv, within a 10-minute walk of the City Hall, these apartments feature a fully equipped kitchen. The 15th-century Dominican Church is about 15 minutes’ walk away.",
         contactPhone: "0671129412",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: {lat: 49.837089, lng: 24.021161},
         propertyTypeId: 1,
         cityId: 1,
         accommodationRuleId: 1
@@ -313,7 +313,7 @@ const PROPERTIES = [
         address: "Ivana Franka Street, Lviv",
         description: "Offering free WiFi and city views, Avangard Franko VIP Apartment is a property located in the middle of Lviv. This property is 183 m from Volodymyr Ivasyuk Monument.",
         contactPhone: "0678907890",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: {lat: 49.837089, lng: 24.021161},
         propertyTypeId: 1,
         cityId: 1,
         accommodationRuleId: 1
