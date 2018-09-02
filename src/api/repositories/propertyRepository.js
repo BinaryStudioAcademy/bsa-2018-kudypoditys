@@ -13,6 +13,7 @@ const RoomType = require("../models/RoomType");
 const User = require("../models/User");
 const City = require("../models/City");
 const Image = require("../models/Image");
+const Property = require("../models/Property");
 
 const PropertyType = require("../models/PropertyType");
 
@@ -55,7 +56,6 @@ class PropertyRepository extends Repository {
     createDetails(entity) {
         return this.model.create(entity, {
             include: [
-
                 // City,
                 PropertyType,
                 Room,
@@ -101,18 +101,39 @@ class PropertyRepository extends Repository {
             .findAll({
                 include: [
                     {
-                        model: City,
+                        model: City
                     },
                     {
-                        model: Image,
-                    },
+                        model: Image
+                    }
                 ]
             })
             .then(properties => {
                 return properties;
             });
     }
-}
 
+    getUserPropertiesInfo(id) {
+        console.log("REPOSITORY USER ");
+        return this.model.findAll({
+            where: {
+                userId: 1
+            },
+            include: [
+                {
+                    model: User
+                },
+                {
+                    model: Room,
+                    include: [
+                        {
+                            model: Reservation
+                        }
+                    ]
+                }
+            ]
+        });
+    }
+}
 
 module.exports = new PropertyRepository(propertyModel);

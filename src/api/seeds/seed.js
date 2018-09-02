@@ -32,7 +32,8 @@ const PROPERTIES = [
         description: "Hotel Ukraine description.",
         contactPhone: "0509832174",
         coordinates: { lat: 49.837089, lng: 24.021161 },
-        rating: 8.1
+        rating: 8.1,
+        userId: 1
     },
     {
         id: 2,
@@ -40,7 +41,8 @@ const PROPERTIES = [
         address: "Koval street 16, Lviv",
         description: "Hotel Dolynskyi description. Located in Lviv.",
         contactPhone: "0509842174",
-        coordinates: { lat: 49.837089, lng: 24.021161 }
+        coordinates: { lat: 49.837089, lng: 24.021161 },
+        userId: 1
     }
 ];
 

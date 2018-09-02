@@ -1,25 +1,38 @@
-import api from '../helpers/api';
-import history from 'client/history';
+import api from "../helpers/api";
+import history from "client/history";
 
 class PropertyService {
     createProperty(data) {
-        return api.sendAuthRequest('/api/property/', 'post', data).then(response => {
-           if(response.status === 200){
-               history.push('/');
-           }
+        return api
+            .sendAuthRequest("/api/property/", "post", data)
+            .then(response => {
+                if (response.status === 200) {
+                    history.push("/");
+                }
 
-            console.log(response)
-            return response
-        });
+                console.log(response);
+                return response;
+            });
     }
     updatePropery(data) {
-        return api.sendRequest(`/api/add-property/${data.propertyId}`, 'put', data).then(response => {
-            history.push('/add-property/');
-        });
+        return api
+            .sendRequest(`/api/add-property/${data.propertyId}`, "put", data)
+            .then(response => {
+                history.push("/add-property/");
+            });
     }
 
     getDetailsById(id) {
-        return api.sendRequest(`api/property/${id}/details`, 'get').then(response => response.data);
+        return api
+            .sendRequest(`api/property/${id}/details`, "get")
+            .then(response => response.data);
+    }
+
+    getUserPropertiesInfo(action) {
+        console.log("getUserPropertiesInfo service");
+        return api
+            .sendRequest("/api/property/getuserpropertiesinfo", "get")
+            .then(response => response.data);
     }
 }
 

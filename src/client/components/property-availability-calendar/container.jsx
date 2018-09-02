@@ -1,6 +1,7 @@
 import {
     availabilitySubmit,
-    calendarUpdate
+    calendarUpdate,
+    getUserpropertiesInfo
 } from "client/logic/property-availability-calendar/actions";
 
 export function mapStateToProps(state, ownprops) {
@@ -18,6 +19,9 @@ export function mapDispatchToProps(dispatch) {
         },
         handleUpdate(data) {
             dispatch(calendarUpdate(data));
+        },
+        handleUserInfo(data) {
+            dispatch(getUserpropertiesInfo(data));
         }
     };
 }

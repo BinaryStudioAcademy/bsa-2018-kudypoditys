@@ -2,11 +2,11 @@ import React from "react";
 import { Table, Button, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "./container";
-import { DrawHeader } from "./drawHeader";
-import { DrawCount } from "./drawCount";
-import { DrawReservations } from "./drawReservations";
-import { DrawPrices } from "./drawPrices";
-import { DrawStatus } from "./drawStatus";
+// import { DrawHeader } from "./drawHeader";
+// import { DrawCount } from "./drawCount";
+// import { DrawReservations } from "./drawReservations";
+// import { DrawPrices } from "./drawPrices";
+// import { DrawStatus } from "./drawStatus";
 
 import "./index.scss";
 
@@ -22,6 +22,10 @@ export class AvailabilityCalendar extends React.Component {
         // this.props.handleUpdate(data);
     };
 
+    componentWillMount() {
+        this.props.handleUserInfo();
+    }
+
     render() {
         return (
             <div style={{ overflow: "auto" }}>
@@ -29,33 +33,33 @@ export class AvailabilityCalendar extends React.Component {
                     <Table.Header>
                         <Table.Row style={{ textAlign: "center" }}>
                             <Table.HeaderCell />
-                            <DrawHeader />
+                            {/* <DrawHeader /> */}
                         </Table.Row>
                     </Table.Header>
 
                     <Table.Body style={{ textAlign: "center" }}>
                         <Table.Row>
                             <Table.Cell collapsing>Room status</Table.Cell>
-                            <DrawStatus />
+                            {/* <DrawStatus /> */}
                         </Table.Row>
                         <Table.Row>
                             <Table.Cell collapsing>Number of rooms</Table.Cell>
-                            <DrawCount
+                            {/* <DrawCount
                                 onAmountChange={this.roomAmountChanged}
                                 roomsAmount={this.props.amount}
-                            />
+                            /> */}
                         </Table.Row>
                         <Table.Row>
                             <Table.Cell collapsing>
                                 Active reservations
                             </Table.Cell>
-                            <DrawReservations
+                            {/* <DrawReservations
                                 reservations={this.props.reservations}
-                            />
+                            /> */}
                         </Table.Row>
                         <Table.Row>
                             <Table.Cell collapsing>Price</Table.Cell>
-                            <DrawPrices price={this.props.price} />
+                            {/* <DrawPrices price={this.props.price} /> */}
                         </Table.Row>
                     </Table.Body>
 

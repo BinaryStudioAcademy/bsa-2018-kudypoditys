@@ -1,4 +1,4 @@
-const Service = require('./generalService');
+const Service = require("./generalService");
 const propertyRepository = require("../repositories/propertyRepository");
 
 class PropertyService extends Service {
@@ -11,7 +11,7 @@ class PropertyService extends Service {
     }
 
     addProperty(property) {
-        return propertyRepository.createDetails(property)
+        return propertyRepository.createDetails(property);
     }
 
     updateProperty(id, property) {
@@ -23,17 +23,24 @@ class PropertyService extends Service {
     }
 
     getDetailsById(id) {
-        return propertyRepository.getDetailsById(id).then(_ => {
-            console.log('service then ', _);
-            return _;
-        }).catch(_ => {
-            console.log('service catch ', _)
-        });
+        return propertyRepository
+            .getDetailsById(id)
+            .then(_ => {
+                console.log("service then ", _);
+                return _;
+            })
+            .catch(_ => {
+                console.log("service catch ", _);
+            });
     }
     getFilteredProperties(filter) {
-        return propertyRepository.getFilteredProperties(filter)
+        return propertyRepository.getFilteredProperties(filter);
+    }
+
+    getUserPropertiesInfo(id) {
+        console.log("getUserPropertiesInfo SERVICE");
+        return propertyRepository.getUserPropertiesInfo();
     }
 }
-
 
 module.exports = new PropertyService(propertyRepository);
