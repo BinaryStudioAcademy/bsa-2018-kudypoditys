@@ -20,7 +20,7 @@ class SearchPage extends React.Component {
         this.state = {
             listItems: [],
             itemCount: 0,
-            query:" "
+            searchRequest: {}
         };
     }
     handleSearchResults = searchData => {
@@ -34,7 +34,7 @@ class SearchPage extends React.Component {
         this.setState({
             listItems: listItems,
             itemCount: searchData.searchResults.length,
-            query:searchData.query
+            searchRequest:searchData.searchRequest
         });
     };
     onSortingSelected = value => {
@@ -90,7 +90,7 @@ class SearchPage extends React.Component {
                     <Container className="search-page__wrapper-right_side">
                         <div className="search-page__row">
                             <SearchSummary totalCount={this.state.itemCount}
-                                destination={this.state.query}/>
+                                destination={this.state.searchRequest.query}/>
                             <div className="switch">
                                 <div className="list_btn">
                                     <Icon name="list ul" color="white" />
@@ -102,7 +102,7 @@ class SearchPage extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <RankingBar key="RankingBar" />
+                        <RankingBar key="RankingBar" searchRequest={this.state.searchRequest} />
                         {this.state.listItems}
                         <div className="search-page__pagination">
                             <Pagination pagesCount={10} />

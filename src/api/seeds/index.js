@@ -41,8 +41,7 @@ module.exports = function(models) {
         Room,
         Reservation,
         Image,
-        User,
-        BedInRoom
+        User
     } = models;
 
     const SimpleUpsertMap = [
@@ -62,7 +61,6 @@ module.exports = function(models) {
         [Image, IMAGES],
         [User, USERS],
         [Reservation, RESERVATIONS],
-        [BedInRoom,BED_IN_ROOM]
 
     ];
 

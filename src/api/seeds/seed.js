@@ -1131,24 +1131,6 @@ const FACILITY_LISTS = [
     },
 ];
 
-const BED_IN_ROOMS = [
-    {
-        count: 1,
-        roomId: 1,
-        bedTypeId: 1
-    },
-    {
-        count: 1,
-        roomId: 2,
-        bedTypeId: 2
-    },
-    {
-        count: 1,
-        roomId: 2,
-        bedTypeId: 1
-    }
-];
-
 const COUNTRIES = [
     {
         id: 1,
@@ -1471,7 +1453,7 @@ const REVIEW_CATEGORIES = [
         name: "Fun things to do"
     }
 ];
-const BED_IN_ROOM = [
+const BED_IN_ROOMS = [
     {
         id: 1,
         count: 1,
@@ -1720,5 +1702,4 @@ module.exports = {
     BED_TYPES,
     ROOM_TYPES,
     PROPERTY_TYPE,
-    BED_IN_ROOM
 }

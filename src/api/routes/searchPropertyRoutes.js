@@ -13,6 +13,7 @@ searchProperty.route("/").get((req, res) => {
     const children = req.query.children;
     const startDate = req.query.startDate;
     const endDate = req.query.endDate;
+    const sortBy = req.query.sortBy
     const _fields = ["city", "name"];
     elasticClient
         .search({
@@ -36,7 +37,11 @@ searchProperty.route("/").get((req, res) => {
                 let filter = {
                     propertiesIds: ids,
                     rooms: rooms,
-                    bedsCount:parseInt(adults)+parseInt(children),
+                    bedsCount: parseInt(adults) + parseInt(children),
+                    sortBy: sortBy,
+                    startDate: startDate,
+                    endDate:endDate
+
                 };
                 propertyService
                     .getFilteredProperties(filter)

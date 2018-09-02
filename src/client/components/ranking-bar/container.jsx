@@ -9,8 +9,8 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        onSelect(value) {
-            dispatch(sortUpdate({sortBy: value}));
+        onSelect(searchRequest) {
+            dispatch(sortUpdate(searchRequest));
         }
     };
 }
