@@ -86,7 +86,7 @@ export class PropertyListItem extends React.Component {
                             </Label>
                             <Image
 
-                              //todo =>  src={propertyItemData.images[0].url}
+                               src={propertyItemData.images[0].url}
                                 floated="left"
                                 style={{
                                     width: 150,
@@ -187,7 +187,7 @@ export class PropertyListItem extends React.Component {
                                 <div className="roomType">
                                     <Icon name="add user"/>
 
-                                    {/*todo!!! {propertyItemData.rooms[0].roomType.name} */}
+                                    {propertyItemData.rooms[0].roomType.name}
                                 </div>
 
 
@@ -196,7 +196,7 @@ export class PropertyListItem extends React.Component {
                                 {/*}} >*/}
                                 <span className="priceInfo">
 
-                                  {/* US ${propertyItemData.rooms[0].price} */}
+                                   US ${propertyItemData.rooms[0].price}
                                 </span>
 
 

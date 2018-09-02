@@ -1,3 +1,4 @@
+const moment = require("moment");
 const sequelize = require("sequelize");
 const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
@@ -19,6 +20,7 @@ const Room = require("../models/Room");
 const FacilityList = require("../models/FacilityList");
 const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
+
 
 const includeOptions = [
     {
@@ -155,7 +157,7 @@ class PropertyRepository extends Repository {
         let sortingOption;
         switch (filter.sortBy) {
             case SORT_VALUE.PRICE:
-                sortingOption = ["Room", "price", "DESC"];
+                sortingOption = [[Room, "price", "DESC"]];
                 break;
             case SORT_VALUE.LOW_RANK:
                 sortingOption = [["rating", "ASC"]];
@@ -187,22 +189,22 @@ class PropertyRepository extends Repository {
                         include: [
                             RoomType,
                             {
-                                model: BedInRoom
-                                // where: {
-                                //     count: { $gte: filter.bedsCount }
-                                // }
+                                model: BedInRoom,
+                                where: {
+                                    count: { $gte: filter.bedsCount }
+                                }
                             },
                             {
                                 model: Reservation,
-                                where: {
-                                    dateIn: {},
-                                    dateOut: {}
-                                }
+                                 where: {
+                                 dateIn: { $gte: moment().subtract(10, 'days').toDate()},
+                                 dateOut: { $lte: moment().add(5, 'days').toDate()}
+                             }
                             }
-                        ]
-                        // where: {
-                        //     amount: { $gte: filter.rooms }
-                        // }
+                        ],
+                        where: {
+                            amount: { $gte: filter.rooms }
+                        }
                     }
                 ],
                 order: sortingOption
