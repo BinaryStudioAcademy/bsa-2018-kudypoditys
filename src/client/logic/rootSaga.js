@@ -1,11 +1,13 @@
-import {all, fork} from "redux-saga/effects";
+import { all, fork } from "redux-saga/effects";
 import loginSaga from "client/logic/login/saga";
 import signupSaga from "client/logic/registration/saga";
 import headerSaga from "client/logic/header/saga";
 import userCabinetSaga from "./user-cabinet/saga";
-import propertySaga from './property-creation-tabs/saga';
+import propertySaga from "./property-creation-tabs/saga";
 import emailVerificationSaga from "client/logic/verify-email/saga";
-import personalSettings from 'client/logic/personal-settings-edit/saga';
+import propertyPageSaga from "./property-page/saga";
+import searchSaga from "./search/saga";
+import personalSettingsSaga from "./personal-settings-edit/saga";
 
 export default function* rootSaga() {
     yield all([
@@ -13,8 +15,10 @@ export default function* rootSaga() {
         fork(headerSaga),
         fork(propertySaga),
         fork(signupSaga),
-        fork(personalSettings),
+        fork(personalSettingsSaga),
         fork(userCabinetSaga),
-        fork(emailVerificationSaga)
+        fork(propertyPageSaga),
+        fork(emailVerificationSaga),
+        fork(searchSaga)
     ]);
 }

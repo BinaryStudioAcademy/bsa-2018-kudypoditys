@@ -12,7 +12,9 @@ const {
     ROLES,
     FACILITY_CATEGORIES,
     REVIEW_CATEGORIES,
+    PROPERTY_PAYMENT_TYPES,
     BED_TYPES,
+    BED_IN_ROOMS,
     ROOM_TYPES,
     PROPERTY_TYPE
 } = require("./seed");
@@ -23,6 +25,7 @@ module.exports = function(models) {
         City,
         PaymentType,
         BedType,
+        BedInRoom,
         Discount,
         Role,
         FacilityCategory,
@@ -30,6 +33,7 @@ module.exports = function(models) {
         ReviewCategory,
         RoomType,
         PropertyType,
+        PropertyPaymentType,
         Property,
         AccommodationRule,
         FacilityList,
@@ -50,7 +54,9 @@ module.exports = function(models) {
         [AccommodationRule, ACCOMMODATION_RULES],
         [Property, PROPERTIES],
         [FacilityList, FACILITY_LISTS],
+        [PropertyPaymentType, PROPERTY_PAYMENT_TYPES],
         [Room, ROOMS],
+        [BedInRoom, BED_IN_ROOMS],
         [Image, IMAGES],
         [User, USERS],
         [Reservation, RESERVATIONS]

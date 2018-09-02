@@ -25,13 +25,13 @@ class Api {
         );
     };
 
-    sendRequest(url, type, payload) {
+    sendRequest = (url, type, payload) => {
         return this.adapter.request({
             url: url, // url
             method: type.toUpperCase(), // 'get' -> 'GET'
             data: payload // body
         });
-    }
+    };
 
     getAuthHeader() {
         const accessToken = cookies.getAccessToken();
