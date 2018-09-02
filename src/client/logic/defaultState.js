@@ -160,6 +160,29 @@ const state = {
         userName: "User Name"
     },
 
+    propertyPage: {
+        property: null,
+        availabilityInput: {
+            checkIn: null,
+            checkOut: null,
+            adults: 2,
+            rooms: 1,
+            children: 0,
+            result: null,
+            error: ""
+        },
+        bookingInput: {
+            checkIn: null,
+            checkOut: null,
+            adults: 2,
+            children: 0,
+            roomId: null,
+            paymentTypeId: null,
+            error: "",
+            message: ""
+        }
+    },
+
     propertyLayoutTab: {
         title: "Apartment with Garden View",
         amount: "1"
@@ -226,6 +249,9 @@ const state = {
         fullName: "Full Name",
         phone: "0123453453",
         email: "john.doe@gmail.com",
+        //
+        additionalFacilities: ["Bar", "Sauna"],
+        //
         creditCards: [
             {
                 type: "Visa",

@@ -3,26 +3,106 @@ const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
 const Facility = require("../models/Facility");
 const PaymentType = require("../models/PaymentType");
-const Room = require("../models/Room");
-const AccommodationRule = require("../models/AccommodationRule");
-const BedInRoom = require("../models/BedInRoom");
+
 const Reservation = require("../models/Reservation");
-const Country = require("../models/Country");
 // const PropertyCategory = require("../models/PropertyCategory");
 const RoomType = require("../models/RoomType");
-const User = require("../models/User");
-const City = require("../models/City");
 const Image = require("../models/Image");
-const Property = require("../models/Property");
 const Availability = require("../models/Availability");
-
-const PropertyType = require("../models/PropertyType");
-
-const Review = require("../models/Review");
-
 const Favorite = require("../models/Favorite");
 
+const AccommodationRule = require("../models/AccommodationRule");
+const PropertyType = require("../models/PropertyType");
+const Country = require("../models/Country");
+const City = require("../models/City");
+const Review = require("../models/Review");
+const User = require("../models/User");
+const Room = require("../models/Room");
+const FacilityList = require("../models/FacilityList");
+const BedInRoom = require("../models/BedInRoom");
+const BedType = require("../models/BedType");
+
+const includeOptions = [
+    {
+        model: PropertyType,
+        attributes: ["id", "name", "description"]
+    },
+    {
+        model: City,
+        attributes: ["id", "name"],
+        include: [{ model: Country, attributes: ["id", "name"] }]
+    },
+    {
+        model: AccommodationRule,
+        attributes: [
+            "id",
+            "allowPets",
+            "cancelReservation",
+            "minimumStay",
+            "arrivalTimeStart",
+            "arrivalTimeEnd",
+            "departureTimeStart",
+            "departureTimeEnd"
+        ]
+    },
+    {
+        model: Image,
+        attributes: ["id", "url", "propertyId", "roomId"]
+    },
+    {
+        model: Review,
+        attributes: ["id", "content"],
+        include: [
+            {
+                model: User,
+                attributes: ["id", "fullName", "email", "avatar", "phoneNumber"]
+            }
+        ]
+    },
+    {
+        model: Room,
+        attributes: ["id", "price", "amount", "area", "description"],
+        include: [
+            { model: RoomType, attributes: ["id", "name"] },
+            {
+                model: BedInRoom,
+                attributes: ["count"],
+                include: [{ model: BedType, attributes: ["id", "name"] }]
+            }
+        ]
+    },
+    {
+        model: FacilityList,
+        attributes: ["belongsToProperty"],
+        include: [
+            {
+                model: Facility,
+                attributes: ["id", "name"]
+            }
+        ]
+    },
+    {
+        model: PaymentType,
+        attributes: ["name", "id"]
+    }
+];
+
 class PropertyRepository extends Repository {
+    findById(id) {
+        return this.model.findById(id, {
+            attributes: [
+                "id",
+                "name",
+                "address",
+                "rating",
+                "description",
+                "coordinates",
+                "contactPhone"
+            ],
+            include: includeOptions
+        });
+    }
+
     getDetailsById(id) {
         return this.model
             .findOne({

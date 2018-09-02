@@ -1,44 +1,44 @@
-import { searchUpdate } from "../../logic/search/actions";
+import {
+    availabilityInputUpdate,
+    checkAvailability
+} from "../../logic/property-page/actions";
 
 export function mapStateToProps(state, ownProps) {
-    const { search } = state;
+    const { property, availabilityInput } = state.propertyPage;
     return {
-        propertyName: search.destination,
-        checkIn: search.checkIn,
-        checkOut: search.checkOut,
-        adults: search.adults,
-        children: search.children,
-        rooms: search.rooms
+        propertyName: property.name,
+        propertyId: property.id,
+        checkIn: availabilityInput.checkIn,
+        checkOut: availabilityInput.checkOut,
+        adults: availabilityInput.adults,
+        children: availabilityInput.children,
+        rooms: availabilityInput.rooms,
+        result: availabilityInput.result,
+        error: availabilityInput.error
     };
 }
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
-        onAvailabilityCheck() {
-            //todo server request
-            const serverResponse = [
-                { room: "Available room type" },
-                { room: "Available room type2" },
-                { room: "Available room type3" }
-            ];
-            dispatch(searchUpdate({ results: serverResponse }));
+        onAvailabilityCheck(value) {
+            dispatch(checkAvailability(value));
         },
         onDatesChange(value) {
             dispatch(
-                searchUpdate({
+                availabilityInputUpdate({
                     checkIn: value.startDate,
                     checkOut: value.endDate
                 })
             );
         },
         onAdultsChange(value) {
-            dispatch(searchUpdate({ adults: value }));
+            dispatch(availabilityInputUpdate({ adults: value }));
         },
         onChildrenChange(value) {
-            dispatch(searchUpdate({ children: value }));
+            dispatch(availabilityInputUpdate({ children: value }));
         },
         onRoomsChange(value) {
-            dispatch(searchUpdate({ rooms: value }));
+            dispatch(availabilityInputUpdate({ rooms: value }));
         }
     };
 }

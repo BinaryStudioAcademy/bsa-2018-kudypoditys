@@ -1,6 +1,8 @@
 const {
     USERS,
     PROPERTIES,
+    ACCOMMODATION_RULES,
+    FACILITY_LISTS,
     ROOMS,
     IMAGES,
     RESERVATIONS,
@@ -10,7 +12,9 @@ const {
     ROLES,
     FACILITY_CATEGORIES,
     REVIEW_CATEGORIES,
+    PROPERTY_PAYMENT_TYPES,
     BED_TYPES,
+    BED_IN_ROOMS,
     ROOM_TYPES,
     PROPERTY_TYPE
 } = require("./seed");
@@ -21,6 +25,7 @@ module.exports = function(models) {
         City,
         PaymentType,
         BedType,
+        BedInRoom,
         Discount,
         Role,
         FacilityCategory,
@@ -28,7 +33,10 @@ module.exports = function(models) {
         ReviewCategory,
         RoomType,
         PropertyType,
+        PropertyPaymentType,
         Property,
+        AccommodationRule,
+        FacilityList,
         Room,
         Reservation,
         Image,
@@ -43,18 +51,16 @@ module.exports = function(models) {
         [ReviewCategory, REVIEW_CATEGORIES],
         [RoomType, ROOM_TYPES],
         [PropertyType, PROPERTY_TYPE],
+        [AccommodationRule, ACCOMMODATION_RULES],
         [Property, PROPERTIES],
+        [FacilityList, FACILITY_LISTS],
+        [PropertyPaymentType, PROPERTY_PAYMENT_TYPES],
         [Room, ROOMS],
+        [BedInRoom, BED_IN_ROOMS],
         [Image, IMAGES],
         [User, USERS],
         [Reservation, RESERVATIONS]
     ];
-
-    for (const mapItem of SimpleUpsertMap) {
-        for (const itemToInsert of mapItem[1]) {
-            mapItem[0].upsert(itemToInsert);
-        }
-    }
 
     //Country & City
     const CITIES = COUNTRIES.reduce((accumulator, country) => {
@@ -93,6 +99,12 @@ module.exports = function(models) {
 
     for (const f of FACILITY) {
         Facility.upsert(f);
+    }
+
+    for (const mapItem of SimpleUpsertMap) {
+        for (const itemToInsert of mapItem[1]) {
+            mapItem[0].upsert(itemToInsert);
+        }
     }
 
     // User.upsert({

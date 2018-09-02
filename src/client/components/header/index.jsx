@@ -57,7 +57,8 @@ export class MainHeader extends Component {
                                 style={{
                                     marginRight: "24px",
                                     fontSize: 16,
-                                    opacity: 0.8
+                                    opacity: 0.8,
+                                    cursor: "pointer"
                                 }}
                             >
                                 EN

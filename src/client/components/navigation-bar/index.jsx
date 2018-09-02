@@ -1,34 +1,41 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Menu, Label } from 'semantic-ui-react';
+import React from "react";
+import PropTypes from "prop-types";
+import { Menu, Label, Divider } from "semantic-ui-react";
+import "./index.scss";
 
 export class NavigationBar extends React.Component {
-
     render() {
         return (
-            <Menu stackable fluid widths={4}>
+            <Menu
+                className="property-page-navigation"
+                stackable
+                fluid
+                text
+                widths={4}
+            >
                 <Menu.Item
-                    name='info-and-price'
+                    name="info-and-price"
                     onClick={this.props.infoClick}
-                    children='Room info and price'
+                    children="Room info and price"
                 />
                 <Menu.Item
-                    name='facilities'
+                    name="facilities"
                     onClick={this.props.facilitiesClick}
-                    children='Facilities'
+                    children="Facilities"
                 />
                 <Menu.Item
-                    name='good-to-know'
-                    onClick={this.props.goodToKnowClick}
-                    children='Good to know'
+                    name="rules"
+                    onClick={this.props.rulesClick}
+                    children="House rules"
                 />
-                <Menu.Item name='reviews'
-                    onClick={this.props.reviewsClick}>
+                <Menu.Item name="reviews" onClick={this.props.reviewsClick}>
                     Guest reviews
-                    <Label color='teal'>{this.props.reviewsCount}</Label>
+                    <Label className="reviews-label">
+                        {this.props.reviewsCount}
+                    </Label>
                 </Menu.Item>
             </Menu>
-        )
+        );
     }
 }
 

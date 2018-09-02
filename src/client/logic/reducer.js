@@ -46,7 +46,6 @@ export default combineReducers({
     // policesTab,
     // layoutTab,
     propertyRegistration,
-
     userVerified,
     userSettings,
     userCabinet,

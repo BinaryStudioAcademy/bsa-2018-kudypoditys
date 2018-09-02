@@ -1,108 +1,161 @@
 import React from "react";
 import "./index.scss";
-import {Divider, Container, Segment, Breadcrumb} from "semantic-ui-react";
-import {connect} from "react-redux";
-import {mapStateToProps, mapDispatchToProps} from "./container";
+import { Divider, Container, Segment, Header, Icon } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 import Search from "client/components/search";
-import Header from "client/components/header";
+import AppHeader from "client/components/header";
 import AvailabilityPanel from "client/components/availability-panel";
 import Slider from "client/components/slider";
 import PropertyDescription from "client/components/property-description";
-import {PropertySummary} from "client/components/property-summary";
-import {NavigationBar} from "client/components/navigation-bar";
+import { PropertySummary } from "client/components/property-summary";
+import { NavigationBar } from "client/components/navigation-bar";
 import BasicMapWidget from "client/components/basic-map-widget";
 import RoomsSummaryTable from "client/components/rooms-summary-table";
-export class PropertyPage extends React.Component {
-    render() {
-        let propertyItemData = {
-            name: "DREAM Hostel Lviv",
-            location: "Prospekt Gagarina 145, Lviv, 61124, Ukraine "
-        };
-        const pics = [
-            "https://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg",
-            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-8.jpg",
-            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-10.jpg",
-            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg",
-            "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-12.jpg"
-        ];
+import Modal from "../../components/modal";
+import BookingForm from "../../components/booking-form";
+import ReactDOM from "react-dom";
 
-        const sections = [
-            {key: "Main", content: "Main", link: true},
-            {key: "Country", content: "Ukraine", link: true},
-            {key: "Region", content: "Lviv Region", link: true},
-            {key: "City", content: "Lviv", link: true},
-            {key: "Property", content: "DREAM Hostel Lviv", active: true}
-        ];
+export class PropertyPage extends React.Component {
+    componentWillMount() {
+        this.props.getProperty(this.props.match.params.id);
+    }
+
+    getImagesArray(propertyImages) {
+        let images = [];
+        for (let i = 0; i < propertyImages.length; i++) {
+            images.push(propertyImages[i].url);
+        }
+        return images;
+    }
+
+    onBookSubmit = event => {
+        console.log("book!");
+    };
+
+    scrollTo = targetRef => {
+        const node = ReactDOM.findDOMNode(this.refs[targetRef]);
+        node.scrollIntoView();
+    };
+
+    render() {
+        const { property, user } = this.props;
 
         const handleSlideChange = index => {
             console.log(`Slide changed to ${index}`);
         };
 
+        if (!property) return null;
+
+        const pics = this.getImagesArray(property.images);
         return (
             <div className="mock">
-                <Header showSearch={true}/>
+                <AppHeader showSearch={true} />
                 <div className="property-page__wrapper">
-                    <div className="breadcrumb_wrapper">
-                        <Segment>
-                            <Breadcrumb
-                                icon="right angle"
-                                sections={[
-                                    {key: "Home", content: "Home", href: "#"},
-                                    {
-                                        key: "Ukraine",
-                                        content: "Ukraine",
-                                        href: "#"
-                                    },
-                                    {key: "Lviv", content: "Lviv", href: "#"},
-                                    {
-                                        key: "DREAM Hostel Lviv",
-                                        content: "DREAM Hostel Lviv",
-                                        href: "#"
-                                    }
-                                ]}
-                            />
-                        </Segment>
-                    </div>
-
-                    <Container
-                        text
-                        className="property-page__wrapper-left_side"
-                    >
+                    <div text className="property-page__wrapper-left_side">
                         <BasicMapWidget
                             key="BasicMapWidget"
-                            location={{lat: 49.837089, lng: 24.021161}}
+                            coordinates={property.coordinates}
+                            controlEnable={false}
                             rounded
                             centered
                         />
-                    </Container>
+                        {user ? (
+                            <Modal
+                                trigger={
+                                    <div
+                                        className="book-btn"
+                                        style={{ height: "33px" }}
+                                    >
+                                        <button>Book now</button>
+                                        <div
+                                            className="book-icon"
+                                            style={{ cursor: "pointer" }}
+                                        >
+                                            <Icon
+                                                name="bookmark"
+                                                size="large"
+                                            />
+                                        </div>
+                                    </div>
+                                }
+                                onClose={this.props.clearBookingForm}
+                            >
+                                <BookingForm
+                                    onBook={this.onBookSubmit}
+                                    rooms={property.rooms}
+                                    paymentTypes={property.paymentTypes}
+                                />
+                            </Modal>
+                        ) : null}
+                    </div>
 
                     <Container
                         text
                         className="property-page__wrapper-right_side"
                     >
-                        <NavigationBar/>
-
-                        <PropertySummary propertyItemData={propertyItemData}/>
+                        <NavigationBar
+                            reviewsCount={property.reviews.length}
+                            facilitiesClick={() => {
+                                this.scrollTo("facilitiesRef");
+                            }}
+                            infoClick={() => {
+                                this.scrollTo("roomsRef");
+                            }}
+                        />
+                        <Divider />
+                        <PropertySummary property={property} />
                         <Slider
                             pics={pics}
                             handleSlideChange={handleSlideChange}
                             slideIndex={0}
                         />
 
-                        <Divider hidden/>
+                        <Divider hidden />
                         <div
                             className="property-page__description"
-                            style={{width: "100%"}}
+                            style={{ width: "100%" }}
                         >
                             <PropertyDescription
-                                id="xyz-1"
-                                style={{width: "100%"}}
+                                property={property}
+                                style={{ width: "100%" }}
                             />
+                            <Container
+                                text
+                                style={{
+                                    display: "table",
+                                    lineHeight: 1.2,
+                                    color: "green"
+                                }}
+                            >
+                                <div ref={"facilitiesRef"}>
+                                    <Header as="h2">Facilities</Header>
+                                    {property.facilityLists.map((item, i) => {
+                                        return (
+                                            <span
+                                                key={i}
+                                                style={{
+                                                    marginRight: 10,
+                                                    marginBottom: 10,
+                                                    fontSize: 18,
+                                                    lineHeight: 1.2,
+                                                    color: "green"
+                                                }}
+                                            >
+                                                {item.facility.name}
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+                            </Container>
                         </div>
-                        <Divider hidden/>
+                        <Divider hidden />
 
-                        <AvailabilityPanel style={{width: "100%"}}/>
-                        <RoomsSummaryTable/>
+                        <AvailabilityPanel style={{ width: "100%" }} />
+                        <RoomsSummaryTable
+                            ref={"roomsRef"}
+                            rooms={property.rooms}
+                        />
                     </Container>
                 </div>
             </div>
