@@ -1,5 +1,4 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import availabilityService from "client/services/availabilityService";
 import propertyService from "client/services/propertyService";
 import * as actionTypes from "./actionTypes";
 
@@ -21,22 +20,22 @@ function* createAvailability(action) {
     // }
 }
 
-function* getUserpropertiesInfo(action) {
+function* getUserpropertiesInfo(id) {
     try {
-        console.log("saga get info for calendar");
+        console.log("saga get info for calendar", id);
         const propetyResponse = yield call(
             propertyService.getUserPropertiesInfo,
-            action.payload
+            id.id
         );
-        console.log("RESPONSE======", propetyResponse.data);
         yield put({
             type: actionTypes.GET_CURRENT_USER_INFO_SUCCESS,
             payload: {
-                ...propetyResponse.data
+                ...propetyResponse
             }
         });
     } catch (error) {
-        yield put({ type: actionTypes.AVAILABILITY_UPDATE_SUBMIT });
+        console.log(error);
+        yield put({ type: actionTypes.GET_CURRENT_USER_INFO_FAILURE });
     }
 }
 

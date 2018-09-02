@@ -21,9 +21,6 @@ export function mapDispatchToProps(dispatch) {
         updateSettings(data) {
             dispatch(updateUserSettings(data));
         },
-        getUserSettings() {
-            dispatch(getUserSettings());
-        },
         uploadAvatar(data) {
             dispatch(uploadAvatar(data));
         },

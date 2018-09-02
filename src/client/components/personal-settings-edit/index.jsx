@@ -19,10 +19,6 @@ export class EditPersonalSettings extends Component {
         this.props.sendSettings(this.props);
     };
 
-    componentWillMount() {
-        this.props.getUserSettings();
-    }
-
     handleImageUpload(file) {
         this.props.uploadAvatar(file);
     }

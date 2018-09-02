@@ -22,16 +22,16 @@ class PropertyService {
             });
     }
 
-    getDetailsById(id) {
-        return api
-            .sendRequest(`api/property/${id}/details`, "get")
-            .then(response => response.data);
-    }
+    // getDetailsById(id) {
+    //     return api
+    //         .sendRequest(`api/property/${id}/details`, "get")
+    //         .then(response => response.data);
+    // }
 
-    getUserPropertiesInfo(action) {
-        console.log("getUserPropertiesInfo service");
+    getUserPropertiesInfo(id) {
+        console.log(`/api/property/${id}/info`);
         return api
-            .sendRequest("/api/property/getuserpropertiesinfo", "get")
+            .sendRequest(`/api/property/${id}/info`, "get")
             .then(response => response.data);
     }
 }

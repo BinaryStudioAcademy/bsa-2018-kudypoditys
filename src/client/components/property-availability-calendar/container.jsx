@@ -5,8 +5,8 @@ import {
 } from "client/logic/property-availability-calendar/actions";
 
 export function mapStateToProps(state, ownprops) {
-    console.log(this.props);
     const { propertyCalendar } = state;
+    console.log("mapStateToProps", this.propertyCalendar);
     return {
         ...propertyCalendar
     };
@@ -20,8 +20,8 @@ export function mapDispatchToProps(dispatch) {
         handleUpdate(data) {
             dispatch(calendarUpdate(data));
         },
-        handleUserInfo(data) {
-            dispatch(getUserpropertiesInfo(data));
+        handleUserInfo(id) {
+            dispatch(getUserpropertiesInfo(id));
         }
     };
 }
