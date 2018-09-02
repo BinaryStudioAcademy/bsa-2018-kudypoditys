@@ -198,10 +198,10 @@ export class MainSearch extends React.Component {
         if (this.props.search.data !== undefined) {
             const { data } = this.props.search;
 
-            // console.log("search state" + JSON.stringify(this.state));
+             //console.log("search state" + JSON.stringify(this.state));
 
             if (data !== undefined && data !== "" && data.length > 0) {
-               // console.log("searchResults" + JSON.stringify(data));
+            // console.log("searchResults" + JSON.stringify(data));
                 this.props.handleSearchResults({ searchResults:data ,query:this.state.query});
             }
         }

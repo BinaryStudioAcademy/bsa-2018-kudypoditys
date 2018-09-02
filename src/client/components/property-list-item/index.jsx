@@ -86,7 +86,7 @@ export class PropertyListItem extends React.Component {
                             </Label>
                             <Image
 
-                                src={propertyItemData.image}
+                                src={propertyItemData.images[0].url}
                                 floated="left"
                                 style={{
                                     width: 150,
@@ -161,8 +161,8 @@ export class PropertyListItem extends React.Component {
                                                 price: 3000,
                                                 name:
                                                     "Avangard Kulisha Apartment",
-                                                latitude: propertyItemData.coordinatesLat,
-                                                longitude: propertyItemData.coordinatesLng,
+                                                latitude: propertyItemData.coordinates.lat,
+                                                longitude: propertyItemData.coordinates.lng,
                                                 imageSrc:
                                                     "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg",
                                                 address:
@@ -187,7 +187,7 @@ export class PropertyListItem extends React.Component {
                                 <div className="roomType">
                                     <Icon name="add user"/>
 
-                                    {propertyItemData.rooms[0].roomType}
+                                    {propertyItemData.rooms[0].roomType.name}
                                 </div>
 
 
@@ -196,7 +196,7 @@ export class PropertyListItem extends React.Component {
                                 {/*}} >*/}
                                 <span className="priceInfo">
 
-                                  US ${propertyItemData.rooms[0].roomPrice}
+                                  US ${propertyItemData.rooms[0].price}
                                 </span>
 
 

@@ -27,8 +27,8 @@ class SearchPage extends React.Component {
 
         const listItems = searchData.searchResults.map(property => (
             <PropertyListItem
-                key={property._source.id}
-                propertyItemData={property._source}
+                key={property.id}
+                propertyItemData={property}
             />
         ));
         this.setState({

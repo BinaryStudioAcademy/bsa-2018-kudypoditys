@@ -3,6 +3,10 @@ const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
 const Facility = require("../models/Facility");
 const PaymentType = require("../models/PaymentType");
+const Room = require("../models/Room");
+const AccommodationRule = require("../models/AccommodationRule");
+const BedInRoom = require("../models/BedInRoom");
+const BedType = require("../models/BedType");
 
 const Reservation = require("../models/Reservation");
 // const PropertyCategory = require("../models/PropertyCategory");
@@ -150,23 +154,32 @@ class PropertyRepository extends Repository {
         return this.model
             .findAll({
                 where: {
-                    id:  {$in: filter.propertiesIds}
+                    id: { $in: filter.propertiesIds }
                 },
                 include: [
                     {
-                        model: City,
+                        model: City
                     },
                     {
-                        model: Image,
+                        model: Image
                     },
 
                     {
                         model: Room,
-                        include: [RoomType]
-
+                        include: [
+                            RoomType,
+                            {
+                                model: BedInRoom,
+                                where: {
+                                    count: { $gte: filter.bedsCount }
+                                }
+                            }
+                        ],
+                        where: {
+                            amount: { $gte: filter.rooms }
+                        }
                     }
                 ]
-
             })
             .then(properties => {
                 return properties;
@@ -181,7 +194,7 @@ class PropertyRepository extends Repository {
                         model: City
                     },
                     {
-                        model: Image,
+                        model: Image
                     },
 
                     {
