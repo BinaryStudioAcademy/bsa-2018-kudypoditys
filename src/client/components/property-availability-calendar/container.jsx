@@ -6,7 +6,6 @@ import {
 
 export function mapStateToProps(state, ownprops) {
     const { availabilityCalendar } = state;
-    console.log("mapStateToProps   ", state);
     return {
         ...availabilityCalendar
     };

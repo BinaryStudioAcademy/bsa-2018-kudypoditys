@@ -16,10 +16,7 @@ export class AvailabilityCalendar extends React.Component {
     };
 
     roomAmountChanged = data => {
-        // console.log(data.target.value);
         console.log(this.props);
-        // console.log(mapStateToProps);
-        // this.props.handleUpdate(data);
     };
 
     componentWillMount() {
@@ -29,7 +26,6 @@ export class AvailabilityCalendar extends React.Component {
     render() {
         return (
             <div style={{ overflow: "auto" }}>
-                {console.log("IN RENDER", this.props)}
                 <Table compact celled padded>
                     <Table.Header>
                         <Table.Row style={{ textAlign: "center" }}>

@@ -18,7 +18,6 @@ export default function userSettingsReducer(
             };
         }
         case GET_CURRENT_USER_SUCCESS: {
-            console.log(action.payload);
             return {
                 ...state,
                 ...action.payload
