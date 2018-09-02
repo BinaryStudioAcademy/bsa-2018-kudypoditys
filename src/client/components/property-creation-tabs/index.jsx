@@ -1,57 +1,83 @@
 import './index.scss';
 import React from 'react';
-import {Tab, Container} from 'semantic-ui-react';
-import {MenuItems} from "./config";
-import {DrawTab} from "./DrawTab";
-import {connect} from 'react-redux';
-import {mapDispatchToProps, mapStateToProps} from "./container";
+import { Tab, Container } from 'semantic-ui-react';
+import { MenuItems } from "./config";
+import { DrawTab } from "./DrawTab";
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from "./container";
+import BasicInfoPropertyRegistrationForm from '../basic-info-property-registration-form';
+import ServicesTab from '../property-services-tab';
 
+export class PropertyRegistration extends React.Component {
+    state = {
+        activeIndex: 0
+    };
 
-export class PropertyCreationTabs extends React.Component {
+    handleTabChange = (e, { activeIndex }) => {
+        this.setState({ activeIndex });
+    }
 
-    // state = {
-    //     activeIndex: this.props.activeIndex
-    // }
+    nextTab = () => {
+        const { activeIndex } = this.state;
+        this.setState({
+            activeIndex: activeIndex + 1
+        });
+    }
 
-    handleTabChange = (e, {activeIndex}) => this.props.updateTab({activeIndex});
-        // this.setState({activeIndex});
+    onFormSubmit = (data) => {
+        console.log(data);
+    }
 
-
+    getWizardForms() {
+        return [
+            {
+                key: 'Basic Info',
+                icon: 'home',
+                content: 'Basic Info',
+                header: ' Rooms and pricing',
+                subheader: 'Start by telling us your property\'s name, contact details and address.',
+                component: <BasicInfoPropertyRegistrationForm onSubmit={this.nextTab} />
+            },
+            {
+                key: 'Facilities & services',
+                icon: 'bath',
+                content: 'Facilities & services',
+                header: ' Facilities & services',
+                subheader: 'Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.',
+                component: <ServicesTab />
+            }
+        ];
+    }
 
     getPanes() {
-        return MenuItems.map((tab) => ({
-
-            menuItem: tab.menuItem,
-
+        return this.getWizardForms().map(menuItemForm => ({
+            menuItem: menuItemForm,
             render: () =>
-
                 <DrawTab
-                    header={tab.menuItem.header}
-                    subheader={tab.menuItem.subheader}
-                    component={tab.menuItem.component}
-
-                    // onSubmit={this.submitHandle}
+                    header={menuItemForm.header}
+                    subheader={menuItemForm.subheader}
+                    component={menuItemForm.component}
                 />
-        }))
+        }));
     }
 
     render() {
-
-        console.log(this.props)
-        const {activeIndex} = this.props;
+        const { activeIndex } = this.state;
 
         return (
             <Container>
-                <div className="welcome">
-
-                </div>
-                <Tab menu={{fluid: true, vertical: true}} menuPosition="left" panes={this.getPanes()}
-                     activeIndex={activeIndex} onTabChange={this.handleTabChange} />
+                <Tab
+                    menu={{ fluid: true, vertical: true }}
+                    menuPosition="left"
+                    panes={this.getPanes()}
+                    activeIndex={activeIndex}
+                    onTabChange={this.handleTabChange}
+                />
             </Container>
         )
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyCreationTabs);
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyRegistration);
 
 

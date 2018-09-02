@@ -7,9 +7,10 @@ import propertySaga from "./property-creation-tabs/saga";
 import emailVerificationSaga from "client/logic/verify-email/saga";
 import resetPasswordSaga from 'client/logic/reset-password/saga';
 import forgotPasswordSaga from 'client/logic/forgot-password/saga';
-import propertyPageSaga from "./property-page/saga";
-import searchSaga from "./search/saga";
-import personalSettings from './personal-settings-edit/saga';
+import propertyPageSaga from "client/logic/property-page/saga";
+import searchSaga from "client/logic/search/saga";
+import personalSettings from 'client/logic/personal-settings-edit/saga';
+import countriesSaga from 'client/logic/countries/saga';
 
 export default function* rootSaga() {
     yield all([
@@ -24,5 +25,6 @@ export default function* rootSaga() {
         fork(searchSaga),
         fork(resetPasswordSaga),
         fork(forgotPasswordSaga),
+        fork(countriesSaga),
     ]);
 }

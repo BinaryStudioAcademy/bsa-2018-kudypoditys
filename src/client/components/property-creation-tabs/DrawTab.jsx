@@ -1,26 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
+import { Header, Tab } from "semantic-ui-react";
 
-import {Header, Tab} from "semantic-ui-react";
-
-
-export class DrawTab extends React.Component {
+export class DrawTab extends Component {
 
     render() {
-        const {header, subheader, component} = this.props;
+        const { header, subheader, component } = this.props;
         return (
             <Tab.Pane>
 
                 <Header as="h2">
                     {header}
                 </Header>
-                <Header as="h4" style={{paddingBottom: 10, lineHeight: 1.2}}>
-
+                <Header as="h4" style={{ paddingBottom: 10, lineHeight: 1.2 }}>
                     {subheader}
-
                 </Header>
-                <div
-                    // onSubmit={this.props.onSubmit}
-                >
+                <div>
                     {component}
                 </div>
             </Tab.Pane>

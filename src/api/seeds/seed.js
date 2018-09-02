@@ -4,8 +4,8 @@ const USERS = [
     {
         id: 1,
         fullName: "Natalya",
-        password: bcrypt.hashSync("nata1NATA", 10),
-        email: "natalya@gmail.com",
+        password: bcrypt.hashSync("1234", 10),
+        email: "nata737mail@gmail.com",
         phoneNumber: "0504958671"
     },
     {

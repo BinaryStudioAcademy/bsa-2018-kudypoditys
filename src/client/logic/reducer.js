@@ -20,6 +20,7 @@ import userCabinet from "./user-cabinet/reducer";
 import userVerified from "client/logic/verify-email/reducer";
 import resetPassword from 'client/logic/reset-password/reducer';
 import forgotPassword from 'client/logic/forgot-password/reducer';
+import countries from 'client/logic/countries/reducer';
 
 export default combineReducers({
     search,
@@ -48,4 +49,5 @@ export default combineReducers({
     userCabinet,
     resetPassword,
     forgotPassword,
+    countries
 });

@@ -300,7 +300,9 @@ const state = {
         isLoading: false,
         error: undefined,
         sendEmailSuccess: false
-    }
+    },
+
+    countriesData: {}
 };
 
 export default state;
