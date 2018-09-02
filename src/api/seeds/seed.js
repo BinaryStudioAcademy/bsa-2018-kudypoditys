@@ -334,6 +334,29 @@ const ACCOMMODATION_RULES = [
     }
 ];
 
+const PROPERTY_PAYMENT_TYPES = [
+    {
+        propertyId: 1,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 1,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 1,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 2,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 2,
+        paymentTypeId: 3
+    }
+];
+
 const ROOMS = [
     {
         id: 1,
@@ -836,19 +859,19 @@ const IMAGES = [
         propertyId: 24
     },
     {
-        id: 50,
+        id: 49,
         url:
             "https://www.publicdomainpictures.net/pictures/240000/velka/sitting-room-with-grand-piano.jpg",
         propertyId: 25
     },
     {
-        id: 51,
+        id: 50,
         url:
             "https://www.publicdomainpictures.net/pictures/270000/velka/ghostly-vintage-dance.jpg",
         propertyId: 25
     },
     {
-        id: 52,
+        id: 51,
         url:
             "https://www.publicdomainpictures.net/pictures/270000/velka/bedroom-interior.jpg",
         propertyId: 1
@@ -1737,6 +1760,7 @@ module.exports = {
     COUNTRIES,
     DISCOUNTS,
     PAYMENT_TYPES,
+    PROPERTY_PAYMENT_TYPES,
     ROLES,
     FACILITY_CATEGORIES,
     REVIEW_CATEGORIES,

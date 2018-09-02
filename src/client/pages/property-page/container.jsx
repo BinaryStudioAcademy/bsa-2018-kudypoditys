@@ -1,4 +1,7 @@
-import { getPropertyInfoById } from "../../logic/property-page/actions";
+import {
+    getPropertyInfoById,
+    bookingInputUpdate
+} from "../../logic/property-page/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { user } = state.userCabinet;
@@ -14,6 +17,9 @@ export function mapDispatchToProps(dispatch, ownProps) {
     return {
         getProperty(id) {
             dispatch(getPropertyInfoById(id));
+        },
+        clearBookingForm() {
+            dispatch(bookingInputUpdate({ message: "", error: "" }));
         }
     };
 }
