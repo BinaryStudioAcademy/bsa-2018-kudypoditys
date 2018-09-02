@@ -1155,27 +1155,33 @@ const COUNTRIES = [
         cities: [
             {
                 id: 1,
-                name: "Lviv"
+                name: "Lviv",
+                imageUrl: "http://www.mgi4ua.com/wp-content/uploads/2017/11/lviv-ukraine.jpg"
             },
             {
                 id: 2,
-                name: "Kiev"
+                name: "Kiev",
+                imageUrl: "https://s.inyourpocket.com/gallery/130361.jpg"
             },
             {
                 id: 3,
-                name: "Ternopil"
+                name: "Ternopil",
+                imageUrl: "http://www.gazeta-misto.te.ua/wp-content/uploads/2017/05/18671255_1124933304279283_1785861677540967562_n.jpg"
             },
             {
                 id: 4,
-                name: "Odessa"
+                name: "Odessa",
+                imageUrl: "https://www.hotel-deribas.com/wp-content/uploads/2018/03/19odessa.jpg"
             },
             {
                 id: 5,
-                name: "Kharkiv"
+                name: "Kharkiv",
+                imageUrl: "http://www.yoldasin.com/wp-content/uploads/2017/04/kharkiv-tren-istasyonu-960x638.jpg"
             },
             {
                 id: 6,
-                name: "Dnipro"
+                name: "Dnipro",
+                imageUrl: "http://meandyoukraine.com/mainContent/DniproCity/DniproCity_featuredImage.jpg"
             }
         ]
     },
@@ -1184,12 +1190,55 @@ const COUNTRIES = [
         name: "Poland",
         cities: [
             {
-                id: 4,
-                name: "Krakow"
+                id: 7,
+                name: "Kraków",
+                imageUrl: "https://tripmydream.cc/travelhub/blog/blog/36/1/block_361.jpg?v1"
             },
             {
-                id: 5,
-                name: "Warsaw"
+                id: 8,
+                name: "Warsaw",
+                imageUrl: "https://ticketspy.nl/wp-content/uploads/2014/08/Dollarphotoclub_43324037-1024x682.jpg?x43213"
+            },
+            {
+                id: 9,
+                name: "Gdańsk",
+                imageUrl: "https://api.culture.pl/sites/default/files/2018-04/gdansk_fot_sizun_eyegettyimages.jpg"
+            },
+            {
+                id: 10,
+                name: "Poznań",
+                imageUrl: "https://prex.com.ua/wp-content/uploads/2017/08/119801-Poznan.jpg.pagespeed.ce.ZttXnv9K1t.jpg"
+            },
+            {
+                id: 11,
+                name: "Katowice",
+                imageUrl: "https://m.blog.hu/sa/sakk-mester/image//katowice.jpg"
+            },
+            {
+                id: 12,
+                name: "Rzeszów",
+                imageUrl: "http://blog.kudoybook.com/wp-content/uploads/images/Rzeszow_9867.jpg"
+            }
+        ]
+    },
+    {
+        id: 3,
+        name: "Austria",
+        cities: [
+            {
+                id: 13,
+                name: "Vienna",
+                imageUrl: "https://www.rosewoodhotels.com/en/~/media/Images/Rosewood_Hotels_and_Resorts/Rosewood_Vienna/Homepage_1.ashx"
+            },
+            {
+                id: 14,
+                name: "Bregenz",
+                imageUrl: "http://www.bodensee.eu/regionen-staedte/oesterreich/bodensee-vorarlberg/staedte/bregenz/image-thumb__338__lightbox/bregenz.jpeg"
+            },
+            {
+                id: 15,
+                name: "Salzburg",
+                imageUrl: "https://www.planetware.com/photos-large/A/austria-salzburg-where-to-stay-skyline.jpg"
             }
         ]
     }
