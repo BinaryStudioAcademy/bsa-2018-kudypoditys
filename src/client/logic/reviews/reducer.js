@@ -8,6 +8,7 @@ import {
 
 import defaultState from "client/logic/defaultState";
 
+
 export default function reviewsReducer(state = defaultState.reviewData, action) {
     switch (action.type) {
         case UPDATE_REVIEW: {
@@ -19,7 +20,7 @@ export default function reviewsReducer(state = defaultState.reviewData, action) 
         case UPDATE_RATING: {
             return {
                 // ...state.reviewRating,
-                reviewRating:{
+                reviewRating: {
                     ...state.reviewRating,
                     ...action.payload
                 }

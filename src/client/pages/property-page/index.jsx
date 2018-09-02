@@ -21,17 +21,15 @@ import Reviews from "client/components/reviews";
 
 export class PropertyPage extends React.Component {
 
+    state = {open: false}
 
-    state = { open: false }
+    handleOpen = () => this.setState({open: true})
 
-    handleOpen = () => this.setState({ open: true })
+    handleClose = () => this.setState({open: false})
+    onBookSubmit = event => {
+        console.log("book!");
 
-    handleClose = () => this.setState({ open: false })
-    componentWillMount() {
-        this.props.getProperty(this.props.match.params.id);
-        console.log(this.props.match.params.id)
-
-    }
+    };
 
     getImagesArray(propertyImages) {
         let images = [];
@@ -41,10 +39,11 @@ export class PropertyPage extends React.Component {
         return images;
     }
 
-    onBookSubmit = event => {
-        console.log("book!");
+    componentWillMount() {
+        this.props.getProperty(this.props.match.params.id);
+        console.log(this.props.match.params.id)
 
-    };
+    }
 
     scrollTo = targetRef => {
         const node = ReactDOM.findDOMNode(this.refs[targetRef]);
@@ -169,6 +168,7 @@ export class PropertyPage extends React.Component {
                             ref={"roomsRef"}
                             rooms={property.rooms}
                         />
+                        <Reviews property={property}/>
                     </Container>
                 </div>
             </div>

@@ -5,21 +5,17 @@ import {Form} from "semantic-ui-react/dist/commonjs/collections/Form/Form";
 
 export default class RatingForm extends React.Component {
 
-
-
-
     render() {
 
-
         const {name} = this.props;
-
 
         return (
             <Fragment>
                 <div className={"rating_item"}>
                     <Header as="h4">{name}</Header>
 
-                <Rating name={name} maxRating={5} defaultRating={0} icon='star' size='huge' onRate={this.props.onSelect}/>
+                    <Rating name={name} maxRating={5} defaultRating={0} icon='star' size='huge'
+                            onRate={this.props.onSelect}/>
 
 
                 </div>
