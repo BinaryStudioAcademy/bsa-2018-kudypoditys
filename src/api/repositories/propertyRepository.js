@@ -14,6 +14,7 @@ const User = require("../models/User");
 const City = require("../models/City");
 const Image = require("../models/Image");
 const Property = require("../models/Property");
+const Availability = require("../models/Availability");
 
 const PropertyType = require("../models/PropertyType");
 
@@ -128,6 +129,9 @@ class PropertyRepository extends Repository {
                     include: [
                         {
                             model: Reservation
+                        },
+                        {
+                            model: Availability
                         }
                     ]
                 }

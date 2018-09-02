@@ -42,7 +42,7 @@ const PROPERTIES = [
         description: "Hotel Dolynskyi description. Located in Lviv.",
         contactPhone: "0509842174",
         coordinates: { lat: 49.837089, lng: 24.021161 },
-        userId: 1
+        userId: 2
     }
 ];
 
@@ -61,7 +61,7 @@ const ROOMS = [
         amount: 4,
         area: 20,
         roomTypeId: 2,
-        propertyId: 2
+        propertyId: 1
     }
 ];
 

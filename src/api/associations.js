@@ -27,7 +27,8 @@ function associations(models) {
         User,
         UserSetting,
         VerificationStatus,
-        UserRefreshToken
+        UserRefreshToken,
+        Availability
     } = models;
 
     // console.log(models);
@@ -63,6 +64,9 @@ function associations(models) {
     RoomDiscount.belongsTo(Room);
     RoomDiscount.belongsTo(Discount);
 
+    //Rooms Availability
+    Availability.belongsTo(Room);
+
     // Room associations
     Room.belongsTo(RoomType);
     Room.belongsTo(Property);
@@ -71,6 +75,7 @@ function associations(models) {
     Room.hasMany(Image);
     Room.hasMany(BedInRoom);
     Room.hasMany(RoomDiscount);
+    Room.hasMany(Availability);
 
     // Role associations
     Role.hasMany(User);
