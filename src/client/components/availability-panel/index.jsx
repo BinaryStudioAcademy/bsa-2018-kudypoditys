@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./index.scss";
-import { Header, Button, Form, Dropdown } from "semantic-ui-react";
+import { Header, Button, Form, Dropdown, Message } from "semantic-ui-react";
 import moment from "moment";
 import { DateRangePicker } from "react-dates";
 
+import Modal from ".././modal";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { connect } from "react-redux";
+import RoomsSummaryTable from "../rooms-summary-table";
 
 export class AvailabilityPanel extends React.Component {
     constructor(props) {
@@ -28,29 +30,25 @@ export class AvailabilityPanel extends React.Component {
     };
 
     datesChanged = selectedDates => {
-        if (
-            selectedDates.startDate &&
-            selectedDates.endDate &&
-            selectedDates.startDate < selectedDates.endDate
-        ) {
-            this.props.onDatesChange(selectedDates);
-        }
+        this.props.onDatesChange(selectedDates);
     };
 
     render() {
         const {
             propertyName,
+            propertyId,
             adults,
             children,
             rooms,
             checkIn,
-            checkOut
+            checkOut,
+            error,
+            result
         } = this.props;
         const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
-        const startDate = checkIn === null ? moment() : moment(checkIn);
-        const endDate =
-            checkOut === null ? moment().add(1, "days") : moment(checkOut);
+        const startDate = checkIn === null ? null : moment(checkIn);
+        const endDate = checkOut === null ? null : moment(checkOut);
 
         return (
             <div className="availability-panel-wrp">
@@ -59,7 +57,16 @@ export class AvailabilityPanel extends React.Component {
                     <p>When would you like to stay at {propertyName}?</p>
                     <Form
                         className="availability-form"
-                        onSubmit={this.props.onAvailabilityCheck}
+                        onSubmit={() => {
+                            this.props.onAvailabilityCheck({
+                                propertyId,
+                                adults,
+                                children,
+                                rooms,
+                                checkIn,
+                                checkOut
+                            });
+                        }}
                     >
                         <div
                             className="availability-form-midsection"
@@ -68,7 +75,6 @@ export class AvailabilityPanel extends React.Component {
                             <DateRangePicker
                                 startDateId="startDate"
                                 endDateId="endDate"
-                                required={true}
                                 startDate={startDate}
                                 endDate={endDate}
                                 onDatesChange={this.datesChanged}
@@ -77,13 +83,28 @@ export class AvailabilityPanel extends React.Component {
                                     this.setState({ focusedInput });
                                 }}
                             />
-                            <div className="btn-wrp">
-                                <Button
-                                    type="submit"
-                                    content="Check availability"
-                                    primary
-                                />
-                            </div>
+                            <Modal
+                                trigger={
+                                    <div className="btn-wrp">
+                                        <Button
+                                            type="submit"
+                                            content="Check availability"
+                                            primary
+                                        />
+                                    </div>
+                                }
+                            >
+                                {error ? (
+                                    <Message negative>{error}</Message>
+                                ) : result && result.length ? (
+                                    <React.Fragment>
+                                        <Header as="h3">
+                                            Rooms available for these dates:{" "}
+                                        </Header>
+                                        <RoomsSummaryTable rooms={result} />
+                                    </React.Fragment>
+                                ) : null}
+                            </Modal>
                         </div>
                         <Form.Group className="room-selector" inline>
                             <Form.Field inline>

@@ -85,6 +85,7 @@ export class BookingForm extends React.Component {
                     Make your booking at {propertyName}
                 </Header>
                 <Form
+                    className="booking-form"
                     onSubmit={event => {
                         event.preventDefault();
                         this.props.onBooking({
