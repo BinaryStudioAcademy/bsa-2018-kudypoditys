@@ -1,6 +1,7 @@
 import { call, put, takeLatest,all } from 'redux-saga/effects';
 import searchService from 'client/services/searchService';
 import * as actionTypes from './actionTypes';
+import { RANKING_BAR_UPDATE } from '../ranking-bar/actionTypes';
 
 function* submitSearch(action) {
     try {
@@ -11,8 +12,7 @@ function* submitSearch(action) {
         yield put({
             type:actionTypes.SEARCH_SUBMIT_SUCCESS,
             payload: {
-                ...searchResponse
-            }
+                ...searchResponse            }
         });
     }
     catch (error) {
@@ -23,6 +23,7 @@ function* submitSearch(action) {
 
 export default function* searchSaga() {
     yield all([
-        takeLatest(actionTypes.SEARCH_SUBMIT, submitSearch)
+        takeLatest(actionTypes.SEARCH_SUBMIT, submitSearch),
+        takeLatest(RANKING_BAR_UPDATE, submitSearch)
     ])
 }

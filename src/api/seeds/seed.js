@@ -1,3 +1,4 @@
+
 const bcrypt = require("bcrypt");
 
 const USERS = [
@@ -28,7 +29,7 @@ const PROPERTIES = [
         coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 9,
         cityId: 2,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
 
     },
     {
@@ -41,9 +42,10 @@ const PROPERTIES = [
         coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 9,
         cityId: 1,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+
     }
-]
+];
 
 const ACCOMMODATION_RULES = [
     {
@@ -472,11 +474,33 @@ const REVIEW_CATEGORIES = [
         name: "Fun things to do"
     }
 ];
+const BED_IN_ROOM = [
+    {
+        id: 1,
+        count: 1,
+        roomId: 1,
+        bedTypeId:1
 
+    },
+    {
+        id: 2,
+        count: 2,
+        roomId:1,
+        bedTypeId:3
+
+    },
+    {
+        id: 3,
+        count: 7,
+        roomId: 2,
+        bedTypeId:1
+
+    }
+];
 const BED_TYPES = [
     {
         id: 1,
-        name: "Twin bed(s) / 90 - 130 cm wide"
+        name: "Twin bed(s) / 90 - 130 cm wide",
     },
     {
         id: 2,
@@ -484,7 +508,7 @@ const BED_TYPES = [
     },
     {
         id: 3,
-        name: "Queen bed(s) / 151 - 180 cm wide"
+        name: "Queen bed(s) / 151 - 180 cm wide",
     },
     {
         id: 4,
@@ -492,7 +516,8 @@ const BED_TYPES = [
     },
     {
         id: 5,
-        name: "Bunk bed / Variable Size"
+        name: "Bunk bed / Variable Size",
+
     },
     {
         id: 6,
@@ -696,5 +721,6 @@ module.exports = {
     REVIEW_CATEGORIES,
     BED_TYPES,
     ROOM_TYPES,
-    PROPERTY_TYPE
-};
+    PROPERTY_TYPE,
+    BED_IN_ROOM
+}
