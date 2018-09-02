@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./index.scss";
-import { Header, Button, Form, Dropdown } from "semantic-ui-react";
+import { Header, Button, Form, Dropdown, Message } from "semantic-ui-react";
 import moment from "moment";
 import { DateRangePicker } from "react-dates";
 
 import Modal from ".././modal";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { connect } from "react-redux";
+import RoomsSummaryTable from "../rooms-summary-table";
 
 export class AvailabilityPanel extends React.Component {
     constructor(props) {
@@ -40,7 +41,9 @@ export class AvailabilityPanel extends React.Component {
             children,
             rooms,
             checkIn,
-            checkOut
+            checkOut,
+            error,
+            result
         } = this.props;
         const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
@@ -91,7 +94,16 @@ export class AvailabilityPanel extends React.Component {
                                     </div>
                                 }
                             >
-                                Hello
+                                {error ? (
+                                    <Message negative>{error}</Message>
+                                ) : result && result.length ? (
+                                    <React.Fragment>
+                                        <Header as="h3">
+                                            Rooms available for these dates:{" "}
+                                        </Header>
+                                        <RoomsSummaryTable rooms={result} />
+                                    </React.Fragment>
+                                ) : null}
                             </Modal>
                         </div>
                         <Form.Group className="room-selector" inline>

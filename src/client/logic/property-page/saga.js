@@ -52,6 +52,16 @@ export default function* propertyPageSaga() {
                     payload:
                         "Fill in check-in and check-out dates to check availability"
                 });
+            const response = yield call(
+                api.sendRequest,
+                "/api/property/availability",
+                "put",
+                input
+            );
+            yield put({
+                type: actionTypes.CHECK_AVAILABILITY_SUCCESS,
+                payload: response.data
+            });
         } catch (err) {
             return yield put({
                 type: actionTypes.CHECK_AVAILABILITY_FAILURE,
