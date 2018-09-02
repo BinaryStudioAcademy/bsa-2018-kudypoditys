@@ -1,19 +1,15 @@
+const moment = require("moment");
 const sequelize = require("sequelize");
 const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
 const Facility = require("../models/Facility");
 const PaymentType = require("../models/PaymentType");
-const Room = require("../models/Room");
-const AccommodationRule = require("../models/AccommodationRule");
-const BedInRoom = require("../models/BedInRoom");
-const BedType = require("../models/BedType");
 
 const Reservation = require("../models/Reservation");
 // const PropertyCategory = require("../models/PropertyCategory");
 const RoomType = require("../models/RoomType");
 const Image = require("../models/Image");
 const Favorite = require("../models/Favorite");
-
 const AccommodationRule = require("../models/AccommodationRule");
 const PropertyType = require("../models/PropertyType");
 const Country = require("../models/Country");
@@ -24,6 +20,7 @@ const Room = require("../models/Room");
 const FacilityList = require("../models/FacilityList");
 const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
+
 
 const includeOptions = [
     {
@@ -151,6 +148,29 @@ class PropertyRepository extends Repository {
         });
     }
     getFilteredProperties(filter) {
+        const SORT_VALUE = {
+            PRICE: "price",
+            DISTANCE: "distance_to_center",
+            LOW_RANK: "rating_starting_from_low",
+            HIGH_RANK: "rating_starting_from_high"
+        };
+        let sortingOption;
+        switch (filter.sortBy) {
+            case SORT_VALUE.PRICE:
+                sortingOption = [[Room, "price", "DESC"]];
+                break;
+            case SORT_VALUE.LOW_RANK:
+                sortingOption = [["rating", "ASC"]];
+
+                break;
+            case SORT_VALUE.HIGH_RANK:
+                sortingOption = [["rating", "DESC"]];
+                break;
+
+            default:
+                sortingOption = [["rating", "DESC"]];
+        }
+
         return this.model
             .findAll({
                 where: {
@@ -173,13 +193,21 @@ class PropertyRepository extends Repository {
                                 where: {
                                     count: { $gte: filter.bedsCount }
                                 }
+                            },
+                            {
+                                model: Reservation,
+                                 where: {
+                                 dateIn: { $gte: moment().subtract(10, 'days').toDate()},
+                                 dateOut: { $lte: moment().add(5, 'days').toDate()}
+                             }
                             }
                         ],
                         where: {
                             amount: { $gte: filter.rooms }
                         }
                     }
-                ]
+                ],
+                order: sortingOption
             })
             .then(properties => {
                 return properties;
