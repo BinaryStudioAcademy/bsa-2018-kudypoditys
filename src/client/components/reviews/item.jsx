@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import {
     Card,
     Comment,
@@ -14,9 +14,10 @@ import './index.scss';
 import defaultUserPic from './img/matt.jpg';
 import ReviewForm from './addReviewForm';
 
+
 export default class Review extends Component {
     render() {
-        const { reviewData, collapsed } = this.props;
+        const {reviewData, collapsed} = this.props;
         console.log(this.props);
         const date = new Date(reviewData.createdAt).toLocaleString();
 
@@ -28,7 +29,7 @@ export default class Review extends Component {
         console.log(
             (Boolean(reviewData.cons) && Boolean(reviewData.pros)) + ' VIRAZ',
         );
-        console.log(Boolean( reviewData.cons.length && reviewData.pros.length === 0)  + " dsdssdsdsd");
+        console.log(Boolean(reviewData.cons.length && reviewData.pros.length === 0) + " dsdssdsdsd");
         console.log(Boolean(reviewData.pros.length));
         console.log(reviewData.cons.length + 'cons');
         console.log(reviewData.pros.length + 'pros');
@@ -65,7 +66,7 @@ export default class Review extends Component {
                                                 : 'block',
                                     }}
                                 >
-                                    <Icon name="plus circle" />
+                                    <Icon name="plus circle"/>
                                     {reviewData.pros}
                                 </Comment.Text>
                                 <Comment.Text
@@ -77,7 +78,7 @@ export default class Review extends Component {
                                     }}
                                 >
                                     {' '}
-                                    <Icon name="minus circle" />
+                                    <Icon name="minus circle"/>
                                     {reviewData.cons}
                                 </Comment.Text>
                             </div>

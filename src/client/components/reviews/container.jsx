@@ -1,9 +1,10 @@
-import { reviewSubmit, reviewUpdate, ratingUpdate } from 'client/logic/reviews/actions';
+import {reviewSubmit, reviewUpdate, ratingUpdate} from 'client/logic/reviews/actions';
+
 
 export function mapStateToProps(state, ownProps) {
-        const reviewData = state.review;
+    const reviewData = state.review;
     const {userCabinet} = state;
-    return  {
+    return {
         ...reviewData,
         ...userCabinet
 

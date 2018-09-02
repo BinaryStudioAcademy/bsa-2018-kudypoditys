@@ -32,6 +32,7 @@ fs.readdirSync(__dirname)
 
 associations(models); // make associations
 
+
 module.exports = orm
     .sync({force: true})
     .then(() => {

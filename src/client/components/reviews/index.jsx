@@ -8,14 +8,20 @@ import {
     Transition,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 import './index.scss';
 import ReviewForm from './addReviewForm'
 import Review from './item';
-import { mapStateToProps, mapDispatchToProps } from './container';
+import {mapStateToProps, mapDispatchToProps} from './container';
+
 
 export class Reviews extends React.Component {
+    toggleVisibility = () =>
+        this.setState({
+            visible: !this.state.visible,
+        });
+
     constructor(props) {
         super(props);
         // this.handleChange = this.handleChange.bind(this);
@@ -26,22 +32,15 @@ export class Reviews extends React.Component {
         };
     }
 
-
-    toggleVisibility = () =>
-        this.setState({
-            visible: !this.state.visible,
-        });
-
-
     // handleCheckbox = (e, {checked}) => this.setState({collapsed: checked});
 
     render() {
         console.log(this.props);
-        const { property, user } = this.props;
-        const { visible } = this.state;
+        const {property, user} = this.props;
+        const {visible} = this.state;
 
         return (
-            <Comment.Group size="large" style={{ marginBottom: 20 }}>
+            <Comment.Group size="large" style={{marginBottom: 20}}>
                 {/*<Checkbox defaultChecked label='Show reviews' />*/}
                 {property.reviews.length === 0 ? (
                     <Header as="h3" dividing>
@@ -69,7 +68,7 @@ export class Reviews extends React.Component {
                         animation="scale"
                         duration={500}
                     >
-                       <ReviewForm property={property}  />
+                        <ReviewForm property={property}/>
                     </Transition>
                 )}
             </Comment.Group>

@@ -6,41 +6,47 @@ import {
     Button,
     Checkbox,
     Transition,
-    Rating, Icon,
+    Rating,
+    Icon,
 } from 'semantic-ui-react';
 
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import RatingForm from './rating';
 import './index.scss';
-import { getReviewAvg } from 'client/helpers/avgReviewRating';
+import {getReviewAvg} from 'client/helpers/avgReviewRating';
 
-import { mapStateToProps, mapDispatchToProps } from './container';
+import {mapStateToProps, mapDispatchToProps} from './container';
 
 // import {Reviews} from "./index";
 
 export class addReviewForm extends React.Component {
     state = {
-        Cleanliness: this.props.Cleanliness,
-        Comfort: this.props.Comfort,
-        Facilities: this.props.Facilities,
-        Price: this.props.Price,
-        Location: this.props.Location,
+        anon: false,
     };
-
+    handleAnon = (e, {checked}) => {
+        this.setState({anon: checked});
+        console.log(this.state);
+    };
     handleChange = event => {
-        let data = { [event.target.name]: event.target.value };
+        let data = {[event.target.name]: event.target.value};
 
         this.props.updateReview(data);
-
     };
-    handleRate = (e, { rating, maxRating, name }) => {
-
-        this.props.updateRating({ [name]: rating });
+    handleRate = (e, {rating, maxRating, name}) => {
+        this.props.updateRating({[name]: rating});
         console.log(this.state);
     };
     handleSubmit = event => {
-
-        const { content, user, property, reviewRating, pros, cons } = this.props;
+        const {anon} = this.state;
+        console.log(anon + " ANAAOAOAOA")
+        const {
+            content,
+            user,
+            property,
+            reviewRating,
+            pros,
+            cons,
+        } = this.props;
         const {
             Cleanliness,
             Price,
@@ -54,9 +60,8 @@ export class addReviewForm extends React.Component {
             cons: cons,
             createdAt: new Date(),
             user: user,
-            avgReview: avg
+            avgReview: avg,
         });
-
 
         this.props.submitReview({
             pros: pros,
@@ -76,25 +81,29 @@ export class addReviewForm extends React.Component {
     };
 
     render() {
-
+        const {anon} = this.state;
 
         return (
             <Form reply onSubmit={this.handleSubmit}>
-                <RatingForm onSelect={this.handleRate} name={'Cleanliness'} />
-                <RatingForm onSelect={this.handleRate} name={'Price'} />
-                <RatingForm onSelect={this.handleRate} name={'Comfort'} />
-                <RatingForm onSelect={this.handleRate} name={'Facilities'} />
-                <RatingForm onSelect={this.handleRate} name={'Location'} />
+                <RatingForm onSelect={this.handleRate} name={'Cleanliness'}/>
+                <RatingForm onSelect={this.handleRate} name={'Price'}/>
+                <RatingForm onSelect={this.handleRate} name={'Comfort'}/>
+                <RatingForm onSelect={this.handleRate} name={'Facilities'}/>
+                <RatingForm onSelect={this.handleRate} name={'Location'}/>
 
                 <Header>
                     <Icon name="plus circle"/> Pros:
                 </Header>
-                <Form.TextArea name={"pros"}onChange={this.handleChange} />
+                <Form.TextArea name={'pros'} onChange={this.handleChange}/>
                 <Header>
-                    <Icon name="minus circle"/>  Cons:
+                    <Icon name="minus circle"/> Cons:
                 </Header>
-                <Form.TextArea name={"cons"}onChange={this.handleChange} />
+                <Form.TextArea name={'cons'} onChange={this.handleChange}/>
+                <Checkbox
 
+                    label="send anonymously"
+                    onChange={this.handleAnon}
+                />
                 <Button
                     primary
                     color="teal"
