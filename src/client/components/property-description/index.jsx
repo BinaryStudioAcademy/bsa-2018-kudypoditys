@@ -15,32 +15,6 @@ export default class PropertyDescription extends React.Component {
             <Container text>
                 <p>{description}</p>
                 <Divider />
-
-                <Container
-                    text
-                    style={{
-                        display: "table",
-                        lineHeight: 1.2,
-                        color: "green"
-                    }}
-                >
-                    {facilities.map((item, i) => {
-                        return (
-                            <span
-                                key={i}
-                                style={{
-                                    marginRight: 10,
-                                    marginBottom: 10,
-                                    fontSize: 23,
-                                    lineHeight: 1.2,
-                                    color: "green"
-                                }}
-                            >
-                                {item.facility.name}
-                            </span>
-                        );
-                    })}
-                </Container>
             </Container>
         );
     }
