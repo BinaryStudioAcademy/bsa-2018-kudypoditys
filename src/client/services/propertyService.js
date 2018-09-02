@@ -22,16 +22,9 @@ class PropertyService {
             });
     }
 
-    getDetailsById(id) {
+    getUserPropertiesInfo(id) {
         return api
-            .sendRequest(`api/property/${id}/details`, "get")
-            .then(response => response.data);
-    }
-
-    getUserPropertiesInfo(action) {
-        console.log("getUserPropertiesInfo service");
-        return api
-            .sendRequest("/api/property/getuserpropertiesinfo", "get")
+            .sendRequest(`/api/property/${id}/info`, "get")
             .then(response => response.data);
     }
 }

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Table, Icon } from "semantic-ui-react";
 
-const count = 31;
+const count = 30;
 
 const statusCell = count => {
     const inputs = [];

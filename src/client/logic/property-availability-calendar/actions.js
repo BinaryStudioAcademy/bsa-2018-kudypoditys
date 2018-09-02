@@ -18,9 +18,9 @@ export function availabilitySubmit(payload) {
     };
 }
 
-export function getUserpropertiesInfo(payload) {
+export function getUserpropertiesInfo(id) {
     return {
         type: GET_CURRENT_USER_INFO,
-        payload
+        id
     };
 }

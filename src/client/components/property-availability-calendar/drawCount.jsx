@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Input } from "semantic-ui-react";
 
-const count = 31;
+const count = 30;
 
 export class DrawCount extends React.Component {
     roomInput = count => {

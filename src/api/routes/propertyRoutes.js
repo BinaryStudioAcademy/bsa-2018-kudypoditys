@@ -85,25 +85,8 @@ property.route("/:id/details").get((req, res) => {
 });
 
 property.route("/:id/info").get((req, res) => {
-    // const user = req.user;
-
-    // userService
-    //     .getUserPropertiesInfo(user.id)
-    //     .then(user => {
-    //         res.status(200).send(user);
-    //     })
-    //     .catch(err => {
-    //         console.log("getuserpropertiesinfo err " + JSON.stringify(err));
-    //         res.status(400).send(err.message);
-    //     });
-    console.log("getUserPropertiesInfo ROUTE");
-    console.log("getUserPropertiesInfo ROUTE");
-    console.log("getUserPropertiesInfo ROUTE");
-    console.log("getUserPropertiesInfo ROUTE");
-    console.log("getUserPropertiesInfo ROUTE");
-    // const user = 1;
     propertyService
-        .getUserPropertiesInfo()
+        .getUserPropertiesInfo(req.params.id)
         .then(user => {
             res.status(200).send(user);
         })
