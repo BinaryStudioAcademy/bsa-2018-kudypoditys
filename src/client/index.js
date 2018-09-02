@@ -32,7 +32,7 @@ const middleware = [sagaMiddelware];
 const store = createStore(
     reducer,
     composeWithDevTools(),
-    applyMiddleware(...middleware),
+    applyMiddleware(...middleware)
 );
 sagaMiddelware.run(rootSaga);
 
@@ -68,5 +68,5 @@ ReactDOM.render(
             </Router>
         </ErrorBoundary>
     </Provider>,
-    document.getElementById("root"),
+    document.getElementById("root")
 );
