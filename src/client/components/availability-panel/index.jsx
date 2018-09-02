@@ -52,7 +52,12 @@ export class AvailabilityPanel extends React.Component {
 
         return (
             <div className="availability-panel-wrp">
-                <Header as="h2">Availability</Header>
+                <Header
+                    as="h2"
+                    style={{ paddingLeft: "7px", color: "#465672" }}
+                >
+                    Availability
+                </Header>
                 <div className="availability-panel">
                     <p>When would you like to stay at {propertyName}?</p>
                     <Form

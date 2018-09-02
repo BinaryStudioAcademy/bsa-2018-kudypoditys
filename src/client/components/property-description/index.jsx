@@ -13,8 +13,14 @@ export default class PropertyDescription extends React.Component {
 
         return (
             <Container text>
-                <p>{description}</p>
-                <Divider />
+                <p style={{ color: "#465672" }}>{description}</p>
+                <Divider
+                    style={{
+                        color: "#465672",
+                        borderTop: "1px solid #46567215",
+                        borderBottom: "1px solid #465672"
+                    }}
+                />
             </Container>
         );
     }
