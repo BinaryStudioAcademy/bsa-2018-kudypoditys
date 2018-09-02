@@ -38,6 +38,11 @@ export class PropertyPage extends React.Component {
 
     render() {
         const { property, user } = this.props;
+        const dividerStyle = {
+            color: "#465672",
+            borderTop: "1px solid #46567215",
+            borderBottom: "1px solid #465672"
+        };
 
         const handleSlideChange = index => {
             console.log(`Slide changed to ${index}`);
@@ -102,6 +107,9 @@ export class PropertyPage extends React.Component {
                             rulesClick={() => {
                                 this.scrollTo("houseRuleRef");
                             }}
+                            reviewsClick={() => {
+                                this.scrollTo("reviewsRef");
+                            }}
                         />
                         <Divider />
                         <PropertySummary property={property} />
@@ -120,6 +128,7 @@ export class PropertyPage extends React.Component {
                                 property={property}
                                 style={{ width: "100%" }}
                             />
+                            <Divider style={dividerStyle} />
                             <Container
                                 text
                                 style={{
@@ -193,9 +202,16 @@ export class PropertyPage extends React.Component {
                             </Container>
                         </div>
 
-                        <Divider hidden />
+                        <Divider
+                            style={{
+                                color: "#465672",
+                                borderTop: "1px solid #46567215",
+                                borderBottom: "1px solid #465672"
+                            }}
+                        />
 
                         <AvailabilityPanel style={{ width: "100%" }} />
+                        <Divider style={dividerStyle} />
                         <div>
                             <Header
                                 as="h2"
@@ -210,6 +226,18 @@ export class PropertyPage extends React.Component {
                                 ref={"roomsRef"}
                                 rooms={property.rooms}
                             />
+                        </div>
+                        <Divider style={dividerStyle} />
+                        <div ref="reviewsRef">
+                            <Header
+                                as="h2"
+                                style={{
+                                    paddingLeft: "15px",
+                                    color: "#465672"
+                                }}
+                            >
+                                Reviews
+                            </Header>
                         </div>
                     </Container>
                 </div>
