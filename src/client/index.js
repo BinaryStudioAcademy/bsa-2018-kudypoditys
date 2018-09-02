@@ -32,7 +32,7 @@ const middleware = [sagaMiddelware];
 const store = createStore(
     reducer,
     composeWithDevTools(),
-    applyMiddleware(...middleware),
+    applyMiddleware(...middleware)
 );
 sagaMiddelware.run(rootSaga);
 
@@ -51,7 +51,7 @@ ReactDOM.render(
                         component={CheckInCheckOut}
                     />
                     <Route path="/search-page" component={SearchPage} />
-                    <Route path="/property-page" component={PropertyPage} />
+                    <Route path="/property/:id" component={PropertyPage} />
                     <Route
                         path="/add-property/"
                         component={() => (
@@ -68,5 +68,5 @@ ReactDOM.render(
             </Router>
         </ErrorBoundary>
     </Provider>,
-    document.getElementById("root"),
+    document.getElementById("root")
 );
