@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import './index.scss';
-
+import ReviewForm from './addReviewForm'
 import Review from './item';
 import { mapStateToProps, mapDispatchToProps } from './container';
 
@@ -90,20 +90,7 @@ export class Reviews extends React.Component {
                         animation="scale"
                         duration={500}
                     >
-                        <Form reply onSubmit={this.handleSubmit}>
-                            <Form.TextArea onChange={this.handleChange} />
-
-                            <Button
-                                primary
-                                color="teal"
-                                fluid
-                                content="Add review"
-                                labelPosition="left"
-                                icon="edit"
-                                type="submit"
-                                onClick={this.toggleVisibility}
-                            />
-                        </Form>
+                       <ReviewForm onSubmit={this.handleSubmit } onChange={this.handleChange} />
                     </Transition>
                 )}
             </Comment.Group>
