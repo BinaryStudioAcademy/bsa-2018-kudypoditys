@@ -3,8 +3,10 @@ import { GET_CURRENT_USER_SUCCESS } from "../login/actionTypes";
 import {
     CHOOSE_BOOKING,
     UNCHOOSE_BOOKING,
-    GET_USER_BOOKINGS_SUCCESS
+    GET_USER_BOOKINGS_SUCCESS,
+    CANCEL_BOOKING_SUCCESS
 } from "./actionTypes";
+import {action} from "@storybook/react";
 
 export default function userCabinetReducer(
     state = defaultState.userCabinet,
@@ -36,6 +38,16 @@ export default function userCabinetReducer(
             return {
                 ...state,
                 bookings: action.payload
+            };
+        }
+
+        case CANCEL_BOOKING_SUCCESS: {
+            return {
+                ...state,
+                bookings: state.bookings.filter(
+                    (booking, index) => booking.id !== action.payload.id
+                ),
+                activeBooking: null
             };
         }
 

@@ -14,12 +14,37 @@ import QuickFilter from "client/components/quick-filter";
 import {connect} from "react-redux";
 import {mapStateToProps} from "./container";
 
-
 class SearchPage extends React.Component {
+    handleSearchResults = searchData => {
+        const listItems = searchData.searchResults.map(property => (
+            <PropertyListItem key={property.id} propertyItemData={property}/>
+        ));
+        this.setState({
+            listItems: listItems,
+            itemCount: searchData.searchResults.length,
+            searchRequest: searchData.searchRequest
+        });
+    };
+    onSortingSelected = value => {
+        this.setState({sortBy: value});
+    };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            listItems: [],
+            itemCount: 0,
+            searchRequest: {}
+        };
+    }
+
     render() {
         return (
             <div className="mock">
-                <Header showSearch={true}/>
+                <Header
+                    handleSearchResults={this.handleSearchResults}
+                    showSearch={true}
+                />
                 <div className="search-page__wrapper">
                     <div className="breadcrumb_wrapper">
                         <Segment className="breadcrumb__segment">
@@ -43,10 +68,7 @@ class SearchPage extends React.Component {
                         </Segment>
                     </div>
 
-                    <Container
-
-                        className="search-page__wrapper-left_side"
-                    >
+                    <Container className="search-page__wrapper-left_side">
                         <QuickFilter/>
                         <div
                             style={{
@@ -55,54 +77,40 @@ class SearchPage extends React.Component {
                         >
                             <BasicMapWidget
                                 key="BasicMapWidget"
-                                latitude={49.837089}
-                                longitude={24.021161}
+                                coordinates={{lat: 49.837089, lng: 24.021161}}
                                 rounded
                                 centered
                             />
                         </div>
                     </Container>
-                    <Container
-
-                        className="search-page__wrapper-right_side"
-                    >
+                    <Container className="search-page__wrapper-right_side">
                         <div className="search-page__row">
-                            <SearchSummary/>
+                            <SearchSummary
+                                totalCount={this.state.itemCount}
+                                destination={this.state.searchRequest.query}
+                            />
                             <div className="switch">
-                                <div className='list_btn'>
-                                    <Icon
-                                        name="list ul"
-                                        color="white"
-                                    />List
+                                <div className="list_btn">
+                                    <Icon name="list ul" color="white"/>
+                                    List
                                 </div>
-                                <div className='map_btn'>
-                                    <Icon
-                                        name="world"
-
-                                    />
+                                <div className="map_btn">
+                                    <Icon name="world"/>
                                     Map
                                 </div>
                             </div>
                         </div>
-                        <RankingBar key="RankingBar"/>
-                        <PropertyListItem
-                            key="PropertyListItem"
-                            id="foundProperty1"
+                        <RankingBar
+                            key="RankingBar"
+                            searchRequest={this.state.searchRequest}
                         />
-                        <PropertyListItem
-                            key="PropertyListItem"
-                            id="foundProperty2"
-                        />
-
+                        {this.state.listItems}
                         <div className="search-page__pagination">
                             <Pagination pagesCount={10}/>
                         </div>
-
                     </Container>
-
                 </div>
             </div>
-
         );
     }
 }

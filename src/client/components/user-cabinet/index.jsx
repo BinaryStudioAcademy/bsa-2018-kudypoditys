@@ -26,7 +26,6 @@ export class UserCabinet extends React.Component {
                     header={tab.menuItem.header}
                     subheader={tab.menuItem.subheader}
                     component={tab.menuItem.component}
-
                     // onSubmit={this.submitHandle}
                 />
             )

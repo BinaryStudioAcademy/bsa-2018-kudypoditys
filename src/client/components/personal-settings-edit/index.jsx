@@ -6,40 +6,47 @@ import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from "./container";
 import "./index.scss";
 
-
 export class EditPersonalSettings extends Component {
     handleSubmit = data => {
         console.log(data);
     };
 
-    handleUpdate = (data) => {
+    handleUpdate = data => {
         this.props.updateSettings(data);
     };
 
-    handleSend = (data) => {
-        this.props.sendSettings(data);
+    handleSend = () => {
+        this.props.sendSettings(this.props);
     };
+
+    handleImageUpload(file) {
+        this.props.uploadAvatar(file);
+    }
 
     render() {
         const formProps = {
             dateOptions: staticData.dateOptions,
             countryOptions: staticData.countryOptions,
             paymentOptions: staticData.paymentOptions,
-            smokingInRoomsOptions: staticData.smokingInRoomsOptions,
-            starsOptions: staticData.starsOptions,
             currencyOptions: staticData.currencyOptions,
             appealOptions: staticData.appealOptions,
-            payForAccommodationOptions: staticData.payForAccommodationOptions,
-            //
             ...this.props
         };
         return (
             <Container fluid>
-                <SettingsForm {...formProps} onSubmit={this.handleSubmit} updateSettings={this.handleUpdate}
-                              sendSettings={this.handleSend}/>
+                <SettingsForm
+                    {...formProps}
+                    handleImageUpload={this.handleImageUpload}
+                    onSubmit={this.handleSubmit}
+                    updateSettings={this.handleUpdate}
+                    sendSettings={this.handleSend}
+                />
             </Container>
         );
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditPersonalSettings);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(EditPersonalSettings);

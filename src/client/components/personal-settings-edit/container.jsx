@@ -1,11 +1,16 @@
-import {updateUserSettings, sendUserSettings} from "client/logic/personal-settings-edit/actions";
-
+import {
+    updateUserSettings,
+    sendUserSettings,
+    getUserSettings,
+    uploadAvatar,
+    resetPassword
+} from "client/logic/personal-settings-edit/actions";
 
 export function mapStateToProps(state) {
     const {userSettings} = state;
     return {
         ...userSettings
-    }
+    };
 }
 
 export function mapDispatchToProps(dispatch) {
@@ -15,6 +20,12 @@ export function mapDispatchToProps(dispatch) {
         },
         updateSettings(data) {
             dispatch(updateUserSettings(data));
+        },
+        uploadAvatar(data) {
+            dispatch(uploadAvatar(data));
+        },
+        resetPassword(mail) {
+            dispatch(resetPassword(mail));
         }
-    }
+    };
 }

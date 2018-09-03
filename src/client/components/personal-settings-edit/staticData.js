@@ -30,7 +30,7 @@ export const dateOptions = {
         {key: "28", text: "28", value: "28"},
         {key: "29", text: "29", value: "29"},
         {key: "30", text: "30", value: "30"},
-        {key: "31", text: "31", value: "31"},
+        {key: "31", text: "31", value: "31"}
     ],
     months: [
         {key: "1", text: "January", value: "January"},
@@ -44,7 +44,7 @@ export const dateOptions = {
         {key: "9", text: "September", value: "September"},
         {key: "10", text: "October", value: "October"},
         {key: "11", text: "November", value: "November"},
-        {key: "12", text: "December", value: "December"},
+        {key: "12", text: "December", value: "December"}
     ],
     years: [
         {key: "1", text: "2018", value: "2018"},
@@ -63,49 +63,29 @@ export const dateOptions = {
         {key: "14", text: "2005", value: "2005"},
         {key: "15", text: "2004", value: "2004"},
         {key: "16", text: "2003", value: "2003"},
-        {key: "17", text: "2002", value: "2002"},
-    ],
+        {key: "17", text: "2002", value: "2002"}
+    ]
 };
 
 export const countryOptions = [
-    {key: "1", text: "Ukraine", value: "Ukraine"},
-    {key: "2", text: "Bolivia", value: "Bolivia"},
-    {key: "3", text: "China", value: "China"},
-    {key: "4", text: "Somali", value: "Somali"},
-    {key: "5", text: "Afghanistan", value: "Afghanistan"},
+    {key: "1", text: "Ukraine", value: "1"},
+    {key: "2", text: "Poland", value: "2"}
 ];
 
 export const paymentOptions = [
-    {key: "1", text: "Mastercard", value: "Mastercard"},
-    {key: "2", text: "Visa", value: "Visa"},
-    {key: "3", text: "Paypal", value: "PayPal"},
-];
-
-export const smokingInRoomsOptions = [
-    {key: "1", text: "No preference", value: "No preference"},
-    {key: "2", text: "Yes", value: "Yes"},
-    {key: "3", text: "No", value: "No"}
-];
-export const starsOptions = [
-    {key: "1", text: "Any", value: "Any"},
-    {key: "2", text: "5 stars", value: "5 stars"},
-    {key: "3", text: "4 stars and higher", value: "4 stars and higher"},
-    {key: "4", text: "3 stars and higher", value: "3 stars and higher"},
-    {key: "5", text: "2 stars and higher", value: "2 stars and higher"}
+    {key: "1", text: "Cash", value: "1"},
+    {key: "2", text: "Visa Credit Card", value: "2"},
+    {key: "3", text: "WebMoney", value: "3"},
+    {key: "4", text: "WesternUnion", value: "4"}
 ];
 
 export const currencyOptions = [
-    {key: "1", text: "UAH Hryvnia", value: "UAH Hryvnia"},
-    {key: "2", text: "USD Dollar", value: "USD Dollar"},
-    {key: "3", text: "EUR Euro", value: "EUR Euro"}
+    {key: "1", text: "UAH", value: "UAH"},
+    {key: "2", text: "USD", value: "USD"},
+    {key: "3", text: "EUR", value: "EUR"}
 ];
 
 export const appealOptions = [
     {key: "1", text: "Mr.", value: "Mr."},
-    {key: "2", text: "Mrs.", value: "Mrs."},
-];
-
-export const payForAccommodationOptions = [
-    {key: "1", text: "When booking online", value: "When booking online"},
-    {key: "2", text: "During stay", value: "During stay"}
+    {key: "2", text: "Mrs.", value: "Mrs."}
 ];

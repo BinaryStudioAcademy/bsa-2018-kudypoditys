@@ -1,12 +1,16 @@
-import React from "react";
+import React, {Fragment} from "react";
 import "./index.scss";
 import { BookingSegment } from "./booking-segment";
-import { Container } from "semantic-ui-react";
+import {Container, Button, Header} from "semantic-ui-react";
 import {BookingPage} from "./booking-page";
 import {mapStateToProps, mapDispatchToProps} from "./container";
 import {connect} from "react-redux";
+import history from "client/history";
 
 export class BookingsTab extends React.Component {
+    bookNowClicked = () => {
+        history.push("/");
+    };
     viewBooking = booking => {
         this.props.chooseBooking(booking);
     };
@@ -14,7 +18,19 @@ export class BookingsTab extends React.Component {
         this.props.unchooseBooking();
     };
     getBookings = bookings => {
-        if (!this.props.bookings) return null;
+        if (!this.props.bookings.length)
+            return (
+                <Fragment>
+                    <div style={{textAlign: "center"}}>
+                        <Header>You do not have active bookings.</Header>
+                        <Button
+                            content="Book now!"
+                            primary
+                            onClick={this.bookNowClicked}
+                        />
+                    </div>
+                </Fragment>
+            );
         return bookings.map((booking, index) => {
             return (
                 <BookingSegment
@@ -44,6 +60,7 @@ export class BookingsTab extends React.Component {
         return activeBooking ? (
             <Container fluid>
                 <BookingPage
+                    cancelBooking={this.props.cancelBooking}
                     backToAllBookings={this.backToAllBookings}
                     booking={activeBooking}
                     images={this.getBookingImages(activeBooking)}

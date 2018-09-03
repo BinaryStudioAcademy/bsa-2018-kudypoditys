@@ -8,13 +8,17 @@ import {mapStateToProps} from "./container";
 
 export class SearchSummary extends React.Component {
     render() {
-        const numbersToPrettify = this.props.totalCount,
-            destination = this.props.destination,
-            numbers = formatNumber(numbersToPrettify);
+        const destination = this.props.destination,
+            numbers = formatNumber(this.props.totalCount);
+        // console.log("SearchSummary "+ JSON.stringify(this.props.destination) + JSON.stringify(this.props.totalCount))
 
         return (
             <Header as="search-summary__header">
-                {destination}: {numbers} property found
+                {destination}: {numbers}
+                {this.props.totalCount === 1
+                    ? " property "
+                    : " properties"}{" "}
+                found
             </Header>
         );
     }

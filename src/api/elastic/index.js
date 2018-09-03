@@ -122,17 +122,30 @@ module.exports = {
         );
     },
 
-    search: (req, res, _index, _type, _body) => {
-
+    search: (req, res, _index, _type, _query, _fields, sortBy) => {
         elasticClient
             .search({
                 index: _index,
                 type: _type,
-                body: _body,
+                body: {
+                    // sort : [
+                    //     { sortBy : {"order" : "asc"}},
+                    //     "user",
+                    //     { "name" : "desc" },
+                    //     { "age" : "desc" },
+                    //    "_score"
+                    //  ],
+                    query: {
+                        multi_match: {
+                            query: _query,
+                            fields: _fields,
+                        },
+                    },
+                },
             })
             .then(
                 resp => {
-                    return res.json(resp);
+                    return res.send(resp.hits.hits)//res.json(resp);
                 },
                 err => {
                     return res.json(err.message);

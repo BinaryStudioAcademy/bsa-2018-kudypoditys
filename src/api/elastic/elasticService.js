@@ -64,6 +64,34 @@ module.exports = {
                 type: "text",
                 analyzer: "autocomplete",
                 search_analyzer: "standard"
+            },
+            address: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            coordinates: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            roomPrice: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            roomType: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            roomsAmount: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            rooms: {
+                type: "nested"
             }
         };
 
@@ -93,10 +121,20 @@ module.exports = {
                 propertiesBulk.push({
                     id: property.id,
                     name: property.name,
-                    rating: property.rating,
+                    // rating: property.rating,
                     image: property.images[0].url,
-                    city: "Lviv", //property.city.name,
-                    description: property.description
+                    city: property.city.name,
+                    // description: property.description,
+                    address: property.address,
+                    // coordinatesLat: property.coordinates.lat,
+                    // coordinatesLng: property.coordinates.lng,
+                    // rooms: property.rooms.map(room => {
+                    //     return {
+                    //         roomType: room.roomType.name,
+                    //         roomPrice: room.price,
+                    //         roomsAmount:room.amount
+                    //     };
+                    // })
                 });
             });
             return elasticClient.bulk({ body: propertiesBulk }, function(
@@ -156,7 +194,10 @@ module.exports = {
             rating: property.rating,
             image: property.images[0].url,
             city: property.city.name,
-            description: property.description
+            description: property.description,
+            address: property.address,
+            coordinatesLat: property.coordinates.lat,
+            coordinatesLng: property.coordinates.lng
         };
         return elasticClient.index({ index, id, type, body });
     }

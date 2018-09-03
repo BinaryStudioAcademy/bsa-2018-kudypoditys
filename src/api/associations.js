@@ -27,7 +27,8 @@ function associations(models) {
         User,
         UserSetting,
         VerificationStatus,
-        UserRefreshToken
+        UserRefreshToken,
+        Availability
     } = models;
 
     // console.log(models);
@@ -42,6 +43,8 @@ function associations(models) {
     // User associations
     User.belongsTo(Role);
     User.belongsTo(UserSetting);
+    User.belongsTo(Country);
+    User.belongsTo(PaymentType);
 
     User.hasOne(UserRefreshToken);
 
@@ -61,6 +64,9 @@ function associations(models) {
     RoomDiscount.belongsTo(Room);
     RoomDiscount.belongsTo(Discount);
 
+    //Rooms Availability
+    Availability.belongsTo(Room);
+
     // Room associations
     Room.belongsTo(RoomType);
     Room.belongsTo(Property);
@@ -69,6 +75,7 @@ function associations(models) {
     Room.hasMany(Image);
     Room.hasMany(BedInRoom);
     Room.hasMany(RoomDiscount);
+    Room.hasMany(Availability);
 
     // Role associations
     Role.hasMany(User);
@@ -113,6 +120,7 @@ function associations(models) {
     // PaymentType associations
     PaymentType.hasMany(Reservation);
     PaymentType.hasMany(PropertyPaymentType);
+    PaymentType.hasMany(User);
 
     // Message associations
     Message.belongsTo(Reservation);
@@ -141,6 +149,7 @@ function associations(models) {
 
     // Country associations
     Country.hasMany(City);
+    Country.hasMany(User);
 
     // City associations
     City.belongsTo(Country);

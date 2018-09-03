@@ -1,16 +1,41 @@
-import {USER_SETTINGS_UPDATE, USER_SETTINGS_SEND} from "./actionTypes";
-
+import {
+    USER_SETTINGS_UPDATE,
+    USER_SETTINGS_SEND,
+    GET_CURRENT_USER,
+    UPLOAD_USER_AVATAR,
+    USER_PASSWORD_RESET
+} from "./actionTypes";
 
 export function updateUserSettings(payload) {
     return {
         type: USER_SETTINGS_UPDATE,
-        payload,
+        payload
     };
 }
 
 export function sendUserSettings(payload) {
     return {
         type: USER_SETTINGS_SEND,
-        payload,
+        payload
+    };
+}
+
+export function getUserSettings() {
+    return {
+        type: GET_CURRENT_USER
+    };
+}
+
+export function uploadAvatar(payload) {
+    return {
+        type: UPLOAD_USER_AVATAR,
+        payload
+    };
+}
+
+export function resetPassword(payload) {
+    return {
+        type: USER_PASSWORD_RESET,
+        payload
     };
 }

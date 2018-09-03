@@ -9,8 +9,9 @@ import {mapStateToProps, mapDispatchToProps} from './container';
 export class RankingBar extends React.Component {
 
     handleItemClick = (event, value) => {
-        this.props.onSelect(value.value);
-
+        const searchRequest = this.props.searchRequest
+        searchRequest.sortBy = value.value
+        this.props.onSelect(searchRequest);
     };
 
     render() {
@@ -80,9 +81,9 @@ export class RankingBar extends React.Component {
 
 const SORT_VALUE = {
     PRICE: 'price',
-    DISTANCE: 'distance',
-    LOW_RANK: 'low',
-    HIGH_RANK: 'high'
+    DISTANCE: 'distance_to_center',
+    LOW_RANK: 'rating_starting_from_low',
+    HIGH_RANK: 'rating_starting_from_high'
 
 };
 
