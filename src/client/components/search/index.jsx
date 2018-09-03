@@ -13,6 +13,31 @@ import "./index.scss";
 import history from "client/history";
 
 export class MainSearch extends React.Component {
+    componentDidMount() {
+        console.log(
+            "MainSearch this.props.params =   " +
+                JSON.stringify(this.props)
+        );
+        if (this.props.params) {
+            const {
+                query,
+                rooms,
+                adults,
+                children,
+                startDate,
+                endDate
+            } = this.props.params;
+            this.setState({
+                query: query,
+                rooms: rooms,
+                adults: adults,
+                children: children,
+                startDate: startDate,
+                endDate: endDate
+            });
+            this.handleSubmit
+        }
+    }
     resetComponent = () =>
         this.setState({ isLoading: false, results: [], value: "" });
     getInfo = () => {
@@ -82,8 +107,8 @@ export class MainSearch extends React.Component {
     };
     handleSubmit = () => {
         console.log("handleSubmit trigered");
-        let path = `/search-page`;
-        history.push(path);
+        // let path = `/search-page`;
+        // history.push(path);
         const {
             query,
             rooms,

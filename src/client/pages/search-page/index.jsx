@@ -13,6 +13,7 @@ import { Breadcrumb } from "semantic-ui-react";
 import QuickFilter from "client/components/quick-filter";
 import { connect } from "react-redux";
 import { mapStateToProps } from "./container";
+import history from "client/history";
 
 class SearchPage extends React.Component {
     constructor(props) {
@@ -22,8 +23,13 @@ class SearchPage extends React.Component {
             itemCount: 0,
             searchRequest: {}
         };
+
     }
     handleSearchResults = searchData => {
+        history.push({
+            pathname: '/search-page',
+            search: `?query=${searchData.searchRequest.query}&rooms=${searchData.searchRequest.rooms}&adults=${searchData.searchRequest.adults}&children=${searchData.searchRequest.children}&startDate=${searchData.searchRequest.startDate}&endDate=${searchData.searchRequest.endDate}&sortBy=${searchData.searchRequest.sortBy}`
+          })
         const listItems = searchData.searchResults.map(property => (
             <PropertyListItem key={property.id} propertyItemData={property} />
         ));
