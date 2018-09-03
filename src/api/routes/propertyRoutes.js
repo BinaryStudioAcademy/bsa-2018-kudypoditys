@@ -100,14 +100,15 @@ property.route("/:id/details").get((req, res) => {
 property
     .route("/city-info/:city").get((req, res) => {
         // res.send(req.params.city)
-        const filter ={
-            city: req.params.city
-        }
-        console.log('CITY NAME:' + filter.city)
+        // const filter ={
+        //     city: req.params.city
+        // }
+        const CITY = req.params.city
+        console.log('CITY NAME:' + CITY)
         propertyService
-            .getAllProperties(filter)
+            .getPropertiesByCity(CITY)
             .then(properties => {
-                console.log('PROPERTY ROUTES HERE' + properties)
+                console.log('PROPERTY ROUTES HERE' + properties.data)
                 res.send(properties);
             })
             .catch(err => {

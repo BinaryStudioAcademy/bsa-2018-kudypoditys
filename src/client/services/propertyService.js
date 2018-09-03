@@ -21,7 +21,7 @@ class PropertyService {
     getDetailsById(id) {
         return api.sendRequest(`api/property/${id}/details`, 'get').then(response => response.data);
     }
-    getPropertyByCity(city){
+    getPropertiesByCity(city){
         return api.sendRequest(`api/property/city-info/${city}`, 'get').then(response => response.data)
     }
 }

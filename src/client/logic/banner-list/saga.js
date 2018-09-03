@@ -7,10 +7,10 @@ import PropertyService from 'client/services/propertyService';
 
 function* getProperties(action) {
     console.log('Hello from SAGA' + action.type)
-    const URL = 'http://127.0.0.1:5000/api/city-info/' + city;
     try {
-        const propetyResponse = yield call(PropertyService.getPropertyByCity, city);
-        console.log(propetyResponse+' SAGA LOG')
+        const propetyResponse = yield call(PropertyService.getPropertiesByCity, city);
+        console.log(propetyResponse.data+' SAGA LOG')
+        // some logic
         yield put({
             type:CITY_INFOS_GET_SUCCESS,
             propetyResponse

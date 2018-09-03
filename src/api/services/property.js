@@ -87,6 +87,9 @@ class PropertyService extends Service {
     getFilteredProperties(filter) {
         return propertyRepository.getFilteredProperties(filter);
     }
+    getPropertiesByCity(city) {
+        return propertyRepository.getPropertiesByCity(city);
+    }
 }
 
 module.exports = new PropertyService(propertyRepository);
