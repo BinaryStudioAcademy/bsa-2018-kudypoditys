@@ -27,5 +27,10 @@ export function getAvgFromArray(array) {
     for (let i = 0; i < array.length; i++) {
         total += array[i];
     }
-    return (avg = total / array.length);
+    return (avg = total / array.length).toFixed(1);
+}
+
+export function getAvgPropertyRating(array, arrName){
+
+
 }

@@ -23,7 +23,7 @@ export default class Review extends Component {
 
         let shouldRenderComments = true;
 
-        if (reviewData.cons === reviewData.pros) {
+        if (!reviewData.cons && !reviewData.pros) {
             shouldRenderComments = false;
         }
         // console.log(
@@ -61,9 +61,9 @@ export default class Review extends Component {
                                 <Comment.Text
                                     style={{
                                         display:
-                                            reviewData.pros === ''
-                                                ? 'none'
-                                                : 'block',
+                                            reviewData.pros
+                                                ? 'block'
+                                                : 'none',
                                     }}
                                 >
                                     <Icon name="plus circle"/>
@@ -72,9 +72,9 @@ export default class Review extends Component {
                                 <Comment.Text
                                     style={{
                                         display:
-                                            reviewData.cons === ''
-                                                ? 'none'
-                                                : 'block',
+                                            reviewData.cons
+                                                ? 'block'
+                                                : 'none',
                                     }}
                                 >
                                     {' '}

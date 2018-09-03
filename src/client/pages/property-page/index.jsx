@@ -18,6 +18,7 @@ import ReactDOM from "react-dom";
 import HouseRules from "./rules";
 import PaymentMethods from "./payment";
 import Reviews from "../../components/reviews";
+import {getGroupedArray, getAvgFromArray} from 'client/helpers/avgReviewRating';
 
 export class PropertyPage extends React.Component {
     componentWillMount() {
@@ -40,6 +41,8 @@ export class PropertyPage extends React.Component {
 
     render() {
         const { property, user } = this.props;
+        console.log(property)
+        // const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
         const dividerStyle = {
             color: "#465672",
             borderTop: "1px solid #46567215",
@@ -52,6 +55,10 @@ export class PropertyPage extends React.Component {
 
         if (!property) return null;
 
+        //AVG PROPERTY RATING
+        const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
+        const avgPropRating = getAvgFromArray(avgPropRatingArray);
+        console.log(avgPropRating)
         const pics = this.getImagesArray(property.images);
         return (
             <div className="mock">
