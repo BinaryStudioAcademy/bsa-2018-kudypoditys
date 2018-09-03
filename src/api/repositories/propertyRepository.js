@@ -130,10 +130,12 @@ class PropertyRepository extends Repository {
             });
     }
     getPropertiesByCity(city) {
+        console.log(city)
         return this.model
             .findAll({
                 where: {
-                    city: city
+                   cityId:city
+
                 },
                 include: [
                     {

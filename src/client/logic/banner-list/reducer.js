@@ -6,7 +6,11 @@ import {
 function cityInfosReducer(state = defaultState.cityInfos, action) {
     switch (action.type) {
         case CITY_INFOS_GET:
-            return CITY_INFOS.map(x => ({...x}));
+
+            return {
+                ...state,
+                lviv: action.payload
+            };
         default:
             return state;
 

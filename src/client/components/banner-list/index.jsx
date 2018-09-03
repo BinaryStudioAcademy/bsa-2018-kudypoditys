@@ -12,9 +12,12 @@ import history from "client/history";
 export class BannerList extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            req: '1'
+        }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.getCityInfos();
     }
 
@@ -33,7 +36,7 @@ export class BannerList extends Component {
             city1, city2,
             city3, city4, city5, city6
         ] = cityInfos;
-
+        console.log(this.props.lviv)
         return (
             <Grid >
                 <Grid.Row columns='equal'>
