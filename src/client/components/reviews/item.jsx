@@ -26,14 +26,14 @@ export default class Review extends Component {
         if (reviewData.cons === reviewData.pros) {
             shouldRenderComments = false;
         }
-        console.log(
-            (Boolean(reviewData.cons) && Boolean(reviewData.pros)) + ' VIRAZ',
-        );
-        console.log(Boolean(reviewData.cons.length && reviewData.pros.length === 0) + " dsdssdsdsd");
-        console.log(Boolean(reviewData.pros.length));
-        console.log(reviewData.cons.length + 'cons');
-        console.log(reviewData.pros.length + 'pros');
-        console.log(shouldRenderComments);
+        // console.log(
+        //     (Boolean(reviewData.cons) && Boolean(reviewData.pros)) + ' VIRAZ',
+        // );
+        // console.log(Boolean(reviewData.cons.length && reviewData.pros.length === 0) + " dsdssdsdsd");
+        // console.log(Boolean(reviewData.pros.length));
+        // console.log(reviewData.cons.length + 'cons');
+        // console.log(reviewData.pros.length + 'pros');
+        // console.log(shouldRenderComments);
         return (
             <Fragment>
                 <Comment collapsed={collapsed}>
