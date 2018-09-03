@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Grid } from "semantic-ui-react";
+import { Grid, Popup, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
 import AuthHOC from "client/components/auth-hoc";
-
+import UserPopup from "client/components/header-user-popup";
 import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 
@@ -68,31 +68,15 @@ export class MainHeader extends Component {
                                 Component={() => {
                                     return (
                                         <Fragment>
-                                            <span onClick={this.onWellcomeClicked}>Wellcome {currentUser.fullName}</span>
-                                            <a
-                                                style={{
-                                                    cursor: "pointer",
-                                                    fontSize: 16,
-                                                    marginLeft: "24px",
-                                                    opacity: 0.8
-                                                }}
-                                                onClick={
+                                            <UserPopup
+                                                currentUser={currentUser}
+                                                logoutClicked={
+                                                    this.logoutClicked
+                                                }
+                                                addPropertyClicked={
                                                     this.addPropertyClicked
                                                 }
-                                            >
-                                                Add Property
-                                            </a>
-                                            <a
-                                                style={{
-                                                    cursor: "pointer",
-                                                    marginLeft: "8px",
-                                                    fontSize: 16,
-                                                    opacity: 0.8
-                                                }}
-                                                onClick={this.logoutClicked}
-                                            >
-                                                Logout
-                                            </a>
+                                            />
                                         </Fragment>
                                     );
                                 }}
@@ -130,7 +114,10 @@ export class MainHeader extends Component {
                     {this.props.showSearch ? (
                         <Grid.Row centered columns={1}>
                             <Grid.Column width={16} style={{ marginTop: 45 }}>
-                                <MainSearch handleSearchResults= {this.props.handleSearchResults}
+                                <MainSearch
+                                    handleSearchResults={
+                                        this.props.handleSearchResults
+                                    }
                                     view="bar"
                                     destination="Lviv"
                                     checkIn={new Date("Aug 14 2018")}
