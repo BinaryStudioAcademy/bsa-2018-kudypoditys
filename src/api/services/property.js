@@ -93,6 +93,10 @@ class PropertyService extends Service {
     getFilteredProperties(filter) {
         return propertyRepository.getFilteredProperties(filter);
     }
+
+    getUserPropertiesInfo(id) {
+        return propertyRepository.getUserPropertiesInfo(id);
+    }
 }
 
 module.exports = new PropertyService(propertyRepository);

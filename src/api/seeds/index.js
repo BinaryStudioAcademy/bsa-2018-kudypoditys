@@ -16,7 +16,8 @@ const {
     BED_TYPES,
     BED_IN_ROOMS,
     ROOM_TYPES,
-    PROPERTY_TYPE
+    PROPERTY_TYPE,
+    BED_IN_ROOM
 } = require("./seed");
 
 module.exports = function(models) {
@@ -52,13 +53,13 @@ module.exports = function(models) {
         [RoomType, ROOM_TYPES],
         [PropertyType, PROPERTY_TYPE],
         [AccommodationRule, ACCOMMODATION_RULES],
+        [User, USERS],
         [Property, PROPERTIES],
         [FacilityList, FACILITY_LISTS],
         [PropertyPaymentType, PROPERTY_PAYMENT_TYPES],
         [Room, ROOMS],
         [BedInRoom, BED_IN_ROOMS],
         [Image, IMAGES],
-        [User, USERS],
         [Reservation, RESERVATIONS]
     ];
 
