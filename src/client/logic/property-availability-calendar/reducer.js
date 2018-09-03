@@ -1,7 +1,7 @@
 import defaultState from "client/logic/defaultState";
 import {
     PROPERTY_CALENDAR_UPDATE,
-    AVAILABILITY_UPDATE_SUBMIT,
+    AVAILABILITY_UPDATE_SUCCESS,
     GET_CURRENT_USER_INFO_SUCCESS
 } from "./actionTypes";
 
@@ -16,7 +16,7 @@ export default function availabilityCalendarReducer(
                 ...action.payload
             };
         }
-        case AVAILABILITY_UPDATE_SUBMIT: {
+        case AVAILABILITY_UPDATE_SUCCESS: {
             return {
                 ...state,
                 ...action.payload
@@ -25,7 +25,7 @@ export default function availabilityCalendarReducer(
         case GET_CURRENT_USER_INFO_SUCCESS: {
             return {
                 ...state,
-                ...action.payload[0]
+                ...action.payload
             };
         }
 
