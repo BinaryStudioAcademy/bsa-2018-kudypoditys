@@ -20,7 +20,13 @@ class PropertyService extends Service {
                 propertyId: value.propertyId
             });
             for (let i = 0; i < rooms.length; i++) {
-                if (this.available(rooms[i], value.checkIn, value.checkOut))
+                if (
+                    await this.available(
+                        rooms[i],
+                        value.checkIn,
+                        value.checkOut
+                    )
+                )
                     result.push(rooms[i]);
             }
             return Promise.resolve(result);
@@ -41,7 +47,7 @@ class PropertyService extends Service {
                         checkIn,
                         checkOut,
                         bookings[i].dateIn,
-                        bookings[i].checkOut
+                        bookings[i].dateOut
                     )
                 )
                     roomAmount--;
@@ -89,6 +95,9 @@ class PropertyService extends Service {
     }
     getPropertiesByCity(city) {
         return propertyRepository.getPropertiesByCity(city);
+    }
+    getUserPropertiesInfo(id) {
+        return propertyRepository.getUserPropertiesInfo(id);
     }
 }
 

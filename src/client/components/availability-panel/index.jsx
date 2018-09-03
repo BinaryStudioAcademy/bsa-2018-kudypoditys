@@ -52,7 +52,12 @@ export class AvailabilityPanel extends React.Component {
 
         return (
             <div className="availability-panel-wrp">
-                <Header as="h2">Availability</Header>
+                <Header
+                    as="h2"
+                    style={{ paddingLeft: "7px", color: "#465672" }}
+                >
+                    Availability
+                </Header>
                 <div className="availability-panel">
                     <p>When would you like to stay at {propertyName}?</p>
                     <Form
@@ -103,7 +108,12 @@ export class AvailabilityPanel extends React.Component {
                                         </Header>
                                         <RoomsSummaryTable rooms={result} />
                                     </React.Fragment>
-                                ) : null}
+                                ) : (
+                                    <Message negative>
+                                        Sorry, no rooms available for these
+                                        dates
+                                    </Message>
+                                )}
                             </Modal>
                         </div>
                         <Form.Group className="room-selector" inline>

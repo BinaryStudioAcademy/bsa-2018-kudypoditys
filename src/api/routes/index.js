@@ -12,12 +12,13 @@ const favorite = require("./favoriteRoutes");
 const discount = require("./discountRoutes");
 const roomDiscount = require("./roomDiscountRoutes");
 const bedInRoom = require("./bedInRoomRoutes");
-const searchProperty =require("./searchPropertyRoutes");
+const searchProperty = require("./searchPropertyRoutes");
+const availability = require("./availabilityRoutes");
 
 const elasticsearch = require("./elasticsearchRoutes");
 
-module.exports = function (app) {
-    app.use('/api', auth);
+module.exports = function(app) {
+    app.use("/api", auth);
     app.use("/elastic", elasticsearch);
     app.use("/api/users", user);
     app.use("/api/property", property);
@@ -32,6 +33,6 @@ module.exports = function (app) {
     app.use("/api/discount", discount);
     app.use("/api/room-discount", roomDiscount);
     app.use("/api/bed-in-room", bedInRoom);
-    app.use('/api/search-property',searchProperty);
-
+    app.use("/api/search-property", searchProperty);
+    app.use("/api/availability", availability);
 };
