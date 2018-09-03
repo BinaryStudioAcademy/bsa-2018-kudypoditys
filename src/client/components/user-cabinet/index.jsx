@@ -26,7 +26,6 @@ export class UserCabinet extends React.Component {
                     header={tab.menuItem.header}
                     subheader={tab.menuItem.subheader}
                     component={tab.menuItem.component}
-
                     // onSubmit={this.submitHandle}
                 />
             )
@@ -38,7 +37,7 @@ export class UserCabinet extends React.Component {
         return (
             <React.Fragment>
                 <Header />
-                <Container style={{marginTop: "25px"}}>
+                <Container style={{ marginTop: "25px" }}>
                     <Tab
                         menu={{
                             fluid: true,
