@@ -128,13 +128,6 @@ module.exports = {
             index: _index,
             type: _type,
             body: {
-                // sort : [
-                //     { sortBy : {"order" : "asc"}},
-                //     "user",
-                //     { "name" : "desc" },
-                //     { "age" : "desc" },
-                //    "_score"
-                //  ],
                 query: {
                     multi_match: {
                         query: _query,

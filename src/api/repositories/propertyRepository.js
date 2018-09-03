@@ -190,7 +190,8 @@ class PropertyRepository extends Repository {
                 : [RoomType];
 
         return this.model
-            .findAll({
+            .findAll({ limit: 5,
+                offset: 0,
                 where: {
                     id: { $in: filter.propertiesIds }
                 },

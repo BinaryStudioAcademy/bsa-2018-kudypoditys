@@ -47,7 +47,7 @@ class SearchPage extends React.Component {
                 <div className="search-page__wrapper">
                     <div className="breadcrumb_wrapper">
                         <Segment className="breadcrumb__segment">
-                            <Breadcrumb
+                            {/* <Breadcrumb
                                 icon="right angle"
                                 sections={[
                                     { key: "Home", content: "Home", href: "#" },
@@ -63,7 +63,7 @@ class SearchPage extends React.Component {
                                         href: "#"
                                     }
                                 ]}
-                            />
+                            /> */}
                         </Segment>
                     </div>
 
