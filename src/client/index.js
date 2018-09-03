@@ -23,8 +23,9 @@ import history from "client/history";
 import PhotoTab from "./components/photo-tab-registration-property";
 import UserCabinet from "./pages/user-cabinet";
 import AuthHOC from "./components/auth-hoc";
-
 import VerifyEmail from "client/components/verify-email";
+
+import ErrorBoundary from "client/components/error-boundary-handler";
 
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
@@ -37,33 +38,35 @@ sagaMiddelware.run(rootSaga);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={history}>
-            <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/signup" component={RegistrationPage} />
-                <Route exact path="/verifyemail" component={VerifyEmail} />
-                <Route exact path="/login" component={LoginPage} />
-                <Route
-                    exact
-                    path="/checkin-checkout"
-                    component={CheckInCheckOut}
-                />
-                <Route path="/search-page" component={SearchPage} />
-                <Route path="/property/:id" component={PropertyPage} />
-                <Route
-                    path="/add-property/"
-                    component={() => (
-                        <AuthHOC Component={PropertyCreationTabs} />
-                    )}
-                />
-                <Route path="/404" component={NotFoundPage} />
-                <Route
-                    path="/user-cabinet"
-                    component={() => <AuthHOC Component={UserCabinet} />}
-                />
-                <Route component={NotFoundPage} />
-            </Switch>
-        </Router>
+        <ErrorBoundary>
+            <Router history={history}>
+                <Switch>
+                    <Route exact path="/" component={HomePage} />
+                    <Route exact path="/signup" component={RegistrationPage} />
+                    <Route exact path="/verifyemail" component={VerifyEmail} />
+                    <Route exact path="/login" component={LoginPage} />
+                    <Route
+                        exact
+                        path="/checkin-checkout"
+                        component={CheckInCheckOut}
+                    />
+                    <Route path="/search-page" component={SearchPage} />
+                    <Route path="/property/:id" component={PropertyPage} />
+                    <Route
+                        path="/add-property/"
+                        component={() => (
+                            <AuthHOC Component={PropertyCreationTabs} />
+                        )}
+                    />
+                    <Route path="/404" component={NotFoundPage} />
+                    <Route
+                        path="/user-cabinet"
+                        component={() => <AuthHOC Component={UserCabinet} />}
+                    />
+                    <Route component={NotFoundPage} />
+                </Switch>
+            </Router>
+        </ErrorBoundary>
     </Provider>,
     document.getElementById("root")
 );

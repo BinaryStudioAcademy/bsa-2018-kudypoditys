@@ -3,6 +3,7 @@ import MapView from "../map-view";
 
 class BasicMapWidget extends React.Component {
     render() {
+        const { controlEnable, disablePopup, coordinates } = this.props;
         return (
             <MapView
                 width={250}
@@ -17,9 +18,13 @@ class BasicMapWidget extends React.Component {
                             "https://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg"
                     }
                 ]}
-                startPosition={{latitude: 49.837089, longitude: 24.021161}}
+                startPosition={{
+                    latitude: coordinates.lat,
+                    longitude: coordinates.lng
+                }}
                 zoom={12}
-                controlEnable={false}
+                controlEnable={controlEnable}
+                disablePopup={disablePopup}
             />
         );
     }

@@ -1,3 +1,4 @@
+const moment = require("moment");
 const sequelize = require("sequelize");
 const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
@@ -9,7 +10,6 @@ const Reservation = require("../models/Reservation");
 const RoomType = require("../models/RoomType");
 const Image = require("../models/Image");
 const Favorite = require("../models/Favorite");
-
 const AccommodationRule = require("../models/AccommodationRule");
 const PropertyType = require("../models/PropertyType");
 const Country = require("../models/Country");
@@ -143,29 +143,70 @@ class PropertyRepository extends Repository {
         });
     }
     getFilteredProperties(filter) {
+        const SORT_VALUE = {
+            PRICE: "price",
+            DISTANCE: "distance_to_center",
+            LOW_RANK: "rating_starting_from_low",
+            HIGH_RANK: "rating_starting_from_high"
+        };
+        let sortingOption;
+        switch (filter.sortBy) {
+            case SORT_VALUE.PRICE:
+                sortingOption = [[Room, "price", "ASC"]];
+                break;
+            case SORT_VALUE.LOW_RANK:
+                sortingOption = [["rating", "ASC"]];
+
+                break;
+            case SORT_VALUE.HIGH_RANK:
+                sortingOption = [["rating", "DESC"]];
+                break;
+
+            default:
+                sortingOption = [["rating", "DESC"]];
+        }
+        const roomIncludeOption =
+            filter.bedsCount !== 2
+                ? [
+                      RoomType,
+                      {
+                          model: BedInRoom,
+                          where: {
+                              count: { $gte: filter.bedsCount }
+                          }
+                      },
+                      {
+                          model: Reservation
+                          //    where: {
+                          // dateIn: { $gte: moment().subtract(10, 'days').toDate()},
+                          //dateOut: { $lte: moment().add(5, 'days').toDate()}
+                          //   }
+                      }
+                  ]
+                : [RoomType];
+
         return this.model
             .findAll({
+                where: {
+                    id: { $in: filter.propertiesIds }
+                },
                 include: [
                     {
-                        model: City,
-                        where: { name: filter.city }
+                        model: City
                     },
                     {
-                        model: Reservation,
-                        where: {
-                            dateIn: filter.dateIn,
-                            dateOut: filter.dateOut
-                        }
+                        model: Image
                     },
+
                     {
                         model: Room,
-                        where: { amount: filter.roomsAmount }
-                    },
-                    {
-                        model: BedInRoom,
-                        where: { count: filter.bedsCount }
+                        include: roomIncludeOption,
+                        where: {
+                            amount: { $gte: filter.rooms }
+                        }
                     }
-                ]
+                ],
+                order: sortingOption
             })
             .then(properties => {
                 return properties;
@@ -181,6 +222,26 @@ class PropertyRepository extends Repository {
                     },
                     {
                         model: Image
+                    },
+
+                    {
+                        model: Room,
+                        include: [
+                            RoomType,
+                            {
+                                model: BedInRoom
+                                // where: {
+                                //     count: { $gte: filter.bedsCount }
+                                // }
+                            },
+                            {
+                                model: Reservation
+                                //    where: {
+                                // dateIn: { $gte: moment().subtract(10, 'days').toDate()},
+                                //dateOut: { $lte: moment().add(5, 'days').toDate()}
+                                //   }
+                            }
+                        ]
                     }
                 ]
             })

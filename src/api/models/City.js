@@ -8,6 +8,9 @@ let City = orm.define('city', {
         validate: { notEmpty: true },
         allowNull: false,
         unique: true
+    },
+    imageUrl: {
+        type: Sequelize.STRING,
     }
 });
 

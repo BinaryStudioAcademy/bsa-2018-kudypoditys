@@ -40,6 +40,18 @@ property.route("/page").get((req, res) => {
         });
 });
 
+property.route("/availability").put((req, res) => {
+    console.log("body: " + JSON.stringify(req.body));
+    propertyService
+        .checkAvailability(req.body)
+        .then(rooms => {
+            res.send(rooms);
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        });
+});
+
 property
     .route("/:id")
     .put((req, res) => {
