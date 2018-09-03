@@ -4,16 +4,27 @@ const USERS = [
     {
         id: 1,
         fullName: "Natalya",
-        password: bcrypt.hashSync("nata1NATA", 10),
-        email: "natalya@gmail.com",
-        phoneNumber: "0504958671"
+        password: bcrypt.hashSync("102938abC", 10),
+        email: "sayber1990@gmail.com",
+        phoneNumber: "0504958671",
+        nickname: "Nata1ya",
+        address: "Nebereshnaya street 20, Lviv",
+        appeal: "Mrs.",
+        preferredCurrency: "USD",
+        countryId: 1,
+        paymentTypeId: 1
     },
     {
         id: 2,
         fullName: "Nikolay Datsko",
         password: bcrypt.hashSync("102938abC", 10),
         email: "lorem@lorem.com",
-        phoneNumber: "80954568261"
+        phoneNumber: "80954568261",
+        nickname: "Lorem",
+        appeal: "Mrs.",
+        preferredCurrency: "USD",
+        countryId: 1,
+        paymentTypeId: 1
     }
 ];
 
@@ -26,6 +37,7 @@ const PROPERTIES = [
         description: "Hotel Ukraine located in Kyiv.",
         contactPhone: "0509832174",
         coordinates: { lat: 49.837089, lng: 24.021161 },
+        userId: 1,
         propertyTypeId: 9,
         cityId: 2,
         accommodationRuleId: 1
@@ -905,8 +917,8 @@ const IMAGES = [
 const RESERVATIONS = [
     {
         id: 1,
-        dateIn: "2018-08-29",
-        dateOut: "2018-08-30",
+        dateIn: "2018-09-25",
+        dateOut: "2018-09-26",
         guestsCount: 3,
         userId: 1,
         roomId: 1,
@@ -914,8 +926,8 @@ const RESERVATIONS = [
     },
     {
         id: 2,
-        dateIn: "2018-08-31",
-        dateOut: "2018-09-01",
+        dateIn: "2018-09-28",
+        dateOut: "2018-09-29",
         guestsCount: 2,
         userId: 1,
         roomId: 2,
@@ -1571,21 +1583,21 @@ const BED_IN_ROOMS = [
     { id: 8, count: 6, roomId: 8, bedTypeId: 3 },
     { id: 9, count: 2, roomId: 9, bedTypeId: 3 },
     { id: 10, count: 2, roomId: 10, bedTypeId: 2 },
-    { id: 11, count: 2, roomId:11, bedTypeId:2},
-{ id: 12, count: 2, roomId:12, bedTypeId:3},
-{ id: 13, count: 4, roomId:13, bedTypeId:4},
-{ id: 14, count: 2, roomId:14, bedTypeId:5},
-{ id: 15, count: 5, roomId:15, bedTypeId:6},
-{ id: 16, count: 1, roomId:16, bedTypeId:7},
-{ id: 17, count: 3, roomId:17, bedTypeId:1},
-{ id: 18, count: 2, roomId:18, bedTypeId:2},
-{ id: 19, count: 6, roomId:19, bedTypeId:3},
-{ id: 20, count: 2, roomId:20, bedTypeId:1},
-{ id: 21, count: 2, roomId:21, bedTypeId:2},
-{ id: 22, count: 7, roomId:22, bedTypeId:3},
-{ id: 23, count: 2, roomId:23, bedTypeId:4},
-{ id: 24, count: 3, roomId:24, bedTypeId:5},
-{ id: 25, count: 2, roomId:25, bedTypeId:6},
+    { id: 11, count: 2, roomId: 11, bedTypeId: 2 },
+    { id: 12, count: 2, roomId: 12, bedTypeId: 3 },
+    { id: 13, count: 4, roomId: 13, bedTypeId: 4 },
+    { id: 14, count: 2, roomId: 14, bedTypeId: 5 },
+    { id: 15, count: 5, roomId: 15, bedTypeId: 6 },
+    { id: 16, count: 1, roomId: 16, bedTypeId: 7 },
+    { id: 17, count: 3, roomId: 17, bedTypeId: 1 },
+    { id: 18, count: 2, roomId: 18, bedTypeId: 2 },
+    { id: 19, count: 6, roomId: 19, bedTypeId: 3 },
+    { id: 20, count: 2, roomId: 20, bedTypeId: 1 },
+    { id: 21, count: 2, roomId: 21, bedTypeId: 2 },
+    { id: 22, count: 7, roomId: 22, bedTypeId: 3 },
+    { id: 23, count: 2, roomId: 23, bedTypeId: 4 },
+    { id: 24, count: 3, roomId: 24, bedTypeId: 5 },
+    { id: 25, count: 2, roomId: 25, bedTypeId: 6 }
 ];
 const BED_TYPES = [
     {

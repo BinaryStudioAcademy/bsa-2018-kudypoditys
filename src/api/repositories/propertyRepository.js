@@ -9,6 +9,7 @@ const Reservation = require("../models/Reservation");
 // const PropertyCategory = require("../models/PropertyCategory");
 const RoomType = require("../models/RoomType");
 const Image = require("../models/Image");
+const Availability = require("../models/Availability");
 const Favorite = require("../models/Favorite");
 const AccommodationRule = require("../models/AccommodationRule");
 const PropertyType = require("../models/PropertyType");
@@ -252,6 +253,31 @@ class PropertyRepository extends Repository {
             .then(properties => {
                 return properties;
             });
+    }
+
+    getUserPropertiesInfo(id) {
+        console.log("REPOSITORY USER ");
+        return this.model.findAll({
+            where: {
+                userId: 1
+            },
+            include: [
+                {
+                    model: User
+                },
+                {
+                    model: Room,
+                    include: [
+                        {
+                            model: Reservation
+                        },
+                        {
+                            model: Availability
+                        }
+                    ]
+                }
+            ]
+        });
     }
 }
 
