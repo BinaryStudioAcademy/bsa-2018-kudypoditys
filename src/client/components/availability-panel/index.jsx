@@ -108,7 +108,12 @@ export class AvailabilityPanel extends React.Component {
                                         </Header>
                                         <RoomsSummaryTable rooms={result} />
                                     </React.Fragment>
-                                ) : null}
+                                ) : (
+                                    <Message negative>
+                                        Sorry, no rooms available for these
+                                        dates
+                                    </Message>
+                                )}
                             </Modal>
                         </div>
                         <Form.Group className="room-selector" inline>

@@ -41,9 +41,11 @@ property.route("/page").get((req, res) => {
 });
 
 property.route("/availability").put((req, res) => {
-    console.log("body: " + JSON.stringify(req.body));
+    let value = req.body;
+    value.checkIn = new Date(value.checkIn);
+    value.checkOut = new Date(value.checkOut);
     propertyService
-        .checkAvailability(req.body)
+        .checkAvailability(value)
         .then(rooms => {
             res.send(rooms);
         })
