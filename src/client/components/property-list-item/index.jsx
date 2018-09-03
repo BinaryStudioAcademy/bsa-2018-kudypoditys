@@ -86,7 +86,7 @@ export class PropertyListItem extends React.Component {
                             </Label>
                             <Image
 
-                                src={propertyItemData.image}
+                               src={propertyItemData.images[0].url}
                                 floated="left"
                                 style={{
                                     width: 150,
@@ -122,7 +122,7 @@ export class PropertyListItem extends React.Component {
                                     </Header.Content>
 
                                     </Header>
-                                    <Rating defaultRating={propertyItemData.propertyStars} maxRating={5} disabled/>
+                                    <Rating defaultRating={propertyItemData.rating} maxRating={5} disabled/>
                                 </div>
                                 <div className="rating_block">
                                     <div style={{
@@ -152,8 +152,7 @@ export class PropertyListItem extends React.Component {
                                         size="small"
                                         onClick={this.handleRedirectToMap}
                                     />
-
-                                    {propertyItemData.location} {" - "}
+                                    {propertyItemData.address +" - "}
 
 
                                     <MapWidgetModal
@@ -162,8 +161,8 @@ export class PropertyListItem extends React.Component {
                                                 price: 3000,
                                                 name:
                                                     "Avangard Kulisha Apartment",
-                                                latitude: 49.8376405,
-                                                longitude: 24.0253219,
+                                                latitude: propertyItemData.coordinates.lat,
+                                                longitude: propertyItemData.coordinates.lng,
                                                 imageSrc:
                                                     "https://www.hotelimperialeroma.it/data/jpg/hotel-imperiale-rome-11.jpg",
                                                 address:
@@ -171,15 +170,13 @@ export class PropertyListItem extends React.Component {
                                                 rating: "8/10"
                                             }
                                         ]}
-                                        startPosition={{
-                                            latitude: 49.837089,
-                                            longitude: 24.021161
-                                        }}
+                                       // startPosition= {propertyItemData.coordinates}
                                         zoom={13}
                                         controlEnable={true}
                                         buttonClass={"searchMapButton"}
                                     />
                                     <span
+
                                         className="Property_list__distanceToCenter">({propertyItemData.distanceToCenter} km from center)</span>
                                 </div>
 
@@ -190,7 +187,7 @@ export class PropertyListItem extends React.Component {
                                 <div className="roomType">
                                     <Icon name="add user"/>
 
-                                    {propertyItemData.roomType}
+                                    {propertyItemData.rooms[0].roomType.name}
                                 </div>
 
 
@@ -199,9 +196,7 @@ export class PropertyListItem extends React.Component {
                                 {/*}} >*/}
                                 <span className="priceInfo">
 
-                                    {propertyItemData.priceFrom}
-
-                                    {propertyItemData.curency}
+                                   US ${propertyItemData.rooms[0].price}
                                 </span>
 
 
@@ -279,7 +274,8 @@ PropertyListItem.propTypes = {
         name: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         rating: PropTypes.number.isRequired,
-        location: PropTypes.string.isRequired,
+        address: PropTypes.string.isRequired,
+        coordinates: PropTypes.string.isRequired,
         distanceToCenter: PropTypes.number.isRequired,
         priceTo: PropTypes.number.isRequired,
         priceFrom: PropTypes.number.isRequired,
