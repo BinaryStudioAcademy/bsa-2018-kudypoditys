@@ -110,6 +110,7 @@ class MapView extends React.Component {
     };
 
     render() {
+        const { disablePopup } = this.props;
         return (
             <Fragment>
                 <ReactMapGL
@@ -118,7 +119,7 @@ class MapView extends React.Component {
                     mapStyle="mapbox://styles/mapbox/streets-v9"
                 >
                     {this.props.properties.map(this.renderPropertyMarker)}
-                    {this.renderPopup()}
+                    {disablePopup ? null : this.renderPopup()}
                     {this.renderInfo()}
                 </ReactMapGL>
             </Fragment>

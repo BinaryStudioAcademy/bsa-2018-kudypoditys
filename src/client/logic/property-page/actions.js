@@ -3,7 +3,8 @@ import {
     PROPERTY_DESCRIPTION_UPDATE,
     AVAILABILITY_INPUT_UPDATE,
     BOOKING_INPUT_UPDATE,
-    BOOK_PROPERTY
+    BOOK_PROPERTY,
+    CHECK_AVAILABILITY
 } from "./actionTypes";
 
 export function descriptionUpdate(payload) {
@@ -37,6 +38,13 @@ export function getPropertyInfoById(id) {
 export function bookProperty(value) {
     return {
         type: BOOK_PROPERTY,
+        payload: value
+    };
+}
+
+export function checkAvailability(value) {
+    return {
+        type: CHECK_AVAILABILITY,
         payload: value
     };
 }
