@@ -116,7 +116,7 @@ export class RoomsSummaryTable extends React.Component {
         if (user) bookButton = true;
 
         return (
-            <div className="rooms-summary-table">
+            <div className="rooms-summary-table" style={{ minWidth: "500px" }}>
                 {this.getRoomsSummary(rooms, bookButton, property)}
             </div>
         );
