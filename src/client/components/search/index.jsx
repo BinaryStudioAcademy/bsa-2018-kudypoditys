@@ -17,32 +17,13 @@ export class MainSearch extends React.Component {
         this.setState({ isLoading: false, results: [], value: "" });
     getInfo = () => {
         let resultsData = [];
-        let index = "properties";
+        let index = "cities";
         axios
             .get(
                 `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
                     this.state.query
                 }`
             )
-            .then(propertiesResponse => {
-                console.log(
-                    "response Roperties= " + JSON.stringify(propertiesResponse)
-                );
-                propertiesResponse.data.forEach(element => {
-                    resultsData.push({
-                        title: element._source.name,
-                        description: element._source.description,
-                        image: element._source.image
-                    });
-                });
-
-                index = "cities";
-                return axios.get(
-                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
-                        this.state.query
-                    }`
-                );
-            })
             .then(citiesResponse => {
                 console.log(
                     "response Cities= " + JSON.stringify(citiesResponse)
@@ -51,6 +32,26 @@ export class MainSearch extends React.Component {
                     resultsData.push({
                         title: element._source.city,
                         description: element._source.country
+                    });
+                });
+
+                let index = "properties";
+                return axios.get(
+                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
+                        this.state.query
+                    }`
+                );
+            })
+
+            .then(propertiesResponse => {
+                console.log(
+                    "response Roperties= " + JSON.stringify(propertiesResponse)
+                );
+                propertiesResponse.data.forEach(element => {
+                    resultsData.push({
+                        title: element._source.name,
+                        description: element._source.address,
+                        image: element._source.image
                     });
                 });
                 this.setState({
