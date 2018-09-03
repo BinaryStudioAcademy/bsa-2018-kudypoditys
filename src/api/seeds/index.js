@@ -17,7 +17,8 @@ const {
     BED_IN_ROOMS,
     ROOM_TYPES,
     PROPERTY_TYPE,
-    BED_IN_ROOM
+    BED_IN_ROOM,
+    REVIEWS
 } = require("./seed");
 
 module.exports = function(models) {
@@ -41,7 +42,8 @@ module.exports = function(models) {
         Room,
         Reservation,
         Image,
-        User
+        User,
+        Review
     } = models;
 
     const SimpleUpsertMap = [
@@ -61,7 +63,7 @@ module.exports = function(models) {
         [Image, IMAGES],
         [User, USERS],
         [Reservation, RESERVATIONS],
-
+        [Review, REVIEWS]
     ];
 
     //Country & City

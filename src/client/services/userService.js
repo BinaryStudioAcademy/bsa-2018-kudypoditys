@@ -33,6 +33,11 @@ class UserService {
             .sendRequest("/api/forgot", "post", action.payload)
             .then(response => response.data);
     }
+    getUserReviews(id) {
+        return api
+            .sendAuthRequest(`/api/reviews/${1}/byuserid`, "get")
+            .then(response => response.data);
+    }
 }
 
 export default new UserService();

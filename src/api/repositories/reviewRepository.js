@@ -1,8 +1,12 @@
-const Repository = require('./generalRepository');
-const reviewModel = require('../models/Review');
+const Repository = require("./generalRepository");
+const reviewModel = require("../models/Review");
 
 class ReviewRepository extends Repository {
-    //todo additional methods for repository
+    findByOptions(options) {
+        return this.model.findAll({
+            where: options
+        });
+    }
 }
 
 module.exports = new ReviewRepository(reviewModel);

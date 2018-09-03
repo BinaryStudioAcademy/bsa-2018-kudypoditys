@@ -2,6 +2,7 @@ import React from "react";
 import BookingTab from "../user-cabinet-bookings-tab";
 import SettingsTab from "../personal-settings-edit";
 import AvailabilityCalendar from "../property-availability-calendar";
+import ReviewsTab from "../user-cabinet-reviews-tab";
 export const MenuItems = [
     {
         menuItem: {
@@ -26,9 +27,8 @@ export const MenuItems = [
             key: "Reviews tab",
             header: "My Reviews",
             content: "My Reviews",
-            icon: "comment outline"
-            // ,
-            // component: <SettingsTab />
+            icon: "comment outline",
+            component: <ReviewsTab />
         }
     },
     {

@@ -1806,6 +1806,24 @@ const ROOM_TYPES = [
     }
 ];
 
+const REVIEWS = [
+    {
+        id: 1,
+        content: "Goood",
+        userId: 1
+    },
+    {
+        id: 2,
+        content: "Bad",
+        userId: 1
+    },
+    {
+        id: 3,
+        content: "Normal",
+        userId: 1
+    }
+];
+
 module.exports = {
     USERS,
     PROPERTIES,
@@ -1824,5 +1842,6 @@ module.exports = {
     BED_IN_ROOMS,
     BED_TYPES,
     ROOM_TYPES,
-    PROPERTY_TYPE
+    PROPERTY_TYPE,
+    REVIEWS
 };
