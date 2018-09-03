@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import {Header, Icon} from "semantic-ui-react";
+import { Header, Icon } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import Modal from "../modal";
 import BasicMapWidget from "../basic-map-widget";
@@ -12,7 +12,7 @@ export class PropertySummary extends React.Component {
     };
 
     render() {
-        const {property} = this.props;
+        const { property, rating, totalReviews } = this.props;
 
         return (
             <div className="property-summary__container">
