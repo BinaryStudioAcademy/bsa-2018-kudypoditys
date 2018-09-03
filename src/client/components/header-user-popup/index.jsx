@@ -2,9 +2,32 @@ import React, { Fragment } from "react";
 import history from "client/history";
 import { Icon, Menu, Popup } from "semantic-ui-react";
 import "./index.scss";
+
 export default class UserPopup extends React.Component {
     handleItemClick = (e, { name }) => {
         console.log(name);
+        let tabIndex;
+        switch (name) {
+            case "bookings":
+                tabIndex = 0;
+                break;
+            case "settings":
+                tabIndex = 1;
+                break;
+            case "reviews":
+                tabIndex = 2;
+                break;
+            case "properties":
+                tabIndex = 3;
+                break;
+            default: {
+                return null;
+            }
+        }
+        history.push({
+            pathname: "/user-cabinet",
+            search: `?tab=${tabIndex}`
+        });
     };
 
     render() {
