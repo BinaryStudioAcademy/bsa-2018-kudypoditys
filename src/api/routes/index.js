@@ -16,11 +16,12 @@ const searchProperty = require("./searchPropertyRoutes");
 const country = require('./countryRoutes');
 const facility = require('./facilityRoutes');
 const language = require('./languageRoutes');
+const availability = require("./availabilityRoutes");
 
 const elasticsearch = require("./elasticsearchRoutes");
 
 module.exports = function (app) {
-    app.use('/api', auth);
+    app.use("/api", auth);
     app.use("/elastic", elasticsearch);
     app.use("/api/users", user);
     app.use("/api/facility", facility);
@@ -37,7 +38,7 @@ module.exports = function (app) {
     app.use("/api/discount", discount);
     app.use("/api/room-discount", roomDiscount);
     app.use("/api/bed-in-room", bedInRoom);
-    app.use('/api/search-property', searchProperty);
     app.use('/api/country', country);
-
+    app.use("/api/search-property", searchProperty);
+    app.use("/api/availability", availability);
 };

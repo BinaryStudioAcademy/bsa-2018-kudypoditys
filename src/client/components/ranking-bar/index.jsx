@@ -9,8 +9,9 @@ import {mapStateToProps, mapDispatchToProps} from './container';
 export class RankingBar extends React.Component {
 
     handleItemClick = (event, value) => {
-        this.props.onSelect(value.value);
-
+        const searchRequest = this.props.searchRequest
+        searchRequest.sortBy=value.value
+        this.props.onSelect(searchRequest);
     };
 
     render() {
@@ -28,20 +29,20 @@ export class RankingBar extends React.Component {
                         active={activeItem === PRICE}
                         onClick={this.handleItemClick}
                     />
-                    <Menu.Item
+                    {/* <Menu.Item
 
                         name="Distance from city centre"
                         content='Distance from city centre'
                         value={DISTANCE}
                         active={activeItem === DISTANCE}
                         onClick={this.handleItemClick}
-                    />
+                    /> */}
 
 
                     <Dropdown
 
                         item
-                        text="Stars"
+                        text="Rating"
                         simple
                         icon='caret down'
                     >
@@ -54,14 +55,14 @@ export class RankingBar extends React.Component {
                                 active={activeItem === HIGH_RANK}
                                 onClick={this.handleItemClick}
                             >
-                                stars [5→1]
+                                 rating [10→1]
                             </Dropdown.Item>
                             <Dropdown.Item
                                 value={LOW_RANK}
                                 active={activeItem === LOW_RANK}
                                 onClick={this.handleItemClick}
                             >
-                                stars [1→5]
+                               rating [1→10]
                             </Dropdown.Item>
 
                         </Dropdown.Menu>
@@ -80,9 +81,9 @@ export class RankingBar extends React.Component {
 
 const SORT_VALUE = {
     PRICE: 'price',
-    DISTANCE: 'distance',
-    LOW_RANK: 'low',
-    HIGH_RANK: 'high'
+    DISTANCE: 'distance_to_center',
+    LOW_RANK: 'rating_starting_from_low',
+    HIGH_RANK: 'rating_starting_from_high'
 
 };
 

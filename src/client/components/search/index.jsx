@@ -14,36 +14,42 @@ import history from "client/history";
 
 
 export class MainSearch extends React.Component {
+    componentDidMount() {
+        console.log(
+            "MainSearch this.props.params =   " +
+                JSON.stringify(this.props)
+        );
+        if (this.props.params) {
+            const {
+                query,
+                rooms,
+                adults,
+                children,
+                startDate,
+                endDate
+            } = this.props.params;
+            this.setState({
+                query: query,
+                rooms: rooms,
+                adults: adults,
+                children: children,
+                startDate: startDate,
+                endDate: endDate
+            });
+            this.handleSubmit
+        }
+    }
     resetComponent = () =>
         this.setState({ isLoading: false, results: [], value: "" });
     getInfo = () => {
         let resultsData = [];
-        let index = "properties";
+        let index = "cities";
         axios
             .get(
                 `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
                 this.state.query
                 }`
             )
-            .then(propertiesResponse => {
-                console.log(
-                    "response Roperties= " + JSON.stringify(propertiesResponse)
-                );
-                propertiesResponse.data.forEach(element => {
-                    resultsData.push({
-                        title: element._source.name,
-                        description: element._source.description,
-                        image: element._source.image
-                    });
-                });
-
-                index = "cities";
-                return axios.get(
-                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
-                    this.state.query
-                    }`
-                );
-            })
             .then(citiesResponse => {
                 console.log(
                     "response Cities= " + JSON.stringify(citiesResponse)
@@ -52,6 +58,26 @@ export class MainSearch extends React.Component {
                     resultsData.push({
                         title: element._source.city,
                         description: element._source.country
+                    });
+                });
+
+                let index = "properties";
+                return axios.get(
+                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
+                    this.state.query
+                    }`
+                );
+            })
+
+            .then(propertiesResponse => {
+                console.log(
+                    "response Roperties= " + JSON.stringify(propertiesResponse)
+                );
+                propertiesResponse.data.forEach(element => {
+                    resultsData.push({
+                        title: element._source.name,
+                        description: element._source.address,
+                        image: element._source.image
                     });
                 });
                 this.setState({
@@ -81,9 +107,9 @@ export class MainSearch extends React.Component {
         );
     };
     handleSubmit = () => {
-        console.log("handleSubmit trigered")
-        let path = `/search-page`;
-        history.push(path);
+        console.log("handleSubmit trigered");
+        // let path = `/search-page`;
+        // history.push(path);
         const {
             query,
             rooms,
@@ -183,7 +209,7 @@ export class MainSearch extends React.Component {
     };
 
     render() {
-        console.log("state=" + JSON.stringify(this.state));
+        // console.log("state=" + JSON.stringify(this.state));
 
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
@@ -195,6 +221,27 @@ export class MainSearch extends React.Component {
             adults,
             children
         } = this.state;
+        // console.log("props!!!=" + JSON.stringify(this.props));
+        if (this.props.search.data !== undefined) {
+            const { data } = this.props.search;
+
+            //console.log("search state" + JSON.stringify(this.state));
+
+            if (data !== undefined && data !== "" && data.length > 0) {
+                // console.log("searchResults" + JSON.stringify(data));
+                this.props.handleSearchResults({
+                    searchResults: data,
+                    searchRequest: {
+                        query: this.state.query,
+                        rooms: this.state.rooms,
+                        adults: this.state.adults,
+                        children: this.state.children,
+                        startDate: this.state.startDate,
+                        endDate: this.state.endDaten
+                    }
+                });
+            }
+        }
         const childrenOptions = this.generateOptions(0, 10);
 
         return (
@@ -329,7 +376,9 @@ MainSearch.propTypes = {
     onCheckOutChange: PropTypes.func.isRequired,
     onAdultsChange: PropTypes.func.isRequired,
     onChildrenChange: PropTypes.func.isRequired,
-    onRoomsChange: PropTypes.func.isRequired
+    onRoomsChange: PropTypes.func.isRequired,
+    handleSearchResults: PropTypes.func.isRequired,
+    data: PropTypes.array
 };
 
 MainSearch.defaultProps = {

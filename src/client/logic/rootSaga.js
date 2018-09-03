@@ -13,22 +13,24 @@ import personalSettingsSaga from 'client/logic/personal-settings-edit/saga';
 import countriesSaga from 'client/logic/countries/saga';
 import facilitiesSaga from 'client/logic/facilities/saga';
 import languagesSaga from 'client/logic/languages/saga';
+import availabilityCalendar from "client/logic/property-availability-calendar/saga";
 
 export default function* rootSaga() {
-    yield all([
-        fork(loginSaga),
-        fork(headerSaga),
-        fork(propertySaga),
-        fork(signupSaga),
-        fork(personalSettingsSaga),
-        fork(userCabinetSaga),
-        fork(propertyPageSaga),
-        fork(emailVerificationSaga),
-        fork(searchSaga),
-        fork(resetPasswordSaga),
-        fork(forgotPasswordSaga),
-        fork(countriesSaga),
-        fork(facilitiesSaga),
-        fork(languagesSaga),
-    ]);
+  yield all([
+    fork(loginSaga),
+    fork(headerSaga),
+    fork(propertySaga),
+    fork(signupSaga),
+    fork(personalSettingsSaga),
+    fork(userCabinetSaga),
+    fork(propertyPageSaga),
+    fork(emailVerificationSaga),
+    fork(searchSaga),
+    fork(resetPasswordSaga),
+    fork(forgotPasswordSaga),
+    fork(countriesSaga),
+    fork(facilitiesSaga),
+    fork(languagesSaga),
+    fork(availabilityCalendar),
+  ]);
 }

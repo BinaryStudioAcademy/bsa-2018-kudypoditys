@@ -23,6 +23,7 @@ import forgotPassword from 'client/logic/forgot-password/reducer';
 import countries from 'client/logic/countries/reducer';
 import languages from 'client/logic/languages/reducer';
 import facilities from 'client/logic/facilities/reducer';
+import availabilityCalendar from "client/logic/property-availability-calendar/reducer";
 
 export default combineReducers({
     search,
@@ -53,5 +54,6 @@ export default combineReducers({
     forgotPassword,
     countries,
     languages,
-    facilities
+    facilities,
+    availabilityCalendar
 });

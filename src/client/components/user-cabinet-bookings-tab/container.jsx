@@ -1,12 +1,12 @@
 import {
     getUserBookings,
     chooseBooking,
-    unchooseBooking
+    unchooseBooking,
+    cancelBooking
 } from "../../logic/user-cabinet/actions";
 
-
 export function mapStateToProps(state, ownProps) {
-    const {user, bookings, activeBooking} = state.userCabinet;
+    const { user, bookings, activeBooking } = state.userCabinet;
     return {
         user: user,
         bookings: bookings,
@@ -26,6 +26,9 @@ export function mapDispatchToProps(dispatch, ownProps) {
 
         unchooseBooking() {
             dispatch(unchooseBooking());
+        },
+        cancelBooking(booking) {
+            dispatch(cancelBooking(booking));
         }
     };
 }
