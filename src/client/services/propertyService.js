@@ -22,7 +22,7 @@ class PropertyService {
         return api.sendRequest(`api/property/${id}/details`, 'get').then(response => response.data);
     }
     getPropertiesByCity(city){
-        return api.sendRequest(`api/property/city-info/${city}`, 'get').then(response => response.data)
+        return api.sendRequest(`api/property/city-info/`, 'get').then(response => response.data)
     }
 }
 
