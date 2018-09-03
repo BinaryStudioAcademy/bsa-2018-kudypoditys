@@ -273,7 +273,8 @@ const state = {
         user: null,
         activeBooking: null,
         bookings: [],
-        reviews: []
+        reviews: [],
+        activeIndex: 0
     },
     availabilityCalendar: [
         {

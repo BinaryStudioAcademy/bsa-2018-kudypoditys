@@ -29,7 +29,7 @@ export class BookingSegment extends React.Component {
         const days = Math.round(duration.asDays());
         const price = Number(booking.room.price) * days;
         return (
-            <Segment className="booking-container">
+            <Segment vertical className="booking-container">
                 <Grid className="booking">
                     <Grid.Row className="booking-header">
                         <Grid.Column width={4} textAlign="left" />

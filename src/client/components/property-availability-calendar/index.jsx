@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Table, Button, Icon } from "semantic-ui-react";
+import { Table, Button, Icon, Header, Message } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "./container";
 import { DrawCount } from "./drawCount";
@@ -72,6 +72,10 @@ export class AvailabilityCalendar extends React.Component {
         const daysArray = this.getDaysArrayByMonth();
         return (
             <Fragment>
+                <Header as="h2">Your properties</Header>
+                <Message info>
+                    This is the calendar for booking your rooms.
+                </Message>
                 <div style={{ overflow: "auto" }}>
                     {console.log(this.props[0].rooms[0])}
                     <Table compact celled padded>

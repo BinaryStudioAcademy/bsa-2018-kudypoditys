@@ -6,7 +6,8 @@ import {
     Image,
     Button,
     Icon,
-    Table
+    Table,
+    Divider
 } from "semantic-ui-react";
 import { Slider } from "../slider";
 import moment from "moment";
@@ -41,11 +42,11 @@ export class BookingPage extends React.Component {
                         Back to all bookings
                     </span>
                 </a>
-
+                <Divider />
                 <div className="property-images">
                     <Slider pics={images} />
                 </div>
-
+                <Divider />
                 <div className="booking-page-top-section">
                     <Table collapsing celled className="booking-info">
                         <Table.Header>
@@ -110,7 +111,6 @@ export class BookingPage extends React.Component {
                             </Table.Row>
                         </Table.Body>
                     </Table>
-
                     <div className="property-info">
                         <Header
                             textAlign="center"

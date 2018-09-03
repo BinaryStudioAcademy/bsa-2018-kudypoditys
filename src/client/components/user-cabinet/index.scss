@@ -12,3 +12,12 @@
     font-size: 18px;
     letter-spacing: -0.2px;
 }
+
+.tab-container {
+    .ui.primary.button {
+        background-color: #465672;
+        &:hover {
+            background-color: #6078a3;
+        }
+    }
+}
