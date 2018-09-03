@@ -7,18 +7,15 @@ import './index.scss';
 
 
 
-import {getGroupedArray, getAvgFromArray, getPropertyStatus} from 'client/helpers/avgReviewRating';
+import { getPropertyStatus} from 'client/helpers/avgReviewRating';
 
 class RatingBlock extends React.Component {
-    constructor(props){
-        super(props);
 
-    }
 
     render(){
 
-        const {avgPropRating} = this.props
-        const {reviewsCount} = this.props
+        const {avgPropRating,reviewsCount} = this.props
+
         const ratingStatus = getPropertyStatus(avgPropRating);
 
         return(

@@ -59,7 +59,7 @@ export class PropertyPage extends React.Component {
         //AVG PROPERTY RATING
         const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
-        // property STATUS
+
 
 
         const pics = this.getImagesArray(property.images);
