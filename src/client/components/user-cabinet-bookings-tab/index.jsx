@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import "./index.scss";
 import { BookingSegment } from "./booking-segment";
-import { Container, Button, Header } from "semantic-ui-react";
+import { Container, Button, Header, Message } from "semantic-ui-react";
 import { BookingPage } from "./booking-page";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { connect } from "react-redux";
@@ -68,6 +68,11 @@ export class BookingsTab extends React.Component {
             </Container>
         ) : (
             <Container fluid className="bookings-container">
+                <Header as="h2">Your active bookings</Header>
+                <Message info>
+                    This list of your bookings, you can see a detailed
+                    description by clicking on the button.
+                </Message>
                 {this.getBookings(bookings)}
             </Container>
         );

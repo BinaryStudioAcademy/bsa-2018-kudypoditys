@@ -272,7 +272,8 @@ const state = {
     userCabinet: {
         user: null,
         activeBooking: null,
-        bookings: []
+        bookings: [],
+        reviews: []
     },
     availabilityCalendar: [
         {

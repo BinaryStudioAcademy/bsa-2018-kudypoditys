@@ -28,15 +28,14 @@ export default function* userCabinetSaga() {
         try {
             const reviewsResponse = yield call(
                 userService.getUserReviews,
-                action.payload
+                action.payload.id
             );
             yield put({
                 type: actionTypes.GET_USER_REVIEWS_SUCCESS,
-                payload: {
-                    ...reviewsResponse.data
-                }
+                payload: reviewsResponse.data
             });
         } catch (error) {
+            console.log(error.message);
             yield put({ type: actionTypes.GET_USER_REVIEWS_FAILURE });
         }
     }

@@ -53,7 +53,6 @@ export default function userCabinetReducer(
         }
 
         case GET_USER_REVIEWS_SUCCESS: {
-            console.log("REDUCER", action);
             return {
                 ...state,
                 reviews: action.payload

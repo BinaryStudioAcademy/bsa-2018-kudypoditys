@@ -6,7 +6,8 @@ import {
     Image,
     Button,
     Header,
-    Icon
+    Icon,
+    Message
 } from "semantic-ui-react";
 import "./booking-segment.scss";
 import moment from "moment";
@@ -18,7 +19,7 @@ export class BookingSegment extends React.Component {
     };
 
     render() {
-        const {images, booking} = this.props;
+        const { images, booking } = this.props;
         const dateIn = new Date(booking.dateIn),
             dateOut = new Date(booking.dateOut);
 
@@ -86,6 +87,7 @@ export class BookingSegment extends React.Component {
 
                         <Grid.Column width={12}>
                             <Button
+                                floated="right"
                                 primary
                                 content="View booking"
                                 onClick={event =>

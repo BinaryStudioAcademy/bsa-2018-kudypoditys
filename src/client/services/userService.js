@@ -35,8 +35,8 @@ class UserService {
     }
     getUserReviews(id) {
         return api
-            .sendAuthRequest(`/api/reviews/${1}/byuserid`, "get")
-            .then(response => response.data);
+            .sendAuthRequest(`/api/review/${id}/byuserid`, "get")
+            .then(response => response);
     }
 }
 

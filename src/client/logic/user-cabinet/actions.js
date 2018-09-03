@@ -32,8 +32,9 @@ export function cancelBooking(booking) {
     };
 }
 
-export function getUserReviews() {
+export function getUserReviews(data) {
     return {
-        type: GET_USER_REVIEWS
+        type: GET_USER_REVIEWS,
+        payload: data
     };
 }

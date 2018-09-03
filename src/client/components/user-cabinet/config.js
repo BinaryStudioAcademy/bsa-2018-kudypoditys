@@ -7,7 +7,6 @@ export const MenuItems = [
     {
         menuItem: {
             key: "Bookings tab",
-            header: "My bookings",
             content: "My bookings",
             icon: "calendar alternate outline",
             component: <BookingTab />
@@ -16,7 +15,6 @@ export const MenuItems = [
     {
         menuItem: {
             key: "Settings tab",
-            header: "My settings",
             content: "My settings",
             icon: "settings",
             component: <SettingsTab />
@@ -25,7 +23,6 @@ export const MenuItems = [
     {
         menuItem: {
             key: "Reviews tab",
-            header: "My Reviews",
             content: "My Reviews",
             icon: "comment outline",
             component: <ReviewsTab />
@@ -34,7 +31,6 @@ export const MenuItems = [
     {
         menuItem: {
             key: "My Properties ",
-            header: "My Properties ",
             content: "My Properties ",
             icon: "building outline",
             component: <AvailabilityCalendar />

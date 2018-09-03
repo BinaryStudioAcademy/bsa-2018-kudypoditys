@@ -1,16 +1,17 @@
 import { getUserReviews } from "../../logic/user-cabinet/actions";
 
 export function mapStateToProps(state, ownProps) {
-    const { reviews } = state.userCabinet;
+    const { userCabinet } = state;
+    console.log(userCabinet);
     return {
-        ...reviews
+        ...userCabinet
     };
 }
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
-        getUserReviews() {
-            dispatch(getUserReviews());
+        getUserReviews(data) {
+            dispatch(getUserReviews(data));
         }
     };
 }
