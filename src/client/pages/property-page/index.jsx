@@ -122,6 +122,25 @@ export class PropertyPage extends React.Component {
                         />
                         <Divider />
                         <PropertySummary property={property} />
+                        <div className="rating_block">
+                            <div style={{
+                                textAlign: "center",
+                                display: "flex",
+                                flexDirection: "column",
+                                paddingRight: 10
+                            }}>
+                                <div className="ratingName">
+                                    {" "}
+                                    VeryGood
+                                </div>
+                                <br/>
+                                <span className="reviewsNumber">{property.reviews.length} reviews</span>
+
+                            </div>
+
+
+                            <div className="rating_num"> {avgPropRating}</div>
+                        </div>
                         <Slider
                             pics={pics}
                             handleSlideChange={handleSlideChange}
