@@ -210,7 +210,7 @@ class PropertyRepository extends Repository {
 
         return this.model
             .findAll({
-                limit: 5,
+                limit: 100,
                 offset: 0,
                 where: {
                     id: { $in: filter.propertiesIds }
@@ -236,15 +236,15 @@ class PropertyRepository extends Repository {
 
                             {
                                 model: Reservation,
-                            //     where: sequelize.or( {
-                            //         dateOut: { $lt: filter.dateIn  },
+                                where:{ //sequelize.or( {
+                                    dateOut: { $lt: filter.dateIn  },
 
 
-                            //         dateIn: {
-                            //             $gt: filter.dateOut
+                                    // dateIn: {
+                                    //     $gt: filter.dateOut
 
-                            //         }
-                            //     })
+                                    // }
+                                }//)
                              }
                         ],
                         where: {

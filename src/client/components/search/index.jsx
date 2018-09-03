@@ -11,31 +11,26 @@ import axios from "axios";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 import history from "client/history";
+import queryString from 'query-string';
 
 export class MainSearch extends React.Component {
     componentDidMount() {
+        if (history.location.search!==""){
+
+        var parsed = queryString.parse(history.location.search);
         console.log(
             "MainSearch this.props.params =   " +
-                JSON.stringify(this.props)
+                JSON.stringify(parsed)
         );
-        if (this.props.params) {
-            const {
-                query,
-                rooms,
-                adults,
-                children,
-                startDate,
-                endDate
-            } = this.props.params;
             this.setState({
-                query: query,
-                rooms: rooms,
-                adults: adults,
-                children: children,
-                startDate: startDate,
-                endDate: endDate
-            });
-            this.handleSubmit
+                query: parsed.query,
+                rooms: parsed.rooms,
+                adults: parsed.adults,
+                children: parsed.children,
+                startDate: moment(Number(parsed.startDate)) ,
+                endDate: moment(Number(parsed.endDate))
+            }, () => { this.handleSubmit() });
+
         }
     }
     resetComponent = () =>
@@ -106,17 +101,21 @@ export class MainSearch extends React.Component {
         );
     };
     handleSubmit = () => {
-        console.log("handleSubmit trigered");
-        // let path = `/search-page`;
-        // history.push(path);
         const {
             query,
             rooms,
             adults,
             children,
             startDate,
-            endDate
+            endDate,
+            sortBy
         } = this.state;
+        console.log("handleSubmit trigered");
+        history.push({
+            pathname: '/search-page',
+            search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
+          })
+
         this.props.onSearch({
             query: query,
             rooms: rooms,
@@ -204,6 +203,7 @@ export class MainSearch extends React.Component {
         if (selectedDates.startDate && selectedDates.endDate) {
             this.props.onDatesChange(selectedDates);
         }
+        console.log(JSON.stringify(selectedDates))
         this.setState(selectedDates);
     };
 
@@ -226,7 +226,7 @@ export class MainSearch extends React.Component {
 
             //console.log("search state" + JSON.stringify(this.state));
 
-            if (data !== undefined && data !== "" && data.length > 0) {
+          //  if ( data !== "" && data.length > 0) {
                 // console.log("searchResults" + JSON.stringify(data));
                 this.props.handleSearchResults({
                     searchResults: data,
@@ -236,10 +236,10 @@ export class MainSearch extends React.Component {
                         adults: this.state.adults,
                         children: this.state.children,
                         startDate: this.state.startDate,
-                        endDate: this.state.endDaten
+                        endDate: this.state.endDate
                     }
                 });
-            }
+         //   }
         }
         const childrenOptions = this.generateOptions(0, 10);
 
@@ -382,8 +382,8 @@ MainSearch.propTypes = {
 
 MainSearch.defaultProps = {
     destination: "",
-    checkIn: null,
-    checkOut: null,
+    checkIn: new Date("2018-09-10"),
+    checkOut: new Date("2018-09-11"),
     adults: 1,
     children: 0,
     rooms: 1
