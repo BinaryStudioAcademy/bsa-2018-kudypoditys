@@ -29,9 +29,9 @@ property
     });
 
 property.route("/page").get((req, res) => {
-    const { page, recordsOnPage } = req.query;
+    const {page, recordsOnPage} = req.query;
     propertyService
-        .findByPage({ page, recordsOnPage })
+        .findByPage({page, recordsOnPage})
         .then(list => {
             res.status(200).send(list);
         })

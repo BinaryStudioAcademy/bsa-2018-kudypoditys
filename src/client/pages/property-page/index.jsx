@@ -24,14 +24,14 @@ import BookingForm from "../../components/booking-form";
 import ReactDOM from "react-dom";
 import HouseRules from "./rules";
 import PaymentMethods from "./payment";
+import Reviews from "../../components/reviews";
+import {getGroupedArray, getAvgFromArray, getPropertyStatus} from 'client/helpers/avgReviewRating';
+import RatingBlock from "../../components/reviews/ratingBlock";
 
 export class PropertyPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            reviewsVisible: false
-        };
-    }
+    toggleReviews = () => {
+        this.setState({reviewsVisible: !this.state.reviewsVisible});
+    };
 
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
@@ -50,18 +50,22 @@ export class PropertyPage extends React.Component {
         const node = ReactDOM.findDOMNode(this.refs[targetRef]);
         node.scrollIntoView();
     };
-
-    toggleReviews = () => {
-        this.setState({ reviewsVisible: !this.state.reviewsVisible });
-    };
-
     hideReviews = () => {
-        this.setState({ reviewsVisible: false });
+        this.setState({reviewsVisible: false});
     };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            reviewsVisible: false
+        };
+    }
 
     render() {
         const { property, user } = this.props;
-        const { reviewsVisible } = this.state;
+        console.log(property)
+        // const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
+        const {reviewsVisible} = this.state;
         const dividerStyle = {
             color: "#465672",
             borderTop: "1px solid #46567215",
@@ -73,6 +77,12 @@ export class PropertyPage extends React.Component {
         };
 
         if (!property) return null;
+
+        //AVG PROPERTY RATING
+        const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
+        const avgPropRating = getAvgFromArray(avgPropRatingArray);
+
+
 
         const pics = this.getImagesArray(property.images);
         return (
@@ -112,7 +122,7 @@ export class PropertyPage extends React.Component {
                                     trigger={
                                         <div
                                             className="book-btn"
-                                            style={{ height: "33px" }}
+                                            style={{height: "33px"}}
                                         >
                                             <button>Book now</button>
                                             <div
@@ -157,20 +167,21 @@ export class PropertyPage extends React.Component {
                                     this.toggleReviews();
                                 }}
                             />
-                            <Divider />
-                            <PropertySummary property={property} />
-                            <Slider pics={pics} slideIndex={0} />
+                            <Divider/>
+                            <PropertySummary property={property}/>
+                            <RatingBlock avgPropRating={avgPropRating} reviewsCount={property.reviews.length}/>
+                            <Slider pics={pics} slideIndex={0}/>
 
-                            <Divider hidden />
+                            <Divider hidden/>
                             <div
                                 className="property-page__description"
-                                style={{ width: "100%" }}
+                                style={{width: "100%"}}
                             >
                                 <PropertyDescription
                                     property={property}
-                                    style={{ width: "100%" }}
+                                    style={{width: "100%"}}
                                 />
-                                <Divider style={dividerStyle} />
+                                <Divider style={dividerStyle}/>
                                 <Container
                                     text
                                     style={{
@@ -227,7 +238,7 @@ export class PropertyPage extends React.Component {
                                             />
                                             <Header
                                                 as="h2"
-                                                style={{ color: "#465672" }}
+                                                style={{color: "#465672"}}
                                             >
                                                 Payment Method
                                             </Header>
@@ -249,8 +260,8 @@ export class PropertyPage extends React.Component {
                                 }}
                             />
 
-                            <AvailabilityPanel style={{ width: "100%" }} />
-                            <Divider style={dividerStyle} />
+                            <AvailabilityPanel style={{width: "100%"}}/>
+                            <Divider style={dividerStyle}/>
                             <div>
                                 <Header
                                     as="h2"
@@ -266,7 +277,7 @@ export class PropertyPage extends React.Component {
                                     rooms={property.rooms}
                                 />
                             </div>
-                            <Divider hidden />
+                            <Divider hidden/>
                         </Container>
                     </div>
                 </Sidebar.Pusher>

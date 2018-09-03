@@ -1,17 +1,18 @@
 import React from "react";
 import "./index.scss";
-import { Header, Icon } from "semantic-ui-react";
+import {Header, Icon} from "semantic-ui-react";
 import PropTypes from "prop-types";
 import Modal from "../modal";
 import BasicMapWidget from "../basic-map-widget";
 
+import MapWidgetModal from "client/components/map-widget-modal";
 export class PropertySummary extends React.Component {
     handleRedirectToMap = () => {
         console.log(this.props.property.coordinates);
     };
 
     render() {
-        const { property } = this.props;
+        const {property} = this.props;
 
         return (
             <div className="property-summary__container">
