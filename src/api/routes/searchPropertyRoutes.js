@@ -40,7 +40,7 @@ searchProperty.route("/").get((req, res) => {
                     bedsCount: parseInt(adults) + parseInt(children),
                     sortBy: sortBy,
                     startDate: startDate,
-                    endDate: endDate
+                    endDate:endDate
 
                 };
                 propertyService

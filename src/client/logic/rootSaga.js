@@ -10,6 +10,7 @@ import reviewSaga from 'client/logic/reviews/saga';
 import propertyPageSaga from "./property-page/saga";
 import searchSaga from "./search/saga";
 import personalSettingsSaga from "./personal-settings-edit/saga";
+import availabilityCalendar from "client/logic/property-availability-calendar/saga";
 
 export default function* rootSaga() {
     yield all([
@@ -23,6 +24,7 @@ export default function* rootSaga() {
         fork(reviewSaga),
         fork(propertyPageSaga),
         fork(emailVerificationSaga),
-        fork(searchSaga)
+        fork(searchSaga),
+        fork(availabilityCalendar)
     ]);
 }

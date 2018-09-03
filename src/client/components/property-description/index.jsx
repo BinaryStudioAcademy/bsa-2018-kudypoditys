@@ -3,19 +3,14 @@ import "./index.scss";
 import { Divider, Container } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
-
 export default class PropertyDescription extends React.Component {
-    // todo add icons to every facility regarding of type
-
     render() {
-        const {property} = this.props,
-            description = property.description,
-            facilities = property.facilityLists;
+        const { property } = this.props,
+            description = property.description;
 
         return (
             <Container text>
-                <p>{description}</p>
-                <Divider />
+                <p style={{ color: "#465672" }}>{description}</p>
             </Container>
         );
     }

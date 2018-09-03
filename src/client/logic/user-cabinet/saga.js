@@ -1,4 +1,4 @@
-import {call, put, all, takeLatest} from "redux-saga/effects";
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
 import api from "../../helpers/api";
 

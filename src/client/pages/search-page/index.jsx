@@ -1,34 +1,20 @@
 import React from "react";
 import "./index.scss";
-import {Container, Grid, Segment, Icon} from "semantic-ui-react";
+import { Container, Grid, Segment, Icon } from "semantic-ui-react";
 
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "client/components/property-list-item";
-import {Pagination} from "client/components/pagination";
+import { Pagination } from "client/components/pagination";
 import BasicMapWidget from "client/components/basic-map-widget";
 import Header from "client/components/header";
-import {Breadcrumb} from "semantic-ui-react";
+import { Breadcrumb } from "semantic-ui-react";
 import QuickFilter from "client/components/quick-filter";
-import {connect} from "react-redux";
-import {mapStateToProps} from "./container";
+import { connect } from "react-redux";
+import { mapStateToProps } from "./container";
 
 class SearchPage extends React.Component {
-    handleSearchResults = searchData => {
-        const listItems = searchData.searchResults.map(property => (
-            <PropertyListItem key={property.id} propertyItemData={property}/>
-        ));
-        this.setState({
-            listItems: listItems,
-            itemCount: searchData.searchResults.length,
-            searchRequest: searchData.searchRequest
-        });
-    };
-    onSortingSelected = value => {
-        this.setState({sortBy: value});
-    };
-
     constructor(props) {
         super(props);
         this.state = {
@@ -37,6 +23,19 @@ class SearchPage extends React.Component {
             searchRequest: {}
         };
     }
+    handleSearchResults = searchData => {
+        const listItems = searchData.searchResults.map(property => (
+            <PropertyListItem key={property.id} propertyItemData={property} />
+        ));
+        this.setState({
+            listItems: listItems,
+            itemCount: searchData.searchResults.length,
+            searchRequest: searchData.searchRequest
+        });
+    };
+    onSortingSelected = value => {
+        this.setState({ sortBy: value });
+    };
 
     render() {
         return (
@@ -51,13 +50,13 @@ class SearchPage extends React.Component {
                             <Breadcrumb
                                 icon="right angle"
                                 sections={[
-                                    {key: "Home", content: "Home", href: "#"},
+                                    { key: "Home", content: "Home", href: "#" },
                                     {
                                         key: "Ukraine",
                                         content: "Ukraine",
                                         href: "#"
                                     },
-                                    {key: "Lviv", content: "Lviv", href: "#"},
+                                    { key: "Lviv", content: "Lviv", href: "#" },
                                     {
                                         key: "DREAM Hostel Lviv",
                                         content: "DREAM Hostel Lviv",
@@ -69,7 +68,7 @@ class SearchPage extends React.Component {
                     </div>
 
                     <Container className="search-page__wrapper-left_side">
-                        <QuickFilter/>
+                        <QuickFilter />
                         <div
                             style={{
                                 marginTop: "4%"
@@ -77,7 +76,7 @@ class SearchPage extends React.Component {
                         >
                             <BasicMapWidget
                                 key="BasicMapWidget"
-                                coordinates={{lat: 49.837089, lng: 24.021161}}
+                                coordinates={{ lat: 49.837089, lng: 24.021161 }}
                                 rounded
                                 centered
                             />
@@ -91,11 +90,11 @@ class SearchPage extends React.Component {
                             />
                             <div className="switch">
                                 <div className="list_btn">
-                                    <Icon name="list ul" color="white"/>
+                                    <Icon name="list ul" color="white" />
                                     List
                                 </div>
                                 <div className="map_btn">
-                                    <Icon name="world"/>
+                                    <Icon name="world" />
                                     Map
                                 </div>
                             </div>
@@ -106,7 +105,7 @@ class SearchPage extends React.Component {
                         />
                         {this.state.listItems}
                         <div className="search-page__pagination">
-                            <Pagination pagesCount={10}/>
+                            <Pagination pagesCount={10} />
                         </div>
                     </Container>
                 </div>

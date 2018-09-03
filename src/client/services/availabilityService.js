@@ -1,6 +1,5 @@
 import api from "../helpers/api";
 
-
 class AvailabilityService {
     createAvailability(data) {
         return api

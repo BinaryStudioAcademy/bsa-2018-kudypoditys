@@ -1,5 +1,5 @@
 import React from "react";
-import {Table, Label} from "semantic-ui-react";
+import { Table, Label } from "semantic-ui-react";
 import moment from "moment";
 
 
@@ -7,7 +7,7 @@ const daysInMonth = moment().daysInMonth();
 
 export class DrawReservations extends React.Component {
     reservationsInput = () => {
-        const {reservations} = this.props;
+        const { reservations } = this.props;
         const labels = [];
         for (let index = 1; index < daysInMonth + 1; index++) {
             let reservedRooms = 0;

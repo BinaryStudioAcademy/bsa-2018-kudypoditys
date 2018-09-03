@@ -1,10 +1,10 @@
 import React from "react";
 import "./index.scss";
-import {Header} from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import formatNumber from "client/helpers/formatNumber";
-import {connect} from "react-redux";
-import {mapStateToProps} from "./container";
+import { connect } from "react-redux";
+import { mapStateToProps } from "./container";
 
 export class SearchSummary extends React.Component {
     render() {

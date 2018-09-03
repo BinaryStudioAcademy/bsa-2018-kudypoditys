@@ -122,10 +122,10 @@ module.exports = {
                     id: property.id,
                     name: property.name,
                     // rating: property.rating,
-                    image: property.images[0].url,
+                     image: property.images[0].url,
                     city: property.city.name,
                     // description: property.description,
-                    address: property.address,
+                     address: property.address,
                     // coordinatesLat: property.coordinates.lat,
                     // coordinatesLng: property.coordinates.lng,
                     // rooms: property.rooms.map(room => {

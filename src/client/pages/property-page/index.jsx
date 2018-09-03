@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import { Divider, Container, Segment, Header, Icon } from "semantic-ui-react";
+import { Divider, Container, List, Header, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import Search from "client/components/search";
@@ -8,28 +8,21 @@ import AppHeader from "client/components/header";
 import AvailabilityPanel from "client/components/availability-panel";
 import Slider from "client/components/slider";
 import PropertyDescription from "client/components/property-description";
-import {PropertySummary} from "client/components/property-summary";
-import {NavigationBar} from "client/components/navigation-bar";
+import { PropertySummary } from "client/components/property-summary";
+import { NavigationBar } from "client/components/navigation-bar";
 import BasicMapWidget from "client/components/basic-map-widget";
 import RoomsSummaryTable from "client/components/rooms-summary-table";
 import Modal from "../../components/modal";
 import BookingForm from "../../components/booking-form";
 import ReactDOM from "react-dom";
-
-import Reviews from "client/components/reviews";
-
+import HouseRules from "./rules";
+import PaymentMethods from "./payment";
 
 export class PropertyPage extends React.Component {
-
-    state = {open: false}
-
-    handleOpen = () => this.setState({open: true})
-
-    handleClose = () => this.setState({open: false})
-    onBookSubmit = event => {
-        console.log("book!");
-
-    };
+    componentWillMount() {
+        this.props.getProperty(this.props.match.params.id);
+        this.props.getBookings();
+    }
 
     getImagesArray(propertyImages) {
         let images = [];
@@ -39,19 +32,18 @@ export class PropertyPage extends React.Component {
         return images;
     }
 
-    componentWillMount() {
-        this.props.getProperty(this.props.match.params.id);
-        console.log(this.props.match.params.id)
-
-    }
-
     scrollTo = targetRef => {
         const node = ReactDOM.findDOMNode(this.refs[targetRef]);
         node.scrollIntoView();
     };
 
     render() {
-        const {property, user} = this.props;
+        const { property, user } = this.props;
+        const dividerStyle = {
+            color: "#465672",
+            borderTop: "1px solid #46567215",
+            borderBottom: "1px solid #465672"
+        };
 
         const handleSlideChange = index => {
             console.log(`Slide changed to ${index}`);
@@ -77,12 +69,12 @@ export class PropertyPage extends React.Component {
                                 trigger={
                                     <div
                                         className="book-btn"
-                                        style={{height: "33px"}}
+                                        style={{ height: "33px" }}
                                     >
                                         <button>Book now</button>
                                         <div
                                             className="book-icon"
-                                            style={{cursor: "pointer"}}
+                                            style={{ cursor: "pointer" }}
                                         >
                                             <Icon
                                                 name="bookmark"
@@ -94,7 +86,6 @@ export class PropertyPage extends React.Component {
                                 onClose={this.props.clearBookingForm}
                             >
                                 <BookingForm
-                                    onBook={this.onBookSubmit}
                                     rooms={property.rooms}
                                     paymentTypes={property.paymentTypes}
                                 />
@@ -114,6 +105,12 @@ export class PropertyPage extends React.Component {
                             infoClick={() => {
                                 this.scrollTo("roomsRef");
                             }}
+                            rulesClick={() => {
+                                this.scrollTo("houseRuleRef");
+                            }}
+                            reviewsClick={() => {
+                                this.scrollTo("reviewsRef");
+                            }}
                         />
                         <Divider />
                         <PropertySummary property={property} />
@@ -132,6 +129,7 @@ export class PropertyPage extends React.Component {
                                 property={property}
                                 style={{ width: "100%" }}
                             />
+                            <Divider style={dividerStyle} />
                             <Container
                                 text
                                 style={{
@@ -140,35 +138,108 @@ export class PropertyPage extends React.Component {
                                     color: "green"
                                 }}
                             >
-                                <div ref={"facilitiesRef"}>
-                                    <Header as="h2">Facilities</Header>
-                                    {property.facilityLists.map((item, i) => {
-                                        return (
-                                            <span
-                                                key={i}
-                                                style={{
-                                                    marginRight: 10,
-                                                    marginBottom: 10,
-                                                    fontSize: 18,
-                                                    lineHeight: 1.2,
-                                                    color: "green"
-                                                }}
-                                            >
-                                                {item.facility.name}
-                                            </span>
-                                        );
-                                    })}
+                                <div className="facilities-section">
+                                    <div ref={"facilitiesRef"}>
+                                        <Header
+                                            as="h2"
+                                            style={{ color: "#465672" }}
+                                        >
+                                            Facilities
+                                        </Header>
+                                        <List>
+                                            {property.facilityLists.map(
+                                                (item, i) => {
+                                                    return (
+                                                        <List.Item>
+                                                            <List.Content>
+                                                                <span
+                                                                    key={i}
+                                                                    style={{
+                                                                        marginRight: 10,
+                                                                        marginBottom: 10,
+                                                                        fontSize: 18,
+                                                                        lineHeight: 1.2,
+                                                                        color:
+                                                                            "rgb(166,174,188)"
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        item
+                                                                            .facility
+                                                                            .name
+                                                                    }
+                                                                </span>
+                                                            </List.Content>
+                                                        </List.Item>
+                                                    );
+                                                }
+                                            )}
+                                        </List>
+                                    </div>
+                                    <div
+                                        className="rules-payment-section"
+                                        ref={"houseRuleRef"}
+                                    >
+                                        <Header
+                                            as="h2"
+                                            style={{ color: "#465672" }}
+                                        >
+                                            Hotel Policy
+                                        </Header>
+                                        <HouseRules
+                                            rules={property.accommodationRule}
+                                        />
+                                        <Header
+                                            as="h2"
+                                            style={{ color: "#465672" }}
+                                        >
+                                            Payment Method
+                                        </Header>
+                                        <PaymentMethods
+                                            paymentTypes={property.paymentTypes}
+                                        />
+                                    </div>
                                 </div>
                             </Container>
                         </div>
-                        <Divider hidden />
+
+                        <Divider
+                            style={{
+                                color: "#465672",
+                                borderTop: "1px solid #46567215",
+                                borderBottom: "1px solid #465672"
+                            }}
+                        />
 
                         <AvailabilityPanel style={{ width: "100%" }} />
-                        <RoomsSummaryTable
-                            ref={"roomsRef"}
-                            rooms={property.rooms}
-                        />
-                        <Reviews property={property}/>
+                        <Divider style={dividerStyle} />
+                        <div>
+                            <Header
+                                as="h2"
+                                style={{
+                                    paddingLeft: "15px",
+                                    color: "#465672"
+                                }}
+                            >
+                                Rooms
+                            </Header>
+                            <RoomsSummaryTable
+                                ref={"roomsRef"}
+                                rooms={property.rooms}
+                            />
+                        </div>
+                        <Divider style={dividerStyle} />
+                        <div ref="reviewsRef">
+                            <Header
+                                as="h2"
+                                style={{
+                                    paddingLeft: "15px",
+                                    color: "#465672"
+                                }}
+                            >
+                                Reviews
+                            </Header>
+                        </div>
                     </Container>
                 </div>
             </div>

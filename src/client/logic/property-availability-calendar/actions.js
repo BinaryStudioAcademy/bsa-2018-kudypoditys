@@ -4,7 +4,6 @@ import {
     GET_CURRENT_USER_INFO
 } from "./actionTypes";
 
-
 export function calendarUpdate(payload) {
     return {
         type: PROPERTY_CALENDAR_UPDATE,

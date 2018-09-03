@@ -15,11 +15,11 @@ class AvailabilityService extends Service {
     }
 
     updateAvailability(id, availability) {
-        return availabilityRepository.updateById({_id: id}, availability);
+        return availabilityRepository.updateById({ _id: id }, availability);
     }
 
     deleteAvailability(id) {
-        return availabilityRepository.deleteById({_id: id});
+        return availabilityRepository.deleteById({ _id: id });
     }
 }
 

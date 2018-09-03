@@ -1,6 +1,6 @@
 import api from "../helpers/api";
 import history from "client/history";
-import {UPLOAD_PRESET, UPLOAD_URL} from "./config";
+import { UPLOAD_PRESET, UPLOAD_URL } from "./config";
 import request from "superagent";
 
 class UserService {
@@ -12,7 +12,6 @@ class UserService {
                 //history.push("/login");
             });
     }
-
     uploadAvatar(action) {
         return () =>
             request
@@ -20,7 +19,6 @@ class UserService {
                 .field("upload_preset", UPLOAD_PRESET)
                 .field("file", action.payload[0]);
     }
-
     updateUser(action) {
         return api
             .sendRequest(
@@ -30,7 +28,6 @@ class UserService {
             )
             .then(response => response.data);
     }
-
     resetUserPassword(action) {
         return api
             .sendRequest("/api/forgot", "post", action.payload)

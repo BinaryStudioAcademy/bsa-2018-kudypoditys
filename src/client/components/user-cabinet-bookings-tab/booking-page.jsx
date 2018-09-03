@@ -19,7 +19,7 @@ export class BookingPage extends React.Component {
     };
     render() {
         const { booking, images } = this.props;
-        const {room} = booking;
+        const { room } = booking;
         const dateIn = new Date(booking.dateIn),
             dateOut = new Date(booking.dateOut);
         const start = moment(dateIn);
@@ -43,7 +43,7 @@ export class BookingPage extends React.Component {
                 </a>
 
                 <div className="property-images">
-                    <Slider pics={images}/>
+                    <Slider pics={images} />
                 </div>
 
                 <div className="booking-page-top-section">
@@ -132,7 +132,7 @@ export class BookingPage extends React.Component {
                                         name: room.property.name,
                                         latitude: room.property.coordinates.lat,
                                         longitude:
-                                        room.property.coordinates.lng,
+                                            room.property.coordinates.lng,
                                         imageSrc: room.property.images[0].url,
                                         address: room.property.address,
                                         rating: room.property.rating

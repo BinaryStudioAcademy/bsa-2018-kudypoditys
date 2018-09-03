@@ -38,7 +38,7 @@ let User = orm.define("user", {
     },
     dayOfBirth: {
         type: Sequelize.DATE,
-        validate: {isDate: true},
+        validate: { isDate: true },
         allowNull: true
     },
     appeal: {

@@ -3,9 +3,8 @@ import {
     UPLOAD_USER_AVATAR_SUCCESS,
     USER_SETTINGS_SEND_SUCCES
 } from "./actionTypes";
-import {GET_CURRENT_USER_SUCCESS} from "../login/actionTypes";
+import { GET_CURRENT_USER_SUCCESS } from "../login/actionTypes";
 import defaultState from "client/logic/defaultState";
-
 
 export default function userSettingsReducer(
     state = defaultState.personalSettings,

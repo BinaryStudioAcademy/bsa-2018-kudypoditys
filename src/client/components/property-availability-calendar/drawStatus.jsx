@@ -1,6 +1,5 @@
-import React, {Fragment} from "react";
-import {Table, Icon} from "semantic-ui-react";
-
+import React, { Fragment } from "react";
+import { Table, Icon } from "semantic-ui-react";
 
 const count = 30;
 
@@ -9,7 +8,7 @@ const statusCell = count => {
     for (let index = 0; index < count; index++) {
         const element = (
             <Table.Cell key={index}>
-                <Icon color="green" name="checkmark" size="large"/>
+                <Icon color="green" name="checkmark" size="large" />
             </Table.Cell>
         );
         inputs.push(element);

@@ -1,8 +1,7 @@
-import {call, put, takeLatest, all} from "redux-saga/effects";
+import { call, put, takeLatest, all } from "redux-saga/effects";
 import propertyService from "client/services/propertyService";
 import availabilityService from "client/services/availabilityService";
 import * as actionTypes from "./actionTypes";
-
 
 function* createAvailability(action) {
     try {
@@ -17,7 +16,7 @@ function* createAvailability(action) {
             }
         });
     } catch (error) {
-        yield put({type: actionTypes.AVAILABILITY_UPDATE_SUBMIT});
+        yield put({ type: actionTypes.AVAILABILITY_UPDATE_SUBMIT });
     }
 }
 
@@ -35,7 +34,7 @@ function* getUserpropertiesInfo(id) {
         });
     } catch (error) {
         console.log(error);
-        yield put({type: actionTypes.GET_CURRENT_USER_INFO_FAILURE});
+        yield put({ type: actionTypes.GET_CURRENT_USER_INFO_FAILURE });
     }
 }
 

@@ -10,7 +10,7 @@ export class RankingBar extends React.Component {
 
     handleItemClick = (event, value) => {
         const searchRequest = this.props.searchRequest
-        searchRequest.sortBy = value.value
+        searchRequest.sortBy=value.value
         this.props.onSelect(searchRequest);
     };
 

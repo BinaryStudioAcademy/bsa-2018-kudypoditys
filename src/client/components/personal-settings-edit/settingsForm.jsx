@@ -1,7 +1,7 @@
-import React, {Component} from "react";
-import {reduxForm, Field} from "redux-form";
+import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form";
 import ImageUploader from "react-images-upload";
-import {phoneNumber, email} from "client/regexValidationService";
+import { phoneNumber, email } from "client/regexValidationService";
 import inputField from "./input";
 
 import {
@@ -35,7 +35,7 @@ export class SettingsForm extends Component {
         this.props.updateSettings(data);
     };
 
-    sendSettings = (e, {name, value}) => {
+    sendSettings = (e, { name, value }) => {
         this.props.sendSettings();
     };
 
@@ -44,7 +44,7 @@ export class SettingsForm extends Component {
     };
 
     // Credit cards mini-form handlers:
-    handleCreditCardsChange = (e, {name, value}) => {
+    handleCreditCardsChange = (e, { name, value }) => {
         this.setState({
             creditCard: {
                 ...this.state.creditCard,
@@ -77,7 +77,7 @@ export class SettingsForm extends Component {
             return;
         }
         this.props.updateSettings({
-            creditCards: [...this.props.creditCards, {...data}]
+            creditCards: [...this.props.creditCards, { ...data }]
         });
 
         this.addingItem("addingCreditcard", false);
@@ -96,7 +96,7 @@ export class SettingsForm extends Component {
             }
         });
     };
-    removeCreditCard = (e, {name, value}) => {
+    removeCreditCard = (e, { name, value }) => {
         this.updateSettings({
             creditCards: this.props.creditCards.filter(
                 creditcard => creditcard.number !== name
@@ -104,7 +104,7 @@ export class SettingsForm extends Component {
         });
     };
 
-    handleChange = (e, {name, value}) => {
+    handleChange = (e, { name, value }) => {
         console.log(e);
         const data = {
             [name]: value
@@ -153,7 +153,7 @@ export class SettingsForm extends Component {
                     <p className="personal_settings-p">Main photo</p>
                     <Image
                         circular
-                        style={{width: "150px", height: "150px"}}
+                        style={{ width: "150px", height: "150px" }}
                         src={
                             this.props.avatar ||
                             "https://www.mautic.org/media/images/default_avatar.png"
@@ -312,7 +312,7 @@ export class SettingsForm extends Component {
                                 basic
                                 onClick={this.removeCreditCard}
                             >
-                                <Icon name="close"/>
+                                <Icon name="close" />
                                 Remove
                             </Label>
                         </Label>
@@ -412,7 +412,7 @@ export class SettingsForm extends Component {
                                 icon="cancel"
                                 onClick={() => (
                                     this.addingItem("addingCreditcard", false),
-                                        this.cancelCreditCard()
+                                    this.cancelCreditCard()
                                 )}
                                 basic
                                 className="personal_settings-btn"
@@ -467,13 +467,13 @@ export class SettingsForm extends Component {
                     />
                     <p className="personal_settings-p">Password</p>
                     <Button primary onClick={this.resetPassword}>
-                        <Icon name="erase"/>
+                        <Icon name="erase" />
                         Change password
                     </Button>
                 </Segment>
                 <Segment>
                     <Button primary onClick={this.sendSettings}>
-                        <Icon name="save outline"/>
+                        <Icon name="save outline" />
                         Save
                     </Button>
                 </Segment>

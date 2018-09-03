@@ -4,9 +4,8 @@ import {
     getUserpropertiesInfo
 } from "client/logic/property-availability-calendar/actions";
 
-
 export function mapStateToProps(state, ownprops) {
-    const {availabilityCalendar} = state;
+    const { availabilityCalendar } = state;
     return {
         ...availabilityCalendar
     };

@@ -8,12 +8,12 @@ module.exports = orm.define("availability", {
     },
     availabilityStart: {
         type: Sequelize.DATE,
-        validate: {isDate: true},
+        validate: { isDate: true },
         allowNull: false
     },
     availabilityEnd: {
         type: Sequelize.DATE,
-        validate: {isDate: true},
+        validate: { isDate: true },
         allowNull: false
     }
 });

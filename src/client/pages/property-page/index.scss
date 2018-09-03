@@ -1,0 +1,109 @@
+.property-page__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px auto;
+    width: 1000px;
+    padding: 10px 0 0 0;
+    max-width: 100%;
+}
+
+.property-page__wrapper-left_side {
+    width: 270px;
+    margin-right: 1rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 0 0;
+}
+
+.breadcrumb_wrapper {
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.property-page__wrapper-right_side {
+    float: right;
+    margin-left: 0px !important;
+    background-color: white;
+    padding: 0;
+    //border-radius: 3px;
+    //box-shadow: 2px 2px 30px -4px #00000014;
+}
+
+.property-page__wrapper-right_side
+    > .ui.divider:not(.vertical):not(.horizontal) {
+    color: #465672;
+    border-top: 1px solid #46567215;
+    border-bottom: 1px solid #465672;
+}
+
+.property-page__description > div {
+    width: 100% !important;
+    padding: 0 20px;
+}
+
+.book-btn {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+}
+
+.book-btn > button {
+    font-size: 14px;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #465672;
+    width: 150px;
+    border: 0;
+    height: 100%;
+    cursor: pointer;
+    justify-content: space-between;
+    transition: 0.2s;
+}
+
+.book-btn > button:hover {
+    background-color: #5e749b;
+}
+
+.book-icon {
+    height: 100%;
+    border: 1px solid #a6aebb;
+    margin-left: 5px;
+}
+
+.book-icon > i {
+    display: block;
+    margin: 0 3px;
+    position: relative;
+    top: 5px;
+    color: #a6aebb;
+}
+
+.facilities-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media only screen and (min-width: 1200px) {
+    .ui.container.property-page__wrapper-left_side {
+        width: 270px !important;
+        margin-right: 1rem !important;
+    }
+    .ui.container.property-page__wrapper-right_side {
+        margin-left: 0px !important;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .ui.container.property-page__wrapper-left_side {
+        width: 270px !important;
+        margin-right: 1rem !important;
+    }
+    .ui.container.property-page__wrapper-right_side {
+        margin-left: 0px !important;
+    }
+}

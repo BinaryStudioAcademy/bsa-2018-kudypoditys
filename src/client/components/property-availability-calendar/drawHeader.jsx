@@ -27,7 +27,8 @@ const daysArray = getDaysArrayByMonth();
 const listItems = daysArray.map((day, index) => (
     <Table.HeaderCell key={index}>
         {day.name}
-        <br/> {day.number}
+        <br /> {day.number}
+
     </Table.HeaderCell>
 ));
 

@@ -3,7 +3,7 @@ import "./index.scss";
 import {Header, Icon} from "semantic-ui-react";
 import PropTypes from "prop-types";
 import Modal from "../modal";
-import MapView from "../map-view";
+import BasicMapWidget from "../basic-map-widget";
 
 import MapWidgetModal from "client/components/map-widget-modal";
 export class PropertySummary extends React.Component {
@@ -38,11 +38,7 @@ export class PropertySummary extends React.Component {
                             color: "#465672"
                         }}
                     >
-                        <Icon
-                            style={{ cursor: "pointer" }}
-                            name="map marker alternate"
-                            onClick={this.handleRedirectToMap}
-                        />
+                        <Icon name="map marker alternate" />
                         {property.address} -{" "}
                         <Modal
                             trigger={
@@ -52,10 +48,18 @@ export class PropertySummary extends React.Component {
                                         color: "#465672",
                                         textDecoration: "underline"
                                     }}
-                                />
+                                >
+                                    Show on map
+                                </span>
                             }
                         >
-                            map
+                            <BasicMapWidget
+                                style={{ width: "100%", height: "100%" }}
+                                coordinates={property.coordinates}
+                                controlEnable={true}
+                                disablePopup={true}
+                                fullScreen
+                            />
                         </Modal>
                     </p>
                 </div>

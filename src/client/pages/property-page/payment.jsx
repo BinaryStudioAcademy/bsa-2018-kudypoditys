@@ -1,10 +1,9 @@
 import React from "react";
-import {List} from "semantic-ui-react";
-
+import { List } from "semantic-ui-react";
 
 export default class PaymentMethods extends React.Component {
     render() {
-        const {paymentTypes} = this.props;
+        const { paymentTypes } = this.props;
         return (
             <List>
                 {paymentTypes.map((item, i) => {

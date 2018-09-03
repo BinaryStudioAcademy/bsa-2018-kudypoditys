@@ -1,6 +1,5 @@
 import React from "react";
-import {Table, Label} from "semantic-ui-react";
-
+import { Table, Label } from "semantic-ui-react";
 
 const count = 30;
 
@@ -18,7 +17,6 @@ export class DrawPrices extends React.Component {
         return inputs;
     };
     listItems = this.priceInput(count);
-
     render() {
         return this.listItems;
     }

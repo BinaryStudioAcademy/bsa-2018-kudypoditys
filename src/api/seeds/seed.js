@@ -4,23 +4,27 @@ const USERS = [
     {
         id: 1,
         fullName: "Natalya",
-        password: bcrypt.hashSync("nata1NATA", 10),
-        email: "natalya@gmail.com",
-        phoneNumber: "0504958671"
+        password: bcrypt.hashSync("102938abC", 10),
+        email: "sayber1990@gmail.com",
+        phoneNumber: "0504958671",
+        nickname: "Nata1ya",
+        address: "Nebereshnaya street 20, Lviv",
+        appeal: "Mrs.",
+        preferredCurrency: "USD",
+        countryId: 1,
+        paymentTypeId: 1
     },
     {
         id: 2,
         fullName: "Nikolay Datsko",
         password: bcrypt.hashSync("102938abC", 10),
         email: "lorem@lorem.com",
-        phoneNumber: "80954568261"
-    },
-    {
-        id: 3,
-        fullName: "Captain Anonymous",
-        password: bcrypt.hashSync("102938abC", 10),
-        email: "Anonymous@Anonymous.com",
-        phoneNumber: "12345678901"
+        phoneNumber: "80954568261",
+        nickname: "Lorem",
+        appeal: "Mrs.",
+        preferredCurrency: "USD",
+        countryId: 1,
+        paymentTypeId: 1
     }
 ];
 
@@ -28,11 +32,12 @@ const PROPERTIES = [
     {
         id: 1,
         name: "Hotel Ukraine",
-        rating: 4.5,
+        rating: 5,
         address: "Koval street 16, Kyiv",
         description: "Hotel Ukraine located in Kyiv.",
         contactPhone: "0509832174",
         coordinates: { lat: 49.837089, lng: 24.021161 },
+        userId: 1,
         propertyTypeId: 9,
         cityId: 2,
         accommodationRuleId: 1
@@ -40,7 +45,7 @@ const PROPERTIES = [
     {
         id: 2,
         name: "Hotel Dolynskyi",
-        rating: 4.9,
+        rating: 4,
         address: "Koval street 16, Lviv",
         description: "Hotel Dolynskyi description. Located in Lviv.",
         contactPhone: "0509842174",
@@ -54,9 +59,10 @@ const PROPERTIES = [
         name: "Hotel Atlas Deluxe",
         rating: 9.1,
         address: "Prospekt Shevchenka 27, Lviv",
-        description: "Hotel Atlas Deluxe is located in the heart of Lviv, within a 2-minute walk of Ploshcha Rynok Square and a 10-minute walk of Ivana Franko Park. It offers a sauna, fitness center and concierge service.",
+        description:
+            "Hotel Atlas Deluxe is located in the heart of Lviv, within a 2-minute walk of Ploshcha Rynok Square and a 10-minute walk of Ivana Franko Park. It offers a sauna, fitness center and concierge service.",
         contactPhone: "0678674908",
-        coordinates: {lat: 49.837089, lng: 24.021161},
+        coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 9,
         cityId: 1,
         accommodationRuleId: 1
@@ -66,9 +72,10 @@ const PROPERTIES = [
         name: "Rius Hotel",
         rating: 9.0,
         address: "12A Hnatiuka St, Lviv",
-        description: "Located in the city center of Lviv, less than a 2-minute walk from Svobody Prospekt and a 5-minute walk from Market Square, Rius hotel features free Wi-Fi throughout the property.",
+        description:
+            "Located in the city center of Lviv, less than a 2-minute walk from Svobody Prospekt and a 5-minute walk from Market Square, Rius hotel features free Wi-Fi throughout the property.",
         contactPhone: "0955679712",
-        coordinates: {lat: 49.837089, lng: 24.021161},
+        coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 9,
         cityId: 1,
         accommodationRuleId: 1
@@ -78,9 +85,10 @@ const PROPERTIES = [
         name: "British Club Lviv",
         rating: 9.4,
         address: "Nalyvaika Street 18, Lviv",
-        description: "This hotel is located in the historic center of Lviv, just a 10-minute walk from Ploschad Rynok Square. Free Wi-Fi and a 24-hour reception are featured at British Club Lviv.",
+        description:
+            "This hotel is located in the historic center of Lviv, just a 10-minute walk from Ploschad Rynok Square. Free Wi-Fi and a 24-hour reception are featured at British Club Lviv.",
         contactPhone: "0509842174",
-        coordinates: {lat: 49.837089, lng: 24.021161},
+        coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 9,
         cityId: 1,
         accommodationRuleId: 1
@@ -90,9 +98,10 @@ const PROPERTIES = [
         name: "Complimente Guest House",
         rating: 9.3,
         address: "Pereulok Kravtsova 13 V, Kharkov",
-        description: "This guest house is located in the center of Kharkov, a 5-minute walk from Konstitutsii Square. Free Wi-Fi, a 24-hour reception and private parking are featured at Complimente Guest House.",
+        description:
+            "This guest house is located in the center of Kharkov, a 5-minute walk from Konstitutsii Square. Free Wi-Fi, a 24-hour reception and private parking are featured at Complimente Guest House.",
         contactPhone: "0674569222",
-        coordinates: {lat: 49.988358, lng: 36.232845},
+        coordinates: { lat: 49.988358, lng: 36.232845 },
         propertyTypeId: 5,
         cityId: 5,
         accommodationRuleId: 1
@@ -101,10 +110,12 @@ const PROPERTIES = [
         id: 7,
         name: "Pletnevskiy Inn",
         rating: 5.6,
-        address: "Kooperatyvna St. 6/8 (entrance from Pletnevskiy lane), Kharkov",
-        description: "Featuring free WiFi throughout the property, Pletnevskiy Inn offers accommodations in the historical building in the center of Kharkov. Guests can enjoy the on-site restaurant.",
+        address:
+            "Kooperatyvna St. 6/8 (entrance from Pletnevskiy lane), Kharkov",
+        description:
+            "Featuring free WiFi throughout the property, Pletnevskiy Inn offers accommodations in the historical building in the center of Kharkov. Guests can enjoy the on-site restaurant.",
         contactPhone: "0896789099",
-        coordinates: {lat: 49.988358, lng: 36.232845},
+        coordinates: { lat: 49.988358, lng: 36.232845 },
         propertyTypeId: 6,
         cityId: 5,
         accommodationRuleId: 1
@@ -114,9 +125,10 @@ const PROPERTIES = [
         name: "Londonskaya SPA Hotel",
         rating: 8.6,
         address: "Primorskiy Boulevard 11, Odessa",
-        description: "This property is a 6-minute walk from the beach. Offering great views of the Black Sea, this historic, classical-style hotel is within a 10-minute walk of Deribasovskaya street, Potemkin Stairs and Duke de Richelieu monument. Opera and Ballet Theater is 300 m away.",
+        description:
+            "This property is a 6-minute walk from the beach. Offering great views of the Black Sea, this historic, classical-style hotel is within a 10-minute walk of Deribasovskaya street, Potemkin Stairs and Duke de Richelieu monument. Opera and Ballet Theater is 300 m away.",
         contactPhone: "05089079871",
-        coordinates: {lat: 46.469391, lng: 30.740883},
+        coordinates: { lat: 46.469391, lng: 30.740883 },
         propertyTypeId: 16,
         cityId: 4,
         accommodationRuleId: 1
@@ -126,9 +138,10 @@ const PROPERTIES = [
         name: "UNO Design Hotel",
         rating: 3.4,
         address: "Rishelievskaya Street 17, Odessa",
-        description: "Stylish rooms with free WiFi and unique décor, UNO Design Hotel is just a 2-minute walk from Deribasovskaya Street and 801 m from the sandy Black Sea Coast.",
+        description:
+            "Stylish rooms with free WiFi and unique décor, UNO Design Hotel is just a 2-minute walk from Deribasovskaya Street and 801 m from the sandy Black Sea Coast.",
         contactPhone: "0509842174",
-        coordinates: {lat: 46.469391, lng: 30.740883},
+        coordinates: { lat: 46.469391, lng: 30.740883 },
         propertyTypeId: 9,
         cityId: 4,
         accommodationRuleId: 1
@@ -138,9 +151,10 @@ const PROPERTIES = [
         name: "Resort & Spa Hotel NEMO",
         rating: 7.9,
         address: "Plyazh Lanzheron 25, Odessa",
-        description: "This property is a 2-minute walk from the beach. Featuring the on-site Dolphinarium, Oceanarium and the Dolphin assisted therapy center, Resort & SPA Hotel NEMO with dolphins is set in the historical center of Odessa, on Lanzheron Beach. It offers 9 heated sea-water swimming pools, fitness & spa zone, a 24-hour room service and free WiFi.",
+        description:
+            "This property is a 2-minute walk from the beach. Featuring the on-site Dolphinarium, Oceanarium and the Dolphin assisted therapy center, Resort & SPA Hotel NEMO with dolphins is set in the historical center of Odessa, on Lanzheron Beach. It offers 9 heated sea-water swimming pools, fitness & spa zone, a 24-hour room service and free WiFi.",
         contactPhone: "05066789078",
-        coordinates: {lat: 46.469391, lng: 30.740883},
+        coordinates: { lat: 46.469391, lng: 30.740883 },
         propertyTypeId: 16,
         cityId: 4,
         accommodationRuleId: 1
@@ -150,9 +164,10 @@ const PROPERTIES = [
         name: "Odesskiy Hostel",
         rating: 4.9,
         address: "Troitskaya Street, 21, Odessa",
-        description: "This hostel in Odessa city center is only 15 minutes’ walk from Odessa Central Train Station. It features a lounge area with a TV, a well-equipped kitchen and free Wi-Fi.",
+        description:
+            "This hostel in Odessa city center is only 15 minutes’ walk from Odessa Central Train Station. It features a lounge area with a TV, a well-equipped kitchen and free Wi-Fi.",
         contactPhone: "09565789091",
-        coordinates: {lat: 46.469391, lng: 30.740883},
+        coordinates: { lat: 46.469391, lng: 30.740883 },
         propertyTypeId: 13,
         cityId: 4,
         accommodationRuleId: 1
@@ -162,9 +177,10 @@ const PROPERTIES = [
         name: "Apartment on Krushelnytskoi Street",
         rating: 7.7,
         address: "Krushelnytskoi Street 1, Ternopilʼ",
-        description: "This property is a 6-minute walk from the beach. Located in Ternopilʼ in the Ternopil' region, Apartment on Krushelnytskoi Street features a balcony and lake views. The property has free WiFi.",
+        description:
+            "This property is a 6-minute walk from the beach. Located in Ternopilʼ in the Ternopil' region, Apartment on Krushelnytskoi Street features a balcony and lake views. The property has free WiFi.",
         contactPhone: "0674589485",
-        coordinates: {lat: 49.553516, lng: 25.594767},
+        coordinates: { lat: 49.553516, lng: 25.594767 },
         propertyTypeId: 1,
         cityId: 3,
         accommodationRuleId: 1
@@ -174,9 +190,10 @@ const PROPERTIES = [
         name: "Hotel Ternopil",
         rating: 8.9,
         address: "Zamkova Street 14, Ternopilʼ",
-        description: "A 2-minute walk from Ternopil Lake, this hotel offers air-conditioned rooms with free Wi-Fi. Hotel Ternopil provides individually furnished rooms and suites with cable TV. Wooden flooring, large windows and pastel color schemes create a bright atmosphere.",
+        description:
+            "A 2-minute walk from Ternopil Lake, this hotel offers air-conditioned rooms with free Wi-Fi. Hotel Ternopil provides individually furnished rooms and suites with cable TV. Wooden flooring, large windows and pastel color schemes create a bright atmosphere.",
         contactPhone: "0956786121",
-        coordinates: {lat: 49.553516, lng: 25.594767},
+        coordinates: { lat: 49.553516, lng: 25.594767 },
         propertyTypeId: 9,
         cityId: 3,
         accommodationRuleId: 1
@@ -186,9 +203,10 @@ const PROPERTIES = [
         name: "Kamelot",
         rating: 7.7,
         address: "Ob'yizdna Street 6 , Ternopilʼ",
-        description: "Located 8 minutes’ drive from Ternopil’s 16th-century castle, this hotel offers a sauna and air-conditioned rooms with a flat-screen TV. There is also a 24-hour reception.",
+        description:
+            "Located 8 minutes’ drive from Ternopil’s 16th-century castle, this hotel offers a sauna and air-conditioned rooms with a flat-screen TV. There is also a 24-hour reception.",
         contactPhone: "0906786876",
-        coordinates: {lat: 49.553516, lng: 25.594767},
+        coordinates: { lat: 49.553516, lng: 25.594767 },
         propertyTypeId: 2,
         cityId: 3,
         accommodationRuleId: 1
@@ -197,10 +215,12 @@ const PROPERTIES = [
         id: 15,
         name: "Hotel Verhovina",
         rating: 7.9,
-        address: "Petropavlivs'ka Street 24, Petropavlivs'ka Borshchahivka, Kiev",
-        description: "Featuring free Wi-Fi and a restaurant with a terrace, this hotel is 7 minutes’ drive from Zhitomirskaya Metro Station in Kiev. It offers air-conditioned rooms with a flat-screen TV. All the classic-style rooms at Hotel Verhovina include a seating area and a work desk. A hairdryer is provided in the bathrooms.",
+        address:
+            "Petropavlivs'ka Street 24, Petropavlivs'ka Borshchahivka, Kiev",
+        description:
+            "Featuring free Wi-Fi and a restaurant with a terrace, this hotel is 7 minutes’ drive from Zhitomirskaya Metro Station in Kiev. It offers air-conditioned rooms with a flat-screen TV. All the classic-style rooms at Hotel Verhovina include a seating area and a work desk. A hairdryer is provided in the bathrooms.",
         contactPhone: "0678909456",
-        coordinates: {lat: 50.471626, lng: 30.453608},
+        coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 9,
         cityId: 2,
         accommodationRuleId: 1
@@ -210,9 +230,10 @@ const PROPERTIES = [
         name: "Tourist Hotel Complex",
         rating: 7.8,
         address: "R. Okipnoi Street 2, Kiev",
-        description: "This property is a 9-minute walk from the beach. Located beside Livoberezhna Metro Station in Kiev, this modern, 3-star hotel offers 2 international restaurants, and a 24-hour reception. The International Exhibition Center is a 7-minute walk away.",
+        description:
+            "This property is a 9-minute walk from the beach. Located beside Livoberezhna Metro Station in Kiev, this modern, 3-star hotel offers 2 international restaurants, and a 24-hour reception. The International Exhibition Center is a 7-minute walk away.",
         contactPhone: "0908909422",
-        coordinates: {lat: 50.471626, lng: 30.453608},
+        coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 9,
         cityId: 2,
         accommodationRuleId: 1
@@ -222,9 +243,10 @@ const PROPERTIES = [
         name: "Hotel Kyiv",
         rating: 7.3,
         address: "Hrushevskogo Street 26/1, Kiev",
-        description: "Centrally located in Kiev, each room at this hotel features balconies with views of the park. The Verkovna Rada building is a 2-minute walk away, and guests enjoy 24-hour access to the reception.",
+        description:
+            "Centrally located in Kiev, each room at this hotel features balconies with views of the park. The Verkovna Rada building is a 2-minute walk away, and guests enjoy 24-hour access to the reception.",
         contactPhone: "09567893241",
-        coordinates: {lat: 50.471626, lng: 30.453608},
+        coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 9,
         cityId: 2,
         accommodationRuleId: 1
@@ -234,9 +256,10 @@ const PROPERTIES = [
         name: "City Holiday Resort & SPA",
         rating: 9.0,
         address: "Velyka Kiltseva str. 5,  Petropavlovskaya Borshagovka, Kiev",
-        description: "Featuring equipped conference rooms and other business facilities, City Holiday Resort & SPA offers accommodations in Kiev, 7.4 mi from Khreshchatyk and Maidan Nezalezhnosti. Free private parking is available on site and free WiFi is provided throughout the property. There is also a free charging station for electric cars at the City Holiday Resort & SPA.",
+        description:
+            "Featuring equipped conference rooms and other business facilities, City Holiday Resort & SPA offers accommodations in Kiev, 7.4 mi from Khreshchatyk and Maidan Nezalezhnosti. Free private parking is available on site and free WiFi is provided throughout the property. There is also a free charging station for electric cars at the City Holiday Resort & SPA.",
         contactPhone: "0674594012",
-        coordinates: {lat: 50.471626, lng: 30.453608},
+        coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 16,
         cityId: 2,
         accommodationRuleId: 1
@@ -246,9 +269,10 @@ const PROPERTIES = [
         name: "MarySmart",
         rating: 7.5,
         address: "39 Mashynobudivna Street, Kiev",
-        description: "Located within 6.1 km of St. Volodymyr's Cathedral and 6.4 km of Saint Sophia Cathedral in Kiev, MarySmart has accommodations with a kitchenette. Complimentary WiFi is featured.",
+        description:
+            "Located within 6.1 km of St. Volodymyr's Cathedral and 6.4 km of Saint Sophia Cathedral in Kiev, MarySmart has accommodations with a kitchenette. Complimentary WiFi is featured.",
         contactPhone: "0674099409",
-        coordinates: {lat: 50.471626, lng: 30.453608},
+        coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 6,
         cityId: 2,
         accommodationRuleId: 1
@@ -258,9 +282,10 @@ const PROPERTIES = [
         name: "Andreevsky Guest House",
         rating: 5.4,
         address: "Vozdvyzhens'ka Street 60 B, Kiev",
-        description: "Andreevsky Guest House is located in Kiev, 0.6 km from St. Michael's Golden-Domed Monastery and a 9-minute walk from Saint Sophia Cathedral. The property is around 1.8 km from St. Volodymyr's Cathedral and 2.9 km from Olympic Stadium. Kiev Pechersk Lavra is 4 km from the hotel and International Exhibition Centre is 5.5 km away.",
+        description:
+            "Andreevsky Guest House is located in Kiev, 0.6 km from St. Michael's Golden-Domed Monastery and a 9-minute walk from Saint Sophia Cathedral. The property is around 1.8 km from St. Volodymyr's Cathedral and 2.9 km from Olympic Stadium. Kiev Pechersk Lavra is 4 km from the hotel and International Exhibition Centre is 5.5 km away.",
         contactPhone: "0955589762",
-        coordinates: {lat: 50.471626, lng: 30.453608},
+        coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 11,
         cityId: 2,
         accommodationRuleId: 1
@@ -270,9 +295,10 @@ const PROPERTIES = [
         name: "Bartolomeo",
         rating: 6.7,
         address: "Naberezhnaya Pobedy 9B, Dnipro",
-        description: "This property is 1 minute walk from the beach. Bartolomeo Best River Resort in the city of Dnepropetrovsk offers 2-story wooden bungalows apartments directly on the River Dnepr. For your comfort you will find a cable TV and safe in every room. Free WiFi is available throughout the property.",
+        description:
+            "This property is 1 minute walk from the beach. Bartolomeo Best River Resort in the city of Dnepropetrovsk offers 2-story wooden bungalows apartments directly on the River Dnepr. For your comfort you will find a cable TV and safe in every room. Free WiFi is available throughout the property.",
         contactPhone: "0678007800",
-        coordinates: {lat: 48.4500000, lng: 34.9833300},
+        coordinates: { lat: 48.45, lng: 34.98333 },
         propertyTypeId: 9,
         cityId: 6,
         accommodationRuleId: 1
@@ -282,9 +308,10 @@ const PROPERTIES = [
         name: "Tsunami Spa Hotel",
         rating: 6.0,
         address: "Oktyabrska Pl.12A, Dnipro",
-        description: "This property is a 13-minute walk from the beach. This 5-star spa hotel with pool stands beside the Savior's Transfiguration Cathedral, in the historic center of Dnipro. It offers free Wi-Fi, healthy cuisine and various spa and fitness facilities.",
+        description:
+            "This property is a 13-minute walk from the beach. This 5-star spa hotel with pool stands beside the Savior's Transfiguration Cathedral, in the historic center of Dnipro. It offers free Wi-Fi, healthy cuisine and various spa and fitness facilities.",
         contactPhone: "0674108900",
-        coordinates: {lat: 48.4500000, lng: 34.9833300},
+        coordinates: { lat: 48.45, lng: 34.98333 },
         propertyTypeId: 17,
         cityId: 6,
         accommodationRuleId: 1
@@ -294,9 +321,10 @@ const PROPERTIES = [
         name: "Apartments on Kirova",
         rating: 6.9,
         address: "Kirova Prospekt  27D, Dnipro",
-        description: "Located 5 minutes’ walk from Dnipro Arena and 10 minutes’ walk from the Central Park, these apartments in Dnipropetrovsk feature free Wi-Fi and a fully equipped kitchen.",
+        description:
+            "Located 5 minutes’ walk from Dnipro Arena and 10 minutes’ walk from the Central Park, these apartments in Dnipropetrovsk feature free Wi-Fi and a fully equipped kitchen.",
         contactPhone: "0904118899",
-        coordinates: {lat: 48.4500000, lng: 34.9833300},
+        coordinates: { lat: 48.45, lng: 34.98333 },
         propertyTypeId: 1,
         cityId: 6,
         accommodationRuleId: 1
@@ -306,9 +334,10 @@ const PROPERTIES = [
         name: "Ratusha Apartments",
         rating: 8.9,
         address: "Area of Rynok Plosha , Lviv",
-        description: "Located in the historic center of Lviv, within a 10-minute walk of the City Hall, these apartments feature a fully equipped kitchen. The 15th-century Dominican Church is about 15 minutes’ walk away.",
+        description:
+            "Located in the historic center of Lviv, within a 10-minute walk of the City Hall, these apartments feature a fully equipped kitchen. The 15th-century Dominican Church is about 15 minutes’ walk away.",
         contactPhone: "0671129412",
-        coordinates: {lat: 49.837089, lng: 24.021161},
+        coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 1,
         cityId: 1,
         accommodationRuleId: 1
@@ -318,14 +347,14 @@ const PROPERTIES = [
         name: "Avangard Franko VIP Apartment",
         rating: 6.6,
         address: "Ivana Franka Street, Lviv",
-        description: "Offering free WiFi and city views, Avangard Franko VIP Apartment is a property located in the middle of Lviv. This property is 183 m from Volodymyr Ivasyuk Monument.",
+        description:
+            "Offering free WiFi and city views, Avangard Franko VIP Apartment is a property located in the middle of Lviv. This property is 183 m from Volodymyr Ivasyuk Monument.",
         contactPhone: "0678907890",
-        coordinates: {lat: 49.837089, lng: 24.021161},
+        coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 1,
         cityId: 1,
         accommodationRuleId: 1
-    },
-
+    }
 ];
 
 const ACCOMMODATION_RULES = [
@@ -573,7 +602,7 @@ const ROOMS = [
         area: 67,
         roomTypeId: 2,
         propertyId: 25
-    },
+    }
 ];
 
 const IMAGES = [
@@ -882,14 +911,14 @@ const IMAGES = [
         url:
             "https://www.publicdomainpictures.net/pictures/270000/velka/bedroom-interior.jpg",
         propertyId: 1
-    },
+    }
 ];
 
 const RESERVATIONS = [
     {
         id: 1,
-        dateIn: "2018-08-29",
-        dateOut: "2018-08-30",
+        dateIn: "2018-09-25",
+        dateOut: "2018-09-26",
         guestsCount: 3,
         userId: 1,
         roomId: 1,
@@ -897,8 +926,8 @@ const RESERVATIONS = [
     },
     {
         id: 2,
-        dateIn: "2018-08-31",
-        dateOut: "2018-09-01",
+        dateIn: "2018-09-28",
+        dateOut: "2018-09-29",
         guestsCount: 2,
         userId: 1,
         roomId: 2,
@@ -1156,24 +1185,6 @@ const FACILITY_LISTS = [
         id: 50,
         propertyId: 25,
         facilityId: 1
-    },
-];
-
-const BED_IN_ROOMS = [
-    {
-        count: 1,
-        roomId: 1,
-        bedTypeId: 1
-    },
-    {
-        count: 1,
-        roomId: 2,
-        bedTypeId: 2
-    },
-    {
-        count: 1,
-        roomId: 2,
-        bedTypeId: 1
     }
 ];
 
@@ -1186,7 +1197,8 @@ const COUNTRIES = [
             {
                 id: 1,
                 name: "Lviv",
-                imageUrl: "http://www.mgi4ua.com/wp-content/uploads/2017/11/lviv-ukraine.jpg"
+                imageUrl:
+                    "http://www.mgi4ua.com/wp-content/uploads/2017/11/lviv-ukraine.jpg"
             },
             {
                 id: 2,
@@ -1196,22 +1208,26 @@ const COUNTRIES = [
             {
                 id: 3,
                 name: "Ternopil",
-                imageUrl: "http://www.gazeta-misto.te.ua/wp-content/uploads/2017/05/18671255_1124933304279283_1785861677540967562_n.jpg"
+                imageUrl:
+                    "http://www.gazeta-misto.te.ua/wp-content/uploads/2017/05/18671255_1124933304279283_1785861677540967562_n.jpg"
             },
             {
                 id: 4,
                 name: "Odessa",
-                imageUrl: "https://www.hotel-deribas.com/wp-content/uploads/2018/03/19odessa.jpg"
+                imageUrl:
+                    "https://www.hotel-deribas.com/wp-content/uploads/2018/03/19odessa.jpg"
             },
             {
                 id: 5,
                 name: "Kharkiv",
-                imageUrl: "http://www.yoldasin.com/wp-content/uploads/2017/04/kharkiv-tren-istasyonu-960x638.jpg"
+                imageUrl:
+                    "http://www.yoldasin.com/wp-content/uploads/2017/04/kharkiv-tren-istasyonu-960x638.jpg"
             },
             {
                 id: 6,
                 name: "Dnipro",
-                imageUrl: "http://meandyoukraine.com/mainContent/DniproCity/DniproCity_featuredImage.jpg"
+                imageUrl:
+                    "http://meandyoukraine.com/mainContent/DniproCity/DniproCity_featuredImage.jpg"
             }
         ]
     },
@@ -1222,22 +1238,26 @@ const COUNTRIES = [
             {
                 id: 7,
                 name: "Kraków",
-                imageUrl: "https://tripmydream.cc/travelhub/blog/blog/36/1/block_361.jpg?v1"
+                imageUrl:
+                    "https://tripmydream.cc/travelhub/blog/blog/36/1/block_361.jpg?v1"
             },
             {
                 id: 8,
                 name: "Warsaw",
-                imageUrl: "https://ticketspy.nl/wp-content/uploads/2014/08/Dollarphotoclub_43324037-1024x682.jpg?x43213"
+                imageUrl:
+                    "https://ticketspy.nl/wp-content/uploads/2014/08/Dollarphotoclub_43324037-1024x682.jpg?x43213"
             },
             {
                 id: 9,
                 name: "Gdańsk",
-                imageUrl: "https://api.culture.pl/sites/default/files/2018-04/gdansk_fot_sizun_eyegettyimages.jpg"
+                imageUrl:
+                    "https://api.culture.pl/sites/default/files/2018-04/gdansk_fot_sizun_eyegettyimages.jpg"
             },
             {
                 id: 10,
                 name: "Poznań",
-                imageUrl: "https://prex.com.ua/wp-content/uploads/2017/08/119801-Poznan.jpg.pagespeed.ce.ZttXnv9K1t.jpg"
+                imageUrl:
+                    "https://prex.com.ua/wp-content/uploads/2017/08/119801-Poznan.jpg.pagespeed.ce.ZttXnv9K1t.jpg"
             },
             {
                 id: 11,
@@ -1247,7 +1267,8 @@ const COUNTRIES = [
             {
                 id: 12,
                 name: "Rzeszów",
-                imageUrl: "http://blog.kudoybook.com/wp-content/uploads/images/Rzeszow_9867.jpg"
+                imageUrl:
+                    "http://blog.kudoybook.com/wp-content/uploads/images/Rzeszow_9867.jpg"
             }
         ]
     },
@@ -1258,17 +1279,20 @@ const COUNTRIES = [
             {
                 id: 13,
                 name: "Vienna",
-                imageUrl: "https://www.rosewoodhotels.com/en/~/media/Images/Rosewood_Hotels_and_Resorts/Rosewood_Vienna/Homepage_1.ashx"
+                imageUrl:
+                    "https://www.rosewoodhotels.com/en/~/media/Images/Rosewood_Hotels_and_Resorts/Rosewood_Vienna/Homepage_1.ashx"
             },
             {
                 id: 14,
                 name: "Bregenz",
-                imageUrl: "http://www.bodensee.eu/regionen-staedte/oesterreich/bodensee-vorarlberg/staedte/bregenz/image-thumb__338__lightbox/bregenz.jpeg"
+                imageUrl:
+                    "http://www.bodensee.eu/regionen-staedte/oesterreich/bodensee-vorarlberg/staedte/bregenz/image-thumb__338__lightbox/bregenz.jpeg"
             },
             {
                 id: 15,
                 name: "Salzburg",
-                imageUrl: "https://www.planetware.com/photos-large/A/austria-salzburg-where-to-stay-skyline.jpg"
+                imageUrl:
+                    "https://www.planetware.com/photos-large/A/austria-salzburg-where-to-stay-skyline.jpg"
             }
         ]
     }
@@ -1548,7 +1572,33 @@ const REVIEW_CATEGORIES = [
         name: "Fun things to do"
     }
 ];
-
+const BED_IN_ROOMS = [
+    { id: 1, count: 2, roomId: 1, bedTypeId: 1 },
+    { id: 2, count: 2, roomId: 2, bedTypeId: 2 },
+    { id: 3, count: 3, roomId: 3, bedTypeId: 3 },
+    { id: 4, count: 2, roomId: 4, bedTypeId: 4 },
+    { id: 5, count: 2, roomId: 5, bedTypeId: 5 },
+    { id: 6, count: 5, roomId: 6, bedTypeId: 6 },
+    { id: 7, count: 2, roomId: 7, bedTypeId: 5 },
+    { id: 8, count: 6, roomId: 8, bedTypeId: 3 },
+    { id: 9, count: 2, roomId: 9, bedTypeId: 3 },
+    { id: 10, count: 2, roomId: 10, bedTypeId: 2 },
+    { id: 11, count: 2, roomId: 11, bedTypeId: 2 },
+    { id: 12, count: 2, roomId: 12, bedTypeId: 3 },
+    { id: 13, count: 4, roomId: 13, bedTypeId: 4 },
+    { id: 14, count: 2, roomId: 14, bedTypeId: 5 },
+    { id: 15, count: 5, roomId: 15, bedTypeId: 6 },
+    { id: 16, count: 1, roomId: 16, bedTypeId: 7 },
+    { id: 17, count: 3, roomId: 17, bedTypeId: 1 },
+    { id: 18, count: 2, roomId: 18, bedTypeId: 2 },
+    { id: 19, count: 6, roomId: 19, bedTypeId: 3 },
+    { id: 20, count: 2, roomId: 20, bedTypeId: 1 },
+    { id: 21, count: 2, roomId: 21, bedTypeId: 2 },
+    { id: 22, count: 7, roomId: 22, bedTypeId: 3 },
+    { id: 23, count: 2, roomId: 23, bedTypeId: 4 },
+    { id: 24, count: 3, roomId: 24, bedTypeId: 5 },
+    { id: 25, count: 2, roomId: 25, bedTypeId: 6 }
+];
 const BED_TYPES = [
     {
         id: 1,

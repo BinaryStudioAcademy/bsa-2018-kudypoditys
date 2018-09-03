@@ -17,7 +17,7 @@ const availability = require("./availabilityRoutes");
 
 const elasticsearch = require("./elasticsearchRoutes");
 
-module.exports = function (app) {
+module.exports = function(app) {
     app.use("/api", auth);
     app.use("/elastic", elasticsearch);
     app.use("/api/users", user);

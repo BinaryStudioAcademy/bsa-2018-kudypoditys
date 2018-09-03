@@ -1,11 +1,10 @@
 import React from "react";
-import {List} from "semantic-ui-react";
+import { List } from "semantic-ui-react";
 import moment from "moment";
-
 
 export default class HouseRules extends React.Component {
     render() {
-        const {rules} = this.props;
+        const { rules } = this.props;
         return (
             <List>
                 <List.Item>

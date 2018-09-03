@@ -1,15 +1,14 @@
-import React, {Fragment} from "react";
-import {Table, Button, Icon} from "semantic-ui-react";
-import {connect} from "react-redux";
-import {mapDispatchToProps, mapStateToProps} from "./container";
-import {DrawHeader} from "./drawHeader";
-import {DrawCount} from "./drawCount";
-import {DrawReservations} from "./drawReservations";
-import {DrawPrices} from "./drawPrices";
-import {DrawStatus} from "./drawStatus";
+import React, { Fragment } from "react";
+import { Table, Button, Icon } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { mapDispatchToProps, mapStateToProps } from "./container";
+import { DrawHeader } from "./drawHeader";
+import { DrawCount } from "./drawCount";
+import { DrawReservations } from "./drawReservations";
+import { DrawPrices } from "./drawPrices";
+import { DrawStatus } from "./drawStatus";
 
 import "./index.scss";
-
 
 export class AvailabilityCalendar extends React.Component {
     submitHandle = data => {
@@ -27,20 +26,20 @@ export class AvailabilityCalendar extends React.Component {
     render() {
         return (
             <Fragment>
-                <div style={{overflow: "auto"}}>
+                <div style={{ overflow: "auto" }}>
                     {console.log(this.props.rooms[0])}
                     <Table compact celled padded>
                         <Table.Header>
-                            <Table.Row style={{textAlign: "center"}}>
-                                <Table.HeaderCell/>
-                                <DrawHeader/>
+                            <Table.Row style={{ textAlign: "center" }}>
+                                <Table.HeaderCell />
+                                <DrawHeader />
                             </Table.Row>
                         </Table.Header>
 
-                        <Table.Body style={{textAlign: "center"}}>
+                        <Table.Body style={{ textAlign: "center" }}>
                             <Table.Row>
                                 <Table.Cell collapsing>Room status</Table.Cell>
-                                <DrawStatus/>
+                                <DrawStatus />
                             </Table.Row>
                             <Table.Row>
                                 <Table.Cell collapsing>
@@ -63,12 +62,12 @@ export class AvailabilityCalendar extends React.Component {
                             </Table.Row>
                             <Table.Row>
                                 <Table.Cell collapsing>Price</Table.Cell>
-                                <DrawPrices price={this.props.rooms[0].price}/>
+                                <DrawPrices price={this.props.rooms[0].price} />
                             </Table.Row>
                         </Table.Body>
                         <Table.Footer fullWidth>
                             <Table.Row>
-                                <Table.HeaderCell/>
+                                <Table.HeaderCell />
                                 <Table.HeaderCell colSpan="1">
                                     <Button
                                         floated="left"
@@ -78,13 +77,13 @@ export class AvailabilityCalendar extends React.Component {
                                         size="small"
                                         onClick={this.submitHandle}
                                     >
-                                        <Icon name="save outline"/> Save
+                                        <Icon name="save outline" /> Save
                                     </Button>
                                 </Table.HeaderCell>
                             </Table.Row>
                         </Table.Footer>
                     </Table>
-                    <br/>
+                    <br />
                 </div>
             </Fragment>
         );

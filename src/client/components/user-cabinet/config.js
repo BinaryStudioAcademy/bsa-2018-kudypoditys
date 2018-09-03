@@ -37,7 +37,7 @@ export const MenuItems = [
             header: "My Properties ",
             content: "My Properties ",
             icon: "building outline",
-            component: <AvailabilityCalendar/>
+            component: <AvailabilityCalendar />
         }
     }
 ];

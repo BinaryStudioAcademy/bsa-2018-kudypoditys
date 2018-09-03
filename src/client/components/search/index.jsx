@@ -31,7 +31,7 @@ export class MainSearch extends React.Component {
                 propertiesResponse.data.forEach(element => {
                     resultsData.push({
                         title: element._source.name,
-                        description: element._source.description,
+                        description: element._source.address,
                         image: element._source.image
                     });
                 });
@@ -80,7 +80,7 @@ export class MainSearch extends React.Component {
         );
     };
     handleSubmit = () => {
-        console.log("handleSubmit trigered")
+        console.log("handleSubmit trigered");
         let path = `/search-page`;
         history.push(path);
         const {
@@ -182,7 +182,7 @@ export class MainSearch extends React.Component {
     };
 
     render() {
-        console.log("state=" + JSON.stringify(this.state));
+        // console.log("state=" + JSON.stringify(this.state));
 
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
@@ -194,6 +194,27 @@ export class MainSearch extends React.Component {
             adults,
             children
         } = this.state;
+        // console.log("props!!!=" + JSON.stringify(this.props));
+        if (this.props.search.data !== undefined) {
+            const { data } = this.props.search;
+
+            //console.log("search state" + JSON.stringify(this.state));
+
+            if (data !== undefined) {
+                // console.log("searchResults" + JSON.stringify(data));
+                this.props.handleSearchResults({
+                    searchResults: data,
+                    searchRequest: {
+                        query: this.state.query,
+                        rooms: this.state.rooms,
+                        adults: this.state.adults,
+                        children: this.state.children,
+                        startDate: this.state.startDate,
+                        endDate: this.state.endDaten
+                    }
+                });
+            }
+        }
         const childrenOptions = this.generateOptions(0, 10);
 
         return (
@@ -328,7 +349,9 @@ MainSearch.propTypes = {
     onCheckOutChange: PropTypes.func.isRequired,
     onAdultsChange: PropTypes.func.isRequired,
     onChildrenChange: PropTypes.func.isRequired,
-    onRoomsChange: PropTypes.func.isRequired
+    onRoomsChange: PropTypes.func.isRequired,
+    handleSearchResults: PropTypes.func.isRequired,
+    data: PropTypes.array
 };
 
 MainSearch.defaultProps = {

@@ -7,7 +7,7 @@ import {
 } from "client/logic/personal-settings-edit/actions";
 
 export function mapStateToProps(state) {
-    const {userSettings} = state;
+    const { userSettings } = state;
     return {
         ...userSettings
     };

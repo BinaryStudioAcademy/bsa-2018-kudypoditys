@@ -36,13 +36,7 @@ export class BookingForm extends React.Component {
         return options;
     };
     datesChanged = selectedDates => {
-        if (
-            selectedDates.startDate &&
-            selectedDates.endDate &&
-            selectedDates.startDate < selectedDates.endDate
-        ) {
-            this.props.onDatesChange(selectedDates);
-        }
+        this.props.onDatesChange(selectedDates);
     };
 
     constructor(props) {
@@ -66,9 +60,8 @@ export class BookingForm extends React.Component {
             error,
             message
         } = this.props;
-        const startDate = checkIn === null ? moment() : moment(checkIn);
-        const endDate =
-            checkOut === null ? moment().add(1, "days") : moment(checkOut);
+        const startDate = checkIn === null ? null : moment(checkIn);
+        const endDate = checkOut === null ? null : moment(checkOut);
         const childrenOptions = this.generateOptions(0, 10);
         const adultsOptions = this.generateOptions(1, 10);
         const paymentOptions = this.generatePaymentOptions(paymentTypes);
@@ -90,9 +83,10 @@ export class BookingForm extends React.Component {
                             dateIn: Number(startDate),
                             dateOut: Number(endDate),
                             guestsCount: adults + children,
-                            roomId: roomId || roomOptions[0].value,
-                            paymentTypeId:
-                                paymentTypeId || paymentOptions[0].value
+                            roomId: roomId ? roomId : roomOptions[0].value,
+                            paymentTypeId: paymentTypeId
+                                ? paymentTypeId
+                                : paymentOptions[0].value
                         });
                     }}
                     style={{

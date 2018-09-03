@@ -1,5 +1,5 @@
 import React from "react";
-import {Table, Input} from "semantic-ui-react";
+import { Table, Input } from "semantic-ui-react";
 
 
 const count = 30;
