@@ -39,8 +39,8 @@ searchProperty.route("/").get((req, res) => {
                     rooms: rooms,
                     bedsCount: parseInt(adults) + parseInt(children),
                     sortBy: sortBy,
-                    startDate: startDate,
-                    endDate:endDate
+                    dateIn: new Date(Number(startDate)),
+                    dateOut:new Date(Number(endDate))
 
                 };
                 propertyService
@@ -57,5 +57,6 @@ searchProperty.route("/").get((req, res) => {
             }
         );
 });
+
 
 module.exports = searchProperty;
