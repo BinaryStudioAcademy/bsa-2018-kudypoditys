@@ -23,7 +23,7 @@ import userSettings from "client/logic/personal-settings-edit/reducer";
 import userCabinet from "./user-cabinet/reducer";
 import userVerified from "client/logic/verify-email/reducer";
 import availabilityCalendar from "client/logic/property-availability-calendar/reducer";
-
+import review from "client/logic/reviews/reducer";
 export default combineReducers({
     search,
     sortType,
@@ -49,5 +49,6 @@ export default combineReducers({
     userVerified,
     userSettings,
     userCabinet,
-    availabilityCalendar
+    availabilityCalendar,
+    review
 });
