@@ -21,6 +21,7 @@ import PaymentMethods from "./payment";
 export class PropertyPage extends React.Component {
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
+        this.props.getBookings();
     }
 
     getImagesArray(propertyImages) {
