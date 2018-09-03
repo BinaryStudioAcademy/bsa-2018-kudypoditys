@@ -25,12 +25,14 @@ import ReactDOM from "react-dom";
 import HouseRules from "./rules";
 import PaymentMethods from "./payment";
 import Reviews from "../../components/reviews";
-import {getGroupedArray, getAvgFromArray, getPropertyStatus} from 'client/helpers/avgReviewRating';
-import RatingBlock from "../../components/reviews/ratingBlock";
+import {
+    getGroupedArray,
+    getAvgFromArray
+} from "client/helpers/avgReviewRating";
 
 export class PropertyPage extends React.Component {
     toggleReviews = () => {
-        this.setState({reviewsVisible: !this.state.reviewsVisible});
+        this.setState({ reviewsVisible: !this.state.reviewsVisible });
     };
 
     componentWillMount() {
@@ -51,7 +53,7 @@ export class PropertyPage extends React.Component {
         node.scrollIntoView();
     };
     hideReviews = () => {
-        this.setState({reviewsVisible: false});
+        this.setState({ reviewsVisible: false });
     };
 
     constructor(props) {
@@ -63,9 +65,9 @@ export class PropertyPage extends React.Component {
 
     render() {
         const { property, user } = this.props;
-        console.log(property)
+        console.log(property);
         // const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
-        const {reviewsVisible} = this.state;
+        const { reviewsVisible } = this.state;
         const dividerStyle = {
             color: "#465672",
             borderTop: "1px solid #46567215",
@@ -79,10 +81,11 @@ export class PropertyPage extends React.Component {
         if (!property) return null;
 
         //AVG PROPERTY RATING
-        const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
+        const avgPropRatingArray = getGroupedArray(
+            property.reviews,
+            "avgReview"
+        );
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
-
-
 
         const pics = this.getImagesArray(property.images);
         return (
@@ -96,15 +99,16 @@ export class PropertyPage extends React.Component {
                     direction="right"
                     width="very wide"
                     vertical
+                    style={{ backgroundColor: "white" }}
                 >
                     <div
                         style={{
-                            backgroundColor: "white",
                             height: "100%",
-                            width: "100%"
+                            width: "100%",
+                            padding: "50px 20px 0 20px"
                         }}
                     >
-                        <Reviews property={property}/>
+                        <Reviews property={property} />
                     </div>
                 </Sidebar>
                 <Sidebar.Pusher>
@@ -122,7 +126,7 @@ export class PropertyPage extends React.Component {
                                     trigger={
                                         <div
                                             className="book-btn"
-                                            style={{height: "33px"}}
+                                            style={{ height: "33px" }}
                                         >
                                             <button>Book now</button>
                                             <div
@@ -167,21 +171,25 @@ export class PropertyPage extends React.Component {
                                     this.toggleReviews();
                                 }}
                             />
-                            <Divider/>
-                            <PropertySummary property={property}/>
-                            <RatingBlock avgPropRating={avgPropRating} reviewsCount={property.reviews.length}/>
-                            <Slider pics={pics} slideIndex={0}/>
+                            <Divider />
+                            <PropertySummary
+                                rating={avgPropRating}
+                                totalReviews={property.reviews.length}
+                                property={property}
+                            />
 
-                            <Divider hidden/>
+                            <Slider pics={pics} slideIndex={0} />
+
+                            <Divider hidden />
                             <div
                                 className="property-page__description"
-                                style={{width: "100%"}}
+                                style={{ width: "100%" }}
                             >
                                 <PropertyDescription
                                     property={property}
-                                    style={{width: "100%"}}
+                                    style={{ width: "100%" }}
                                 />
-                                <Divider style={dividerStyle}/>
+                                <Divider style={dividerStyle} />
                                 <Container
                                     text
                                     style={{
@@ -238,7 +246,7 @@ export class PropertyPage extends React.Component {
                                             />
                                             <Header
                                                 as="h2"
-                                                style={{color: "#465672"}}
+                                                style={{ color: "#465672" }}
                                             >
                                                 Payment Method
                                             </Header>
@@ -260,8 +268,8 @@ export class PropertyPage extends React.Component {
                                 }}
                             />
 
-                            <AvailabilityPanel style={{width: "100%"}}/>
-                            <Divider style={dividerStyle}/>
+                            <AvailabilityPanel style={{ width: "100%" }} />
+                            <Divider style={dividerStyle} />
                             <div>
                                 <Header
                                     as="h2"
@@ -277,7 +285,7 @@ export class PropertyPage extends React.Component {
                                     rooms={property.rooms}
                                 />
                             </div>
-                            <Divider hidden/>
+                            <Divider hidden />
                         </Container>
                     </div>
                 </Sidebar.Pusher>
