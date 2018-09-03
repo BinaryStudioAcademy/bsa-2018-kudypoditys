@@ -44,7 +44,9 @@ export function getPropertyStatus(rating){
         ratingStatus = "Good";
     } else if (rating >= 2) {
         ratingStatus = "Not good";
+    } else if (rating >= 1) {
+        ratingStatus = "Awful!";
     }
 
-return ratingStatus
+    return ratingStatus
 }

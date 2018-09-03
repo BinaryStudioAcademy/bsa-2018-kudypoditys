@@ -104,7 +104,7 @@ export class PropertyPage extends React.Component {
                             width: "100%"
                         }}
                     >
-                        <h1>Hello reviews</h1>
+                        <Reviews property={property}/>
                     </div>
                 </Sidebar>
                 <Sidebar.Pusher>
