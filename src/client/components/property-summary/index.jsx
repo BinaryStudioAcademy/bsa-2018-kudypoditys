@@ -21,7 +21,8 @@ export class PropertySummary extends React.Component {
                         fontSize: 23,
                         padding: 10,
                         lineHeight: 1.2,
-                        color: "#465672"
+                        color: "#465672",
+                        cursor: "default"
                     }}
                 >
                     {property.name}

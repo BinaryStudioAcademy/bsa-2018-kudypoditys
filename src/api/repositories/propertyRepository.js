@@ -51,7 +51,7 @@ const includeOptions = [
     },
     {
         model: Review,
-        attributes: ["id", "content"],
+        attributes: ["id"],
         include: [
             {
                 model: User,

@@ -54,7 +54,11 @@ export class AvailabilityPanel extends React.Component {
             <div className="availability-panel-wrp">
                 <Header
                     as="h2"
-                    style={{ paddingLeft: "7px", color: "#465672" }}
+                    style={{
+                        paddingLeft: "7px",
+                        color: "#465672",
+                        cursor: "default"
+                    }}
                 >
                     Availability
                 </Header>
