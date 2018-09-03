@@ -5,13 +5,13 @@ import "./index.scss";
 
 export default class ModalComponent extends React.Component {
     render() {
-        const {header, trigger, fullScreen, children, onClose} = this.props;
+        const {header, trigger, fullScreen, children, onClose, className} = this.props;
 
         return (
             <Modal
                 trigger={trigger}
                 closeIcon={fullScreen}
-                className={fullScreen ? "fullScreen" : ""}
+                className={fullScreen ? "fullScreen" : className}
                 onClose={onClose ? onClose : () => {
                 }}
             >

@@ -30,6 +30,9 @@ let Review = orm.define('review', {
 
     avgReview: {
         type: Sequelize.FLOAT,
+    },
+    anon: {
+        type: Sequelize.BOOLEAN,
     }
 
 });

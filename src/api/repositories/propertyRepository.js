@@ -51,7 +51,7 @@ const includeOptions = [
     },
     {
         model: Review,
-        attributes: ["id", "pros", "cons", "Cleanliness","Price","Comfort","Facilities","avgReview", "createdAt"],
+        attributes: ["id", "pros", "cons", "Cleanliness","Price","Comfort","Facilities","avgReview", "createdAt", "anon"],
         include: [
             {
                 model: User,
