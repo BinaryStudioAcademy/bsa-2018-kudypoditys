@@ -21,15 +21,13 @@ class SearchPage extends React.Component {
         this.state = {
             listItems: [],
             itemCount: 0,
-            searchRequest: {}
+            searchRequest: {},
+            selectedPage:1
         };
 
     }
     handleSearchResults = searchData => {
-        history.push({
-            pathname: '/search-page',
-            search: `?query=${searchData.searchRequest.query}&rooms=${searchData.searchRequest.rooms}&adults=${searchData.searchRequest.adults}&children=${searchData.searchRequest.children}&startDate=${searchData.searchRequest.startDate}&endDate=${searchData.searchRequest.endDate}&sortBy=${searchData.searchRequest.sortBy}`
-          })
+
         const listItems = searchData.searchResults.map(property => (
             <PropertyListItem key={property.id} propertyItemData={property} />
         ));
@@ -41,6 +39,11 @@ class SearchPage extends React.Component {
     };
     onSortingSelected = value => {
         this.setState({ sortBy: value });
+    };
+    paginationChanged = (event,data) => {
+        console.log('event' +Object.keys(event));
+        console.log('data'+JSON.stringify(data))
+        this.setState({selectedPage: data.activePage });
     };
 
     render() {
@@ -108,10 +111,11 @@ class SearchPage extends React.Component {
                         <RankingBar
                             key="RankingBar"
                             searchRequest={this.state.searchRequest}
+                            onSortingSelected={this.onSortingSelected}
                         />
                         {this.state.listItems}
                         <div className="search-page__pagination">
-                            <Pagination pagesCount={10} />
+                            <Pagination pagesCount={10} paginationChanged={this.paginationChanged}/>
                         </div>
                     </Container>
                 </div>

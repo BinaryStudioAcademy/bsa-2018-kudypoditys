@@ -5,10 +5,15 @@ import history from "client/history";
 import ModalByUrl from "client/components/modal-by-url";
 import BannerList from "client/components/banner-list";
 export class HomePage extends Component {
+    handleSearchResults = () => {
+        //todo
+    }
     render() {
         return (
             <div className="main--wraper">
-                <Header showSearch={true}/>
+                <Header showSearch={true}
+                                    handleSearchResults={this.handleSearchResults}
+                                    />
 
                 <ModalByUrl
                     openBy={history.location.search === "?verified"}

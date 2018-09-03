@@ -917,8 +917,8 @@ const IMAGES = [
 const RESERVATIONS = [
     {
         id: 1,
-        dateIn: "2018-09-10",
-        dateOut: "2018-09-15",
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
         guestsCount: 3,
         userId: 1,
         roomId: 1,
@@ -926,11 +926,65 @@ const RESERVATIONS = [
     },
     {
         id: 2,
-        dateIn: "2018-09-10",
-        dateOut: "2018-09-15",
+        dateIn:  new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
         guestsCount: 2,
         userId: 1,
         roomId: 2,
+        paymentTypeId: 1
+    },
+    {
+        id: 1,
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 3,
+        userId: 1,
+        roomId: 3,
+        paymentTypeId: 1
+    },
+    {
+        id: 2,
+        dateIn:  new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 2,
+        userId: 1,
+        roomId: 4,
+        paymentTypeId: 1
+    },
+    {
+        id: 1,
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 3,
+        userId: 1,
+        roomId: 5,
+        paymentTypeId: 1
+    },
+    {
+        id: 2,
+        dateIn:  new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 2,
+        userId: 1,
+        roomId: 6,
+        paymentTypeId: 1
+    },
+    {
+        id: 1,
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 3,
+        userId: 1,
+        roomId: 7,
+        paymentTypeId: 1
+    },
+    {
+        id: 2,
+        dateIn:  new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 2,
+        userId: 1,
+        roomId: 8,
         paymentTypeId: 1
     }
 ];

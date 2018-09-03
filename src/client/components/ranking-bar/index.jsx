@@ -12,6 +12,7 @@ export class RankingBar extends React.Component {
         const searchRequest = this.props.searchRequest
         searchRequest.sortBy=value.value
         this.props.onSelect(searchRequest);
+        this.props.onSortingSelected(value.value)
     };
 
     render() {
