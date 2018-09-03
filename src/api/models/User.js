@@ -51,7 +51,7 @@ let User = orm.define("user", {
     },
     nickname: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     preferredCurrency: {
         type: Sequelize.STRING,
