@@ -1749,6 +1749,25 @@ const ROOM_TYPES = [
     }
 ];
 
+const LANGUAGES = [
+    {
+        id: 1,
+        name: 'English'
+    },
+    {
+        id: 2,
+        name: 'Russion'
+    },
+    {
+        id: 3,
+        name: 'Ukranian'
+    },
+    {
+        id: 4,
+        name: 'German'
+    }
+];
+
 module.exports = {
     USERS,
     PROPERTIES,
@@ -1767,5 +1786,6 @@ module.exports = {
     BED_IN_ROOMS,
     BED_TYPES,
     ROOM_TYPES,
-    PROPERTY_TYPE
+    PROPERTY_TYPE,
+    LANGUAGES
 };

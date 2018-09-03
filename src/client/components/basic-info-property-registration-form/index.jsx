@@ -21,7 +21,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
         this.props.getCountries()
     }
 
-    onCountryChange = (e, value) => {
+    onCountryChange = (_, value) => {
         const { countries } = this.props;
         const country = countries.find(x => x.id == value);
 
@@ -76,7 +76,6 @@ class BasicInfoPropertyRegistrationForm extends Component {
                             label="Property name"
                             type="text"
                             validate={[required, maxLength20]}
-
                         />
                         <br />
                         <Field

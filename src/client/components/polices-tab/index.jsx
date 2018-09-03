@@ -14,9 +14,9 @@ import { mapDispatchToProps, mapStateToProps } from '../polices-tab/container';
 
 class TabPolices extends Component {
     state = {};
-    handleChange = (e,  name, value ) => {
-       console.log( name)
-        this.props.updateTab({cancellation: name });
+    handleChange = (e, name, value) => {
+        console.log(name)
+        this.props.updateTab({ cancellation: name });
     };
     handleProceed = () => {
 
@@ -30,11 +30,11 @@ class TabPolices extends Component {
         console.log(this.props)
         return (
 
-                <Form >
+            <Form >
                 <Card style={{ width: '900px' }} color="teal">
                     <Card.Content>
                         <Card.Description style={{ fontSize: '18px' }}>
-                            Cancellations. When can your guests cancel their
+                            Cancellations. Can your guests cancel their
                             booking for free?
                         </Card.Description>
                         <br />
@@ -43,7 +43,7 @@ class TabPolices extends Component {
                             component={semanticSelectorFormField}
                             as={Form.Select}
                             options={cancelOpt}
-                            placeholder="1 day before arrival"
+                            placeholder="Yes or no"
                             onChange={this.handleChange}
                         />
                     </Card.Content>

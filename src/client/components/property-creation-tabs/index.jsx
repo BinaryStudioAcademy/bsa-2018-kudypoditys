@@ -5,8 +5,13 @@ import { MenuItems } from "./config";
 import { DrawTab } from "./DrawTab";
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from "./container";
+
 import BasicInfoPropertyRegistrationForm from '../basic-info-property-registration-form';
-import ServicesTab from '../property-services-tab';
+import FacilitiesPropertyRegistrationForm from '../facilities-property-registration-form';
+import TabPolices from '../polices-tab';
+import PhotoTab from '../photo-tab-registration-property';
+import PaymentTab from '../property-payment-tab';
+
 
 export class PropertyRegistration extends React.Component {
     state = {
@@ -36,7 +41,9 @@ export class PropertyRegistration extends React.Component {
                 content: 'Basic Info',
                 header: ' Rooms and pricing',
                 subheader: 'Start by telling us your property\'s name, contact details and address.',
-                component: <BasicInfoPropertyRegistrationForm onSubmit={this.nextTab} />
+                component: <BasicInfoPropertyRegistrationForm onSubmit={
+                    this.nextTab
+                } />
             },
             {
                 key: 'Facilities & services',
@@ -44,7 +51,33 @@ export class PropertyRegistration extends React.Component {
                 content: 'Facilities & services',
                 header: ' Facilities & services',
                 subheader: 'Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.',
-                component: <ServicesTab />
+                component: <FacilitiesPropertyRegistrationForm onSubmit={
+                    (data) => console.log(data)
+                } />
+            },
+            {
+                key: 'Rules',
+                icon: 'clipboard list',
+                content: 'Rules',
+                header: ' Polices',
+                subheader: ' Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?',
+                component: <TabPolices />,
+            },
+            {
+                key: 'Photo',
+                icon: 'photo',
+                content: 'Property photos',
+                header: '  Property photos',
+                subheader: 'Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property\'s page on the Booking.com website.',
+                component: <PhotoTab />
+            },
+            {
+                key: 'menuItem Room',
+                icon: 'usd',
+                content: 'Layout and pricing', //temporary
+                header: ' Layout and pricing',
+                subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
+                component: <PaymentTab />,
             }
         ];
     }

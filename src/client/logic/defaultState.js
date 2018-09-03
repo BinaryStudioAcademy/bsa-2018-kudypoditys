@@ -213,18 +213,6 @@ const state = {
             address: "",
             postcode: ""
         },
-        // SERVICES_TAB
-        internet: "free", // additional, none
-        internetFee: "",
-        parking: {
-            providing: "none",
-            type: "private",
-            placement: "on_territory",
-            booking: "need",
-            priceForDay: ""
-        },
-        languages: ["ukrainian", "russian", "english"],
-        facilities: ["Bar", "Sauna", "Pool"],
 
         // Photo Tab
         images: [],
@@ -304,7 +292,10 @@ const state = {
         sendEmailSuccess: false
     },
 
-    countriesData: {}
+    countriesData: {},
+    languagesData: {},
+    faclitiesData: {},
+    paymentTypes: {},
 };
 
 export default state;

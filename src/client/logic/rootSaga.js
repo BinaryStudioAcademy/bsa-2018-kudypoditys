@@ -11,6 +11,8 @@ import propertyPageSaga from "client/logic/property-page/saga";
 import searchSaga from "client/logic/search/saga";
 import personalSettingsSaga from 'client/logic/personal-settings-edit/saga';
 import countriesSaga from 'client/logic/countries/saga';
+import facilitiesSaga from 'client/logic/facilities/saga';
+import languagesSaga from 'client/logic/languages/saga';
 
 export default function* rootSaga() {
     yield all([
@@ -26,5 +28,7 @@ export default function* rootSaga() {
         fork(resetPasswordSaga),
         fork(forgotPasswordSaga),
         fork(countriesSaga),
+        fork(facilitiesSaga),
+        fork(languagesSaga),
     ]);
 }

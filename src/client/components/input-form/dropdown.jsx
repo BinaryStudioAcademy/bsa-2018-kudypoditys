@@ -3,7 +3,7 @@ import { Dropdown, Label } from "semantic-ui-react";
 import './index.scss';
 
 const renderDropdown = ({
-  input, options, label, icon, className, pointing, meta: { touched, error }
+  input, options, label, icon, className, multiple, pointing, meta: { touched, error }
 }) => (
     <React.Fragment>
       <Label basic className={touched && error ? 'shown' : 'hidden'} color='red' pointing={pointing || 'below'}>
@@ -17,6 +17,8 @@ const renderDropdown = ({
         options={options}
         icon={icon}
         iconPosition='left'
+        multiple={multiple}
+        className={className}
         onChange={(_, data) => input.onChange(data.value)}
       />
     </React.Fragment>
