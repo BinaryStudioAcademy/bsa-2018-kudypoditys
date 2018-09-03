@@ -1,9 +1,9 @@
 import {
     GET_USER_BOOKINGS,
     CHOOSE_BOOKING,
-    UNCHOOSE_BOOKING
+    UNCHOOSE_BOOKING,
+    CANCEL_BOOKING
 } from "./actionTypes";
-
 
 export function getUserBookings() {
     return {
@@ -21,5 +21,12 @@ export function chooseBooking(booking) {
 export function unchooseBooking() {
     return {
         type: UNCHOOSE_BOOKING
+    };
+}
+
+export function cancelBooking(booking) {
+    return {
+        type: CANCEL_BOOKING,
+        payload: booking
     };
 }
