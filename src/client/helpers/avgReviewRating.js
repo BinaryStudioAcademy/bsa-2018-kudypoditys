@@ -27,10 +27,24 @@ export function getAvgFromArray(array) {
     for (let i = 0; i < array.length; i++) {
         total += array[i];
     }
-    return (avg = total / array.length).toFixed(1);
+    avg = total / array.length
+    if (isNaN(avg)) {
+        return  0
+    }
+
+    return avg.toFixed(1) ;
 }
 
-export function getAvgPropertyRating(array, arrName){
+export function getPropertyStatus(rating){
+    let ratingStatus = "";
 
+    if (rating >= 4) {
+        ratingStatus = "Excellent";
+    } else if (rating >= 3) {
+        ratingStatus = "Good";
+    } else if (rating >= 2) {
+        ratingStatus = "Not good";
+    }
 
+return ratingStatus
 }

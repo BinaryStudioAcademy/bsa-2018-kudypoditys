@@ -18,7 +18,8 @@ import ReactDOM from "react-dom";
 import HouseRules from "./rules";
 import PaymentMethods from "./payment";
 import Reviews from "../../components/reviews";
-import {getGroupedArray, getAvgFromArray} from 'client/helpers/avgReviewRating';
+import {getGroupedArray, getAvgFromArray, getPropertyStatus} from 'client/helpers/avgReviewRating';
+import RatingBlock from "../../components/reviews/ratingBlock";
 
 export class PropertyPage extends React.Component {
     componentWillMount() {
@@ -58,7 +59,9 @@ export class PropertyPage extends React.Component {
         //AVG PROPERTY RATING
         const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
-        console.log(avgPropRating)
+        // property STATUS
+
+
         const pics = this.getImagesArray(property.images);
         return (
             <div className="mock">
@@ -122,25 +125,7 @@ export class PropertyPage extends React.Component {
                         />
                         <Divider />
                         <PropertySummary property={property} />
-                        <div className="rating_block">
-                            <div style={{
-                                textAlign: "center",
-                                display: "flex",
-                                flexDirection: "column",
-                                paddingRight: 10
-                            }}>
-                                <div className="ratingName">
-                                    {" "}
-                                    VeryGood
-                                </div>
-                                <br/>
-                                <span className="reviewsNumber">{property.reviews.length} reviews</span>
-
-                            </div>
-
-
-                            <div className="rating_num"> {avgPropRating}</div>
-                        </div>
+                       <RatingBlock avgPropRating={avgPropRating} reviewsCount={property.reviews.length}/>
                         <Slider
                             pics={pics}
                             handleSlideChange={handleSlideChange}
