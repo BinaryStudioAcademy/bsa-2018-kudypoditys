@@ -170,28 +170,11 @@ class PropertyRepository extends Repository {
             default:
                 sortingOption = [["rating", "DESC"]];
         }
-        const roomIncludeOption =
-            filter.bedsCount !== 2
-                ? [
-                      RoomType,
-                      {
-                          model: BedInRoom,
-                          where: {
-                              count: { $gte: filter.bedsCount }
-                          }
-                      },
-                      {
-                          model: Reservation
-                          //    where: {
-                          // dateIn: { $gte: moment().subtract(10, 'days').toDate()},
-                          //dateOut: { $lte: moment().add(5, 'days').toDate()}
-                          //   }
-                      }
-                  ]
-                : [RoomType];
 
         return this.model
             .findAll({
+                limit: 5,
+                offset: 0,
                 where: {
                     id: { $in: filter.propertiesIds }
                 },
@@ -205,7 +188,28 @@ class PropertyRepository extends Repository {
 
                     {
                         model: Room,
-                        include: roomIncludeOption,
+                        include: [
+                            RoomType,
+                            {
+                                model: BedInRoom,
+                                where: {
+                                    count: { $gte: filter.bedsCount }
+                                }
+                            },
+
+                            {
+                                model: Reservation,
+                            //     where: sequelize.or( {
+                            //         dateOut: { $lt: filter.dateIn  },
+
+
+                            //         dateIn: {
+                            //             $gt: filter.dateOut
+
+                            //         }
+                            //     })
+                             }
+                        ],
                         where: {
                             amount: { $gte: filter.rooms }
                         }

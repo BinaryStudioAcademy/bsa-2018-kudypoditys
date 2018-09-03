@@ -13,17 +13,61 @@ import "./index.scss";
 import history from "client/history";
 
 export class MainSearch extends React.Component {
+    componentDidMount() {
+        console.log(
+            "MainSearch this.props.params =   " +
+                JSON.stringify(this.props)
+        );
+        if (this.props.params) {
+            const {
+                query,
+                rooms,
+                adults,
+                children,
+                startDate,
+                endDate
+            } = this.props.params;
+            this.setState({
+                query: query,
+                rooms: rooms,
+                adults: adults,
+                children: children,
+                startDate: startDate,
+                endDate: endDate
+            });
+            this.handleSubmit
+        }
+    }
     resetComponent = () =>
         this.setState({ isLoading: false, results: [], value: "" });
     getInfo = () => {
         let resultsData = [];
-        let index = "properties";
+        let index = "cities";
         axios
             .get(
                 `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
                     this.state.query
                 }`
             )
+            .then(citiesResponse => {
+                console.log(
+                    "response Cities= " + JSON.stringify(citiesResponse)
+                );
+                citiesResponse.data.forEach(element => {
+                    resultsData.push({
+                        title: element._source.city,
+                        description: element._source.country
+                    });
+                });
+
+                let index = "properties";
+                return axios.get(
+                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
+                        this.state.query
+                    }`
+                );
+            })
+
             .then(propertiesResponse => {
                 console.log(
                     "response Roperties= " + JSON.stringify(propertiesResponse)
@@ -33,24 +77,6 @@ export class MainSearch extends React.Component {
                         title: element._source.name,
                         description: element._source.address,
                         image: element._source.image
-                    });
-                });
-
-                index = "cities";
-                return axios.get(
-                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
-                        this.state.query
-                    }`
-                );
-            })
-            .then(citiesResponse => {
-                console.log(
-                    "response Cities= " + JSON.stringify(citiesResponse)
-                );
-                citiesResponse.data.forEach(element => {
-                    resultsData.push({
-                        title: element._source.city,
-                        description: element._source.country
                     });
                 });
                 this.setState({
@@ -81,8 +107,8 @@ export class MainSearch extends React.Component {
     };
     handleSubmit = () => {
         console.log("handleSubmit trigered");
-        let path = `/search-page`;
-        history.push(path);
+        // let path = `/search-page`;
+        // history.push(path);
         const {
             query,
             rooms,
@@ -200,7 +226,7 @@ export class MainSearch extends React.Component {
 
             //console.log("search state" + JSON.stringify(this.state));
 
-            if (data !== undefined) {
+            if (data !== undefined && data !== "" && data.length > 0) {
                 // console.log("searchResults" + JSON.stringify(data));
                 this.props.handleSearchResults({
                     searchResults: data,
