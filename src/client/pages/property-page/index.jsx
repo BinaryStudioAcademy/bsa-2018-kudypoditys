@@ -17,6 +17,7 @@ import BookingForm from "../../components/booking-form";
 import ReactDOM from "react-dom";
 import HouseRules from "./rules";
 import PaymentMethods from "./payment";
+import {Reviews} from "../../components/reviews";
 
 export class PropertyPage extends React.Component {
     componentWillMount() {
@@ -239,6 +240,7 @@ export class PropertyPage extends React.Component {
                             >
                                 Reviews
                             </Header>
+                            <Reviews property={property}/>
                         </div>
                     </Container>
                 </div>
