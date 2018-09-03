@@ -32,12 +32,11 @@ const PROPERTIES = [
     {
         id: 1,
         name: "Hotel Ukraine",
-        rating: 4.5,
+        rating: 5,
         address: "Koval street 16, Kyiv",
         description: "Hotel Ukraine located in Kyiv.",
         contactPhone: "0509832174",
         coordinates: { lat: 49.837089, lng: 24.021161 },
-        rating: 8.1,
         userId: 1,
         propertyTypeId: 9,
         cityId: 2,
@@ -46,7 +45,7 @@ const PROPERTIES = [
     {
         id: 2,
         name: "Hotel Dolynskyi",
-        rating: 4.9,
+        rating: 4,
         address: "Koval street 16, Lviv",
         description: "Hotel Dolynskyi description. Located in Lviv.",
         contactPhone: "0509842174",
@@ -1189,24 +1188,6 @@ const FACILITY_LISTS = [
     }
 ];
 
-const BED_IN_ROOMS = [
-    {
-        count: 1,
-        roomId: 1,
-        bedTypeId: 1
-    },
-    {
-        count: 1,
-        roomId: 2,
-        bedTypeId: 2
-    },
-    {
-        count: 1,
-        roomId: 2,
-        bedTypeId: 1
-    }
-];
-
 const COUNTRIES = [
     {
         id: 1,
@@ -1591,7 +1572,33 @@ const REVIEW_CATEGORIES = [
         name: "Fun things to do"
     }
 ];
-
+const BED_IN_ROOMS = [
+    { id: 1, count: 2, roomId: 1, bedTypeId: 1 },
+    { id: 2, count: 2, roomId: 2, bedTypeId: 2 },
+    { id: 3, count: 3, roomId: 3, bedTypeId: 3 },
+    { id: 4, count: 2, roomId: 4, bedTypeId: 4 },
+    { id: 5, count: 2, roomId: 5, bedTypeId: 5 },
+    { id: 6, count: 5, roomId: 6, bedTypeId: 6 },
+    { id: 7, count: 2, roomId: 7, bedTypeId: 5 },
+    { id: 8, count: 6, roomId: 8, bedTypeId: 3 },
+    { id: 9, count: 2, roomId: 9, bedTypeId: 3 },
+    { id: 10, count: 2, roomId: 10, bedTypeId: 2 },
+    { id: 11, count: 2, roomId: 11, bedTypeId: 2 },
+    { id: 12, count: 2, roomId: 12, bedTypeId: 3 },
+    { id: 13, count: 4, roomId: 13, bedTypeId: 4 },
+    { id: 14, count: 2, roomId: 14, bedTypeId: 5 },
+    { id: 15, count: 5, roomId: 15, bedTypeId: 6 },
+    { id: 16, count: 1, roomId: 16, bedTypeId: 7 },
+    { id: 17, count: 3, roomId: 17, bedTypeId: 1 },
+    { id: 18, count: 2, roomId: 18, bedTypeId: 2 },
+    { id: 19, count: 6, roomId: 19, bedTypeId: 3 },
+    { id: 20, count: 2, roomId: 20, bedTypeId: 1 },
+    { id: 21, count: 2, roomId: 21, bedTypeId: 2 },
+    { id: 22, count: 7, roomId: 22, bedTypeId: 3 },
+    { id: 23, count: 2, roomId: 23, bedTypeId: 4 },
+    { id: 24, count: 3, roomId: 24, bedTypeId: 5 },
+    { id: 25, count: 2, roomId: 25, bedTypeId: 6 }
+];
 const BED_TYPES = [
     {
         id: 1,

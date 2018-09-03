@@ -2,13 +2,11 @@ import { searchUpdate,searchSubmit } from "../../logic/search/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { search } = state;
+
+
     return {
-        destination: search.destination,
-        checkIn: search.checkIn,
-        checkOut: search.checkOut,
-        adults: search.adults,
-        children: search.children,
-        rooms: search.rooms
+        search
+
     };
 }
 
