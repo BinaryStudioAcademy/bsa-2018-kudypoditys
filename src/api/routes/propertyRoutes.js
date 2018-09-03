@@ -98,25 +98,10 @@ property.route("/:id/details").get((req, res) => {
         });
 });
 
+property.route("/banners").get((req, res) => {
+    res.send(1)
+});
 
-property.route("/city-info/").get((req, res) => {
-        // res.send(req.params.city)
-        // const filter ={
-        //     city: req.params.city
-        // }
-        const CITY = 'Lviv'//req.params.city
-        console.log('CITY NAME:' + CITY)
-            res.send(CITY);
-        // propertyService
-        //     .get(CITY)
-        //     .then(properties => {
-        //         console.log('PROPERTY ROUTES HERE' + properties.data)
-        //         res.send(properties);
-        //     })
-        //     .catch(err => {
-        //         res.status(404).send(err.message);
-        //     });
-    })
 
 property.route("/:id/info").get((req, res) => {
     propertyService
