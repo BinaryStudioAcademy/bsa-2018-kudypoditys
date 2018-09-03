@@ -5,7 +5,10 @@ import {
     GET_CURRENT_USER_INFO_SUCCESS
 } from "./actionTypes";
 
-export default (state = defaultState.availabilityCalendar, action) => {
+export default function availabilityCalendarReducer(
+    state = defaultState.availabilityCalendar,
+    action
+) {
     switch (action.type) {
         case PROPERTY_CALENDAR_UPDATE: {
             return {
@@ -30,4 +33,4 @@ export default (state = defaultState.availabilityCalendar, action) => {
             return state;
         }
     }
-};
+}

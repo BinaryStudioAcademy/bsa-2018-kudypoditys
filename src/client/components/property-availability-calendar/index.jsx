@@ -15,12 +15,14 @@ export class AvailabilityCalendar extends React.Component {
         console.log("Submit");
     };
 
-    roomAmountChanged = data => {
-        console.log(this.props);
+    roomAmountChanged = (e, { name, value }) => {
+        console.log(e);
+        console.log(name);
+        console.log(value);
     };
 
     componentWillMount() {
-        this.props.handleUserInfo(1);
+        this.props.fetchUserInfo(1);
     }
 
     render() {
