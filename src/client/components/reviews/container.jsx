@@ -2,11 +2,11 @@ import {reviewSubmit, reviewUpdate, ratingUpdate} from 'client/logic/reviews/act
 
 
 export function mapStateToProps(state, ownProps) {
-    // const reviewData = state;
-    // const userCabinet = state.userCabinet;
+    const reviewData = state.reviewData;
+    const {userCabinet} = state;
     return {
-        ...state
-
+        ...userCabinet,
+            ...reviewData
     }
 }
 
