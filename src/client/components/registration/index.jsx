@@ -17,8 +17,7 @@ export class Registration extends Component {
                     style={{
                         cursor: "default",
                         color: "white",
-                        fontSize: "26px",
-                        marginBottom: "20px"
+                        fontSize: "26px"
                     }}
                 >
                     Sign up
