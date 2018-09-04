@@ -42,6 +42,7 @@ export class BannerList extends Component {
         ] = cityInfos;
         console.log(this.props.lviv)
         return (
+            <div className='container'>
             <Grid >
                 <Grid.Row columns='equal'>
                     <Grid.Column>
@@ -68,6 +69,7 @@ export class BannerList extends Component {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
+            </div>
         );
 
     }

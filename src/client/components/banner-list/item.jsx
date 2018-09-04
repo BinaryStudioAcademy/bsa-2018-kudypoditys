@@ -36,7 +36,7 @@ export class Banner extends Component {
                     </Card.Content>
                     <Card.Description className="banner__avgprice">
                             <span>Average price</span>
-                            <span> UAH  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}</span>
+                            <span> US$  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}</span>
                         </Card.Description>
 
                 </Container >
