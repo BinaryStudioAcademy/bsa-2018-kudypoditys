@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import history from "client/history";
-import { Icon, Menu, Popup } from "semantic-ui-react";
+import { Icon, Menu, Popup, Comment, Image } from "semantic-ui-react";
 import "./index.scss";
 
 export default class UserPopup extends React.Component {
@@ -35,6 +35,13 @@ export default class UserPopup extends React.Component {
         return (
             <Popup
                 trigger={
+                    // <Fragment>
+                    // <Image
+                    //     size="mini"
+                    //     circular
+                    //     as="a"
+                    //     src="https://react.semantic-ui.com/images/avatar/small/joe.jpg"
+                    // />
                     <span
                         style={{
                             fontSize: 16,
@@ -42,8 +49,25 @@ export default class UserPopup extends React.Component {
                             cursor: "pointer"
                         }}
                     >
+                        <Image
+                            size="mini"
+                            circular
+                            as="a"
+                            src={
+                                currentUser.avatar
+                                    ? currentUser.avatar
+                                    : "https://react.semantic-ui.com/images/avatar/small/joe.jpg"
+                            }
+                            style={{
+                                marginRight: "2%",
+                                fontSize: 16,
+                                opacity: 0.8,
+                                cursor: "pointer"
+                            }}
+                        />
                         {currentUser.fullName}
                     </span>
+                    // </Fragment>
                 }
                 content={
                     <Menu
