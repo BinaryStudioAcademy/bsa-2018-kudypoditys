@@ -48,7 +48,13 @@ export class PropertyRegistration extends React.Component {
             }
         }
 
-        return res;
+        return res
+            .filter(x => x)
+            .map(x => ({
+                id: x.id,
+                name: x.name,
+                facilityCategoryId: x.facilityCategoryId
+            }));
     }
 
     onFormSubmit = (data) => {

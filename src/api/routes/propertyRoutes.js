@@ -29,9 +29,9 @@ property
     });
 
 property.route("/page").get((req, res) => {
-    const {page, recordsOnPage} = req.query;
+    const { page, recordsOnPage } = req.query;
     propertyService
-        .findByPage({page, recordsOnPage})
+        .findByPage({ page, recordsOnPage })
         .then(list => {
             res.status(200).send(list);
         })
@@ -106,15 +106,15 @@ property.route("/city/:id").get((req, res) => {
             var roomAmount = 0;
             var totalPrice = 0;
             var avgPrice = 0;
-            for(const property of properties){
-                    for(const room of property.rooms){
-                        totalPrice += Number(room.price)
+            for (const property of properties) {
+                for (const room of property.rooms) {
+                    totalPrice += Number(room.price)
 
-                    }
-                    roomAmount++
                 }
+                roomAmount++
+            }
             console.log(roomAmount, totalPrice)
-            avgPrice = (totalPrice/roomAmount).toFixed(0)
+            avgPrice = (totalPrice / roomAmount).toFixed(0)
             const data = {
                 properties: roomAmount,
                 avgPrice: avgPrice

@@ -1,18 +1,16 @@
-const moment = require("moment");
-const sequelize = require("sequelize");
 const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
 const Facility = require("../models/Facility");
 const PaymentType = require("../models/PaymentType");
 
 const Reservation = require("../models/Reservation");
-// const PropertyCategory = require("../models/PropertyCategory");
 const RoomType = require("../models/RoomType");
 const Image = require("../models/Image");
 const Availability = require("../models/Availability");
 const Favorite = require("../models/Favorite");
 const AccommodationRule = require("../models/AccommodationRule");
 const PropertyType = require("../models/PropertyType");
+const PropertyPaymentType = require('../models/PropertyPaymentType');
 const Country = require("../models/Country");
 const City = require("../models/City");
 const Review = require("../models/Review");
@@ -21,7 +19,7 @@ const Room = require("../models/Room");
 const FacilityList = require("../models/FacilityList");
 const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
-const PropertyLanguage = require('../models/Language');
+const PropertyLanguage = require('../models/PropertyLanguage');
 const BasicFacility = require('../models/BasicFacility');
 
 const includeOptions = [
@@ -135,6 +133,7 @@ class PropertyRepository extends Repository {
                 });
             });
     }
+
     getPropertiesByCity(city) {
         console.log(city)
         return this.model
@@ -182,28 +181,31 @@ class PropertyRepository extends Repository {
             include: [
                 AccommodationRule, BasicFacility, Image
             ]
-        }).then(x => {
-            const facilityList = entity.facilities.map(f => ({
-                propertyId: x.id,
+        }).then(({ dataValues: newProperty }) => {
+            let facilityList = entity.facilities.map(f => ({
+                propertyId: newProperty.id,
                 facilityId: f.id
             }));
-            return FacilityList.bulkCreate(facilityList).then(x => x);
-        }).then(x => {
-            const languages = entity.languages.map(l => ({
-                propertyId: x.id,
+            return FacilityList.bulkCreate(facilityList).then(_ => newProperty);
+        }).then(newProperty => {
+            let languages = entity.languages.map(l => ({
+                propertyId: newProperty.id,
                 languageId: l.id
             }));
 
-            return PropertyLanguage.bulkCreate(languages).then(x => x);
-        }).then(x => {
-            const paymentTypes = entity.paymentTypes.map(p => ({
-                propertyId: x.id,
+            return PropertyLanguage.bulkCreate(languages).then(_ => newProperty);
+        }).then(newProperty => {
+            let paymentTypes = entity.paymentTypes.map(p => ({
+                propertyId: newProperty.id,
                 paymentTypeId: p.id
             }));
 
-            return PaymentType.bulkCreate(paymentTypes).then(x => x);
-        });
+            return PropertyPaymentType.bulkCreate(paymentTypes).then(_ => newProperty);
+        }).then(newProperty =>
+            this.findById(newProperty.id)
+        );
     }
+
     getFilteredProperties(filter) {
         const SORT_VALUE = {
             PRICE: "price",

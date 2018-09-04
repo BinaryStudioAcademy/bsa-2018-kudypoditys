@@ -219,7 +219,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
         const { languages = [] } = this.props;
         const languagesOptions = languages.map((x, i) => ({
             key: i,
-            value: x,
+            value: { id: x.id, name: x.name },
             text: x.name
         }));
 

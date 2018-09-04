@@ -73,10 +73,10 @@ class PropertyService {
             .sendRequest(`/api/property/${id}/info`, "get")
             .then(response => response.data);
     }
-    getPropertiesByCity(city){
-    return api
-        .sendRequest(`api/property/city/${city}`, "get")
-        .then(response => response.data)
+    getPropertiesByCity(city) {
+        return api
+            .sendRequest(`api/property/city/${city}`, "get")
+            .then(response => response.data)
     }
 }
 

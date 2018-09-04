@@ -25,7 +25,7 @@ class PaymentPropertyRegistrationForm extends Component {
 
     const paymentOptions = paymentTypes.map((x, index) => ({
       key: index,
-      value: x,
+      value: { id: x.id, name: x.name },
       text: x.name
     }));
 
