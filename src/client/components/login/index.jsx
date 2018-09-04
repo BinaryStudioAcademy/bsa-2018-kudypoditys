@@ -1,17 +1,18 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
+
+import history from 'client/history';
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import LoginForm from "./loginForm";
-import {Message, Grid} from "semantic-ui-react";
-import history from "client/history";
+import { Message, Grid } from "semantic-ui-react";
 
 export class LoginComponent extends React.Component {
     handleForgotClicked = () => {
-        console.log("Forgot clicked");
+        history.push('/forgotpassword');
     };
 
     handleRegisterClicked = () => {
-        history.push("/signup");
+        history.push('/signup');
     };
 
     render() {
@@ -27,7 +28,7 @@ export class LoginComponent extends React.Component {
                     <Grid centered columns={5}>
                         <Message floating negative>
                             <Message.Header>Error</Message.Header>
-                            <div style={{margin: "10px"}}>
+                            <div style={{ margin: "10px" }}>
                                 {this.props.error}
                             </div>
                         </Message>
