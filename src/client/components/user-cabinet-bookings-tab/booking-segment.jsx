@@ -17,6 +17,33 @@ import {
 import Modal from "../modal";
 import ReviewForm from "../reviews/addReviewForm";
 export class BookingSegment extends React.Component {
+    constructor(props) {
+        super(props);
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.state = {
+
+            modalOpen: false
+        };
+
+
+
+
+    }
+
+
+    handleOpen = () => {
+        this.setState({ modalOpen: true })
+
+    }
+
+    handleClose = () => {
+
+        this.setState({ modalOpen: false })
+
+    }
+
     viewBooking = (event, id) => {
         event.preventDefault();
         this.props.viewBooking(id);
@@ -133,13 +160,15 @@ export class BookingSegment extends React.Component {
                                             labelPosition="left"
                                             icon="edit"
                                             type="submit"
-
+                                            onClick={this.handleOpen}
                                         />
                                         </div>
                                     }
-
+                                    open={this.state.modalOpen}
+                                    // onClose={this.handleClose}
+                                    onClose={this.close}
                                 >
-                                    <ReviewForm property={booking.room.property} userc={true}/>
+                                    <ReviewForm property={booking.room.property} userc={true} onFormClick={this.handleClose}/>
                                 </Modal>
                             </div>) : null}
 

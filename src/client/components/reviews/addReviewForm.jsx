@@ -152,7 +152,7 @@ export class addReviewForm extends React.Component {
                                 // color="teal"
                                 fluid
                                 content="Add review"
-                                labelPosition="center"
+                                // labelPosition="center"
                                 // icon=""
                                 type="submit"
                                 onClick={this.toggleVisibility}
