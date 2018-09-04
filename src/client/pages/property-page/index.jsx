@@ -99,7 +99,10 @@ export class PropertyPage extends React.Component {
                     direction="right"
                     width="very wide"
                     vertical
-                    style={{ backgroundColor: "white" }}
+                    style={{
+                        backgroundColor: "white",
+                        boxShadow: "0 0 3px 1px #dddddd"
+                    }}
                 >
                     <div
                         style={{
