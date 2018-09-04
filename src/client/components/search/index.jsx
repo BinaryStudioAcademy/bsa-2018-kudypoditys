@@ -138,7 +138,8 @@ export class MainSearch extends React.Component {
             adults: adults,
             children: children,
             startDate: startDate,
-            endDate: endDate
+            endDate: endDate,
+            page:1
         });
     };
 
@@ -239,11 +240,7 @@ export class MainSearch extends React.Component {
         // console.log("props!!!=" + JSON.stringify(this.props));
         if (this.props.search.data !== undefined) {
             const { data } = this.props.search;
-
-            //console.log("search state" + JSON.stringify(this.state));
-
-            //  if ( data !== "" && data.length > 0) {
-            // console.log("searchResults" + JSON.stringify(data));
+            //send data to search page
             this.props.handleSearchResults({
                 searchResults: data,
                 searchRequest: {

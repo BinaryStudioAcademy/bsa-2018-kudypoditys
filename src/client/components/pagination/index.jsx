@@ -17,6 +17,7 @@ class Pagination extends React.Component {
                 defaultActivePage={1}
                 totalPages={this.props.pagesCount}
                 onPageChange={this.onPageChange}
+                activePage={this.props.searchRequest.page}
             />
         )
     }

@@ -28,12 +28,12 @@ class SearchPage extends React.Component {
     }
     handleSearchResults = searchData => {
 
-        const listItems = searchData.searchResults.map(property => (
+        const listItems = searchData.searchResults.properties.map(property => (
             <PropertyListItem key={property.id} propertyItemData={property} />
         ));
         this.setState({
             listItems: listItems,
-            itemCount: searchData.searchResults.length,
+            itemCount: searchData.searchResults.propertiesCount,
             searchRequest: searchData.searchRequest
         });
     };
@@ -115,7 +115,7 @@ class SearchPage extends React.Component {
                         />
                         {this.state.listItems}
                         <div className="search-page__pagination">
-                            <Pagination pagesCount={10} searchRequest={this.state.searchRequest}
+                            <Pagination pagesCount={this.state.itemCount/5} searchRequest={this.state.searchRequest}
                                 />
                         </div>
                     </Container>
@@ -124,6 +124,5 @@ class SearchPage extends React.Component {
         );
     }
 }
-
 
 export default connect(mapStateToProps)(SearchPage);
