@@ -102,9 +102,25 @@ property.route("/city/:id").get((req, res) => {
     console.log(req.params.id)
     propertyService
         .getPropertiesByCity(req.params.id)
-        .then(property => {
-            console.log(typeof(property))
-            res.send(property);
+        .then(properties => {
+            var roomAmount = 0;
+            var totalPrice = 0;
+            var avgPrice = 0;
+            for(const property of properties){
+                    for(const room of property.rooms){
+                        totalPrice += Number(room.price)
+
+                    }
+                    roomAmount++
+                }
+            console.log(roomAmount, totalPrice)
+            avgPrice = (totalPrice/roomAmount).toFixed(0)
+            const data = {
+                properties: roomAmount,
+                avgPrice: avgPrice
+            }
+
+            res.status(200).send(data);
 
         })
         .catch(err => {

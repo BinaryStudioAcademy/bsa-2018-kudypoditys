@@ -18,9 +18,13 @@ export class BannerList extends Component {
     }
 
     componentWillMount() {
-        this.props.getCityInfos();
-    }
 
+    }
+    componentDidMount(){
+        console.log('Hello from component Did mount')
+        this.props.getCityInfos();
+        // this.setState({lviv:this.props.city1}, ()=>console.log(this.state.city1))
+    }
     onCardClick = (query) => {
         console.log(query)
         let path = `/search-page`;

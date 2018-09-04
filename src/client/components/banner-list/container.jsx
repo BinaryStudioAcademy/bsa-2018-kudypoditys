@@ -2,8 +2,8 @@ import { cityInfosGet } from 'client/logic/banner-list/actions';
 import { searchUpdate,searchSubmit } from "client/logic/search/actions";
 
 export function mapStateToProps(state, ownProps) {
-    const { lviv } = state;
-    return { lviv };
+    const { cityInfos } = state;
+    return { cityInfos };
 }
 
 export function mapDispatchToProps(dispatch, ownProps,data) {
