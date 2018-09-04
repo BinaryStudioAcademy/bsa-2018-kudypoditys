@@ -37,17 +37,17 @@ function* getProperties(action) {
         // var body6 = yield response6.json();
 
         const response1 = yield call(PropertyService.getPropertiesByCity, URL1 );
-        var body1 = yield response1.json();
+        // var body1 = yield response1.json();
         const response2 = yield call(PropertyService.getPropertiesByCity, URL2 );
-        var body2 = yield response2.json();
+        // var body2 = yield response2.json();
         const response3 = yield call(PropertyService.getPropertiesByCity, URL3 );
-        var body3 = yield response3.json();
+        // var body3 = yield response3.json();
         const response4 = yield call(PropertyService.getPropertiesByCity, URL4 );
-        var body4 = yield response4.json();
+        // var body4 = yield response4.json();
         const response5 = yield call(PropertyService.getPropertiesByCity, URL5 );
-        var body5 = yield response5.json();
+        // var body5 = yield response5.json();
         const response6 = yield call(PropertyService.getPropertiesByCity, URL6 );
-        var body6 = yield response6.json();
+        // var body6 = yield response6.json();
 
 
         // const response = yield call(
