@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "EuropaGroteskSH-BolExt";
+    font-style: normal;
+    src: local("EuropaGroteskSH-BolExt"),
+        url(../header/EuropaGroteskSH-BolExt.ttf) format("ttf");
+}
+
+.header {
+    font-weight: 900;
+    font-family: EuropaGroteskSH-BolExt, sans-serif;
+    cursor: pointer;
+    font-size: 18px;
+    letter-spacing: -0.2px;
+}
+
+.tab-container {
+    .ui.primary.button {
+        background-color: #465672;
+        border-radius: 0px;
+        &:hover {
+            background-color: #6078a3;
+        }
+    }
+}

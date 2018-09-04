@@ -21,6 +21,8 @@ import userVerified from "client/logic/verify-email/reducer";
 import resetPassword from 'client/logic/reset-password/reducer';
 import forgotPassword from 'client/logic/forgot-password/reducer';
 
+import availabilityCalendar from "client/logic/property-availability-calendar/reducer";
+import review from "client/logic/reviews/reducer";
 export default combineReducers({
     search,
     sortType,
@@ -43,9 +45,12 @@ export default combineReducers({
     // policesTab,
     // layoutTab,
     propertyRegistration,
+    review,
     userVerified,
     userSettings,
     userCabinet,
     resetPassword,
     forgotPassword,
+    availabilityCalendar,
+
 });

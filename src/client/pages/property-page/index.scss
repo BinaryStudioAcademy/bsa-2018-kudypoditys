@@ -1,16 +1,21 @@
 .property-page__wrapper {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
     margin: 10px auto;
     width: 1000px;
+    padding: 10px 0 0 0;
+    max-width: 100%;
 }
 
 .property-page__wrapper-left_side {
-    float: left;
     width: 270px;
     margin-right: 1rem !important;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px 0 0 0;
 }
 
 .breadcrumb_wrapper {
@@ -25,6 +30,13 @@
     padding: 0;
     //border-radius: 3px;
     //box-shadow: 2px 2px 30px -4px #00000014;
+}
+
+.property-page__wrapper-right_side
+    > .ui.divider:not(.vertical):not(.horizontal) {
+    color: #465672;
+    border-top: 1px solid #46567215;
+    border-bottom: 1px solid #465672;
 }
 
 .property-page__description > div {
@@ -67,6 +79,13 @@
     position: relative;
     top: 5px;
     color: #a6aebb;
+}
+
+.facilities-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 @media only screen and (min-width: 1200px) {

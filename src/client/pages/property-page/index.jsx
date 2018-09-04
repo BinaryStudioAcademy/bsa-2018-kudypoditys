@@ -3,14 +3,15 @@ import "./index.scss";
 import {
     Divider,
     Container,
-    Segment,
-    Breadcrumb,
-    Icon
+    List,
+    Header,
+    Icon,
+    Sidebar
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import Search from "client/components/search";
-import Header from "client/components/header";
+import AppHeader from "client/components/header";
 import AvailabilityPanel from "client/components/availability-panel";
 import Slider from "client/components/slider";
 import PropertyDescription from "client/components/property-description";
@@ -20,10 +21,23 @@ import BasicMapWidget from "client/components/basic-map-widget";
 import RoomsSummaryTable from "client/components/rooms-summary-table";
 import Modal from "../../components/modal";
 import BookingForm from "../../components/booking-form";
+import ReactDOM from "react-dom";
+import HouseRules from "./rules";
+import PaymentMethods from "./payment";
+import Reviews from "../../components/reviews";
+import {
+    getGroupedArray,
+    getAvgFromArray
+} from "client/helpers/avgReviewRating";
 
 export class PropertyPage extends React.Component {
+    toggleReviews = () => {
+        this.setState({ reviewsVisible: !this.state.reviewsVisible });
+    };
+
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
+        this.props.getBookings();
     }
 
     getImagesArray(propertyImages) {
@@ -34,123 +48,247 @@ export class PropertyPage extends React.Component {
         return images;
     }
 
-    onBookSubmit = event => {
-        console.log("book!");
+    scrollTo = targetRef => {
+        const node = ReactDOM.findDOMNode(this.refs[targetRef]);
+        node.scrollIntoView();
     };
+    hideReviews = () => {
+        this.setState({ reviewsVisible: false });
+    };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            reviewsVisible: false
+        };
+    }
 
     render() {
         const { property, user } = this.props;
-
-        const handleSlideChange = index => {
-            console.log(`Slide changed to ${index}`);
+        console.log(property);
+        // const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
+        const { reviewsVisible } = this.state;
+        const dividerStyle = {
+            color: "#465672",
+            borderTop: "1px solid #46567215",
+            borderBottom: "1px solid #465672"
+        };
+        const headerStyle = {
+            color: "#465672",
+            cursor: "default"
         };
 
         if (!property) return null;
 
-        const pics = this.getImagesArray(property.images);
-        const sections = [
-            { key: "Home", content: "Home", href: "/" },
-            {
-                key: "Country",
-                content: `${property.city.country.name}`,
-                href: "#"
-            },
-            {
-                key: "Region",
-                content: `${property.city.name} Region`,
-                href: "#"
-            },
-            {
-                key: "City",
-                content: property.city.name,
-                href: "#"
-            },
-            {
-                key: "Property",
-                content: property.name,
-                link: false,
-                active: true
-            }
-        ];
+        //AVG PROPERTY RATING
+        const avgPropRatingArray = getGroupedArray(
+            property.reviews,
+            "avgReview"
+        );
+        const avgPropRating = getAvgFromArray(avgPropRatingArray);
 
+        const pics = this.getImagesArray(property.images);
         return (
             <div className="mock">
-                <Header showSearch={true} />
-                <div className="property-page__wrapper">
-                    <div className="breadcrumb_wrapper">
-                        <Segment>
-                            <Breadcrumb
-                                icon="right angle"
-                                sections={sections}
-                            />
-                        </Segment>
-                    </div>
+                <AppHeader showSearch={true} />
 
-                    <div text className="property-page__wrapper-left_side">
-                        <BasicMapWidget
-                            key="BasicMapWidget"
-                            location={property.coordinates}
-                            rounded
-                            centered
-                        />
-                        {user ? (
-                            <Modal
-                                trigger={
-                                    <div
-                                        className="book-btn"
-                                        style={{ height: "33px" }}
-                                    >
-                                        <button>Book now</button>
+                <Sidebar
+                    onHide={this.hideReviews}
+                    visible={reviewsVisible}
+                    animation="overlay"
+                    direction="right"
+                    width="very wide"
+                    vertical
+                    style={{ backgroundColor: "white" }}
+                >
+                    <div
+                        style={{
+                            height: "100%",
+                            width: "100%",
+                            padding: "50px 20px 0 20px"
+                        }}
+                    >
+                        <Reviews property={property} />
+                    </div>
+                </Sidebar>
+                <Sidebar.Pusher>
+                    <div className="property-page__wrapper">
+                        <div text className="property-page__wrapper-left_side">
+                            <BasicMapWidget
+                                key="BasicMapWidget"
+                                coordinates={property.coordinates}
+                                controlEnable={false}
+                                rounded
+                                centered
+                            />
+                            {user ? (
+                                <Modal
+                                    trigger={
                                         <div
-                                            className="book-icon"
-                                            style={{ cursor: "pointer" }}
+                                            className="book-btn"
+                                            style={{ height: "33px" }}
                                         >
-                                            <Icon
-                                                name="bookmark"
-                                                size="large"
+                                            <button>Book now</button>
+                                            <div
+                                                className="book-icon"
+                                                style={{
+                                                    cursor: "pointer"
+                                                }}
+                                            >
+                                                <Icon
+                                                    name="bookmark"
+                                                    size="large"
+                                                />
+                                            </div>
+                                        </div>
+                                    }
+                                    onClose={this.props.clearBookingForm}
+                                >
+                                    <BookingForm
+                                        rooms={property.rooms}
+                                        paymentTypes={property.paymentTypes}
+                                    />
+                                </Modal>
+                            ) : null}
+                        </div>
+
+                        <Container
+                            text
+                            className="property-page__wrapper-right_side"
+                        >
+                            <NavigationBar
+                                reviewsCount={property.reviews.length}
+                                facilitiesClick={() => {
+                                    this.scrollTo("facilitiesRef");
+                                }}
+                                infoClick={() => {
+                                    this.scrollTo("roomsRef");
+                                }}
+                                rulesClick={() => {
+                                    this.scrollTo("houseRuleRef");
+                                }}
+                                reviewsClick={() => {
+                                    this.toggleReviews();
+                                }}
+                            />
+                            <Divider />
+                            <PropertySummary
+                                rating={avgPropRating}
+                                totalReviews={property.reviews.length}
+                                property={property}
+                            />
+
+                            <Slider pics={pics} slideIndex={0} />
+
+                            <Divider hidden />
+                            <div
+                                className="property-page__description"
+                                style={{ width: "100%" }}
+                            >
+                                <PropertyDescription
+                                    property={property}
+                                    style={{ width: "100%" }}
+                                />
+                                <Divider style={dividerStyle} />
+                                <Container
+                                    text
+                                    style={{
+                                        display: "table",
+                                        lineHeight: 1.2
+                                    }}
+                                >
+                                    <div className="facilities-section">
+                                        <div ref={"facilitiesRef"}>
+                                            <Header as="h2" style={headerStyle}>
+                                                Facilities
+                                            </Header>
+                                            <List>
+                                                {property.facilityLists.map(
+                                                    (item, i) => {
+                                                        return (
+                                                            <List.Item>
+                                                                <List.Content>
+                                                                    <span
+                                                                        key={i}
+                                                                        style={{
+                                                                            marginRight: 10,
+                                                                            marginBottom: 10,
+                                                                            fontSize: 18,
+                                                                            lineHeight: 1.2,
+                                                                            color:
+                                                                                "rgb(166,174,188)"
+                                                                        }}
+                                                                    >
+                                                                        {
+                                                                            item
+                                                                                .facility
+                                                                                .name
+                                                                        }
+                                                                    </span>
+                                                                </List.Content>
+                                                            </List.Item>
+                                                        );
+                                                    }
+                                                )}
+                                            </List>
+                                        </div>
+                                        <div
+                                            className="rules-payment-section"
+                                            ref={"houseRuleRef"}
+                                        >
+                                            <Header as="h2" style={headerStyle}>
+                                                Hotel Policy
+                                            </Header>
+                                            <HouseRules
+                                                rules={
+                                                    property.accommodationRule
+                                                }
+                                            />
+                                            <Header
+                                                as="h2"
+                                                style={{ color: "#465672" }}
+                                            >
+                                                Payment Method
+                                            </Header>
+                                            <PaymentMethods
+                                                paymentTypes={
+                                                    property.paymentTypes
+                                                }
                                             />
                                         </div>
                                     </div>
-                                }
-                                onClose={this.props.clearBookingForm}
-                            >
-                                <BookingForm
-                                    onBook={this.onBookSubmit}
-                                    rooms={property.rooms}
-                                    paymentTypes={property.paymentTypes}
-                                />
-                            </Modal>
-                        ) : null}
-                    </div>
-                    <Container
-                        text
-                        className="property-page__wrapper-right_side"
-                    >
-                        <NavigationBar />
+                                </Container>
+                            </div>
 
-                        <PropertySummary property={property} />
-                        <Slider
-                            pics={pics}
-                            handleSlideChange={handleSlideChange}
-                            slideIndex={0}
-                        />
-
-                        <Divider hidden />
-                        <div
-                            className="property-page__description"
-                            style={{ width: "100%" }}
-                        >
-                            <PropertyDescription
-                                property={property}
-                                style={{ width: "100%" }}
+                            <Divider
+                                style={{
+                                    color: "#465672",
+                                    borderTop: "1px solid #46567215",
+                                    borderBottom: "1px solid #465672"
+                                }}
                             />
-                        </div>
-                        <Divider hidden />
 
-                        <AvailabilityPanel style={{ width: "100%" }} />
-                        <RoomsSummaryTable rooms={property.rooms} />
-                    </Container>
-                </div>
+                            <AvailabilityPanel style={{ width: "100%" }} />
+                            <Divider style={dividerStyle} />
+                            <div>
+                                <Header
+                                    as="h2"
+                                    style={{
+                                        ...headerStyle,
+                                        paddingLeft: "15px"
+                                    }}
+                                >
+                                    Rooms
+                                </Header>
+                                <RoomsSummaryTable
+                                    ref={"roomsRef"}
+                                    rooms={property.rooms}
+                                />
+                            </div>
+                            <Divider hidden />
+                        </Container>
+                    </div>
+                </Sidebar.Pusher>
             </div>
         );
     }

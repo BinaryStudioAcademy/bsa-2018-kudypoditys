@@ -1,21 +1,25 @@
 .availability-panel-wrp {
-    width: fit-content;
     padding: 10px;
     margin: 0 auto;
 }
 
 .availability-panel {
-    background-color: rgb(254, 187, 2);
+    background-color: rgb(236, 238, 240);
     padding: 15px 5px 5px 5px;
-    border-radius: 5px;
+    color: #274560;
 }
 
 .availability-panel > p {
     padding-left: 10px;
+    color: #274560;
 }
 
 .availability-form-midsection > .field {
     max-width: 250px;
+}
+
+.availability-panel .room-selector.inline.fields > .inline.field > label {
+    color: #274560;
 }
 
 .availability-form-midsection > div {
@@ -39,6 +43,7 @@
 
 .btn-wrp > button {
     width: fit-content;
+    height: 33px;
 }
 
 .room-selector {
@@ -47,4 +52,8 @@
 
 .room-selector > .field {
     width: fit-content;
+}
+
+.availability-form input.DateInput_input {
+    height: 33px;
 }

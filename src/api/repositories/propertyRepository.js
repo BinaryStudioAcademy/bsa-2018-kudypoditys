@@ -1,3 +1,4 @@
+const moment = require("moment");
 const sequelize = require("sequelize");
 const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
@@ -8,8 +9,8 @@ const Reservation = require("../models/Reservation");
 // const PropertyCategory = require("../models/PropertyCategory");
 const RoomType = require("../models/RoomType");
 const Image = require("../models/Image");
+const Availability = require("../models/Availability");
 const Favorite = require("../models/Favorite");
-
 const AccommodationRule = require("../models/AccommodationRule");
 const PropertyType = require("../models/PropertyType");
 const Country = require("../models/Country");
@@ -50,7 +51,7 @@ const includeOptions = [
     },
     {
         model: Review,
-        attributes: ["id", "content"],
+        attributes: ["id", "pros", "cons", "Cleanliness","Price","Comfort","Facilities","avgReview", "createdAt", "anon"],
         include: [
             {
                 model: User,
@@ -132,6 +133,47 @@ class PropertyRepository extends Repository {
                 });
             });
     }
+    getPropertiesByCity(city) {
+        console.log(city)
+        return this.model
+            .findAll({
+                where: {
+                   cityId:city
+
+                },
+                include: [
+                    {
+                        model: City
+                    },
+                    {
+                        model: Image
+                    },
+
+                    {
+                        model: Room,
+                        include: [
+                            RoomType,
+                            {
+                                model: BedInRoom
+                                // where: {
+                                //     count: { $gte: filter.bedsCount }
+                                // }
+                            },
+                            {
+                                model: Reservation
+                                //    where: {
+                                // dateIn: { $gte: moment().subtract(10, 'days').toDate()},
+                                //dateOut: { $lte: moment().add(5, 'days').toDate()}
+                                //   }
+                            }
+                        ]
+                    }
+                ]
+            })
+            .then(properties => {
+               return properties
+            });
+    }
 
     createDetails(entity) {
         return this.model.create(entity, {
@@ -147,29 +189,74 @@ class PropertyRepository extends Repository {
         });
     }
     getFilteredProperties(filter) {
+        const SORT_VALUE = {
+            PRICE: "price",
+            DISTANCE: "distance_to_center",
+            LOW_RANK: "rating_starting_from_low",
+            HIGH_RANK: "rating_starting_from_high"
+        };
+        let sortingOption;
+        switch (filter.sortBy) {
+            case SORT_VALUE.PRICE:
+                sortingOption = [[Room, "price", "ASC"]];
+                break;
+            case SORT_VALUE.LOW_RANK:
+                sortingOption = [["rating", "ASC"]];
+
+                break;
+            case SORT_VALUE.HIGH_RANK:
+                sortingOption = [["rating", "DESC"]];
+                break;
+
+            default:
+                sortingOption = [["rating", "DESC"]];
+        }
+
         return this.model
             .findAll({
+                limit: 100,
+                offset: 0,
+                where: {
+                    id: { $in: filter.propertiesIds }
+                },
                 include: [
                     {
-                        model: City,
-                        where: { name: filter.city }
+                        model: City
                     },
                     {
-                        model: Reservation,
-                        where: {
-                            dateIn: filter.dateIn,
-                            dateOut: filter.dateOut
-                        }
+                        model: Image
                     },
+
                     {
                         model: Room,
-                        where: { amount: filter.roomsAmount }
-                    },
-                    {
-                        model: BedInRoom,
-                        where: { count: filter.bedsCount }
+                        include: [
+                            RoomType,
+                            {
+                                model: BedInRoom,
+                                where: {
+                                    count: { $gte: filter.bedsCount }
+                                }
+                            },
+
+                            {
+                                model: Reservation,
+                                where:{ //sequelize.or( {
+                                    dateOut: { $lt: filter.dateIn  },
+
+
+                                    // dateIn: {
+                                    //     $gt: filter.dateOut
+
+                                    // }
+                                }//)
+                             }
+                        ],
+                        where: {
+                            amount: { $gte: filter.rooms }
+                        }
                     }
-                ]
+                ],
+                order: sortingOption
             })
             .then(properties => {
                 return properties;
@@ -185,12 +272,58 @@ class PropertyRepository extends Repository {
                     },
                     {
                         model: Image
+                    },
+
+                    {
+                        model: Room,
+                        include: [
+                            RoomType,
+                            {
+                                model: BedInRoom
+                                // where: {
+                                //     count: { $gte: filter.bedsCount }
+                                // }
+                            },
+                            {
+                                model: Reservation
+                                //    where: {
+                                // dateIn: { $gte: moment().subtract(10, 'days').toDate()},
+                                //dateOut: { $lte: moment().add(5, 'days').toDate()}
+                                //   }
+                            }
+                        ]
                     }
                 ]
             })
             .then(properties => {
                 return properties;
             });
+    }
+
+    getUserPropertiesInfo(id) {
+        return this.model.findAll({
+            where: {
+                userId: 1
+            },
+            include: [
+                {
+                    model: Room,
+                    include: [
+                        {
+                            model: Reservation,
+                            include: [
+                                {
+                                    model: User
+                                }
+                            ]
+                        },
+                        {
+                            model: Availability
+                        }
+                    ]
+                }
+            ]
+        });
     }
 }
 

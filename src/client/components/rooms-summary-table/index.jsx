@@ -4,34 +4,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { Table, Icon, Popup, Divider } from "semantic-ui-react";
-import ModalWindow from "./modal.jsx";
+import BookingForm from "../booking-form";
+import Modal from "../modal";
 
-export default class RoomsSummaryTable extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            modalOpen: false,
-            modalInfo: "",
-            modalTitle: ""
-        };
-    }
-
-    handleItemClick(info, title) {
-        this.setState({
-            modalInfo: info,
-            modalOpen: true,
-            modalTitle: title
-        });
-    }
-
-    onModalClose() {
-        this.setState({ modalOpen: false });
-    }
-
-    showPrice(id) {
-        this.props.showRoomPrice(id);
-    }
-
+export class RoomsSummaryTable extends React.Component {
     getBedsSummary = bedsInRoom => {
         let result = "";
         for (let i = 0; i < bedsInRoom.length; i++) {
@@ -43,7 +19,7 @@ export default class RoomsSummaryTable extends React.Component {
             if (bedsTotal - 1 !== index)
                 return (
                     <React.Fragment>
-                        <span key={index}>
+                        <span key={index} style={{ color: "#465672" }}>
                             {bed.count} {bed.bedType.name}
                         </span>
                         <Divider />
@@ -51,65 +27,103 @@ export default class RoomsSummaryTable extends React.Component {
                 );
             else
                 return (
-                    <span key={index}>
+                    <span key={index} style={{ color: "#465672" }}>
                         {bed.count} {bed.bedType.name}
                     </span>
                 );
         });
     };
 
-    getRoomsSummary = rooms => {
+    getRoomsSummary = (rooms, bookButton, property) => {
         return rooms.map(room => (
-            <Table.Row key={room.id}>
-                <Table.Cell className="room-sleeps">
+            <div className="room-row">
+                <div className="room-row--left-section">
                     <Popup
                         style={{
                             height: "fit-content",
                             overflow: "hidden"
                         }}
                         trigger={
-                            <h4 style={{ cursor: "pointer" }}>
-                                {room.bedInRooms.length}
-                            </h4>
+                            <p
+                                style={{
+                                    margin: "0",
+                                    cursor: "pointer",
+                                    color: "#465672",
+                                    width: "50px",
+                                    fontSize: "18px"
+                                }}
+                            >
+                                {room.bedInRooms.length + " "}
+                                <Icon name="bed" />
+                            </p>
                         }
                         content={this.getBedsSummary(room.bedInRooms)}
                         hoverable
-                        pointing
                     />
-                </Table.Cell>
-                <Table.Cell className="room-info">
-                    <h4>{room.roomType.name}</h4>
-                </Table.Cell>
-                <Table.Cell>
-                    US <Icon name="dollar" />
-                    {room.price}
-                </Table.Cell>
-            </Table.Row>
+                    <p
+                        style={{
+                            margin: "0",
+                            color: "#465672",
+                            fontSize: "18px"
+                        }}
+                    >
+                        {room.roomType.name}
+                    </p>
+                </div>
+                <div className="room-row--right-section">
+                    <p
+                        style={{
+                            margin: "0",
+                            color: "rgb(0, 168, 130)",
+                            fontSize: "18px",
+                            fontWeight: "bold"
+                        }}
+                    >
+                        US ${room.price}
+                    </p>
+                    {bookButton ? (
+                        <Modal
+                            trigger={
+                                <div
+                                    className="book-btn"
+                                    style={{
+                                        height: "100%",
+                                        width: "150px",
+                                        paddingLeft: "10px",
+                                        margin: "0"
+                                    }}
+                                >
+                                    <button>Book now</button>
+                                </div>
+                            }
+                            onClose={this.props.clearBookingForm}
+                        >
+                            {" "}
+                            <BookingForm
+                                rooms={property.rooms}
+                                paymentTypes={property.paymentTypes}
+                            />
+                        </Modal>
+                    ) : null}
+                </div>
+            </div>
         ));
     };
 
     render() {
-        const { rooms } = this.props;
+        const { rooms, user, property } = this.props;
+        let bookButton = false;
+        if (user) bookButton = true;
 
         return (
-            <div className="rooms-summary-table">
-                <Table basic="very" celled collapsing>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.HeaderCell>Beds</Table.HeaderCell>
-                            <Table.HeaderCell>Room Type</Table.HeaderCell>
-                            <Table.HeaderCell>Price</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
-                    <Table.Body>{this.getRoomsSummary(rooms)}</Table.Body>
-                </Table>
-                <ModalWindow
-                    modalOpen={this.state.modalOpen}
-                    onClose={this.onModalClose.bind(this)}
-                    header={this.state.modalTitle}
-                    info={this.state.modalInfo}
-                />
+            <div className="rooms-summary-table" style={{ minWidth: "500px" }}>
+                {this.getRoomsSummary(rooms, bookButton, property)}
             </div>
         );
     }
 }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(RoomsSummaryTable);

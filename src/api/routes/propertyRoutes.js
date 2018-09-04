@@ -29,11 +29,25 @@ property
     });
 
 property.route("/page").get((req, res) => {
-    const { page, recordsOnPage } = req.query;
+    const {page, recordsOnPage} = req.query;
     propertyService
-        .findByPage({ page, recordsOnPage })
+        .findByPage({page, recordsOnPage})
         .then(list => {
             res.status(200).send(list);
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        });
+});
+
+property.route("/availability").put((req, res) => {
+    let value = req.body;
+    value.checkIn = new Date(value.checkIn);
+    value.checkOut = new Date(value.checkOut);
+    propertyService
+        .checkAvailability(value)
+        .then(rooms => {
+            res.send(rooms);
         })
         .catch(err => {
             res.status(500).send(err);
@@ -81,6 +95,49 @@ property.route("/:id/details").get((req, res) => {
         })
         .catch(err => {
             res.status(404).send(err);
+        });
+});
+
+property.route("/city/:id").get((req, res) => {
+    console.log(req.params.id)
+    propertyService
+        .getPropertiesByCity(req.params.id)
+        .then(properties => {
+            var roomAmount = 0;
+            var totalPrice = 0;
+            var avgPrice = 0;
+            for(const property of properties){
+                    for(const room of property.rooms){
+                        totalPrice += Number(room.price)
+
+                    }
+                    roomAmount++
+                }
+            console.log(roomAmount, totalPrice)
+            avgPrice = (totalPrice/roomAmount).toFixed(0)
+            const data = {
+                properties: roomAmount,
+                avgPrice: avgPrice
+            }
+
+            res.status(200).send(data);
+
+        })
+        .catch(err => {
+            res.status(404).send(err.message);
+        });
+});
+
+
+property.route("/:id/info").get((req, res) => {
+    propertyService
+        .getUserPropertiesInfo(req.params.id)
+        .then(user => {
+            res.status(200).send(user);
+        })
+        .catch(err => {
+            console.log("getuserpropertiesinfo err " + JSON.stringify(err));
+            res.status(400).send(err.message);
         });
 });
 

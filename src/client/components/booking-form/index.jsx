@@ -1,19 +1,13 @@
 import React from "react";
-import { Form, Header, Dropdown, Message } from "semantic-ui-react";
-import { DateRangePicker } from "react-dates";
+import {Form, Header, Dropdown, Message} from "semantic-ui-react";
+import {DateRangePicker} from "react-dates";
 import moment from "moment";
-import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import {connect} from "react-redux";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 import "./index.scss";
 
-export class BookingForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            focusedInput: null
-        };
-    }
 
+export class BookingForm extends React.Component {
     generateOptions = (from, to) => {
         let options = [];
         for (let i = from; i <= to; i++) {
@@ -24,15 +18,13 @@ export class BookingForm extends React.Component {
         }
         return options;
     };
-
     generateRoomOptions = rooms => {
         let options = [];
         for (let i = 0; i < rooms.length; i++) {
-            options.push({ text: rooms[i].roomType.name, value: rooms[i].id });
+            options.push({text: rooms[i].roomType.name, value: rooms[i].id});
         }
         return options;
     };
-
     generatePaymentOptions = paymentTypes => {
         let options = [];
         for (let i = 0; i < paymentTypes.length; i++) {
@@ -43,16 +35,16 @@ export class BookingForm extends React.Component {
         }
         return options;
     };
-
     datesChanged = selectedDates => {
-        if (
-            selectedDates.startDate &&
-            selectedDates.endDate &&
-            selectedDates.startDate < selectedDates.endDate
-        ) {
-            this.props.onDatesChange(selectedDates);
-        }
+        this.props.onDatesChange(selectedDates);
     };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            focusedInput: null
+        };
+    }
 
     render() {
         const {
@@ -68,9 +60,8 @@ export class BookingForm extends React.Component {
             error,
             message
         } = this.props;
-        const startDate = checkIn === null ? moment() : moment(checkIn);
-        const endDate =
-            checkOut === null ? moment().add(1, "days") : moment(checkOut);
+        const startDate = checkIn === null ? null : moment(checkIn);
+        const endDate = checkOut === null ? null : moment(checkOut);
         const childrenOptions = this.generateOptions(0, 10);
         const adultsOptions = this.generateOptions(1, 10);
         const paymentOptions = this.generatePaymentOptions(paymentTypes);
@@ -80,20 +71,22 @@ export class BookingForm extends React.Component {
             <React.Fragment>
                 <Header
                     as="h2"
-                    style={{ marginBottom: "20px", color: "#274560" }}
+                    style={{marginBottom: "20px", color: "#274560"}}
                 >
                     Make your booking at {propertyName}
                 </Header>
                 <Form
+                    className="booking-form"
                     onSubmit={event => {
                         event.preventDefault();
                         this.props.onBooking({
                             dateIn: Number(startDate),
                             dateOut: Number(endDate),
                             guestsCount: adults + children,
-                            roomId: roomId || roomOptions[0].value,
-                            paymentTypeId:
-                                paymentTypeId || paymentOptions[0].value
+                            roomId: roomId ? roomId : roomOptions[0].value,
+                            paymentTypeId: paymentTypeId
+                                ? paymentTypeId
+                                : paymentOptions[0].value
                         });
                     }}
                     style={{
@@ -104,7 +97,7 @@ export class BookingForm extends React.Component {
                     }}
                 >
                     <Form.Field>
-                        <label style={{ color: "#274560" }}>
+                        <label style={{color: "#274560"}}>
                             Check-in and check-out
                         </label>
                         <div
@@ -121,14 +114,14 @@ export class BookingForm extends React.Component {
                                 onDatesChange={this.datesChanged}
                                 focusedInput={this.state.focusedInput}
                                 onFocusChange={focusedInput => {
-                                    this.setState({ focusedInput });
+                                    this.setState({focusedInput});
                                 }}
                             />
                         </div>
                     </Form.Field>
                     <Form.Group inline>
                         <Form.Field>
-                            <label style={{ color: "#274560" }}>Adults</label>
+                            <label style={{color: "#274560"}}>Adults</label>
                             <Dropdown
                                 fluid
                                 selection
@@ -142,7 +135,7 @@ export class BookingForm extends React.Component {
                             />
                         </Form.Field>
                         <Form.Field>
-                            <label style={{ color: "#274560" }}>Children</label>
+                            <label style={{color: "#274560"}}>Children</label>
                             <Dropdown
                                 fluid
                                 selection
@@ -156,7 +149,7 @@ export class BookingForm extends React.Component {
                             />
                         </Form.Field>
                         <Form.Field>
-                            <label style={{ color: "#274560" }}>Room</label>
+                            <label style={{color: "#274560"}}>Room</label>
                             <Dropdown
                                 fluid
                                 selection
@@ -170,7 +163,7 @@ export class BookingForm extends React.Component {
                             />
                         </Form.Field>
                         <Form.Field>
-                            <label style={{ color: "#274560" }}>
+                            <label style={{color: "#274560"}}>
                                 Payment type
                             </label>
                             <Dropdown

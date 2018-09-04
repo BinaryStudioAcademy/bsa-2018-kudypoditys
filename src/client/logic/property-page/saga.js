@@ -1,6 +1,7 @@
-import { call, put, all, takeLatest } from "redux-saga/effects";
+import {call, put, all, takeLatest} from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
 import api from "../../helpers/api";
+
 
 export default function* propertyPageSaga() {
     function* getPropertyInfo(action) {
@@ -43,8 +44,36 @@ export default function* propertyPageSaga() {
         }
     }
 
+    function* checkAvailability(action) {
+        try {
+            const input = action.payload;
+            if (!input.checkIn || !input.checkOut)
+                return yield put({
+                    type: actionTypes.CHECK_AVAILABILITY_FAILURE,
+                    payload:
+                        "Fill in check-in and check-out dates to check availability"
+                });
+            const response = yield call(
+                api.sendRequest,
+                "/api/property/availability",
+                "put",
+                input
+            );
+            yield put({
+                type: actionTypes.CHECK_AVAILABILITY_SUCCESS,
+                payload: response.data
+            });
+        } catch (err) {
+            return yield put({
+                type: actionTypes.CHECK_AVAILABILITY_FAILURE,
+                payload: err.message
+            });
+        }
+    }
+
     yield all([
         takeLatest(actionTypes.GET_PROPERTY_INFO, getPropertyInfo),
-        takeLatest(actionTypes.BOOK_PROPERTY, bookProperty)
+        takeLatest(actionTypes.BOOK_PROPERTY, bookProperty),
+        takeLatest(actionTypes.CHECK_AVAILABILITY, checkAvailability)
     ]);
 }
