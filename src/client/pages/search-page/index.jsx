@@ -22,7 +22,7 @@ class SearchPage extends React.Component {
             listItems: [],
             itemCount: 0,
             searchRequest: {},
-            selectedPage:1
+            selectedPage:1.
         };
 
     }
@@ -77,7 +77,7 @@ class SearchPage extends React.Component {
                     </div>
 
                     <Container className="search-page__wrapper-left_side">
-                        <QuickFilter />
+                        {/* <QuickFilter searchRequest={this.state.searchRequest}/> */}
                         <div
                             style={{
                                 marginTop: "4%"
