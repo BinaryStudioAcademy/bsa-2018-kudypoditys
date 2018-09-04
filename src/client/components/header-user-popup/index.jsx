@@ -88,15 +88,15 @@ export default class UserPopup extends React.Component {
                             Add property
                         </Menu.Item>
                         <Menu.Item
+                            style={{
+                                textAlign: "right"
+                            }}
+                            position="right"
                             name="log-out"
                             onClick={this.props.logoutClicked}
                         >
                             Log out
                         </Menu.Item>
-
-                        {/* <Menu.Item name="logout" onClick={this.logoutClicked}>
-                            Log out
-                        </Menu.Item> */}
                     </Menu>
                 }
                 on="click"
