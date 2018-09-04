@@ -45,26 +45,26 @@ export class BannerList extends Component {
             <Grid >
                 <Grid.Row columns='equal'>
                     <Grid.Column>
-                        <Banner cityInfo={city1} onClick={() => this.onCardClick(city1.city)} />
+                        <Banner cityInfo={city1} onClick={() => this.onCardClick('Lviv')} />
                     </Grid.Column>
                     <Grid.Column >
-                        <Banner cityInfo={city2} onClick={() => this.onCardClick(city2.city)} />
+                        <Banner cityInfo={city2} onClick={() => this.onCardClick('Dnipro')} />
                     </Grid.Column>
                     <Grid.Column width={8}>
-                        <Banner cityInfo={city3} onClick={() => this.onCardClick(city3.city)} />
+                        <Banner cityInfo={city3} onClick={() => this.onCardClick('Ternopil')} />
                     </Grid.Column>
 
                 </Grid.Row>
 
                 <Grid.Row columns={3}>
                     <Grid.Column >
-                        <Banner cityInfo={city4} onClick={() => this.onCardClick(city4.city)} />
+                        <Banner cityInfo={city4} onClick={() => this.onCardClick('Kiyv')} />
                     </Grid.Column>
                     <Grid.Column >
-                        <Banner cityInfo={city5} onClick={() => this.onCardClick(city5.city)} />
+                        <Banner cityInfo={city5} onClick={() => this.onCardClick('Odessa')} />
                     </Grid.Column>
                     <Grid.Column>
-                        <Banner cityInfo={city6} onClick={() => this.onCardClick(city6.city)}/>
+                        <Banner cityInfo={city6} onClick={() => this.onCardClick('Kharkiv')}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
