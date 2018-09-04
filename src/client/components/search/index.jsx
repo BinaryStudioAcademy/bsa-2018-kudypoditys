@@ -24,6 +24,7 @@ export class MainSearch extends React.Component {
             this.setState(
                 {
                     query: parsed.query,
+                    queryCopy:parsed.query,
                     rooms: parsed.rooms,
                     adults: parsed.adults,
                     children: parsed.children,
@@ -124,14 +125,15 @@ export class MainSearch extends React.Component {
         } = this.state;
         console.log("handleSubmit trigered");
         let {query }=this.state
-        history.push({
-            pathname: "/search-page",
-            search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
-        });
+
         if (!isSelectedResult) {
             query = queryCopy;
             this.setState({ query: queryCopy })
         }
+        history.push({
+            pathname: "/search-page",
+            search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
+        });
         this.props.onSearch({
             query: query,
             rooms: rooms,
