@@ -10,9 +10,11 @@ import {
     Label,
     Card,
     Header,
-    Message
+    Message,
+    Segment
 } from "semantic-ui-react";
 import ReviewItem from "./reviewItem";
+import "./index.scss";
 
 export class ReviewsTab extends React.Component {
     componentWillMount() {
@@ -39,7 +41,7 @@ export class ReviewsTab extends React.Component {
         const { reviews } = this.props;
 
         return (
-            <Fragment>
+            <Segment className="reviews-segment">
                 <Header as="h2">Your reviews</Header>
                 <Message info>This is a list of your reviews.</Message>
                 <Card.Group itemsPerRow={4}>
@@ -47,7 +49,7 @@ export class ReviewsTab extends React.Component {
                         ? this.getReviewsItems(reviews)
                         : "You dont have review :("}
                 </Card.Group>
-            </Fragment>
+            </Segment>
         );
     }
 }

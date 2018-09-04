@@ -35,13 +35,6 @@ export default class UserPopup extends React.Component {
         return (
             <Popup
                 trigger={
-                    // <Fragment>
-                    // <Image
-                    //     size="mini"
-                    //     circular
-                    //     as="a"
-                    //     src="https://react.semantic-ui.com/images/avatar/small/joe.jpg"
-                    // />
                     <span
                         style={{
                             fontSize: 16,
@@ -67,7 +60,6 @@ export default class UserPopup extends React.Component {
                         />
                         {currentUser.fullName}
                     </span>
-                    // </Fragment>
                 }
                 content={
                     <Menu
