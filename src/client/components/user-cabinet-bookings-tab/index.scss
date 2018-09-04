@@ -1,3 +1,29 @@
 .bookings-container {
     padding: 20px;
 }
+.user_cabinet_add_review__btn > .ui.primary.button {
+
+        font-size: 14px;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #465672;
+        //width: 150px;
+        border: 0;
+        border-radius: 0;
+        height: 100%;
+        cursor: pointer;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-transition: 0.2s;
+        -o-transition: 0.2s;
+        transition: 0.2s;
+    width: 150px;
+
+}
+
+.user_cabinet_add_review__btn {
+    margin-left: 200px;
+}
+.user_cabinet_add_review__modal {
+    min-width: 500px;
+}

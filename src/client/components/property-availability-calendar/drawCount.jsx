@@ -1,6 +1,7 @@
 import React from "react";
 import { Table, Input } from "semantic-ui-react";
 
+
 const count = 30;
 
 export class DrawCount extends React.Component {
@@ -23,6 +24,7 @@ export class DrawCount extends React.Component {
     };
 
     listItems = this.roomInput(count);
+
     render() {
         return this.listItems;
     }

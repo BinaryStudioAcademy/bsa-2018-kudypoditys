@@ -9,6 +9,7 @@ import {
     CHECK_AVAILABILITY_FAILURE
 } from "./actionTypes";
 
+
 function propertyPageReducer(state = defaultState.propertyPage, action) {
     switch (action.type) {
         case GET_PROPERTY_INFO_SUCCESS: {

@@ -51,8 +51,8 @@ const includeOptions = [
     },
     {
         model: Review,
-        attributes: ["id", "content"],
-        inlcude: [
+        attributes: ["id", "pros", "cons", "Cleanliness","Price","Comfort","Facilities","avgReview", "createdAt", "anon"],
+        include: [
             {
                 model: User,
                 attributes: ["id", "fullName", "email", "avatar", "phoneNumber"]
@@ -80,6 +80,10 @@ const includeOptions = [
                 attributes: ["id", "name"]
             }
         ]
+    },
+    {
+        model: PaymentType,
+        attributes: ["name", "id"]
     }
 ];
 
