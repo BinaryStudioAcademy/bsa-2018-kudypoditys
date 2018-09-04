@@ -4,8 +4,8 @@ const USERS = [
     {
         id: 1,
         fullName: "Natalya",
-        password: bcrypt.hashSync("102938abC", 10),
-        email: "sayber1990@gmail.com",
+        password: bcrypt.hashSync("nata1NATA", 10),
+        email: "natalya@gmail.com",
         phoneNumber: "0504958671",
         nickname: "Nata1ya",
         address: "Nebereshnaya street 20, Lviv",
@@ -916,7 +916,6 @@ const IMAGES = [
 
 const RESERVATIONS = [
     {
-        id: 1,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 3,
@@ -925,8 +924,7 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 2,
-        dateIn:  new Date("2018-09-10"),
+        dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 2,
         userId: 1,
@@ -934,7 +932,6 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 1,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 3,
@@ -943,8 +940,7 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 2,
-        dateIn:  new Date("2018-09-10"),
+        dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 2,
         userId: 1,
@@ -952,7 +948,6 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 1,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 3,
@@ -961,8 +956,7 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 2,
-        dateIn:  new Date("2018-09-10"),
+        dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 2,
         userId: 1,
@@ -970,7 +964,6 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 1,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 3,
@@ -979,8 +972,7 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 2,
-        dateIn:  new Date("2018-09-10"),
+        dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 2,
         userId: 1,
@@ -1863,10 +1855,8 @@ const ROOM_TYPES = [
 const REVIEWS = [
     {
         id: 1,
-        pros:
-            "very nice place for family ",
-        cons:
-            "It was hard to find a hostel.",
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel.",
         Cleanliness: 3,
         Price: 5,
         Comfort: 5,
@@ -1881,10 +1871,8 @@ const REVIEWS = [
 
     {
         id: 1,
-        pros:
-            "very nice place for family ",
-        cons:
-            "It was hard to find a hostel.",
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel.",
         Cleanliness: 3,
         Price: 5,
         Comfort: 5,
@@ -1898,10 +1886,8 @@ const REVIEWS = [
     },
     {
         id: 1,
-        pros:
-            "very nice place for family ",
-        cons:
-            "It was hard to find a hostel.",
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel.",
         Cleanliness: 3,
         Price: 5,
         Comfort: 5,
@@ -1912,7 +1898,7 @@ const REVIEWS = [
         userId: 1,
         propertyId: 2,
         anon: false
-    },
+    }
 ];
 
 module.exports = {

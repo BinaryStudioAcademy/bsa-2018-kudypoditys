@@ -64,8 +64,7 @@ module.exports = function(models) {
         [Image, IMAGES],
         [User, USERS],
         [Reservation, RESERVATIONS],
-        [Review, REVIEWS],
-        [Reservation, RESERVATIONS]
+        [Review, REVIEWS]
     ];
 
     //Country & City

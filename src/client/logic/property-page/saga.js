@@ -1,7 +1,6 @@
-import {call, put, all, takeLatest} from "redux-saga/effects";
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
 import api from "../../helpers/api";
-
 
 export default function* propertyPageSaga() {
     function* getPropertyInfo(action) {
@@ -39,7 +38,7 @@ export default function* propertyPageSaga() {
         } catch (err) {
             return yield put({
                 type: actionTypes.BOOK_PROPERTY_FAILURE,
-                payload: err.response.data
+                payload: err.message
             });
         }
     }

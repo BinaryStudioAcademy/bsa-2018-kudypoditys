@@ -7,12 +7,14 @@ import BannerList from "client/components/banner-list";
 export class HomePage extends Component {
     handleSearchResults = () => {
         //todo
-    }
+    };
     render() {
         return (
             <div className="main--wraper">
-                <Header showSearch={true}
+                <Header
+                    showSearch={true}
                     handleSearchResults={this.handleSearchResults}
+                    noBackground
                 />
 
                 <ModalByUrl
