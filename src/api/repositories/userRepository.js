@@ -9,6 +9,7 @@ class UserRepository extends Repository {
             }
         });
     }
+
 }
 
 module.exports = new UserRepository(userModel);

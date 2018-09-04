@@ -3,7 +3,7 @@ import "./index.scss";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-import { Table, Icon, Popup, Divider } from "semantic-ui-react";
+import { Icon, Popup, Divider } from "semantic-ui-react";
 import BookingForm from "../booking-form";
 import Modal from "../modal";
 
@@ -36,77 +36,81 @@ export class RoomsSummaryTable extends React.Component {
 
     getRoomsSummary = (rooms, bookButton, property) => {
         return rooms.map(room => (
-            <div className="room-row">
-                <div className="room-row--left-section">
-                    <Popup
-                        style={{
-                            height: "fit-content",
-                            overflow: "hidden"
-                        }}
-                        trigger={
-                            <p
-                                style={{
-                                    margin: "0",
-                                    cursor: "pointer",
-                                    color: "#465672",
-                                    width: "50px",
-                                    fontSize: "18px"
-                                }}
-                            >
-                                {room.bedInRooms.length + " "}
-                                <Icon name="bed" />
-                            </p>
-                        }
-                        content={this.getBedsSummary(room.bedInRooms)}
-                        hoverable
-                    />
-                    <p
-                        style={{
-                            margin: "0",
-                            color: "#465672",
-                            fontSize: "18px"
-                        }}
-                    >
-                        {room.roomType.name}
-                    </p>
-                </div>
-                <div className="room-row--right-section">
-                    <p
-                        style={{
-                            margin: "0",
-                            color: "rgb(0, 168, 130)",
-                            fontSize: "18px",
-                            fontWeight: "bold"
-                        }}
-                    >
-                        US ${room.price}
-                    </p>
-                    {bookButton ? (
-                        <Modal
+            <React.Fragment>
+                <div className="room-row">
+                    <div className="room-row--left-section">
+                        <Popup
+                            style={{
+                                height: "fit-content",
+                                overflow: "hidden"
+                            }}
                             trigger={
-                                <div
-                                    className="book-btn"
+                                <p
                                     style={{
-                                        height: "100%",
-                                        width: "150px",
-                                        paddingLeft: "10px",
-                                        margin: "0"
+                                        margin: "0",
+                                        cursor: "pointer",
+                                        color: "#465672",
+                                        width: "50px",
+                                        fontSize: "18px"
                                     }}
                                 >
-                                    <button>Book now</button>
-                                </div>
+                                    {room.bedInRooms.length + " "}
+                                    <Icon name="bed" />
+                                </p>
                             }
-                            onClose={this.props.clearBookingForm}
+                            content={this.getBedsSummary(room.bedInRooms)}
+                            hoverable
+                        />
+                        <p
+                            style={{
+                                margin: "0",
+                                color: "#465672",
+                                fontSize: "18px"
+                            }}
                         >
-                            {" "}
-                            <BookingForm
-                                rooms={property.rooms}
-                                paymentTypes={property.paymentTypes}
-                            />
-                        </Modal>
-                    ) : null}
+                            {room.roomType.name}
+                        </p>
+                    </div>
+                    <div className="room-row--right-section">
+                        <p
+                            style={{
+                                margin: "0",
+                                color: "rgb(0, 168, 130)",
+                                fontSize: "18px",
+                                fontWeight: "bold",
+                                paddingRight: "5px"
+                            }}
+                        >
+                            US ${room.price}
+                        </p>
+                        {bookButton ? (
+                            <Modal
+                                trigger={
+                                    <div
+                                        className="book-btn"
+                                        style={{
+                                            height: "100%",
+                                            width: "150px",
+                                            paddingLeft: "10px",
+                                            margin: "0"
+                                        }}
+                                    >
+                                        <button>Book now</button>
+                                    </div>
+                                }
+                                onClose={this.props.clearBookingForm}
+                            >
+                                {" "}
+                                <BookingForm
+                                    rooms={property.rooms}
+                                    paymentTypes={property.paymentTypes}
+                                />
+                            </Modal>
+                        ) : null}
+                    </div>
                 </div>
-            </div>
+                <Divider hidden />
+            </React.Fragment>
         ));
     };
 
