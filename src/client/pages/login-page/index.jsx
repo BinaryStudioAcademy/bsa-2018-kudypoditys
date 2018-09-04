@@ -11,7 +11,7 @@ export default class LoginPage extends React.Component {
                 <div
                     style={{
                         height: "100vh",
-                        backgroundPosition: "cover",
+                        backgroundSize: "cover",
                         backgroundImage:
                             'url("https://s3.eu-central-1.amazonaws.com/kudypoditys/img/application/background.jpg")'
                     }}
