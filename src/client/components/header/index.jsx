@@ -49,7 +49,7 @@ export class MainHeader extends Component {
                                 className="header-logo"
                                 onClick={this.logoClicked}
                             >
-                                Kudypoditys
+                                <p>Kudypoditys </p>
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
