@@ -8,6 +8,7 @@ import {
     Transition,
     Rating,
     Icon,
+    Modal
 } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
@@ -24,6 +25,10 @@ export class addReviewForm extends React.Component {
         anon: false,
         visible: true,
     };
+    handleClose = () => {
+        console.log('"MODAL FORM HANDLE"')
+        this.props.onFormClick()
+    }
     handleAnon = (e, { checked }) => {
         this.setState({ anon: checked });
         console.log(this.state);
@@ -82,16 +87,26 @@ export class addReviewForm extends React.Component {
     };
 
     render() {
-        const { anon } = this.state;
-        const { visible } = this.state;
+        const { anon, visible } = this.state;
+        const { property } = this.props;
         console.log(this.props);
         return (
             <Form reply onSubmit={this.handleSubmit}>
-                <Transition visible={!visible} animation="scale" duration={500}>
-                    <Header as="h3" dividing>
+                <Transition visible={!visible} animation="fade" duration={1000}>
+                    <div>
+                    <Header as="h3" dividing style={{
+                        color: '#465672',
+                        borderBottomColor: '#465672',
+                    }}>
                         Dear Traveler. Thank you for your review and for
-                        choosing our hotel.
+                        choosing {property.name}.
                     </Header>
+                    <Modal.Actions style={{textAlight: "center"}}>
+                        <div className="reviews__close_btn"  onClick={this.handleClose} >
+                            <Icon name='checkmark' /> Got it
+                        </div>
+                    </Modal.Actions>
+                    </div>
                 </Transition>
                 <Transition visible={visible} animation="scale" duration={500}>
                     <div>
@@ -137,8 +152,8 @@ export class addReviewForm extends React.Component {
                                 // color="teal"
                                 fluid
                                 content="Add review"
-                                labelPosition="left"
-                                icon="edit"
+                                labelPosition="center"
+                                // icon=""
                                 type="submit"
                                 onClick={this.toggleVisibility}
                             />
