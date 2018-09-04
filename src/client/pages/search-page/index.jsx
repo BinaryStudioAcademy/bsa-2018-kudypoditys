@@ -6,13 +6,14 @@ import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "client/components/property-list-item";
-import { Pagination } from "client/components/pagination";
+import Pagination  from "client/components/pagination";
 import BasicMapWidget from "client/components/basic-map-widget";
 import Header from "client/components/header";
 import { Breadcrumb } from "semantic-ui-react";
 import QuickFilter from "client/components/quick-filter";
 import { connect } from "react-redux";
 import { mapStateToProps } from "./container";
+import history from "client/history";
 
 class SearchPage extends React.Component {
     constructor(props) {
@@ -20,10 +21,13 @@ class SearchPage extends React.Component {
         this.state = {
             listItems: [],
             itemCount: 0,
-            searchRequest: {}
+            searchRequest: {},
+            selectedPage:1.
         };
+
     }
     handleSearchResults = searchData => {
+
         const listItems = searchData.searchResults.map(property => (
             <PropertyListItem key={property.id} propertyItemData={property} />
         ));
@@ -36,6 +40,11 @@ class SearchPage extends React.Component {
     onSortingSelected = value => {
         this.setState({ sortBy: value });
     };
+    paginationChanged = (event,data) => {
+        console.log('event' +Object.keys(event));
+        console.log('data'+JSON.stringify(data))
+        this.setState({selectedPage: data.activePage });
+    };
 
     render() {
         return (
@@ -47,7 +56,7 @@ class SearchPage extends React.Component {
                 <div className="search-page__wrapper">
                     <div className="breadcrumb_wrapper">
                         <Segment className="breadcrumb__segment">
-                            <Breadcrumb
+                            {/* <Breadcrumb
                                 icon="right angle"
                                 sections={[
                                     { key: "Home", content: "Home", href: "#" },
@@ -63,12 +72,12 @@ class SearchPage extends React.Component {
                                         href: "#"
                                     }
                                 ]}
-                            />
+                            /> */}
                         </Segment>
                     </div>
 
                     <Container className="search-page__wrapper-left_side">
-                        <QuickFilter />
+                        {/* <QuickFilter searchRequest={this.state.searchRequest}/> */}
                         <div
                             style={{
                                 marginTop: "4%"
@@ -102,10 +111,12 @@ class SearchPage extends React.Component {
                         <RankingBar
                             key="RankingBar"
                             searchRequest={this.state.searchRequest}
+                            onSortingSelected={this.onSortingSelected}
                         />
                         {this.state.listItems}
                         <div className="search-page__pagination">
-                            <Pagination pagesCount={10} />
+                            <Pagination pagesCount={10} searchRequest={this.state.searchRequest}
+                                />
                         </div>
                     </Container>
                 </div>
@@ -113,5 +124,6 @@ class SearchPage extends React.Component {
         );
     }
 }
+
 
 export default connect(mapStateToProps)(SearchPage);

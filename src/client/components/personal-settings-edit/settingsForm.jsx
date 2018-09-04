@@ -270,7 +270,7 @@ export class SettingsForm extends Component {
                     />
                 </Segment>
 
-                <Segment className="personal_settings-segment">
+                {/* <Segment className="personal_settings-segment">
                     <div className="personal_settings-segment-header">
                         <Header as="h2">Credit cards</Header>
                         <Message info>
@@ -430,7 +430,7 @@ export class SettingsForm extends Component {
                             className="personal_settings-btn personal_settings-add-credit"
                         />
                     )}
-                </Segment>
+                </Segment> */}
 
                 <Segment className="personal_settings-segment">
                     <div className="personal_settings-segment-header">

@@ -4,7 +4,8 @@ import {
     CHOOSE_BOOKING,
     UNCHOOSE_BOOKING,
     GET_USER_BOOKINGS_SUCCESS,
-    CANCEL_BOOKING_SUCCESS
+    CANCEL_BOOKING_SUCCESS,
+    GET_USER_REVIEWS_SUCCESS
 } from "./actionTypes";
 import { action } from "@storybook/react";
 
@@ -48,6 +49,13 @@ export default function userCabinetReducer(
                     (booking, index) => booking.id !== action.payload.id
                 ),
                 activeBooking: null
+            };
+        }
+
+        case GET_USER_REVIEWS_SUCCESS: {
+            return {
+                ...state,
+                reviews: action.payload
             };
         }
 

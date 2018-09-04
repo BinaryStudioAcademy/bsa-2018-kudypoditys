@@ -6,15 +6,28 @@ import {
     Button,
     Checkbox,
     Transition,
+    Progress,
+    Message,
+    Icon,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import './index.scss';
-import ReviewForm from './addReviewForm'
+import ReviewForm from './addReviewForm';
 import Review from './item';
-import {mapStateToProps, mapDispatchToProps} from './container';
-
+import { mapStateToProps, mapDispatchToProps } from './container';
+import {
+    getPropReviewsArray,
+    getPropToggler,
+} from 'client/helpers/reviewToggler';
+import {
+    getGroupedArray,
+    getAvgFromArray,
+} from 'client/helpers/avgReviewRating';
+import RatingBar from './ratingBar';
+import Modal from '../modal';
+import BookingForm from '../booking-form';
 
 export class Reviews extends React.Component {
     toggleVisibility = () =>
@@ -29,47 +42,113 @@ export class Reviews extends React.Component {
 
         this.state = {
             visible: true,
+            modalOpen: false
         };
     }
 
     // handleCheckbox = (e, {checked}) => this.setState({collapsed: checked});
+    handleOpen = () => {
+        this.setState({ modalOpen: true })
+        console.log(this.state)
+    }
+
+    handleClose = () => {
+        console.log("sdsdasdasasasdasdsad")
+        this.setState({ modalOpen: false })
+        console.log(this.state)
+    }
+
 
     render() {
         console.log(this.props);
-        const {property, user} = this.props;
-        const {visible} = this.state;
+        const { property, user, bookings } = this.props;
+        let shouldRenderForm = false;
+        const { visible } = this.state;
 
+        const avgPropRatingArray = getGroupedArray(
+                property.reviews,
+                'avgReview',
+            ),
+            avgPropCleanliness = getGroupedArray(
+                property.reviews,
+                'Cleanliness',
+            ),
+            avgPropComfort = getGroupedArray(property.reviews, 'Comfort'),
+            avgPropFacilities = getGroupedArray(property.reviews, 'Facilities'),
+            avgPropPrice = getGroupedArray(property.reviews, 'Price'),
+            avgPropLocation = getGroupedArray(property.reviews, 'Cleanliness');
+
+        const avgCleanliness = getAvgFromArray(avgPropCleanliness),
+            avgFacilities = getAvgFromArray(avgPropFacilities),
+            avgComfort = getAvgFromArray(avgPropComfort),
+            avgPrice = getAvgFromArray(avgPropPrice),
+            avgLocation = getAvgFromArray(avgPropLocation),
+            avgPropRating = getAvgFromArray(avgPropRatingArray);
+
+        let legitArray = getPropReviewsArray(bookings);
+        console.log(legitArray.length);
+
+        if (legitArray.length > 0) {
+            shouldRenderForm = getPropToggler(legitArray, property);
+        }
+
+        console.log(shouldRenderForm);
+        // if (!reviewData.cons && !reviewData.pros) {
+        //     shouldRenderComments = false;
+        // }
+        //
+        // console.log(shouldRenderForm);
         return (
-            <Comment.Group size="large" style={{marginBottom: 20}}>
+            <Comment.Group size="large" style={{ marginBottom: 20 }}>
                 {/*<Checkbox defaultChecked label='Show reviews' />*/}
+                <Message className="review_message">
+                    100% verified reviews.
+                    {shouldRenderForm ? (
+                        <div className="reviews_add_review__container">
+                            Recently you visited {property.name}. Would you like
+                            to
+                            <Modal
+                                className="reviews_add_review__modal"
+                                trigger={
+                                    <div onClick={this.handleOpen} className="reviews_add_review_btn">
+                                        add review?
+                                    </div>
+                                }
+                                open={this.state.modalOpen}
+                                // onClose={this.handleClose}
+                                onClose={this.close}
+
+                            >
+                                <ReviewForm property={property} onFormClick={this.handleClose} />
+                            </Modal>
+                        </div>
+                    ) : null}
+                </Message>
                 {property.reviews.length === 0 ? (
-                    <Header as="h3" dividing>
-                        There are no reviews yet. Be the first to review{' '}
-                        {property.name}
-                    </Header>
+                    <div>
+                        <Header
+                            as="h3"
+                            dividing
+                            style={{
+                                color: '#465672',
+                                borderBottomColor: '#465672',
+                            }}
+                        >
+                            There are no reviews yet. Be the first to review{' '}
+                            {property.name}
+                        </Header>
+                    </div>
                 ) : (
-                    property.reviews.map(review => (
-                        <Review key={review.createdAt} reviewData={review}/>
-                    ))
-                )}{' '}
-                <Transition visible={!visible} animation="scale" duration={500}>
-                    <Header as="h3" dividing>
-                        Dear Traveler. Thank you for your review and for
-                        choosing our hotel.
-                    </Header>
-                </Transition>
-                {user === undefined ? (
-                    <Header as="h3" dividing>
-                        Dear Traveler, You must be logged in to post a review.
-                    </Header>
-                ) : (
-                    <Transition
-                        visible={visible}
-                        animation="scale"
-                        duration={500}
-                    >
-                        <ReviewForm property={property}/>
-                    </Transition>
+                    <div className="reviews__container">
+                        <RatingBar property={property} />
+
+                        {property.reviews.map(review => (
+                            <Review
+                                key={review.createdAt}
+                                reviewData={review}
+                            />
+                        ))}
+                    </div>
                 )}
             </Comment.Group>
         );

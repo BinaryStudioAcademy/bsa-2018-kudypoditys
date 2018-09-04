@@ -13,8 +13,6 @@ import renderField from "client/components/input-form/renderField";
 import {
     required,
     email,
-    password,
-    minLength8
 } from "client/regexValidationService";
 
 let LoginForm = props => {
@@ -44,7 +42,7 @@ let LoginForm = props => {
                             type="password"
                             component={renderField}
                             label="Password"
-                            validate={[required, password, minLength8]}
+                            validate={[required]}
                             icon="lock"
                             className="login-password-input"
                             iconPosition="left"

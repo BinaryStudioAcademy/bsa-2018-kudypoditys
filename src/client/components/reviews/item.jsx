@@ -12,12 +12,22 @@ import PropTypes from 'prop-types';
 import './index.scss';
 
 import defaultUserPic from './img/matt.jpg';
+import anonPic from './img/anon.jpg'
 import ReviewForm from './addReviewForm';
 
 
 export default class Review extends Component {
     render() {
         const {reviewData, collapsed} = this.props;
+        const anon = reviewData.anon;
+        let avatar = reviewData.user.avatar;
+        let userName = reviewData.user.fullName;
+
+        if (anon) {
+            avatar = anonPic;
+            userName = 'Captain Anonymous'
+        }
+
         console.log(this.props);
         const date = new Date(reviewData.createdAt).toLocaleString();
 
@@ -26,51 +36,60 @@ export default class Review extends Component {
         if (!reviewData.cons && !reviewData.pros) {
             shouldRenderComments = false;
         }
-        // console.log(
-        //     (Boolean(reviewData.cons) && Boolean(reviewData.pros)) + ' VIRAZ',
-        // );
-        // console.log(Boolean(reviewData.cons.length && reviewData.pros.length === 0) + " dsdssdsdsd");
-        // console.log(Boolean(reviewData.pros.length));
-        // console.log(reviewData.cons.length + 'cons');
-        // console.log(reviewData.pros.length + 'pros');
-        // console.log(shouldRenderComments);
+
         return (
             <Fragment>
                 <Comment collapsed={collapsed}>
+
                     <Comment.Avatar
                         src={
-                            reviewData.user.avatar === null
+                            avatar === null
                                 ? defaultUserPic
-                                : reviewData.user.avatar
+                                : avatar
                         }
                     />
+
+
+
                     <Comment.Content>
                         <Comment.Author>
-                            {reviewData.user.fullName}
+                            {userName}
                         </Comment.Author>
                         <Comment.Metadata>
                             <span>Reviewed: {date}</span>
+                            <div className="ratingLabel">
+                                <Label color="purple" horizontal style={{
+                                    backgroundColor: "#465672"
+                                }}>
+                                    {reviewData.avgReview}
+                                </Label>
+
+                            </div>
                         </Comment.Metadata>
 
-                        <Label color="purple" horizontal>
-                            {reviewData.avgReview}
-                        </Label>
+
                         {shouldRenderComments ? (
                             <div className="comments">
                                 {console.log(reviewData.pros)}
                                 <Comment.Text
                                     style={{
+                                        padding: 10,
+                                        backgroundColor: "#f7f8f9",
+                                        color: "#465672",
                                         display:
                                             reviewData.pros
                                                 ? 'block'
                                                 : 'none',
                                     }}
                                 >
-                                    <Icon name="plus circle"/>
+                                    <Icon color="green" name="plus circle"/>
                                     {reviewData.pros}
                                 </Comment.Text>
                                 <Comment.Text
                                     style={{
+                                        padding: 10,
+                                        backgroundColor: "#f7f8f9",
+                                        color: "#465672",
                                         display:
                                             reviewData.cons
                                                 ? 'block'
@@ -78,12 +97,17 @@ export default class Review extends Component {
                                     }}
                                 >
                                     {' '}
-                                    <Icon name="minus circle"/>
+                                    <Icon color="grey" name="minus circle"/>
                                     {reviewData.cons}
                                 </Comment.Text>
                             </div>
                         ) : (
-                            <Header as="h4" dividing>
+                            <Header as="h4"  style={{
+                                padding: 10,
+                                backgroundColor: "#f7f8f9",
+                                color: "#465672",
+
+                            }}>
                                 There are no comments available for this review
                             </Header>
                         )}

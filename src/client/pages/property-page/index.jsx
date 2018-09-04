@@ -108,7 +108,7 @@ export class PropertyPage extends React.Component {
                         style={{
                             height: "100%",
                             width: "100%",
-                            padding: "50px 20px 0 20px"
+                            padding: "20px 15px 0 20px"
                         }}
                     >
                         <Reviews property={property} />

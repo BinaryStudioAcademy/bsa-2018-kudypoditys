@@ -18,7 +18,7 @@ export class VerifyEmail extends Component {
             setTimeout(() => {
                 console.log("redirecting");
                 history.push("/?verified");
-            }, 8000);
+            }, 1000);
         } else {
             console.log("not redirecting");
         }

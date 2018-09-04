@@ -8,7 +8,7 @@ class SearchService {
                 data.rooms
             }&adults=${data.adults}&children=${data.children}&startDate=${
                 data.startDate
-            }&endDate=${data.endDate}&sortBy=${data.sortBy}`,
+            }&endDate=${data.endDate}&sortBy=${data.sortBy}&page=${data.page}`,
             "get",
             ""
         );
