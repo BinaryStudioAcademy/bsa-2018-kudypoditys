@@ -128,8 +128,13 @@ function upsertAllData(models) {
 
 function getTableList(orm) {
     const query = `
-        SELECT table_name as tableName FROM information_schema.tables
-        WHERE  table_schema='public'
+        SELECT table_name as tableName
+        FROM information_schema.tables
+        WHERE table_schema='public' AND EXISTS (
+            SELECT 1 
+            FROM information_schema.columns 
+            WHERE table_name=information_schema.tables.table_name AND column_name='id'
+        );
     `;
 
     return orm
@@ -158,14 +163,14 @@ function restartSequence(orm, table) {
     `;
 
     const countQuery = `
-        SELECT count(*) as maxId FROM "${table}"
+        SELECT MAX(id) as maxId FROM "${table}"
     `;
 
     return orm.query(countQuery, { type: orm.QueryTypes.SELECT })
         .then(x => {
             return queryFactory(+x[0].maxid + 1)
         }).then(countQuery =>
-            orm.query(countQuery).catch(_ => { /* for assossiative tables id does not exists. so we ignore this error */ })
+            orm.query(countQuery)
         ).then(_ => { });
 }
 
