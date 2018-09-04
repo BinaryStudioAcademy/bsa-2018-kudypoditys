@@ -9,9 +9,12 @@ export function mapStateToProps(state) {
 }
 
 export function mapDispatchToProps(dispatch) {
+
     return {
-        onSelect(searchRequest) {
-            dispatch(paginationUpdate(searchRequest));
+
+        paginationChanged(pageNumber) {
+            console.log(JSON.stringify('pageNumber'+ pageNumber))
+            dispatch(paginationUpdate(pageNumber));
         }
     };
 }

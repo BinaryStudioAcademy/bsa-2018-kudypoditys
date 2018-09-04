@@ -6,7 +6,7 @@ import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "client/components/property-list-item";
-import { Pagination } from "client/components/pagination";
+import Pagination  from "client/components/pagination";
 import BasicMapWidget from "client/components/basic-map-widget";
 import Header from "client/components/header";
 import { Breadcrumb } from "semantic-ui-react";
@@ -115,7 +115,8 @@ class SearchPage extends React.Component {
                         />
                         {this.state.listItems}
                         <div className="search-page__pagination">
-                            <Pagination pagesCount={10} paginationChanged={this.paginationChanged}/>
+                            <Pagination pagesCount={10} searchRequest={this.state.searchRequest}
+                                />
                         </div>
                     </Container>
                 </div>
