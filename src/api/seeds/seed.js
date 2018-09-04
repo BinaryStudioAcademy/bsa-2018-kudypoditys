@@ -916,7 +916,6 @@ const IMAGES = [
 
 const RESERVATIONS = [
     {
-        id: 1,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 3,
@@ -925,7 +924,6 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 2,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 2,
@@ -934,7 +932,6 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 1,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 3,
@@ -943,7 +940,6 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 2,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 2,
@@ -952,7 +948,6 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 1,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 3,
@@ -961,7 +956,6 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 2,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 2,
@@ -970,7 +964,6 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 1,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 3,
@@ -979,7 +972,6 @@ const RESERVATIONS = [
         paymentTypeId: 1
     },
     {
-        id: 2,
         dateIn: new Date("2018-09-10"),
         dateOut: new Date("2018-09-15"),
         guestsCount: 2,
