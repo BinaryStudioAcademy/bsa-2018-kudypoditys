@@ -14,6 +14,7 @@ export function mapDispatchToProps(dispatch, ownProps,data) {
         },
         onSearch(data) {
             console.log("gone dispatch data: "+JSON.stringify(data))
+            dispatch(searchUpdate({ query: data }));
             dispatch(searchSubmit(data));
         }
     }
