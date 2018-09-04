@@ -90,12 +90,12 @@ export default class UserPopup extends React.Component {
                         >
                             Reviews
                         </Menu.Item>
-                        <Menu.Item
+                        {/* <Menu.Item
                             name="properties"
                             onClick={this.handleItemClick}
                         >
                             Properties
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item
                             name="properties"
                             onClick={this.props.addPropertyClicked}

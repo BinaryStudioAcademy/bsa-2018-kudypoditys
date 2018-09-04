@@ -27,13 +27,14 @@ export const MenuItems = [
             icon: "comment outline",
             component: <ReviewsTab />
         }
-    },
-    {
-        menuItem: {
-            key: "My Properties ",
-            content: "My Properties ",
-            icon: "building outline",
-            component: <AvailabilityCalendar />
-        }
     }
+    // ,
+    // {
+    //     menuItem: {
+    //         key: "My Properties ",
+    //         content: "My Properties ",
+    //         icon: "building outline",
+    //         component: <AvailabilityCalendar />
+    //     }
+    // }
 ];
