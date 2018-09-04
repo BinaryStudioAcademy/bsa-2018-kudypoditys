@@ -10,8 +10,7 @@ import BasicInfoPropertyRegistrationForm from '../basic-info-property-registrati
 import FacilitiesPropertyRegistrationForm from '../facilities-property-registration-form';
 import PolicesPropertyRegistrationForm from '../polices-property-registration-form';
 import PhotoRegistrationPropertyForm from '../photo-registration-property-form';
-
-import PaymentTab from '../property-payment-tab';
+import PaymentPropertyRegistrationForm from '../payment-property-registration-form';
 
 
 export class PropertyRegistration extends React.Component {
@@ -31,7 +30,7 @@ export class PropertyRegistration extends React.Component {
     }
 
     onFormSubmit = (data) => {
-        console.log(data);
+        this.props.createProperty(data)
     }
 
     getWizardForms() {
@@ -73,7 +72,7 @@ export class PropertyRegistration extends React.Component {
                 header: '  Property photos',
                 subheader: 'Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property\'s page on the Booking.com website.',
                 component: <PhotoRegistrationPropertyForm onSubmit={
-                    (data) => console.log(data)
+                    this.nextTab
                 } />
             },
             {
@@ -82,7 +81,7 @@ export class PropertyRegistration extends React.Component {
                 content: 'Layout and pricing', //temporary
                 header: ' Layout and pricing',
                 subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
-                component: <PaymentTab />,
+                component: <PaymentPropertyRegistrationForm onSubmit={this.onFormSubmit} />,
             }
         ];
     }
@@ -117,5 +116,3 @@ export class PropertyRegistration extends React.Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PropertyRegistration);
-
-

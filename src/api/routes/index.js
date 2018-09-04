@@ -17,6 +17,7 @@ const country = require('./countryRoutes');
 const facility = require('./facilityRoutes');
 const language = require('./languageRoutes');
 const availability = require("./availabilityRoutes");
+const paymentType = require('./paymentTypeRoutes');
 
 const elasticsearch = require("./elasticsearchRoutes");
 
@@ -41,4 +42,5 @@ module.exports = function (app) {
     app.use('/api/country', country);
     app.use("/api/search-property", searchProperty);
     app.use("/api/availability", availability);
+    app.use('/api/paymenttype', paymentType);
 };

@@ -189,30 +189,7 @@ const state = {
   },
 
   propertyRegistration: {
-    // PAYMENT_TAB
-    paymentType: "cash", // "creditcards"
-    paymentCreditCards: {
-      mastercard: false,
-      visa: false
-    },
-    rating: 8.8,
-    vatTaxes: "default", // "none"
-    cityTax: "default", // "individual"
-    cityTaxIndividual: {
-      value: "",
-      type: "percent",
-      includeToPrice: false
-    },
-    additionalFees: false,
-    additionalFeesOptions: [],
-    commissionName: "Name one",
-    recipientSameAddress: true,
-    recipientActualAddress: {
-      country: "",
-      city: "",
-      address: "",
-      postcode: ""
-    },
+    error: null
   },
 
   personalSettings: {

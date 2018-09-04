@@ -1,28 +1,28 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import {
-  GET_FACILITIES,
-  GET_FACILITIES_FAILED,
-  GET_FACILITIES_SUCCESS
+  GET_PAYMENT_TYPES,
+  GET_PAYMENT_TYPES_SUCCESS,
+  GET_PAYMENT_TYPES_FAILED
 } from './actionTypes';
-import facilityService from 'client/services/facilityService';
+import paymentTypeService from 'client/services/paymentType';
 
-function* getFacilities() {
+function* getPaymentTypes() {
   try {
-    const facilities = yield call(facilityService.getAll);
+    const paymentTypes = yield call(paymentTypeService.getAll);
     yield put({
-      type: GET_FACILITIES_SUCCESS,
-      payload: facilities
+      type: GET_PAYMENT_TYPES_SUCCESS,
+      payload: paymentTypes
     });
   } catch (err) {
     yield put({
-      type: GET_FACILITIES_FAILED,
+      type: GET_PAYMENT_TYPES_FAILED,
       payload: err.message
     });
   }
 }
 
-export default function* facilitiesSaga() {
+export default function* paymentTypesSaga() {
   yield all([
-    takeLatest(GET_FACILITIES, getFacilities)
+    takeLatest(GET_PAYMENT_TYPES, getPaymentTypes)
   ])
 }

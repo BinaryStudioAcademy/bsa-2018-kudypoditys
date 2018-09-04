@@ -4,17 +4,16 @@ import * as actionTypes from './actionTypes';
 
 function* createProperty(action) {
     try {
-        const propetyResponse = yield call(propertyService.createProperty, action.payload);
+        yield call(propertyService.createProperty, action.payload);
         yield put({
-            type: actionTypes.CREATE_PROPERTY_SUCCESS,
-            payload: {
-                ...propetyResponse.data
-            }
+            type: actionTypes.CREATE_PROPERTY_SUCCESS
         });
     }
     catch (error) {
-        console.log(error.message)
-        yield put({ type: actionTypes.CREATE_PROPERTY_FAILED })
+        yield put({
+            type: actionTypes.CREATE_PROPERTY_FAILED,
+            payload: error.message
+        })
     }
 }
 

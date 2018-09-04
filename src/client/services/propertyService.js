@@ -2,6 +2,15 @@ import api from "../helpers/api";
 import history from "client/history";
 
 class PropertyService {
+    // normalizeProperty(data) {
+    //     return {
+    //         ...data,
+    //         accommodationRule: {
+
+    //         }
+    //     }
+    // }
+
     createProperty(data) {
         return api
             .sendAuthRequest("/api/property/", "post", data)
