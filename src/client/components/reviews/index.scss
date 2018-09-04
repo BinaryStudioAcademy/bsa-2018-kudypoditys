@@ -47,17 +47,18 @@
     font-size: 14px;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #465672;
-    //width: 150px;
+    background-color: #465672 !important;
+    width: 100%;
     border: 0;
     border-radius: 0;
     height: 100%;
     cursor: pointer;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: center;
     -webkit-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
+    padding: 10px 20px !important;
 }
 
 .add_review__button {
@@ -69,4 +70,37 @@ cursor: pointer;
 }
 .reviews_add_review__modal{
     min-width: 500px;
+}
+.reviews_header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 10px;
+    line-height: 1.2;
+    color: rgb(70, 86, 114);
+
+}
+
+.reviews_header > .ui.header {
+    color: rgb(70, 86, 114);
+}
+.reviews__close_btn {
+    font-size: 14px;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #465672 !important;
+    width: 30%;
+    border: 0;
+    border-radius: 0;
+    height: 100%;
+    cursor: pointer;
+    -ms-flex-pack: justify;
+    justify-content: center;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    padding: 10px 20px !important;
+    text-align: center;
+}
+.actions {
+    text-align: -webkit-center;
 }
