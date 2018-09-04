@@ -372,7 +372,18 @@ const state = {
                 }
             ]
         }
-    ]
+    ],
+    reviewData: {
+        pros: "",
+        cons: "",
+        reviewRating: {
+            Cleanliness: 0,
+            Comfort: 0,
+            Facilities: 0,
+            Price: 0,
+            Location: 0
+        }
+    }
 };
 
 export default state;

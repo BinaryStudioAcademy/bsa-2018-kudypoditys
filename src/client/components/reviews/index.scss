@@ -1,0 +1,72 @@
+.ui.message.review_message {
+    box-shadow: 0 0 0 1px rgb(70, 86, 114) inset, 0 0 0 0 transparent;
+    border-radius: 0;
+    padding: 0.5em 1.5em;
+    text-align: center;
+}
+
+.ui.blue.progress .bar {
+    background-color: #465672;
+}
+.ui.progress {
+
+    background: #eceef0;
+}
+
+.ui.comments .comment .comments {
+    margin: 0 0 .5em;
+    padding: 1em 0 1em;
+}
+
+
+
+.ratingLabel{
+    display: block;
+    width: 2.5em;
+    height: auto;
+    float: right;
+    margin-left: 10px;
+}
+
+.ratingLabel .ui.purple.label, .ratingLabel .ui.purple.labels  .label {
+    background-color: #465672!important;
+    border-color: #a333c8!important;
+    color: #fff!important;
+    border-radius: 0;
+}
+.ui.comments .comment .author {
+    font-size: 1em;
+    color: rgb(70, 86, 114);
+    font-weight: 700;
+}
+.rating_item {
+    padding: 10px;
+}
+
+.add_review__button > .ui.primary.button {
+    font-size: 14px;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #465672;
+    //width: 150px;
+    border: 0;
+    border-radius: 0;
+    height: 100%;
+    cursor: pointer;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.add_review__button {
+    margin-top: 10px;
+}
+.reviews_add_review_btn {
+cursor: pointer;
+    text-decoration: underline;
+}
+.reviews_add_review__modal{
+    min-width: 500px;
+}
