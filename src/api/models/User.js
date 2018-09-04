@@ -36,6 +36,10 @@ let User = orm.define("user", {
         type: Sequelize.STRING,
         allowNull: true
     },
+    resetPasswordToken: {
+        type: Sequelize.STRING,
+        select: false
+    },
     dayOfBirth: {
         type: Sequelize.DATE,
         validate: { isDate: true },

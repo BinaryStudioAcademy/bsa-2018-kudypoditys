@@ -23,7 +23,7 @@ property
                 console.log(property.name, property.id);
                 res.send(property);
             })
-            .catch(err => {
+            .catch((err) => {
                 res.status(500).send(err);
             });
     });

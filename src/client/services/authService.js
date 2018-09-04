@@ -61,6 +61,17 @@ class AuthService {
                 return response;
             });
     }
+
+    sendForgotPasswordEmail(email) {
+        return api.sendRequest(`/api/forgot?email=${email}`, 'get')
+            .then(response => response.data);
+    }
+
+    resetPassword(email, token, newPassword) {
+        return api.sendRequest(`/api/resetpassword`, "post", {
+            email, token, newPassword
+        }).then(response => response.data);
+    }
 }
 
 export default new AuthService();

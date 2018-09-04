@@ -46,5 +46,15 @@ export const password = value =>
         : undefined
 export const number = value =>
     value && !/[0-9]/i.test(value)
-    ? 'Must be a number'
-    : undefined
+        ? 'Must be a number'
+        : undefined
+
+export const isEqualToFields = (...fields) => (value, allValues) => {
+    for (const field of fields) {
+        if (allValues[field] !== value) {
+            return 'Should be equal to ' + field;
+        }
+    }
+
+    return undefined;
+}

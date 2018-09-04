@@ -6,6 +6,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const settings = require("../../../config/settings");
 const passport = require("passport");
+const async = require("async");
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
 
 authRouter.route("/login").post((req, res) => {
     passport.authenticate("local", {session: false}, (err, user, message) => {
@@ -68,5 +71,27 @@ authRouter.route("/signup").post((req, res) => {
             res.status(400).send(err.message);
         });
 });
+
+authRouter.route("/forgot")
+    .get((req, res) => {
+        const { email } = req.query;
+        userService.getForgotPasswordLink(email)
+            .then(_ => {
+                res.send(true);
+            })
+            .catch(err => {
+                res.status(500).send(err.message);
+            });
+    });
+
+authRouter.route('/resetpassword')
+    .post((req, res) => {
+        const { token, email, newPassword } = req.body;
+        userService.resetPassword(email, token, newPassword).then(_ => {
+            res.send(true);
+        }).catch(err => {
+            res.status(400).send(err.message);
+        });
+    });
 
 module.exports = authRouter;
