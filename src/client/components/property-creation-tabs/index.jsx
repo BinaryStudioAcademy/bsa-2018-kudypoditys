@@ -8,8 +8,9 @@ import { mapDispatchToProps, mapStateToProps } from "./container";
 
 import BasicInfoPropertyRegistrationForm from '../basic-info-property-registration-form';
 import FacilitiesPropertyRegistrationForm from '../facilities-property-registration-form';
-import TabPolices from '../polices-tab';
-import PhotoTab from '../photo-tab-registration-property';
+import PolicesPropertyRegistrationForm from '../polices-property-registration-form';
+import PhotoRegistrationPropertyForm from '../photo-registration-property-form';
+
 import PaymentTab from '../property-payment-tab';
 
 
@@ -52,7 +53,7 @@ export class PropertyRegistration extends React.Component {
                 header: ' Facilities & services',
                 subheader: 'Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.',
                 component: <FacilitiesPropertyRegistrationForm onSubmit={
-                    (data) => console.log(data)
+                    this.nextTab
                 } />
             },
             {
@@ -61,7 +62,9 @@ export class PropertyRegistration extends React.Component {
                 content: 'Rules',
                 header: ' Polices',
                 subheader: ' Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?',
-                component: <TabPolices />,
+                component: <PolicesPropertyRegistrationForm onSubmit={
+                    this.nextTab
+                } />,
             },
             {
                 key: 'Photo',
@@ -69,7 +72,9 @@ export class PropertyRegistration extends React.Component {
                 content: 'Property photos',
                 header: '  Property photos',
                 subheader: 'Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property\'s page on the Booking.com website.',
-                component: <PhotoTab />
+                component: <PhotoRegistrationPropertyForm onSubmit={
+                    (data) => console.log(data)
+                } />
             },
             {
                 key: 'menuItem Room',
