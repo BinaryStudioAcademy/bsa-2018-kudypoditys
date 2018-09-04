@@ -70,18 +70,16 @@ const RegistrationForm = props => {
 
             <Button
                 type="submit"
-                className="registration-c-button"
-                icon
-                labelPosition="left"
-                floated="right"
-                color="blue"
-                size="medium"
-                basic
+                style={{
+                    backgroundColor: "#465672",
+                    left: "40%",
+                    position: "relative"
+                }}
+                primary
                 name="register"
                 disabled={submitting}
             >
-                <Icon name="check" />
-                Submit
+                Sign up
             </Button>
         </form>
     );
