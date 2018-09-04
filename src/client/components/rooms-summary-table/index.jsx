@@ -9,29 +9,29 @@ import Modal from "../modal";
 
 export class RoomsSummaryTable extends React.Component {
     getBedsSummary = bedsInRoom => {
-        let result = "";
-        for (let i = 0; i < bedsInRoom.length; i++) {
-            result += bedsInRoom[i].bedType.name;
-        }
         const bedsTotal = bedsInRoom.length;
 
-        return bedsInRoom.map((bed, index) => {
-            if (bedsTotal - 1 !== index)
-                return (
-                    <React.Fragment>
-                        <span key={index} style={{ color: "#465672" }}>
-                            {bed.count} {bed.bedType.name}
-                        </span>
-                        <Divider />
-                    </React.Fragment>
-                );
-            else
-                return (
-                    <span key={index} style={{ color: "#465672" }}>
-                        {bed.count} {bed.bedType.name}
-                    </span>
-                );
-        });
+        return (
+            <div style={{ padding: "5px" }}>
+                {bedsInRoom.map((bed, index) => {
+                    if (bedsTotal - 1 !== index)
+                        return (
+                            <React.Fragment>
+                                <span key={index} style={{ color: "#465672" }}>
+                                    {bed.count} {bed.bedType.name}
+                                </span>
+                                <Divider />
+                            </React.Fragment>
+                        );
+                    else
+                        return (
+                            <span key={index} style={{ color: "#465672" }}>
+                                {bed.count} {bed.bedType.name}
+                            </span>
+                        );
+                })}
+            </div>
+        );
     };
 
     getRoomsSummary = (rooms, bookButton, property) => {
@@ -41,7 +41,6 @@ export class RoomsSummaryTable extends React.Component {
                     <div className="room-row--left-section">
                         <Popup
                             style={{
-                                height: "fit-content",
                                 overflow: "hidden"
                             }}
                             trigger={
