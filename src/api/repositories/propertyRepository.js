@@ -133,6 +133,47 @@ class PropertyRepository extends Repository {
                 });
             });
     }
+    getPropertiesByCity(city) {
+        console.log(city)
+        return this.model
+            .findAll({
+                where: {
+                   cityId:city
+
+                },
+                include: [
+                    {
+                        model: City
+                    },
+                    {
+                        model: Image
+                    },
+
+                    {
+                        model: Room,
+                        include: [
+                            RoomType,
+                            {
+                                model: BedInRoom
+                                // where: {
+                                //     count: { $gte: filter.bedsCount }
+                                // }
+                            },
+                            {
+                                model: Reservation
+                                //    where: {
+                                // dateIn: { $gte: moment().subtract(10, 'days').toDate()},
+                                //dateOut: { $lte: moment().add(5, 'days').toDate()}
+                                //   }
+                            }
+                        ]
+                    }
+                ]
+            })
+            .then(properties => {
+               return properties
+            });
+    }
 
     createDetails(entity) {
         return this.model.create(entity, {
