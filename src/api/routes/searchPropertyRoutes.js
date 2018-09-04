@@ -21,6 +21,7 @@ searchProperty.route("/").get((req, res) => {
             index: "properties",
             type: "document",
             body: {
+                size:1000,
                 query: {
                     multi_match: {
                         query: query,
@@ -48,7 +49,10 @@ searchProperty.route("/").get((req, res) => {
                 propertyService
                     .getFilteredProperties(filter)
                     .then(properties => {
-                        return res.send(properties);
+                        return res.send({
+                            properties: properties,
+                            propertiesCount:ids.length
+                        });
                     })
                     .catch(err => {
                         return res.status(404).send(err);
