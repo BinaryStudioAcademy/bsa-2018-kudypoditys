@@ -55,6 +55,7 @@ module.exports = function(models) {
         [RoomType, ROOM_TYPES],
         [PropertyType, PROPERTY_TYPE],
         [AccommodationRule, ACCOMMODATION_RULES],
+        [User, USERS],
         [Property, PROPERTIES],
         [FacilityList, FACILITY_LISTS],
         [PropertyPaymentType, PROPERTY_PAYMENT_TYPES],
@@ -63,7 +64,8 @@ module.exports = function(models) {
         [Image, IMAGES],
         [User, USERS],
         [Reservation, RESERVATIONS],
-        [Review, REVIEWS]
+        [Review, REVIEWS],
+        [Reservation, RESERVATIONS]
     ];
 
     //Country & City

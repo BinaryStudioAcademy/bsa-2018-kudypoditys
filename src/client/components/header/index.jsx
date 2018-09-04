@@ -115,9 +115,6 @@ export class MainHeader extends Component {
                         <Grid.Row centered columns={1}>
                             <Grid.Column width={16} style={{ marginTop: 45 }}>
                                 <MainSearch
-                                    handleSearchResults={
-                                        this.props.handleSearchResults
-                                    }
                                     view="bar"
                                     destination="Lviv"
                                     checkIn={new Date("Aug 14 2018")}
@@ -125,6 +122,9 @@ export class MainHeader extends Component {
                                     adults={1}
                                     rooms={1}
                                     children={0}
+                                    handleSearchResults={
+                                        this.props.handleSearchResults
+                                    }
                                     onDestinationChange={value =>
                                         console.log(`destination: ${value}`)
                                     }
