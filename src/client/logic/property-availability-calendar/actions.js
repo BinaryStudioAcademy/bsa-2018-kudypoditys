@@ -1,6 +1,6 @@
 import {
     PROPERTY_CALENDAR_UPDATE,
-    AVAILABILITY_UPDATE_SUBMIT,
+    AVAILABILITY_UPDATE,
     GET_CURRENT_USER_INFO
 } from "./actionTypes";
 
@@ -13,7 +13,7 @@ export function calendarUpdate(payload) {
 
 export function availabilitySubmit(payload) {
     return {
-        type: AVAILABILITY_UPDATE_SUBMIT,
+        type: AVAILABILITY_UPDATE,
         payload
     };
 }

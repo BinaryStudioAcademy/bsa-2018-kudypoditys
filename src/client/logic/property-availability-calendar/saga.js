@@ -10,13 +10,13 @@ function* createAvailability(action) {
             action.payload
         );
         yield put({
-            type: actionTypes.AVAILABILITY_UPDATE_SUBMIT,
+            type: actionTypes.AVAILABILITY_UPDATE_SUCCESS,
             payload: {
                 ...propetyResponse.data
             }
         });
     } catch (error) {
-        yield put({ type: actionTypes.AVAILABILITY_UPDATE_SUBMIT });
+        yield put({ type: actionTypes.AVAILABILITY_UPDATE_FAILURE });
     }
 }
 
@@ -40,7 +40,7 @@ function* getUserpropertiesInfo(id) {
 
 export default function* availabilitySaga() {
     yield all([
-        takeLatest(actionTypes.AVAILABILITY_UPDATE_SUBMIT, createAvailability),
+        takeLatest(actionTypes.AVAILABILITY_UPDATE, createAvailability),
         takeLatest(actionTypes.GET_CURRENT_USER_INFO, getUserpropertiesInfo)
     ]);
 }
