@@ -49,7 +49,6 @@ export default class UserPopup extends React.Component {
                     <Menu
                         vertical
                         fluid
-                        compact
                         onItemClick={this.handleItemClick}
                         style={{
                             fontSize: 13,
@@ -89,9 +88,8 @@ export default class UserPopup extends React.Component {
                         </Menu.Item>
                         <Menu.Item
                             style={{
-                                textAlign: "right"
+                                color: "red"
                             }}
-                            position="right"
                             name="log-out"
                             onClick={this.props.logoutClicked}
                         >
