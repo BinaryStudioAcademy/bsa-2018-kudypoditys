@@ -1,5 +1,12 @@
 .bookings-container {
     padding: 20px;
+    .ui.primary.button {
+        background-color: #465672;
+    }
+    .message {
+        border-radius: 0px;
+        color: #465672 !important;
+    }
 }
 .user_cabinet_add_review__btn > .ui.primary.button {
 

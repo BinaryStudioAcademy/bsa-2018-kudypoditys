@@ -6,14 +6,15 @@ import {
     Image,
     Button,
     Header,
-    Icon
+    Icon,
+    Message
 } from "semantic-ui-react";
 import "./booking-segment.scss";
 import moment from "moment";
 import {
     getPropReviewsArray,
-    getPropToggler,
-} from 'client/helpers/reviewToggler';
+    getPropToggler
+} from "client/helpers/reviewToggler";
 import Modal from "../modal";
 import ReviewForm from "../reviews/addReviewForm";
 export class BookingSegment extends React.Component {
@@ -23,38 +24,25 @@ export class BookingSegment extends React.Component {
     };
 
     render() {
-
-
-
-
-
-        console.log(this.props)
-        const {images, booking} = this.props;
+        const { images, booking } = this.props;
         const dateIn = new Date(booking.dateIn),
             dateOut = new Date(booking.dateOut);
 
         const start = moment(dateIn);
         const end = moment(dateOut);
-        const now = moment()
+        const now = moment();
         const duration = moment.duration(end.diff(start));
         const days = Math.round(duration.asDays());
         const price = Number(booking.room.price) * days;
 
         let shouldRenderForm = false;
 
-
-
         if (now > start) {
-            shouldRenderForm = true
+            shouldRenderForm = true;
         }
 
-
-
-
-
-
         return (
-            <Segment className="booking-container">
+            <Segment vertical className="booking-container">
                 <Grid className="booking">
                     <Grid.Row className="booking-header">
                         <Grid.Column width={4} textAlign="left" />
@@ -110,39 +98,43 @@ export class BookingSegment extends React.Component {
                             />
                         </Grid.Column>
 
-                        <Grid.Column width={12} style={{display: "flex", flexDirection:"row"}}>
+                        <Grid.Column
+                            width={12}
+                            style={{ display: "flex", flexDirection: "row" }}
+                        >
                             <Button
+                                floated="right"
                                 primary
                                 content="View booking"
                                 onClick={event =>
                                     this.viewBooking(event, booking.id)
                                 }
                             />
-                            {shouldRenderForm ?(<div className="reviews_add_review__container">
-
-
-                                <Modal
-                                    className="user_cabinet_add_review__modal"
-                                    trigger={
-                                        <div className="user_cabinet_add_review__btn">
-                                        <Button
-                                            primary
-                                            // color="teal"
-                                            fluid
-                                            content="Add review"
-                                            labelPosition="left"
-                                            icon="edit"
-                                            type="submit"
-
+                            {shouldRenderForm ? (
+                                <div className="reviews_add_review__container">
+                                    <Modal
+                                        className="user_cabinet_add_review__modal"
+                                        trigger={
+                                            <div className="user_cabinet_add_review__btn">
+                                                <Button
+                                                    primary
+                                                    // color="teal"
+                                                    fluid
+                                                    content="Add review"
+                                                    labelPosition="left"
+                                                    icon="edit"
+                                                    type="submit"
+                                                />
+                                            </div>
+                                        }
+                                    >
+                                        <ReviewForm
+                                            property={booking.room.property}
+                                            userc={true}
                                         />
-                                        </div>
-                                    }
-
-                                >
-                                    <ReviewForm property={booking.room.property} userc={true}/>
-                                </Modal>
-                            </div>) : null}
-
+                                    </Modal>
+                                </div>
+                            ) : null}
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

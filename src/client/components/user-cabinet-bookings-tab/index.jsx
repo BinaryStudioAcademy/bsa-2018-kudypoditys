@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import "./index.scss";
 import { BookingSegment } from "./booking-segment";
-import { Container, Button, Header } from "semantic-ui-react";
+import { Container, Button, Header, Message, Divider } from "semantic-ui-react";
 import { BookingPage } from "./booking-page";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { connect } from "react-redux";
@@ -33,12 +33,15 @@ export class BookingsTab extends React.Component {
             );
         return bookings.map((booking, index) => {
             return (
-                <BookingSegment
-                    key={index}
-                    images={booking.room.property.images}
-                    booking={booking}
-                    viewBooking={() => this.viewBooking(booking)}
-                />
+                <Fragment>
+                    <BookingSegment
+                        key={index}
+                        images={booking.room.property.images}
+                        booking={booking}
+                        viewBooking={() => this.viewBooking(booking)}
+                    />
+                    <Divider />
+                </Fragment>
             );
         });
     };
@@ -68,6 +71,12 @@ export class BookingsTab extends React.Component {
             </Container>
         ) : (
             <Container fluid className="bookings-container">
+                <Header as="h2">Your active bookings</Header>
+                <Message info>
+                    This list of your bookings, you can see a detailed
+                    description by clicking on the button.
+                </Message>
+                <Divider section />
                 {this.getBookings(bookings)}
             </Container>
         );

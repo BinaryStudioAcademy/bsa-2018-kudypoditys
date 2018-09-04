@@ -1,23 +1,22 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Table, Label } from "semantic-ui-react";
 
 const count = 30;
 
 export class DrawPrices extends React.Component {
-    priceInput = count => {
-        const inputs = [];
+    drawPrices = () => {
+        let inputs = [];
         for (let index = 0; index < count; index++) {
-            const element = (
+            inputs.push(
                 <Table.Cell key={index}>
                     <Label className={"table-price"}>{this.props.price}</Label>
                 </Table.Cell>
             );
-            inputs.push(element);
         }
         return inputs;
     };
-    listItems = this.priceInput(count);
+
     render() {
-        return this.listItems;
+        return <Fragment>{this.drawPrices()}</Fragment>;
     }
 }

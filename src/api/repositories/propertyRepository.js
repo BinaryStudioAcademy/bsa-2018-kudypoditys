@@ -301,20 +301,21 @@ class PropertyRepository extends Repository {
     }
 
     getUserPropertiesInfo(id) {
-        console.log("REPOSITORY USER ");
         return this.model.findAll({
             where: {
                 userId: 1
             },
             include: [
                 {
-                    model: User
-                },
-                {
                     model: Room,
                     include: [
                         {
-                            model: Reservation
+                            model: Reservation,
+                            include: [
+                                {
+                                    model: User
+                                }
+                            ]
                         },
                         {
                             model: Availability
