@@ -10,10 +10,7 @@ import {
     Divider
 } from "semantic-ui-react";
 import renderField from "client/components/input-form/renderField";
-import {
-    required,
-    email,
-} from "client/regexValidationService";
+import { required, email } from "client/regexValidationService";
 
 let LoginForm = props => {
     const { handleSubmit, handleRegisterClicked, handleForgotClicked } = props;
@@ -79,7 +76,7 @@ let LoginForm = props => {
                                 type="button"
                                 onClick={handleRegisterClicked}
                             >
-                                Register
+                                Sign Up
                             </Button>
                         </Button.Group>
                     </Segment>

@@ -14,9 +14,9 @@ import {
 } from "client/regexValidationService";
 
 const RegistrationForm = props => {
-    const { submitting, registerFeedback } = props;
+    const { submitting, registerFeedback, handleLoginClicked } = props;
     return (
-        <Segment stacked secondary>
+        <Segment stacked secondary style={{ marginBottom: "0px" }}>
             <form onSubmit={props.handleSubmit} className="registration-c-form">
                 {registerFeedback && registerFeedback.error ? (
                     <Message negative>
@@ -67,20 +67,28 @@ const RegistrationForm = props => {
                     className="registration-c-input"
                     validate={[required, password, minLength8]}
                 />
-
-                <Button
-                    type="submit"
-                    style={{
-                        backgroundColor: "#465672",
-                        left: "40%",
-                        position: "relative"
-                    }}
-                    primary
-                    name="register"
-                    disabled={submitting}
-                >
-                    Sign up
-                </Button>
+                <Button.Group style={{ position: "relative", left: "28%" }}>
+                    <Button
+                        type="submit"
+                        style={{
+                            backgroundColor: "#465672"
+                        }}
+                        primary
+                        name="register"
+                        disabled={submitting}
+                    >
+                        Sign Up
+                    </Button>
+                    <Button.Or />
+                    <Button
+                        style={{ backgroundColor: "#465672" }}
+                        primary
+                        type="button"
+                        onClick={handleLoginClicked}
+                    >
+                        Login
+                    </Button>
+                </Button.Group>
             </form>
         </Segment>
     );
