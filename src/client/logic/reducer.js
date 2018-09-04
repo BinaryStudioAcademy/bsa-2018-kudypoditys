@@ -26,9 +26,8 @@ import facilities from 'client/logic/facilities/reducer';
 import availabilityCalendar from "client/logic/property-availability-calendar/reducer";
 import checkInCheckOut from 'client/logic/checkInCheckOut/reducer';
 import paymentTypes from 'client/logic/payment-type/reducer';
-
-import availabilityCalendar from "client/logic/property-availability-calendar/reducer";
 import review from "client/logic/reviews/reducer";
+
 export default combineReducers({
     search,
     sortType,

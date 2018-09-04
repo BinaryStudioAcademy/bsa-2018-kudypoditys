@@ -22,7 +22,6 @@ export default function* rootSaga() {
   yield all([
     fork(loginSaga),
     fork(headerSaga),
-    fork(propertySaga),
     fork(signupSaga),
     fork(personalSettingsSaga),
     fork(userCabinetSaga),
