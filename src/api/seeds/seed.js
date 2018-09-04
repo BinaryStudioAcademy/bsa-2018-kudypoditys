@@ -917,8 +917,8 @@ const IMAGES = [
 const RESERVATIONS = [
     {
         id: 1,
-        dateIn: "2018-09-25",
-        dateOut: "2018-09-26",
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
         guestsCount: 3,
         userId: 1,
         roomId: 1,
@@ -926,11 +926,65 @@ const RESERVATIONS = [
     },
     {
         id: 2,
-        dateIn: "2018-09-28",
-        dateOut: "2018-09-29",
+        dateIn:  new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
         guestsCount: 2,
         userId: 1,
         roomId: 2,
+        paymentTypeId: 1
+    },
+    {
+        id: 1,
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 3,
+        userId: 1,
+        roomId: 3,
+        paymentTypeId: 1
+    },
+    {
+        id: 2,
+        dateIn:  new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 2,
+        userId: 1,
+        roomId: 4,
+        paymentTypeId: 1
+    },
+    {
+        id: 1,
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 3,
+        userId: 1,
+        roomId: 5,
+        paymentTypeId: 1
+    },
+    {
+        id: 2,
+        dateIn:  new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 2,
+        userId: 1,
+        roomId: 6,
+        paymentTypeId: 1
+    },
+    {
+        id: 1,
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 3,
+        userId: 1,
+        roomId: 7,
+        paymentTypeId: 1
+    },
+    {
+        id: 2,
+        dateIn:  new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 2,
+        userId: 1,
+        roomId: 8,
         paymentTypeId: 1
     }
 ];
@@ -1806,6 +1860,61 @@ const ROOM_TYPES = [
     }
 ];
 
+const REVIEWS = [
+    {
+        id: 1,
+        pros:
+            "very nice place for family ",
+        cons:
+            "It was hard to find a hostel.",
+        Cleanliness: 3,
+        Price: 5,
+        Comfort: 5,
+        Facilities: 4,
+        Location: 2,
+        avgReview: 3.8,
+
+        userId: 1,
+        propertyId: 1,
+        anon: true
+    },
+
+    {
+        id: 1,
+        pros:
+            "very nice place for family ",
+        cons:
+            "It was hard to find a hostel.",
+        Cleanliness: 3,
+        Price: 5,
+        Comfort: 5,
+        Facilities: 4,
+        Location: 2,
+        avgReview: 3.8,
+
+        userId: 1,
+        propertyId: 2,
+        anon: false
+    },
+    {
+        id: 1,
+        pros:
+            "very nice place for family ",
+        cons:
+            "It was hard to find a hostel.",
+        Cleanliness: 3,
+        Price: 5,
+        Comfort: 5,
+        Facilities: 4,
+        Location: 2,
+        avgReview: 3.8,
+
+        userId: 1,
+        propertyId: 2,
+        anon: false
+    },
+];
+
 module.exports = {
     USERS,
     PROPERTIES,
@@ -1824,5 +1933,6 @@ module.exports = {
     BED_IN_ROOMS,
     BED_TYPES,
     ROOM_TYPES,
-    PROPERTY_TYPE
+    PROPERTY_TYPE,
+    REVIEWS
 };

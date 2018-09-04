@@ -76,7 +76,7 @@ let RegistrationForm = props => {
                         <br /> Do you own multiple apartments, or are you part
                         of a property management company or group?
                     </CardDescription>
-                    <CheckboxForm name="own multiple apartments" handleChange={handleChange}/>
+                    <CheckboxForm name="own multiple apartments" handleChange={handleChange} />
                 </Card.Content>
             </Card>
             <Card style={{ width: "900px" }} color="teal">
@@ -89,7 +89,7 @@ let RegistrationForm = props => {
                         Do you work with a channel manager or XML provider to
                         manage your pricing and availability?
                     </CardDescription>
-                    <CheckboxForm name="channel manager" handleChange={handleChange}/>
+                    <CheckboxForm name="channel manager" handleChange={handleChange} />
                 </Card.Content>
             </Card>
             <Card style={{ width: "900px" }} color="teal">
@@ -141,12 +141,12 @@ let RegistrationForm = props => {
                         City
                     </CardDescription>
                     <Field
-                         component={FormTextInput}
-                         name="address3"
-                         type="text"
-                         label="Ukraine"
-                         icon="map marker"
-                         validate={[required, maxLength20]}
+                        component={FormTextInput}
+                        name="address3"
+                        type="text"
+                        label="Ukraine"
+                        icon="map marker"
+                        validate={[required, maxLength20]}
 
                     />
                 </Card.Content>
@@ -162,7 +162,7 @@ let RegistrationForm = props => {
                         the past two weeks before starting your registration
                         process?
                     </CardDescription>
-                    <CheckboxForm name="was contacted" handleChange={handleChange}/>
+                    <CheckboxForm name="was contacted" handleChange={handleChange} />
                 </Card.Content>
             </Card>
             <Button

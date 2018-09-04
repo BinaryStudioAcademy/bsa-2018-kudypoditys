@@ -1,4 +1,4 @@
-const Service = require('./generalService');
+const Service = require("./generalService");
 const reviewRepository = require("../repositories/reviewRepository");
 
 class ReviewService extends Service {
@@ -15,11 +15,20 @@ class ReviewService extends Service {
     }
 
     updateReview(id, review) {
-        return reviewRepository.updateById({_id: id}, review);
+        return reviewRepository.updateById({ _id: id }, review);
     }
 
     deleteReview(id) {
-        return reviewRepository.deleteById({_id: id});
+        return reviewRepository.deleteById({ _id: id });
+    }
+
+    async findByOptions(options) {
+        try {
+            const reviews = await this.repository.findByOptions(options);
+            return Promise.resolve(reviews);
+        } catch (err) {
+            return Promise.reject(err);
+        }
     }
 }
 

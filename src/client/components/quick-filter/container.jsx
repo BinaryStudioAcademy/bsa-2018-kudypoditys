@@ -9,8 +9,8 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        selectFilter(filter) {
-            dispatch(quickFiltersUpdate(filter));
+        selectFilter(searchRequest) {
+            dispatch(quickFiltersUpdate(searchRequest));
         }
     };
 }

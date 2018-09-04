@@ -5,6 +5,7 @@ import { DrawTab } from "./DrawTab";
 import { MenuItems } from "./config";
 import { Container, Tab } from "semantic-ui-react";
 import Header from "../header";
+import history from "client/history";
 import "./index.scss";
 
 export class UserCabinet extends React.Component {
@@ -13,6 +14,11 @@ export class UserCabinet extends React.Component {
         this.state = {
             activeIndex: 0
         };
+    }
+
+    componentWillMount() {
+        const activeItem = history.location.search.split("=")[1];
+        this.setState({ activeIndex: activeItem });
     }
 
     handleTabChange = (e, { activeIndex }) => this.setState({ activeIndex });
@@ -37,7 +43,10 @@ export class UserCabinet extends React.Component {
         return (
             <React.Fragment>
                 <Header />
-                <Container style={{ marginTop: "25px" }}>
+                <Container
+                    style={{ marginTop: "25px" }}
+                    className="tab-container"
+                >
                     <Tab
                         menu={{
                             fluid: true,

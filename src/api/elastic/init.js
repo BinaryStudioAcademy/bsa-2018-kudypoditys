@@ -4,16 +4,6 @@ module.exports = {
             mappings: {
                 document: {
                     properties: {
-                        // city: {
-                        //     type: "text",
-                        //     analyzer: "autocomplete",
-                        //     search_analyzer: "standard",
-                        // },
-                        // property: {
-                        //     type: "text",
-                        //     analyzer: "autocomplete",
-                        //     search_analyzer: "standard",
-                        // },
                     },
                 },
             },

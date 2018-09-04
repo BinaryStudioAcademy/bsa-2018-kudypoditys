@@ -13,13 +13,14 @@ user.route("/getemailverified")
             });
     });
 
+
 user.route("/verifyemail")
     .get((req, res) => {
         console.log(req.query.email, req.query.token);
         userService.verifyEmail(req.query.email, req.query.token)
             .then(data => {
                 if (data) {
-                    res.send({verified: true});
+                    res.send({ verified: true });
                 } else {
                     res.status(500).send("Error verifying email.");
                 }

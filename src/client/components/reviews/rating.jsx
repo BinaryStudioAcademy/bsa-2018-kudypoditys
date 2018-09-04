@@ -14,7 +14,7 @@ export default class RatingForm extends React.Component {
                 <div className={"rating_item"}>
                     <Header as="h4">{name}</Header>
 
-                    <Rating name={name} maxRating={5} defaultRating={0} icon='star' size='huge'
+                    <Rating name={name} maxRating={5} defaultRating={0}  size='huge'
                             onRate={this.props.onSelect}/>
 
 

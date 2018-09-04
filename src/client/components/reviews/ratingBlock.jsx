@@ -17,6 +17,7 @@ class RatingBlock extends React.Component {
                         display: 'flex',
                         flexDirection: 'column',
                         paddingRight: 10,
+                        paddingTop: 17
                     }}
                 >
                     <div className="ratingName"> {ratingStatus}</div>
