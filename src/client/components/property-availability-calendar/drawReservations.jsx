@@ -2,6 +2,7 @@ import React from "react";
 import { Table, Label } from "semantic-ui-react";
 import moment from "moment";
 
+
 const daysInMonth = moment().daysInMonth();
 
 export class DrawReservations extends React.Component {

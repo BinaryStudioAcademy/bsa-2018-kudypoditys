@@ -1860,6 +1860,30 @@ const ROOM_TYPES = [
     }
 ];
 
+const REVIEWS = [
+    {
+        id: 1,
+        content:
+            "Room was clean and neat. Bed was really comfortable. Staff friendly and helpful. Location is ideal for getting to know Lviv, since most of the sights are in walking distance. Connection with airport by taxi arranged with reception is accurate, punctual and quite cheap.",
+        userId: 1,
+        propertyId: 1
+    },
+    {
+        id: 2,
+        content:
+            "Exactly like the pictures of the room - a million miles away from the dishonest pictures of a room in another hotel booked on booking.com that and left without staying in disgust only 30 minutes before moving to Danylo. You get what they say at the Danylo and show in the pictures. Very happy.",
+        userId: 1,
+        propertyId: 2
+    },
+    {
+        id: 3,
+        content:
+            "location is perfect style is perfect i loved here and price is really good btw if i come again i will not check other place for sure.",
+        userId: 1,
+        propertyId: 3
+    }
+];
+
 module.exports = {
     USERS,
     PROPERTIES,
@@ -1878,5 +1902,6 @@ module.exports = {
     BED_IN_ROOMS,
     BED_TYPES,
     ROOM_TYPES,
-    PROPERTY_TYPE
+    PROPERTY_TYPE,
+    REVIEWS
 };

@@ -11,26 +11,28 @@ import axios from "axios";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 import history from "client/history";
-import queryString from 'query-string';
+import queryString from "query-string";
 
 export class MainSearch extends React.Component {
     componentDidMount() {
-        if (history.location.search!==""){
-
-        var parsed = queryString.parse(history.location.search);
-        console.log(
-            "MainSearch this.props.params =   " +
-                JSON.stringify(parsed)
-        );
-            this.setState({
-                query: parsed.query,
-                rooms: parsed.rooms,
-                adults: parsed.adults,
-                children: parsed.children,
-                startDate: moment(Number(parsed.startDate)) ,
-                endDate: moment(Number(parsed.endDate))
-            }, () => { this.handleSubmit() });
-
+        if (history.location.search !== "") {
+            var parsed = queryString.parse(history.location.search);
+            console.log(
+                "MainSearch this.props.params =   " + JSON.stringify(parsed)
+            );
+            this.setState(
+                {
+                    query: parsed.query,
+                    rooms: parsed.rooms,
+                    adults: parsed.adults,
+                    children: parsed.children,
+                    startDate: moment(Number(parsed.startDate)),
+                    endDate: moment(Number(parsed.endDate))
+                },
+                () => {
+                    this.handleSubmit();
+                }
+            );
         }
     }
     resetComponent = () =>
@@ -74,8 +76,14 @@ export class MainSearch extends React.Component {
                         image: element._source.image
                     });
                 });
+                let title;
+                if (resultsData.length>0) {
+                    title= resultsData[0].title
+                }
                 this.setState({
                     results: resultsData,
+                    queryCopy: title,
+                    isSelectedResult: false,
                     isLoading: false
                 });
             });
@@ -83,6 +91,7 @@ export class MainSearch extends React.Component {
     handleResultSelect = (e, { result }) => {
         this.setState({
             query: result.title,
+            isSelectedResult: true,
             isLoading: false
         });
         this.props.onQueryChange(this.state.query);
@@ -102,20 +111,26 @@ export class MainSearch extends React.Component {
     };
     handleSubmit = () => {
         const {
-            query,
+
             rooms,
             adults,
             children,
             startDate,
             endDate,
-            sortBy
+            sortBy,
+            queryCopy,
+            isSelectedResult
         } = this.state;
         console.log("handleSubmit trigered");
+        let {query }=this.state
         history.push({
-            pathname: '/search-page',
+            pathname: "/search-page",
             search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
-          })
-
+        });
+        if (!isSelectedResult) {
+            query = queryCopy;
+            this.setState({ query: queryCopy })
+        }
         this.props.onSearch({
             query: query,
             rooms: rooms,
@@ -181,7 +196,7 @@ export class MainSearch extends React.Component {
     };
 
     onChildrenSelected = count => {
-        this.setState({ children: count });
+        this.setState({children: count});
         this.props.onChildrenChange(count);
     };
 
@@ -203,7 +218,7 @@ export class MainSearch extends React.Component {
         if (selectedDates.startDate && selectedDates.endDate) {
             this.props.onDatesChange(selectedDates);
         }
-        console.log(JSON.stringify(selectedDates))
+        console.log(JSON.stringify(selectedDates));
         this.setState(selectedDates);
     };
 
@@ -226,20 +241,20 @@ export class MainSearch extends React.Component {
 
             //console.log("search state" + JSON.stringify(this.state));
 
-          //  if ( data !== "" && data.length > 0) {
-                // console.log("searchResults" + JSON.stringify(data));
-                this.props.handleSearchResults({
-                    searchResults: data,
-                    searchRequest: {
-                        query: this.state.query,
-                        rooms: this.state.rooms,
-                        adults: this.state.adults,
-                        children: this.state.children,
-                        startDate: this.state.startDate,
-                        endDate: this.state.endDate
-                    }
-                });
-         //   }
+            //  if ( data !== "" && data.length > 0) {
+            // console.log("searchResults" + JSON.stringify(data));
+            this.props.handleSearchResults({
+                searchResults: data,
+                searchRequest: {
+                    query: this.state.query,
+                    rooms: this.state.rooms,
+                    adults: this.state.adults,
+                    children: this.state.children,
+                    startDate: this.state.startDate,
+                    endDate: this.state.endDate
+                }
+            });
+            //   }
         }
         const childrenOptions = this.generateOptions(0, 10);
 

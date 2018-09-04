@@ -1,55 +1,73 @@
-const express = require('express');
+const express = require("express");
 const review = express.Router();
-const reviewService = require('../services/review');
+const reviewService = require("../services/review");
 
-review.route('/')
+review
+    .route("/")
     .get((req, res) => {
-        reviewService.getAllReviews()
+        reviewService
+            .getAllReviews()
             .then(review => {
                 res.send(review);
             })
-            .catch((err) => {
+            .catch(err => {
                 res.status(404).send(err);
             });
     })
     .post((req, res) => {
-        reviewService.addReview(req.body)
+        reviewService
+            .addReview(req.body)
             .then(review => {
                 res.send(review);
             })
-            .catch((err) => {
+            .catch(err => {
                 res.status(500).send(err);
             });
     });
 
-
-review.route('/:id')
+review
+    .route("/:id")
     .put((req, res) => {
-        reviewService.updateReview(req.params.id, req.body)
+        reviewService
+            .updateReview(req.params.id, req.body)
             .then(review => {
                 res.send(review);
             })
-            .catch((err) => {
+            .catch(err => {
                 res.status(500).send(err);
             });
     })
     .get((req, res) => {
-        reviewService.getReviewById(req.params.id)
+        reviewService
+            .getReviewById(req.params.id)
             .then(review => {
                 res.send(review);
             })
-            .catch((err) => {
+            .catch(err => {
                 res.status(404).send(err);
             });
     })
     .delete((req, res) => {
-        reviewService.deleteReview(req.params.id)
+        reviewService
+            .deleteReview(req.params.id)
             .then(review => {
                 res.send(review);
             })
-            .catch((err) => {
+            .catch(err => {
                 res.status(500).send(err);
             });
     });
+
+review.route("/:id/byuserid").get((req, res) => {
+    console.log("byuser");
+    reviewService
+        .findByOptions({ userId: req.params.id })
+        .then(reservations => {
+            res.send(reservations);
+        })
+        .catch(err => {
+            res.status(404).send(err.message);
+        });
+});
 
 module.exports = review;
