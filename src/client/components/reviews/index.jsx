@@ -62,7 +62,7 @@ export class Reviews extends React.Component {
     render() {
         console.log(this.props);
         const { property, user, bookings } = this.props;
-        let shouldRenderForm = false;
+        let shouldRenderForm = true;
         const { visible } = this.state;
 
         const avgPropRatingArray = getGroupedArray(
