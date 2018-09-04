@@ -39,9 +39,12 @@ export class MainHeader extends Component {
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
     render() {
-        const { currentUser } = this.props;
+        const { currentUser, hideSignUpIn, noBackground } = this.props;
         return (
-            <div className="header--wraper">
+            <div
+                className="header--wraper"
+                style={noBackground ? { backgroundImage: "none" } : null}
+            >
                 <Grid centered className={"grid--main"}>
                     <Grid.Row columns={2} className={"row--inform"}>
                         <Grid.Column width={8} textAlign={"left"}>
@@ -68,7 +71,11 @@ export class MainHeader extends Component {
                                 Component={() => {
                                     return (
                                         <Fragment>
-                                            <span onClick={this.onWellcomeClicked}>Wellcome {currentUser.fullName}</span>
+                                            <span
+                                                onClick={this.onWellcomeClicked}
+                                            >
+                                                Wellcome {currentUser.fullName}
+                                            </span>
                                             <a
                                                 style={{
                                                     cursor: "pointer",
@@ -99,28 +106,36 @@ export class MainHeader extends Component {
                                 ElseComponent={() => {
                                     return (
                                         <Fragment>
-                                            <a
-                                                style={{
-                                                    cursor: "pointer",
-                                                    marginRight: "24px",
-                                                    fontSize: 16,
-                                                    opacity: 0.8
-                                                }}
-                                                onClick={this.loginClicked}
-                                            >
-                                                {" "}
-                                                Login
-                                            </a>
-                                            <a
-                                                style={{
-                                                    cursor: "pointer",
-                                                    fontSize: 16,
-                                                    opacity: 0.8
-                                                }}
-                                                onClick={this.registerClicked}
-                                            >
-                                                Register
-                                            </a>
+                                            {hideSignUpIn ? null : (
+                                                <Fragment>
+                                                    <a
+                                                        style={{
+                                                            cursor: "pointer",
+                                                            marginRight: "24px",
+                                                            fontSize: 16,
+                                                            opacity: 0.8
+                                                        }}
+                                                        onClick={
+                                                            this.loginClicked
+                                                        }
+                                                    >
+                                                        {" "}
+                                                        Login
+                                                    </a>
+                                                    <a
+                                                        style={{
+                                                            cursor: "pointer",
+                                                            fontSize: 16,
+                                                            opacity: 0.8
+                                                        }}
+                                                        onClick={
+                                                            this.registerClicked
+                                                        }
+                                                    >
+                                                        Register
+                                                    </a>
+                                                </Fragment>
+                                            )}
                                         </Fragment>
                                     );
                                 }}
@@ -130,7 +145,10 @@ export class MainHeader extends Component {
                     {this.props.showSearch ? (
                         <Grid.Row centered columns={1}>
                             <Grid.Column width={16} style={{ marginTop: 45 }}>
-                                <MainSearch handleSearchResults= {this.props.handleSearchResults}
+                                <MainSearch
+                                    handleSearchResults={
+                                        this.props.handleSearchResults
+                                    }
                                     view="bar"
                                     destination="Lviv"
                                     checkIn={new Date("Aug 14 2018")}
