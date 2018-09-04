@@ -168,7 +168,7 @@ class PropertyRepository extends Repository {
                 break;
 
             default:
-                sortingOption = [["rating", "DESC"]];
+                sortingOption = [["rating"]];
         }
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
         return this.model
