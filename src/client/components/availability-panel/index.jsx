@@ -105,7 +105,7 @@ export class AvailabilityPanel extends React.Component {
                             >
                                 {error ? (
                                     <Message negative>{error}</Message>
-                                ) : result && result.length ? (
+                                ) : !result ? null : result.length ? (
                                     <React.Fragment>
                                         <Header as="h3">
                                             Rooms available for these dates:{" "}
