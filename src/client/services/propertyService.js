@@ -2,18 +2,55 @@ import api from "../helpers/api";
 import history from "client/history";
 
 class PropertyService {
-    // normalizeProperty(data) {
-    //     return {
-    //         ...data,
-    //         accommodationRule: {
+    normalizeProperty = (data) => {
+        const {
+            basicFacility, accommodationRule, vatIncluded
+        } = data;
 
-    //         }
-    //     }
-    // }
+        return {
+            ...data,
+            basicFacility: this.normalizeBasicFacility(basicFacility),
+            accommodationRule: this.normalizeAccommodationRule(accommodationRule),
+            vatIncluded: Boolean(vatIncluded)
+        }
+    }
 
-    createProperty(data) {
+    normalizeBasicFacility = (basicFacility) => {
+        if (!basicFacility) return {};
+
+        const {
+            hasInternet, hasParking, isPrivate, isOnTerritory,
+            needToBook
+        } = basicFacility;
+        return {
+            hasInternet: hasInternet !== 'absent',
+            hasParking: hasParking !== 'absent',
+            isPrivate: Boolean(isPrivate),
+            isOnTerritory: Boolean(isOnTerritory),
+            needToBook: Boolean(needToBook)
+        }
+    }
+
+    normalizeAccommodationRule = (accommodationRule) => {
+        if (!accommodationRule) return {};
+        const { cancelReservation, checkInCheckOut = {} } = accommodationRule;
+
+        return {
+            cancelReservation: Boolean(cancelReservation),
+            arrivalTimeStart: checkInCheckOut.arrivalFrom,
+            arrivalTimeEnd: checkInCheckOut.arrivalTo,
+            departureTimeStart: checkInCheckOut.departureFrom,
+            departureTimeEnd: checkInCheckOut.departureTo
+        };
+    }
+
+    createProperty = (data) => {
+        console.log('create property');
+        const body = this.normalizeProperty(data);
+        console.log(body);
+
         return api
-            .sendAuthRequest("/api/property/", "post", data)
+            .sendAuthRequest("/api/property/", "post", body)
             .then(response => {
                 if (response.status === 200) {
                     history.push("/");

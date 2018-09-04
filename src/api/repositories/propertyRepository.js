@@ -21,6 +21,8 @@ const Room = require("../models/Room");
 const FacilityList = require("../models/FacilityList");
 const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
+const PropertyLanguage = require('../models/Language');
+const BasicFacility = require('../models/BasicFacility');
 
 const includeOptions = [
     {
@@ -137,14 +139,28 @@ class PropertyRepository extends Repository {
     createDetails(entity) {
         return this.model.create(entity, {
             include: [
-                // City,
-                PropertyType,
-                Room,
-                Facility,
-                AccommodationRule,
-                PaymentType,
-                Image
+                AccommodationRule, BasicFacility, Image
             ]
+        }).then(x => {
+            const facilityList = entity.facilities.map(f => ({
+                propertyId: x.id,
+                facilityId: f.id
+            }));
+            return FacilityList.bulkCreate(facilityList).then(x => x);
+        }).then(x => {
+            const languages = entity.languages.map(l => ({
+                propertyId: x.id,
+                languageId: l.id
+            }));
+
+            return PropertyLanguage.bulkCreate(languages).then(x => x);
+        }).then(x => {
+            const paymentTypes = entity.paymentTypes.map(p => ({
+                propertyId: x.id,
+                paymentTypeId: p.id
+            }));
+
+            return PaymentType.bulkCreate(paymentTypes).then(x => x);
         });
     }
     getFilteredProperties(filter) {
@@ -199,16 +215,16 @@ class PropertyRepository extends Repository {
 
                             {
                                 model: Reservation,
-                            //     where: sequelize.or( {
-                            //         dateOut: { $lt: filter.dateIn  },
+                                //     where: sequelize.or( {
+                                //         dateOut: { $lt: filter.dateIn  },
 
 
-                            //         dateIn: {
-                            //             $gt: filter.dateOut
+                                //         dateIn: {
+                                //             $gt: filter.dateOut
 
-                            //         }
-                            //     })
-                             }
+                                //         }
+                                //     })
+                            }
                         ],
                         where: {
                             amount: { $gte: filter.rooms }

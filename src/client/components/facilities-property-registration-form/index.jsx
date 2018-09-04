@@ -265,7 +265,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
                                 <List.Item key={i} compact style={{ margin: '1rem', padding: '0' }}>
                                     <Field
                                         component={renderCheckbox}
-                                        name={`facility.${facility.id}`}
+                                        name={`facilities.${facility.id}`}
                                         label={facility.name}
                                     />
                                 </List.Item>

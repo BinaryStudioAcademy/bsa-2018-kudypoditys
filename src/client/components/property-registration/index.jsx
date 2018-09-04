@@ -18,6 +18,13 @@ export class PropertyRegistration extends React.Component {
         activeIndex: 0
     };
 
+    componentDidMount() {
+        const { facilities } = this.props;
+        if (!facilities) {
+            this.props.getFacilities();
+        }
+    }
+
     handleTabChange = (e, { activeIndex }) => {
         this.setState({ activeIndex });
     }
@@ -29,7 +36,24 @@ export class PropertyRegistration extends React.Component {
         });
     }
 
+    normalizeFacilities(submitedFacilities) {
+        if (!submitedFacilities) return;
+
+        const { facilities } = this.props;
+        let res = [];
+
+        for (let i = 0; i < submitedFacilities.length; ++i) {
+            if (submitedFacilities[i]) {
+                res.push(facilities.find(x => x.id === i));
+            }
+        }
+
+        return res;
+    }
+
     onFormSubmit = (data) => {
+        data.facilities = this.normalizeFacilities(data.facilities)
+
         this.props.createProperty(data)
     }
 
