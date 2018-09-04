@@ -23,7 +23,14 @@ export function mapDispatchToProps(dispatch, ownProps) {
             dispatch(getUserBookings());
         },
         clearBookingForm() {
-            dispatch(bookingInputUpdate({ message: "", error: "" }));
+            dispatch(
+                bookingInputUpdate({
+                    message: "",
+                    error: "",
+                    checkIn: null,
+                    checkOut: null
+                })
+            );
         }
     };
 }

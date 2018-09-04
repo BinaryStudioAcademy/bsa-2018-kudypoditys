@@ -3,8 +3,9 @@ import {
     bookProperty
 } from "../../logic/property-page/actions";
 
+
 export function mapStateToProps(state, ownProps) {
-    const { property, bookingInput } = state.propertyPage;
+    const {property, bookingInput} = state.propertyPage;
     return {
         propertyName: property.name,
         checkIn: bookingInput.checkIn,
@@ -33,16 +34,16 @@ export function mapDispatchToProps(dispatch, ownProps) {
             );
         },
         onAdultsChange(value) {
-            dispatch(bookingInputUpdate({ adults: value }));
+            dispatch(bookingInputUpdate({adults: value}));
         },
         onChildrenChange(value) {
-            dispatch(bookingInputUpdate({ children: value }));
+            dispatch(bookingInputUpdate({children: value}));
         },
         onRoomChange(value) {
-            dispatch(bookingInputUpdate({ roomId: value }));
+            dispatch(bookingInputUpdate({roomId: value}));
         },
         onPaymentTypeChange(value) {
-            dispatch(bookingInputUpdate({ paymentTypeId: value }));
+            dispatch(bookingInputUpdate({paymentTypeId: value}));
         }
     };
 }

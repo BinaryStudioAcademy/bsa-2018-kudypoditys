@@ -93,7 +93,9 @@ class PropertyService extends Service {
     getFilteredProperties(filter) {
         return propertyRepository.getFilteredProperties(filter);
     }
-
+    getPropertiesByCity(city) {
+        return propertyRepository.getPropertiesByCity(city);
+    }
     getUserPropertiesInfo(id) {
         return propertyRepository.getUserPropertiesInfo(id);
     }

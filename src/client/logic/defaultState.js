@@ -187,11 +187,6 @@ const state = {
     title: "Apartment with Garden View",
     amount: "1"
   },
-
-  propertyRegistration: {
-    error: null
-  },
-
   personalSettings: {
     avatar: "",
     nickname: "Nickname0",
@@ -239,7 +234,118 @@ const state = {
   forgotPassword: {
     isLoading: false,
     error: undefined,
-    sendEmailSuccess: false
+    sendEmailSuccess: false,
+    bookings: [],
+    reviews: [],
+    activeIndex: 0
+  },
+  availabilityCalendar: [
+    {
+      id: 1,
+      name: "test",
+      address: "Koval street 16, Kyiv",
+      description: "Hotel Ukraine description.",
+      taxes: null,
+      coordinates: {
+        lat: 49.837089,
+        lng: 24.021161
+      },
+      rating: 8.1,
+      contactPersonName: null,
+      contactPhone: "0509832174",
+      createdAt: "2018-09-02T16:21:57.072Z",
+      updatedAt: "2018-09-02T20:40:35.291Z",
+      verificationStatusId: null,
+      userId: 1,
+      propertyTypeId: null,
+      cityId: null,
+      accommodationRuleId: null,
+      user: {
+        id: 1,
+        fullName: "Natalya",
+        password:
+          "$2b$10$q4Frb4UkbcE8oZlHQvGSHut2RLYDxBr/PZ0N2xUK.pvsSfjyW2N2W",
+        email: "sayber1990@gmail.com",
+        verifyEmailToken: null,
+        verifyEmailTokenTillDate: null,
+        phoneNumber: "0504958671",
+        avatar: null,
+        dayOfBirth: null,
+        appeal: "Mrs.",
+        address: "Nebereshnaya street 20, Lviv",
+        nickname: "Nata1ya",
+        preferredCurrency: "USD",
+        createdAt: "2018-09-02T15:54:56.820Z",
+        updatedAt: "2018-09-02T20:40:35.292Z",
+        userSettingId: null,
+        roleId: null,
+        countryId: 1,
+        paymentTypeId: 1
+      },
+      rooms: [
+        {
+          id: 2,
+          price: 999,
+          amount: 999,
+          area: 20,
+          description: null,
+          createdAt: "2018-09-02T16:21:57.072Z",
+          updatedAt: "2018-09-02T20:40:35.292Z",
+          roomTypeId: 2,
+          propertyId: 1,
+          reservations: [
+            {
+              id: 2,
+              dateIn: "2018-08-31T00:00:00.000Z",
+              dateOut: "2018-09-01T00:00:00.000Z",
+              guestsCount: 2,
+              createdAt: "2018-09-02T16:21:57.073Z",
+              updatedAt: "2018-09-02T20:40:35.292Z",
+              userId: 1,
+              roomId: 2,
+              paymentTypeId: 1
+            }
+          ],
+          availabilities: []
+        },
+        {
+          id: 1,
+          price: 999,
+          amount: 999,
+          area: 20,
+          description: null,
+          createdAt: "2018-09-02T16:21:57.072Z",
+          updatedAt: "2018-09-02T20:40:35.292Z",
+          roomTypeId: 1,
+          propertyId: 1,
+          reservations: [
+            {
+              id: 1,
+              dateIn: "2018-08-29T00:00:00.000Z",
+              dateOut: "2018-08-30T00:00:00.000Z",
+              guestsCount: 3,
+              createdAt: "2018-09-02T16:21:57.072Z",
+              updatedAt: "2018-09-02T20:40:35.292Z",
+              userId: 1,
+              roomId: 1,
+              paymentTypeId: 1
+            }
+          ],
+          availabilities: []
+        }
+      ]
+    }
+  ],
+  reviewData: {
+    pros: "",
+    cons: "",
+    reviewRating: {
+      Cleanliness: 0,
+      Comfort: 0,
+      Facilities: 0,
+      Price: 0,
+      Location: 0
+    }
   },
 
   countriesData: {},
@@ -254,103 +360,9 @@ const state = {
     departureTo: '11:30',
   },
 
-  availabilityCalendar: {
-    id: 1,
-    name: "Hotel Ukraine",
-    address: "Koval street 16, Kyiv",
-    description: "Hotel Ukraine description.",
-    taxes: null,
-    coordinates: {
-      lat: 49.837089,
-      lng: 24.021161
-    },
-    rating: 8.1,
-    contactPersonName: null,
-    contactPhone: "0509832174",
-    createdAt: "2018-09-02T16:21:57.072Z",
-    updatedAt: "2018-09-02T20:40:35.291Z",
-    verificationStatusId: null,
-    userId: 1,
-    propertyTypeId: null,
-    cityId: null,
-    accommodationRuleId: null,
-    user: {
-      id: 1,
-      fullName: "Natalya",
-      password:
-        "$2b$10$q4Frb4UkbcE8oZlHQvGSHut2RLYDxBr/PZ0N2xUK.pvsSfjyW2N2W",
-      email: "sayber1990@gmail.com",
-      verifyEmailToken: null,
-      verifyEmailTokenTillDate: null,
-      phoneNumber: "0504958671",
-      avatar: null,
-      dayOfBirth: null,
-      appeal: "Mrs.",
-      address: "Nebereshnaya street 20, Lviv",
-      nickname: "Nata1ya",
-      preferredCurrency: "USD",
-      createdAt: "2018-09-02T15:54:56.820Z",
-      updatedAt: "2018-09-02T20:40:35.292Z",
-      userSettingId: null,
-      roleId: null,
-      countryId: 1,
-      paymentTypeId: 1
-    },
-    rooms: [
-      {
-        id: 2,
-        price: 30,
-        amount: 4,
-        area: 20,
-        description: null,
-        createdAt: "2018-09-02T16:21:57.072Z",
-        updatedAt: "2018-09-02T20:40:35.292Z",
-        roomTypeId: 2,
-        propertyId: 1,
-        reservations: [
-          {
-            id: 2,
-            dateIn: "2018-08-31T00:00:00.000Z",
-            dateOut: "2018-09-01T00:00:00.000Z",
-            guestsCount: 2,
-            createdAt: "2018-09-02T16:21:57.073Z",
-            updatedAt: "2018-09-02T20:40:35.292Z",
-            userId: 1,
-            roomId: 2,
-            paymentTypeId: 1
-          }
-        ],
-        availabilities: []
-      },
-      {
-        id: 1,
-        price: 20,
-        amount: 10,
-        area: 20,
-        description: null,
-        createdAt: "2018-09-02T16:21:57.072Z",
-        updatedAt: "2018-09-02T20:40:35.292Z",
-        roomTypeId: 1,
-        propertyId: 1,
-        reservations: [
-          {
-            id: 1,
-            dateIn: "2018-08-29T00:00:00.000Z",
-            dateOut: "2018-08-30T00:00:00.000Z",
-            guestsCount: 3,
-            createdAt: "2018-09-02T16:21:57.072Z",
-            updatedAt: "2018-09-02T20:40:35.292Z",
-            userId: 1,
-            roomId: 1,
-            paymentTypeId: 1
-          }
-        ],
-        availabilities: []
-      }
-    ]
-  }
-
-
+  propertyRegistration: {
+    error: null
+  },
 };
 
 export default state;

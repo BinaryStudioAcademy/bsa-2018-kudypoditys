@@ -1,6 +1,6 @@
-const
-    Sequelize = require('sequelize'),
-    orm = require('../orm');
+const // apiRoot = '/api',
+    Sequelize = require("sequelize"),
+    orm = require("../orm");
 
 let User = orm.define("user", {
     fullName: {
@@ -36,6 +36,10 @@ let User = orm.define("user", {
         type: Sequelize.STRING,
         allowNull: true
     },
+    resetPasswordToken: {
+        type: Sequelize.STRING,
+        select: false
+    },
     dayOfBirth: {
         type: Sequelize.DATE,
         validate: { isDate: true },
@@ -56,11 +60,7 @@ let User = orm.define("user", {
     preferredCurrency: {
         type: Sequelize.STRING,
         allowNull: true
-    },
-    resetPasswordToken: {
-        type: Sequelize.STRING,
-        select: false
-    },
+    }
 });
 
 module.exports = User;

@@ -14,6 +14,7 @@ searchProperty.route("/").get((req, res) => {
     const startDate = req.query.startDate;
     const endDate = req.query.endDate;
     const sortBy = req.query.sortBy
+    const page =req.query.page
     const _fields = ["city", "name"];
     elasticClient
         .search({
@@ -39,6 +40,7 @@ searchProperty.route("/").get((req, res) => {
                     rooms: rooms,
                     bedsCount: parseInt(adults) + parseInt(children),
                     sortBy: sortBy,
+                    page:Number(page),
                     dateIn: new Date(Number(startDate)),
                     dateOut:new Date(Number(endDate))
 

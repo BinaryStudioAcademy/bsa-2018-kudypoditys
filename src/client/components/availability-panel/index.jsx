@@ -54,7 +54,11 @@ export class AvailabilityPanel extends React.Component {
             <div className="availability-panel-wrp">
                 <Header
                     as="h2"
-                    style={{ paddingLeft: "7px", color: "#465672" }}
+                    style={{
+                        paddingLeft: "7px",
+                        color: "#465672",
+                        cursor: "default"
+                    }}
                 >
                     Availability
                 </Header>
@@ -101,7 +105,7 @@ export class AvailabilityPanel extends React.Component {
                             >
                                 {error ? (
                                     <Message negative>{error}</Message>
-                                ) : result && result.length ? (
+                                ) : !result ? null : result.length ? (
                                     <React.Fragment>
                                         <Header as="h3">
                                             Rooms available for these dates:{" "}

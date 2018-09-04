@@ -910,21 +910,67 @@ const IMAGES = [
 
 const RESERVATIONS = [
     {
-        id: 1,
-        dateIn: "2018-09-10",
-        dateOut: "2018-09-15",
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
         guestsCount: 3,
         userId: 1,
         roomId: 1,
         paymentTypeId: 1
     },
     {
-        id: 2,
-        dateIn: "2018-09-10",
-        dateOut: "2018-09-15",
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
         guestsCount: 2,
         userId: 1,
         roomId: 2,
+        paymentTypeId: 1
+    },
+    {
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 3,
+        userId: 1,
+        roomId: 3,
+        paymentTypeId: 1
+    },
+    {
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 2,
+        userId: 1,
+        roomId: 4,
+        paymentTypeId: 1
+    },
+    {
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 3,
+        userId: 1,
+        roomId: 5,
+        paymentTypeId: 1
+    },
+    {
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 2,
+        userId: 1,
+        roomId: 6,
+        paymentTypeId: 1
+    },
+    {
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 3,
+        userId: 1,
+        roomId: 7,
+        paymentTypeId: 1
+    },
+    {
+        dateIn: new Date("2018-09-10"),
+        dateOut: new Date("2018-09-15"),
+        guestsCount: 2,
+        userId: 1,
+        roomId: 8,
         paymentTypeId: 1
     }
 ];
@@ -1819,6 +1865,55 @@ const LANGUAGES = [
     }
 ];
 
+const REVIEWS = [
+    {
+        id: 1,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel.",
+        Cleanliness: 3,
+        Price: 5,
+        Comfort: 5,
+        Facilities: 4,
+        Location: 2,
+        avgReview: 3.8,
+
+        userId: 1,
+        propertyId: 1,
+        anon: true
+    },
+
+    {
+        id: 1,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel.",
+        Cleanliness: 3,
+        Price: 5,
+        Comfort: 5,
+        Facilities: 4,
+        Location: 2,
+        avgReview: 3.8,
+
+        userId: 1,
+        propertyId: 2,
+        anon: false
+    },
+    {
+        id: 1,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel.",
+        Cleanliness: 3,
+        Price: 5,
+        Comfort: 5,
+        Facilities: 4,
+        Location: 2,
+        avgReview: 3.8,
+
+        userId: 1,
+        propertyId: 2,
+        anon: false
+    }
+];
+
 module.exports = {
     USERS,
     PROPERTIES,
@@ -1838,5 +1933,6 @@ module.exports = {
     BED_TYPES,
     ROOM_TYPES,
     PROPERTY_TYPE,
-    LANGUAGES
+    LANGUAGES,
+    REVIEWS,
 };

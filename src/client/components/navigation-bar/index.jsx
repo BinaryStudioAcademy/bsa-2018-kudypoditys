@@ -5,6 +5,7 @@ import "./index.scss";
 
 export class NavigationBar extends React.Component {
     render() {
+
         return (
             <Menu
                 className="property-page-navigation"
@@ -16,8 +17,11 @@ export class NavigationBar extends React.Component {
                 <Menu.Item
                     name="info-and-price"
                     onClick={this.props.infoClick}
-                    children="Room info and price"
+                    children='Room info and price'
+
+
                 />
+
                 <Menu.Item
                     name="facilities"
                     onClick={this.props.facilitiesClick}
@@ -33,6 +37,7 @@ export class NavigationBar extends React.Component {
                     <Label className="reviews-label">
                         {this.props.reviewsCount}
                     </Label>
+
                 </Menu.Item>
             </Menu>
         );

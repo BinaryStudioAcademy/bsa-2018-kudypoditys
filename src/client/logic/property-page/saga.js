@@ -38,7 +38,7 @@ export default function* propertyPageSaga() {
         } catch (err) {
             return yield put({
                 type: actionTypes.BOOK_PROPERTY_FAILURE,
-                payload: err.response.data
+                payload: err.message
             });
         }
     }

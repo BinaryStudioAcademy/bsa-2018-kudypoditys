@@ -27,6 +27,8 @@ import availabilityCalendar from "client/logic/property-availability-calendar/re
 import checkInCheckOut from 'client/logic/checkInCheckOut/reducer';
 import paymentTypes from 'client/logic/payment-type/reducer';
 
+import availabilityCalendar from "client/logic/property-availability-calendar/reducer";
+import review from "client/logic/reviews/reducer";
 export default combineReducers({
     search,
     sortType,
@@ -49,6 +51,7 @@ export default combineReducers({
     // policesTab,
     // layoutTab,
     propertyRegistration,
+    review,
     userVerified,
     userSettings,
     userCabinet,
@@ -58,5 +61,5 @@ export default combineReducers({
     languages,
     facilities,
     availabilityCalendar,
-    paymentTypes
+    paymentTypes,
 });
