@@ -211,11 +211,11 @@ class PropertyRepository extends Repository {
             default:
                 sortingOption = [["rating", "DESC"]];
         }
-
+        let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
         return this.model
             .findAll({
-                limit: 100,
-                offset: 0,
+                limit: 5,
+                offset:offsetData,
                 where: {
                     id: { $in: filter.propertiesIds }
                 },
@@ -239,17 +239,16 @@ class PropertyRepository extends Repository {
                             },
 
                             {
-                                model: Reservation,
-                                where:{ //sequelize.or( {
-                                    dateOut: { $lt: filter.dateIn  },
+                                model: Reservation
+                                //where:{ //sequelize.or( {
+                                // dateOut: { $lt: filter.dateIn  },
 
+                                //     // dateIn: {
+                                //     //     $gt: filter.dateOut
 
-                                    // dateIn: {
-                                    //     $gt: filter.dateOut
-
-                                    // }
-                                }//)
-                             }
+                                //     // }
+                                // }//)
+                            }
                         ],
                         where: {
                             amount: { $gte: filter.rooms }

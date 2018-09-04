@@ -32,7 +32,7 @@ export class PropertyListItem extends React.Component {
         //todo
     };
     handleRedirectToDetails = id => {
-        history.push("/property-page");
+        history.push("/property/id:"+id);
         // this.props.actions.redirectToDetails(id)
     };
 
