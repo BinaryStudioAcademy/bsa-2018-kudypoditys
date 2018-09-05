@@ -1,6 +1,5 @@
 import {tabSubmit} from "client/logic/prices-tab/actions";
 
-
 export function mapStateToProps(state) {
     const {propertRegistrationPricesTab} = state;
     return {

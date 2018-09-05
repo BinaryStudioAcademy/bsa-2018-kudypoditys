@@ -1,4 +1,4 @@
-import {propertySubmit} from "client/logic/main-info-tab/actions";
+import {propertySubmit} from "client/logic/prices-tab/actions";
 
 
 export function mapStateToProps(state) {
