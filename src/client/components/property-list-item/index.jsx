@@ -31,9 +31,9 @@ export class PropertyListItem extends React.Component {
     handleAddToFavorites = id => {
         //todo
     };
-    handleRedirectToDetails = id => {
-        history.push("/property/id:"+id);
-        // this.props.actions.redirectToDetails(id)
+    handleRedirectToDetails = () => {
+        console.log(JSON.stringify(this.props.propertyItemData))
+        history.push("/property/"+ this.props.propertyItemData.id); // this.props.actions.redirectToDetails(id)
     };
 
     componentDidMount() {

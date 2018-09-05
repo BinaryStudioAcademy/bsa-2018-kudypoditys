@@ -7,22 +7,18 @@ class BasicMapWidget extends React.Component {
             controlEnable,
             disablePopup,
             coordinates,
-            fullScreen
+            fullScreen,
+            properties
         } = this.props;
         return (
             <MapView
-                width={!fullScreen ? 250 : 1000}
-                height={!fullScreen ? 250 : 600}
-                properties={[
-                    {
-                        price: 1200,
-                        name: "Avangard Kulisha Apartment",
-                        latitude: 49.837089,
-                        longitude: 24.021161,
-                        imageSrc:
-                            "https://www.hotelimperialeroma.it/data/mobile/hotel-imperiale-roma-camere-01-2.jpg"
-                    }
-                ]}
+                style={{
+                    width: fullScreen ? "100%" : "default",
+                    height: fullScreen ? "100%" : "default"
+                }}
+                width={!fullScreen ? 250 : null}
+                height={!fullScreen ? 250 : null}
+                properties={properties}
                 startPosition={{
                     latitude: coordinates.lat,
                     longitude: coordinates.lng

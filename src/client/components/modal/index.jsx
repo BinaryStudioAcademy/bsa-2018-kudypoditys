@@ -34,7 +34,11 @@ export default class ModalComponent extends React.Component {
                 ) : (
                     <React.Fragment />
                 )}
-                <Modal.Content>{children}</Modal.Content>
+                <Modal.Content
+                    style={{ height: "fit-content", maxHeight: "100%" }}
+                >
+                    {children}
+                </Modal.Content>
             </Modal>
         );
     }

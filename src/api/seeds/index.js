@@ -21,7 +21,8 @@ const {
     REVIEWS
 } = require("./seed");
 
-module.exports = function(models) {
+function upsertAllData(models) {
+    const upsertPromises = [];
     const {
         Country,
         City,
@@ -77,11 +78,15 @@ module.exports = function(models) {
     }, []);
 
     for (const c of COUNTRIES) {
-        Country.upsert(c);
+        upsertPromises.push(
+            Country.upsert(c)
+        );
     }
 
     for (const c of CITIES) {
-        City.upsert(c);
+        upsertPromises.push(
+            City.upsert(c)
+        );
     }
 
     //Facility & FacilityCategory
@@ -99,24 +104,95 @@ module.exports = function(models) {
     );
 
     for (const fc of FACILITY_CATEGORIES) {
-        FacilityCategory.upsert(fc);
+        upsertPromises.push(
+            FacilityCategory.upsert(fc)
+        );
     }
 
     for (const f of FACILITY) {
-        Facility.upsert(f);
+        upsertPromises.push(
+            Facility.upsert(f)
+        );
     }
 
     for (const mapItem of SimpleUpsertMap) {
         for (const itemToInsert of mapItem[1]) {
-            mapItem[0].upsert(itemToInsert);
+            upsertPromises.push(
+                mapItem[0].upsert(itemToInsert)
+            );
         }
     }
 
-    // User.upsert({
-    //     fullName: 'Doctor Strange',
-    //     password: '$2b$10$tT5Nz5oq3OuImIMaxqRt5eu9gPmVOH5yJgKIR88CjvfiKl9itpu/a', // 1234
-    //     email: 'nata737mail@gmail.com',
-    //     phoneNumber: '0123412312',
-    //     avatar: 'https://avatar.com'
-    // });
+    return Promise.all(upsertPromises);
 };
+
+function getTableList(orm) {
+    const query = `
+        SELECT table_name as tableName
+        FROM information_schema.tables
+        WHERE table_schema='public' AND EXISTS (
+            SELECT 1 
+            FROM information_schema.columns 
+            WHERE table_name=information_schema.tables.table_name AND column_name='id'
+        );
+    `;
+
+    return orm
+        .query(query, { type: orm.QueryTypes.SELECT })
+        .then(data => data.map(x => x.tablename))
+}
+
+function inTransaction(orm, action) {
+    return orm.transaction({ autocommit: true })
+        .then(() => action())
+}
+
+function toggleTablesTriggers(tableList, orm, enable) {
+    const what = enable ? 'ENABLE' : 'DISABLE';
+
+    const toggleTriggerQuery = tableList.map(x =>
+        `ALTER TABLE "${x}" ${what} TRIGGER ALL;`
+    ).join(' ');
+
+    return orm.query(toggleTriggerQuery).then(_ => { });
+}
+
+function restartSequence(orm, table) {
+    const queryFactory = (number) => `
+        ALTER SEQUENCE "${table}_id_seq" RESTART WITH ${number}
+    `;
+
+    const countQuery = `
+        SELECT MAX(id) as maxId FROM "${table}"
+    `;
+
+    return orm.query(countQuery, { type: orm.QueryTypes.SELECT })
+        .then(x => {
+            return queryFactory(+x[0].maxid + 1)
+        }).then(countQuery =>
+            orm.query(countQuery)
+        ).then(_ => { });
+}
+
+module.exports = function seed(models) {
+    const { orm } = models;
+
+    return inTransaction(orm, () => { // ------- TRANSACTION
+
+        return getTableList(orm)
+            .then(tables =>
+                toggleTablesTriggers(tables, orm, false).then(_ => tables)
+            ).then(tables =>
+                upsertAllData(models).then(_ => tables)
+            ).then(tables =>
+                toggleTablesTriggers(tables, orm, true).then(_ => tables)
+            ).then(tables => {
+                const restartSeqPromises = tables.map(x => restartSequence(orm, x));
+
+                return Promise.all(restartSeqPromises);
+            });
+
+    }); // ------- TRANSACTION
+}
+
+
