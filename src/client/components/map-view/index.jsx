@@ -51,8 +51,8 @@ class MapView extends React.Component {
         this.setState({
             viewport: {
                 ...this.state.viewport,
-                width: this.props.width || window.innerWidth,
-                height: this.props.height || window.innerHeight
+                width: this.props.width || window.innerWidth - 75,
+                height: this.props.height || window.innerHeight - 150
             }
         });
     };

@@ -25,7 +25,8 @@ export class PropertySummary extends React.Component {
                             padding: 10,
                             lineHeight: 1.2,
                             color: "#465672",
-                            cursor: "default"
+                            cursor: "default",
+                            margin: "0"
                         }}
                     >
                         {property.name}
@@ -55,6 +56,7 @@ export class PropertySummary extends React.Component {
                                         Show on map
                                     </span>
                                 }
+                                fullScreen
                             >
                                 <BasicMapWidget
                                     style={{ width: "100%", height: "100%" }}

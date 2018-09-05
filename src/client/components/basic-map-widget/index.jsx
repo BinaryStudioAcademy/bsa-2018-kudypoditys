@@ -11,8 +11,12 @@ class BasicMapWidget extends React.Component {
         } = this.props;
         return (
             <MapView
-                width={!fullScreen ? 250 : 1000}
-                height={!fullScreen ? 250 : 600}
+                style={{
+                    width: fullScreen ? "100%" : "default",
+                    height: fullScreen ? "100%" : "default"
+                }}
+                width={!fullScreen ? 250 : null}
+                height={!fullScreen ? 250 : null}
                 properties={[
                     {
                         price: 1200,
