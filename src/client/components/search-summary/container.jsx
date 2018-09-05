@@ -1,9 +1,8 @@
 export function mapStateToProps(state) {
-    const {searchSummary} = state;
+    const {search} = state;
 
     return {
-        destination: searchSummary.destination,
-        totalCount: searchSummary.totalCount
+       // destination: search.query,
     };
 }
 

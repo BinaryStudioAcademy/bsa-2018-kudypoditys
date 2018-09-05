@@ -8,7 +8,7 @@
 
 .ui.grid.booking > div.row.booking-footer {
     max-height: 50px;
-    background-color: rgb(238, 238, 238);
+    // background-color: rgb(238, 238, 238);
     padding: 5px 0;
 }
 
@@ -34,4 +34,8 @@
 
 .check-date > p:first-child {
     color: rgb(119, 122, 122);
+}
+
+.container > .booking-page-top-section {
+    margin-top: 3%;
 }

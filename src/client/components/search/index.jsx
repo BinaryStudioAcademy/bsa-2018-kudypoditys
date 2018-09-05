@@ -11,38 +11,42 @@ import axios from "axios";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 import history from "client/history";
+import queryString from "query-string";
 
 export class MainSearch extends React.Component {
+    componentDidMount() {
+        if (history.location.search !== "") {
+            var parsed = queryString.parse(history.location.search);
+            console.log(
+                "MainSearch this.props.params =   " + JSON.stringify(parsed)
+            );
+            this.setState(
+                {
+                    query: parsed.query,
+                    queryCopy: parsed.query,
+                    rooms: parsed.rooms,
+                    adults: parsed.adults,
+                    children: parsed.children,
+                    startDate: moment(Number(parsed.startDate)),
+                    endDate: moment(Number(parsed.endDate))
+                },
+                () => {
+                    this.handleSubmit();
+                }
+            );
+        }
+    }
     resetComponent = () =>
         this.setState({ isLoading: false, results: [], value: "" });
     getInfo = () => {
         let resultsData = [];
-        let index = "properties";
+        let index = "cities";
         axios
             .get(
-                `http://18.195.219.130/elastic/autocomplete?index=${index}&type=document&query=${
+                `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
                     this.state.query
                 }`
             )
-            .then(propertiesResponse => {
-                console.log(
-                    "response Roperties= " + JSON.stringify(propertiesResponse)
-                );
-                propertiesResponse.data.forEach(element => {
-                    resultsData.push({
-                        title: element._source.name,
-                        description: element._source.description,
-                        image: element._source.image
-                    });
-                });
-
-                index = "cities";
-                return axios.get(
-                    `http://18.195.219.130/elastic/autocomplete?index=${index}&type=document&query=${
-                        this.state.query
-                    }`
-                );
-            })
             .then(citiesResponse => {
                 console.log(
                     "response Cities= " + JSON.stringify(citiesResponse)
@@ -53,8 +57,34 @@ export class MainSearch extends React.Component {
                         description: element._source.country
                     });
                 });
+
+                let index = "properties";
+                return axios.get(
+                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
+                        this.state.query
+                    }`
+                );
+            })
+
+            .then(propertiesResponse => {
+                console.log(
+                    "response Roperties= " + JSON.stringify(propertiesResponse)
+                );
+                propertiesResponse.data.forEach(element => {
+                    resultsData.push({
+                        title: element._source.name,
+                        description: element._source.address,
+                        image: element._source.image
+                    });
+                });
+                let title;
+                if (resultsData.length > 0) {
+                    title = resultsData[0].title;
+                }
                 this.setState({
                     results: resultsData,
+                    queryCopy: title,
+                    isSelectedResult: false,
                     isLoading: false
                 });
             });
@@ -62,8 +92,10 @@ export class MainSearch extends React.Component {
     handleResultSelect = (e, { result }) => {
         this.setState({
             query: result.title,
+            isSelectedResult: true,
             isLoading: false
         });
+        this.props.onQueryChange(this.state.query);
     };
     handleSearchChange = (e, { value }) => {
         this.setState(
@@ -79,9 +111,36 @@ export class MainSearch extends React.Component {
         );
     };
     handleSubmit = () => {
-        let path = `/search-page`;
-        history.push(path);
-        this.props.onSearch();
+        const {
+            rooms,
+            adults,
+            children,
+            startDate,
+            endDate,
+            sortBy,
+            queryCopy,
+            isSelectedResult
+        } = this.state;
+        console.log("handleSubmit trigered");
+        let { query } = this.state;
+
+        if (!isSelectedResult) {
+            query = queryCopy;
+            this.setState({ query: queryCopy });
+        }
+        history.push({
+            pathname: "/search-page",
+            search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
+        });
+        this.props.onSearch({
+            query: query,
+            rooms: rooms,
+            adults: adults,
+            children: children,
+            startDate: startDate,
+            endDate: endDate,
+            page: 1
+        });
     };
 
     constructor(props) {
@@ -91,6 +150,9 @@ export class MainSearch extends React.Component {
             startDate: moment(),
             endDate: moment().add(5, "days"),
             focusedInput: null,
+            rooms: 1,
+            adults: 1,
+            children: 1,
             query: "",
             results: []
         };
@@ -116,24 +178,38 @@ export class MainSearch extends React.Component {
     };
 
     adultsOutput = () => {
-        if (this.props.adults === 1) return "1 Adult";
-        return `${this.props.adults} Adults`;
+        if (this.state.adults === 1) return "1 Adult";
+        return `${this.state.adults} Adults`;
     };
 
     childrenOutput = () => {
-        switch (this.props.children) {
+        switch (this.state.children) {
             case 0:
                 return "No children";
             case 1:
                 return "1 Child";
             default:
-                return `${this.props.children} Children`;
+                return `${this.state.children} Children`;
         }
     };
+    onAdultsSelected = count => {
+        this.setState({ adults: count });
+        this.props.onAdultsChange(count);
+    };
 
-    roomsOutput = () => {
-        if (this.props.rooms === 1) return "1 Room";
-        return `${this.props.rooms} Rooms`;
+    onChildrenSelected = count => {
+        this.setState({ children: count });
+        this.props.onChildrenChange(count);
+    };
+
+    onChildrenSelected = count => {
+        this.setState({ children: count });
+        this.props.onChildrenChange(count);
+    };
+
+    onRoomsSelected = count => {
+        this.setState({ rooms: count });
+        this.props.onRoomsChange(count);
     };
 
     componentWillMount() {
@@ -144,15 +220,42 @@ export class MainSearch extends React.Component {
         if (selectedDates.startDate && selectedDates.endDate) {
             this.props.onDatesChange(selectedDates);
         }
+        console.log(JSON.stringify(selectedDates));
         this.setState(selectedDates);
     };
 
     render() {
+        // console.log("state=" + JSON.stringify(this.state));
+
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
-        const { isLoading, query, results } = this.state;
+        const {
+            isLoading,
+            query,
+            results,
+            rooms,
+            adults,
+            children
+        } = this.state;
+        // console.log("props!!!=" + JSON.stringify(this.props));
+        if (this.props.search.data !== undefined) {
+            const { data } = this.props.search;
+            //send data to search page
+            this.props.handleSearchResults({
+                searchResults: data,
+                searchRequest: {
+                    query: this.state.query,
+                    rooms: this.state.rooms,
+                    adults: this.state.adults,
+                    children: this.state.children,
+                    startDate: this.state.startDate,
+                    endDate: this.state.endDate
+                }
+            });
+            //   }
+        }
         const childrenOptions = this.generateOptions(0, 10);
-        const { rooms, adults, children } = this.props;
+
         return (
             <Form
                 className="search search--view-bar"
@@ -215,9 +318,7 @@ export class MainSearch extends React.Component {
                                         options={selectOptionsRooms}
                                         value={rooms}
                                         onChange={(event, input) =>
-                                            this.props.onRoomsChange(
-                                                input.value
-                                            )
+                                            this.onRoomsSelected(input.value)
                                         }
                                     />
                                 </Grid.Column>
@@ -234,9 +335,7 @@ export class MainSearch extends React.Component {
                                         options={selectOptionsAdults}
                                         value={adults}
                                         onChange={(event, input) =>
-                                            this.props.onAdultsChange(
-                                                input.value
-                                            )
+                                            this.onAdultsSelected(input.value)
                                         }
                                     />
                                 </Grid.Column>
@@ -253,9 +352,7 @@ export class MainSearch extends React.Component {
                                         options={childrenOptions}
                                         value={children}
                                         onChange={(event, input) =>
-                                            this.props.onChildrenChange(
-                                                input.value
-                                            )
+                                            this.onChildrenSelected(input.value)
                                         }
                                     />
                                 </Grid.Column>
@@ -291,13 +388,15 @@ MainSearch.propTypes = {
     onCheckOutChange: PropTypes.func.isRequired,
     onAdultsChange: PropTypes.func.isRequired,
     onChildrenChange: PropTypes.func.isRequired,
-    onRoomsChange: PropTypes.func.isRequired
+    onRoomsChange: PropTypes.func.isRequired,
+    handleSearchResults: PropTypes.func.isRequired,
+    data: PropTypes.array
 };
 
 MainSearch.defaultProps = {
     destination: "",
-    checkIn: null,
-    checkOut: null,
+    checkIn: new Date("2018-09-10"),
+    checkOut: new Date("2018-09-11"),
     adults: 1,
     children: 0,
     rooms: 1

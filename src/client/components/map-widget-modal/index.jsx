@@ -1,13 +1,11 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./index.scss";
 
-import {Button, Modal} from "semantic-ui-react";
+import { Button, Modal } from "semantic-ui-react";
 import MapView from "../map-view";
 
 export default class MapWidgetModal extends Component {
     static defaultProps = {
-        latitude: -34.397,
-        longitude: 150.644,
         buttonText: "Show on map"
     };
 
@@ -20,7 +18,7 @@ export default class MapWidgetModal extends Component {
                             basic
                             size="tiny"
                             className={this.props.buttonClass}
-                            style={{border: 0, }}
+                            style={{ border: 0 }}
                         >
                             {this.props.buttonText}
                         </Button>
@@ -28,6 +26,7 @@ export default class MapWidgetModal extends Component {
                     closeIcon
                     className="map-widget-modal"
                 >
+                    {console.log(this.props.properties)}
                     <Modal.Content>
                         <MapView
                             properties={this.props.properties}

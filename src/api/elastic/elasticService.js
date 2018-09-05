@@ -4,23 +4,28 @@ const init = require("./init");
 const PropertyService = require("./../services/property");
 const CityService = require("./../services/city");
 const elasticClient = new elasticsearch.Client({
-    hosts: ["http://localhost:9200"],
+    hosts: ["http://localhost:9200"]
 });
 
 module.exports = {
+    restartIndexing(req, res) {
+        this.initService(req, res);
+        this.addService(req, res);
+    },
+
     initService: async (req, res) => {
         var citiesInit = init.initIndex.body;
         citiesInit.mappings.document.properties = {
             city: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
             },
             country: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
-            },
+                search_analyzer: "standard"
+            }
         };
 
         var propertiesInit = init.initIndex.body;
@@ -28,32 +33,65 @@ module.exports = {
             id: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
             },
             city: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
             },
             country: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
             },
             name: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
             },
             description: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
             },
             location: {
                 type: "text",
                 analyzer: "autocomplete",
-                search_analyzer: "standard",
+                search_analyzer: "standard"
+            },
+            image: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            address: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            coordinates: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            roomPrice: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            roomType: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            roomsAmount: {
+                type: "text",
+                analyzer: "autocomplete",
+                search_analyzer: "standard"
+            },
+            rooms: {
+                type: "nested"
             }
         };
 
@@ -62,10 +100,10 @@ module.exports = {
             req,
             res,
             "properties",
-            propertiesInit,
+            propertiesInit
         );
 
-        return res.json({message: "ELASTICSEARCH::INIT_SERVICE => SUCCESS"});
+        return res.json({ message: "ELASTICSEARCH::INIT_SERVICE => SUCCESS" });
     },
 
     addService: (req, res) => {
@@ -77,20 +115,31 @@ module.exports = {
                 propertiesBulk.push({
                     index: {
                         _index: "properties",
-                        _type: "document",
-                    },
+                        _type: "document"
+                    }
                 });
                 propertiesBulk.push({
+                    id: property.id,
                     name: property.name,
-                    rating: property.rating,
-                    images: property.images,
+                    // rating: property.rating,
+                     image: property.images[0].url,
                     city: property.city.name,
-                    description: property.description,
+                    // description: property.description,
+                     address: property.address,
+                    // coordinatesLat: property.coordinates.lat,
+                    // coordinatesLng: property.coordinates.lng,
+                    // rooms: property.rooms.map(room => {
+                    //     return {
+                    //         roomType: room.roomType.name,
+                    //         roomPrice: room.price,
+                    //         roomsAmount:room.amount
+                    //     };
+                    // })
                 });
             });
-            return elasticClient.bulk({body: propertiesBulk}, function (
+            return elasticClient.bulk({ body: propertiesBulk }, function(
                 err,
-                resp,
+                resp
             ) {
                 if (err) {
                     console.log("Failed Bulk operation", err);
@@ -98,7 +147,7 @@ module.exports = {
                 } else {
                     console.log(
                         "Successfully imported properties",
-                        properties.length,
+                        properties.length
                     );
                 }
             });
@@ -111,31 +160,28 @@ module.exports = {
                 citiesBulk.push({
                     index: {
                         _index: "cities",
-                        _type: "document",
-                    },
+                        _type: "document"
+                    }
                 });
 
                 citiesBulk.push({
-                    city: city.name,
+                    city: city.name
                 });
             });
-            return elasticClient.bulk({body: citiesBulk}, function (
+            return elasticClient.bulk({ body: citiesBulk }, function(
                 err,
-                resp,
+                resp
             ) {
                 if (err) {
                     console.log("Failed Bulk operation", err);
                     return res.json(err);
                 } else {
-                    console.log(
-                        "Successfully imported cities",
-                        cities.length,
-                    );
+                    console.log("Successfully imported cities", cities.length);
                 }
             });
         });
 
-        return res.json({message: "ELASTICSEARCH::ADD_SERVICE => SUCCESS"});
+        return res.json({ message: "ELASTICSEARCH::ADD_SERVICE => SUCCESS" });
     },
 
     addOneProperty: (req, res, property) => {
@@ -145,11 +191,14 @@ module.exports = {
         const body = {
             id: property.id,
             name: property.name,
-            city: property.city,
-            country: property.country,
-            location: property.location
+            rating: property.rating,
+            image: property.images[0].url,
+            city: property.city.name,
+            description: property.description,
+            address: property.address,
+            coordinatesLat: property.coordinates.lat,
+            coordinatesLng: property.coordinates.lng
         };
-
         return elasticClient.index({ index, id, type, body });
     }
 };
