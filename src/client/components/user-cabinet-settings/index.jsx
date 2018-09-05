@@ -25,7 +25,6 @@ export class EditPersonalSettings extends Component {
 
     render() {
         const formProps = {
-            dateOptions: staticData.dateOptions,
             countryOptions: staticData.countryOptions,
             paymentOptions: staticData.paymentOptions,
             currencyOptions: staticData.currencyOptions,

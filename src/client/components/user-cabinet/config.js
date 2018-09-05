@@ -1,6 +1,6 @@
 import React from "react";
 import BookingTab from "../user-cabinet-bookings-tab";
-import SettingsTab from "../personal-settings-edit";
+import SettingsTab from "../user-cabinet-settings";
 import AvailabilityCalendar from "../property-availability-calendar";
 import ReviewsTab from "../user-cabinet-reviews-tab";
 export const MenuItems = [

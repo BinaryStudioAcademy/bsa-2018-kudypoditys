@@ -51,8 +51,8 @@ class MapView extends React.Component {
         this.setState({
             viewport: {
                 ...this.state.viewport,
-                width: this.props.width || window.innerWidth,
-                height: this.props.height || window.innerHeight
+                width: this.props.width || window.innerWidth - 75,
+                height: this.props.height || window.innerHeight - 150
             }
         });
     };
@@ -60,8 +60,8 @@ class MapView extends React.Component {
         return (
             <Marker
                 key={`marker-${index}`}
-                latitude={property.latitude}
-                longitude={property.longitude}
+                latitude={property.coordinates.lat}
+                longitude={property.coordinates.lng}
                 offsetLeft={-20}
                 offsetTop={-10}
             >
@@ -116,7 +116,7 @@ class MapView extends React.Component {
                 <ReactMapGL
                     {...this.state.viewport}
                     onViewportChange={this.handleViewportChange}
-                    mapStyle="mapbox://styles/mapbox/streets-v9"
+                    mapStyle="mapbox://styles/mapbox/light-v9"
                 >
                     {this.props.properties.map(this.renderPropertyMarker)}
                     {disablePopup ? null : this.renderPopup()}

@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import { Header, Icon } from "semantic-ui-react";
+import { Header, Icon, Rating } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import Modal from "../modal";
 import BasicMapWidget from "../basic-map-widget";
@@ -25,12 +25,18 @@ export class PropertySummary extends React.Component {
                             padding: 10,
                             lineHeight: 1.2,
                             color: "#465672",
-                            cursor: "default"
+                            cursor: "default",
+                            margin: "0"
                         }}
                     >
                         {property.name}
                     </Header>
-
+                    <Rating
+                        rating={rating}
+                        maxRating={5}
+                        disabled
+                        style={{ paddingLeft: "10px" }}
+                    />
                     <div className="location__container">
                         <p
                             as="h2"
@@ -55,10 +61,12 @@ export class PropertySummary extends React.Component {
                                         Show on map
                                     </span>
                                 }
+                                fullScreen
                             >
                                 <BasicMapWidget
                                     style={{ width: "100%", height: "100%" }}
                                     coordinates={property.coordinates}
+                                    properties={[property]}
                                     controlEnable={true}
                                     disablePopup={true}
                                     fullScreen
@@ -71,6 +79,7 @@ export class PropertySummary extends React.Component {
                     <RatingBlock
                         avgPropRating={rating}
                         reviewsCount={totalReviews}
+                        property={property}
                     />
                 </div>
             </div>
