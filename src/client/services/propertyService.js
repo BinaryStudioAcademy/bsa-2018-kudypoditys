@@ -4,14 +4,15 @@ import history from "client/history";
 class PropertyService {
     normalizeProperty = (data) => {
         const {
-            basicFacility, accommodationRule, vatIncluded
+            basicFacility, accommodationRule, vatIncluded, rooms
         } = data;
 
         return {
             ...data,
             basicFacility: this.normalizeBasicFacility(basicFacility),
             accommodationRule: this.normalizeAccommodationRule(accommodationRule),
-            vatIncluded: Boolean(vatIncluded)
+            vatIncluded: Boolean(vatIncluded),
+            rooms: rooms.map(x => ({ ...x, roomTypeId: x.roomType.id }))
         }
     }
 

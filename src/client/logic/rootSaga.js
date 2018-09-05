@@ -17,6 +17,8 @@ import countriesSaga from 'client/logic/countries/saga';
 import facilitiesSaga from 'client/logic/facilities/saga';
 import languagesSaga from 'client/logic/languages/saga';
 import paymentTypesSaga from 'client/logic/payment-type/saga';
+import roomTypesSaga from 'client/logic/room-types/saga';
+import bedTypesSaga from 'client/logic/bed-types/saga';
 
 export default function* rootSaga() {
   yield all([
@@ -39,5 +41,7 @@ export default function* rootSaga() {
     fork(facilitiesSaga),
     fork(languagesSaga),
     fork(paymentTypesSaga),
+    fork(roomTypesSaga),
+    fork(bedTypesSaga),
   ]);
 }

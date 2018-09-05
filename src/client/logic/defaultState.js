@@ -347,11 +347,29 @@ const state = {
       Location: 0
     }
   },
+  //--------------------------
+  countriesData: {
+    countries: []
+  },
+  languagesData: {
+    languages: []
+  },
+  faclitiesData: {
+    facilities: []
+  },
+  paymentTypes: {
+    paymentTypes: []
+  },
+  roomTypesData: {
+    roomTypes: []
+  },
+  bedTypesData: {
+    bedTypes: []
+  },
 
-  countriesData: {},
-  languagesData: {},
-  faclitiesData: {},
-  paymentTypes: {},
+  testRoomsTab: {
+    editRoomIndex: -1
+  },
 
   checkInCheckOut: {
     arrivalFrom: '12:00',
@@ -363,6 +381,8 @@ const state = {
   propertyRegistration: {
     error: null
   },
+
+  // _____________________
 };
 
 export default state;

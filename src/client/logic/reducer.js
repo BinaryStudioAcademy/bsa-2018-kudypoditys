@@ -27,6 +27,9 @@ import availabilityCalendar from "client/logic/property-availability-calendar/re
 import checkInCheckOut from 'client/logic/checkInCheckOut/reducer';
 import paymentTypes from 'client/logic/payment-type/reducer';
 import review from "client/logic/reviews/reducer";
+import roomTypes from 'client/logic/room-types/reducer';
+import bedTypes from 'client/logic/bed-types/reducer';
+import testRoomsTab from 'client/logic/1test-rooms-tab/reducer';
 
 export default combineReducers({
     search,
@@ -61,4 +64,7 @@ export default combineReducers({
     facilities,
     availabilityCalendar,
     paymentTypes,
+    roomTypes,
+    bedTypes,
+    testRoomsTab,
 });

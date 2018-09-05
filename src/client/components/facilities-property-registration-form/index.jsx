@@ -26,11 +26,11 @@ class FacilitiesPropertyRegistrationForm extends Component {
     componentDidMount() {
         const { languages, facilities } = this.props;
 
-        if (!languages) {
+        if (!languages || languages.length === 0) {
             this.props.getLanguages();
         }
 
-        if (!facilities) {
+        if (!facilities || facilities.length === 0) {
             this.props.getFacilities();
         }
     }

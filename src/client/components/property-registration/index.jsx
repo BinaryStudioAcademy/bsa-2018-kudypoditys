@@ -12,6 +12,7 @@ import PolicesPropertyRegistrationForm from '../polices-property-registration-fo
 import PhotoRegistrationPropertyForm from '../photo-registration-property-form';
 import PaymentPropertyRegistrationForm from '../payment-property-registration-form';
 
+import RoomsPropertyRegistrationForm from '../no-rooms-component/addRoomForm';
 
 export class PropertyRegistration extends React.Component {
     state = {
@@ -20,7 +21,7 @@ export class PropertyRegistration extends React.Component {
 
     componentDidMount() {
         const { facilities } = this.props;
-        if (!facilities) {
+        if (!facilities || facilities.length === 0) {
             this.props.getFacilities();
         }
     }
@@ -106,12 +107,20 @@ export class PropertyRegistration extends React.Component {
                 } />
             },
             {
-                key: 'menuItem Room',
+                key: 'menuItem pricing',
                 icon: 'usd',
                 content: 'Layout and pricing', //temporary
                 header: ' Layout and pricing',
+                subheader: 'Tell us about layout and pricing',
+                component: <PaymentPropertyRegistrationForm onSubmit={this.nextTab} />,
+            },
+            {
+                key: 'menuItem rooms',
+                icon: 'usd',
+                content: 'Rooms', //temporary
+                header: 'Rooms and Beds',
                 subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
-                component: <PaymentPropertyRegistrationForm onSubmit={this.onFormSubmit} />,
+                component: <RoomsPropertyRegistrationForm onSubmit={this.onFormSubmit} />,
             }
         ];
     }
