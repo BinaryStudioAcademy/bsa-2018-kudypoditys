@@ -170,9 +170,6 @@ export class PropertyPage extends React.Component {
                                 infoClick={() => {
                                     this.scrollTo("roomsRef");
                                 }}
-                                rulesClick={() => {
-                                    this.scrollTo("houseRuleRef");
-                                }}
                                 reviewsClick={() => {
                                     this.toggleReviews();
                                 }}
@@ -238,10 +235,7 @@ export class PropertyPage extends React.Component {
                                                 )}
                                             </List>
                                         </div>
-                                        <div
-                                            className="rules-payment-section"
-                                            ref={"houseRuleRef"}
-                                        >
+                                        <div className="rules-payment-section">
                                             <Header as="h2" style={headerStyle}>
                                                 Hotel Policy
                                             </Header>
@@ -250,10 +244,7 @@ export class PropertyPage extends React.Component {
                                                     property.accommodationRule
                                                 }
                                             />
-                                            <Header
-                                                as="h2"
-                                                style={{ color: "#465672" }}
-                                            >
+                                            <Header as="h2" style={headerStyle}>
                                                 Payment Method
                                             </Header>
                                             <PaymentMethods
