@@ -24,7 +24,7 @@ class RoomForm extends Component {
     const { handleSubmit, handleCancel, roomTypesOptions } = this.props;
 
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} >
         <Field
           name={`price`}
           type="number"
@@ -188,14 +188,15 @@ class RoomsPropertyRegistrationForm extends React.Component {
 
 
     return (
-      <Form onSubmit={handleSubmit}>
+      <Fragment>
+        <Form id="regFormRoom" onSubmit={handleSubmit}></Form>
         <Card style={{ width: '900px' }} color='teal'>
           <Card.Content>
             <Card.Description style={{ fontSize: '18px' }}>
               TEST NEW ROOMS
                 </Card.Description>
             <br />
-            <FieldArray name={`rooms`} component={this.renderRoomForm} rerenderOnEveryChange={true} />
+            <FieldArray form="regFromRoom" name={`rooms`} component={this.renderRoomForm} rerenderOnEveryChange={true} />
           </Card.Content>
         </Card>
 
@@ -297,8 +298,10 @@ class RoomsPropertyRegistrationForm extends React.Component {
           fluid
           disabled={pristine || submitting}
           type="submit"
+          form="regFormRoom"
         >Continue</Button>
-      </Form>)
+      </Fragment>
+    )
   }
 }
 

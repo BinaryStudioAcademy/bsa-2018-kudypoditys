@@ -19,7 +19,8 @@ property
         propertyService
             .addProperty(req.body)
             .then(property => {
-                elasticService.addOneProperty(req, res, property);
+                // this does not work
+                //elasticService.addOneProperty(req, res, property);
                 console.log(property.name, property.id);
                 res.send(property);
             })
