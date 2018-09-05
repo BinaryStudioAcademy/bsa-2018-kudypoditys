@@ -133,8 +133,7 @@ export class BookingPage extends React.Component {
                                     {
                                         price: room.price,
                                         name: property.name,
-                                        latitude: property.coordinates.lat,
-                                        longitude: property.coordinates.lng,
+                                        coordinates: property.coordinates,
                                         imageSrc: property.images[0].url,
                                         address: property.address,
                                         rating: property.rating
