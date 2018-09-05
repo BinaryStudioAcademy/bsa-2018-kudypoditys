@@ -55,8 +55,7 @@ export class PropertyPage extends React.Component {
     hideReviews = () => {
         this.setState({ reviewsVisible: false });
     };
-    handleSearchResults= (searchResult) => {
-    };
+    handleSearchResults = searchResult => {};
     constructor(props) {
         super(props);
         this.state = {
@@ -91,7 +90,10 @@ export class PropertyPage extends React.Component {
         const pics = this.getImagesArray(property.images);
         return (
             <div className="mock">
-                <AppHeader showSearch={true} handleSearchResults={this.handleSearchResults} />
+                <AppHeader
+                    showSearch={true}
+                    handleSearchResults={this.handleSearchResults}
+                />
 
                 <Sidebar
                     onHide={this.hideReviews}
@@ -120,6 +122,7 @@ export class PropertyPage extends React.Component {
                         <div text className="property-page__wrapper-left_side">
                             <BasicMapWidget
                                 key="BasicMapWidget"
+                                properties={[property]}
                                 coordinates={property.coordinates}
                                 controlEnable={false}
                                 rounded
@@ -167,9 +170,6 @@ export class PropertyPage extends React.Component {
                                 }}
                                 infoClick={() => {
                                     this.scrollTo("roomsRef");
-                                }}
-                                rulesClick={() => {
-                                    this.scrollTo("houseRuleRef");
                                 }}
                                 reviewsClick={() => {
                                     this.toggleReviews();
@@ -236,10 +236,7 @@ export class PropertyPage extends React.Component {
                                                 )}
                                             </List>
                                         </div>
-                                        <div
-                                            className="rules-payment-section"
-                                            ref={"houseRuleRef"}
-                                        >
+                                        <div className="rules-payment-section">
                                             <Header as="h2" style={headerStyle}>
                                                 Hotel Policy
                                             </Header>
@@ -248,10 +245,7 @@ export class PropertyPage extends React.Component {
                                                     property.accommodationRule
                                                 }
                                             />
-                                            <Header
-                                                as="h2"
-                                                style={{ color: "#465672" }}
-                                            >
+                                            <Header as="h2" style={headerStyle}>
                                                 Payment Method
                                             </Header>
                                             <PaymentMethods
