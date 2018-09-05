@@ -13,7 +13,8 @@ import {
     Image,
     Button,
     Message,
-    Input
+    Input,
+    Dimmer
 } from "semantic-ui-react";
 
 export class SettingsForm extends Component {
@@ -127,16 +128,56 @@ export class SettingsForm extends Component {
             });
         }
     };
+    handleDimmerShow = () => {
+        this.setState({ active: true });
+    };
+    handleDimmerHide = () => {
+        this.setState({ active: false });
+    };
 
     render() {
         const {
             handleSubmit,
-            dateOptions,
             countryOptions,
             paymentOptions,
             currencyOptions,
             appealOptions
         } = this.props;
+        const { active } = this.state;
+        const content = (
+            <div>
+                <ImageUploader
+                    className="personal_settings-avatar"
+                    withPreview={false}
+                    singleImage={true}
+                    withLabel={false}
+                    withIcon={false}
+                    optimisticPreviews
+                    multiple={false}
+                    pseudobuttonContent={
+                        <Icon
+                            circular
+                            title="Add new avatar"
+                            size="big"
+                            name="add"
+                            color="white"
+                        />
+                    }
+                    buttonText="Update"
+                    buttonClassName="personal_settings-avatar-button"
+                    onChange={this.onDrop}
+                    imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                    maxFileSize={5242880}
+                />
+                <Button
+                    primary
+                    className="avatar_del_btn"
+                    onClick={this.props.avatarDelete}
+                >
+                    Delete
+                </Button>
+            </div>
+        );
         return (
             <Form onSubmit={handleSubmit}>
                 <Segment className="personal_settings-segment">
@@ -149,27 +190,42 @@ export class SettingsForm extends Component {
                         </Message>
                     </div>
                     <p className="personal_settings-p">Main photo</p>
-                    <Image
+                    <Dimmer.Dimmable
+                        as={Image}
                         circular
                         style={{ width: "150px", height: "150px" }}
+                        dimmed={active}
+                        dimmer={{ active, content }}
+                        onMouseEnter={this.handleDimmerShow}
+                        onMouseLeave={this.handleDimmerHide}
+                        size="medium"
                         src={
                             this.props.avatar ||
                             "https://www.mautic.org/media/images/default_avatar.png"
                         }
-                        alt="Photo"
                     />
-                    <ImageUploader
+                    {/* <ImageUploader
                         className="personal_settings-avatar"
-                        buttonText="Choose photo"
                         withPreview={false}
                         singleImage={true}
                         withLabel={false}
                         withIcon={false}
-                        buttonClassName="personal_settings-avatar-button"
+                        optimisticPreviews
+                        multiple={false}
+                        pseudobuttonContent={
+                            <Icon
+                                circular
+                                title="Add new avatar"
+                                size="big"
+                                name="add"
+                                color="white"
+                            />
+                        }
+                        // buttonClassName="personal_settings-avatar-button"
                         onChange={this.onDrop}
                         imgExtension={[".jpg", ".gif", ".png", ".gif"]}
                         maxFileSize={5242880}
-                    />
+                    /> */}
                     <p className="personal_settings-p">Your nickname</p>
                     <Field
                         component={inputField}
@@ -183,7 +239,6 @@ export class SettingsForm extends Component {
                     />
                     <p className="personal_settings-p">Country</p>
                     <Dropdown
-                        // icon={"arrow down"}
                         name="countryId"
                         fluid
                         selection
