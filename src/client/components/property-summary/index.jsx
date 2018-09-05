@@ -71,6 +71,7 @@ export class PropertySummary extends React.Component {
                     <RatingBlock
                         avgPropRating={rating}
                         reviewsCount={totalReviews}
+                        property={property}
                     />
                 </div>
             </div>
