@@ -15,9 +15,13 @@ $slider-height: 300px;
 .slick-dots {
     justify-content: center;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     padding: 0;
     margin: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
 }
 
 .slick-dots li {
