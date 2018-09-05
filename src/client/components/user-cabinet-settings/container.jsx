@@ -4,7 +4,7 @@ import {
     getUserSettings,
     uploadAvatar,
     resetPassword
-} from "client/logic/personal-settings-edit/actions";
+} from "client/logic/user-cabinet-settings/actions";
 
 export function mapStateToProps(state) {
     const { userSettings } = state;
