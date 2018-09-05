@@ -6,7 +6,7 @@ import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
 import RankingBar from "client/components/ranking-bar";
 import PropertyListItem from "client/components/property-list-item";
-import Pagination  from "client/components/pagination";
+import Pagination from "client/components/pagination";
 import BasicMapWidget from "client/components/basic-map-widget";
 import Header from "client/components/header";
 import { Breadcrumb } from "semantic-ui-react";
@@ -22,12 +22,10 @@ class SearchPage extends React.Component {
             listItems: [],
             itemCount: 0,
             searchRequest: {},
-            selectedPage:1.
+            selectedPage: 1
         };
-
     }
     handleSearchResults = searchData => {
-
         const listItems = searchData.searchResults.properties.map(property => (
             <PropertyListItem key={property.id} propertyItemData={property} />
         ));
@@ -40,10 +38,10 @@ class SearchPage extends React.Component {
     onSortingSelected = value => {
         this.setState({ sortBy: value });
     };
-    paginationChanged = (event,data) => {
-        console.log('event' +Object.keys(event));
-        console.log('data'+JSON.stringify(data))
-        this.setState({selectedPage: data.activePage });
+    paginationChanged = (event, data) => {
+        console.log("event" + Object.keys(event));
+        console.log("data" + JSON.stringify(data));
+        this.setState({ selectedPage: data.activePage });
     };
 
     render() {
@@ -55,25 +53,7 @@ class SearchPage extends React.Component {
                 />
                 <div className="search-page__wrapper">
                     <div className="breadcrumb_wrapper">
-                        <Segment className="breadcrumb__segment">
-                            {/* <Breadcrumb
-                                icon="right angle"
-                                sections={[
-                                    { key: "Home", content: "Home", href: "#" },
-                                    {
-                                        key: "Ukraine",
-                                        content: "Ukraine",
-                                        href: "#"
-                                    },
-                                    { key: "Lviv", content: "Lviv", href: "#" },
-                                    {
-                                        key: "DREAM Hostel Lviv",
-                                        content: "DREAM Hostel Lviv",
-                                        href: "#"
-                                    }
-                                ]}
-                            /> */}
-                        </Segment>
+                        <Segment className="breadcrumb__segment" />
                     </div>
 
                     <Container className="search-page__wrapper-left_side">
@@ -87,6 +67,14 @@ class SearchPage extends React.Component {
                                 key="BasicMapWidget"
                                 coordinates={{ lat: 49.837089, lng: 24.021161 }}
                                 rounded
+                                properties={[
+                                    {
+                                        coordinates: {
+                                            lat: 49.837089,
+                                            lng: 24.021161
+                                        }
+                                    }
+                                ]}
                                 centered
                             />
                         </div>
@@ -115,8 +103,10 @@ class SearchPage extends React.Component {
                         />
                         {this.state.listItems}
                         <div className="search-page__pagination">
-                            <Pagination pagesCount={this.state.itemCount/5} searchRequest={this.state.searchRequest}
-                                />
+                            <Pagination
+                                pagesCount={this.state.itemCount / 5}
+                                searchRequest={this.state.searchRequest}
+                            />
                         </div>
                     </Container>
                 </div>
