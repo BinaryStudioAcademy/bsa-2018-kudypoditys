@@ -9,6 +9,7 @@ import {
     CHECK_AVAILABILITY_FAILURE
 } from "./actionTypes";
 
+import { SEARCH_UPDATE } from "../search/actionTypes";
 
 function propertyPageReducer(state = defaultState.propertyPage, action) {
     switch (action.type) {
@@ -16,6 +17,20 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
             return {
                 ...state,
                 property: action.payload
+            };
+        }
+
+        case SEARCH_UPDATE: {
+            return {
+                ...state,
+                availabilityInput: {
+                    ...state.availabilityInput,
+                    ...action.payload
+                },
+                bookingInput: {
+                    ...state.bookingInput,
+                    ...action.payload
+                }
             };
         }
 
@@ -71,6 +86,12 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                     error: "",
                     message: "",
                     ...action.payload
+                },
+                availabilityInput: {
+                    ...state.availabilityInput,
+                    ...action.payload,
+                    error: "",
+                    result: null
                 }
             };
         }
@@ -83,6 +104,12 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                     ...action.payload,
                     error: "",
                     result: null
+                },
+                bookingInput: {
+                    ...state.bookingInput,
+                    error: "",
+                    message: "",
+                    ...action.payload
                 }
             };
         }

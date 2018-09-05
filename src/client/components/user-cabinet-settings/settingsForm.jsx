@@ -9,13 +9,12 @@ import {
     Header,
     Icon,
     Segment,
-    Label,
     Dropdown,
-    Checkbox,
     Image,
     Button,
     Message,
-    Input
+    Input,
+    Dimmer
 } from "semantic-ui-react";
 
 export class SettingsForm extends Component {
@@ -129,16 +128,56 @@ export class SettingsForm extends Component {
             });
         }
     };
+    handleDimmerShow = () => {
+        this.setState({ active: true });
+    };
+    handleDimmerHide = () => {
+        this.setState({ active: false });
+    };
 
     render() {
         const {
             handleSubmit,
-            dateOptions,
             countryOptions,
             paymentOptions,
             currencyOptions,
             appealOptions
         } = this.props;
+        const { active } = this.state;
+        const content = (
+            <div>
+                <ImageUploader
+                    className="personal_settings-avatar"
+                    withPreview={false}
+                    singleImage={true}
+                    withLabel={false}
+                    withIcon={false}
+                    optimisticPreviews
+                    multiple={false}
+                    pseudobuttonContent={
+                        <Icon
+                            circular
+                            title="Add new avatar"
+                            size="big"
+                            name="add"
+                            color="white"
+                        />
+                    }
+                    buttonText="Update"
+                    buttonClassName="personal_settings-avatar-button"
+                    onChange={this.onDrop}
+                    imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                    maxFileSize={5242880}
+                />
+                <Button
+                    primary
+                    className="avatar_del_btn"
+                    onClick={this.props.avatarDelete}
+                >
+                    Delete
+                </Button>
+            </div>
+        );
         return (
             <Form onSubmit={handleSubmit}>
                 <Segment className="personal_settings-segment">
@@ -151,27 +190,42 @@ export class SettingsForm extends Component {
                         </Message>
                     </div>
                     <p className="personal_settings-p">Main photo</p>
-                    <Image
+                    <Dimmer.Dimmable
+                        as={Image}
                         circular
                         style={{ width: "150px", height: "150px" }}
+                        dimmed={active}
+                        dimmer={{ active, content }}
+                        onMouseEnter={this.handleDimmerShow}
+                        onMouseLeave={this.handleDimmerHide}
+                        size="medium"
                         src={
                             this.props.avatar ||
                             "https://www.mautic.org/media/images/default_avatar.png"
                         }
-                        alt="Photo"
                     />
-                    <ImageUploader
+                    {/* <ImageUploader
                         className="personal_settings-avatar"
-                        buttonText="Choose photo"
                         withPreview={false}
                         singleImage={true}
                         withLabel={false}
                         withIcon={false}
-                        buttonClassName="personal_settings-avatar-button"
+                        optimisticPreviews
+                        multiple={false}
+                        pseudobuttonContent={
+                            <Icon
+                                circular
+                                title="Add new avatar"
+                                size="big"
+                                name="add"
+                                color="white"
+                            />
+                        }
+                        // buttonClassName="personal_settings-avatar-button"
                         onChange={this.onDrop}
                         imgExtension={[".jpg", ".gif", ".png", ".gif"]}
                         maxFileSize={5242880}
-                    />
+                    /> */}
                     <p className="personal_settings-p">Your nickname</p>
                     <Field
                         component={inputField}
@@ -240,19 +294,6 @@ export class SettingsForm extends Component {
                         onChange={e => this.handleChange(e, e.target)}
                     />
                     <p className="personal_settings-p">E-mail</p>
-                    {/* <Field
-                        component={inputField}
-                        name="email"
-                        label="E-mail"
-                        type="email"
-                        min={4}
-                        max={16}
-                        className="personal_settings-field"
-                        pointing="left"
-                        val={this.props.email}
-                        validate={[email]}
-                        onChange={e => this.handleChange(e, e.target)}
-                    /> */}
                     <Input
                         name="email"
                         placeholder="E-mail"
@@ -269,169 +310,6 @@ export class SettingsForm extends Component {
                         onChange={e => this.handleChange(e, e.target)}
                     />
                 </Segment>
-
-                {/* <Segment className="personal_settings-segment">
-                    <div className="personal_settings-segment-header">
-                        <Header as="h2">Credit cards</Header>
-                        <Message info>
-                            Your payment information is kept secure.
-                        </Message>
-                    </div>
-                    {this.props.creditCards.map((creditcard, i) => (
-                        <Label
-                            className="personal_settings-creditcard-label"
-                            basic
-                            key={i}
-                        >
-                            <div className="personal_settings-creditcard-label-div-type">
-                                {creditcard.type}
-                            </div>
-                            <div className="personal_settings-creditcard-label-div-number">
-                                Number: {creditcard.number}
-                            </div>
-                            <div className="personal_settings-creditcard-label-div-owner">
-                                Owner: {creditcard.owner}
-                            </div>
-                            <div className="personal_settings-creditcard-label-div-expiration">
-                                Expiration: {creditcard.expirationDay} -{" "}
-                                {creditcard.expirationYear}
-                            </div>
-                            <div className="personal_settings-creditcard-label-div-usedForBooking">
-                                {creditcard.usedForBooking
-                                    ? "Used for booking"
-                                    : "Not used for booking"}
-                            </div>
-                            <div className="personal_settings-creditcard-label-div-transferRemuneration">
-                                {creditcard.transferRemuneration
-                                    ? "Transfer remuneration"
-                                    : "Do not transfer remuneration"}
-                            </div>
-                            <Label
-                                name={creditcard.number}
-                                as="a"
-                                basic
-                                onClick={this.removeCreditCard}
-                            >
-                                <Icon name="close" />
-                                Remove
-                            </Label>
-                        </Label>
-                    ))}
-                    {this.state.addingCreditcard ? (
-                        <div className="personal_settings-adding-creditcard">
-                            {this.state.addingCreditcard.error ? (
-                                <Label color="red">
-                                    Please, specify the correct data
-                                </Label>
-                            ) : null}
-                            <p>Type of credit card</p>
-                            <Dropdown
-                                name="type"
-                                fluid
-                                selection
-                                placeholder="Select creditcard"
-                                options={paymentOptions}
-                                onChange={this.handleCreditCardsChange}
-                            />
-                            <p>Number of credit card</p>
-                            <Field
-                                component={inputField}
-                                name="number"
-                                label="Creditcard number"
-                                type="number"
-                                onChange={e =>
-                                    this.handleCreditCardsChange(e, e.target)
-                                }
-                            />
-                            <p>Name of credit card owner</p>
-                            <Field
-                                component={inputField}
-                                name="owner"
-                                label="Creditcard owner name"
-                                type="text"
-                                onChange={e =>
-                                    this.handleCreditCardsChange(e, e.target)
-                                }
-                            />
-                            <p>Expiration date</p>
-                            <Dropdown
-                                name="expirationDay"
-                                fluid
-                                selection
-                                placeholder="Exp.day"
-                                options={dateOptions.days}
-                                className="personal_settings-date-dropdown-left"
-                                onChange={this.handleCreditCardsChange}
-                            />
-                            <Dropdown
-                                name="expirationYear"
-                                fluid
-                                selection
-                                placeholder="Exp.year"
-                                options={dateOptions.years}
-                                className="personal_settings-date-dropdown-right"
-                                onChange={this.handleCreditCardsChange}
-                            />
-                            <Checkbox
-                                name="usedForBooking"
-                                label="Use for booking business trips"
-                                onChange={e =>
-                                    this.handleCreditCardsChange(e, {
-                                        name: "usedForBooking",
-                                        value: !this.state.creditCard
-                                            .usedForBooking
-                                    })
-                                }
-                            />
-                            <Checkbox
-                                name="transferRemuneration"
-                                label="Transfer remuneration for this card"
-                                onChange={e =>
-                                    this.handleCreditCardsChange(e, {
-                                        name: "transferRemuneration",
-                                        value: !this.state.creditCard
-                                            .transferRemuneration
-                                    })
-                                }
-                            />
-                        </div>
-                    ) : null}
-                    {this.state.addingCreditcard ? (
-                        <React.Fragment>
-                            <Label
-                                as="a"
-                                content="Save"
-                                icon="save"
-                                onClick={this.saveCreditCard}
-                                color="blue"
-                                className="personal_settings-btn"
-                            />
-                            <Label
-                                as="a"
-                                content="Cancel"
-                                icon="cancel"
-                                onClick={() => (
-                                    this.addingItem("addingCreditcard", false),
-                                    this.cancelCreditCard()
-                                )}
-                                basic
-                                className="personal_settings-btn"
-                            />
-                        </React.Fragment>
-                    ) : (
-                        <Label
-                            as="a"
-                            content="Add credit"
-                            icon="plus square"
-                            onClick={() =>
-                                this.addingItem("addingCreditcard", true)
-                            }
-                            color="blue"
-                            className="personal_settings-btn personal_settings-add-credit"
-                        />
-                    )}
-                </Segment> */}
-
                 <Segment className="personal_settings-segment">
                     <div className="personal_settings-segment-header">
                         <Header as="h2">Prepayment preferences</Header>

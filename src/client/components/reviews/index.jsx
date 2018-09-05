@@ -37,8 +37,7 @@ export class Reviews extends React.Component {
 
     constructor(props) {
         super(props);
-        // this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
+
 
         this.state = {
             visible: true,
@@ -53,16 +52,16 @@ export class Reviews extends React.Component {
     }
 
     handleClose = () => {
-        console.log("sdsdasdasasasdasdsad")
+
         this.setState({ modalOpen: false })
-        console.log(this.state)
+
     }
 
 
     render() {
         console.log(this.props);
         const { property, user, bookings } = this.props;
-        let shouldRenderForm = false;
+        let shouldRenderForm = true;
         const { visible } = this.state;
 
         const avgPropRatingArray = getGroupedArray(
@@ -127,7 +126,7 @@ export class Reviews extends React.Component {
                 {property.reviews.length === 0 ? (
                     <div>
                         <Header
-                            as="h3"
+                            as="mytagаSOSNOOOOLEY"
                             dividing
                             style={{
                                 color: '#465672',

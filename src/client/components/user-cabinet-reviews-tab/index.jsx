@@ -14,17 +14,19 @@ import {
     Segment
 } from "semantic-ui-react";
 import ReviewItem from "./reviewItem";
+import Review from "../reviews/item";
 import "./index.scss";
 
 export class ReviewsTab extends React.Component {
-    componentWillMount() {
-        this.props.getUserReviews({ id: 1 });
-    }
-
     getReviewsItems = reviews => {
         console.log(reviews);
         return reviews.map((review, index) => {
+            {
+                console.log(review)
+            }
+
             return (
+
                 <ReviewItem
                     key={index}
                     {...review}
@@ -32,9 +34,15 @@ export class ReviewsTab extends React.Component {
                     // booking={booking}
                     // viewBooking={() => this.viewBooking(booking)}
                 />
+
             );
         });
     };
+
+    componentWillMount() {
+        console.log(this.props)
+        this.props.getUserReviews({id: this.props.user.id});
+    }
 
     render() {
         // <Button onClick={this.props.getUserReviews} />
@@ -45,9 +53,9 @@ export class ReviewsTab extends React.Component {
                 <Header as="h2">Your reviews</Header>
                 <Message info>This is a list of your reviews.</Message>
                 <Card.Group itemsPerRow={4}>
-                    {reviews.length
-                        ? this.getReviewsItems(reviews)
-                        : "You dont have review :("}
+                    {!reviews
+                        ? "You dont have review :("
+                        : this.getReviewsItems(reviews)}
                 </Card.Group>
             </Segment>
         );
