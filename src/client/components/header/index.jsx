@@ -56,7 +56,7 @@ export class MainHeader extends Component {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-                            <a
+                            {/* <a
                                 style={{
                                     marginRight: "24px",
                                     fontSize: 16,
@@ -65,7 +65,7 @@ export class MainHeader extends Component {
                                 }}
                             >
                                 EN
-                            </a>
+                            </a> */}
 
                             <AuthHOC
                                 Component={() => {
