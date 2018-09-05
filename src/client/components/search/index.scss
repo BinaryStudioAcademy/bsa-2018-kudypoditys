@@ -1,3 +1,4 @@
+
 .search--view-bar > .room-options > .room-selector.hidden {
     display: none;
 }
@@ -6,9 +7,8 @@
     display: flex;
     background-color: #ffffff;
     width: fit-content;
-    margin: 0 auto;
     size: 16px !important;
-    margin-top: 60px;
+    margin: 0px auto 50px;
 }
 
 .DateRangePickerInput_arrow {
@@ -21,11 +21,23 @@
     border-bottom: 0px !important;
     border-left: 0px !important;
     border-radius: 0px !important;
+    height: 60px;
+    font-family: ArialMT, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #182c4f;
+    opacity: 0.8;
+
 }
 
 .search--view-bar {
-    width: 1000px;
-    max-width: 1000px !important;
+    width: 1050px;
+    //max-width: 1050px !important;
     .ui.input > input {
         border-top: 0px;
         border-bottom: 0px;
@@ -35,6 +47,7 @@
 }
 
 .destination {
+    height: 60px;
     input {
         min-width: 470px;
     }
@@ -57,6 +70,10 @@
     min-width: 237px;
     width: fit-content;
 }
+.destination div.results.transition {
+    width: 100% !important;
+ }
+
 
 .search--view-bar > .room-options > .room-selector {
     box-shadow: 0 0 3px 1px #dddddd;
@@ -73,7 +90,7 @@
 }
 
 form.Field {
-    align-content: right;
+    //align-content: right;
 }
 
 .room-selector > .field {
@@ -107,4 +124,21 @@ form.Field {
 .search--view-panel .btn-wrp {
     display: flex;
     justify-content: flex-end;
+}
+
+.ui.input {
+    height: 60px
+}
+
+.ui.grid > .row {
+
+    padding-left: 10px;
+}
+
+.search--view-bar .ui.input > input {
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-radius: 0px;
+    opacity: 0.8;
 }

@@ -8,18 +8,19 @@ import {
 } from "client/regexValidationService";
 import { Field, reduxForm } from "redux-form";
 import CheckboxForm from "./checkboxForm";
-import semanticSelectorFormField from "client/components/dropdown-form/semanticSelectorForm";
+// import semanticSelectorFormField from "client/components/dropdown-form/semanticSelectorForm";
 
-const cities = [
-    { key: "0", text: "Lviv", value: "Lviv" },
-    { key: "1", text: "Kyiv", value: "Kyiv" },
-    { key: "2", text: "Odessa", value: "Odessa" },
-    { key: "3", text: "Dnipro", value: "Dnipro" },
-    { key: "4", text: "Ternopil", value: "Ternopil" }
-];
+// const cities = [
+//     { key: "0", text: "Lviv", value: "Lviv" },
+//     { key: "1", text: "Kyiv", value: "Kyiv" },
+//     { key: "2", text: "Odessa", value: "Odessa" },
+//     { key: "3", text: "Dnipro", value: "Dnipro" },
+//     { key: "4", text: "Ternopil", value: "Ternopil" }
+//     { key: "5", text: "Dnipro", value: "Dnipro" },
+// ];
 
 let RegistrationForm = props => {
-    const { pristine, submitting, handleSubmit } = props;
+    const { pristine, submitting, handleSubmit, handleChange } = props;
     return (
         <form onSubmit={handleSubmit}>
             <Card style={{ width: "900px" }} color="teal">
@@ -34,6 +35,7 @@ let RegistrationForm = props => {
                         label="Property name"
                         type="text"
                         validate={[required, maxLength20]}
+
                     />
                     <Card.Meta>
                         <br />
@@ -55,6 +57,7 @@ let RegistrationForm = props => {
                         type="text"
                         icon="user"
                         validate={[required, maxLength20]}
+
                     />
                     <CardDescription>
                         <br />
@@ -67,12 +70,13 @@ let RegistrationForm = props => {
                         type="tel"
                         icon="phone"
                         validate={[required, phoneNumber]}
+
                     />
                     <CardDescription>
                         <br /> Do you own multiple apartments, or are you part
                         of a property management company or group?
                     </CardDescription>
-                    <CheckboxForm name="select1" />
+                    <CheckboxForm name="own multiple apartments" handleChange={handleChange} />
                 </Card.Content>
             </Card>
             <Card style={{ width: "900px" }} color="teal">
@@ -85,7 +89,7 @@ let RegistrationForm = props => {
                         Do you work with a channel manager or XML provider to
                         manage your pricing and availability?
                     </CardDescription>
-                    <CheckboxForm name="select2" />
+                    <CheckboxForm name="channel manager" handleChange={handleChange} />
                 </Card.Content>
             </Card>
             <Card style={{ width: "900px" }} color="teal">
@@ -104,6 +108,7 @@ let RegistrationForm = props => {
                         label="For example:10 Zelena street"
                         icon="map marker"
                         validate={[required, maxLength20]}
+
                     />
                     <CardDescription>
                         <br />
@@ -116,6 +121,7 @@ let RegistrationForm = props => {
                         label="For example: flat number and etc."
                         icon="map marker"
                         validate={[required, maxLength20]}
+
                     />
                     <CardDescription>
                         <br />
@@ -128,18 +134,20 @@ let RegistrationForm = props => {
                         label="Ukraine"
                         icon="map marker"
                         validate={[required, maxLength20]}
+
                     />
                     <CardDescription>
                         <br />
                         City
                     </CardDescription>
                     <Field
+                        component={FormTextInput}
                         name="address3"
-                        component={semanticSelectorFormField}
-                        as={Form.Select}
-                        options={cities}
-                        placeholder="Select city"
-                        validate={required}
+                        type="text"
+                        label="Ukraine"
+                        icon="map marker"
+                        validate={[required, maxLength20]}
+
                     />
                 </Card.Content>
             </Card>
@@ -150,11 +158,11 @@ let RegistrationForm = props => {
                     </Card.Description>
                     <CardDescription>
                         <br />
-                        Were you contacted by a Booking.com representative in
+                        Were you contacted by a kydypoditys.com representative in
                         the past two weeks before starting your registration
                         process?
                     </CardDescription>
-                    <CheckboxForm name="select3" />
+                    <CheckboxForm name="was contacted" handleChange={handleChange} />
                 </Card.Content>
             </Card>
             <Button

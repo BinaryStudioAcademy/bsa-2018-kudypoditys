@@ -1,13 +1,11 @@
-const
-    path = require('path'),
-    apiRoot = path.resolve(path.join(__dirname, '../.')),
-    fs = require('fs'),
-
+const path = require("path"),
+    apiRoot = path.resolve(path.join(__dirname, "../.")),
+    fs = require("fs"),
     basename = path.basename(__filename),
-    Sequelize = require('sequelize'),
+    Sequelize = require("sequelize"),
     orm = require(`../orm`),
     associations = require(`../associations`),
-    seed = require('../seeds');
+    seed = require("../seeds");
 
 const models = {
     Sequelize,
@@ -16,20 +14,28 @@ const models = {
 
 fs.readdirSync(__dirname)
     .filter(file => {
-        return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+        return (
+            file.indexOf(".") !== 0 &&
+            file !== basename &&
+            file.slice(-3) === ".js"
+        );
     })
-    .map(file => file.split('\\').pop().replace(/\..+$/, ''))
+    .map(file =>
+        file
+            .split("\\")
+            .pop()
+            .replace(/\..+$/, "")
+    )
     .forEach(modelName => {
         models[modelName] = require(`${apiRoot}/models/${modelName}`);
     });
 
 associations(models); // make associations
 
+module.exports = orm
 
-module.exports = orm.sync({ force: false }).then(() => {
-    seed(models);
-}).then(() => models);
-
-
-
-
+    .sync({ force: true })
+    .then(() => {
+        seed(models);
+    })
+    .then(() => models);

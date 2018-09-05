@@ -3,10 +3,14 @@ import "./index.scss";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from "./container";
+import request from 'superagent';
 
 class Quickfilter extends React.Component {
     handleItemClick(box) {
-        this.props.selectFilter(box);
+        const request = this.props.searchRequest
+        request.facilityFilter = box
+        this.props.selectFilter(request);
+
     }
 
     sortByType(type) {
@@ -36,9 +40,9 @@ class Quickfilter extends React.Component {
                         {box.label}{" "}
                     </label>
                 </div>
-                <label className="box_amount" htmlFor={box.id}>
-                    {box.amount}
-                </label>
+                {/*<label className="box_amount" htmlFor={box.id}>*/}
+                {/*{box.amount}*/}
+                {/*</label>*/}
             </div>
         ));
         return temp;

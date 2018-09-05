@@ -27,7 +27,8 @@ function associations(models) {
         User,
         UserSetting,
         VerificationStatus,
-        UserRefreshToken
+        UserRefreshToken,
+        Availability
     } = models;
 
     // console.log(models);
@@ -42,6 +43,8 @@ function associations(models) {
     // User associations
     User.belongsTo(Role);
     User.belongsTo(UserSetting);
+    User.belongsTo(Country);
+    User.belongsTo(PaymentType);
 
     User.hasOne(UserRefreshToken);
 
@@ -61,6 +64,9 @@ function associations(models) {
     RoomDiscount.belongsTo(Room);
     RoomDiscount.belongsTo(Discount);
 
+    //Rooms Availability
+    Availability.belongsTo(Room);
+
     // Room associations
     Room.belongsTo(RoomType);
     Room.belongsTo(Property);
@@ -69,6 +75,7 @@ function associations(models) {
     Room.hasMany(Image);
     Room.hasMany(BedInRoom);
     Room.hasMany(RoomDiscount);
+    Room.hasMany(Availability);
 
     // Role associations
     Role.hasMany(User);
@@ -96,7 +103,6 @@ function associations(models) {
     PropertyPaymentType.belongsTo(Property);
     PropertyPaymentType.belongsTo(PaymentType);
 
-
     // Property associations
     Property.belongsTo(User);
     Property.belongsTo(VerificationStatus);
@@ -109,11 +115,12 @@ function associations(models) {
     Property.hasMany(FacilityList);
     Property.hasMany(PropertyPaymentType);
     Property.hasMany(Room);
-
+    Property.hasMany(Image);
 
     // PaymentType associations
     PaymentType.hasMany(Reservation);
     PaymentType.hasMany(PropertyPaymentType);
+    PaymentType.hasMany(User);
 
     // Message associations
     Message.belongsTo(Reservation);
@@ -142,6 +149,7 @@ function associations(models) {
 
     // Country associations
     Country.hasMany(City);
+    Country.hasMany(User);
 
     // City associations
     City.belongsTo(Country);
@@ -161,28 +169,29 @@ function associations(models) {
     UserRefreshToken.belongsTo(User);
 
     // Many To Many Associations
-    ReviewCategory.belongsToMany(Review, { through: 'scoreByCategory' });
-    Review.belongsToMany(ReviewCategory, { through: 'scoreByCategory' });
+    ReviewCategory.belongsToMany(Review, { through: "scoreByCategory" });
+    Review.belongsToMany(ReviewCategory, { through: "scoreByCategory" });
 
-    Room.belongsToMany(Discount, { through: 'roomDiscount' });
-    Discount.belongsToMany(Room, { through: 'roomDiscount' });
+    Room.belongsToMany(Discount, { through: "roomDiscount" });
+    Discount.belongsToMany(Room, { through: "roomDiscount" });
 
-    Property.belongsToMany(PaymentType, { through: 'propertyPaymentType' });
-    PaymentType.belongsToMany(Property, { through: 'propertyPaymentType' });
+    Property.belongsToMany(PaymentType, { through: "propertyPaymentType" });
+    PaymentType.belongsToMany(Property, { through: "propertyPaymentType" });
 
-    User.belongsToMany(Property, { as: 'favoriteProperties', through: 'favorite' });
-    Property.belongsToMany(User, { as: 'likedByUsers', through: 'favorite' });
+    User.belongsToMany(Property, {
+        as: "favoriteProperties",
+        through: "favorite"
+    });
+    Property.belongsToMany(User, { as: "likedByUsers", through: "favorite" });
 
-    Facility.belongsToMany(Property, { through: 'facilityList' });
-    Property.belongsToMany(Facility, { through: 'facilityList' });
+    Facility.belongsToMany(Property, { through: "facilityList" });
+    Property.belongsToMany(Facility, { through: "facilityList" });
 
-    Room.belongsToMany(BedType, { through: 'bedInRoom' });
-    BedType.belongsToMany(Room, { through: 'bedInRoom' });
+    Room.belongsToMany(BedType, { through: "bedInRoom" });
+    BedType.belongsToMany(Room, { through: "bedInRoom" });
 
     // Image.findAll({ include: [{ model: Room }] }) :D
     // image = { propertyId: 1, roomId: 1 } room = { id: 1, propertyId: 2 }
-
-
 }
 
 module.exports = associations;

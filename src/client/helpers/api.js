@@ -1,5 +1,4 @@
 import axios from "axios";
-import dateHelpers from "./date-helpers";
 import cookies from "./cookie-tool";
 import { SERVER_HOST } from "./config";
 // TODO: implement servers url
@@ -12,7 +11,7 @@ class Api {
         });
     }
 
-    sendAuthRequest(url, type, payload) {
+    sendAuthRequest = (url, type, payload) => {
         return this.checkAccessToken().then(() =>
             this.adapter.request({
                 url: url, // url
@@ -22,15 +21,15 @@ class Api {
                     ...this.getAuthHeader()
                 }
             })
-        );
+        ).catch(this.handleApiError);
     }
 
-    sendRequest(url, type, payload) {
+    sendRequest = (url, type, payload) => {
         return this.adapter.request({
             url: url, // url
             method: type.toUpperCase(), // 'get' -> 'GET'
             data: payload // body
-        });
+        }).catch(this.handleApiError);
     }
 
     getAuthHeader() {
@@ -75,6 +74,14 @@ class Api {
                 refreshExpiryDate
             );
         });
+    }
+
+    handleApiError(err) {
+        if (err.response && err.response.data) {
+            return Promise.reject(new Error(err.response.data));
+        }
+
+        return Promise.reject(new Error(err.message));
     }
 }
 

@@ -8,8 +8,12 @@ import shortParagraphImg from './img/short-paragraph.png';
 
 export class Banner extends Component {
 
+    handleClick(cityInfo){
+        console.log('Hello from item')
+        this.props.onClick(cityInfo)
+    }
     render() {
-        const { cityInfo, onCardClick } = this.props;
+        const { cityInfo } = this.props;
         const imgStyles = (url) => ({
             background: `url(${url})`,
             backgroundSize: 'cover',
@@ -18,20 +22,23 @@ export class Banner extends Component {
         return (
 
             cityInfo ?
-                < Container onClick={onCardClick} className="banner" style={imgStyles(cityInfo.pictureUrl)} >
-                    <Card.Content className="banner__content">
+                < Container onClick={()=>this.handleClick(cityInfo)} className="banner">
+
+                    <Card.Content className="banner__content" style={imgStyles(cityInfo.pictureUrl)}>
                         <Card.Header className="banner__title">
                             {cityInfo.city}
-                            <img className="banner___flag" src={cityInfo.flagUrl} alt="/" style={{ width: 55, height: 30 }} />
+
                         </Card.Header>
                         <Card.Meta>
                             <h5 className="banner__subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
                         </Card.Meta>
-                        <Card.Description className="banner__avgprice" style={{ backgroundImage: `url(${tag})` }}>
-                            <span>Average price</span>
-                            <span> UAH  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}</span>
-                        </Card.Description>
+                        <div className="banner___flag" style={imgStyles(cityInfo.flagUrl)}/>
                     </Card.Content>
+                    <Card.Description className="banner__avgprice">
+                            <span>Average price</span>
+                            <span> US$  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}</span>
+                        </Card.Description>
+
                 </Container >
                 : <Fragment>
                     <Image src={shortParagraphImg} className="shortParagraphImg" />

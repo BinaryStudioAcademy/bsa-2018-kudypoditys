@@ -1,17 +1,18 @@
-import {propertySubmit} from "client/logic/prices-tab/actions";
+import {propertyUpdate} from 'client/logic/property-creation-tabs/actions';
 
 
 export function mapStateToProps(state) {
-    const {propertyRegistrationTab} = state;
+    const {propertyRegistration} = state;
     return {
-        ...propertyRegistrationTab
+        ...propertyRegistration
     }
 }
 
 export function mapDispatchToProps(dispatch) {
     return {
-        createProperty(data) {
-            dispatch(propertySubmit(data))
+
+        updateTab(data) {
+            dispatch(propertyUpdate(data));
         }
     }
 }

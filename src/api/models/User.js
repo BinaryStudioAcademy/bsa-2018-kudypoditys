@@ -1,9 +1,8 @@
-const
-    // apiRoot = '/api',
-    Sequelize = require('sequelize'),
-    orm = require('../orm');
+const // apiRoot = '/api',
+    Sequelize = require("sequelize"),
+    orm = require("../orm");
 
-let User = orm.define('user', {
+let User = orm.define("user", {
     fullName: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
@@ -20,6 +19,13 @@ let User = orm.define('user', {
         allowNull: false,
         unique: true
     },
+    verifyEmailToken: {
+        type: Sequelize.STRING
+    },
+
+    verifyEmailTokenTillDate: {
+        type: Sequelize.INTEGER
+    },
     phoneNumber: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
@@ -29,9 +35,32 @@ let User = orm.define('user', {
     avatar: {
         type: Sequelize.STRING,
         allowNull: true
+    },
+    resetPasswordToken: {
+        type: Sequelize.STRING,
+        select: false
+    },
+    dayOfBirth: {
+        type: Sequelize.DATE,
+        validate: { isDate: true },
+        allowNull: true
+    },
+    appeal: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    address: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    nickname: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    preferredCurrency: {
+        type: Sequelize.STRING,
+        allowNull: true
     }
 });
-
-
 
 module.exports = User;
