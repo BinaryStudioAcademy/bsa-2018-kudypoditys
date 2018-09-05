@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Grid, Popup, Button } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
@@ -8,8 +8,15 @@ import AuthHOC from "client/components/auth-hoc";
 import UserPopup from "client/components/header-user-popup";
 import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
+import Currency from "./currency"
+import { options } from '../checkin-checkout/config';
+
 
 export class MainHeader extends Component {
+
+    componentDidMount(){
+        this.props.getCurrencies()
+    }
     logoutClicked = () => {
         this.props.logout();
     };
@@ -38,6 +45,9 @@ export class MainHeader extends Component {
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
+    handleCurrancyChange(currency){
+        this.props.onCurrencyChange(currency.type)
+    }
     render() {
         const { currentUser, hideSignUpIn, noBackground } = this.props;
         return (
@@ -56,16 +66,10 @@ export class MainHeader extends Component {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-                            {/* <a
-                                style={{
-                                    marginRight: "24px",
-                                    fontSize: 16,
-                                    opacity: 0.8,
-                                    cursor: "pointer"
-                                }}
-                            >
-                                EN
-                            </a> */}
+                            <Currency
+                                options={this.props.currencies}
+                                value={this.props.selectedCurrency}
+                                onChange={this.handleCurrancyChange.bind(this)}/>
 
                             <AuthHOC
                                 Component={() => {

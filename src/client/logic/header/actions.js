@@ -1,12 +1,13 @@
 import {
-    CURENCY_SELECT,
+    CURRENCY_RATE_GET,
+    CURRENCY_SELECT,
     CURRENCIES_GET,
     LOGOUT
 } from './actionTypes';
 
 export function selectCurrency(payload) {
     return {
-        type: CURENCY_SELECT,
+        type: CURRENCY_RATE_GET,
         payload
     };
 }

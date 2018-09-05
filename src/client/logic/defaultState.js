@@ -79,9 +79,14 @@ const state = {
     activeIndex: 2
   },
   header: {
-    currencies: [],
-    selectedCurrency: 1,
-    currentUser: null
+    currencies: [
+            {key:1, text:'USD', value: 'USD'},
+            {key:2, text:'EUR', value: 'EUR'},
+            {key:3, text:'UAH', value: 'UAH'},
+    ],
+    selectedCurrency: 'USD',
+    currentUser: null,
+    rate:1
   },
   shownProperties: {
     "xyz-1": {
