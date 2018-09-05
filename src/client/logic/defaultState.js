@@ -29,7 +29,8 @@ const state = {
             curency: "uah",
             reviewsNamber: 660,
             locationRating: 9.2,
-            availableRoomsCount: 4,
+            availableRoomsCount: 1,
+            propertyStars: 4,
             facilities: [
                 "Free WiFi",
                 "Free parking",
@@ -127,6 +128,13 @@ const state = {
             label: "Hostel",
             amount: 658,
             type: "Property Type",
+        },
+        {
+            id: "4",
+            ischecked: false,
+            label: "4-star hotel",
+            amount: 658,
+            type: "Hotel Class",
         },
     ],
 

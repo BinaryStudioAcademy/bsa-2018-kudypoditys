@@ -1,4 +1,4 @@
-import { logout } from "../../logic/header/actions";
+import { getCurrentUser } from "../../logic/login/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { currentUser } = state.header;
@@ -9,8 +9,8 @@ export function mapStateToProps(state, ownProps) {
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
-        logout() {
-            dispatch(logout());
+        getCurrentUser() {
+            dispatch(getCurrentUser());
         }
     };
 }

@@ -1,4 +1,4 @@
-import {call, put, all, takeLatest} from "redux-saga/effects";
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
 import authService from "client/services/authService";
 import userService from "client/services/userService";
@@ -11,7 +11,7 @@ function* login(action) {
         yield put({
             type: actionTypes.LOGIN_SUCCESS
         });
-        history.push("/");
+        history.push("/user-cabinet");
     } catch (err) {
         yield put({
             type: actionTypes.LOGIN_FAILURE,
@@ -29,7 +29,6 @@ function* getCurrentUser(action) {
             type: actionTypes.GET_CURRENT_USER_SUCCESS,
             payload: user
         });
-        history.push("/user-cabinet");
     } catch (err) {
         yield put({
             type: actionTypes.GET_CURRENT_USER_FAILURE
@@ -41,6 +40,7 @@ function* getCurrentUser(action) {
 export default function* loginSaga() {
     yield all([
         takeLatest(actionTypes.LOGIN, login),
-        takeLatest(actionTypes.LOGIN_SUCCESS, getCurrentUser)
+        takeLatest(actionTypes.LOGIN_SUCCESS, getCurrentUser),
+        takeLatest(actionTypes.GET_CURRENT_USER, getCurrentUser)
     ]);
 }
