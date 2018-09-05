@@ -18,15 +18,12 @@ import Review from "../reviews/item";
 import "./index.scss";
 
 export class ReviewsTab extends React.Component {
-    componentWillMount() {
-        console.log(this.props)
-        this.props.getUserReviews({ id: this.props.user.id });
-    }
-
     getReviewsItems = reviews => {
         console.log(reviews);
         return reviews.map((review, index) => {
-            {console.log(review)}
+            {
+                console.log(review)
+            }
 
             return (
 
@@ -41,6 +38,11 @@ export class ReviewsTab extends React.Component {
             );
         });
     };
+
+    componentWillMount() {
+        console.log(this.props)
+        this.props.getUserReviews({id: this.props.user.id});
+    }
 
     render() {
         // <Button onClick={this.props.getUserReviews} />

@@ -10,12 +10,12 @@ import {
     Progress, Header,
 } from 'semantic-ui-react';
 import history from 'client/history';
-import { Comment } from 'semantic-ui-react/dist/commonjs/views/Comment/Comment';
+import {Comment} from 'semantic-ui-react/dist/commonjs/views/Comment/Comment';
 
 export default class ReviewItem extends React.Component {
-        state = {
-            id: this.props.property.id
-        }
+    state = {
+        id: this.props.property.id
+    }
     handleBookAgain = (id) => {
         console.log(id)
         history.push(`/property/${this.state.id}`);
@@ -82,32 +82,32 @@ export default class ReviewItem extends React.Component {
 
 
                         {shouldRenderComments ? (
-                        <div className="user_cabinet__reviews_content_block">
-                        <div
-                            style={{
-                                padding: 10,
-                                backgroundColor: '#f7f8f9',
-                                color: '#465672',
-                                marginBottom: 10,
-                            }}
-                        >
-                            <Icon color="green" name="plus circle" />
-                            {this.props.pros}
+                            <div className="user_cabinet__reviews_content_block">
+                                <div
+                                    style={{
+                                        padding: 10,
+                                        backgroundColor: '#f7f8f9',
+                                        color: '#465672',
+                                        marginBottom: 10,
+                                    }}
+                                >
+                                    <Icon color="green" name="plus circle"/>
+                                    {this.props.pros}
+                                </div>
+                                <div
+                                    style={{
+                                        padding: 10,
+                                        backgroundColor: '#f7f8f9',
+                                        color: '#465672',
+                                    }}
+                                >
+                                    {' '}
+                                    <Icon color="grey" name="minus circle"/>
+                                    {this.props.cons}
                         </div>
-                        <div
-                            style={{
-                                padding: 10,
-                                backgroundColor: '#f7f8f9',
-                                color: '#465672',
-                            }}
-                        >
-                            {' '}
-                            <Icon color="grey" name="minus circle" />
-                            {this.props.cons}
-                        </div>
-                        </div>
-                            ) : (
-                            <Header as="h4"  style={{
+                            </div>
+                        ) : (
+                            <Header as="h4" style={{
                                 padding: 10,
                                 backgroundColor: "#f7f8f9",
                                 color: "#465672",
@@ -121,7 +121,7 @@ export default class ReviewItem extends React.Component {
                 <Card.Content extra>
                     <div className="ui two buttons">
                         <Button primary fluid
-                        onClick={this.handleBookAgain}
+                                onClick={this.handleBookAgain}
 
                         >
                             Book again
