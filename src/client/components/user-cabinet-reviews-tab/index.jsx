@@ -14,6 +14,7 @@ import {
     Segment
 } from "semantic-ui-react";
 import ReviewItem from "./reviewItem";
+import Review from "../reviews/item";
 import "./index.scss";
 
 export class ReviewsTab extends React.Component {
@@ -25,7 +26,10 @@ export class ReviewsTab extends React.Component {
     getReviewsItems = reviews => {
         console.log(reviews);
         return reviews.map((review, index) => {
+            {console.log(review)}
+
             return (
+
                 <ReviewItem
                     key={index}
                     {...review}
@@ -33,6 +37,7 @@ export class ReviewsTab extends React.Component {
                     // booking={booking}
                     // viewBooking={() => this.viewBooking(booking)}
                 />
+
             );
         });
     };
