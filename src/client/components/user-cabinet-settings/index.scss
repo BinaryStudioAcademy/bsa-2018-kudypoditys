@@ -6,6 +6,9 @@
     grid-gap: 14px;
     box-shadow: 2px 2px 30px -4px #0000001f !important;
     border: none !important;
+    .input {
+        max-height: 38px;
+    }
 }
 .personal_settings-segment-header {
     .message {
@@ -23,11 +26,28 @@
     padding: 4px 14px;
 }
 .personal_settings-avatar-button {
-    border: 1px solid #3f4257 !important;
-    border-radius: 3px !important;
-    background-color: white !important;
-    color: #3f4257 !important;
+    border: none !important;
+    background-color: #465672 !important;
+    border-radius: 0px !important;
+    &:hover {
+        background-color: #6078a3;
+    }
 }
+
+.avatar_del_btn {
+    width: 91.16px;
+    height: 28px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.fileContainer {
+    border: none !important;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.85);
+    // visibility: hidden;
+}
+
 .personal_settings-p {
     grid-column: 1;
     margin-bottom: 0;

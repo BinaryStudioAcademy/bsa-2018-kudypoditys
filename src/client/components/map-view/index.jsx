@@ -116,7 +116,7 @@ class MapView extends React.Component {
                 <ReactMapGL
                     {...this.state.viewport}
                     onViewportChange={this.handleViewportChange}
-                    mapStyle="mapbox://styles/mapbox/streets-v9"
+                    mapStyle="mapbox://styles/mapbox/light-v9"
                 >
                     {this.props.properties.map(this.renderPropertyMarker)}
                     {disablePopup ? null : this.renderPopup()}

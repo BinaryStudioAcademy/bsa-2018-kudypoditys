@@ -6,7 +6,7 @@ const USERS = [
         fullName: "Natalya",
         password: bcrypt.hashSync("nata1NATA", 10),
         email: "natalya@gmail.com",
-        phoneNumber: "0504958671",
+        phoneNumber: "80504958671",
         nickname: "Nata1ya",
         address: "Nebereshnaya street 20, Lviv",
         appeal: "Mrs.",
