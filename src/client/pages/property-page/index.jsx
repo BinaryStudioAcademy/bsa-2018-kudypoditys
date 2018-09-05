@@ -55,7 +55,8 @@ export class PropertyPage extends React.Component {
     hideReviews = () => {
         this.setState({ reviewsVisible: false });
     };
-
+    handleSearchResults= (searchResult) => {
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -90,7 +91,7 @@ export class PropertyPage extends React.Component {
         const pics = this.getImagesArray(property.images);
         return (
             <div className="mock">
-                <AppHeader showSearch={true} />
+                <AppHeader showSearch={true} handleSearchResults={this.handleSearchResults} />
 
                 <Sidebar
                     onHide={this.hideReviews}

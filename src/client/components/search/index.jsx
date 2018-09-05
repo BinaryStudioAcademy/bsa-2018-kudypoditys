@@ -24,6 +24,7 @@ export class MainSearch extends React.Component {
             this.setState(
                 {
                     query: parsed.query,
+                    queryCopy:parsed.query,
                     rooms: parsed.rooms,
                     adults: parsed.adults,
                     children: parsed.children,
@@ -124,21 +125,23 @@ export class MainSearch extends React.Component {
         } = this.state;
         console.log("handleSubmit trigered");
         let {query }=this.state
-        history.push({
-            pathname: "/search-page",
-            search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
-        });
+
         if (!isSelectedResult) {
             query = queryCopy;
             this.setState({ query: queryCopy })
         }
+        history.push({
+            pathname: "/search-page",
+            search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
+        });
         this.props.onSearch({
             query: query,
             rooms: rooms,
             adults: adults,
             children: children,
             startDate: startDate,
-            endDate: endDate
+            endDate: endDate,
+            page:1
         });
     };
 
@@ -239,11 +242,7 @@ export class MainSearch extends React.Component {
         // console.log("props!!!=" + JSON.stringify(this.props));
         if (this.props.search.data !== undefined) {
             const { data } = this.props.search;
-
-            //console.log("search state" + JSON.stringify(this.state));
-
-            //  if ( data !== "" && data.length > 0) {
-            // console.log("searchResults" + JSON.stringify(data));
+            //send data to search page
             this.props.handleSearchResults({
                 searchResults: data,
                 searchRequest: {
