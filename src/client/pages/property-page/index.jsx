@@ -122,6 +122,7 @@ export class PropertyPage extends React.Component {
                         <div text className="property-page__wrapper-left_side">
                             <BasicMapWidget
                                 key="BasicMapWidget"
+                                properties={[property]}
                                 coordinates={property.coordinates}
                                 controlEnable={false}
                                 rounded

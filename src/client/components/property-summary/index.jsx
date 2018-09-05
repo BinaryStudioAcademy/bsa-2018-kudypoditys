@@ -66,6 +66,7 @@ export class PropertySummary extends React.Component {
                                 <BasicMapWidget
                                     style={{ width: "100%", height: "100%" }}
                                     coordinates={property.coordinates}
+                                    properties={[property]}
                                     controlEnable={true}
                                     disablePopup={true}
                                     fullScreen

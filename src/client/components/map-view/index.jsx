@@ -60,8 +60,8 @@ class MapView extends React.Component {
         return (
             <Marker
                 key={`marker-${index}`}
-                latitude={property.latitude}
-                longitude={property.longitude}
+                latitude={property.coordinates.lat}
+                longitude={property.coordinates.lng}
                 offsetLeft={-20}
                 offsetTop={-10}
             >
