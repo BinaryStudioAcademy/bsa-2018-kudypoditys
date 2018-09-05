@@ -96,6 +96,7 @@ class SearchPage extends React.Component {
                                 </div>
                             </div>
                         </div>
+
                         <RankingBar
                             key="RankingBar"
                             searchRequest={this.state.searchRequest}

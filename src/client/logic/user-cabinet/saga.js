@@ -25,6 +25,7 @@ export default function* userCabinetSaga() {
     }
 
     function* getReviews(action) {
+        console.log(action)
         try {
             const reviewsResponse = yield call(
                 userService.getUserReviews,
