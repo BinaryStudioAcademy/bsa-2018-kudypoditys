@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import { Header, Icon } from "semantic-ui-react";
+import { Header, Icon, Rating } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import Modal from "../modal";
 import BasicMapWidget from "../basic-map-widget";
@@ -31,7 +31,12 @@ export class PropertySummary extends React.Component {
                     >
                         {property.name}
                     </Header>
-
+                    <Rating
+                        rating={rating}
+                        maxRating={5}
+                        disabled
+                        style={{ paddingLeft: "10px" }}
+                    />
                     <div className="location__container">
                         <p
                             as="h2"
