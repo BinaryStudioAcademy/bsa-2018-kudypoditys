@@ -8,11 +8,45 @@ const elasticClient = new elasticsearch.Client({
 });
 
 module.exports = {
-    restartIndexing(req, res) {
-        this.initService(req, res);
-        this.addService(req, res);
-    },
+    restartIndexing:async (req, res)=> {
+        await elasticClient.indices.delete(
+            {
+                index: "_all",
+            },
+            (err, resp) => {
+                if (err) {
+                    return res.json(err);
+                } else {
 
+                    console.log("Indexes have been deleted!");
+                    //res.json(resp);
+                }
+            },
+        );
+      await  this.initService(req, res);
+                  await  this.addService(req, res);
+        // elasticRepository.deleteAll(req, res).then(() => {
+        //     this.initService(req, res);
+        //     this.addService(req, res);
+        // }).catch((err)=>{console.log(err)})
+    },
+    doRestart: async (req, res) => {
+        await elasticClient.indices.delete(
+        {
+            index: "_all",
+        },
+        (err, resp) => {
+            if (err) {
+                return res.json(err);
+            } else {
+
+                console.log("Indexes have been deleted!");
+                //res.json(resp);
+            }
+        },
+    );
+    this.initService(req, res);
+                this.addService(req, res);},
     initService: async (req, res) => {
         var citiesInit = init.initIndex.body;
         citiesInit.mappings.document.properties = {
@@ -103,7 +137,7 @@ module.exports = {
             propertiesInit
         );
 
-        return res.json({ message: "ELASTICSEARCH::INIT_SERVICE => SUCCESS" });
+      // return res.json({ message: "ELASTICSEARCH::INIT_SERVICE => SUCCESS" });
     },
 
     addService: (req, res) => {
@@ -122,10 +156,10 @@ module.exports = {
                     id: property.id,
                     name: property.name,
                     // rating: property.rating,
-                     image: property.images[0].url,
+                    image: property.images[0].url,
                     city: property.city.name,
                     // description: property.description,
-                     address: property.address,
+                    address: property.address
                     // coordinatesLat: property.coordinates.lat,
                     // coordinatesLng: property.coordinates.lng,
                     // rooms: property.rooms.map(room => {
