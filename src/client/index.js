@@ -9,7 +9,7 @@ import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
 import ResetPasswordPage from 'client/pages/reset-password-page'
 import RegistrationPage from "client/pages/registration-page";
-import PropertyCreationTabs from "client/pages/add-property-page";
+import AddPropertyPage from "client/pages/add-property-page";
 import { Router, Route, Switch } from "react-router-dom";
 import CheckInCheckOut from "client/pages/checkin-checkout-page";
 import { HomePage } from "client/pages/home-page";
@@ -20,7 +20,6 @@ import { NotFoundPage } from "client/pages/404-page";
 import createSagaMidddelware from "redux-saga";
 import rootSaga from "client/logic/rootSaga";
 import history from "client/history";
-import PhotoTab from "./components/photo-tab-registration-property";
 import UserCabinet from "./pages/user-cabinet";
 import AuthHOC from "./components/auth-hoc";
 import VerifyEmail from "client/components/verify-email";
@@ -58,7 +57,7 @@ ReactDOM.render(
                     <Route
                         path="/add-property/"
                         component={() => (
-                            <AuthHOC Component={PropertyCreationTabs} />
+                            <AuthHOC Component={AddPropertyPage} />
                         )}
                     />
                     <Route path="/404" component={NotFoundPage} />
