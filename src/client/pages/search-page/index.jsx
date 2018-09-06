@@ -11,6 +11,7 @@ import BasicMapWidget from "client/components/basic-map-widget";
 import Header from "client/components/header";
 import { Breadcrumb } from "semantic-ui-react";
 import QuickFilter from "client/components/quick-filter";
+
 import { connect } from "react-redux";
 import { mapStateToProps } from "./container";
 import history from "client/history";
@@ -57,7 +58,8 @@ class SearchPage extends React.Component {
                     </div>
 
                     <Container className="search-page__wrapper-left_side">
-                        {/* <QuickFilter searchRequest={this.state.searchRequest}/> */}
+                         <QuickFilter />
+                      
                         <div
                             style={{
                                 marginTop: "4%"

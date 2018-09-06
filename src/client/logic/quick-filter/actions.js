@@ -2,9 +2,11 @@ import {
     QUICK_FILTERS_UPDATE
 } from './actionType';
 
-export const quickFiltersUpdate = (filter) => {
+
+
+export function quickFiltersUpdate(payload) {
     return {
         type: QUICK_FILTERS_UPDATE,
-        payload: filter
+        payload: payload
     }
-};
+}
