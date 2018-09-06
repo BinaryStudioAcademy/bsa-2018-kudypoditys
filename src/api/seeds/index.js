@@ -14,11 +14,11 @@ const {
     REVIEW_CATEGORIES,
     PROPERTY_PAYMENT_TYPES,
     BED_TYPES,
-    BED_IN_ROOMS,
     ROOM_TYPES,
     PROPERTY_TYPE,
     BED_IN_ROOM,
-    REVIEWS
+    REVIEWS,
+    LANGUAGES,
 } = require("./seed");
 
 function upsertAllData(models) {
@@ -44,7 +44,8 @@ function upsertAllData(models) {
         Reservation,
         Image,
         User,
-        Review
+        Language,
+        Review,
     } = models;
 
     const SimpleUpsertMap = [
@@ -61,11 +62,12 @@ function upsertAllData(models) {
         [FacilityList, FACILITY_LISTS],
         [PropertyPaymentType, PROPERTY_PAYMENT_TYPES],
         [Room, ROOMS],
-        [BedInRoom, BED_IN_ROOMS],
+        [BedInRoom, BED_IN_ROOM],
         [Image, IMAGES],
         [User, USERS],
         [Reservation, RESERVATIONS],
-        [Review, REVIEWS]
+        [Language, LANGUAGES],
+        [Review, REVIEWS],
     ];
 
     //Country & City

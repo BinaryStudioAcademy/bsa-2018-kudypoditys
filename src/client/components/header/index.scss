@@ -28,7 +28,7 @@
 }
 
 .header--wraper {
-    background-image: url("https://s3.eu-central-1.amazonaws.com/kudypoditys/img/application/background.jpg");
+    // background-image: url("https://s3.eu-central-1.amazonaws.com/kudypoditys/img/application/background.jpg");
     background-size: cover;
     min-height: 100px;
 }
@@ -40,9 +40,9 @@
     max-width: 1021px !important;
 }
 
-.dropdown.icon {
-    display: none;
-}
+// .dropdown.icon {
+//     display: none;
+// }
 
 .menu .item.menu__welcome {
     color: white;
