@@ -66,7 +66,6 @@ export default class UserPopup extends React.Component {
                     <Menu
                         vertical
                         fluid
-                        onItemClick={this.handleItemClick}
                         style={{
                             fontSize: 13,
                             opacity: 0.8,

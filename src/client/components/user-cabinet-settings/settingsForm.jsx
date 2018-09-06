@@ -50,10 +50,6 @@ export class SettingsForm extends Component {
         this.props.sendSettings();
     };
 
-    resetPassword = () => {
-        this.props.resetPassword(this.props.email);
-    };
-
     // Credit cards mini-form handlers:
     handleCreditCardsChange = (e, { name, value }) => {
         this.setState({
@@ -158,7 +154,7 @@ export class SettingsForm extends Component {
         } = this.props;
         const { active } = this.state;
         const content = avatarLoading ? (
-            <Icon loading name="spinner" />
+            <Icon loading size="big" name="spinner" />
         ) : (
             <div>
                 <ImageUploader
@@ -175,7 +171,7 @@ export class SettingsForm extends Component {
                             title="Add new avatar"
                             size="big"
                             name="add"
-                            color="white"
+                            color="teal"
                         />
                     }
                     buttonText="Update"
@@ -209,7 +205,7 @@ export class SettingsForm extends Component {
                         as={Image}
                         circular
                         style={{ width: "150px", height: "150px" }}
-                        dimmed={active}
+                        dimmed={avatarLoading || active}
                         dimmer={{ active, content }}
                         onMouseEnter={this.handleDimmerShow}
                         onMouseLeave={this.handleDimmerHide}
