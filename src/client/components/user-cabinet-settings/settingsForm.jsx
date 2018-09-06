@@ -153,10 +153,13 @@ export class SettingsForm extends Component {
             countryOptions,
             paymentOptions,
             currencyOptions,
-            appealOptions
+            appealOptions,
+            avatarLoading
         } = this.props;
         const { active } = this.state;
-        const content = (
+        const content = avatarLoading ? (
+            <Icon loading name="spinner" />
+        ) : (
             <div>
                 <ImageUploader
                     className="personal_settings-avatar"
@@ -216,28 +219,6 @@ export class SettingsForm extends Component {
                             "https://www.mautic.org/media/images/default_avatar.png"
                         }
                     />
-                    {/* <ImageUploader
-                        className="personal_settings-avatar"
-                        withPreview={false}
-                        singleImage={true}
-                        withLabel={false}
-                        withIcon={false}
-                        optimisticPreviews
-                        multiple={false}
-                        pseudobuttonContent={
-                            <Icon
-                                circular
-                                title="Add new avatar"
-                                size="big"
-                                name="add"
-                                color="white"
-                            />
-                        }
-                        // buttonClassName="personal_settings-avatar-button"
-                        onChange={this.onDrop}
-                        imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-                        maxFileSize={5242880}
-                    /> */}
                     <p className="personal_settings-p">Your nickname</p>
                     <Field
                         component={inputField}
@@ -323,15 +304,6 @@ export class SettingsForm extends Component {
                             this.handleAddressChange(suggestion)
                         }
                     />
-
-                    {/* <Field
-                        component={inputField}
-                        name="address"
-                        label="Address"
-                        type="text"
-                        val={this.props.address}
-                        onChange={e => this.handleChange(e, e.target)}
-                    /> */}
                 </Segment>
                 <Segment className="personal_settings-segment">
                     <div className="personal_settings-segment-header">
