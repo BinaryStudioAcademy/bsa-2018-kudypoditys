@@ -121,7 +121,56 @@ const state = {
     shownFrom: 1,
     shownTo: 5
   },
-  cityInfos: [],
+  cityInfos: {
+        0:{
+            id: 1,
+            city: 'Lviv',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'http://www.mgi4ua.com/wp-content/uploads/2017/11/lviv-ukraine.jpg',
+            flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+            },
+        1:{
+            id: 2,
+            city: 'Dnipro',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'http://meandyoukraine.com/mainContent/DniproCity/DniproCity_featuredImage.jpg',
+            flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+        },
+        2:{
+            id: 3,
+            city: 'Ternopil',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'http://www.gazeta-misto.te.ua/wp-content/uploads/2017/05/18671255_1124933304279283_1785861677540967562_n.jpg',
+            flagUrl: 'http://proudfofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+        },
+        3:{
+            id: 4,
+            city: 'Kyiv',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'https://s.inyourpocket.com/gallery/130361.jpg',
+            flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+        },
+        4:{
+            id: 5,
+            city: 'Odessa',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'https://www.hotel-deribas.com/wp-content/uploads/2018/03/19odessa.jpg',
+            flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+        },
+        5:{
+            id: 6,
+            city: 'Kharkiv',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'http://www.yoldasin.com/wp-content/uploads/2017/04/kharkiv-tren-istasyonu-960x638.jpg',
+            flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+        }
+    },
   filters: [
     {
       id: "1",

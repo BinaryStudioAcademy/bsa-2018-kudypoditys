@@ -9,17 +9,15 @@ import shortParagraphImg from './img/short-paragraph.png';
 export class Banner extends Component {
 
     handleClick(cityInfo){
-        console.log('Hello from item')
         this.props.onClick(cityInfo)
     }
     render() {
         const { cityInfo } = this.props;
-        console.log(cityInfo)
         const imgStyles = (url) => ({
             background: `url(${url})`,
             backgroundSize: 'cover',
         });
-        const val = Number(this.props.rate)/Number(cityInfo.avgPrice)
+        const val = (Number(cityInfo.avgPrice)*Number(this.props.rate)).toFixed(0)
 
         return (
 

@@ -38,7 +38,7 @@ class Currency extends React.Component {
                 value={this.props.value}
                 options={this.props.options}
                 onChange={this.handleCurrencyChange.bind(this)}
-                label="USD"
+                //label="USD"
                 placeholder={this.props.value}
                 validate={required}/>
         )

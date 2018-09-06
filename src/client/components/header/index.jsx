@@ -66,10 +66,7 @@ export class MainHeader extends Component {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-                            <Currency
-                                options={this.props.currencies}
-                                value={this.props.selectedCurrency}
-                                onChange={this.handleCurrancyChange.bind(this)}/>
+
 
                             <AuthHOC
                                 Component={() => {
@@ -92,6 +89,10 @@ export class MainHeader extends Component {
                                         <Fragment>
                                             {hideSignUpIn ? null : (
                                                 <Fragment>
+                                                    <Currency
+                                                    options={this.props.currencies}
+                                                    value={this.props.selectedCurrency}
+                                                    onChange={this.handleCurrancyChange.bind(this)}/>
                                                     <a
                                                         style={{
                                                             cursor: "pointer",
