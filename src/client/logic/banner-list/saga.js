@@ -6,16 +6,17 @@ import {
 import { all, put, call, takeLatest } from "redux-saga/effects";
 import PropertyService from "client/services/propertyService";
 import api from "../../helpers/api";
+import { SERVER_HOST } from "../../helpers/config";
 
 function* getProperties(action) {
     console.log("Hello from SAGA" + action.type);
 
-    const URL1 = `http://127.0.0.1:5000/api/property/city/1`;
-    const URL2 = `http://127.0.0.1:5000/api/property/city/2`;
-    const URL3 = `http://127.0.0.1:5000/api/property/city/3`;
-    const URL4 = `http://127.0.0.1:5000/api/property/city/4`;
-    const URL5 = `http://127.0.0.1:5000/api/property/city/5`;
-    const URL6 = `http://127.0.0.1:5000/api/property/city/6`;
+    const URL1 = `${SERVER_HOST}/api/property/city/1`;
+    const URL2 = `${SERVER_HOST}/api/property/city/2`;
+    const URL3 = `${SERVER_HOST}/api/property/city/3`;
+    const URL4 = `${SERVER_HOST}/api/property/city/4`;
+    const URL5 = `${SERVER_HOST}/api/property/city/5`;
+    const URL6 = `${SERVER_HOST}/api/property/city/6`;
     // const URL1 = `1`
     // const URL2 = `2`
     // const URL3 = `3`

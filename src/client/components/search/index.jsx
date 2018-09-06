@@ -12,7 +12,7 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 import history from "client/history";
 import queryString from "query-string";
-
+import { SERVER_HOST } from "../../helpers/config";
 export class MainSearch extends React.Component {
     componentDidMount() {
         if (history.location.search !== "") {
@@ -43,7 +43,7 @@ export class MainSearch extends React.Component {
         let index = "cities";
         axios
             .get(
-                `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
+                `${SERVER_HOST}/elastic/autocomplete?index=${index}&type=document&query=${
                     this.state.query
                 }`
             )
@@ -65,7 +65,7 @@ export class MainSearch extends React.Component {
 
                 let index = "properties";
                 return axios.get(
-                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
+                    `${SERVER_HOST}/elastic/autocomplete?index=${index}&type=document&query=${
                         this.state.query
                     }`
                 );
