@@ -3,7 +3,9 @@ import { searchUpdate,searchSubmit } from "client/logic/search/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { cityInfos } = state;
-    return { cityInfos };
+    const { rate, currency } = state.header;
+    console.log(cityInfos)
+    return { cityInfos , rate, currency};
 }
 
 export function mapDispatchToProps(dispatch, ownProps,data) {

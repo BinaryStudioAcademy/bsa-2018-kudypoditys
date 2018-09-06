@@ -14,10 +14,12 @@ export class Banner extends Component {
     }
     render() {
         const { cityInfo } = this.props;
+        console.log(cityInfo)
         const imgStyles = (url) => ({
             background: `url(${url})`,
             backgroundSize: 'cover',
         });
+        const val = Number(this.props.rate)/Number(cityInfo.avgPrice)
 
         return (
 
@@ -36,7 +38,7 @@ export class Banner extends Component {
                     </Card.Content>
                     <Card.Description className="banner__avgprice">
                             <span>Average price</span>
-                            <span> US$  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}</span>
+                            <span> {this.props.currency}  {Intl.NumberFormat('en-US').format(val)}</span>
                         </Card.Description>
 
                 </Container >
