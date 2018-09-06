@@ -34,6 +34,7 @@ export default class UserPopup extends React.Component {
         const { currentUser } = this.props;
         return (
             <Popup
+                className={"header-menu-popup"}
                 trigger={
                     <span
                         style={{
