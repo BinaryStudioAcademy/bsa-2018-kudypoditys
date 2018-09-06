@@ -7,7 +7,6 @@ export const maxLength = max => value =>
         : undefined;
 
 export const maxLength20 = maxLength(20);
-export const maxLength255 = maxLength(255);
 
 export const minLength = min => value =>
     value && value.length < min

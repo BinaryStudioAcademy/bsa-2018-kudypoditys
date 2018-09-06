@@ -1,4 +1,5 @@
 import api from "../helpers/api";
+import history from "client/history";
 import { UPLOAD_PRESET, UPLOAD_URL } from "./config";
 import request from "superagent";
 

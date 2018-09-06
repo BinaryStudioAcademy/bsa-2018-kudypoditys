@@ -21,13 +21,10 @@ let Property = orm.define('property', {
         validate: { notEmpty: true },
         // allowNull: true
     },
-    vatIncluded: {
-        type: Sequelize.BOOLEAN,
-        allowNull: true
-    },
-    additionalFees: {
-        type: Sequelize.STRING,
-        allowNull: true
+    taxes: {
+        type: Sequelize.FLOAT,
+        validate: { isFloat: true }
+
     },
     coordinates: {
         type: Sequelize.JSON,

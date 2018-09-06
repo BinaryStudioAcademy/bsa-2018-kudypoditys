@@ -17,11 +17,15 @@ class UserService extends Service {
             password: hash,
             email: user.email.trim(),
             phoneNumber: user.phoneNumber.trim(),
+            appeal: user.appeal.trim(),
+            preferredCurrency: user.preferredCurrency.trim(),
+            countryId: user.countryId,
+            paymentTypeId: user.paymentTypeId
         };
         return this.repository.getUserByEmail(newUser.email).then(data => {
             if (data)
                 return Promise.reject(
-                    new Error("user with this email already exists"),
+                    new Error("user with this email already exists")
                 );
             else {
                 return this.create(newUser).then(dbUser => {
@@ -33,7 +37,7 @@ class UserService extends Service {
                                 } else {
                                     return Promise.reject(new Error(data));
                                 }
-                            },
+                            }
                         );
                     } else {
                         return Promise.reject(new Error("Couldn't add user."));
@@ -69,7 +73,7 @@ class UserService extends Service {
                 .then(refreshToken => {
                     return {
                         ...userTokenService.generateAccessToken(user.id),
-                        refreshToken: refreshToken,
+                        refreshToken: refreshToken
                     };
                 });
         });
@@ -83,24 +87,26 @@ class UserService extends Service {
             subject: "Email Verification - Kudypoditys",
             message: "Verify your email for Kudypoditys",
             verifyStringParam: verifyString
-        }
+        };
 
         return userRepository
             .updateById(user.id, {
                 verifyEmailToken: verifyString,
                 verifyEmailTokenTillDate:
-                    currentDate + settings.verifyEmailTokenLife,
+                    currentDate + settings.verifyEmailTokenLife
             })
             .then(data => {
                 if (data) {
                     return userRepository.findById(user.id).then(user => {
-                        mailService.sendMail(user, mailOptionsParam, action).then(() => true);
+                        mailService
+                            .sendMail(user, mailOptionsParam, action)
+                            .then(() => true);
                         return { error: false, data: user };
                     });
                 } else {
                     return {
                         error: true,
-                        data: "Couldn't update user by email.",
+                        data: "Couldn't update user by email."
                     };
                 }
             });
@@ -116,21 +122,30 @@ class UserService extends Service {
                       Please click on the following link, or paste this into your
                       browser to complete the process:`,
             verifyStringParam: resetPasswordString
-        }
+        };
 
-        return userRepository.getUserByEmail(email).then(user => {
-            if (!user) {
-                return Promise.reject(new Error('User with such email, does not exists'));
-            }
+        return userRepository
+            .getUserByEmail(email)
+            .then(user => {
+                if (!user) {
+                    return Promise.reject(
+                        new Error("User with such email, does not exists")
+                    );
+                }
 
-            return user;
-        }).then(user =>
-            userRepository.updateById(user.id, {
-                resetPasswordToken: resetPasswordString
-            }).then(_ => user)
-        ).then(user => {
-            mailService.sendMail(user, mailOptions, action);
-        }).then(_ => true);
+                return user;
+            })
+            .then(user =>
+                userRepository
+                    .updateById(user.id, {
+                        resetPasswordToken: resetPasswordString
+                    })
+                    .then(_ => user)
+            )
+            .then(user => {
+                mailService.sendMail(user, mailOptions, action);
+            })
+            .then(_ => true);
     }
 
     verifyEmail(email, token) {
@@ -142,39 +157,45 @@ class UserService extends Service {
                     user.verifyEmailTokenTillDate > currentDate
                 ) {
                     userRepository.updateById(user.id, {
-                        verifyEmailToken: "verified",
+                        verifyEmailToken: "verified"
                     });
 
                     return { verified: true };
                 } else {
                     return Promise.reject(
-                        new Error("VerifyEmailToken is out of date."),
+                        new Error("VerifyEmailToken is out of date.")
                     );
                 }
             } else {
                 return Promise.reject(
-                    new Error("Couldn't find user by this email."),
+                    new Error("Couldn't find user by this email.")
                 );
             }
         });
     }
 
     resetPassword(email, token, newPassword) {
-        return userRepository.getUserByEmail(email).then(user => {
-            if (!user) {
-                return Promise.reject(new Error('User with such email, does not exists'));
-            }
+        return userRepository
+            .getUserByEmail(email)
+            .then(user => {
+                if (!user) {
+                    return Promise.reject(
+                        new Error("User with such email, does not exists")
+                    );
+                }
 
-            return user;
-        }).then(user => {
-            if (user.resetPasswordToken !== token) {
-                return Promise.reject(new Error('Reset token is invalid'));
-            }
-            return userRepository.updateById(user.id, {
-                resetPasswordToken: null,
-                password: bcrypt.hashSync(newPassword, 10)
-            });
-        }).then(_ => true);
+                return user;
+            })
+            .then(user => {
+                if (user.resetPasswordToken !== token) {
+                    return Promise.reject(new Error("Reset token is invalid"));
+                }
+                return userRepository.updateById(user.id, {
+                    resetPasswordToken: null,
+                    password: bcrypt.hashSync(newPassword, 10)
+                });
+            })
+            .then(_ => true);
     }
 
     generateRandomString() {
