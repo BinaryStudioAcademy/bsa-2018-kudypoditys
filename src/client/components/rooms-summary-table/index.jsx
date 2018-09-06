@@ -119,6 +119,8 @@ export class RoomsSummaryTable extends React.Component {
         let bookButton = false;
         if (user) bookButton = true;
 
+        if (!rooms) return null;
+
         if (rooms.length === 0)
             return (
                 <Header

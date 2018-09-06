@@ -73,9 +73,17 @@ export default function* propertyPageSaga() {
     function* getRoomsInfo(action) {
         try {
             //TODO api call
+            const input = action.payload;
+            console.log(JSON.stringify(input));
+            const response = yield call(
+                api.sendRequest,
+                "/api/property/availability",
+                "put",
+                input
+            );
             yield put({
                 type: actionTypes.GET_ROOMS_INFO_SUCCESS,
-                payload: []
+                payload: response.data
             });
         } catch (err) {
             yield put({
