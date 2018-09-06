@@ -178,7 +178,13 @@ class PropertyRepository extends Repository {
 
     createDetails(entity) {
         return this.model.create(entity, {
-            include: [AccommodationRule, BasicFacility, Image, Room]
+            include: [
+                AccommodationRule, BasicFacility, Image,
+                {
+                    model: Room,
+                    include: [BedInRoom]
+                }
+            ]
         }).then(({ dataValues: newProperty }) => {
             let facilityList = entity.facilities.map(f => ({
                 propertyId: newProperty.id,
