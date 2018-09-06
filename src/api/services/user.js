@@ -199,11 +199,8 @@ class UserService extends Service {
     }
 
     async changePassword(userId, oldPassword, newPassword) {
-        console.log(userId, oldPassword, newPassword);
         const user = await userRepository.findById(userId);
-        console.log("after user", user.password);
         const password = await bcrypt.compare(oldPassword, user.password);
-        console.log(password);
 
         if (password) {
             userRepository.updateById(user.id, {
