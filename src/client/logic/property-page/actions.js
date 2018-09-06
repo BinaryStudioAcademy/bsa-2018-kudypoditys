@@ -4,7 +4,8 @@ import {
     AVAILABILITY_INPUT_UPDATE,
     BOOKING_INPUT_UPDATE,
     BOOK_PROPERTY,
-    CHECK_AVAILABILITY
+    CHECK_AVAILABILITY,
+    GET_ROOMS_INFO
 } from "./actionTypes";
 
 export function descriptionUpdate(payload) {
@@ -46,5 +47,16 @@ export function checkAvailability(value) {
     return {
         type: CHECK_AVAILABILITY,
         payload: value
+    };
+}
+
+export function getRoomsInfo(propertyId, checkIn, checkOut) {
+    return {
+        type: GET_ROOMS_INFO,
+        payload: {
+            propertyId,
+            checkIn,
+            checkOut
+        }
     };
 }

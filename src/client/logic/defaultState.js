@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const state = {
     search: {
         destination: "",
@@ -163,8 +165,8 @@ const state = {
     propertyPage: {
         property: null,
         availabilityInput: {
-            checkIn: null,
-            checkOut: null,
+            checkIn: moment(),
+            checkOut: moment().add(5, "days"),
             adults: 2,
             rooms: 1,
             children: 0,
@@ -172,8 +174,8 @@ const state = {
             error: ""
         },
         bookingInput: {
-            checkIn: null,
-            checkOut: null,
+            checkIn: moment(),
+            checkOut: moment().add(5, "days"),
             adults: 2,
             children: 0,
             roomId: null,
