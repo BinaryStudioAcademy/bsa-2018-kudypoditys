@@ -1,28 +1,38 @@
 import React from 'react';
 import './index.scss';
-import {Container, Form, Header, Grid} from 'semantic-ui-react';
+import { Container, Form, Header, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-
+import { connect } from 'react-redux';
 import DrawInputs from './DrawInputs'
-import {mapStateToProps, mapDispatchToProps} from './container';
-
+import { mapStateToProps, mapDispatchToProps } from './container';
 
 export class CheckInCheckOut extends React.Component {
+    handleClick = (e, value) => {
+        e.preventDefault();
 
-    handleClick = (event, value) => {
-        this.props.onSelectTime(value.value, value.type);
+        const {
+            arrivalFrom, arrivalTo, departureFrom, departureTo, input
+        } = this.props;
 
+        input.onChange({
+            arrivalFrom,
+            arrivalTo,
+            departureFrom,
+            departureTo,
+            [value.type]: value.value
+        });
 
+        this.props.updateCheckInCheckOut({
+            [value.type]: value.value
+        });
     };
 
     render() {
-        console.log(this.props )
-        const {arrivalFrom, arrivalTo, departureFrom, departureTo} = this.props;
-console.log(arrivalFrom)
+        const {
+            arrivalFrom, arrivalTo, departureFrom, departureTo
+        } = this.props;
         return (
             <Container>
-
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={8}>
@@ -34,13 +44,11 @@ console.log(arrivalFrom)
 
 
                                 <Form.Group widths='equal'>
-
                                     <DrawInputs
                                         active={arrivalFrom}
                                         type={'arrivalFrom'}
+                                        handleClick={this.handleClick}
                                     />
-
-
                                 </Form.Group>
                             </Container>
                         </Grid.Column>
@@ -55,7 +63,7 @@ console.log(arrivalFrom)
                                 <Form.Group widths="equal">
                                     <DrawInputs
                                         active={departureFrom}
-
+                                        handleClick={this.handleClick}
                                         type={'departureFrom'}
                                     />
 
@@ -76,7 +84,7 @@ console.log(arrivalFrom)
 
                                     <DrawInputs
                                         active={arrivalTo}
-
+                                        handleClick={this.handleClick}
                                         type={'arrivalTo'}
                                     />
 
@@ -95,7 +103,7 @@ console.log(arrivalFrom)
 
                                     <DrawInputs
                                         active={departureTo}
-
+                                        handleClick={this.handleClick}
                                         type={'departureTo'}
                                     />
 
@@ -107,11 +115,9 @@ console.log(arrivalFrom)
             </Container>
         )
     }
-
 }
 
 CheckInCheckOut.propTypes = {
-
     arrivalFrom: PropTypes.string,
     arrivalTo: PropTypes.string,
     departureFrom: PropTypes.string,
