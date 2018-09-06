@@ -2,7 +2,7 @@ import {
     USER_SETTINGS_UPDATE,
     USER_SETTINGS_SEND,
     UPLOAD_USER_AVATAR,
-    USER_PASSWORD_RESET,
+    USER_PASSWORD_CHANGE,
     USER_AVATAR_DELETE
 } from "./actionTypes";
 
@@ -27,9 +27,9 @@ export function uploadAvatar(payload) {
     };
 }
 
-export function resetPassword(payload) {
+export function changePassword(payload) {
     return {
-        type: USER_PASSWORD_RESET,
+        type: USER_PASSWORD_CHANGE,
         payload
     };
 }

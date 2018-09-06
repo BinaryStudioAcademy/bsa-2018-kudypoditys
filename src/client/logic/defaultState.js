@@ -198,6 +198,9 @@ const state = {
         phone: "0123453453",
         email: "john.doe@gmail.com",
         avatarLoading: false,
+        oldPassword: "",
+        newPassword: "",
+        passwordMessage: "",
         //
         additionalFacilities: ["Bar", "Sauna"],
         //

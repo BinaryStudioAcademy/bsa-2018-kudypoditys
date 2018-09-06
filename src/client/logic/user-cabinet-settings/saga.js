@@ -17,17 +17,17 @@ function* sendSettings(action) {
     }
 }
 
-function* resetUserPassword(action) {
+function* changePassword(action) {
     try {
-        const user = yield call(userService.resetUserPassword, action);
+        const response = yield call(userService.changePassword, action);
         yield put({
-            type: actionTypes.USER_PASSWORD_RESET_SUCCESS,
-            payload: user
+            type: actionTypes.USER_PASSWORD_CHANGE_SUCCESS,
+            payload: response
         });
     } catch (err) {
         console.log(err);
         yield put({
-            type: actionTypes.USER_PASSWORD_RESET_FAILURE
+            type: actionTypes.USER_PASSWORD_CHANGE_FAILURE
         });
     }
 }
@@ -53,6 +53,6 @@ export default function* personalSettingsSaga() {
     yield all([
         takeLatest(actionTypes.USER_SETTINGS_SEND, sendSettings),
         takeLatest(actionTypes.UPLOAD_USER_AVATAR, uploadAvatar),
-        takeLatest(actionTypes.USER_PASSWORD_RESET, resetUserPassword)
+        takeLatest(actionTypes.USER_PASSWORD_CHANGE, changePassword)
     ]);
 }

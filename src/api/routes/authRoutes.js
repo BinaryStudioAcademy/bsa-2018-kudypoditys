@@ -97,9 +97,9 @@ authRouter.route("/resetpassword").post((req, res) => {
 });
 
 authRouter.route("/changepassword").post((req, res) => {
-    const { userId, oldPassword, newPassword } = req.body;
+    const { id, oldPassword, newPassword } = req.body;
     userService
-        .changePassword(userId, oldPassword, newPassword)
+        .changePassword(id, oldPassword, newPassword)
         .then(data => {
             res.send(data);
         })
