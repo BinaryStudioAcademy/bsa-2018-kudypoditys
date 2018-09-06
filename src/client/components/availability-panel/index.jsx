@@ -1,7 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./index.scss";
-import { Header, Button, Form, Dropdown, Message } from "semantic-ui-react";
+import {
+    Header,
+    Button,
+    Form,
+    Dropdown,
+    Message,
+    Label
+} from "semantic-ui-react";
 import moment from "moment";
 import { DateRangePicker } from "react-dates";
 
@@ -30,7 +37,7 @@ export class AvailabilityPanel extends React.Component {
     };
 
     datesChanged = selectedDates => {
-        this.props.onDatesChange(selectedDates);
+        this.props.onDatesChange(this.props.propertyId, selectedDates);
     };
 
     render() {
@@ -63,7 +70,9 @@ export class AvailabilityPanel extends React.Component {
                     Availability
                 </Header>
                 <div className="availability-panel">
-                    <p>When would you like to stay at {propertyName}?</p>
+                    <p style={{ textAlign: "center", margin: "10px" }}>
+                        When would you like to stay at {propertyName}?
+                    </p>
                     <Form
                         className="availability-form"
                         onSubmit={() => {
@@ -81,86 +90,108 @@ export class AvailabilityPanel extends React.Component {
                             className="availability-form-midsection"
                             onFocus={this.hideRoomSelector}
                         >
-                            <DateRangePicker
-                                startDateId="startDate"
-                                endDateId="endDate"
-                                startDate={startDate}
-                                endDate={endDate}
-                                onDatesChange={this.datesChanged}
-                                focusedInput={this.state.focusedInput}
-                                onFocusChange={focusedInput => {
-                                    this.setState({ focusedInput });
-                                }}
-                            />
-                            <Modal
-                                trigger={
-                                    <div className="btn-wrp">
-                                        <Button
-                                            type="submit"
-                                            content="Check availability"
-                                            primary
-                                        />
-                                    </div>
-                                }
-                            >
-                                {error ? (
-                                    <Message negative>{error}</Message>
-                                ) : !result ? null : result.length ? (
-                                    <React.Fragment>
-                                        <Header as="h3">
-                                            Rooms available for these dates:{" "}
-                                        </Header>
-                                        <RoomsSummaryTable rooms={result} />
-                                    </React.Fragment>
-                                ) : (
-                                    <Message negative>
-                                        Sorry, no rooms available for these
-                                        dates
-                                    </Message>
-                                )}
-                            </Modal>
+                            <div style={{ width: "265px" }}>
+                                <label
+                                    style={{
+                                        fontSize: ".92857143em",
+                                        fontWeight: "700",
+                                        fontFamily: `Lato,'Helvetica Neue',Arial,Helvetica,sans-serif`,
+                                        lineHeight: "1.5",
+                                        color: "#274560",
+                                        display: "block",
+                                        padding: "11px"
+                                    }}
+                                >
+                                    Check-in and check-out
+                                </label>
+                                <DateRangePicker
+                                    startDateId="startDate"
+                                    endDateId="endDate"
+                                    startDate={startDate}
+                                    endDate={endDate}
+                                    onDatesChange={this.datesChanged}
+                                    focusedInput={this.state.focusedInput}
+                                    onFocusChange={focusedInput => {
+                                        this.setState({ focusedInput });
+                                    }}
+                                />
+                            </div>
+                            <Form.Group className="room-selector" inline>
+                                <Form.Field>
+                                    <label>Rooms</label>
+                                    <Dropdown
+                                        fluid
+                                        selection
+                                        name="rooms"
+                                        options={selectOptions}
+                                        value={rooms}
+                                        onChange={(event, input) =>
+                                            this.props.onRoomsChange(
+                                                input.value
+                                            )
+                                        }
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <label>Adults</label>
+                                    <Dropdown
+                                        fluid
+                                        selection
+                                        name="adults"
+                                        options={selectOptions}
+                                        value={adults}
+                                        onChange={(event, input) =>
+                                            this.props.onAdultsChange(
+                                                input.value
+                                            )
+                                        }
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <label>Children</label>
+                                    <Dropdown
+                                        fluid
+                                        selection
+                                        name="children"
+                                        options={childrenOptions}
+                                        value={children}
+                                        onChange={(event, input) =>
+                                            this.props.onChildrenChange(
+                                                input.value
+                                            )
+                                        }
+                                    />
+                                </Form.Field>
+                            </Form.Group>
                         </div>
-                        <Form.Group className="room-selector" inline>
-                            <Form.Field inline>
-                                <label>Rooms</label>
-                                <Dropdown
-                                    fluid
-                                    selection
-                                    name="rooms"
-                                    options={selectOptions}
-                                    value={rooms}
-                                    onChange={(event, input) =>
-                                        this.props.onRoomsChange(input.value)
-                                    }
-                                />
-                            </Form.Field>
-                            <Form.Field inline>
-                                <label>Adults</label>
-                                <Dropdown
-                                    fluid
-                                    selection
-                                    name="adults"
-                                    options={selectOptions}
-                                    value={adults}
-                                    onChange={(event, input) =>
-                                        this.props.onAdultsChange(input.value)
-                                    }
-                                />
-                            </Form.Field>
-                            <Form.Field inline>
-                                <label>Children</label>
-                                <Dropdown
-                                    fluid
-                                    selection
-                                    name="children"
-                                    options={childrenOptions}
-                                    value={children}
-                                    onChange={(event, input) =>
-                                        this.props.onChildrenChange(input.value)
-                                    }
-                                />
-                            </Form.Field>
-                        </Form.Group>
+
+                        <Modal
+                            trigger={
+                                <div className="btn-wrp">
+                                    <Button
+                                        style={{ width: "100%" }}
+                                        type="submit"
+                                        content="Check availability"
+                                        primary
+                                    />
+                                </div>
+                            }
+                        >
+                            {error ? (
+                                <Message negative>{error}</Message>
+                            ) : !result ? null : result.length ? (
+                                <React.Fragment>
+                                    <Header as="h3">
+                                        Rooms available for these dates:{" "}
+                                    </Header>
+                                    <RoomsSummaryTable rooms={result} />
+                                </React.Fragment>
+                            ) : (
+                                <Message negative>
+                                    Sorry, no rooms available for these dates
+                                </Message>
+                            )}
+                        </Modal>
                     </Form>
                 </div>
             </div>
