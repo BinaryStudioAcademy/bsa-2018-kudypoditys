@@ -3,6 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import ImageUploader from "react-images-upload";
 import { phoneNumber, email } from "client/regexValidationService";
 import inputField from "./input";
+import AlgoliaPlaces from "algolia-places-react";
 
 import {
     Form,
@@ -34,12 +35,19 @@ export class SettingsForm extends Component {
         this.props.updateSettings(data);
     };
 
-    sendSettings = (e, { name, value }) => {
-        this.props.sendSettings();
+    handleAddressChange = suggestion => {
+        const value = `${suggestion.name} ${suggestion.administrative} ${
+            suggestion.country
+        }`;
+        const data = {
+            address: value
+        };
+
+        this.updateSettings(data);
     };
 
-    resetPassword = () => {
-        this.props.resetPassword(this.props.email);
+    sendSettings = (e, { name, value }) => {
+        this.props.sendSettings();
     };
 
     // Credit cards mini-form handlers:
@@ -141,10 +149,13 @@ export class SettingsForm extends Component {
             countryOptions,
             paymentOptions,
             currencyOptions,
-            appealOptions
+            appealOptions,
+            avatarLoading
         } = this.props;
         const { active } = this.state;
-        const content = (
+        const content = avatarLoading ? (
+            <Icon loading size="big" name="spinner" />
+        ) : (
             <div>
                 <ImageUploader
                     className="personal_settings-avatar"
@@ -160,7 +171,7 @@ export class SettingsForm extends Component {
                             title="Add new avatar"
                             size="big"
                             name="add"
-                            color="white"
+                            color="teal"
                         />
                     }
                     buttonText="Update"
@@ -194,7 +205,7 @@ export class SettingsForm extends Component {
                         as={Image}
                         circular
                         style={{ width: "150px", height: "150px" }}
-                        dimmed={active}
+                        dimmed={avatarLoading || active}
                         dimmer={{ active, content }}
                         onMouseEnter={this.handleDimmerShow}
                         onMouseLeave={this.handleDimmerHide}
@@ -204,28 +215,6 @@ export class SettingsForm extends Component {
                             "https://www.mautic.org/media/images/default_avatar.png"
                         }
                     />
-                    {/* <ImageUploader
-                        className="personal_settings-avatar"
-                        withPreview={false}
-                        singleImage={true}
-                        withLabel={false}
-                        withIcon={false}
-                        optimisticPreviews
-                        multiple={false}
-                        pseudobuttonContent={
-                            <Icon
-                                circular
-                                title="Add new avatar"
-                                size="big"
-                                name="add"
-                                color="white"
-                            />
-                        }
-                        // buttonClassName="personal_settings-avatar-button"
-                        onChange={this.onDrop}
-                        imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-                        maxFileSize={5242880}
-                    /> */}
                     <p className="personal_settings-p">Your nickname</p>
                     <Field
                         component={inputField}
@@ -282,7 +271,7 @@ export class SettingsForm extends Component {
                     <p className="personal_settings-p">Phone</p>
                     <Field
                         component={inputField}
-                        name="phone"
+                        name="phoneNumber"
                         label="Phone number"
                         type="tel"
                         min={4}
@@ -301,13 +290,15 @@ export class SettingsForm extends Component {
                         defaultValue={this.props.email}
                     />
                     <p className="personal_settings-p">Address</p>
-                    <Field
-                        component={inputField}
+                    <AlgoliaPlaces
+                        placeholder={this.props.address}
                         name="address"
-                        label="Address"
-                        type="text"
-                        val={this.props.address}
-                        onChange={e => this.handleChange(e, e.target)}
+                        options={{
+                            type: "address"
+                        }}
+                        onChange={({ suggestion }) =>
+                            this.handleAddressChange(suggestion)
+                        }
                     />
                 </Segment>
                 <Segment className="personal_settings-segment">
