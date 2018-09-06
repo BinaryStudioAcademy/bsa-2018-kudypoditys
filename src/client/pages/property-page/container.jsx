@@ -26,9 +26,7 @@ export function mapDispatchToProps(dispatch, ownProps) {
             dispatch(
                 bookingInputUpdate({
                     message: "",
-                    error: "",
-                    checkIn: null,
-                    checkOut: null
+                    error: ""
                 })
             );
         }
