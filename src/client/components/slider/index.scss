@@ -89,7 +89,7 @@ $slider-height: 400px;
     z-index: 100;
     width: 50px;
     margin: 0 !important;
-    padding: 5px !important;
+    padding: 5px;
     background-color: #46567275 !important;
     color: white !important;
     transition: 0.2s background-color ease-in-out;
@@ -107,13 +107,18 @@ $slider-height: 400px;
 
 .slider-c-prev-button {
     left: 0px;
+    padding: 15px !important;
 }
 
 .slider-c-next-button {
     bottom: 0;
     right: 0px;
+    padding-left: 15px !important;
 }
 
+.slider-c-prev-button > i {
+    margin-right: 0px !important;
+}
 .slider-c-next-button > i {
     margin: 0 !important;
 }
