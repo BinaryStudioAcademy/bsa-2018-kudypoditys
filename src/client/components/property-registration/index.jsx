@@ -11,8 +11,7 @@ import FacilitiesPropertyRegistrationForm from '../facilities-property-registrat
 import PolicesPropertyRegistrationForm from '../polices-property-registration-form';
 import PhotoRegistrationPropertyForm from '../photo-registration-property-form';
 import PaymentPropertyRegistrationForm from '../payment-property-registration-form';
-
-import RoomsPropertyRegistrationForm from '../no-rooms-component/addRoomForm';
+import RoomsPropertyRegistrationForm from '../rooms-property-registration-form';
 
 export class PropertyRegistration extends React.Component {
     state = {
@@ -70,7 +69,7 @@ export class PropertyRegistration extends React.Component {
                 key: 'Basic Info',
                 icon: 'home',
                 content: 'Basic Info',
-                header: ' Rooms and pricing',
+                customHeader: ' Rooms and pricing',
                 subheader: 'Start by telling us your property\'s name, contact details and address.',
                 component: <BasicInfoPropertyRegistrationForm onSubmit={
                     this.nextTab
@@ -80,7 +79,7 @@ export class PropertyRegistration extends React.Component {
                 key: 'Facilities & services',
                 icon: 'bath',
                 content: 'Facilities & services',
-                header: ' Facilities & services',
+                customHeader: ' Facilities & services',
                 subheader: 'Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.',
                 component: <FacilitiesPropertyRegistrationForm onSubmit={
                     this.nextTab
@@ -90,7 +89,7 @@ export class PropertyRegistration extends React.Component {
                 key: 'Rules',
                 icon: 'clipboard list',
                 content: 'Rules',
-                header: ' Polices',
+                customHeader: ' Polices',
                 subheader: ' Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?',
                 component: <PolicesPropertyRegistrationForm onSubmit={
                     this.nextTab
@@ -100,7 +99,7 @@ export class PropertyRegistration extends React.Component {
                 key: 'Photo',
                 icon: 'photo',
                 content: 'Property photos',
-                header: '  Property photos',
+                customHeader: '  Property photos',
                 subheader: 'Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property\'s page on the Booking.com website.',
                 component: <PhotoRegistrationPropertyForm onSubmit={
                     this.nextTab
@@ -110,7 +109,7 @@ export class PropertyRegistration extends React.Component {
                 key: 'menuItem pricing',
                 icon: 'usd',
                 content: 'Layout and pricing', //temporary
-                header: ' Layout and pricing',
+                customHeader: ' Layout and pricing',
                 subheader: 'Tell us about layout and pricing',
                 component: <PaymentPropertyRegistrationForm onSubmit={this.nextTab} />,
             },
@@ -118,7 +117,7 @@ export class PropertyRegistration extends React.Component {
                 key: 'menuItem rooms',
                 icon: 'usd',
                 content: 'Rooms', //temporary
-                header: 'Rooms and Beds',
+                customHeader: 'Rooms and Beds',
                 subheader: ' Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms',
                 component: <RoomsPropertyRegistrationForm onSubmit={this.onFormSubmit} />,
             }
@@ -127,10 +126,10 @@ export class PropertyRegistration extends React.Component {
 
     getPanes() {
         return this.getWizardForms().map(menuItemForm => ({
-            menuItem: menuItemForm,
+            menuItem: { key: menuItemForm.key, icon: menuItemForm.icon, content: menuItemForm.content },
             render: () =>
                 <DrawTab
-                    header={menuItemForm.header}
+                    customHeader={menuItemForm.customHeader}
                     subheader={menuItemForm.subheader}
                     component={menuItemForm.component}
                 />

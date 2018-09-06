@@ -8,7 +8,7 @@ class RadioGroup extends Component {
     return (
       <Container>
         {options.map((x, i) =>
-          <Fragment>
+          <Fragment key={i}>
             <input {...input} key={i} type="radio" value={x.value} />
             <Label>{x.label}</Label>
           </Fragment>
