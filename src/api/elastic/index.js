@@ -1,3 +1,4 @@
+require("dotenv").config();
 const elasticsearch = require("elasticsearch");
 const elasticClient = new elasticsearch.Client({
     host: process.env.ELASTIC_HOST,
@@ -164,6 +165,7 @@ module.exports = {
     },
 
     autocompleteSearch: (req, res, _index, _type, _query, _fields) => {
+        console.log(elasticClient);
         elasticClient
             .search({
                 index: _index,

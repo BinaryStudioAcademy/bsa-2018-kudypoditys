@@ -8,12 +8,11 @@ elastic.route("/ping").get((req, res) => {
     ES_service.ping(req, res);
 });
 
-elastic.route("/index/init")
-    .post((req, res) => {
-        const { index } = req.body;
-        console.log(index);
-        ES_service.initIndex(req, res, index);
-    });
+elastic.route("/index/init").post((req, res) => {
+    const { index } = req.body;
+    console.log(index);
+    ES_service.initIndex(req, res, index);
+});
 
 elastic.route("/init").post((req, res) => {
     elasticService.indexData();
@@ -55,12 +54,14 @@ elastic.route("/update").post((req, res) => {
 elastic.route("/search").get((req, res) => {
     const { index, type, query } = req.query;
     const fields = ["name", "city"];
-    ES_service.search(req, res, index, type, query, fields)
+
+    ES_service.search(req, res, index, type, query, fields);
 });
 
 elastic.route("/autocomplete").get((req, res) => {
     const { index, type, query } = req.query;
     const fields = ["city", "name"];
+    console.log("HEy");
     ES_service.autocompleteSearch(req, res, index, type, query, fields);
 });
 

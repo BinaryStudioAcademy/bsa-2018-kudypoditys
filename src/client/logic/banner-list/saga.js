@@ -10,12 +10,12 @@ import api from "../../helpers/api";
 function* getProperties(action) {
     console.log("Hello from SAGA" + action.type);
 
-    const URL1 = `http://18.195.219.130/api/property/city/1`;
-    const URL2 = `http://18.195.219.130/api/property/city/2`;
-    const URL3 = `http://18.195.219.130/api/property/city/3`;
-    const URL4 = `http://18.195.219.130/api/property/city/4`;
-    const URL5 = `http://18.195.219.130/api/property/city/5`;
-    const URL6 = `http://18.195.219.130/api/property/city/6`;
+    const URL1 = `http://127.0.0.1:5000/api/property/city/1`;
+    const URL2 = `http://127.0.0.1:5000/api/property/city/2`;
+    const URL3 = `http://127.0.0.1:5000/api/property/city/3`;
+    const URL4 = `http://127.0.0.1:5000/api/property/city/4`;
+    const URL5 = `http://127.0.0.1:5000/api/property/city/5`;
+    const URL6 = `http://127.0.0.1:5000/api/property/city/6`;
     // const URL1 = `1`
     // const URL2 = `2`
     // const URL3 = `3`

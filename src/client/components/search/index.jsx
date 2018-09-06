@@ -43,7 +43,7 @@ export class MainSearch extends React.Component {
         let index = "cities";
         axios
             .get(
-                `http://18.195.219.130/elastic/autocomplete?index=${index}&type=document&query=${
+                `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
                     this.state.query
                 }`
             )
@@ -65,7 +65,7 @@ export class MainSearch extends React.Component {
 
                 let index = "properties";
                 return axios.get(
-                    `http://18.195.219.130/elastic/autocomplete?index=${index}&type=document&query=${
+                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
                         this.state.query
                     }`
                 );
