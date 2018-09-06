@@ -7,21 +7,18 @@
     display: flex;
     background-color: #ffffff;
     width: fit-content;
-    size: 16px !important;
+    size: 16px ;
     margin: 0px auto 50px;
 }
 
 .DateRangePickerInput_arrow {
-    display: none;
+    color: #182c4f
 }
 
 .DateInput_input_1 {
-    border: 1px solid rgba(34, 36, 38, 0.15);
-    border-top: 0px !important;
-    border-bottom: 0px !important;
-    border-left: 0px !important;
-    border-radius: 0px !important;
-    height: 60px;
+    border: 0px solid !important;
+    border-left: 1px;
+    height: 58px;
     font-family: ArialMT, sans-serif;
     font-size: 16px;
     font-weight: normal;
@@ -30,9 +27,9 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
-    color: #182c4f;
+    color: black;
     opacity: 0.8;
-
+    width: 230px !important;
 }
 
 .search--view-bar {
@@ -49,7 +46,7 @@
 .destination {
     height: 60px;
     input {
-        min-width: 470px;
+        min-width:520px;
     }
 }
 
@@ -59,7 +56,7 @@
     background-color: #dfe3eb;
     color: #182c4f;
     text-align: center;
-    width: 109%;
+    width: 150px ;
 }
 
 .search--view-panel {
@@ -71,7 +68,11 @@
     width: fit-content;
 }
 .destination div.results.transition {
-    width: 100% !important;
+    width: 100% ;
+ }
+
+ .destination div.results.image.transition {
+    width: 100% ;
  }
 
 
@@ -85,12 +86,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 30%;
+    width: 205px ;
     height: 210px;
-}
-
-form.Field {
-    //align-content: right;
+    border-right:1px #182c4f
 }
 
 .room-selector > .field {
