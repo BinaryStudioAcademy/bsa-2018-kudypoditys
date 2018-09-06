@@ -34,3 +34,6 @@ yarn-error.log*
 
 *.xml
 .idea/jsLibraryMappings.xml
+
+.env
+.env.*
