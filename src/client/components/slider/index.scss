@@ -9,7 +9,8 @@ $slider-height: 400px;
 }
 
 .slick-slide.active {
-    left: 10px !important;
+    left: 50% !important;
+    transform: translateX(-50%);
 }
 
 .slider-c-wrapper {
