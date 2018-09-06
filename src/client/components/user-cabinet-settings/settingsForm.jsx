@@ -3,6 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import ImageUploader from "react-images-upload";
 import { phoneNumber, email } from "client/regexValidationService";
 import inputField from "./input";
+import AlgoliaPlaces from "algolia-places-react";
 
 import {
     Form,
@@ -32,6 +33,17 @@ export class SettingsForm extends Component {
 
     updateSettings = data => {
         this.props.updateSettings(data);
+    };
+
+    handleAddressChange = suggestion => {
+        const value = `${suggestion.name} ${suggestion.administrative} ${
+            suggestion.country
+        }`;
+        const data = {
+            address: value
+        };
+
+        this.updateSettings(data);
     };
 
     sendSettings = (e, { name, value }) => {
@@ -282,7 +294,7 @@ export class SettingsForm extends Component {
                     <p className="personal_settings-p">Phone</p>
                     <Field
                         component={inputField}
-                        name="phone"
+                        name="phoneNumber"
                         label="Phone number"
                         type="tel"
                         min={4}
@@ -301,14 +313,25 @@ export class SettingsForm extends Component {
                         defaultValue={this.props.email}
                     />
                     <p className="personal_settings-p">Address</p>
-                    <Field
+                    <AlgoliaPlaces
+                        placeholder={this.props.address}
+                        name="address"
+                        options={{
+                            type: "address"
+                        }}
+                        onChange={({ suggestion }) =>
+                            this.handleAddressChange(suggestion)
+                        }
+                    />
+
+                    {/* <Field
                         component={inputField}
                         name="address"
                         label="Address"
                         type="text"
                         val={this.props.address}
                         onChange={e => this.handleChange(e, e.target)}
-                    />
+                    /> */}
                 </Segment>
                 <Segment className="personal_settings-segment">
                     <div className="personal_settings-segment-header">
