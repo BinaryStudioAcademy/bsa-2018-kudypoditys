@@ -16,10 +16,6 @@ export class BannerList extends Component {
             req: '1'
         }
     }
-
-    componentWillMount() {
-
-    }
     componentDidMount(){
         console.log('Hello from component Did mount')
         this.props.getCityInfos();
