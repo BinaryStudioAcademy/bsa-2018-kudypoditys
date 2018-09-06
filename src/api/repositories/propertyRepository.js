@@ -1,16 +1,18 @@
+const moment = require("moment");
+const sequelize = require("sequelize");
 const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
 const Facility = require("../models/Facility");
 const PaymentType = require("../models/PaymentType");
 
 const Reservation = require("../models/Reservation");
+// const PropertyCategory = require("../models/PropertyCategory");
 const RoomType = require("../models/RoomType");
 const Image = require("../models/Image");
 const Availability = require("../models/Availability");
 const Favorite = require("../models/Favorite");
 const AccommodationRule = require("../models/AccommodationRule");
 const PropertyType = require("../models/PropertyType");
-const PropertyPaymentType = require('../models/PropertyPaymentType');
 const Country = require("../models/Country");
 const City = require("../models/City");
 const Review = require("../models/Review");
@@ -19,8 +21,6 @@ const Room = require("../models/Room");
 const FacilityList = require("../models/FacilityList");
 const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
-const PropertyLanguage = require('../models/PropertyLanguage');
-const BasicFacility = require('../models/BasicFacility');
 
 const includeOptions = [
     {
@@ -51,7 +51,7 @@ const includeOptions = [
     },
     {
         model: Review,
-        attributes: ["id", "pros", "cons", "Cleanliness", "Price", "Comfort", "Facilities", "avgReview", "createdAt", "anon"],
+        attributes: ["id", "pros", "cons", "Cleanliness","Price","Comfort","Facilities","avgReview", "createdAt", "anon"],
         include: [
             {
                 model: User,
@@ -133,13 +133,12 @@ class PropertyRepository extends Repository {
                 });
             });
     }
-
     getPropertiesByCity(city) {
         console.log(city)
         return this.model
             .findAll({
                 where: {
-                    cityId: city
+                   cityId:city
 
                 },
                 include: [
@@ -172,38 +171,23 @@ class PropertyRepository extends Repository {
                 ]
             })
             .then(properties => {
-                return properties
+               return properties
             });
     }
 
     createDetails(entity) {
         return this.model.create(entity, {
-            include: [AccommodationRule, BasicFacility, Image, Room]
-        }).then(({ dataValues: newProperty }) => {
-            let facilityList = entity.facilities.map(f => ({
-                propertyId: newProperty.id,
-                facilityId: f.id
-            }));
-            return FacilityList.bulkCreate(facilityList).then(_ => newProperty);
-        }).then(newProperty => {
-            let languages = entity.languages.map(l => ({
-                propertyId: newProperty.id,
-                languageId: l.id
-            }));
-
-            return PropertyLanguage.bulkCreate(languages).then(_ => newProperty);
-        }).then(newProperty => {
-            let paymentTypes = entity.paymentTypes.map(p => ({
-                propertyId: newProperty.id,
-                paymentTypeId: p.id
-            }));
-
-            return PropertyPaymentType.bulkCreate(paymentTypes).then(_ => newProperty);
-        }).then(newProperty =>
-            this.findById(newProperty.id)
-        );
+            include: [
+                // City,
+                PropertyType,
+                Room,
+                Facility,
+                AccommodationRule,
+                PaymentType,
+                Image
+            ]
+        });
     }
-
     getFilteredProperties(filter) {
         const SORT_VALUE = {
             PRICE: "price",
@@ -231,7 +215,7 @@ class PropertyRepository extends Repository {
         return this.model
             .findAll({
                 limit: 5,
-                offset: offsetData,
+                offset:offsetData,
                 where: {
                     id: { $in: filter.propertiesIds }
                 },

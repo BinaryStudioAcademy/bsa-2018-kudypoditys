@@ -1709,7 +1709,7 @@ const REVIEW_CATEGORIES = [
         name: "Fun things to do"
     }
 ];
-const BED_IN_ROOM = [
+const BED_IN_ROOMS = [
     { id: 1, count: 2, roomId: 1, bedTypeId: 1 },
     { id: 2, count: 2, roomId: 2, bedTypeId: 2 },
     { id: 3, count: 3, roomId: 3, bedTypeId: 3 },
@@ -1943,25 +1943,6 @@ const ROOM_TYPES = [
     }
 ];
 
-const LANGUAGES = [
-    {
-        id: 1,
-        name: 'English'
-    },
-    {
-        id: 2,
-        name: 'Russion'
-    },
-    {
-        id: 3,
-        name: 'Ukranian'
-    },
-    {
-        id: 4,
-        name: 'German'
-    }
-];
-
 const REVIEWS = [
     {
         id: 1,
@@ -2026,10 +2007,9 @@ module.exports = {
     ROLES,
     FACILITY_CATEGORIES,
     REVIEW_CATEGORIES,
-    BED_IN_ROOM,
+    BED_IN_ROOMS,
     BED_TYPES,
     ROOM_TYPES,
     PROPERTY_TYPE,
-    LANGUAGES,
-    REVIEWS,
+    REVIEWS
 };

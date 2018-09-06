@@ -1,1 +1,0 @@
-export const CHECKIN_OUT_UPDATE = 'CHECKIN_OUT:UPDATE';

@@ -187,6 +187,58 @@ const state = {
     title: "Apartment with Garden View",
     amount: "1"
   },
+
+  propertyRegistration: {
+    // PAYMENT_TAB
+    paymentType: "cash", // "creditcards"
+    paymentCreditCards: {
+      mastercard: false,
+      visa: false
+    },
+    rating: 8.8,
+    vatTaxes: "default", // "none"
+    cityTax: "default", // "individual"
+    cityTaxIndividual: {
+      value: "",
+      type: "percent",
+      includeToPrice: false
+    },
+    additionalFees: false,
+    additionalFeesOptions: [],
+    commissionName: "Name one",
+    recipientSameAddress: true,
+    recipientActualAddress: {
+      country: "",
+      city: "",
+      address: "",
+      postcode: ""
+    },
+    // SERVICES_TAB
+    internet: "free", // additional, none
+    internetFee: "",
+    parking: {
+      providing: "none",
+      type: "private",
+      placement: "on_territory",
+      booking: "need",
+      priceForDay: ""
+    },
+    languages: ["ukrainian", "russian", "english"],
+    facilities: ["Bar", "Sauna", "Pool"],
+
+    // Photo Tab
+    images: [],
+    //tab Index
+    activeIndex: 0,
+    //    POLICES TAB
+
+    arrivalFrom: "10:00",
+    arrivalTo: "13:00",
+    departureFrom: "13:00",
+    departureTo: "12:00",
+    cancellation: "1 day before"
+  },
+
   personalSettings: {
     avatar: "",
     nickname: "Nickname0",
@@ -346,43 +398,7 @@ const state = {
       Price: 0,
       Location: 0
     }
-  },
-  //--------------------------
-  countriesData: {
-    countries: []
-  },
-  languagesData: {
-    languages: []
-  },
-  faclitiesData: {
-    facilities: []
-  },
-  paymentTypes: {
-    paymentTypes: []
-  },
-  roomTypesData: {
-    roomTypes: []
-  },
-  bedTypesData: {
-    bedTypes: []
-  },
-
-  testRoomsTab: {
-    editRoomIndex: -1
-  },
-
-  checkInCheckOut: {
-    arrivalFrom: '12:00',
-    arrivalTo: '13:00',
-    departureFrom: '11:00',
-    departureTo: '11:30',
-  },
-
-  propertyRegistration: {
-    error: null
-  },
-
-  // _____________________
+  }
 };
 
 export default state;

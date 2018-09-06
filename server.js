@@ -5,11 +5,10 @@ const path = require("path"),
     bodyParser = require("body-parser"),
     cookieParser = require("cookie-parser"),
     compression = require("compression"),
-    server = require("http").Server(app),
-    elasticService = require("./src/api/elastic/elasticService");
+    server = require("http").Server(app);
 // routes = require(`${apiRoot}/testModels`);
 
-const io = require("socket.io")(server, { serveClient: true });
+const io = require("socket.io")(server, {serveClient: true});
 
 const apiRoot = path.resolve(path.join(__dirname, "src/api"));
 
@@ -38,7 +37,6 @@ const sockets = require("./src/api/sockets")(io);
 
 server.listen(port, () => {
     console.log("Server running on http://127.0.0.1:%s", port);
-    elasticService.indexData();
 });
 
 require(`${apiRoot}/models`);

@@ -28,9 +28,6 @@ function associations(models) {
         UserSetting,
         VerificationStatus,
         UserRefreshToken,
-        BasicFacility,
-        PropertyLanguage,
-        Language,
         Availability
     } = models;
 
@@ -119,19 +116,6 @@ function associations(models) {
     Property.hasMany(PropertyPaymentType);
     Property.hasMany(Room);
     Property.hasMany(Image);
-    Property.hasMany(PropertyLanguage);
-
-    Property.hasOne(BasicFacility);
-
-    // BasicFacility associations
-    BasicFacility.belongsTo(Property);
-
-    // PropertyLanguage associations
-    PropertyLanguage.belongsTo(Property);
-    PropertyLanguage.belongsTo(Language);
-
-    // Language associations
-    Language.hasMany(PropertyLanguage);
 
     // PaymentType associations
     PaymentType.hasMany(Reservation);
@@ -205,9 +189,6 @@ function associations(models) {
 
     Room.belongsToMany(BedType, { through: "bedInRoom" });
     BedType.belongsToMany(Room, { through: "bedInRoom" });
-
-    Property.belongsToMany(Language, { through: 'propertyLanguage' });
-    Language.belongsToMany(Property, { through: 'propertyLanguage' });
 
     // Image.findAll({ include: [{ model: Room }] }) :D
     // image = { propertyId: 1, roomId: 1 } room = { id: 1, propertyId: 2 }

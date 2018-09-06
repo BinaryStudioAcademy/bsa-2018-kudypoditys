@@ -1,20 +1,25 @@
-import { checkInOutUpdate } from 'client/logic/checkInCheckOut/actions';
-
+import { checkInOutUpdate } from 'client/logic/polices-tab/actions';
+import { propertyUpdate } from 'client/logic/property-creation-tabs/actions';
 export function mapStateToProps(state) {
-    const { checkInCheckOut } = state;
+    const { propertyRegistration } = state;
 
     return {
-        arrivalFrom: checkInCheckOut.arrivalFrom,
-        arrivalTo: checkInCheckOut.arrivalTo,
-        departureFrom: checkInCheckOut.departureFrom,
-        departureTo: checkInCheckOut.departureTo,
+        // propertyRegistration
+        arrivalFrom: propertyRegistration.arrivalFrom,
+        arrivalTo: propertyRegistration.arrivalTo,
+        departureFrom: propertyRegistration.departureFrom,
+        departureTo: propertyRegistration.departureTo,
     };
 }
 
 export function mapDispatchToProps(dispatch) {
     return {
-        updateCheckInCheckOut(payload) {
-            dispatch(checkInOutUpdate(payload));
+        onSelectTime(value, type) {
+            dispatch(
+                propertyUpdate({
+                    [type]: value,
+                }),
+            );
         },
     };
 }

@@ -13,6 +13,7 @@ import "./index.scss";
 import history from "client/history";
 import queryString from "query-string";
 
+
 export class MainSearch extends React.Component {
     componentDidMount() {
         if (history.location.search !== "") {
@@ -23,7 +24,7 @@ export class MainSearch extends React.Component {
             this.setState(
                 {
                     query: parsed.query,
-                    queryCopy: parsed.query,
+                    queryCopy:parsed.query,
                     rooms: parsed.rooms,
                     adults: parsed.adults,
                     children: parsed.children,
@@ -44,29 +45,24 @@ export class MainSearch extends React.Component {
         axios
             .get(
                 `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
-                    this.state.query
+                this.state.query
                 }`
             )
             .then(citiesResponse => {
                 console.log(
                     "response Cities= " + JSON.stringify(citiesResponse)
                 );
-                if (
-                    citiesResponse &&
-                    citiesResponse.data &&
-                    citiesResponse.data instanceof Array
-                )
-                    citiesResponse.data.forEach(element => {
-                        resultsData.push({
-                            title: element._source.city,
-                            description: element._source.country
-                        });
+                citiesResponse.data.forEach(element => {
+                    resultsData.push({
+                        title: element._source.city,
+                        description: element._source.country
                     });
+                });
 
                 let index = "properties";
                 return axios.get(
                     `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
-                        this.state.query
+                    this.state.query
                     }`
                 );
             })
@@ -75,9 +71,6 @@ export class MainSearch extends React.Component {
                 console.log(
                     "response Roperties= " + JSON.stringify(propertiesResponse)
                 );
-                if( propertiesResponse &&
-                    propertiesResponse.data &&
-                    propertiesResponse.data instanceof Array)
                 propertiesResponse.data.forEach(element => {
                     resultsData.push({
                         title: element._source.name,
@@ -86,8 +79,8 @@ export class MainSearch extends React.Component {
                     });
                 });
                 let title;
-                if (resultsData.length > 0) {
-                    title = resultsData[0].title;
+                if (resultsData.length>0) {
+                    title= resultsData[0].title
                 }
                 this.setState({
                     results: resultsData,
@@ -120,6 +113,7 @@ export class MainSearch extends React.Component {
     };
     handleSubmit = () => {
         const {
+
             rooms,
             adults,
             children,
@@ -130,11 +124,11 @@ export class MainSearch extends React.Component {
             isSelectedResult
         } = this.state;
         console.log("handleSubmit trigered");
-        let { query } = this.state;
+        let {query }=this.state
 
         if (!isSelectedResult) {
             query = queryCopy;
-            this.setState({ query: queryCopy });
+            this.setState({ query: queryCopy })
         }
         history.push({
             pathname: "/search-page",
@@ -147,7 +141,7 @@ export class MainSearch extends React.Component {
             children: children,
             startDate: startDate,
             endDate: endDate,
-            page: 1
+            page:1
         });
     };
 
@@ -206,7 +200,7 @@ export class MainSearch extends React.Component {
     };
 
     onChildrenSelected = count => {
-        this.setState({ children: count });
+        this.setState({children: count});
         this.props.onChildrenChange(count);
     };
 
