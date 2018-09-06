@@ -34,7 +34,6 @@ export default class MapWidgetModal extends Component {
                             zoom={13}
                             controlEnable={true}
                         />
-                        );
                     </Modal.Content>
                 </Modal>
             </React.Fragment>

@@ -11,13 +11,13 @@ const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 
 authRouter.route("/login").post((req, res) => {
-    passport.authenticate("local", {session: false}, (err, user, message) => {
+    passport.authenticate("local", { session: false }, (err, user, message) => {
         if (err || !user) {
             res.status(400).send(message);
             return;
         }
 
-        req.login(user, {session: false}, err => {
+        req.login(user, { session: false }, err => {
             if (err) res.status(400).send(err.message);
             return;
         });
@@ -72,26 +72,40 @@ authRouter.route("/signup").post((req, res) => {
         });
 });
 
-authRouter.route("/forgot")
-    .get((req, res) => {
-        const { email } = req.query;
-        userService.getForgotPasswordLink(email)
-            .then(_ => {
-                res.send(true);
-            })
-            .catch(err => {
-                res.status(500).send(err.message);
-            });
-    });
-
-authRouter.route('/resetpassword')
-    .post((req, res) => {
-        const { token, email, newPassword } = req.body;
-        userService.resetPassword(email, token, newPassword).then(_ => {
+authRouter.route("/forgot").get((req, res) => {
+    const { email } = req.query;
+    userService
+        .getForgotPasswordLink(email)
+        .then(_ => {
             res.send(true);
-        }).catch(err => {
+        })
+        .catch(err => {
+            res.status(500).send(err.message);
+        });
+});
+
+authRouter.route("/resetpassword").post((req, res) => {
+    const { token, email, newPassword } = req.body;
+    userService
+        .resetPassword(email, token, newPassword)
+        .then(_ => {
+            res.send(true);
+        })
+        .catch(err => {
             res.status(400).send(err.message);
         });
-    });
+});
+
+authRouter.route("/changepassword").post((req, res) => {
+    const { id, oldPassword, newPassword } = req.body;
+    userService
+        .changePassword(id, oldPassword, newPassword)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(400).send(err.message);
+        });
+});
 
 module.exports = authRouter;

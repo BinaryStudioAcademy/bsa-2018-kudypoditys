@@ -43,7 +43,13 @@ export class MainHeader extends Component {
         return (
             <div
                 className="header--wraper"
-                style={noBackground ? { backgroundImage: "none" } : null}
+                style={
+                    noBackground
+                        ? {
+                              backgroundImage: "none"
+                          }
+                        : { backgroundColor: "#028fc5" }
+                }
             >
                 <Grid centered className={"grid--main"}>
                     <Grid.Row columns={2} className={"row--inform"}>
