@@ -23,6 +23,7 @@
     "author": "Dmytro Kostiuk",
     "license": "ISC",
     "dependencies": {
+        "algolia-places-react": "^1.3.0",
         "async": "^2.6.1",
         "autoprefixer": "7.1.6",
         "axios": "^0.18.0",
