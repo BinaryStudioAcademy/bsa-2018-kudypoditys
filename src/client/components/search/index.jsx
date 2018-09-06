@@ -43,7 +43,7 @@ export class MainSearch extends React.Component {
         let index = "cities";
         axios
             .get(
-                `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
+                `http://18.195.219.130/elastic/autocomplete?index=${index}&type=document&query=${
                     this.state.query
                 }`
             )
@@ -65,7 +65,7 @@ export class MainSearch extends React.Component {
 
                 let index = "properties";
                 return axios.get(
-                    `http://127.0.0.1:5000/elastic/autocomplete?index=${index}&type=document&query=${
+                    `http://18.195.219.130/elastic/autocomplete?index=${index}&type=document&query=${
                         this.state.query
                     }`
                 );
@@ -75,16 +75,18 @@ export class MainSearch extends React.Component {
                 console.log(
                     "response Roperties= " + JSON.stringify(propertiesResponse)
                 );
-                if( propertiesResponse &&
+                if (
+                    propertiesResponse &&
                     propertiesResponse.data &&
-                    propertiesResponse.data instanceof Array)
-                propertiesResponse.data.forEach(element => {
-                    resultsData.push({
-                        title: element._source.name,
-                        description: element._source.address,
-                        image: element._source.image
+                    propertiesResponse.data instanceof Array
+                )
+                    propertiesResponse.data.forEach(element => {
+                        resultsData.push({
+                            title: element._source.name,
+                            description: element._source.address,
+                            image: element._source.image
+                        });
                     });
-                });
                 let title;
                 if (resultsData.length > 0) {
                     title = resultsData[0].title;
