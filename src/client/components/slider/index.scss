@@ -1,8 +1,19 @@
-$slider-height: 300px;
+$slider-height: 400px;
+
+.slick-track {
+    height: $slider-height !important;
+}
+
+.slick-slide {
+    width: 600px !important;
+}
+
+.slick-slide.active {
+    left: 10px !important;
+}
 
 .slider-c-wrapper {
-    background-color: white;
-    width: 400px !important;
+    width: 100% !important;
     box-shadow: 0px 10px 40px -4px #0000000f;
     padding-bottom: 4px;
     position: relative !important;
@@ -22,7 +33,7 @@ $slider-height: 300px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 225px;
+    bottom: 0;
 }
 
 .slick-dots li {
@@ -56,7 +67,7 @@ $slider-height: 300px;
 .slick-list {
     height: $slider-height;
     padding: 0px !important;
-    width: 500px;
+    width: 100%;
 }
 
 .slick-slider {
@@ -67,6 +78,7 @@ $slider-height: 300px;
 .slider-c-image {
     height: $slider-height;
     object-fit: contain;
+    left: 50px;
 }
 
 .slider-c-button {

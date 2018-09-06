@@ -58,7 +58,7 @@ export class Slider extends Component {
                     {this.props.pics.map((item, i) => (
                         <Image
                             centered
-                            size="tiny"
+                            size="large"
                             className="slider-c-image"
                             src={item}
                             key={i}
