@@ -4,9 +4,8 @@ const init = require("./init");
 const PropertyService = require("./../services/property");
 const CityService = require("./../services/city");
 const elasticClient = new elasticsearch.Client({
-    hosts: [
+    host:
         "https://search-elasticsearch-kudypoditys-rqseuwvm4kuun4rbrfbxqly7z4.eu-central-1.es.amazonaws.com"
-    ]
 });
 
 module.exports = {
