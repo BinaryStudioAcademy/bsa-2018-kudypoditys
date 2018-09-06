@@ -14,7 +14,10 @@ let Property = orm.define('property', {
         validate: { notEmpty: true }
         // unique: true,
         // allowNull: false
-
+    },
+    distanceToCentre: {
+        type: Sequelize.FLOAT,
+        validate: { notEmpty: true }
     },
     description: {
         type: Sequelize.TEXT,
