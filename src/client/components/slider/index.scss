@@ -84,16 +84,15 @@ $slider-height: 400px;
 
 .slider-c-button {
     position: absolute;
-    bottom: 50%;
-    height: 30px;
+
+    height: 100%;
     z-index: 100;
-    width: 30px;
+    width: 50px;
     margin: 0 !important;
     padding: 5px !important;
     background-color: #46567275 !important;
     color: white !important;
     transition: 0.2s background-color ease-in-out;
-    border-radius: 100px !important;
 }
 
 .slider-c-button:hover {
@@ -107,11 +106,12 @@ $slider-height: 400px;
 }
 
 .slider-c-prev-button {
-    left: 10px;
+    left: 0px;
 }
 
 .slider-c-next-button {
-    right: 10px;
+    bottom: 0;
+    right: 0px;
 }
 
 .slider-c-next-button > i {
