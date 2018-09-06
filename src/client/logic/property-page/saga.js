@@ -70,9 +70,25 @@ export default function* propertyPageSaga() {
         }
     }
 
+    function* getRoomsInfo(action) {
+        try {
+            //TODO api call
+            yield put({
+                type: actionTypes.GET_ROOMS_INFO_SUCCESS,
+                payload: []
+            });
+        } catch (err) {
+            yield put({
+                type: actionTypes.GET_ROOMS_INFO_FAILURE,
+                payload: err.message
+            });
+        }
+    }
+
     yield all([
         takeLatest(actionTypes.GET_PROPERTY_INFO, getPropertyInfo),
         takeLatest(actionTypes.BOOK_PROPERTY, bookProperty),
-        takeLatest(actionTypes.CHECK_AVAILABILITY, checkAvailability)
+        takeLatest(actionTypes.CHECK_AVAILABILITY, checkAvailability),
+        takeLatest(actionTypes.GET_ROOMS_INFO, getRoomsInfo)
     ]);
 }

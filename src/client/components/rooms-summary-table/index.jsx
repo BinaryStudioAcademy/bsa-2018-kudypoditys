@@ -6,6 +6,7 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import { Icon, Popup, Divider } from "semantic-ui-react";
 import BookingForm from "../booking-form";
 import Modal from "../modal";
+import { Header } from "semantic-ui-react";
 
 export class RoomsSummaryTable extends React.Component {
     getBedsSummary = bedsInRoom => {
@@ -101,7 +102,7 @@ export class RoomsSummaryTable extends React.Component {
                             >
                                 {" "}
                                 <BookingForm
-                                    rooms={property.rooms}
+                                    rooms={rooms}
                                     paymentTypes={property.paymentTypes}
                                 />
                             </Modal>
@@ -117,6 +118,20 @@ export class RoomsSummaryTable extends React.Component {
         const { rooms, user, property } = this.props;
         let bookButton = false;
         if (user) bookButton = true;
+
+        if (rooms.length === 0)
+            return (
+                <Header
+                    as="h3"
+                    style={{
+                        color: "#d12b2b",
+                        cursor: "default",
+                        paddingLeft: "15px"
+                    }}
+                >
+                    Sorry we don`t have available rooms here!
+                </Header>
+            );
 
         return (
             <div className="rooms-summary-table" style={{ minWidth: "500px" }}>

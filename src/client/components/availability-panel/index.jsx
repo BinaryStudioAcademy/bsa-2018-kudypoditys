@@ -30,7 +30,7 @@ export class AvailabilityPanel extends React.Component {
     };
 
     datesChanged = selectedDates => {
-        this.props.onDatesChange(selectedDates);
+        this.props.onDatesChange(this.props.propertyId, selectedDates);
     };
 
     render() {
