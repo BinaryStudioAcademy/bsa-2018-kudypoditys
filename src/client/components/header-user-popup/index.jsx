@@ -50,7 +50,7 @@ export default class UserPopup extends React.Component {
                             src={
                                 currentUser.avatar
                                     ? currentUser.avatar
-                                    : "https://react.semantic-ui.com/images/avatar/small/joe.jpg"
+                                    : "https://www.mautic.org/media/images/default_avatar.png"
                             }
                             style={{
                                 marginRight: "2%",
