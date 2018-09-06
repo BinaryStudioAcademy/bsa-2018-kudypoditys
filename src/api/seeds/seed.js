@@ -6,7 +6,7 @@ const USERS = [
         fullName: "Natalya",
         password: bcrypt.hashSync("nata1NATA", 10),
         email: "natalya@gmail.com",
-        phoneNumber: "0504958671",
+        phoneNumber: "80504958671",
         nickname: "Nata1ya",
         address: "Nebereshnaya street 20, Lviv",
         appeal: "Mrs.",
@@ -1709,7 +1709,7 @@ const REVIEW_CATEGORIES = [
         name: "Fun things to do"
     }
 ];
-const BED_IN_ROOMS = [
+const BED_IN_ROOM = [
     { id: 1, count: 2, roomId: 1, bedTypeId: 1 },
     { id: 2, count: 2, roomId: 2, bedTypeId: 2 },
     { id: 3, count: 3, roomId: 3, bedTypeId: 3 },
@@ -1943,6 +1943,25 @@ const ROOM_TYPES = [
     }
 ];
 
+const LANGUAGES = [
+    {
+        id: 1,
+        name: 'English'
+    },
+    {
+        id: 2,
+        name: 'Russion'
+    },
+    {
+        id: 3,
+        name: 'Ukranian'
+    },
+    {
+        id: 4,
+        name: 'German'
+    }
+];
+
 const REVIEWS = [
     {
         id: 1,
@@ -2007,9 +2026,10 @@ module.exports = {
     ROLES,
     FACILITY_CATEGORIES,
     REVIEW_CATEGORIES,
-    BED_IN_ROOMS,
+    BED_IN_ROOM,
     BED_TYPES,
     ROOM_TYPES,
     PROPERTY_TYPE,
-    REVIEWS
+    LANGUAGES,
+    REVIEWS,
 };

@@ -51,12 +51,17 @@ export class MainSearch extends React.Component {
                 console.log(
                     "response Cities= " + JSON.stringify(citiesResponse)
                 );
-                citiesResponse.data.forEach(element => {
-                    resultsData.push({
-                        title: element._source.city,
-                        description: element._source.country
+                if (
+                    citiesResponse &&
+                    citiesResponse.data &&
+                    citiesResponse.data instanceof Array
+                )
+                    citiesResponse.data.forEach(element => {
+                        resultsData.push({
+                            title: element._source.city,
+                            description: element._source.country
+                        });
                     });
-                });
 
                 let index = "properties";
                 return axios.get(
@@ -70,6 +75,9 @@ export class MainSearch extends React.Component {
                 console.log(
                     "response Roperties= " + JSON.stringify(propertiesResponse)
                 );
+                if( propertiesResponse &&
+                    propertiesResponse.data &&
+                    propertiesResponse.data instanceof Array)
                 propertiesResponse.data.forEach(element => {
                     resultsData.push({
                         title: element._source.name,
