@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import ImageUploader from "react-images-upload";
-import { phoneNumber, email } from "client/regexValidationService";
+import {
+    phoneNumber,
+    email,
+    password,
+    required,
+    minLength8
+} from "client/regexValidationService";
 import inputField from "./input";
 import AlgoliaPlaces from "algolia-places-react";
 
@@ -125,7 +131,6 @@ export class SettingsForm extends Component {
     };
 
     addingItem = (item, bool) => {
-        console.log(item, bool);
         if (bool) {
             this.setState({
                 [item]: true
@@ -141,6 +146,12 @@ export class SettingsForm extends Component {
     };
     handleDimmerHide = () => {
         this.setState({ active: false });
+    };
+
+    hadleChangePassword = () => {
+        console.log(this.props.id);
+        const { id, oldPassword, newPassword } = this.props;
+        this.props.changePassword({ id, oldPassword, newPassword });
     };
 
     render() {
@@ -335,10 +346,38 @@ export class SettingsForm extends Component {
                         options={currencyOptions}
                     />
                     <p className="personal_settings-p">Password</p>
-                    <Button primary onClick={this.resetPassword}>
+                    <Field
+                        component={inputField}
+                        name="oldPassword"
+                        label="Old password"
+                        type="password"
+                        min={4}
+                        max={16}
+                        className="personal_settings-field"
+                        pointing="left"
+                        val={this.props.oldPassword}
+                        validate={[password]}
+                        onChange={e => this.handleChange(e, e.target)}
+                    />
+
+                    <Field
+                        component={inputField}
+                        name="newPassword"
+                        label="New password"
+                        type="password"
+                        min={4}
+                        max={16}
+                        className="personal_settings-field"
+                        pointing="left"
+                        val={this.props.newPassword}
+                        validate={[password, minLength8]}
+                        onChange={e => this.handleChange(e, e.target)}
+                    />
+                    <Button primary onClick={this.hadleChangePassword}>
                         <Icon name="erase" />
                         Change password
                     </Button>
+                    {this.props.passwordMessage}
                 </Segment>
                 <Segment>
                     <Button primary onClick={this.sendSettings}>

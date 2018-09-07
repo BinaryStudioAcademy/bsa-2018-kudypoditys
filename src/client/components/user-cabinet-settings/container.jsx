@@ -3,7 +3,7 @@ import {
     sendUserSettings,
     getUserSettings,
     uploadAvatar,
-    resetPassword,
+    changePassword,
     avatarDelete
 } from "client/logic/user-cabinet-settings/actions";
 
@@ -25,8 +25,8 @@ export function mapDispatchToProps(dispatch) {
         uploadAvatar(data) {
             dispatch(uploadAvatar(data));
         },
-        resetPassword(mail) {
-            dispatch(resetPassword(mail));
+        changePassword(data) {
+            dispatch(changePassword(data));
         },
         avatarDelete() {
             dispatch(avatarDelete());

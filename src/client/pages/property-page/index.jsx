@@ -38,6 +38,11 @@ export class PropertyPage extends React.Component {
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
         this.props.getBookings();
+        this.props.getRooms(
+            this.props.match.params.id,
+            this.props.checkIn,
+            this.props.checkOut
+        );
     }
 
     getImagesArray(propertyImages) {
@@ -64,8 +69,7 @@ export class PropertyPage extends React.Component {
     }
 
     render() {
-        const { property, user } = this.props;
-        console.log(property);
+        const { property, user, rooms } = this.props;
         // const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
         const { reviewsVisible } = this.state;
         const dividerStyle = {
@@ -280,7 +284,7 @@ export class PropertyPage extends React.Component {
                                 </Header>
                                 <RoomsSummaryTable
                                     ref={"roomsRef"}
-                                    rooms={property.rooms}
+                                    rooms={rooms}
                                 />
                             </div>
                             <Divider hidden />
