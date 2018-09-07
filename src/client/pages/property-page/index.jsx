@@ -151,6 +151,7 @@ export class PropertyPage extends React.Component {
                                         </div>
                                     }
                                     onClose={this.props.clearBookingForm}
+                                    closeIcon
                                 >
                                     <BookingForm
                                         rooms={property.rooms}

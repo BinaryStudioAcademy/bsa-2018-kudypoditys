@@ -89,6 +89,7 @@ export class RoomsSummaryTable extends React.Component {
                                     </div>
                                 }
                                 onClose={this.props.clearBookingForm}
+                                closeIcon
                             >
                                 {" "}
                                 <BookingForm
