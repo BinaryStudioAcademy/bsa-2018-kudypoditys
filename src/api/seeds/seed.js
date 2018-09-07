@@ -506,6 +506,286 @@ const PROPERTY_PAYMENT_TYPES = [
     {
         propertyId: 2,
         paymentTypeId: 3
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 4
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 4,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 4,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 4,
+        paymentTypeId: 4
+    },
+    {
+        propertyId: 5,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 5,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 4
+    },
+    {
+        propertyId: 7,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 7,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 7,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 8,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 8,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 8,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 9,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 9,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 9,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 10,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 10,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 10,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 11,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 11,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 11,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 12,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 12,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 12,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 13,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 13,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 13,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 14,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 14,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 14,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 15,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 15,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 15,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 16,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 16,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 16,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 17,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 17,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 17,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 18,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 18,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 18,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 19,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 19,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 19,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 20,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 20,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 20,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 21,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 21,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 21,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 22,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 22,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 22,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 23,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 23,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 23,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 24,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 24,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 24,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 25,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 25,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 25,
+        paymentTypeId: 1
     }
 ];
 
@@ -558,9 +838,6 @@ const ROOMS = [
         roomTypeId: 2,
         propertyId: 6
     },
-    //
-    //
-    //
     {
         id: 7,
         price: 20,
@@ -718,6 +995,38 @@ const ROOMS = [
         area: 67,
         roomTypeId: 2,
         propertyId: 25
+    },
+    {
+        id: 26,
+        price: 33,
+        amount: 2,
+        area: 67,
+        roomTypeId: 4,
+        propertyId: 1
+    },
+    {
+        id: 27,
+        price: 20,
+        amount: 3,
+        area: 67,
+        roomTypeId: 3,
+        propertyId: 1
+    },
+    {
+        id: 28,
+        price: 15,
+        amount: 3,
+        area: 67,
+        roomTypeId: 5,
+        propertyId: 2
+    },
+    {
+        id: 29,
+        price: 25,
+        amount: 3,
+        area: 67,
+        roomTypeId: 1,
+        propertyId: 2
     }
 ];
 
@@ -1347,6 +1656,35 @@ const FACILITY_LISTS = [
         id: 50,
         propertyId: 25,
         facilityId: 1
+    },
+    {
+        propertyId: 1,
+        facilityId: 2
+    },
+    {
+        propertyId: 1,
+        facilityId: 5
+    },
+    {
+        propertyId: 1,
+        facilityId: 6
+    },
+    {
+        propertyId: 1,
+        facilityId: 4
+    },
+
+    {
+        propertyId: 1,
+        facilityId: 12
+    },
+    {
+        propertyId: 1,
+        facilityId: 10
+    },
+    {
+        propertyId: 1,
+        facilityId: 16
     }
 ];
 
@@ -1759,7 +2097,12 @@ const BED_IN_ROOM = [
     { id: 22, count: 7, roomId: 22, bedTypeId: 3 },
     { id: 23, count: 2, roomId: 23, bedTypeId: 4 },
     { id: 24, count: 3, roomId: 24, bedTypeId: 5 },
-    { id: 25, count: 2, roomId: 25, bedTypeId: 6 }
+    { id: 25, count: 2, roomId: 25, bedTypeId: 6 },
+    { id: 26, count: 2, roomId: 26, bedTypeId: 4 },
+    { id: 27, count: 1, roomId: 27, bedTypeId: 2 },
+    { id: 28, count: 1, roomId: 28, bedTypeId: 2 },
+    { id: 29, count: 1, roomId: 28, bedTypeId: 3 },
+    { id: 30, count: 1, roomId: 29, bedTypeId: 2 }
 ];
 const BED_TYPES = [
     {
@@ -1971,19 +2314,19 @@ const ROOM_TYPES = [
 const LANGUAGES = [
     {
         id: 1,
-        name: 'English'
+        name: "English"
     },
     {
         id: 2,
-        name: 'Russion'
+        name: "Russion"
     },
     {
         id: 3,
-        name: 'Ukranian'
+        name: "Ukranian"
     },
     {
         id: 4,
-        name: 'German'
+        name: "German"
     }
 ];
 
@@ -2056,5 +2399,5 @@ module.exports = {
     ROOM_TYPES,
     PROPERTY_TYPE,
     LANGUAGES,
-    REVIEWS,
+    REVIEWS
 };
