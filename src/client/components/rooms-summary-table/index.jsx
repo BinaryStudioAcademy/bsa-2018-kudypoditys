@@ -15,27 +15,18 @@ export class RoomsSummaryTable extends React.Component {
         return (
             <div style={{ padding: "5px" }}>
                 {bedsInRoom.map((bed, index) => {
-                    if (bedsTotal - 1 !== index)
-                        return (
-                            <React.Fragment>
-                                <span key={index} style={{ color: "#465672" }}>
-                                    {bed.count} {bed.bedType.name}
-                                </span>
-                                <Divider />
-                            </React.Fragment>
-                        );
-                    else
-                        return (
-                            <span
-                                key={index}
-                                style={{
-                                    paddingLeft: "23px",
-                                    color: "#465672"
-                                }}
-                            >
-                                {bed.count} {bed.bedType.name}
-                            </span>
-                        );
+                    return (
+                        <span
+                            key={index}
+                            style={{
+                                display: "block",
+                                paddingLeft: "23px",
+                                color: "#465672"
+                            }}
+                        >
+                            {bed.count} {bed.bedType.name}
+                        </span>
+                    );
                 })}
             </div>
         );
