@@ -46,6 +46,14 @@ export function mapDispatchToProps(dispatch, ownProps) {
         },
         onPaymentTypeChange(value) {
             dispatch(bookingInputUpdate({ paymentTypeId: value }));
+        },
+        clearBookingForm() {
+            dispatch(
+                bookingInputUpdate({
+                    message: "",
+                    error: ""
+                })
+            );
         }
     };
 }
