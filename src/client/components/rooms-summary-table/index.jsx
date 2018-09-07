@@ -15,21 +15,18 @@ export class RoomsSummaryTable extends React.Component {
         return (
             <div style={{ padding: "5px" }}>
                 {bedsInRoom.map((bed, index) => {
-                    if (bedsTotal - 1 !== index)
-                        return (
-                            <React.Fragment>
-                                <span key={index} style={{ color: "#465672" }}>
-                                    {bed.count} {bed.bedType.name}
-                                </span>
-                                <Divider />
-                            </React.Fragment>
-                        );
-                    else
-                        return (
-                            <span key={index} style={{ color: "#465672" }}>
-                                {bed.count} {bed.bedType.name}
-                            </span>
-                        );
+                    return (
+                        <span
+                            key={index}
+                            style={{
+                                display: "block",
+                                paddingLeft: "23px",
+                                color: "#465672"
+                            }}
+                        >
+                            {bed.count} {bed.bedType.name}
+                        </span>
+                    );
                 })}
             </div>
         );
@@ -40,27 +37,6 @@ export class RoomsSummaryTable extends React.Component {
             <React.Fragment>
                 <div className="room-row">
                     <div className="room-row--left-section">
-                        <Popup
-                            style={{
-                                overflow: "hidden"
-                            }}
-                            trigger={
-                                <p
-                                    style={{
-                                        margin: "0",
-                                        cursor: "pointer",
-                                        color: "#465672",
-                                        width: "50px",
-                                        fontSize: "18px"
-                                    }}
-                                >
-                                    {room.bedInRooms.length + " "}
-                                    <Icon name="bed" />
-                                </p>
-                            }
-                            content={this.getBedsSummary(room.bedInRooms)}
-                            hoverable
-                        />
                         <p
                             style={{
                                 margin: "0",
@@ -68,8 +44,10 @@ export class RoomsSummaryTable extends React.Component {
                                 fontSize: "18px"
                             }}
                         >
-                            {room.roomType.name}
+                            <Icon name="bed" />
+                            {" " + room.roomType.name}
                         </p>
+                        <p>{this.getBedsSummary(room.bedInRooms)}</p>
                     </div>
                     <div className="room-row--right-section">
                         <p
@@ -78,6 +56,7 @@ export class RoomsSummaryTable extends React.Component {
                                 color: "rgb(0, 168, 130)",
                                 fontSize: "18px",
                                 fontWeight: "bold",
+                                alignSelf: "center",
                                 paddingRight: "5px"
                             }}
                         >
@@ -89,16 +68,19 @@ export class RoomsSummaryTable extends React.Component {
                                     <div
                                         className="book-btn"
                                         style={{
-                                            height: "100%",
+                                            height: "40px",
                                             width: "150px",
                                             paddingLeft: "10px",
                                             margin: "0"
                                         }}
                                     >
-                                        <button>Book now</button>
+                                        <button style={{ height: "100%" }}>
+                                            Book now
+                                        </button>
                                     </div>
                                 }
                                 onClose={this.props.clearBookingForm}
+                                closeIcon
                             >
                                 {" "}
                                 <BookingForm
