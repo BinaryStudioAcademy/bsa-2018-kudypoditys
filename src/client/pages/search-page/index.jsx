@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import { Container, Grid, Segment, Icon } from "semantic-ui-react";
+import { Container, Grid, Segment, Icon, Button } from "semantic-ui-react";
 
 import Breadcrumbs from "client/components/breadcrumbs";
 import SearchSummary from "client/components/search-summary";
@@ -11,15 +11,18 @@ import BasicMapWidget from "client/components/basic-map-widget";
 import Header from "client/components/header";
 import { Breadcrumb } from "semantic-ui-react";
 import QuickFilter from "client/components/quick-filter";
-
+import MapWidgetModal from "client/components/map-widget-modal";
 import { connect } from "react-redux";
 import { mapStateToProps } from "./container";
 import history from "client/history";
+import MapView from "../../components/map-view";
 
 class SearchPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            mapProp : [],
+            switch: 'list',
             listItems: [],
             itemCount: 0,
             searchRequest: {},
@@ -52,8 +55,50 @@ class SearchPage extends React.Component {
         console.log("data" + JSON.stringify(data));
         this.setState({ selectedPage: data.activePage });
     };
+    handleList_Map = (e, data) => {
+        // console.log(e.target.value)
+        // console.log( data.value)
+        this.setState({
+            switch: data.value
+        })
+        // console.log(this.state.switch)
+        console.log(this.state.properties)
+        let tempArr = []
+        // this.props.state.search.data.properties.forEach(i => {
+        //     tempArr.push(i)
+        // })
+        console.log(this.state.properties)
 
+        this.state.properties.forEach(i => {
+            console.log(i.rooms[0])
+            tempArr.push({
+                price: i.rooms[0].price,
+                name: i.name,
+                coordinates: {
+                    lat:
+                    i.coordinates.lat,
+                    lng:
+                    i.coordinates.lng
+                },
+                latitude:
+                i.coordinates.lat,
+                longitude: i.coordinates.lng,
+                imageSrc: i.images[0].url,
+                address: i.address,
+                rating: i.rating
+            })
+        });
+
+        this.setState({mapProp: tempArr})
+        console.log(tempArr)
+        console.log(this.state.mapProp)
+    }
     render() {
+        // console.log(this.state.listItems)
+
+        // const properties = this.props.state.search.data
+        console.log(this.state.mapProp)
+
         return (
             <div className="mock">
                 <Header
@@ -99,14 +144,16 @@ class SearchPage extends React.Component {
                                 destination={this.state.searchRequest.query}
                             />
                             <div className="switch">
-                                <div className="list_btn">
+                                <Button className="list_btn" value='list' onClick={this.handleList_Map}>
                                     <Icon name="list ul" color="white" />
                                     List
-                                </div>
-                                <div className="map_btn">
+                                </Button>
+                                <Button className="map_btn" value='map' onClick={this.handleList_Map}
+
+                                >
                                     <Icon name="world" />
                                     Map
-                                </div>
+                                </Button>
                             </div>
                         </div>
 
@@ -115,7 +162,21 @@ class SearchPage extends React.Component {
                             searchRequest={this.state.searchRequest}
                             onSortingSelected={this.onSortingSelected}
                         />
-                        {this.state.listItems}
+                        {this.state.switch === 'list' ? this.state.listItems : <MapWidgetModal
+                            properties={this.state.mapProp}
+                            startPosition={{
+                                latitude:
+                                this.state.mapProp[0].coordinates
+                                    .lat,
+                                longitude:
+                                this.state.mapProp[0].coordinates.lng
+                            }}
+                            zoom={13}
+                            controlEnable={true}
+
+                        />}
+
+
                         <div className="search-page__pagination">
                             <Pagination
                                 pagesCount={this.state.itemCount / 5}
