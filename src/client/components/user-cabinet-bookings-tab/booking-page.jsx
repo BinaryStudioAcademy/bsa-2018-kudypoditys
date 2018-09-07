@@ -7,7 +7,8 @@ import {
     Button,
     Icon,
     Table,
-    Divider
+    Divider,
+    Confirm
 } from "semantic-ui-react";
 import { Slider } from "../slider";
 import moment from "moment";
@@ -132,11 +133,8 @@ export class BookingPage extends React.Component {
                         </Header>
                         <p>
                             <Icon name="map marker alternate" />
-                            {room.property.address}
-                            {" –"}
-
-                            {console.log(booking.room.property.coordinates)}
                             <MapWidgetModal
+                                buttonText={room.property.address}
                                 properties={[
                                     {
                                         price: room.price,

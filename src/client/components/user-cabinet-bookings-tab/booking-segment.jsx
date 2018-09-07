@@ -17,6 +17,8 @@ import {
 } from "client/helpers/reviewToggler";
 import Modal from "../modal";
 import ReviewForm from "../reviews/addReviewForm";
+import MapWidgetModal from "client/components/map-widget-modal";
+
 export class BookingSegment extends React.Component {
     constructor(props) {
         super(props);
@@ -68,10 +70,50 @@ export class BookingSegment extends React.Component {
                             <Header as="h4">
                                 {booking.room.property.name}
                             </Header>
-                            <p className="booking-address">
-                                <Icon name="map marker alternate" />
-                                {booking.room.property.address}
-                            </p>
+                            <Icon name="map marker alternate" />
+                            {console.log(
+                                "price",
+                                booking.room.price,
+
+                                "name",
+                                booking.room.property.name,
+                                "coordinates",
+                                booking.room.property.coordinates,
+
+                                "imageSrc",
+                                booking.room.property.images[0].url,
+
+                                "address",
+                                booking.room.property.address,
+
+                                "rating",
+                                booking.room.property.rating
+                            )}
+                            <MapWidgetModal
+                                buttonText={booking.room.property.address}
+                                properties={[
+                                    {
+                                        price: booking.room.price,
+                                        name: booking.room.property.name,
+                                        coordinates:
+                                            booking.room.property.coordinates,
+                                        imageSrc:
+                                            booking.room.property.images[0].url,
+                                        address: booking.room.property.address,
+                                        rating: booking.room.property.rating
+                                    }
+                                ]}
+                                startPosition={{
+                                    latitude:
+                                        booking.room.property.coordinates.lat,
+                                    longitude:
+                                        booking.room.property.coordinates.lng
+                                }}
+                                zoom={13}
+                                controlEnable={true}
+                                buttonClass={"searchMapButton"}
+                            />
+
                             <p className="booking-phone">
                                 <Icon name="phone" />
                                 {booking.room.property.contactPhone}
