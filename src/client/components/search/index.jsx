@@ -345,7 +345,6 @@ export class MainSearch extends React.Component {
                                 </Grid.Column>
                                 <Grid.Column width={10}>
                                     <Dropdown
-                                        style={{ border: 0 }}
                                         compact
                                         selection
                                         name="rooms"
@@ -363,7 +362,6 @@ export class MainSearch extends React.Component {
                                 </Grid.Column>
                                 <Grid.Column width={10}>
                                     <Dropdown
-                                        style={{ border: 0 }}
                                         compact
                                         selection
                                         name="adults"
@@ -381,9 +379,6 @@ export class MainSearch extends React.Component {
                                 </Grid.Column>
                                 <Grid.Column width={10}>
                                     <Dropdown
-                                        style={{
-                                            border: 0
-                                        }}
                                         compact
                                         selection
                                         name="children"
