@@ -124,20 +124,14 @@ export class PropertyPage extends React.Component {
                 <Sidebar.Pusher>
                     <div className="property-page__wrapper">
                         <div text className="property-page__wrapper-left_side">
-                            <BasicMapWidget
-                                key="BasicMapWidget"
-                                properties={[property]}
-                                coordinates={property.coordinates}
-                                controlEnable={false}
-                                rounded
-                                centered
-                            />
                             {user ? (
                                 <Modal
                                     trigger={
                                         <div
                                             className="book-btn"
-                                            style={{ height: "33px" }}
+                                            style={{
+                                                height: "33px"
+                                            }}
                                         >
                                             <button>Book now</button>
                                             <div
@@ -161,6 +155,20 @@ export class PropertyPage extends React.Component {
                                     />
                                 </Modal>
                             ) : null}
+                            <Divider
+                                style={{
+                                    ...dividerStyle,
+                                    width: "250px"
+                                }}
+                            />
+                            <BasicMapWidget
+                                key="BasicMapWidget"
+                                properties={[property]}
+                                coordinates={property.coordinates}
+                                controlEnable={false}
+                                rounded
+                                centered
+                            />
                         </div>
 
                         <Container
@@ -202,7 +210,8 @@ export class PropertyPage extends React.Component {
                                     text
                                     style={{
                                         display: "table",
-                                        lineHeight: 1.2
+                                        lineHeight: 1.2,
+                                        width: "100%"
                                     }}
                                 >
                                     <div className="facilities-section">
