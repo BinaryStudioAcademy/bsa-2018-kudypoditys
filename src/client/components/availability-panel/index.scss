@@ -64,3 +64,29 @@
 .availability-form div.inline.fields.room-selector {
     margin: 0;
 }
+
+.availability-form .DateRangePickerInput_arrow {
+    position: absolute;
+    z-index: 3;
+    color: #182c4f;
+    display: none;
+}
+
+.availability-form .DateInput_input_1 {
+    border: 0px solid !important;
+    border-left: 1px !important;
+    font-family: ArialMT, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: black;
+    opacity: 0.8;
+}
+
+.availability-form div.DateInput.DateInput_1 {
+    overflow: hidden;
+}

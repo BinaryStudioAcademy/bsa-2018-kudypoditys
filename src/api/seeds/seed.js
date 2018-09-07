@@ -38,6 +38,7 @@ const PROPERTIES = [
             "This property is 15 minutes walk from the beach. Located on Independence Square in the heart of Kiev, this hotel offers air-conditioned rooms and suites with elegant décor. It is a 3-minute walk from the Maidan Nezalezhnosti and Kreschatik Metro Stations. In-room facilities at the Ukraine Hotel include satellite TV and a refrigerator. Your bathroom includes free toiletries and perfumes. Guests enjoy views of the Kreschatyk Street and the surrounding area. A large breakfast buffet is available at the Ukraine Hotel, and 24-hour room service is offered. Ukrainian and European cuisine is served for lunch and dinner. Live music is sometimes played here. The hotel features a beauty salon, sauna and massage facilities. A private laundry service is also available. Hotel Ukraine is a 10-minute walk from Mariyinsky Park and the St. Sofia Cathedral. Secure parking is available on site. Pecherskyj is a great choice for travellers interested in restaurants, food and friendly locals. This is our guests' favourite part of Kiev, according to independent reviews. This property also has one of the best-rated locations in Kiev! Guests are happier about it compared to other properties in the area.",
         contactPhone: "0509832174",
         coordinates: { lat: 49.837089, lng: 24.021161 },
+        distanceToCentre:1.7,
         userId: 1,
         propertyTypeId: 9,
         cityId: 2,
@@ -53,6 +54,7 @@ const PROPERTIES = [
         contactPhone: "0509842174",
         coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 9,
+        distanceToCentre:0.7,
         cityId: 1,
         accommodationRuleId: 1
     },
@@ -66,6 +68,7 @@ const PROPERTIES = [
         contactPhone: "0678674908",
         coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 9,
+        distanceToCentre:1.1,
         cityId: 1,
         accommodationRuleId: 1
     },
@@ -79,6 +82,7 @@ const PROPERTIES = [
         contactPhone: "0955679712",
         coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 9,
+        distanceToCentre:0.2,
         cityId: 1,
         accommodationRuleId: 1
     },
@@ -92,6 +96,7 @@ const PROPERTIES = [
         contactPhone: "0509842174",
         coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 9,
+        distanceToCentre:2.7,
         cityId: 1,
         accommodationRuleId: 1
     },
@@ -105,6 +110,7 @@ const PROPERTIES = [
         contactPhone: "0674569222",
         coordinates: { lat: 49.988358, lng: 36.232845 },
         propertyTypeId: 5,
+        distanceToCentre:3.7,
         cityId: 5,
         accommodationRuleId: 1
     },
@@ -119,6 +125,7 @@ const PROPERTIES = [
         contactPhone: "0896789099",
         coordinates: { lat: 49.988358, lng: 36.232845 },
         propertyTypeId: 6,
+        distanceToCentre:1.4,
         cityId: 5,
         accommodationRuleId: 1
     },
@@ -132,6 +139,7 @@ const PROPERTIES = [
         contactPhone: "05089079871",
         coordinates: { lat: 46.469391, lng: 30.740883 },
         propertyTypeId: 16,
+        distanceToCentre:3.7,
         cityId: 4,
         accommodationRuleId: 1
     },
@@ -145,6 +153,7 @@ const PROPERTIES = [
         contactPhone: "0509842174",
         coordinates: { lat: 46.469391, lng: 30.740883 },
         propertyTypeId: 9,
+        distanceToCentre:1.5,
         cityId: 4,
         accommodationRuleId: 1
     },
@@ -158,6 +167,7 @@ const PROPERTIES = [
         contactPhone: "05066789078",
         coordinates: { lat: 46.469391, lng: 30.740883 },
         propertyTypeId: 16,
+        distanceToCentre:6.7,
         cityId: 4,
         accommodationRuleId: 1
     },
@@ -171,6 +181,7 @@ const PROPERTIES = [
         contactPhone: "09565789091",
         coordinates: { lat: 46.469391, lng: 30.740883 },
         propertyTypeId: 13,
+        distanceToCentre:8.7,
         cityId: 4,
         accommodationRuleId: 1
     },
@@ -189,6 +200,7 @@ const PROPERTIES = [
         contactPhone: "0674589485",
         coordinates: { lat: 49.553516, lng: 25.594767 },
         propertyTypeId: 1,
+        distanceToCentre:1.9,
         cityId: 3,
         accommodationRuleId: 1
     },
@@ -209,6 +221,7 @@ const PROPERTIES = [
         contactPhone: "0956786121",
         coordinates: { lat: 49.553516, lng: 25.594767 },
         propertyTypeId: 9,
+        distanceToCentre:9.7,
         cityId: 3,
         accommodationRuleId: 1
     },
@@ -229,6 +242,7 @@ const PROPERTIES = [
         contactPhone: "0906786876",
         coordinates: { lat: 49.553516, lng: 25.594767 },
         propertyTypeId: 2,
+        distanceToCentre:1.5,
         cityId: 3,
         accommodationRuleId: 1
     },
@@ -248,6 +262,7 @@ const PROPERTIES = [
         contactPhone: "0678909456",
         coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 9,
+        distanceToCentre:4.7,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -268,6 +283,7 @@ const PROPERTIES = [
         contactPhone: "0908909422",
         coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 9,
+        distanceToCentre:3.7,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -288,6 +304,7 @@ const PROPERTIES = [
         contactPhone: "09567893241",
         coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 9,
+        distanceToCentre:7.7,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -310,6 +327,7 @@ const PROPERTIES = [
         contactPhone: "0674594012",
         coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 16,
+        distanceToCentre:1.3,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -326,6 +344,7 @@ const PROPERTIES = [
         contactPhone: "0674099409",
         coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 6,
+        distanceToCentre:3.7,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -347,6 +366,7 @@ const PROPERTIES = [
         contactPhone: "0955589762",
         coordinates: { lat: 50.471626, lng: 30.453608 },
         propertyTypeId: 11,
+        distanceToCentre:2.7,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -366,6 +386,7 @@ const PROPERTIES = [
         coordinates: { lat: 48.45, lng: 34.98333 },
         propertyTypeId: 9,
         cityId: 6,
+        distanceToCentre:3.5,
         accommodationRuleId: 1
     },
     {
@@ -385,6 +406,7 @@ const PROPERTIES = [
         contactPhone: "0674108900",
         coordinates: { lat: 48.45, lng: 34.98333 },
         propertyTypeId: 17,
+        distanceToCentre:2.7,
         cityId: 6,
         accommodationRuleId: 1
     },
@@ -401,6 +423,7 @@ const PROPERTIES = [
         contactPhone: "0904118899",
         coordinates: { lat: 48.45, lng: 34.98333 },
         propertyTypeId: 1,
+        distanceToCentre:1.1,
         cityId: 6,
         accommodationRuleId: 1
     },
@@ -424,6 +447,7 @@ const PROPERTIES = [
         coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 1,
         cityId: 1,
+        distanceToCentre:7.7,
         accommodationRuleId: 1
     },
     {
@@ -443,6 +467,7 @@ const PROPERTIES = [
         contactPhone: "0678907890",
         coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 1,
+        distanceToCentre:7.1,
         cityId: 1,
         accommodationRuleId: 1
     }

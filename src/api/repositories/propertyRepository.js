@@ -189,24 +189,25 @@ class PropertyRepository extends Repository {
     }
 
     createDetails(entity) {
-        return this.model
-            .create(entity, {
-                include: [AccommodationRule, BasicFacility, Image, Room]
-            })
-            .then(({ dataValues: newProperty }) => {
-                let facilityList = entity.facilities.map(f => ({
-                    propertyId: newProperty.id,
-                    facilityId: f.id
-                }));
-                return FacilityList.bulkCreate(facilityList).then(
-                    _ => newProperty
-                );
-            })
-            .then(newProperty => {
-                let languages = entity.languages.map(l => ({
-                    propertyId: newProperty.id,
-                    languageId: l.id
-                }));
+        return this.model.create(entity, {
+            include: [
+                AccommodationRule, BasicFacility, Image,
+                {
+                    model: Room,
+                    include: [BedInRoom]
+                }
+            ]
+        }).then(({ dataValues: newProperty }) => {
+            let facilityList = entity.facilities.map(f => ({
+                propertyId: newProperty.id,
+                facilityId: f.id
+            }));
+            return FacilityList.bulkCreate(facilityList).then(_ => newProperty);
+        }).then(newProperty => {
+            let languages = entity.languages.map(l => ({
+                propertyId: newProperty.id,
+                languageId: l.id
+            }));
 
                 return PropertyLanguage.bulkCreate(languages).then(
                     _ => newProperty
@@ -236,6 +237,9 @@ class PropertyRepository extends Repository {
         switch (filter.sortBy) {
             case SORT_VALUE.PRICE:
                 sortingOption = [[Room, "price", "ASC"]];
+                break;
+            case SORT_VALUE.DISTANCE:
+                sortingOption = [["distanceToCentre", "ASC"]];
                 break;
             case SORT_VALUE.LOW_RANK:
                 sortingOption = [["rating", "ASC"]];
@@ -292,7 +296,7 @@ class PropertyRepository extends Repository {
                         }
                     }
                 ],
-                order: sortingOption
+              order: sortingOption
             })
             .then(properties => {
                 return properties;

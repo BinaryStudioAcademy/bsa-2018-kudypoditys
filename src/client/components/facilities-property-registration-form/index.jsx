@@ -59,14 +59,12 @@ class FacilitiesPropertyRegistrationForm extends Component {
                     <Card.Description style={{ fontSize: "18px" }}>
                         Internet. Do you provide guests with Wi-Fi?
                     </Card.Description>
-                    <br />
                     <Field
                         component={RadioGroup}
                         name="basicFacility.hasInternet"
                         options={internetOptions}
                     />
-                    <br />
-                    {hasInternet !== 'paid' ||
+                    {hasInternet !== 'paid' ? <Fragment /> :
                         <Field
                             component={renderField}
                             name="basicFacility.internetPrice"
@@ -77,7 +75,6 @@ class FacilitiesPropertyRegistrationForm extends Component {
                             parse={parseNumber}
                         />
                     }
-                    <br />
                     <Card.Meta>
                         Guests will see this name when they search for a place
                         to stay.
@@ -262,7 +259,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
                     <List horizontal relaxed>
                         {
                             facilities.map((facility, i) => (
-                                <List.Item key={i} compact style={{ margin: '1rem', padding: '0' }}>
+                                <List.Item key={i} style={{ margin: '1rem', padding: '0' }}>
                                     <Field
                                         component={renderCheckbox}
                                         name={`facilities.${facility.id}`}
