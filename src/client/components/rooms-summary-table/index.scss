@@ -18,7 +18,8 @@
 .room-row--right-section {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    align-self: center;
     min-height: 50px;
     height: auto;
 }
