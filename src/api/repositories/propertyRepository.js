@@ -10,7 +10,7 @@ const Availability = require("../models/Availability");
 const Favorite = require("../models/Favorite");
 const AccommodationRule = require("../models/AccommodationRule");
 const PropertyType = require("../models/PropertyType");
-const PropertyPaymentType = require('../models/PropertyPaymentType');
+const PropertyPaymentType = require("../models/PropertyPaymentType");
 const Country = require("../models/Country");
 const City = require("../models/City");
 const Review = require("../models/Review");
@@ -19,8 +19,9 @@ const Room = require("../models/Room");
 const FacilityList = require("../models/FacilityList");
 const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
-const PropertyLanguage = require('../models/PropertyLanguage');
-const BasicFacility = require('../models/BasicFacility');
+const PropertyLanguage = require("../models/PropertyLanguage");
+const BasicFacility = require("../models/BasicFacility");
+const FacilityCategory = require("../models/FacilityCategory");
 
 const includeOptions = [
     {
@@ -51,7 +52,18 @@ const includeOptions = [
     },
     {
         model: Review,
-        attributes: ["id", "pros", "cons", "Cleanliness", "Price", "Comfort", "Facilities", "avgReview", "createdAt", "anon"],
+        attributes: [
+            "id",
+            "pros",
+            "cons",
+            "Cleanliness",
+            "Price",
+            "Comfort",
+            "Facilities",
+            "avgReview",
+            "createdAt",
+            "anon"
+        ],
         include: [
             {
                 model: User,
@@ -77,7 +89,8 @@ const includeOptions = [
         include: [
             {
                 model: Facility,
-                attributes: ["id", "name"]
+                attributes: ["id", "name"],
+                include: { model: FacilityCategory, attributes: ["name"] }
             }
         ]
     },
@@ -135,12 +148,11 @@ class PropertyRepository extends Repository {
     }
 
     getPropertiesByCity(city) {
-        console.log(city)
+        console.log(city);
         return this.model
             .findAll({
                 where: {
                     cityId: city
-
                 },
                 include: [
                     {
@@ -172,7 +184,7 @@ class PropertyRepository extends Repository {
                 ]
             })
             .then(properties => {
-                return properties
+                return properties;
             });
     }
 
@@ -197,17 +209,21 @@ class PropertyRepository extends Repository {
                 languageId: l.id
             }));
 
-            return PropertyLanguage.bulkCreate(languages).then(_ => newProperty);
-        }).then(newProperty => {
-            let paymentTypes = entity.paymentTypes.map(p => ({
-                propertyId: newProperty.id,
-                paymentTypeId: p.id
-            }));
+                return PropertyLanguage.bulkCreate(languages).then(
+                    _ => newProperty
+                );
+            })
+            .then(newProperty => {
+                let paymentTypes = entity.paymentTypes.map(p => ({
+                    propertyId: newProperty.id,
+                    paymentTypeId: p.id
+                }));
 
-            return PropertyPaymentType.bulkCreate(paymentTypes).then(_ => newProperty);
-        }).then(newProperty =>
-            this.findById(newProperty.id)
-        );
+                return PropertyPaymentType.bulkCreate(paymentTypes).then(
+                    _ => newProperty
+                );
+            })
+            .then(newProperty => this.findById(newProperty.id));
     }
 
     getFilteredProperties(filter) {

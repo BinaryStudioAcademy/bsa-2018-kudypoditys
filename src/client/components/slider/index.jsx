@@ -35,7 +35,7 @@ export class Slider extends Component {
         fade: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        centerMode: true,
+        centerMode: false,
         accessibility: false,
         appendDots: () => this.picsThumbnails(this.props.pics),
         beforeChange: (curr, next) => (this.slideIndex = next)
@@ -57,7 +57,6 @@ export class Slider extends Component {
                 >
                     {this.props.pics.map((item, i) => (
                         <Image
-                            centered
                             size="large"
                             className="slider-c-image"
                             src={item}
