@@ -14,15 +14,23 @@ import roomSummary from "client/logic/rooms-summary-table/reducer";
 import cityInfos from "client/logic/banner-list/reducer";
 import amenitiesTab from "./amenities-tab-for-property/reducer";
 import propertySubmit from "./main-info-tab/reducer";
-import propertyRegistration from "client/logic/property-creation-tabs/reducer";
-import userSettings from "client/logic/personal-settings-edit/reducer";
+import propertyRegistration from "client/logic/property-registration/reducer";
+import userSettings from "client/logic/user-cabinet-settings/reducer";
 import userCabinet from "./user-cabinet/reducer";
 import userVerified from "client/logic/verify-email/reducer";
 import resetPassword from 'client/logic/reset-password/reducer';
 import forgotPassword from 'client/logic/forgot-password/reducer';
-
+import countries from 'client/logic/countries/reducer';
+import languages from 'client/logic/languages/reducer';
+import facilities from 'client/logic/facilities/reducer';
 import availabilityCalendar from "client/logic/property-availability-calendar/reducer";
+import checkInCheckOut from 'client/logic/checkInCheckOut/reducer';
+import paymentTypes from 'client/logic/payment-type/reducer';
 import review from "client/logic/reviews/reducer";
+import roomTypes from 'client/logic/room-types/reducer';
+import bedTypes from 'client/logic/bed-types/reducer';
+import testRoomsTab from 'client/logic/1test-rooms-tab/reducer';
+
 export default combineReducers({
     search,
     sortType,
@@ -31,7 +39,7 @@ export default combineReducers({
     header,
     shownProperties,
     foundProperties,
-    // checkInOut,
+    checkInCheckOut,
     form: formReducer.plugin({
         registration: registration,
         login: login
@@ -51,6 +59,12 @@ export default combineReducers({
     userCabinet,
     resetPassword,
     forgotPassword,
+    countries,
+    languages,
+    facilities,
     availabilityCalendar,
-
+    paymentTypes,
+    roomTypes,
+    bedTypes,
+    testRoomsTab,
 });

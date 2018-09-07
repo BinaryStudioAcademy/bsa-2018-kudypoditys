@@ -1,7 +1,7 @@
 const elasticsearch = require("elasticsearch");
 const elasticClient = new elasticsearch.Client({
-    host: "localhost:9200",
-    log: "trace",
+    host: process.env.ELASTIC_HOST,
+    log: process.env.ELASTIC_LOG
 });
 
 const init = require("./init");
@@ -10,23 +10,23 @@ module.exports = {
     ping: (req, res) => {
         elasticClient.ping(
             {
-                requestTimeout: 30000,
+                requestTimeout: 30000
             },
             err => {
                 if (err) {
                     res.status(500);
                     return res.json({
                         status: false,
-                        msg: "Elasticsearch is down!",
+                        msg: "Elasticsearch is down!"
                     });
                 } else {
                     res.status(200);
                     return res.json({
                         status: true,
-                        msg: "Elasticsearch is up!",
+                        msg: "Elasticsearch is up!"
                     });
                 }
-            },
+            }
         );
     },
 
@@ -34,7 +34,7 @@ module.exports = {
         elasticClient.indices
             .create({
                 index: _index,
-                body: _body,
+                body: _body
             })
             .then(
                 resp => {
@@ -44,14 +44,14 @@ module.exports = {
                 err => {
                     res.status(500);
                     return res.json(err);
-                },
+                }
             );
     },
 
     indexExists: (req, res, _index) => {
         elasticClient.indices
             .exists({
-                index: _index,
+                index: _index
             })
             .then(
                 resp => {
@@ -61,7 +61,7 @@ module.exports = {
                 err => {
                     res.status(500);
                     return res.json(err);
-                },
+                }
             );
     },
 
@@ -80,7 +80,7 @@ module.exports = {
                 err => {
                     res.status(500);
                     return res.json(err);
-                },
+                }
             );
     },
 
@@ -90,7 +90,7 @@ module.exports = {
                 index: _index,
                 type: _type,
                 id: _id,
-                body: _body,
+                body: _body
             })
             .then(
                 resp => {
@@ -100,7 +100,7 @@ module.exports = {
                 err => {
                     res.status(500);
                     return res.json(err);
-                },
+                }
             );
     },
 
@@ -110,7 +110,7 @@ module.exports = {
                 index: _index,
                 type: _type,
                 id: _id,
-                body: _body,
+                body: _body
             },
             (err, resp) => {
                 if (err) {
@@ -118,32 +118,32 @@ module.exports = {
                 } else {
                     res.json(resp);
                 }
-            },
+            }
         );
     },
 
     search: (req, res, _index, _type, _query, _fields, sortBy) => {
         elasticClient
-        .search({
-            index: _index,
-            type: _type,
-            body: {
-                query: {
-                    multi_match: {
-                        query: _query,
-                        fields: _fields,
-                    },
+            .search({
+                index: _index,
+                type: _type,
+                body: {
+                    query: {
+                        multi_match: {
+                            query: _query,
+                            fields: _fields
+                        }
+                    }
+                }
+            })
+            .then(
+                resp => {
+                    return res.send(resp.hits.hits); //res.json(resp);
                 },
-            },
-        })
-        .then(
-            resp => {
-                return res.send(resp.hits.hits)//res.json(resp);
-            },
-            err => {
-                return res.json(err.message);
-            },
-        );
+                err => {
+                    return res.json(err.message);
+                }
+            );
     },
 
     deleteDocument: (req, res, _index, _id, _type) => {
@@ -151,7 +151,7 @@ module.exports = {
             {
                 index: _index,
                 type: _type,
-                id: _id,
+                id: _id
             },
             (err, resp) => {
                 if (err) {
@@ -159,7 +159,7 @@ module.exports = {
                 } else {
                     res.json(resp);
                 }
-            },
+            }
         );
     },
 
@@ -169,29 +169,30 @@ module.exports = {
                 index: _index,
                 type: _type,
                 body: {
-                    from : 0, size : 5,
+                    from: 0,
+                    size: 5,
                     query: {
                         multi_match: {
                             query: _query,
-                            fields: _fields,
-                        },
-                    },
-                },
+                            fields: _fields
+                        }
+                    }
+                }
             })
             .then(
                 resp => {
-                    return res.send(resp.hits.hits)//res.json(resp);
+                    return res.send(resp.hits.hits); //res.json(resp);
                 },
                 err => {
                     return res.json(err.message);
-                },
+                }
             );
     },
 
     deleteAll: (req, res) => {
         elasticClient.indices.delete(
             {
-                index: "_all",
+                index: "_all"
             },
             (err, resp) => {
                 if (err) {
@@ -200,7 +201,7 @@ module.exports = {
                     console.log("Indexes have been deleted!");
                     res.json(resp);
                 }
-            },
+            }
         );
-    },
+    }
 };

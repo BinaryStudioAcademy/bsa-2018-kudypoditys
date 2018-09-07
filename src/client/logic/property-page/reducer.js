@@ -6,9 +6,11 @@ import {
     BOOK_PROPERTY_SUCCESS,
     BOOK_PROPERTY_FAILURE,
     CHECK_AVAILABILITY_SUCCESS,
-    CHECK_AVAILABILITY_FAILURE
+    CHECK_AVAILABILITY_FAILURE,
+    GET_ROOMS_INFO_SUCCESS
 } from "./actionTypes";
 
+import { SEARCH_UPDATE } from "../search/actionTypes";
 
 function propertyPageReducer(state = defaultState.propertyPage, action) {
     switch (action.type) {
@@ -16,6 +18,27 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
             return {
                 ...state,
                 property: action.payload
+            };
+        }
+
+        case GET_ROOMS_INFO_SUCCESS: {
+            return {
+                ...state,
+                rooms: action.payload
+            };
+        }
+
+        case SEARCH_UPDATE: {
+            return {
+                ...state,
+                availabilityInput: {
+                    ...state.availabilityInput,
+                    ...action.payload
+                },
+                bookingInput: {
+                    ...state.bookingInput,
+                    ...action.payload
+                }
             };
         }
 
@@ -71,6 +94,12 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                     error: "",
                     message: "",
                     ...action.payload
+                },
+                availabilityInput: {
+                    ...state.availabilityInput,
+                    ...action.payload,
+                    error: "",
+                    result: null
                 }
             };
         }
@@ -83,6 +112,12 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                     ...action.payload,
                     error: "",
                     result: null
+                },
+                bookingInput: {
+                    ...state.bookingInput,
+                    error: "",
+                    message: "",
+                    ...action.payload
                 }
             };
         }

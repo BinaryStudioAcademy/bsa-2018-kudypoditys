@@ -1,11 +1,11 @@
 import defaultState from "client/logic/defaultState";
 import {QUICK_FILTERS_UPDATE} from "./actionType";
 
-function quickFiltersReducer(state = defaultState.filters, action) {
+function quickFiltersReducer(state = defaultState.search, action) {
     switch (action.type) {
         case QUICK_FILTERS_UPDATE:
             return {
-                ...state.filters,
+                ...state,
                 ...action.payload
             };
         default:

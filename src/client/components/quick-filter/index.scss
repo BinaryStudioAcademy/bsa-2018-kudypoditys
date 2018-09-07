@@ -99,22 +99,11 @@
    text-decoration: underline;
 }
 
-.ui.checkbox input:checked~.box:before, .ui.checkbox input:checked~label:before {
-    background: #465672;
-    border-color: #465672;
-    border-radius: 0;
-}
-.ui.checkbox input:checked~.box:after, .ui.checkbox input:checked~label:after {
-    opacity: 1;
-    color: rgba(255, 255, 255, 0.95);
-}
 
-.ui.checkbox .box:after, .ui.checkbox label:after {
-
-    font-size: 11px;
-}
 
 .ui.checkbox .box:before, .ui.checkbox label:before {
     border-radius: 0;
 }
-
+.ui.input.checkbox {
+    height: 0px;
+}

@@ -14,17 +14,23 @@ let Property = orm.define('property', {
         validate: { notEmpty: true }
         // unique: true,
         // allowNull: false
-
+    },
+    distanceToCentre: {
+        type: Sequelize.FLOAT,
+        validate: { notEmpty: true }
     },
     description: {
         type: Sequelize.TEXT,
         validate: { notEmpty: true },
         // allowNull: true
     },
-    taxes: {
-        type: Sequelize.FLOAT,
-        validate: { isFloat: true }
-
+    vatIncluded: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true
+    },
+    additionalFees: {
+        type: Sequelize.STRING,
+        allowNull: true
     },
     coordinates: {
         type: Sequelize.JSON,

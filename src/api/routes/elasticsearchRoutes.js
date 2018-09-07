@@ -16,7 +16,7 @@ elastic.route("/index/init")
     });
 
 elastic.route("/init").post((req, res) => {
-    elasticService.restartIndexing(req, res);
+    elasticService.indexData();
 });
 // - - - - - - - - - - - - - - - - - - - - - -
 // TEMPORARY ROUTES FOR TESTING:
