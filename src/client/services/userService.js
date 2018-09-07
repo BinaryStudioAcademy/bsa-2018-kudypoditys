@@ -27,9 +27,10 @@ class UserService {
             )
             .then(response => response.data);
     }
-    resetUserPassword(action) {
+    changePassword(action) {
+        console.log(action);
         return api
-            .sendRequest("/api/forgot", "post", action.payload)
+            .sendRequest("/api/changepassword", "post", action.payload)
             .then(response => response.data);
     }
     getUserReviews(id) {

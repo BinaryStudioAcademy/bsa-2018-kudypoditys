@@ -3,7 +3,8 @@ import {
     UPLOAD_USER_AVATAR_SUCCESS,
     USER_SETTINGS_SEND_SUCCES,
     USER_AVATAR_DELETE,
-    UPLOAD_USER_AVATAR
+    UPLOAD_USER_AVATAR,
+    USER_PASSWORD_CHANGE_SUCCESS
 } from "./actionTypes";
 import { GET_CURRENT_USER_SUCCESS } from "../login/actionTypes";
 import defaultState from "client/logic/defaultState";
@@ -50,6 +51,14 @@ export default function userSettingsReducer(
                 avatarLoading: true
             };
         }
+        case USER_PASSWORD_CHANGE_SUCCESS: {
+            console.log("action.payload = ", action.payload);
+            return {
+                ...state,
+                passwordMessage: action.payload
+            };
+        }
+
         default: {
             return state;
         }

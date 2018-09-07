@@ -12,7 +12,11 @@ class PropertyService {
             basicFacility: this.normalizeBasicFacility(basicFacility),
             accommodationRule: this.normalizeAccommodationRule(accommodationRule),
             vatIncluded: Boolean(vatIncluded),
-            rooms: rooms.map(x => ({ ...x, roomTypeId: x.roomType.id }))
+            rooms: rooms.map(x => ({
+                ...x,
+                roomTypeId: x.roomType.id,
+                bedInRooms: x.bedInRooms.map(bir => ({ ...bir, bedTypeId: bir.bedType.id }))
+            }))
         }
     }
 

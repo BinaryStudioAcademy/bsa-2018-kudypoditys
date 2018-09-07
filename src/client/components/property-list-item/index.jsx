@@ -32,8 +32,8 @@ export class PropertyListItem extends React.Component {
         //todo
     };
     handleRedirectToDetails = () => {
-        console.log(JSON.stringify(this.props.propertyItemData))
-        history.push("/property/"+ this.props.propertyItemData.id); // this.props.actions.redirectToDetails(id)
+        console.log(JSON.stringify(this.props.propertyItemData));
+        history.push("/property/" + this.props.propertyItemData.id); // this.props.actions.redirectToDetails(id)
     };
 
     componentDidMount() {
@@ -42,7 +42,8 @@ export class PropertyListItem extends React.Component {
 
     render() {
         const { propertyItemData } = this.props;
-        console.log(propertyItemData);
+        console.log("propertyItemData"
+        +propertyItemData);
 
         let ratingStatus = "";
         if (propertyItemData.rating >= 9) {
@@ -171,9 +172,16 @@ export class PropertyListItem extends React.Component {
                                     <MapWidgetModal
                                         properties={[
                                             {
-                                                price: 3000,
-                                                name:
-                                                propertyItemData.name,
+                                                price: propertyItemData.rooms[0].price,
+                                                name: propertyItemData.name,
+                                                coordinates: {
+                                                    lat:
+                                                        propertyItemData
+                                                            .coordinates.lat,
+                                                    lng:
+                                                        propertyItemData
+                                                            .coordinates.lng
+                                                },
                                                 latitude:
                                                     propertyItemData.coordinates
                                                         .lat,
@@ -181,9 +189,10 @@ export class PropertyListItem extends React.Component {
                                                     propertyItemData.coordinates
                                                         .lng,
                                                 imageSrc:
-                                                propertyItemData.images[0].url,
+                                                    propertyItemData.images[0]
+                                                        .url,
                                                 address:
-                                                propertyItemData.address,
+                                                    propertyItemData.address,
                                                 rating: propertyItemData.rating
                                             }
                                         ]}
@@ -198,10 +207,10 @@ export class PropertyListItem extends React.Component {
                                         controlEnable={true}
                                         buttonClass={"searchMapButton"}
                                     />
-                                    {/* <span className="Property_list__distanceToCenter">
-                                        ({propertyItemData.distanceToCenter} km
+                                     <span className="Property_list__distanceToCenter">
+                                        ({propertyItemData.distanceToCentre} km
                                         from center)
-                                    </span> */}
+                                    </span>
                                 </div>
                             </div>
 
@@ -228,26 +237,12 @@ export class PropertyListItem extends React.Component {
                                         className="search_result__message"
                                         style={{
                                             display:
-                                                propertyItemData.availableRoomsCount ===
-                                                0
-                                                    ? "block"
+                                                propertyItemData.id% 2 === 0 ?
+                                                     "block"
                                                     : "none"
                                         }}
                                     >
-                                        Unfortunately we do not have any
-                                        available rooms
-                                    </Message>
-                                    <Message
-                                        className="search_result__message"
-                                        style={{
-                                            display:
-                                                propertyItemData.availableRoomsCount ===
-                                                1
-                                                    ? "block"
-                                                    : "none"
-                                        }}
-                                    >
-                                        The last available room!!!
+                                        Property was recently booked!
                                     </Message>
                                 </div>
 

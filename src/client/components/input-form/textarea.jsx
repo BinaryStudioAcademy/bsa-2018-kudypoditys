@@ -3,7 +3,7 @@ import { TextArea, Label } from "semantic-ui-react";
 import './index.scss';
 
 const renderTextarea = ({
-  input, label, className, pointing, meta: { touched, error }
+  input, label, className, pointing, fluid, meta: { touched, error }
 }) => (
     <React.Fragment>
       <Label basic className={touched && error ? 'shown' : 'hidden'} color='red' pointing={pointing || 'below'}>
@@ -12,7 +12,7 @@ const renderTextarea = ({
       <TextArea
         {...input}
         placeholder={label}
-        fluid
+        fluid={fluid}
         className={className}
       />
     </React.Fragment>

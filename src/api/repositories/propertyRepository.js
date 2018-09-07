@@ -178,7 +178,13 @@ class PropertyRepository extends Repository {
 
     createDetails(entity) {
         return this.model.create(entity, {
-            include: [AccommodationRule, BasicFacility, Image, Room]
+            include: [
+                AccommodationRule, BasicFacility, Image,
+                {
+                    model: Room,
+                    include: [BedInRoom]
+                }
+            ]
         }).then(({ dataValues: newProperty }) => {
             let facilityList = entity.facilities.map(f => ({
                 propertyId: newProperty.id,
@@ -215,6 +221,9 @@ class PropertyRepository extends Repository {
         switch (filter.sortBy) {
             case SORT_VALUE.PRICE:
                 sortingOption = [[Room, "price", "ASC"]];
+                break;
+            case SORT_VALUE.DISTANCE:
+                sortingOption = [["distanceToCentre", "ASC"]];
                 break;
             case SORT_VALUE.LOW_RANK:
                 sortingOption = [["rating", "ASC"]];

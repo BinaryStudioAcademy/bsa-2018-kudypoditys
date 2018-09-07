@@ -9,13 +9,12 @@ export const UPLOAD_URL = process.env.REACT_APP_CLOUDINARY_UPLOAD_URL;
 
 export default class PhotoDropZone extends Component {
   state = {
-    images: [],
     isLoading: false
   };
 
   handleDrop = (files) => {
-    const { images } = this.state;
     const { input } = this.props;
+    const images = input.value || [];
 
     if (files.length < 1) {
       return;
@@ -45,7 +44,6 @@ export default class PhotoDropZone extends Component {
           });
 
           this.setState({
-            images: images,
             isLoading: false
           });
 
@@ -56,15 +54,16 @@ export default class PhotoDropZone extends Component {
   }
 
   handleRemove = (image) => {
-    const { images } = this.state;
+    const { input } = this.props;
+    const { value: images } = input;
 
-    this.setState({
-      images: images.filter(x => x.url != image.url)
-    });
+    input.onChange(images.filter(x => x.url != image.url));
   }
 
   render() {
-    const { images, isLoading } = this.state;
+    const { isLoading } = this.state;
+    const { input } = this.props;
+    const images = input.value || [];
 
     return (
       <Segment>
