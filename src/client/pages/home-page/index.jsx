@@ -9,6 +9,8 @@ export class HomePage extends Component {
         //todo
     };
     render() {
+        console.log('-->>',history)
+        console.log('-->>',history.location)
         return (
             <div className="main--wraper">
                 <Header

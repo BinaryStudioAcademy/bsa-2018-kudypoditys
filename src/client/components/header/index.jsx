@@ -10,7 +10,7 @@ import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import Currency from "./currency"
 import { options } from '../checkin-checkout/config';
-
+import currencyOptions from 'client/components/user-cabinet-settings/staticData.js'
 
 export class MainHeader extends Component {
 
@@ -78,6 +78,10 @@ export class MainHeader extends Component {
                                 Component={() => {
                                     return (
                                         <Fragment>
+                                            <Currency
+                                                    options={this.props.currencies}
+                                                    value={currentUser.preferredCurrency}
+                                                    onChange={this.handleCurrancyChange.bind(this)}/>
                                             <UserPopup
                                                 currentUser={currentUser}
                                                 logoutClicked={

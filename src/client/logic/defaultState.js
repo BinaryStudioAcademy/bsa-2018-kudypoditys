@@ -72,112 +72,24 @@ const state = {
             ]
         }
     },
+
+    sortType: {
+        activeItem: "price"
+    },
+
     propertySubmit: {
         activeIndex: 2
-      },
-      header: {
+    },
+    header: {
         currencies: [
-                {key:1, text:'USD', value: 'USD'},
-                {key:2, text:'EUR', value: 'EUR'},
-                {key:3, text:'UAH', value: 'UAH'},
+                {key:1, text:'UAH', value: 'UAH'},
+                {key:2, text:'USD', value: 'USD'},
+                {key:3, text:'EUR', value: 'EUR'}
+
         ],
         selectedCurrency: 'USD',
         currentUser: null,
         rate:1
-      },
-      shownProperties: {
-        "xyz-1": {
-          image: `http://cdn.home-designing.com/wp-content/uploads/2016/04/luxury-art-deco-apartment-interior.jpg`,
-          name: "DREAM Hostel Lviv",
-          description:
-            "Це помешкання розташоване в 6 хв. ходьби від пляжу Історичний готель оформлений у класичному стилі та розташований за 10 хвилин ходьби від вулиці Дерибасівська, Потьомкінських сходів та памятника герцогу де Рішельє і за 300 метрів від театру опери та балету. Із закладу відкривається чудовий вид на Чорне море.Це помешкання розташоване в 6 хв. ходьби від пляжу Історичний готель оформлений у класичному стилі та розташований за 10 хвилин ходьби від вулиці Дерибасівська, Потьомкінських сходів та памятника герцогу де Рішельє і за 300 метрів від театру опери та балету. Із закладу відкривається чудовий вид на Чорне море.",
-          rating: 9.7,
-          location: "Lviv",
-          distanceToCenter: 1.2,
-          priceTo: 500,
-          priceFrom: 700,
-          curency: "uah",
-          reviewsNamber: 660,
-          locationRating: 9.2,
-          availableRoomsCount: 4,
-          facilities: [
-            "Free WiFi",
-            "Free parking",
-            "Spa and wellness centre",
-            "Airport shuttle",
-            "Family rooms",
-            "Pets allowed",
-            "Bar"
-          ]
-        },
-        "xyz-2": {}
-      },
-      searchResults: {
-        destination: "Lviv",
-        totalCount: 2,
-        shownFrom: 1,
-        shownTo: 5
-      },
-      cityInfos: {
-            0:{
-                id: 1,
-                city: 'Lviv',
-                properties: 1,
-                avgPrice: 1,
-                pictureUrl: 'http://www.mgi4ua.com/wp-content/uploads/2017/11/lviv-ukraine.jpg',
-                flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
-                },
-            1:{
-                id: 2,
-                city: 'Dnipro',
-                properties: 1,
-                avgPrice: 1,
-                pictureUrl: 'http://meandyoukraine.com/mainContent/DniproCity/DniproCity_featuredImage.jpg',
-                flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
-            },
-            2:{
-                id: 3,
-                city: 'Ternopil',
-                properties: 1,
-                avgPrice: 1,
-                pictureUrl: 'http://www.gazeta-misto.te.ua/wp-content/uploads/2017/05/18671255_1124933304279283_1785861677540967562_n.jpg',
-                flagUrl: 'http://proudfofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
-            },
-            3:{
-                id: 4,
-                city: 'Kyiv',
-                properties: 1,
-                avgPrice: 1,
-                pictureUrl: 'https://s.inyourpocket.com/gallery/130361.jpg',
-                flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
-            },
-            4:{
-                id: 5,
-                city: 'Odessa',
-                properties: 1,
-                avgPrice: 1,
-                pictureUrl: 'https://www.hotel-deribas.com/wp-content/uploads/2018/03/19odessa.jpg',
-                flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
-            },
-            5:{
-                id: 6,
-                city: 'Kharkiv',
-                properties: 1,
-                avgPrice: 1,
-                pictureUrl: 'http://www.yoldasin.com/wp-content/uploads/2017/04/kharkiv-tren-istasyonu-960x638.jpg',
-                flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
-            }
-        },
-      filters: [
-        {
-          id: "1",
-          ischecked: true,
-          label: "Pool",
-          amount: 321,
-          type: "Facility"
-        }],
-    sortType: {
-        activeItem: "price"
     },
     shownProperties: {
         "xyz-1": {
@@ -190,7 +102,7 @@ const state = {
             distanceToCenter: 1.2,
             priceTo: 500,
             priceFrom: 700,
-            curency: "uah",
+            curency: "UAH",
             reviewsNamber: 660,
             locationRating: 9.2,
             availableRoomsCount: 4,
@@ -212,7 +124,56 @@ const state = {
         shownFrom: 1,
         shownTo: 5
     },
-    cityInfos: [],
+    cityInfos: {
+        0:{
+            id: 1,
+            city: 'Lviv',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'http://www.mgi4ua.com/wp-content/uploads/2017/11/lviv-ukraine.jpg',
+            flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+            },
+        1:{
+            id: 2,
+            city: 'Dnipro',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'http://meandyoukraine.com/mainContent/DniproCity/DniproCity_featuredImage.jpg',
+            flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+        },
+        2:{
+            id: 3,
+            city: 'Ternopil',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'http://www.gazeta-misto.te.ua/wp-content/uploads/2017/05/18671255_1124933304279283_1785861677540967562_n.jpg',
+            flagUrl: 'http://proudfofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+        },
+        3:{
+            id: 4,
+            city: 'Kyiv',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'https://s.inyourpocket.com/gallery/130361.jpg',
+            flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+        },
+        4:{
+            id: 5,
+            city: 'Odessa',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'https://www.hotel-deribas.com/wp-content/uploads/2018/03/19odessa.jpg',
+            flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+        },
+        5:{
+            id: 6,
+            city: 'Kharkiv',
+            properties: 1,
+            avgPrice: 1,
+            pictureUrl: 'http://www.yoldasin.com/wp-content/uploads/2017/04/kharkiv-tren-istasyonu-960x638.jpg',
+            flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+        }
+    },
     filters: [
         {
             id: "1",

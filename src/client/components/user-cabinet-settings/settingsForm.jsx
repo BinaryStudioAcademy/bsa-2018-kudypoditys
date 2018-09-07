@@ -341,7 +341,7 @@ export class SettingsForm extends Component {
                         name="preferredCurrency"
                         fluid
                         selection
-                        onChange={this.handleChange}
+                        onChange={e => this.handleChange(e, e.target)}
                         defaultValue={this.props.preferredCurrency}
                         options={currencyOptions}
                     />

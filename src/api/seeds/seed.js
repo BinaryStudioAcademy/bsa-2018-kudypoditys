@@ -10,7 +10,7 @@ const USERS = [
         nickname: "Nata1ya",
         address: "Nebereshnaya street 20, Lviv",
         appeal: "Mrs.",
-        preferredCurrency: "USD",
+        preferredCurrency: "UAH",
         countryId: 1,
         paymentTypeId: 1
     },
@@ -22,7 +22,7 @@ const USERS = [
         phoneNumber: "80954568261",
         nickname: "Lorem",
         appeal: "Mrs.",
-        preferredCurrency: "USD",
+        preferredCurrency: "UAH",
         countryId: 1,
         paymentTypeId: 1
     }
