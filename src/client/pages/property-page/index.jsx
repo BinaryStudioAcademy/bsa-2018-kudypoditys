@@ -124,13 +124,16 @@ export class PropertyPage extends React.Component {
                 <Sidebar.Pusher>
                     <div className="property-page__wrapper">
                         <div text className="property-page__wrapper-left_side">
-                            {user ? (
+                            {
                                 <Modal
                                     trigger={
                                         <div
                                             className="book-btn"
                                             style={{
-                                                height: "33px"
+                                                height: "33px",
+                                                visibility: !user
+                                                    ? "hidden"
+                                                    : "visible"
                                             }}
                                         >
                                             <button>Book now</button>
@@ -154,7 +157,7 @@ export class PropertyPage extends React.Component {
                                         paymentTypes={property.paymentTypes}
                                     />
                                 </Modal>
-                            ) : null}
+                            }
                             <Divider
                                 style={{
                                     ...dividerStyle,
