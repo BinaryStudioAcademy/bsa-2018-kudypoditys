@@ -38,7 +38,7 @@ searchProperty.route("/").get((req, res) => {
                 });
                 let filter = {
                     propertiesIds: ids,
-                    rooms: rooms,
+                    rooms: rooms?rooms:1,
                     bedsCount: parseInt(adults) + parseInt(children),
                     sortBy: sortBy,
                     page:Number(page),
