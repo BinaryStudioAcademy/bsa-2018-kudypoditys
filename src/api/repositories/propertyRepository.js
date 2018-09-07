@@ -21,6 +21,7 @@ const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
 const PropertyLanguage = require("../models/PropertyLanguage");
 const BasicFacility = require("../models/BasicFacility");
+const FacilityCategory = require("../models/FacilityCategory");
 
 const includeOptions = [
     {
@@ -88,7 +89,8 @@ const includeOptions = [
         include: [
             {
                 model: Facility,
-                attributes: ["id", "name"]
+                attributes: ["id", "name"],
+                include: { model: FacilityCategory, attributes: ["name"] }
             }
         ]
     },

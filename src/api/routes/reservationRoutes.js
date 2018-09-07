@@ -15,6 +15,7 @@ reservation
             });
     })
     .post((req, res) => {
+        console.log("body", req.body);
         const newReservation = {
             dateIn: new Date(Number(req.body.dateIn)),
             dateOut: new Date(Number(req.body.dateOut)),
@@ -35,7 +36,7 @@ reservation
 
 reservation.route("/byuser").get((req, res) => {
     reservationService
-        .findByOptions({userId: req.user.id})
+        .findByOptions({ userId: req.user.id })
         .then(reservations => {
             res.send(reservations);
         })
