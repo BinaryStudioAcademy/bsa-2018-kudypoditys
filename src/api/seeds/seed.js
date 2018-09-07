@@ -481,6 +481,286 @@ const PROPERTY_PAYMENT_TYPES = [
     {
         propertyId: 2,
         paymentTypeId: 3
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 4
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 4,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 4,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 4,
+        paymentTypeId: 4
+    },
+    {
+        propertyId: 5,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 5,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 4
+    },
+    {
+        propertyId: 7,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 7,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 7,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 8,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 8,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 8,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 9,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 9,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 9,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 10,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 10,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 10,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 11,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 11,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 11,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 12,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 12,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 12,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 13,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 13,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 13,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 14,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 14,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 14,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 15,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 15,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 15,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 16,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 16,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 16,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 17,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 17,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 17,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 18,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 18,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 18,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 19,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 19,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 19,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 20,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 20,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 20,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 21,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 21,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 21,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 22,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 22,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 22,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 23,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 23,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 23,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 24,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 24,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 24,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 25,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 25,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 25,
+        paymentTypeId: 1
     }
 ];
 
@@ -1946,19 +2226,19 @@ const ROOM_TYPES = [
 const LANGUAGES = [
     {
         id: 1,
-        name: 'English'
+        name: "English"
     },
     {
         id: 2,
-        name: 'Russion'
+        name: "Russion"
     },
     {
         id: 3,
-        name: 'Ukranian'
+        name: "Ukranian"
     },
     {
         id: 4,
-        name: 'German'
+        name: "German"
     }
 ];
 
@@ -2031,5 +2311,5 @@ module.exports = {
     ROOM_TYPES,
     PROPERTY_TYPE,
     LANGUAGES,
-    REVIEWS,
+    REVIEWS
 };
