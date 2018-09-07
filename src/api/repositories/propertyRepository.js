@@ -280,7 +280,7 @@ class PropertyRepository extends Repository {
                         }
                     }
                 ],
-                order: sortingOption
+              order: sortingOption
             })
             .then(properties => {
                 return properties;
