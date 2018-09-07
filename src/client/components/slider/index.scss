@@ -1,16 +1,17 @@
-$slider-height: 400px;
+$slider-height: 450px;
 
 .slick-track {
     height: $slider-height !important;
 }
 
 .slick-slide {
-    width: 600px !important;
+    left: 0;
+    width: 700px !important;
 }
 
-.slick-slide.active {
-    left: 50% !important;
-    transform: translateX(-50%);
+.slick-slide.active > div {
+    top: 0 !important;
+    left: 0 !important;
 }
 
 .slider-c-wrapper {
@@ -78,10 +79,11 @@ $slider-height: 400px;
 //
 
 .slider-c-image {
+    top: 0 !important;
+    left: 0 !important;
     height: $slider-height;
     object-fit: contain;
-    width: 100% !important;
-    left: 50px;
+    width: 700px !important;
 }
 
 .slider-c-button {
