@@ -22,11 +22,12 @@ export class PropertySummary extends React.Component {
                         as="h1"
                         style={{
                             fontSize: 23,
-                            padding: 10,
+                            padding: 0,
                             lineHeight: 1.2,
                             color: "#465672",
                             cursor: "default",
-                            margin: "0"
+                            margin: "0",
+                            paddingLeft: "10px"
                         }}
                     >
                         {property.name}
@@ -42,7 +43,7 @@ export class PropertySummary extends React.Component {
                             as="h2"
                             style={{
                                 fontSize: 16,
-                                padding: 10,
+                                padding: "0 0 10px 8px",
                                 lineHeight: 1.2,
                                 color: "#465672"
                             }}

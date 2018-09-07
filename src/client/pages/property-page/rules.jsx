@@ -7,13 +7,15 @@ export default class HouseRules extends React.Component {
         const { rules } = this.props;
         return (
             <List>
-                <List.Item>
+                <List.Item
+                    style={{
+                        marginBottom: "5px"
+                    }}
+                >
                     <List.Content>
                         <span
                             style={{
-                                marginRight: 10,
-                                marginBottom: 10,
-                                fontSize: 18,
+                                fontSize: 16,
                                 lineHeight: 1.2,
                                 color: "rgb(166,174,188)"
                             }}
@@ -24,13 +26,15 @@ export default class HouseRules extends React.Component {
                         </span>
                     </List.Content>
                 </List.Item>
-                <List.Item>
+                <List.Item
+                    style={{
+                        marginBottom: "5px"
+                    }}
+                >
                     <List.Content>
                         <span
                             style={{
-                                marginRight: 10,
-                                marginBottom: 10,
-                                fontSize: 18,
+                                fontSize: 16,
                                 lineHeight: 1.2,
                                 color: "rgb(166,174,188)"
                             }}
@@ -46,13 +50,15 @@ export default class HouseRules extends React.Component {
                         </span>
                     </List.Content>
                 </List.Item>
-                <List.Item>
+                <List.Item
+                    style={{
+                        marginBottom: "5px"
+                    }}
+                >
                     <List.Content>
                         <span
                             style={{
-                                marginRight: 10,
-                                marginBottom: 10,
-                                fontSize: 18,
+                                fontSize: 16,
                                 lineHeight: 1.2,
                                 color: "rgb(166,174,188)"
                             }}
