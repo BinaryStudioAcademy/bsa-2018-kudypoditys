@@ -1631,6 +1631,35 @@ const FACILITY_LISTS = [
         id: 50,
         propertyId: 25,
         facilityId: 1
+    },
+    {
+        propertyId: 1,
+        facilityId: 2
+    },
+    {
+        propertyId: 1,
+        facilityId: 5
+    },
+    {
+        propertyId: 1,
+        facilityId: 6
+    },
+    {
+        propertyId: 1,
+        facilityId: 4
+    },
+
+    {
+        propertyId: 1,
+        facilityId: 12
+    },
+    {
+        propertyId: 1,
+        facilityId: 10
+    },
+    {
+        propertyId: 1,
+        facilityId: 16
     }
 ];
 
