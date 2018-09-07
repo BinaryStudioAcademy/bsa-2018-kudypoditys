@@ -15,7 +15,7 @@ $slider-height: 400px;
 
 .slider-c-wrapper {
     width: 100% !important;
-    box-shadow: 0px 10px 40px -4px #0000000f;
+
     padding-bottom: 4px;
     position: relative !important;
 }
@@ -67,6 +67,7 @@ $slider-height: 400px;
 
 .slick-list {
     height: $slider-height;
+    background-color: #fff !important;
     padding: 0px !important;
     width: 100%;
 }
@@ -79,17 +80,21 @@ $slider-height: 400px;
 .slider-c-image {
     height: $slider-height;
     object-fit: contain;
+    width: 100% !important;
     left: 50px;
 }
 
 .slider-c-button {
     position: absolute;
-
-    height: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 100px !important;
+    width: 30px !important;
+    height: 30px;
     z-index: 100;
     width: 50px;
     margin: 0 !important;
-    padding: 5px;
+    padding: 0 !important;
     background-color: #46567275 !important;
     color: white !important;
     transition: 0.2s background-color ease-in-out;
@@ -106,19 +111,16 @@ $slider-height: 400px;
 }
 
 .slider-c-prev-button {
-    left: 0px;
-    padding: 15px !important;
+    left: 10px;
 }
 
 .slider-c-next-button {
-    bottom: 0;
-    right: 0px;
-    padding-left: 15px !important;
+    right: 10px;
 }
 
 .slider-c-prev-button > i {
-    margin-right: 0px !important;
+    margin-right: 1px !important;
 }
 .slider-c-next-button > i {
-    margin: 0 !important;
+    margin-left: 0px !important;
 }
