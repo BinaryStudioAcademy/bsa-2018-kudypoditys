@@ -813,9 +813,6 @@ const ROOMS = [
         roomTypeId: 2,
         propertyId: 6
     },
-    //
-    //
-    //
     {
         id: 7,
         price: 20,
@@ -973,6 +970,38 @@ const ROOMS = [
         area: 67,
         roomTypeId: 2,
         propertyId: 25
+    },
+    {
+        id: 26,
+        price: 33,
+        amount: 2,
+        area: 67,
+        roomTypeId: 4,
+        propertyId: 1
+    },
+    {
+        id: 27,
+        price: 20,
+        amount: 3,
+        area: 67,
+        roomTypeId: 3,
+        propertyId: 1
+    },
+    {
+        id: 28,
+        price: 15,
+        amount: 3,
+        area: 67,
+        roomTypeId: 5,
+        propertyId: 2
+    },
+    {
+        id: 29,
+        price: 25,
+        amount: 3,
+        area: 67,
+        roomTypeId: 1,
+        propertyId: 2
     }
 ];
 
@@ -2014,7 +2043,12 @@ const BED_IN_ROOM = [
     { id: 22, count: 7, roomId: 22, bedTypeId: 3 },
     { id: 23, count: 2, roomId: 23, bedTypeId: 4 },
     { id: 24, count: 3, roomId: 24, bedTypeId: 5 },
-    { id: 25, count: 2, roomId: 25, bedTypeId: 6 }
+    { id: 25, count: 2, roomId: 25, bedTypeId: 6 },
+    { id: 26, count: 2, roomId: 26, bedTypeId: 4 },
+    { id: 27, count: 1, roomId: 27, bedTypeId: 2 },
+    { id: 28, count: 1, roomId: 28, bedTypeId: 2 },
+    { id: 29, count: 1, roomId: 28, bedTypeId: 3 },
+    { id: 30, count: 1, roomId: 29, bedTypeId: 2 }
 ];
 const BED_TYPES = [
     {
