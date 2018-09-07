@@ -222,6 +222,9 @@ class PropertyRepository extends Repository {
             case SORT_VALUE.PRICE:
                 sortingOption = [[Room, "price", "ASC"]];
                 break;
+            case SORT_VALUE.DISTANCE:
+                sortingOption = [["distanceToCentre", "ASC"]];
+                break;
             case SORT_VALUE.LOW_RANK:
                 sortingOption = [["rating", "ASC"]];
 
@@ -277,7 +280,7 @@ class PropertyRepository extends Repository {
                         }
                     }
                 ],
-                order: sortingOption
+              order: sortingOption
             })
             .then(properties => {
                 return properties;
