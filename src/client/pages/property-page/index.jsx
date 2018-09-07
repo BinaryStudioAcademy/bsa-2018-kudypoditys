@@ -226,14 +226,17 @@ export class PropertyPage extends React.Component {
                                                 {property.facilityLists.map(
                                                     (item, i) => {
                                                         return (
-                                                            <List.Item>
+                                                            <List.Item
+                                                                style={{
+                                                                    marginBottom:
+                                                                        "5px"
+                                                                }}
+                                                            >
                                                                 <List.Content>
                                                                     <span
                                                                         key={i}
                                                                         style={{
-                                                                            marginRight: 10,
-                                                                            marginBottom: 10,
-                                                                            fontSize: 18,
+                                                                            fontSize: 16,
                                                                             lineHeight: 1.2,
                                                                             color:
                                                                                 "rgb(166,174,188)"
