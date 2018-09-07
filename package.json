@@ -102,6 +102,7 @@
         "semantic-ui-calendar-react": "^0.8.0",
         "semantic-ui-react": "^0.82.1",
         "sequelize": "^4.38.0",
+        "shortid": "^2.2.13",
         "slick-carousel": "^1.8.1",
         "socket.io": "^2.1.1",
         "style-loader": "0.19.0",

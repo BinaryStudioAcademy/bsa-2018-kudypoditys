@@ -24,26 +24,17 @@ export class BookingSegment extends React.Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
-
             modalOpen: false
         };
-
-
-
-
     }
-
 
     handleOpen = () => {
-        this.setState({ modalOpen: true })
-
-    }
+        this.setState({ modalOpen: true });
+    };
 
     handleClose = () => {
-
-        this.setState({ modalOpen: false })
-
-    }
+        this.setState({ modalOpen: false });
+    };
 
     viewBooking = (event, id) => {
         event.preventDefault();
@@ -89,6 +80,10 @@ export class BookingSegment extends React.Component {
                                 <Icon name="dollar sign" />
                                 USD {price}
                             </p>
+                            {/* <p className="booking-code">
+                                <Icon name="barcode" />
+                                 {price}
+                            </p> */}
                         </Grid.Column>
                         <Grid.Column width={5} floated="right">
                             <Grid columns={2} divided>
@@ -137,33 +132,36 @@ export class BookingSegment extends React.Component {
                                     this.viewBooking(event, booking.id)
                                 }
                             />
-                            {shouldRenderForm ?(<div className="reviews_add_review__container">
-
-
-                                <Modal
-                                    className="user_cabinet_add_review__modal"
-                                    trigger={
-                                        <div className="user_cabinet_add_review__btn">
-                                        <Button
-                                            primary
-                                            // color="teal"
-                                            fluid
-                                            content="Add review"
-                                            labelPosition="left"
-                                            icon="edit"
-                                            type="submit"
-                                            onClick={this.handleOpen}
+                            {shouldRenderForm ? (
+                                <div className="reviews_add_review__container">
+                                    <Modal
+                                        className="user_cabinet_add_review__modal"
+                                        trigger={
+                                            <div className="user_cabinet_add_review__btn">
+                                                <Button
+                                                    primary
+                                                    // color="teal"
+                                                    fluid
+                                                    content="Add review"
+                                                    labelPosition="left"
+                                                    icon="edit"
+                                                    type="submit"
+                                                    onClick={this.handleOpen}
+                                                />
+                                            </div>
+                                        }
+                                        open={this.state.modalOpen}
+                                        // onClose={this.handleClose}
+                                        onClose={this.close}
+                                    >
+                                        <ReviewForm
+                                            property={booking.room.property}
+                                            userc={true}
+                                            onFormClick={this.handleClose}
                                         />
-                                        </div>
-                                    }
-                                    open={this.state.modalOpen}
-                                    // onClose={this.handleClose}
-                                    onClose={this.close}
-                                >
-                                    <ReviewForm property={booking.room.property} userc={true} onFormClick={this.handleClose}/>
-                                </Modal>
-                            </div>) : null}
-
+                                    </Modal>
+                                </div>
+                            ) : null}
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
