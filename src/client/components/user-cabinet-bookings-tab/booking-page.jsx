@@ -16,9 +16,15 @@ import "./booking-page.scss";
 import MapWidgetModal from "client/components/map-widget-modal";
 
 export class BookingPage extends React.Component {
-    cancelBooking = (event, booking) => {
+    state = { open: false };
+
+    showConfirm = () => this.setState({ open: true });
+
+    handleConfirm = booking => {
         this.props.cancelBooking(booking);
     };
+    handleCancel = () => this.setState({ open: false });
+
     render() {
         const { booking, images } = this.props;
         const { orderCode } = this.props.booking;
@@ -111,9 +117,7 @@ export class BookingPage extends React.Component {
                                     <Button
                                         negative
                                         fluid
-                                        onClick={event =>
-                                            this.cancelBooking(event, booking)
-                                        }
+                                        onClick={this.showConfirm}
                                     >
                                         Cancel your booking
                                     </Button>
@@ -161,6 +165,13 @@ export class BookingPage extends React.Component {
                         {/* <p>{room.property.description}</p> */}
                     </div>
                 </div>
+                <Confirm
+                    open={this.state.open}
+                    onCancel={this.handleCancel}
+                    header="Cancel reservation"
+                    content="Are you sure you want to cancel your reservation?"
+                    onConfirm={event => this.handleConfirm(booking)}
+                />
             </Container>
         );
     }

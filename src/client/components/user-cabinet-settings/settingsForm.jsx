@@ -343,7 +343,7 @@ export class SettingsForm extends Component {
                         defaultValue={this.props.preferredCurrency}
                         options={currencyOptions}
                     />
-                    <p className="personal_settings-p">Password</p>
+                    <p className="personal_settings-p">Old password</p>
                     <Field
                         component={inputField}
                         name="oldPassword"
@@ -357,7 +357,7 @@ export class SettingsForm extends Component {
                         validate={[password]}
                         onChange={e => this.handleChange(e, e.target)}
                     />
-
+                    <p className="personal_settings-p">New password</p>
                     <Field
                         component={inputField}
                         name="newPassword"
@@ -371,10 +371,12 @@ export class SettingsForm extends Component {
                         validate={[password, minLength8]}
                         onChange={e => this.handleChange(e, e.target)}
                     />
+                    <p className="personal_settings-p" />
                     <Button primary onClick={this.hadleChangePassword}>
                         <Icon name="erase" />
                         Change password
                     </Button>
+                    <p className="personal_settings-p" />
                     {this.props.passwordMessage}
                 </Segment>
                 <Segment>
