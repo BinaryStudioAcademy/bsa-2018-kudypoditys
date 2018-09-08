@@ -43,7 +43,7 @@ searchProperty.route("/").get((req, res) => {
                 ids = items.map(property => {
                     return property._source.id;
                 });
-                console.log('ids - '+ids)
+                console.log('ids - ' + ids)
                 let filter = {
                     propertiesIds: ids,
                     rooms: rooms ? rooms : 1,

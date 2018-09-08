@@ -177,7 +177,7 @@ module.exports = {
             address: property.address,
             image: property.images[0].url
         };
-        return elasticClient.index({ index, id, type, body }).then(responce => {
+        return elasticClient.index({index, id, type, body}).then(responce => {
             console.log("Elastic added new property : " + responce);
         });
     }
