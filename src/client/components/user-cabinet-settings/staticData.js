@@ -12,9 +12,9 @@ export const paymentOptions = [
 ];
 
 export const currencyOptions = [
-    { key: "1", text: "UAH", value: "1" },
-    { key: "2", text: "USD", value: "2" },
-    { key: "3", text: "EUR", value: "3" }
+    { key: "1", text: "UAH", value: "UAH" },
+    { key: "2", text: "USD", value: "USD" },
+    { key: "3", text: "EUR", value: "EUR" }
 ];
 
 export const appealOptions = [

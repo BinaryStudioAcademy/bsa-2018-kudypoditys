@@ -118,7 +118,6 @@ export class SettingsForm extends Component {
     };
 
     handleChange = (e, { name, value }) => {
-        console.log(e);
         const data = {
             [name]: value
         };
@@ -149,7 +148,6 @@ export class SettingsForm extends Component {
     };
 
     hadleChangePassword = () => {
-        console.log(this.props.id);
         const { id, oldPassword, newPassword } = this.props;
         this.props.changePassword({ id, oldPassword, newPassword });
     };
@@ -341,7 +339,7 @@ export class SettingsForm extends Component {
                         name="preferredCurrency"
                         fluid
                         selection
-                        onChange={e => this.handleChange(e, e.target)}
+                        onChange={this.handleChange}
                         defaultValue={this.props.preferredCurrency}
                         options={currencyOptions}
                     />

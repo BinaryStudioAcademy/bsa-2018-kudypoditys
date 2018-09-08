@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Grid } from "semantic-ui-react";
+import { Grid,Dropdown } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
@@ -45,8 +45,18 @@ export class MainHeader extends Component {
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-    handleCurrancyChange(currency){
-        this.props.onCurrencyChange(currency.type)
+    handleCurrancyChange= (e, { name, value }) =>{
+        console.log(value)
+        this.props.onCurrencyChange(value)
+    }
+    updateUserCurrency = (e, { name, value }) => {
+        const data = {
+            id:this.props.currentUser.id,
+            preferredCurrency: value
+        };
+        this.props.sendSettings(data);
+        this.props.onCurrencyChange(value)
+
     }
     render() {
         const { currentUser, hideSignUpIn, noBackground } = this.props;
@@ -78,10 +88,14 @@ export class MainHeader extends Component {
                                 Component={() => {
                                     return (
                                         <Fragment>
-                                            <Currency
-                                                    options={this.props.currencies}
-                                                    value={currentUser.preferredCurrency}
-                                                    onChange={this.handleCurrancyChange.bind(this)}/>
+                                            <Dropdown
+                                                name="preferredCurrency"
+                                                fluid
+                                                selection
+                                                options={this.props.currencies}
+                                                defaultValue={currentUser.preferredCurrency}
+                                                onChange={this.updateUserCurrency}
+                                            />
                                             <UserPopup
                                                 currentUser={currentUser}
                                                 logoutClicked={
@@ -99,10 +113,14 @@ export class MainHeader extends Component {
                                         <Fragment>
                                             {hideSignUpIn ? null : (
                                                 <Fragment>
-                                                    <Currency
-                                                    options={this.props.currencies}
-                                                    value={this.props.selectedCurrency}
-                                                    onChange={this.handleCurrancyChange.bind(this)}/>
+                                                    <Dropdown
+                                                        name="preferredCurrency"
+                                                        fluid
+                                                        selection
+                                                        options={this.props.currencies}
+                                                        defaultValue={this.props.selectedCurrency}
+                                                        onChange= {this.handleCurrancyChange}
+                                                    />
                                                     <a
                                                         style={{
                                                             cursor: "pointer",
@@ -186,7 +204,7 @@ export class MainHeader extends Component {
     }
 }
 
-MainHeader.propTypes = {
+/*MainHeader.propTypes = {
     currencies: PropTypes.arrayOf(
         PropTypes.shape({
             text: PropTypes.string.isRequired,
@@ -196,7 +214,7 @@ MainHeader.propTypes = {
     currentUser: PropTypes.shape({
         fullName: PropTypes.string.isRequired
     })
-};
+};*/
 
 export default connect(
     mapStateToProps,

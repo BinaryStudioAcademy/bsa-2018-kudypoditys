@@ -1,7 +1,7 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import * as actionTypes from './actionTypes';
 import authService from 'client/services/authService';
-
+import userService from 'client/services/userService'
 function* logout() {
     try {
         authService.logout();
@@ -33,9 +33,25 @@ function* changeCurrency(action){
         })
     }
 }
+function* changeUserCurrency(action){
+    try {
+        const user = yield call(userService.updateUser, action);
+        console.log(user)
+        yield put({
+            type: 'actionTypes.USER_SETTINGS_SEND_SUCCES',
+            payload: user
+        });
+    } catch (err) {
+        console.log(err);
+        yield put({
+            type: 'actionTypes.USER_SETTINGS_SEND_FAILURE'
+        });
+    }
+}
 export default function* headerSaga() {
     yield all([
         takeLatest(actionTypes.LOGOUT, logout),
-        takeLatest(actionTypes.CURRENCY_RATE_GET, changeCurrency)
+        takeLatest(actionTypes.CURRENCY_RATE_GET, changeCurrency),
+        takeLatest(actionTypes.USER_CURRENCY_UPDATE, changeUserCurrency)
     ])
 }

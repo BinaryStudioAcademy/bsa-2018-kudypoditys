@@ -2,7 +2,8 @@ import {
     CURRENCY_RATE_GET,
     CURRENCY_SELECT,
     CURRENCIES_GET,
-    LOGOUT
+    LOGOUT,
+    USER_CURRENCY_UPDATE
 } from './actionTypes';
 
 export function selectCurrency(payload) {
@@ -11,7 +12,12 @@ export function selectCurrency(payload) {
         payload
     };
 }
-
+export function changeUserCurrency(payload){
+    return {
+        type: USER_CURRENCY_UPDATE,
+        payload
+    }
+}
 export function getCurrencies() {
     return {
         type: CURRENCIES_GET
