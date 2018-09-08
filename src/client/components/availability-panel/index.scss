@@ -5,12 +5,11 @@
 
 .availability-panel {
     background-color: rgb(236, 238, 240);
-    padding: 15px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
     color: #274560;
 }
 
 .availability-panel > p {
-    padding-left: 10px;
     color: #274560;
 }
 
@@ -29,6 +28,10 @@
 .availability-form-midsection {
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 10px 0 20px 0;
+    padding: 10px 40px;
 }
 
 .availability-form > .availability-form-midsection > .field {
@@ -41,19 +44,49 @@
     align-self: flex-end;
 }
 
-.btn-wrp > button {
-    width: fit-content;
-    height: 33px;
-}
-
-.room-selector {
-    padding-top: 10px;
+.ui.form.availability-form
+    > .availability-form-midsection
+    > .room-selector
+    > .field
+    > label {
+    color: #465672;
 }
 
 .room-selector > .field {
     width: fit-content;
+    display: block;
 }
 
-.availability-form input.DateInput_input {
-    height: 33px;
+.availability-form .DateInput_input {
+    height: 38px;
+}
+
+.availability-form div.inline.fields.room-selector {
+    margin: 0;
+}
+
+.availability-form .DateRangePickerInput_arrow {
+    position: absolute;
+    z-index: 3;
+    color: #182c4f;
+    display: none;
+}
+
+.availability-form .DateInput_input_1 {
+    border: 0px solid !important;
+    border-left: 1px !important;
+    font-family: ArialMT, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: black;
+    opacity: 0.8;
+}
+
+.availability-form div.DateInput.DateInput_1 {
+    overflow: hidden;
 }

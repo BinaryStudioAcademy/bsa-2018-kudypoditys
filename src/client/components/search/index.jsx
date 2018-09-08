@@ -2,7 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { connect } from "react-redux";
-import { Input, Button, Form, Dropdown, Grid, Search } from "semantic-ui-react";
+import {
+    Input,
+    Button,
+    Form,
+    Dropdown,
+    Grid,
+    Search,
+    Image
+} from "semantic-ui-react";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 
@@ -28,7 +36,11 @@ export class MainSearch extends React.Component {
                     adults: parsed.adults,
                     children: parsed.children,
                     startDate: moment(Number(parsed.startDate)),
-                    endDate: moment(Number(parsed.endDate))
+                    endDate: moment(Number(parsed.endDate)),
+                    sortBy: parsed.sortBy,
+                    page:parsed.page
+
+
                 },
                 () => {
                     this.handleSubmit();
@@ -48,9 +60,6 @@ export class MainSearch extends React.Component {
                 }`
             )
             .then(citiesResponse => {
-                console.log(
-                    "response Cities= " + JSON.stringify(citiesResponse)
-                );
                 if (
                     citiesResponse &&
                     citiesResponse.data &&
@@ -72,19 +81,19 @@ export class MainSearch extends React.Component {
             })
 
             .then(propertiesResponse => {
-                console.log(
-                    "response Roperties= " + JSON.stringify(propertiesResponse)
-                );
-                if( propertiesResponse &&
+
+                if (
+                    propertiesResponse &&
                     propertiesResponse.data &&
-                    propertiesResponse.data instanceof Array)
-                propertiesResponse.data.forEach(element => {
-                    resultsData.push({
-                        title: element._source.name,
-                        description: element._source.address,
-                        image: element._source.image
+                    propertiesResponse.data instanceof Array
+                )
+                    propertiesResponse.data.forEach(element => {
+                        resultsData.push({
+                            title: element._source.name,
+                            description: element._source.address,
+                            image: element._source.image
+                        });
                     });
-                });
                 let title;
                 if (resultsData.length > 0) {
                     title = resultsData[0].title;
@@ -127,7 +136,9 @@ export class MainSearch extends React.Component {
             endDate,
             sortBy,
             queryCopy,
-            isSelectedResult
+            isSelectedResult,
+            page
+
         } = this.state;
         console.log("handleSubmit trigered");
         let { query } = this.state;
@@ -136,10 +147,11 @@ export class MainSearch extends React.Component {
             query = queryCopy;
             this.setState({ query: queryCopy });
         }
-        history.push({
-            pathname: "/search-page",
-            search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
-        });
+        if (query===undefined||query===null||query==="") return
+        // history.push({
+        //     pathname: "/search-page",
+        //     search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
+        // });
         this.props.onSearch({
             query: query,
             rooms: rooms,
@@ -147,7 +159,8 @@ export class MainSearch extends React.Component {
             children: children,
             startDate: startDate,
             endDate: endDate,
-            page: 1
+            page: page,
+            sortBy:sortBy
         });
     };
 
@@ -162,7 +175,8 @@ export class MainSearch extends React.Component {
             adults: 1,
             children: 1,
             query: "",
-            results: []
+            page:1,
+            results: [],
         };
     }
     generateOptions = (from, to) => {
@@ -231,7 +245,16 @@ export class MainSearch extends React.Component {
         console.log(JSON.stringify(selectedDates));
         this.setState(selectedDates);
     };
-
+    renderResults = ({ image, price, title, description }) => [
+        image && (
+                <Image src={image} avatar />
+        ),
+        <div key="content" className="content">
+            {price && <div className="price">{price}</div>}
+            {title && <div className="title">{title}</div>}
+            {description && <div className="description">{description}</div>}
+        </div>
+    ];
     render() {
         // console.log("state=" + JSON.stringify(this.state));
 
@@ -271,6 +294,7 @@ export class MainSearch extends React.Component {
             >
                 <div className="destination">
                     <Search
+                        resultRenderer={this.renderResults}
                         style={{ height: 60 }}
                         name="destination"
                         placeholder="Where are you going?"
@@ -279,17 +303,20 @@ export class MainSearch extends React.Component {
                         onSearchChange={this.handleSearchChange}
                         results={results}
                         value={query}
+
                         {...this.props}
                         required
                     />
                 </div>
                 <div
                     className="check-in-out"
-                    style={{ height: 60 }}
+                    style={{
+                        height: 60,
+                        border: "0px solid"
+                    }}
                     onFocus={this.hideRoomSelector}
                 >
                     <DateRangePicker
-                        noBorder={true}
                         startDateId="startDate"
                         endDateId="endDate"
                         required={true}
@@ -300,6 +327,8 @@ export class MainSearch extends React.Component {
                         onFocusChange={focusedInput => {
                             this.setState({ focusedInput });
                         }}
+                        showDefaultInputIcon={false}
+                        small={true}
                     />
                 </div>
 
@@ -308,17 +337,17 @@ export class MainSearch extends React.Component {
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
-                    <div
-                        ref={this.roomSelector}
-                        className="room-selector hidden"
-                        onMouseLeave={this.hideRoomSelector}
+                    <div style={{width: 170}}
+                         ref={this.roomSelector}
+                         className="room-selector hidden"
+                         onMouseLeave={this.hideRoomSelector}
                     >
                         <Grid>
                             <Grid.Row>
-                                <Grid.Column width={4} verticalAlign={"middle"}>
+                                <Grid.Column width={6} verticalAlign={"middle"}>
                                     <label>Rooms</label>
                                 </Grid.Column>
-                                <Grid.Column width={12}>
+                                <Grid.Column width={10}>
                                     <Dropdown
                                         compact
                                         selection
@@ -332,10 +361,10 @@ export class MainSearch extends React.Component {
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
-                                <Grid.Column width={4} verticalAlign={"middle"}>
+                                <Grid.Column width={6} verticalAlign={"middle"}>
                                     <label>Adults</label>
                                 </Grid.Column>
-                                <Grid.Column width={12}>
+                                <Grid.Column width={10}>
                                     <Dropdown
                                         compact
                                         selection
@@ -349,10 +378,10 @@ export class MainSearch extends React.Component {
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
-                                <Grid.Column width={4} verticalAlign={"middle"}>
+                                <Grid.Column width={6} verticalAlign={"middle"}>
                                     <label>Children</label>
                                 </Grid.Column>
-                                <Grid.Column width={12}>
+                                <Grid.Column width={10}>
                                     <Dropdown
                                         compact
                                         selection

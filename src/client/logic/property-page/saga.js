@@ -70,9 +70,33 @@ export default function* propertyPageSaga() {
         }
     }
 
+    function* getRoomsInfo(action) {
+        try {
+            //TODO api call
+            const input = action.payload;
+            console.log(JSON.stringify(input));
+            const response = yield call(
+                api.sendRequest,
+                "/api/property/availability",
+                "put",
+                input
+            );
+            yield put({
+                type: actionTypes.GET_ROOMS_INFO_SUCCESS,
+                payload: response.data
+            });
+        } catch (err) {
+            yield put({
+                type: actionTypes.GET_ROOMS_INFO_FAILURE,
+                payload: err.message
+            });
+        }
+    }
+
     yield all([
         takeLatest(actionTypes.GET_PROPERTY_INFO, getPropertyInfo),
         takeLatest(actionTypes.BOOK_PROPERTY, bookProperty),
-        takeLatest(actionTypes.CHECK_AVAILABILITY, checkAvailability)
+        takeLatest(actionTypes.CHECK_AVAILABILITY, checkAvailability),
+        takeLatest(actionTypes.GET_ROOMS_INFO, getRoomsInfo)
     ]);
 }

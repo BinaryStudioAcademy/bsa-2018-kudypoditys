@@ -17,8 +17,8 @@ class UserService extends Service {
             password: hash,
             email: user.email.trim(),
             phoneNumber: user.phoneNumber.trim(),
-            appeal: user.appeal.trim(),
-            preferredCurrency: user.preferredCurrency.trim(),
+            // appeal: user.appeal.trim(),
+            // preferredCurrency: user.preferredCurrency.trim(),
             countryId: user.countryId,
             paymentTypeId: user.paymentTypeId
         };
@@ -98,9 +98,7 @@ class UserService extends Service {
             .then(data => {
                 if (data) {
                     return userRepository.findById(user.id).then(user => {
-                        mailService
-                            .sendMail(user, mailOptionsParam, action)
-                            .then(() => true);
+                        mailService.sendMail(user, mailOptionsParam, action);
                         return { error: false, data: user };
                     });
                 } else {
@@ -144,8 +142,8 @@ class UserService extends Service {
             )
             .then(user => {
                 mailService.sendMail(user, mailOptions, action);
-            })
-            .then(_ => true);
+                return true;
+            });
     }
 
     verifyEmail(email, token) {
@@ -196,6 +194,21 @@ class UserService extends Service {
                 });
             })
             .then(_ => true);
+    }
+
+    async changePassword(userId, oldPassword, newPassword) {
+        console.log(userId, oldPassword, newPassword);
+        const user = await userRepository.findById(userId);
+        console.log("after user", user.password);
+        const password = await bcrypt.compare(oldPassword, user.password);
+        console.log(password);
+
+        if (password) {
+            userRepository.updateById(user.id, {
+                password: bcrypt.hashSync(newPassword, 10)
+            });
+            return "Password updated successfully";
+        } else return "Old password is not valid";
     }
 
     generateRandomString() {

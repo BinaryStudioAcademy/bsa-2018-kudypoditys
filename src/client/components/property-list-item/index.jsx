@@ -20,7 +20,11 @@ import { mapStateToProps } from "./container";
 import { connect } from "react-redux";
 import MapWidgetModal from "client/components/map-widget-modal";
 import history from "client/history";
-
+import {
+    getGroupedArray,
+    getAvgFromArray
+} from "client/helpers/avgReviewRating";
+import RatingBlock from "../reviews/ratingBlock";
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
         //todo  handleRedirectToMap
@@ -32,8 +36,8 @@ export class PropertyListItem extends React.Component {
         //todo
     };
     handleRedirectToDetails = () => {
-        console.log(JSON.stringify(this.props.propertyItemData))
-        history.push("/property/"+ this.props.propertyItemData.id); // this.props.actions.redirectToDetails(id)
+        console.log(JSON.stringify(this.props.propertyItemData));
+        history.push("/property/" + this.props.propertyItemData.id); // this.props.actions.redirectToDetails(id)
     };
 
     componentDidMount() {
@@ -44,16 +48,25 @@ export class PropertyListItem extends React.Component {
         const { propertyItemData } = this.props;
         console.log(propertyItemData);
 
-        let ratingStatus = "";
-        if (propertyItemData.rating >= 9) {
-            ratingStatus = "Excellent";
-        } else if (propertyItemData.rating >= 7) {
-            ratingStatus = "Very Good";
-        } else if (propertyItemData.rating >= 5) {
-            ratingStatus = "Good";
-        } else if (propertyItemData.rating >= 1) {
-            ratingStatus = "Not good";
-        }
+        // let ratingStatus = "";
+        // if (propertyItemData.rating >= 9) {
+        //     ratingStatus = "Excellent";
+        // } else if (propertyItemData.rating >= 7) {
+        //     ratingStatus = "Very Good";
+        // } else if (propertyItemData.rating >= 5) {
+        //     ratingStatus = "Good";
+        // } else if (propertyItemData.rating >= 1) {
+        //     ratingStatus = "Not good";
+        // }
+
+        // AVG PROPERTY RATING
+        const avgPropRatingArray = getGroupedArray(
+            propertyItemData.reviews,
+            "avgReview"
+        );
+        const avgPropRating = getAvgFromArray(avgPropRatingArray);
+
+
 
         return (
             <Card
@@ -133,31 +146,38 @@ export class PropertyListItem extends React.Component {
                                         disabled
                                     />
                                 </div>
-                                <div className="rating_block">
-                                    <div
-                                        style={{
-                                            textAlign: "center",
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            paddingRight: 10
-                                        }}
-                                    >
-                                        <div className="ratingName">
-                                            {" "}
-                                            {ratingStatus}
-                                        </div>
-                                        <br />
-                                        <span className="reviewsNumber">
-                                            {propertyItemData.reviewsNamber}{" "}
-                                            reviews
-                                        </span>
+
+                                    {/*<div*/}
+                                        {/*style={{*/}
+                                            {/*textAlign: "center",*/}
+                                            {/*display: "flex",*/}
+                                            {/*flexDirection: "column",*/}
+                                            {/*paddingRight: 10*/}
+                                        {/*}}*/}
+                                    {/*>*/}
+                                        {/*<div className="ratingName">*/}
+                                            {/*{" "}*/}
+                                            {/*{ratingStatus}*/}
+                                        {/*</div>*/}
+                                        {/*<br />*/}
+                                        {/*<span className="reviewsNumber">*/}
+                                            {/*{propertyItemData.reviewsNamber}{" "}*/}
+                                            {/*reviews*/}
+                                        {/*</span>*/}
+                                    {/*</div>*/}
+
+                                    {/*<div className="rating_num">*/}
+                                        {/*{" "}*/}
+                                        {/*{propertyItemData.rating}*/}
+                                    {/*</div>*/}
+                                    <div className="rating_listItem">
+                                    <RatingBlock
+                                        avgPropRating={avgPropRating}
+                                        reviewsCount={propertyItemData.reviews.length}
+                                        property={propertyItemData}
+                                    />
                                     </div>
 
-                                    <div className="rating_num">
-                                        {" "}
-                                        {propertyItemData.rating}
-                                    </div>
-                                </div>
                             </div>
                             <div className="card_row__location">
                                 <div className="location__span">
@@ -171,9 +191,16 @@ export class PropertyListItem extends React.Component {
                                     <MapWidgetModal
                                         properties={[
                                             {
-                                                price: 3000,
-                                                name:
-                                                propertyItemData.name,
+                                                price: propertyItemData.rooms[0].price,
+                                                name: propertyItemData.name,
+                                                coordinates: {
+                                                    lat:
+                                                        propertyItemData
+                                                            .coordinates.lat,
+                                                    lng:
+                                                        propertyItemData
+                                                            .coordinates.lng
+                                                },
                                                 latitude:
                                                     propertyItemData.coordinates
                                                         .lat,
@@ -181,9 +208,10 @@ export class PropertyListItem extends React.Component {
                                                     propertyItemData.coordinates
                                                         .lng,
                                                 imageSrc:
-                                                propertyItemData.images[0].url,
+                                                    propertyItemData.images[0]
+                                                        .url,
                                                 address:
-                                                propertyItemData.address,
+                                                    propertyItemData.address,
                                                 rating: propertyItemData.rating
                                             }
                                         ]}
@@ -198,10 +226,10 @@ export class PropertyListItem extends React.Component {
                                         controlEnable={true}
                                         buttonClass={"searchMapButton"}
                                     />
-                                    {/* <span className="Property_list__distanceToCenter">
-                                        ({propertyItemData.distanceToCenter} km
+                                     <span className="Property_list__distanceToCenter">
+                                        ({propertyItemData.distanceToCentre} km
                                         from center)
-                                    </span> */}
+                                    </span>
                                 </div>
                             </div>
 
@@ -228,26 +256,12 @@ export class PropertyListItem extends React.Component {
                                         className="search_result__message"
                                         style={{
                                             display:
-                                                propertyItemData.availableRoomsCount ===
-                                                0
-                                                    ? "block"
+                                                propertyItemData.id% 2 === 0 ?
+                                                     "block"
                                                     : "none"
                                         }}
                                     >
-                                        Unfortunately we do not have any
-                                        available rooms
-                                    </Message>
-                                    <Message
-                                        className="search_result__message"
-                                        style={{
-                                            display:
-                                                propertyItemData.availableRoomsCount ===
-                                                1
-                                                    ? "block"
-                                                    : "none"
-                                        }}
-                                    >
-                                        The last available room!!!
+                                        Property was recently booked!
                                     </Message>
                                 </div>
 

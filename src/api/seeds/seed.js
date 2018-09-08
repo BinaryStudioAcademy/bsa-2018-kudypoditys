@@ -37,7 +37,8 @@ const PROPERTIES = [
         description:
             "This property is 15 minutes walk from the beach. Located on Independence Square in the heart of Kiev, this hotel offers air-conditioned rooms and suites with elegant décor. It is a 3-minute walk from the Maidan Nezalezhnosti and Kreschatik Metro Stations. In-room facilities at the Ukraine Hotel include satellite TV and a refrigerator. Your bathroom includes free toiletries and perfumes. Guests enjoy views of the Kreschatyk Street and the surrounding area. A large breakfast buffet is available at the Ukraine Hotel, and 24-hour room service is offered. Ukrainian and European cuisine is served for lunch and dinner. Live music is sometimes played here. The hotel features a beauty salon, sauna and massage facilities. A private laundry service is also available. Hotel Ukraine is a 10-minute walk from Mariyinsky Park and the St. Sofia Cathedral. Secure parking is available on site. Pecherskyj is a great choice for travellers interested in restaurants, food and friendly locals. This is our guests' favourite part of Kiev, according to independent reviews. This property also has one of the best-rated locations in Kiev! Guests are happier about it compared to other properties in the area.",
         contactPhone: "0509832174",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: { lat: 49.137089, lng: 24.027161 },
+        distanceToCentre: 1.7,
         userId: 1,
         propertyTypeId: 9,
         cityId: 2,
@@ -51,8 +52,9 @@ const PROPERTIES = [
         description: `Providing free WiFi, Hotel Dolynskiy is set in Lviv. This property is situated a short distance from attractions such as The St. Onuphrius Church and Monastery and The Church of St. Nicholas. The property is 700 m from The High Castle Park and a 9-minute walk from Zankovetski Drama Theater.
         At the hotel, rooms are equipped with a wardrobe. The private bathroom is equipped with free toiletries. Lviv State Academic Opera and Ballet Theater is 800 m from Hotel Dolynskiy, while The Armenian Cathedral is a 10-minute walk away. The nearest airport is Lviv International Airport, 7 km from the accommodation. This is our guests' favourite part of Lviv, according to independent reviews.`,
         contactPhone: "0509842174",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: { lat: 49.817089, lng: 24.031161 },
         propertyTypeId: 9,
+        distanceToCentre: 0.7,
         cityId: 1,
         accommodationRuleId: 1
     },
@@ -64,8 +66,9 @@ const PROPERTIES = [
         description:
             "Hotel Atlas Deluxe is located in the heart of Lviv, within a 2-minute walk of Ploshcha Rynok Square and a 10-minute walk of Ivana Franko Park. It offers a sauna, fitness centre and concierge service. The classic-style air-conditioned rooms feature a flat-screen TV with satellite channels. The bathroom comes with a hairdryer and free toiletries. Guests can order a meal in the on-site restaurant. After a busy day, you can enjoy your favourite drink at the bar. Lviv Train Station is within a 10-minute drive of Hotel Atlas Deluxe. A shuttle to Lviv International Airport (6.5 km) is available at surcharge. This is our guests' favourite part of Lviv, according to independent reviews.",
         contactPhone: "0678674908",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: { lat: 49.837189, lng: 24.021161 },
         propertyTypeId: 9,
+        distanceToCentre: 1.1,
         cityId: 1,
         accommodationRuleId: 1
     },
@@ -77,8 +80,9 @@ const PROPERTIES = [
         description:
             "Located in the city centre of Lviv, less than a 2-minute walk from Svobody Prospekt and a 5-minute walk from Market Square, Rius hotel features free Wi-Fi throughout the property. The modern rooms here provide guests with panoramic windows with a city view, a minibar, a balcony or a terrace, a flat-screen TV with satellite channels, air conditioning, and a private bathroom with a bath or shower. The Lviv Theatre of Opera and Ballet is a 6-minute walk, and the City Hall is a 7-minute walk away. Rius hotel is 2.5 km from Lviv Train Station, 1 km from Doroshenka tram stop, and 7 km from Lviv International Airport. Guarded underground parking is provided. This is our guests' favourite part of Lviv, according to independent reviews. This property also has one of the best-rated locations in Lviv! Guests are happier about it compared to other properties in the area.",
         contactPhone: "0955679712",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: { lat: 49.867089, lng: 24.029161 },
         propertyTypeId: 9,
+        distanceToCentre: 0.2,
         cityId: 1,
         accommodationRuleId: 1
     },
@@ -90,8 +94,9 @@ const PROPERTIES = [
         description:
             "This hotel is located in the historic centre of Lviv, just a 10-minute walk from Ploschad Rynok Square. Free Wi-Fi and a 24-hour reception are featured at British Club Lviv. The elegant, air-conditioned rooms and apartments of this hotel are decorated in classical English style. Each one includes a flat-screen TV, a refrigerator and a private bathroom with bathrobes and a hairdryer. Breakfast is served every morning in the hotel’s dining area. Lviv Opera Theatre is just a 2-minute walk away, and Ivana Franko Park is a 5-minute walk from the hotel. A bus stop on Prospekt Svobody is 150 m from British Club Lviv. Lviv Central Train Station is 2.5 km away, and Lviv International Airport is 6 km from the hotel. ",
         contactPhone: "0509842174",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: { lat: 49.137089, lng: 24.022161 },
         propertyTypeId: 9,
+        distanceToCentre: 2.7,
         cityId: 1,
         accommodationRuleId: 1
     },
@@ -103,8 +108,9 @@ const PROPERTIES = [
         description:
             "This guest house is located in the centre of Kharkov, a 5-minute walk from Konstitutsii Square. Free Wi-Fi, a 24-hour reception and private parking are featured at Complimente Guest House. The bright, air-conditioned rooms are decorated in classic style. Every room includes a flat-screen TV, a kitchenette equipped with a fridge and a private bathroom. A hairdryer is available. The on-site café serves European cuisine, and a selection of drinks is available at the bar. Kharkov Opera and Ballet Theatre is a 7-minute walk away, and the Shevchenko Park is within a walking distance of the guest house. Istoricheskiy Muzey and Sovetskaya Metro Stations are 500 m from Complimente Guest House. Kharkov Central Train Station is 5 km away, and Kharkov Airport is 12 km from the guest house. This is our guests' favourite part of Kharkov, according to independent reviews.",
         contactPhone: "0674569222",
-        coordinates: { lat: 49.988358, lng: 36.232845 },
+        coordinates: { lat: 49.983358, lng: 36.132845 },
         propertyTypeId: 5,
+        distanceToCentre: 3.7,
         cityId: 5,
         accommodationRuleId: 1
     },
@@ -117,8 +123,9 @@ const PROPERTIES = [
         description:
             "Featuring free WiFi throughout the property, Pletnevskiy Inn offers accommodation in the historical building in the centre of Kharkov. Guests can enjoy the on-site restaurant. Every room at this hotel is air conditioned and is equipped with a flat-screen TV with cable channels. Certain units include a seating area to relax in after a busy day. You will find a kettle in the room. Every room has a private bathroom fitted with a shower. Extras include bathrobes, slippers and free toiletries. You will find a 24-hour front desk and a concierge service at the property. The on-site parking is available. Metallist Stadium is 2.1 km from Pletnevskiy Inn, while Kharkov Historical Museum is 700 m from the property. The nearest Metro Station is Maidan Konstitutzii, 700 m from property. The nearest airport is Kharkiv International Airport, 8 km from the property. ",
         contactPhone: "0896789099",
-        coordinates: { lat: 49.988358, lng: 36.232845 },
+        coordinates: { lat: 49.968358, lng: 36.262845 },
         propertyTypeId: 6,
+        distanceToCentre: 1.4,
         cityId: 5,
         accommodationRuleId: 1
     },
@@ -130,8 +137,9 @@ const PROPERTIES = [
         description:
             "his property is 6 minutes walk from the beach. Offering great views of the Black Sea, this historic, classical-style hotel is within a 10-minute walk of Deribasovskaya street, Potemkin Stairs and Duke de Richelieu monument. Opera and Ballet Theatre is 300 m away. Spacious, soundproofed rooms and suites provide a flat-screen TV, desk and safety deposit box. A three-storeyed spa area features a hammam, spa bath, 2 swimming pool and gym. Guests can also enjoy a wide range of massages and cosmetology treatments. The on-site restaurant serves traditional Ukrainian and European cuisine. In summer, guests can dine in the paio. Airport shuttles can be booked at the Londonskaya’s 24-hour reception. The hotel is 2 km from Odessa Train Station and 10 km from Odessa International Airport. Primorsky is a great choice for travellers interested in food, restaurants and architecture.",
         contactPhone: "05089079871",
-        coordinates: { lat: 46.469391, lng: 30.740883 },
+        coordinates: { lat: 46.469391, lng: 30.760883 },
         propertyTypeId: 16,
+        distanceToCentre: 3.7,
         cityId: 4,
         accommodationRuleId: 1
     },
@@ -143,8 +151,9 @@ const PROPERTIES = [
         description:
             "Stylish rooms with free WiFi and unique décor, UNO Design Hotel is just a 2-minute walk from Deribasovskaya Street and 800 m from the sandy Black Sea Coast. UNO Design Hotel offers spacious suites and rooms with a flat-screen TV and a fully equipped kitchenette. Slippers and toiletries are provided. There are many restaurants and bars within walking distance of UNO Design Hotel. The property is centrally located in the city, just a 5-minute walk from sights such as Odessa Opera and Ballet House and the Potemkin Steps. Odessa Main Train Station is a 10-minute drive and Odessa International Airport is 30 minutes' away by car. Primorsky is a great choice for travellers interested in food, restaurants and architecture. This is our guests' favourite part of Odessa, according to independent reviews.",
         contactPhone: "0509842174",
-        coordinates: { lat: 46.469391, lng: 30.740883 },
+        coordinates: { lat: 46.469391, lng: 30.746883 },
         propertyTypeId: 9,
+        distanceToCentre: 1.5,
         cityId: 4,
         accommodationRuleId: 1
     },
@@ -156,8 +165,9 @@ const PROPERTIES = [
         description:
             "This property is 2 minutes walk from the beach. Featuring the on-site Dolphinarium, Oceanarium and the Dolphin assisted therapy centre, Resort & SPA Hotel NEMO with dolphins is set in the historical centre of Odessa, on Lanzheron Beach. It offers 9 heated sea-water swimming pools, fitness & spa zone, a 24-hour room service and free WiFi. All rooms are air-conditioned and come with a balcony, flat-screen TV, a safety deposit box and minibar. All suites feature a spa bath. Guests can enjoy Ukrainian, European and Japanese cuisine in the hotel's restaurant, or have a drink at the bar. Odessa city centre is a 5-minute drive from Resort & Spa Hotel Nemo with dolphins. Central Train Station is a 10-minute drive from the resort. Odessa International Airport is 10 km away. Primorsky is a great choice for travellers interested in food, restaurants and architecture.",
         contactPhone: "05066789078",
-        coordinates: { lat: 46.469391, lng: 30.740883 },
+        coordinates: { lat: 46.419391, lng: 30.740783 },
         propertyTypeId: 16,
+        distanceToCentre: 6.7,
         cityId: 4,
         accommodationRuleId: 1
     },
@@ -169,8 +179,9 @@ const PROPERTIES = [
         description:
             "This hostel in Odessa city centre is only 15 minutes’ walk from Odessa Central Train Station. It features a lounge area with a TV, a well-equipped kitchen and free Wi-Fi. Hostel-Hotel Odesskiy offers shared dormitory rooms with access to shared bathroom facilities. Every room is heated, and includes a desk and wardrobe. Guests at Hostel-Hotel Odesskiy can use the accommodation’s shared kitchen facilities to prepare meals. The kitchen includes a refrigerator, microwave and electric kettle, and a super market is located next door. Odessa attractions such as the Opera and Ballet Theatre and Odessa Philharmonic can be found within 1 km from the hostel. Chernomorets football stadium is only 300 m away. The hostel is located 7 km from Odessa Airport and a public bus runs from here to Troitskaya bus stop, 50 m from the hostel. Primorsky is a great choice for travellers interested in food, restaurants and architecture. This is our guests' favourite part of Odessa, according to independent reviews.",
         contactPhone: "09565789091",
-        coordinates: { lat: 46.469391, lng: 30.740883 },
+        coordinates: { lat: 46.462391, lng: 30.742883 },
         propertyTypeId: 13,
+        distanceToCentre: 8.7,
         cityId: 4,
         accommodationRuleId: 1
     },
@@ -187,8 +198,9 @@ const PROPERTIES = [
 
             This property also has one of the best-rated locations in Ternopilʼ!`,
         contactPhone: "0674589485",
-        coordinates: { lat: 49.553516, lng: 25.594767 },
+        coordinates: { lat: 49.513516, lng: 25.544767 },
         propertyTypeId: 1,
+        distanceToCentre: 1.9,
         cityId: 3,
         accommodationRuleId: 1
     },
@@ -207,8 +219,9 @@ const PROPERTIES = [
 
             Many shops and restaurants are within a 5-minute walk of the Hotel Ternopil. Ternopil Train Station is within a 15-minute walk and Ternopil Airport is a 15-minute drive away. `,
         contactPhone: "0956786121",
-        coordinates: { lat: 49.553516, lng: 25.594767 },
+        coordinates: { lat: 49.153516, lng: 25.564767 },
         propertyTypeId: 9,
+        distanceToCentre: 9.7,
         cityId: 3,
         accommodationRuleId: 1
     },
@@ -227,8 +240,9 @@ const PROPERTIES = [
 
             Kamelot Hotel is 8 minutes’ drive from Ternopil Train Station and the 18th-century Dominican Church. Ternopil Airport is 15 minutes’ drive away.`,
         contactPhone: "0906786876",
-        coordinates: { lat: 49.553516, lng: 25.594767 },
+        coordinates: { lat: 49.563516, lng: 25.592767 },
         propertyTypeId: 2,
+        distanceToCentre: 1.5,
         cityId: 3,
         accommodationRuleId: 1
     },
@@ -246,8 +260,9 @@ const PROPERTIES = [
 
             Kiev city centre with Maidan Nezalezhnosti Square is 20 minutes’ metro ride from Hotel Verhovina, and Kiev Train Station is 15 minutes away by metro. Boryspil Airport is 50 km from the hotel.`,
         contactPhone: "0678909456",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: { lat: 50.472626, lng: 30.456608 },
         propertyTypeId: 9,
+        distanceToCentre: 4.7,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -266,8 +281,9 @@ const PROPERTIES = [
 
             Dniprovskyj is a great choice for travellers interested in sightseeing, friendly locals and history.`,
         contactPhone: "0908909422",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: { lat: 50.451626, lng: 30.458608 },
         propertyTypeId: 9,
+        distanceToCentre: 3.7,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -286,8 +302,9 @@ const PROPERTIES = [
 
             Kiev Airport is a 40-minute drive from the hotel, and Kiev Main Station is a 20-minute drive away. `,
         contactPhone: "09567893241",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: { lat: 50.451626, lng: 30.453608 },
         propertyTypeId: 9,
+        distanceToCentre: 7.7,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -308,8 +325,9 @@ const PROPERTIES = [
 
             The nearest airport is Zhuliany Airport, 6 km from City Holiday Resort & SPA. `,
         contactPhone: "0674594012",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: { lat: 50.451626, lng: 30.453608 },
         propertyTypeId: 16,
+        distanceToCentre: 1.3,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -324,8 +342,9 @@ const PROPERTIES = [
 
             Saint Sophia Cathedral is 7 km from the apartment. `,
         contactPhone: "0674099409",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: { lat: 51.471626, lng: 30.253608 },
         propertyTypeId: 6,
+        distanceToCentre: 3.7,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -345,8 +364,9 @@ const PROPERTIES = [
 
             Podilskyj is a great choice for travellers interested in old town exploring, architecture and walking.`,
         contactPhone: "0955589762",
-        coordinates: { lat: 50.471626, lng: 30.453608 },
+        coordinates: { lat: 51.471626, lng: 34.453608 },
         propertyTypeId: 11,
+        distanceToCentre: 2.7,
         cityId: 2,
         accommodationRuleId: 1
     },
@@ -363,9 +383,10 @@ const PROPERTIES = [
 
             Bartolomeo Best River Resort features two tennis courts, playgrounds for mini-football and beach volleyball. `,
         contactPhone: "0678007800",
-        coordinates: { lat: 48.45, lng: 34.98333 },
+        coordinates: { lat: 48.425, lng: 34.983313 },
         propertyTypeId: 9,
         cityId: 6,
+        distanceToCentre: 3.5,
         accommodationRuleId: 1
     },
     {
@@ -383,8 +404,9 @@ const PROPERTIES = [
 
             The Karl Marx Prospekt boulevard is a 3-minute walk from the Tsunami Spa Hotel. The hotel offers free private parking.`,
         contactPhone: "0674108900",
-        coordinates: { lat: 48.45, lng: 34.98333 },
+        coordinates: { lat: 48.425, lng: 34.983233 },
         propertyTypeId: 17,
+        distanceToCentre: 2.7,
         cityId: 6,
         accommodationRuleId: 1
     },
@@ -399,8 +421,9 @@ const PROPERTIES = [
 
             Bolshoy Ice Palace is 3.2 km from the apartment. The nearest airport is Adler-Sochi International Airport, 3 km from Apartments on Kirova. `,
         contactPhone: "0904118899",
-        coordinates: { lat: 48.45, lng: 34.98333 },
+        coordinates: { lat: 48.425, lng: 34.983233 },
         propertyTypeId: 1,
+        distanceToCentre: 1.1,
         cityId: 6,
         accommodationRuleId: 1
     },
@@ -421,9 +444,10 @@ const PROPERTIES = [
 
             This is our guests' favourite part of Lviv, according to independent reviews.`,
         contactPhone: "0671129412",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: { lat: 49.8374089, lng: 24.071161 },
         propertyTypeId: 1,
         cityId: 1,
+        distanceToCentre: 7.7,
         accommodationRuleId: 1
     },
     {
@@ -441,8 +465,9 @@ const PROPERTIES = [
 
             This is our guests' favourite part of Lviv, according to independent reviews.`,
         contactPhone: "0678907890",
-        coordinates: { lat: 49.837089, lng: 24.021161 },
+        coordinates: { lat: 43.837089, lng: 22.021161 },
         propertyTypeId: 1,
+        distanceToCentre: 7.1,
         cityId: 1,
         accommodationRuleId: 1
     }
@@ -481,6 +506,286 @@ const PROPERTY_PAYMENT_TYPES = [
     {
         propertyId: 2,
         paymentTypeId: 3
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 4
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 3,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 4,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 4,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 4,
+        paymentTypeId: 4
+    },
+    {
+        propertyId: 5,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 5,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 6,
+        paymentTypeId: 4
+    },
+    {
+        propertyId: 7,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 7,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 7,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 8,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 8,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 8,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 9,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 9,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 9,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 10,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 10,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 10,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 11,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 11,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 11,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 12,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 12,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 12,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 13,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 13,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 13,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 14,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 14,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 14,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 15,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 15,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 15,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 16,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 16,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 16,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 17,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 17,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 17,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 18,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 18,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 18,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 19,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 19,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 19,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 20,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 20,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 20,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 21,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 21,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 21,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 22,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 22,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 22,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 23,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 23,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 23,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 24,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 24,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 24,
+        paymentTypeId: 1
+    },
+    {
+        propertyId: 25,
+        paymentTypeId: 3
+    },
+    {
+        propertyId: 25,
+        paymentTypeId: 2
+    },
+    {
+        propertyId: 25,
+        paymentTypeId: 1
     }
 ];
 
@@ -533,9 +838,6 @@ const ROOMS = [
         roomTypeId: 2,
         propertyId: 6
     },
-    //
-    //
-    //
     {
         id: 7,
         price: 20,
@@ -693,6 +995,38 @@ const ROOMS = [
         area: 67,
         roomTypeId: 2,
         propertyId: 25
+    },
+    {
+        id: 26,
+        price: 33,
+        amount: 2,
+        area: 67,
+        roomTypeId: 4,
+        propertyId: 1
+    },
+    {
+        id: 27,
+        price: 20,
+        amount: 3,
+        area: 67,
+        roomTypeId: 3,
+        propertyId: 1
+    },
+    {
+        id: 28,
+        price: 15,
+        amount: 3,
+        area: 67,
+        roomTypeId: 5,
+        propertyId: 2
+    },
+    {
+        id: 29,
+        price: 25,
+        amount: 3,
+        area: 67,
+        roomTypeId: 1,
+        propertyId: 2
     }
 ];
 
@@ -1012,7 +1346,8 @@ const RESERVATIONS = [
         guestsCount: 3,
         userId: 1,
         roomId: 1,
-        paymentTypeId: 1
+        paymentTypeId: 1,
+        orderCode: "NSP4ISIYL"
     },
     {
         dateIn: new Date("2018-09-10"),
@@ -1020,7 +1355,8 @@ const RESERVATIONS = [
         guestsCount: 2,
         userId: 1,
         roomId: 2,
-        paymentTypeId: 1
+        paymentTypeId: 1,
+        orderCode: "JFKSOF9U6"
     },
     {
         dateIn: new Date("2018-09-10"),
@@ -1028,7 +1364,8 @@ const RESERVATIONS = [
         guestsCount: 3,
         userId: 1,
         roomId: 3,
-        paymentTypeId: 1
+        paymentTypeId: 1,
+        orderCode: "KSIFY6U4H"
     },
     {
         dateIn: new Date("2018-09-10"),
@@ -1036,7 +1373,8 @@ const RESERVATIONS = [
         guestsCount: 2,
         userId: 1,
         roomId: 4,
-        paymentTypeId: 1
+        paymentTypeId: 1,
+        orderCode: "NLS5F9L5S"
     },
     {
         dateIn: new Date("2018-09-10"),
@@ -1044,7 +1382,8 @@ const RESERVATIONS = [
         guestsCount: 3,
         userId: 1,
         roomId: 5,
-        paymentTypeId: 1
+        paymentTypeId: 1,
+        orderCode: "LVP6T4GSF"
     },
     {
         dateIn: new Date("2018-09-10"),
@@ -1052,7 +1391,8 @@ const RESERVATIONS = [
         guestsCount: 2,
         userId: 1,
         roomId: 6,
-        paymentTypeId: 1
+        paymentTypeId: 1,
+        orderCode: "NPSUCCP5O"
     },
     {
         dateIn: new Date("2018-09-10"),
@@ -1060,7 +1400,8 @@ const RESERVATIONS = [
         guestsCount: 3,
         userId: 1,
         roomId: 7,
-        paymentTypeId: 1
+        paymentTypeId: 1,
+        orderCode: "9JFISP5N0"
     },
     {
         dateIn: new Date("2018-09-10"),
@@ -1068,7 +1409,8 @@ const RESERVATIONS = [
         guestsCount: 2,
         userId: 1,
         roomId: 8,
-        paymentTypeId: 1
+        paymentTypeId: 1,
+        orderCode: "NH9GS8NKD"
     }
 ];
 
@@ -1322,6 +1664,35 @@ const FACILITY_LISTS = [
         id: 50,
         propertyId: 25,
         facilityId: 1
+    },
+    {
+        propertyId: 1,
+        facilityId: 2
+    },
+    {
+        propertyId: 1,
+        facilityId: 5
+    },
+    {
+        propertyId: 1,
+        facilityId: 6
+    },
+    {
+        propertyId: 1,
+        facilityId: 4
+    },
+
+    {
+        propertyId: 1,
+        facilityId: 12
+    },
+    {
+        propertyId: 1,
+        facilityId: 10
+    },
+    {
+        propertyId: 1,
+        facilityId: 16
     }
 ];
 
@@ -1734,7 +2105,12 @@ const BED_IN_ROOM = [
     { id: 22, count: 7, roomId: 22, bedTypeId: 3 },
     { id: 23, count: 2, roomId: 23, bedTypeId: 4 },
     { id: 24, count: 3, roomId: 24, bedTypeId: 5 },
-    { id: 25, count: 2, roomId: 25, bedTypeId: 6 }
+    { id: 25, count: 2, roomId: 25, bedTypeId: 6 },
+    { id: 26, count: 2, roomId: 26, bedTypeId: 4 },
+    { id: 27, count: 1, roomId: 27, bedTypeId: 2 },
+    { id: 28, count: 1, roomId: 28, bedTypeId: 2 },
+    { id: 29, count: 1, roomId: 28, bedTypeId: 3 },
+    { id: 30, count: 1, roomId: 29, bedTypeId: 2 }
 ];
 const BED_TYPES = [
     {
@@ -1946,19 +2322,19 @@ const ROOM_TYPES = [
 const LANGUAGES = [
     {
         id: 1,
-        name: 'English'
+        name: "English"
     },
     {
         id: 2,
-        name: 'Russion'
+        name: "Russian"
     },
     {
         id: 3,
-        name: 'Ukranian'
+        name: "Ukranian"
     },
     {
         id: 4,
-        name: 'German'
+        name: "German"
     }
 ];
 

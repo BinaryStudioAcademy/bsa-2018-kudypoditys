@@ -6,7 +6,8 @@ import {
     BOOK_PROPERTY_SUCCESS,
     BOOK_PROPERTY_FAILURE,
     CHECK_AVAILABILITY_SUCCESS,
-    CHECK_AVAILABILITY_FAILURE
+    CHECK_AVAILABILITY_FAILURE,
+    GET_ROOMS_INFO_SUCCESS
 } from "./actionTypes";
 
 import { SEARCH_UPDATE } from "../search/actionTypes";
@@ -17,6 +18,13 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
             return {
                 ...state,
                 property: action.payload
+            };
+        }
+
+        case GET_ROOMS_INFO_SUCCESS: {
+            return {
+                ...state,
+                rooms: action.payload
             };
         }
 

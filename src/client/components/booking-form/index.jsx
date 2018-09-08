@@ -1,11 +1,11 @@
 import React from "react";
-import {Form, Header, Dropdown, Message} from "semantic-ui-react";
-import {DateRangePicker} from "react-dates";
+import { Form, Header, Dropdown, Message } from "semantic-ui-react";
+import { DateRangePicker } from "react-dates";
 import moment from "moment";
-import {connect} from "react-redux";
-import {mapStateToProps, mapDispatchToProps} from "./container";
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
-
+import history from "client/history";
 
 export class BookingForm extends React.Component {
     generateOptions = (from, to) => {
@@ -21,7 +21,7 @@ export class BookingForm extends React.Component {
     generateRoomOptions = rooms => {
         let options = [];
         for (let i = 0; i < rooms.length; i++) {
-            options.push({text: rooms[i].roomType.name, value: rooms[i].id});
+            options.push({ text: rooms[i].roomType.name, value: rooms[i].id });
         }
         return options;
     };
@@ -36,7 +36,7 @@ export class BookingForm extends React.Component {
         return options;
     };
     datesChanged = selectedDates => {
-        this.props.onDatesChange(selectedDates);
+        this.props.onDatesChange(this.props.propertyId, selectedDates);
     };
 
     constructor(props) {
@@ -67,11 +67,19 @@ export class BookingForm extends React.Component {
         const paymentOptions = this.generatePaymentOptions(paymentTypes);
         const roomOptions = this.generateRoomOptions(rooms);
 
+        if (message === "Your booking was a success!") {
+            this.props.clearBookingForm();
+            history.push({
+                pathname: "/user-cabinet",
+                search: `?tab=0`
+            });
+        }
+
         return (
             <React.Fragment>
                 <Header
                     as="h2"
-                    style={{marginBottom: "20px", color: "#274560"}}
+                    style={{ marginBottom: "20px", color: "#274560" }}
                 >
                     Make your booking at {propertyName}
                 </Header>
@@ -97,7 +105,7 @@ export class BookingForm extends React.Component {
                     }}
                 >
                     <Form.Field>
-                        <label style={{color: "#274560"}}>
+                        <label style={{ color: "#274560" }}>
                             Check-in and check-out
                         </label>
                         <div
@@ -114,14 +122,14 @@ export class BookingForm extends React.Component {
                                 onDatesChange={this.datesChanged}
                                 focusedInput={this.state.focusedInput}
                                 onFocusChange={focusedInput => {
-                                    this.setState({focusedInput});
+                                    this.setState({ focusedInput });
                                 }}
                             />
                         </div>
                     </Form.Field>
                     <Form.Group inline>
                         <Form.Field>
-                            <label style={{color: "#274560"}}>Adults</label>
+                            <label style={{ color: "#274560" }}>Adults</label>
                             <Dropdown
                                 fluid
                                 selection
@@ -135,7 +143,7 @@ export class BookingForm extends React.Component {
                             />
                         </Form.Field>
                         <Form.Field>
-                            <label style={{color: "#274560"}}>Children</label>
+                            <label style={{ color: "#274560" }}>Children</label>
                             <Dropdown
                                 fluid
                                 selection
@@ -149,7 +157,7 @@ export class BookingForm extends React.Component {
                             />
                         </Form.Field>
                         <Form.Field>
-                            <label style={{color: "#274560"}}>Room</label>
+                            <label style={{ color: "#274560" }}>Room</label>
                             <Dropdown
                                 fluid
                                 selection
@@ -163,7 +171,7 @@ export class BookingForm extends React.Component {
                             />
                         </Form.Field>
                         <Form.Field>
-                            <label style={{color: "#274560"}}>
+                            <label style={{ color: "#274560" }}>
                                 Payment type
                             </label>
                             <Dropdown

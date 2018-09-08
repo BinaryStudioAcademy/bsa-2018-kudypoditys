@@ -18,19 +18,6 @@ elastic.route("/index/init")
 elastic.route("/init").post((req, res) => {
     elasticService.indexData();
 });
-// - - - - - - - - - - - - - - - - - - - - - -
-// TEMPORARY ROUTES FOR TESTING:
-
-// elastic.route("/index/init_test").post((req, res) => {
-//     elasticService.initService(req, res);
-// });
-
-// elastic.route("/index/add_test").post((req, res) => {
-//     elasticService.addService(req, res);
-// });
-
-//  THIS WILL BE REMOVED ^^
-// - - - - - - - - - - - - - - - - - - - - - -
 
 elastic.route("/index/check").post((req, res) => {
     const { index } = req.body;
@@ -71,6 +58,12 @@ elastic.route("/delete_document").post((req, res) => {
 
 elastic.route("/delete_all").post((req, res) => {
     ES_service.deleteAll(req, res);
+});
+elastic.route("/add_property").post((req, res) => {
+    const {property} = req.body
+    elasticService.indexNewAddedProperty(property).then(responce => {
+        res.json(responce)
+    })
 });
 
 module.exports = elastic;

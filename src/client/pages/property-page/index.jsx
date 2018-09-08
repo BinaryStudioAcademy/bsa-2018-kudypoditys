@@ -38,6 +38,11 @@ export class PropertyPage extends React.Component {
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
         this.props.getBookings();
+        this.props.getRooms(
+            this.props.match.params.id,
+            this.props.checkIn,
+            this.props.checkOut
+        );
     }
 
     getImagesArray(propertyImages) {
@@ -64,8 +69,7 @@ export class PropertyPage extends React.Component {
     }
 
     render() {
-        const { property, user } = this.props;
-        console.log(property);
+        const { property, user, rooms } = this.props;
         // const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
         const { reviewsVisible } = this.state;
         const dividerStyle = {
@@ -120,20 +124,17 @@ export class PropertyPage extends React.Component {
                 <Sidebar.Pusher>
                     <div className="property-page__wrapper">
                         <div text className="property-page__wrapper-left_side">
-                            <BasicMapWidget
-                                key="BasicMapWidget"
-                                properties={[property]}
-                                coordinates={property.coordinates}
-                                controlEnable={false}
-                                rounded
-                                centered
-                            />
-                            {user ? (
+                            {
                                 <Modal
                                     trigger={
                                         <div
                                             className="book-btn"
-                                            style={{ height: "33px" }}
+                                            style={{
+                                                height: "33px",
+                                                visibility: !user
+                                                    ? "hidden"
+                                                    : "visible"
+                                            }}
                                         >
                                             <button>Book now</button>
                                             <div
@@ -150,13 +151,28 @@ export class PropertyPage extends React.Component {
                                         </div>
                                     }
                                     onClose={this.props.clearBookingForm}
+                                    closeIcon
                                 >
                                     <BookingForm
                                         rooms={property.rooms}
                                         paymentTypes={property.paymentTypes}
                                     />
                                 </Modal>
-                            ) : null}
+                            }
+                            <Divider
+                                style={{
+                                    ...dividerStyle,
+                                    width: "250px"
+                                }}
+                            />
+                            <BasicMapWidget
+                                key="BasicMapWidget"
+                                properties={[property]}
+                                coordinates={property.coordinates}
+                                controlEnable={false}
+                                rounded
+                                centered
+                            />
                         </div>
 
                         <Container
@@ -198,7 +214,8 @@ export class PropertyPage extends React.Component {
                                     text
                                     style={{
                                         display: "table",
-                                        lineHeight: 1.2
+                                        lineHeight: 1.2,
+                                        width: "100%"
                                     }}
                                 >
                                     <div className="facilities-section">
@@ -210,14 +227,17 @@ export class PropertyPage extends React.Component {
                                                 {property.facilityLists.map(
                                                     (item, i) => {
                                                         return (
-                                                            <List.Item>
+                                                            <List.Item
+                                                                style={{
+                                                                    marginBottom:
+                                                                        "5px"
+                                                                }}
+                                                            >
                                                                 <List.Content>
                                                                     <span
                                                                         key={i}
                                                                         style={{
-                                                                            marginRight: 10,
-                                                                            marginBottom: 10,
-                                                                            fontSize: 18,
+                                                                            fontSize: 16,
                                                                             lineHeight: 1.2,
                                                                             color:
                                                                                 "rgb(166,174,188)"
@@ -280,7 +300,7 @@ export class PropertyPage extends React.Component {
                                 </Header>
                                 <RoomsSummaryTable
                                     ref={"roomsRef"}
-                                    rooms={property.rooms}
+                                    rooms={rooms}
                                 />
                             </div>
                             <Divider hidden />
