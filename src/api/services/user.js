@@ -98,9 +98,7 @@ class UserService extends Service {
             .then(data => {
                 if (data) {
                     return userRepository.findById(user.id).then(user => {
-                        mailService
-                            .sendMail(user, mailOptionsParam, action)
-                            .then(() => true);
+                        mailService.sendMail(user, mailOptionsParam, action);
                         return { error: false, data: user };
                     });
                 } else {
@@ -144,8 +142,8 @@ class UserService extends Service {
             )
             .then(user => {
                 mailService.sendMail(user, mailOptions, action);
-            })
-            .then(_ => true);
+                return true;
+            });
     }
 
     verifyEmail(email, token) {
