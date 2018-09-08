@@ -14,7 +14,10 @@
 .DateRangePickerInput_arrow {
     color: #182c4f
 }
+.DateRangePickerInput_icon {
+    display: none
 
+}
 .DateInput_input_1 {
     border: 0px solid !important;
     border-left: 1px;
@@ -56,7 +59,7 @@
     background-color: #dfe3eb;
     color: #182c4f;
     text-align: center;
-    width: 152px !important;
+    width: 152px ;
 }
 
 .search--view-panel {
@@ -95,6 +98,7 @@
     display: flex;
     justify-content: space-between;
     align-content: center;
+
 }
 
 .room-selector > .field > label {
