@@ -8,7 +8,7 @@ import { PAGINATION_UPDATE } from '../pagination/actionType';
 function* submitSearch(action) {
     try {
         console.log("saga submitSearch")
-        console.log("request " + action.payload)
+        console.log("request " + JSON.stringify(action.payload))
         const searchResponse = yield call(searchService.submitSearch, action.payload);
         console.log("reponse " + JSON.stringify(searchResponse))
         yield put({

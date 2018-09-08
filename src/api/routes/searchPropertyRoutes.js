@@ -16,6 +16,7 @@ searchProperty.route("/").get((req, res) => {
     const endDate = req.query.endDate;
     const sortBy = req.query.sortBy;
     const page = req.query.page;
+    // const autocomplitType = req.query.autocomplitType;
     const _fields = ["city", "name"];
     elasticClient
         .search({
@@ -34,12 +35,30 @@ searchProperty.route("/").get((req, res) => {
         .then(
             resp => {
                 let ids = [];
-                ids = resp.hits.hits.map(property => {
-                    return property._source.id;
+                let items = resp.hits.hits;
+                // const topIndex = items.findIndex(
+                //     property => property._source.name === query
+                // );
+
+                // items.push(...items.splice(0, topIndex));
+                let topPropId = [];
+                items.forEach(p => {
+                    if (p._source.name === query) {
+                        topPropId.push(p._source.id);
+                    }
                 });
+
+                console.log("topPropId - " + topPropId);
+
+                ids = items
+                    .map(property => {
+                        return property._source.id;
+                    })
+                    .filter(id => id !== topPropId[0]);
+                console.log("ids - " + ids);
                 let filter = {
                     propertiesIds: ids,
-                    rooms: rooms?rooms:1,
+                    rooms: rooms ? rooms : 1,
                     bedsCount: parseInt(adults) + parseInt(children),
                     sortBy: sortBy,
                     page: Number(page),
@@ -49,10 +68,46 @@ searchProperty.route("/").get((req, res) => {
                 propertyService
                     .getFilteredProperties(filter)
                     .then(properties => {
-                        return res.send({
-                            properties: properties,
-                            propertiesCount: ids.length
-                        });
+                        // const topProertyIndex = properties.findIndex(
+                        //     property => property.name === query
+                        // );
+                        // properties.push(
+                        //     ...properties.splice(0, topProertyIndex)
+                        // );
+                        // return res.send({
+                        //     properties: properties,
+                        //     propertiesCount: ids.length
+                        // });
+                        //console.log('topPropId - properties -'+JSON.stringify(properties))
+
+                        if (filter.page === 1 && topPropId.length > 0) {
+                            let propertiesWithQueredFirst = properties; //.filter(p=> (p.id!=topPropId[0]))
+                            filter.propertiesIds = topPropId;
+                            return propertyService
+                                .getFilteredProperties(filter)
+                                .then(propertiesWithOneOnItem => {
+                                    propertiesWithQueredFirst.unshift(
+                                        propertiesWithOneOnItem[0]
+                                    );
+                                    console.log(
+                                        "propertiesWithQueredFirst - " +
+                                            propertiesWithQueredFirst
+                                    );
+
+                                    return res.send({
+                                        properties: propertiesWithQueredFirst,
+                                        propertiesCount: ids.length
+                                    });
+                                })
+                                .catch(err => {
+                                    return res.status(404).send(err);
+                                });
+                        } else {
+                            return res.send({
+                                properties: properties,
+                                propertiesCount: ids.length
+                            });
+                        }
                     })
                     .catch(err => {
                         return res.status(404).send(err);

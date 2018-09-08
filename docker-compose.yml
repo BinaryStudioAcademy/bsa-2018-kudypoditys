@@ -8,3 +8,12 @@ services:
             - .:/kudypoditys
         ports:
             - "5000:5000"
+        links:
+            - rabbitmq
+    rabbitmq:
+        image: rabbitmq:3.7.2-alpine
+        hostname: rabbit
+        ports:
+            - "8080:15672"
+            - "5672:5672"
+            - "5671:5671"

@@ -21,7 +21,7 @@ export class BookingPage extends React.Component {
     };
     render() {
         const { booking, images } = this.props;
-        const { orderCode } = this.props.booking;
+        const {orderCode} = this.props.booking;
         const { room } = booking;
         const { property } = room;
         const dateIn = new Date(booking.dateIn),
@@ -101,7 +101,7 @@ export class BookingPage extends React.Component {
                             </Table.Row>
                             <Table.Row>
                                 <Table.Cell>
-                                    <Icon name="barcode" />
+                                    <Icon name="barcode"/>
                                     Order code
                                 </Table.Cell>
                                 <Table.Cell>{orderCode}</Table.Cell>

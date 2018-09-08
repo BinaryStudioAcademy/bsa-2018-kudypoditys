@@ -13,13 +13,14 @@ class RatingBlock extends React.Component {
 
         return (
             <div className="rating_block">
-                <div
+                <div className="rating_status"
                     style={{
                         textAlign: 'center',
                         display: 'flex',
                         flexDirection: 'column',
                         paddingRight: 10,
-                        paddingTop: 17
+
+
                     }}
                 >
                     <div className="ratingName"> {ratingStatus}</div>
