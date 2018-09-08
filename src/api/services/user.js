@@ -17,8 +17,8 @@ class UserService extends Service {
             password: hash,
             email: user.email.trim(),
             phoneNumber: user.phoneNumber.trim(),
-            appeal: user.appeal.trim(),
-            preferredCurrency: user.preferredCurrency.trim(),
+            // appeal: user.appeal.trim(),
+            // preferredCurrency: user.preferredCurrency.trim(),
             countryId: user.countryId,
             paymentTypeId: user.paymentTypeId
         };
