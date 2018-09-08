@@ -3,11 +3,18 @@
     margin-top: 10px;
 }
 
-#propertyRegistration button:not([type="button"]){
-    background:rgb(2, 143, 197);
-    border-radius: 0px;
-}
+#propertyRegistration {
+    button {
+        border-radius: 0px;
 
-#propertyRegistration button{
-    border-radius: 0px;
+        &:not([type="button"]) {
+            background:rgb(2, 143, 197);
+        }
+    }
+
+    .meta{
+        padding: 0px 0 10px 0;
+        color:grey;
+        font-size: 13px;
+      }
 }

@@ -1,28 +1,28 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import {
-  GET_COUNTRIES,
-  GET_COUNTRIES_SUCCESS,
-  GET_COUNTRIES_FAILED
+  GET_CURRENCIES,
+  GET_CURRENCIES_SUCCESS,
+  GET_CURRENCIES_FAILED,
 } from './actionTypes';
-import countryService from 'client/services/countryService';
+import currencyService from 'client/services/currencyService';
 
-function* getCountries() {
+function* getCurrencies() {
   try {
-    const countries = yield call(countryService.getAllDetails);
+    const currencies = yield call(currencyService.getAll);
     yield put({
-      type: GET_COUNTRIES_SUCCESS,
-      payload: countries
+      type: GET_CURRENCIES_SUCCESS,
+      payload: currencies
     });
   } catch (err) {
     yield put({
-      type: GET_COUNTRIES_FAILED,
+      type: GET_CURRENCIES_FAILED,
       payload: err.message
     });
   }
 }
 
-export default function* countriesSaga() {
+export default function* currenciesSaga() {
   yield all([
-    takeLatest(GET_COUNTRIES, getCountries)
+    takeLatest(GET_CURRENCIES, getCurrencies)
   ])
 }

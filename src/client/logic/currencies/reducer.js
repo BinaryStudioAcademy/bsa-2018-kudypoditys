@@ -1,27 +1,27 @@
 import defaultState from 'client/logic/defaultState';
 import {
-  GET_COUNTRIES,
-  GET_COUNTRIES_SUCCESS,
-  GET_COUNTRIES_FAILED
+  GET_CURRENCIES,
+  GET_CURRENCIES_FAILED,
+  GET_CURRENCIES_SUCCESS,
 } from './actionTypes';
 
-function countriesReducer(state = defaultState.countriesData, action) {
+function countriesReducer(state = defaultState.currenciesData, action) {
   switch (action.type) {
-    case GET_COUNTRIES:
+    case GET_CURRENCIES:
       return {
         ...state,
         isLoading: true
       };
-    case GET_COUNTRIES_SUCCESS:
+    case GET_CURRENCIES_SUCCESS:
       return {
-        countries: action.payload,
+        currencies: action.payload,
         isLoading: false
       };
-    case GET_COUNTRIES_FAILED:
+    case GET_CURRENCIES_FAILED:
       return {
         isLoading: false,
         error: action.payload,
-        countries: []
+        currencies: []
       };
     default:
       return state;

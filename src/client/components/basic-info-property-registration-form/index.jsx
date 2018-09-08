@@ -13,14 +13,11 @@ import './index.scss';
 import AlgoliaPlaces from "algolia-places-react";
 
 class BasicInfoPropertyRegistrationForm extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {};
-    }
+    state = {};
 
     componentDidMount() {
-        this.props.getCountries()
+        this.props.getCountries();
+        this.props.getCurrencies();
     }
 
     onCountryChange = (_, value) => {
@@ -74,60 +71,86 @@ class BasicInfoPropertyRegistrationForm extends Component {
         return cityOptions;
     }
 
+    getCurrencies() {
+        const { currencies } = this.props;
+        return currencies.map(x => ({
+            key: x.id,
+            value: x.id,
+            text: `${x.name}, ${x.code} (${x.number})`
+        }))
+    }
+
     render() {
         const {
-            pristine, submitting, handleSubmit, countries
+            pristine, submitting, handleSubmit
         } = this.props;
 
-        const countriesOptions = this.getCountries(countries);
-        const cityOptions = this.getCities(countries);
-
-        const style = `${<Icon name='paperclip' />} Property description`;
+        const countriesOptions = this.getCountries();
+        const cityOptions = this.getCities();
+        const currenciesOptions = this.getCurrencies();
 
         return (
             <div id="basicInfoPropertyRegistration">
                 <Form onSubmit={handleSubmit} >
-                    <Container style={{ width: "900px" }} color="teal">
-                        <Card.Content>
-                            <Header as='h2' style={{ fontSize: "18px" }}>
-                                What's the name of your property?
-                        </Header>
-                            <div className="meta ">
-                                Guests will see this name when they search for a place
-                                to stay.
+                    <Container>
+                        <Header as='h2' style={{ fontSize: "18px" }}>
+                            What's the name of your property?
+                            </Header>
+                        <div className="meta">
+                            Guests will see this name when they search for a place
+                            to stay.
+                            </div>
+
+                        <div className="wrapper">
+                            <label>Property name</label>
+                            <Field
+                                component={renderField}
+                                name="name"
+                                label="Property name"
+                                type="text"
+                                validate={[required, maxLength20]}
+                                icon="edit"
+                            />
                         </div>
 
-                            <div className="wrapper">
-                                <label>Property name</label>
-                                <Field
-                                    component={renderField}
-                                    name="name"
-                                    label="Property name"
-                                    type="text"
-                                    validate={[required, maxLength20]}
-                                    icon="edit"
-                                />
-                            </div>
-
-                            <div className="wrapper">
-                                <label>Property description</label>
-                                <Field
-                                    component={renderTextarea}
-                                    name="description"
-                                    label="Property description"
-                                    validate={[required]}
-                                />
-                                <Icon disabled name='paperclip' className='texarea-icon' />
-                            </div>
-
-                        </Card.Content>
+                        <div className="wrapper">
+                            <label>Property description</label>
+                            <Field
+                                component={renderTextarea}
+                                name="description"
+                                label="Property description"
+                                validate={[required]}
+                            />
+                            <Icon disabled name='paperclip' className='texarea-icon' />
+                        </div>
                     </Container>
-                    <div></div>
+                    <Container>
+                        <Header as='h2' style={{ fontSize: "18px" }}>
+                            In what currency are all prices for Your property?
+                        </Header>
+                        <div className="meta ">
+                            Guests will see price of rooms in this currency
+                        </div>
+
+                        <div className="wrapper">
+                            <label>Prefered currency</label>
+                            <Field
+                                icon="dollar"
+                                style={{ borderRadius: "0px" }}
+                                component={renderDropdown}
+                                selection
+                                options={currenciesOptions}
+                                name="currencyId"
+                                label="Currency"
+                                validate={[required]}
+                            />
+                        </div>
+                    </Container>
                     <Container style={{ width: "900px" }} color="teal">
                         <Card.Content>
                             <Header as='h2' style={{ fontSize: "18px" }}>
                                 What are the contact details for this property?
-                        </Header>
+                            </Header>
                             <div className="wrapper">
                                 <label>Contact name</label>
                                 <Field

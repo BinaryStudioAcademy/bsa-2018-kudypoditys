@@ -1,5 +1,5 @@
-import { GET_COUNTRIES } from './actionTypes';
+import { GET_CURRENCIES } from './actionTypes';
 
-export const countriesGet = () => ({
-  type: GET_COUNTRIES
+export const currenciesGet = () => ({
+  type: GET_CURRENCIES
 });

@@ -367,6 +367,9 @@ const state = {
     bedTypesData: {
         bedTypes: []
     },
+    currenciesData: {
+        currencies: []
+    },
 
     testRoomsTab: {
         editRoomIndex: -1

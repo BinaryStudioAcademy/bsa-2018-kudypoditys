@@ -2,9 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from 'react-redux';
 import { reduxForm, Field } from "redux-form";
 import {
-    Button, Container, List, Form, Card,
-    Header,
-    Grid
+    Button, Container, Form, Card, Header, Grid
 } from "semantic-ui-react";
 import { required } from "client/regexValidationService.js";
 import RadioGroup from "client/components/input-form/radio-group";
@@ -58,35 +56,33 @@ class FacilitiesPropertyRegistrationForm extends Component {
 
         return (
             <Fragment>
-                <Card.Content>
-                    <Header as='h2' style={{ fontSize: "18px" }}>
-                        Internet. Do you provide guests with Wi-Fi?
-                    </Header>
-                    <div className="internet-options">
+                <Header as='h2' style={{ fontSize: "18px" }}>
+                    Internet. Do you provide guests with Wi-Fi?
+                </Header>
+                <div className="internet-options">
+                    <Field
+                        component={RadioGroup}
+                        name="basicFacility.hasInternet"
+                        options={internetOptions}
+                    />
+                </div>
+                {hasInternet !== 'paid' ? <Fragment /> :
+                    <div className="wrapper">
                         <Field
-                            component={RadioGroup}
-                            name="basicFacility.hasInternet"
-                            options={internetOptions}
+                            component={renderField}
+                            name="basicFacility.internetPrice"
+                            label="USD"
+                            type="number"
+                            icon="dollar sign"
+                            validate={[required]}
+                            parse={parseNumber}
                         />
                     </div>
-                    {hasInternet !== 'paid' ? <Fragment /> :
-                        <div className="wrapper">
-                            <Field
-                                component={renderField}
-                                name="basicFacility.internetPrice"
-                                label="USD"
-                                type="number"
-                                icon="dollar sign"
-                                validate={[required]}
-                                parse={parseNumber}
-                            />
-                        </div>
-                    }
-                    <Card.Meta>
-                        Guests will see this name when they search for a place
-                        to stay.
-                    </Card.Meta>
-                </Card.Content>
+                }
+                <div className="meta">
+                    Guests will see this name when they search for a place
+                    to stay.
+                </div>
             </Fragment>
         );
     }
@@ -228,25 +224,23 @@ class FacilitiesPropertyRegistrationForm extends Component {
 
         return (
             <Fragment>
-                <Card.Content>
-                    <Header style={{ fontSize: "18px" }}>
-                        Languages. What languages do you or your staff speak?
-                    </Header>
+                <Header style={{ fontSize: "18px" }}>
+                    Languages. What languages do you or your staff speak?
+                </Header>
 
-                    <Field
-                        component={renderDropdown}
-                        options={languagesOptions}
-                        name="languages"
-                        label="Languages"
-                        multiple
-                        validate={[required]}
-                    />
+                <Field
+                    component={renderDropdown}
+                    options={languagesOptions}
+                    name="languages"
+                    label="Languages"
+                    multiple
+                    validate={[required]}
+                />
 
-                    <Card.Meta>
-                        Guests will see this name when they search for a place
-                        to stay.
-                    </Card.Meta>
-                </Card.Content>
+                <div className="meta">
+                    Guests will see this name when they search for a place
+                    to stay.
+                </div>
             </Fragment>
         );
     }
@@ -261,35 +255,16 @@ class FacilitiesPropertyRegistrationForm extends Component {
                         Languages. What languages do you or your staff speak?
                     </Header>
 
-                    {/* <List relaxed>
-                        {
-                            facilities.map((facility, i) => (
-                                <List.Item key={i} style={{ margin: '1rem', padding: '0' }}>
-                                    <Field
-                                        component={renderCheckbox}
-                                        name={`facilities.${facility.id}`}
-                                        label={facility.name}
-                                    />
-                                </List.Item>
-
-                            ))
-                        }
-                    </List> */}
-
                     <Grid columns={3} style={{ marginTop: "20px", marginBottom: "20px" }}>
-                        {
-
-                            facilities.map((facility, i) => (
-                                <Grid.Column key={i} style={{ padding: "10px" }}>
-                                    <Field
-                                        component={renderCheckbox}
-                                        name={`facilities.${facility.id}`}
-                                        label={facility.name}
-                                    />
-                                </Grid.Column>
-
-                            ))
-                        }
+                        {facilities.map((facility, i) => (
+                            <Grid.Column key={i} style={{ padding: "10px" }}>
+                                <Field
+                                    component={renderCheckbox}
+                                    name={`facilities.${facility.id}`}
+                                    label={facility.name}
+                                />
+                            </Grid.Column>
+                        ))}
                     </Grid>
 
                     <Card.Meta>

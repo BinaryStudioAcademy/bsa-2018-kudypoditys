@@ -15,7 +15,7 @@ module.exports = orm.define('currency', {
     allowNull: false,
     unique: true
   },
-  code: {
+  number: {
     type: Sequelize.STRING,
     validate: { notEmpty: true },
     allowNull: false,
