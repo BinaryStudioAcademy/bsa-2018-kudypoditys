@@ -7,7 +7,8 @@ import {
     Button,
     Icon,
     Table,
-    Divider
+    Divider,
+    Confirm
 } from "semantic-ui-react";
 import { Slider } from "../slider";
 import moment from "moment";
@@ -20,6 +21,7 @@ export class BookingPage extends React.Component {
     };
     render() {
         const { booking, images } = this.props;
+        const { orderCode } = this.props.booking;
         const { room } = booking;
         const { property } = room;
         const dateIn = new Date(booking.dateIn),
@@ -98,6 +100,13 @@ export class BookingPage extends React.Component {
                                 <Table.Cell>{price} USD</Table.Cell>
                             </Table.Row>
                             <Table.Row>
+                                <Table.Cell>
+                                    <Icon name="barcode" />
+                                    Order code
+                                </Table.Cell>
+                                <Table.Cell>{orderCode}</Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
                                 <Table.Cell colSpan="2">
                                     <Button
                                         negative
@@ -124,11 +133,8 @@ export class BookingPage extends React.Component {
                         </Header>
                         <p>
                             <Icon name="map marker alternate" />
-                            {room.property.address}
-                            {" –"}
-
-                            {console.log(booking.room.property.coordinates)}
                             <MapWidgetModal
+                                buttonText={room.property.address}
                                 properties={[
                                     {
                                         price: room.price,

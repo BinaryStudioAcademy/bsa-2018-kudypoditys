@@ -16,6 +16,9 @@ let Reservation = orm.define("reservation", {
         type: Sequelize.INTEGER,
         validate: { min: 1 }
         // allowNull: false
+    },
+    orderCode: {
+        type: Sequelize.STRING
     }
 });
 

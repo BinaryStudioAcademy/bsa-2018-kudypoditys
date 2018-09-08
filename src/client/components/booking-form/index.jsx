@@ -5,6 +5,7 @@ import moment from "moment";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
+import history from "client/history";
 
 export class BookingForm extends React.Component {
     generateOptions = (from, to) => {
@@ -65,6 +66,14 @@ export class BookingForm extends React.Component {
         const adultsOptions = this.generateOptions(1, 10);
         const paymentOptions = this.generatePaymentOptions(paymentTypes);
         const roomOptions = this.generateRoomOptions(rooms);
+
+        if (message === "Your booking was a success!") {
+            this.props.clearBookingForm();
+            history.push({
+                pathname: "/user-cabinet",
+                search: `?tab=0`
+            });
+        }
 
         return (
             <React.Fragment>

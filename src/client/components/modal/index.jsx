@@ -9,6 +9,7 @@ export default class ModalComponent extends React.Component {
             header,
             trigger,
             fullScreen,
+            closeIcon,
             children,
             onClose,
             className,
@@ -18,7 +19,7 @@ export default class ModalComponent extends React.Component {
         return (
             <Modal
                 trigger={trigger}
-                closeIcon={fullScreen}
+                closeIcon={fullScreen || closeIcon}
                 className={fullScreen ? "fullScreen" : className}
                 onClose={
                     onClose

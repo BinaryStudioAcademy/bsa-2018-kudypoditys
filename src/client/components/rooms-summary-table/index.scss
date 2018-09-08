@@ -2,13 +2,14 @@
     background-color: #eceef0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 0 0 0 15px;
-    height: 45px;
+    height: fit-content;
 }
 
 .room-row--left-section {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin: 10px 0;
     overflow: hidden;
@@ -18,5 +19,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
+    align-self: center;
+    min-height: 50px;
+    height: auto;
 }

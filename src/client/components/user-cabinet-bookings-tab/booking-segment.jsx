@@ -17,6 +17,8 @@ import {
 } from "client/helpers/reviewToggler";
 import Modal from "../modal";
 import ReviewForm from "../reviews/addReviewForm";
+import MapWidgetModal from "client/components/map-widget-modal";
+
 export class BookingSegment extends React.Component {
     constructor(props) {
         super(props);
@@ -24,26 +26,17 @@ export class BookingSegment extends React.Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
-
             modalOpen: false
         };
-
-
-
-
     }
-
 
     handleOpen = () => {
-        this.setState({ modalOpen: true })
-
-    }
+        this.setState({ modalOpen: true });
+    };
 
     handleClose = () => {
-
-        this.setState({ modalOpen: false })
-
-    }
+        this.setState({ modalOpen: false });
+    };
 
     viewBooking = (event, id) => {
         event.preventDefault();
@@ -77,10 +70,50 @@ export class BookingSegment extends React.Component {
                             <Header as="h4">
                                 {booking.room.property.name}
                             </Header>
-                            <p className="booking-address">
-                                <Icon name="map marker alternate" />
-                                {booking.room.property.address}
-                            </p>
+                            <Icon name="map marker alternate" />
+                            {console.log(
+                                "price",
+                                booking.room.price,
+
+                                "name",
+                                booking.room.property.name,
+                                "coordinates",
+                                booking.room.property.coordinates,
+
+                                "imageSrc",
+                                booking.room.property.images[0].url,
+
+                                "address",
+                                booking.room.property.address,
+
+                                "rating",
+                                booking.room.property.rating
+                            )}
+                            <MapWidgetModal
+                                buttonText={booking.room.property.address}
+                                properties={[
+                                    {
+                                        price: booking.room.price,
+                                        name: booking.room.property.name,
+                                        coordinates:
+                                            booking.room.property.coordinates,
+                                        imageSrc:
+                                            booking.room.property.images[0].url,
+                                        address: booking.room.property.address,
+                                        rating: booking.room.property.rating
+                                    }
+                                ]}
+                                startPosition={{
+                                    latitude:
+                                        booking.room.property.coordinates.lat,
+                                    longitude:
+                                        booking.room.property.coordinates.lng
+                                }}
+                                zoom={13}
+                                controlEnable={true}
+                                buttonClass={"searchMapButton"}
+                            />
+
                             <p className="booking-phone">
                                 <Icon name="phone" />
                                 {booking.room.property.contactPhone}
@@ -89,6 +122,10 @@ export class BookingSegment extends React.Component {
                                 <Icon name="dollar sign" />
                                 USD {price}
                             </p>
+                            {/* <p className="booking-code">
+                                <Icon name="barcode" />
+                                 {price}
+                            </p> */}
                         </Grid.Column>
                         <Grid.Column width={5} floated="right">
                             <Grid columns={2} divided>
@@ -137,33 +174,36 @@ export class BookingSegment extends React.Component {
                                     this.viewBooking(event, booking.id)
                                 }
                             />
-                            {shouldRenderForm ?(<div className="reviews_add_review__container">
-
-
-                                <Modal
-                                    className="user_cabinet_add_review__modal"
-                                    trigger={
-                                        <div className="user_cabinet_add_review__btn">
-                                        <Button
-                                            primary
-                                            // color="teal"
-                                            fluid
-                                            content="Add review"
-                                            labelPosition="left"
-                                            icon="edit"
-                                            type="submit"
-                                            onClick={this.handleOpen}
+                            {shouldRenderForm ? (
+                                <div className="reviews_add_review__container">
+                                    <Modal
+                                        className="user_cabinet_add_review__modal"
+                                        trigger={
+                                            <div className="user_cabinet_add_review__btn">
+                                                <Button
+                                                    primary
+                                                    // color="teal"
+                                                    fluid
+                                                    content="Add review"
+                                                    labelPosition="left"
+                                                    icon="edit"
+                                                    type="submit"
+                                                    onClick={this.handleOpen}
+                                                />
+                                            </div>
+                                        }
+                                        open={this.state.modalOpen}
+                                        // onClose={this.handleClose}
+                                        onClose={this.close}
+                                    >
+                                        <ReviewForm
+                                            property={booking.room.property}
+                                            userc={true}
+                                            onFormClick={this.handleClose}
                                         />
-                                        </div>
-                                    }
-                                    open={this.state.modalOpen}
-                                    // onClose={this.handleClose}
-                                    onClose={this.close}
-                                >
-                                    <ReviewForm property={booking.room.property} userc={true} onFormClick={this.handleClose}/>
-                                </Modal>
-                            </div>) : null}
-
+                                    </Modal>
+                                </div>
+                            ) : null}
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
