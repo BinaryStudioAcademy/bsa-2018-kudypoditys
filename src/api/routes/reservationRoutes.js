@@ -36,7 +36,7 @@ reservation
 
 reservation.route("/byuser").get((req, res) => {
     reservationService
-        .findByOptions({ userId: req.user.id })
+        .findByOptions({userId: req.user.id})
         .then(reservations => {
             res.send(reservations);
         })

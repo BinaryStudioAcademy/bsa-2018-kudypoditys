@@ -17,9 +17,9 @@ let Reservation = orm.define("reservation", {
         validate: { min: 1 }
         // allowNull: false
     },
-    orderCode: {
-        type: Sequelize.STRING
-    }
+    // orderCode: {
+    //     type: Sequelize.STRING
+    // }
 });
 
 module.exports = Reservation;

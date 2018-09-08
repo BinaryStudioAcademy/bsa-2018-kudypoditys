@@ -10,6 +10,10 @@ export function mapStateToProps(state) {
 export function mapDispatchToProps(dispatch) {
     return {
         onSelect(searchRequest) {
+            console.log(
+                "mapDispatchToProps =   " +
+                    JSON.stringify(searchRequest)
+            );
             dispatch(sortUpdate(searchRequest));
         }
     };
