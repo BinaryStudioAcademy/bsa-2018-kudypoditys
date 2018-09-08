@@ -179,6 +179,7 @@ export class AvailabilityPanel extends React.Component {
                                     />
                                 </div>
                             }
+                            closeIcon
                         >
                             {error ? (
                                 <Message negative>{error}</Message>
