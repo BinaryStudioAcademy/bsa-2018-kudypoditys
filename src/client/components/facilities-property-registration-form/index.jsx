@@ -57,7 +57,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
         ];
 
         return (
-            <Fragment style={{ width: "900px" }} color="teal">
+            <Fragment>
                 <Card.Content>
                     <Header as='h2' style={{ fontSize: "18px" }}>
                         Internet. Do you provide guests with Wi-Fi?
@@ -152,7 +152,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
         ];
 
         return (
-            <Fragment style={{ width: "900px" }} color="teal">
+            <Fragment >
                 <Card.Content>
                     <Header as='h2' style={{ fontSize: "18px" }}>
                         Parking. This information is especially important to those who travel by car.
@@ -227,7 +227,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
         }));
 
         return (
-            <Fragment style={{ width: "900px" }} color="teal">
+            <Fragment>
                 <Card.Content>
                     <Header style={{ fontSize: "18px" }}>
                         Languages. What languages do you or your staff speak?
@@ -255,7 +255,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
         const { facilities = [] } = this.props;
 
         return (
-            <Fragment style={{ width: "900px" }} color="teal">
+            <Fragment>
                 <Card.Content>
                     <Header style={{ fontSize: "18px" }}>
                         Languages. What languages do you or your staff speak?

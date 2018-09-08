@@ -32,7 +32,7 @@ class PaymentPropertyRegistrationForm extends Component {
     }));
 
     return (
-      <Fragment style={{ width: '900px' }} color="teal">
+      <Fragment>
         <div className="wrapper">
           <Header as='h2' style={{ fontSize: "18px" }}>
             Payment. Ways of payment for guests
@@ -42,7 +42,6 @@ class PaymentPropertyRegistrationForm extends Component {
             options={paymentOptions}
             name="paymentTypes"
             label="Payment"
-            // icon="disabled dollar"
             multiple
             validate={[required]}
           />
@@ -72,7 +71,7 @@ class PaymentPropertyRegistrationForm extends Component {
     ];
 
     return (
-      <Fragment style={{ width: '900px' }} color="teal">
+      <Fragment>
         <Card.Content>
           <Header as='h2' style={{ fontSize: "18px" }}>
             Fee. City tax and additional charges.
@@ -83,7 +82,7 @@ class PaymentPropertyRegistrationForm extends Component {
             options={vatTaxesOptions}
             name="vatIncluded"
             label="VAT"
-            icon="disabled dollar"
+            icon="dollar"
             validate={[required]}
           />
 

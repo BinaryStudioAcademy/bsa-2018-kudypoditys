@@ -4,7 +4,7 @@ import history from "client/history";
 class PropertyService {
     normalizeProperty = (data) => {
         const {
-            basicFacility, accommodationRule, vatIncluded, rooms
+            basicFacility, accommodationRule, vatIncluded, rooms, address
         } = data;
 
         return {
@@ -12,6 +12,8 @@ class PropertyService {
             basicFacility: this.normalizeBasicFacility(basicFacility),
             accommodationRule: this.normalizeAccommodationRule(accommodationRule),
             vatIncluded: Boolean(vatIncluded),
+            coordinates: this.normalizeCoordinates(address),
+            address: address.fullAddress,
             rooms: rooms.map(x => ({
                 ...x,
                 roomTypeId: x.roomType.id,
@@ -19,6 +21,13 @@ class PropertyService {
             }))
         }
     }
+
+    normalizeCoordinates = (address) => {
+        if (!address) return {};
+        const { lat, lng } = address;
+        return { lat, lng };
+    }
+
 
     normalizeBasicFacility = (basicFacility) => {
         if (!basicFacility) return {};

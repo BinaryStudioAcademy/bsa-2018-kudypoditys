@@ -2011,6 +2011,24 @@ const REVIEWS = [
     }
 ];
 
+const CURRENCIES = [
+    {
+        name: 'EURO',
+        code: 'EUR',
+        number: '978'
+    },
+    {
+        name: 'US DOLLAR',
+        code: 'USD',
+        number: '840'
+    },
+    {
+        name: 'Hryvnia',
+        code: 'UAH',
+        number: '980'
+    },
+];
+
 module.exports = {
     USERS,
     PROPERTIES,
@@ -2032,4 +2050,5 @@ module.exports = {
     PROPERTY_TYPE,
     LANGUAGES,
     REVIEWS,
+    CURRENCIES,
 };

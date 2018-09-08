@@ -25,7 +25,7 @@ class PolicesPropertyRegistrationForm extends Component {
     ];
 
     return (
-      <Fragment style={{ width: '900px' }} color="teal">
+      <Fragment>
         <Card.Content>
           <Card.Description style={{ fontSize: '18px' }}>
             Cancellations. Can your guests cancel their booking for free?
@@ -45,7 +45,7 @@ class PolicesPropertyRegistrationForm extends Component {
 
   renderCheckInCheckOutCard() {
     return (
-      <Fragment style={{ width: '900px' }} color="teal">
+      <Fragment>
         <Card.Content>
           <Field
             name="accommodationRule.checkInCheckOut"

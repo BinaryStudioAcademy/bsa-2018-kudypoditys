@@ -35,14 +35,14 @@ class BasicInfoPropertyRegistrationForm extends Component {
     renderAngolia = ({ input }) => {
         return (
             <AlgoliaPlaces
-                {...input}
+                name={input.name}
                 options={{
                     type: "address"
                 }}
                 value={input.value.fullAddress}
                 onChange={({ suggestion }) => {
                     input.onChange({
-                        // fullAddress: `${suggestion.name} ${suggestion.administrative} ${suggestion.country}`,
+                        fullAddress: `${suggestion.name}, ${suggestion.administrative}, ${suggestion.country}`,
                         ...suggestion.latlng
                     })
                 }
@@ -170,7 +170,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
                                     component={this.renderAngolia}
                                     name="address"
                                     icon="map marker"
-                                // validate={[required]}
+                                    validate={[required]}
                                 />
                             </div>
                             <div className="wrapper">

@@ -31,7 +31,8 @@ function associations(models) {
         BasicFacility,
         PropertyLanguage,
         Language,
-        Availability
+        Availability,
+        Currency,
     } = models;
 
     // console.log(models);
@@ -112,6 +113,7 @@ function associations(models) {
     Property.belongsTo(City);
     Property.belongsTo(PropertyType);
     Property.belongsTo(AccommodationRule);
+    Property.belongsTo(Currency);
 
     Property.hasMany(Favorite);
     Property.hasMany(Review);
@@ -122,6 +124,9 @@ function associations(models) {
     Property.hasMany(PropertyLanguage);
 
     Property.hasOne(BasicFacility);
+
+    // Currency associations
+    Currency.hasMany(Property);
 
     // BasicFacility associations
     BasicFacility.belongsTo(Property);
