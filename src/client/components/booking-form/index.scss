@@ -33,3 +33,11 @@ button.book-btn:hover {
     align-items: center;
     flex-direction: column;
 }
+
+.booking-form .DateRangePicker {
+    width: fit-content !important;
+}
+
+.booking-form .DateInput_input {
+    width: 130px !important;
+}
