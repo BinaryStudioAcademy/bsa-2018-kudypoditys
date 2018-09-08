@@ -46,10 +46,12 @@ export function getPropertyStatus(rating){
         ratingStatus = "Good";
     } else if (rating >= 6) {
         ratingStatus = "Pleasant";
-    } else if (rating < 6) {
+    } else if (rating === 0) {
+            ratingStatus = "No rating";
+        }
+     else if (rating < 6) {
         ratingStatus = "It`s Ok";
-    }else if (rating = 0) {
-        ratingStatus = "No rating";
     }
+
     return ratingStatus
 }
