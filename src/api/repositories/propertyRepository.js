@@ -2,7 +2,7 @@ const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
 const Facility = require("../models/Facility");
 const PaymentType = require("../models/PaymentType");
-
+const Sequelize = require("sequelize")
 const Reservation = require("../models/Reservation");
 const RoomType = require("../models/RoomType");
 const Image = require("../models/Image");
@@ -189,25 +189,32 @@ class PropertyRepository extends Repository {
     }
 
     createDetails(entity) {
-        return this.model.create(entity, {
-            include: [
-                AccommodationRule, BasicFacility, Image,
-                {
-                    model: Room,
-                    include: [BedInRoom]
-                }
-            ]
-        }).then(({ dataValues: newProperty }) => {
-            let facilityList = entity.facilities.map(f => ({
-                propertyId: newProperty.id,
-                facilityId: f.id
-            }));
-            return FacilityList.bulkCreate(facilityList).then(_ => newProperty);
-        }).then(newProperty => {
-            let languages = entity.languages.map(l => ({
-                propertyId: newProperty.id,
-                languageId: l.id
-            }));
+        return this.model
+            .create(entity, {
+                include: [
+                    AccommodationRule,
+                    BasicFacility,
+                    Image,
+                    {
+                        model: Room,
+                        include: [BedInRoom]
+                    }
+                ]
+            })
+            .then(({ dataValues: newProperty }) => {
+                let facilityList = entity.facilities.map(f => ({
+                    propertyId: newProperty.id,
+                    facilityId: f.id
+                }));
+                return FacilityList.bulkCreate(facilityList).then(
+                    _ => newProperty
+                );
+            })
+            .then(newProperty => {
+                let languages = entity.languages.map(l => ({
+                    propertyId: newProperty.id,
+                    languageId: l.id
+                }));
 
                 return PropertyLanguage.bulkCreate(languages).then(
                     _ => newProperty
@@ -233,6 +240,7 @@ class PropertyRepository extends Repository {
             LOW_RANK: "rating_starting_from_low",
             HIGH_RANK: "rating_starting_from_high"
         };
+
         let sortingOption;
         switch (filter.sortBy) {
             case SORT_VALUE.PRICE:
@@ -243,12 +251,10 @@ class PropertyRepository extends Repository {
                 break;
             case SORT_VALUE.LOW_RANK:
                 sortingOption = [["rating", "ASC"]];
-
                 break;
             case SORT_VALUE.HIGH_RANK:
                 sortingOption = [["rating", "DESC"]];
                 break;
-
             default:
                 sortingOption = [["rating"]];
         }
@@ -260,6 +266,7 @@ class PropertyRepository extends Repository {
                 where: {
                     id: { $in: filter.propertiesIds }
                 },
+                //order: sortingOption,
                 include: [
                     {
                         model: City
@@ -270,6 +277,9 @@ class PropertyRepository extends Repository {
 
                     {
                         model: Room,
+                        where: {
+                            amount: { $gte: filter.rooms }
+                        },
                         include: [
                             RoomType,
                             {
@@ -280,23 +290,27 @@ class PropertyRepository extends Repository {
                             },
 
                             {
-                                model: Reservation
-                                //where:{ //sequelize.or( {
-                                // dateOut: { $lt: filter.dateIn  },
+                                model: Reservation,
+                               // where: {
+                                    // from: {
+                                    //     $between: [filter.dateIn, filter.dateOut]
+                                    //    }
+                                    // $or:[{
+                                    //     dateOut: {
+                                    //         $lte: filter.dateIn,
+                                    //         $gte: filter.dateOut
+                                    //     },
 
-                                //     // dateIn: {
-                                //     //     $gt: filter.dateOut
-
-                                //     // }
-                                // }//)
+                                    //     dateIn: {
+                                    //         $lte: filter.dateIn,
+                                    //         $gte: filter.dateOut
+                                    //     }
+                                    // }],
+                               // }
                             }
-                        ],
-                        where: {
-                            amount: { $gte: filter.rooms }
-                        }
+                        ]
                     }
-                ],
-              order: sortingOption
+                ]
             })
             .then(properties => {
                 return properties;
@@ -320,9 +334,6 @@ class PropertyRepository extends Repository {
                             RoomType,
                             {
                                 model: BedInRoom
-                                // where: {
-                                //     count: { $gte: filter.bedsCount }
-                                // }
                             },
                             {
                                 model: Reservation
