@@ -48,10 +48,13 @@ searchProperty.route("/").get((req, res) => {
                 });
 
                 console.log("topPropId - " + topPropId);
-
-                ids = items.map(property => {
+                if (topPropId.length > 0) {
+                    ids = items.map(property => {
+                        return property._source.id;
+                    }).filter(id => id !== topPropId[0]);
+                }else  {ids = items.map(property => {
                     return property._source.id;
-                }).filter(id=>id!==topPropId[0]);
+                })}
                 console.log("ids - " + ids);
                 let filter = {
                     propertiesIds: ids,
