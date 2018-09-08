@@ -1,6 +1,10 @@
-.ui.bottom.right.popup.transition.visible.header-menu-popup {
-    height: auto;
-    padding: 0px;
-    opacity: 0.94;
-    min-width: 150px;
+
+.header-user-popup {
+    &.popup {
+        height: auto;
+        padding: 0px;
+        opacity: 0.94;
+        min-width: 13%;
+    }
 }
+
