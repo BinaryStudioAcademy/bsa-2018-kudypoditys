@@ -124,6 +124,8 @@ export class BookingForm extends React.Component {
                                 onFocusChange={focusedInput => {
                                     this.setState({ focusedInput });
                                 }}
+                                small={true}
+                                x
                             />
                         </div>
                     </Form.Field>

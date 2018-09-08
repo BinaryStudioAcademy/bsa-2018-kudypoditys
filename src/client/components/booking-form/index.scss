@@ -23,3 +23,13 @@ button.book-btn:hover {
 .booking-form input.DateInput_input {
     height: 33px;
 }
+
+.booking-form .DateRangePickerInput_arrow {
+    color: #182c4f;
+}
+
+.booking-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
