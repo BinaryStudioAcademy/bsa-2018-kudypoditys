@@ -44,14 +44,14 @@ class SearchPage extends React.Component {
             properties: searchData.searchResults.properties
         });
     };
-    onSortingSelected = value => {
-        this.setState({ sortBy: value });
-    };
-    paginationChanged = (event, data) => {
-        console.log("event" + Object.keys(event));
-        console.log("data" + JSON.stringify(data));
-        this.setState({ selectedPage: data.activePage });
-    };
+    // onSortingSelected = value => {
+    //     this.setState({ sortBy: value });
+    // };
+    // paginationChanged = (event, data) => {
+    //     console.log("event" + Object.keys(event));
+    //     console.log("data" + JSON.stringify(data));
+    //     this.setState({ selectedPage: data.activePage });
+    // };
 
     render() {
         return (
@@ -67,7 +67,7 @@ class SearchPage extends React.Component {
 
                     <Container className="search-page__wrapper-left_side">
                          <QuickFilter />
-                      
+
                         <div
                             style={{
                                 marginTop: "4%"
@@ -112,14 +112,12 @@ class SearchPage extends React.Component {
 
                         <RankingBar
                             key="RankingBar"
-                            searchRequest={this.state.searchRequest}
                             onSortingSelected={this.onSortingSelected}
                         />
                         {this.state.listItems}
                         <div className="search-page__pagination">
                             <Pagination
                                 pagesCount={this.state.itemCount / 5}
-                                searchRequest={this.state.searchRequest}
                             />
                         </div>
                     </Container>
