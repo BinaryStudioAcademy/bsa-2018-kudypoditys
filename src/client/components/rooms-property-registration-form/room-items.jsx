@@ -47,13 +47,13 @@ class RoomItems extends Component {
               {room.roomType && room.roomType.name}
             </Grid.Column>
             <Grid.Column>
-              Amount: {room.amount}
+              {room.amount}
             </Grid.Column>
             <Grid.Column>
-              Price: {room.price}
+              {room.price}
             </Grid.Column>
             <Grid.Column>
-              Area: {room.area}
+              {room.area}
             </Grid.Column>
             <Grid.Column>
               <Popup trigger={<Button icon='info' />} >

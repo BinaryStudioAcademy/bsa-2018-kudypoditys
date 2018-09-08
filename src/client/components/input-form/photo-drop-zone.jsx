@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import superagent from 'superagent';
 import Dropzone from 'react-dropzone'
-import { Loader, Segment, Dimmer, Icon } from 'semantic-ui-react';
+import { Loader, Segment, Dimmer, Icon, Button } from 'semantic-ui-react';
+import './index.scss';
 require('dotenv').config();
 
 export const UPLOAD_PRESET = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET;
 export const UPLOAD_URL = process.env.REACT_APP_CLOUDINARY_UPLOAD_URL;
+
 
 export default class PhotoDropZone extends Component {
   state = {
@@ -66,20 +68,36 @@ export default class PhotoDropZone extends Component {
     const images = input.value || [];
 
     return (
-      <Segment>
+      <Fragment>
+
         <Dropzone
           style={{
             position: "relative",
             width: "100%",
             height: 200,
             borderWidth: "2",
-            borderStyle: "dashed",
-            textAlign: "center"
+            textAlign: "center",
+            border: "2px dashed grey"
           }}
+          id="dropzone"
           onDrop={this.handleDrop}
           multiple={false}
           accept="image/*">
-          <div>Drop an image or click to select a file to upload.</div>
+          <div className="dropzone-text">
+            <div className="dropzone-title">
+              Upload at least one photo
+            </div>
+            Drag and drop your photos here
+            <p>or</p>
+          </div>
+          <Button
+            color="blue"
+            fluid
+            className="dropzone-btn"
+            type="button"
+          >
+            <Icon name='image' />
+            Add photos</Button>
         </Dropzone>
 
         {isLoading &&
@@ -102,7 +120,7 @@ export default class PhotoDropZone extends Component {
             </li>
           ))}
         </ul>
-      </Segment>
+      </Fragment>
     );
   }
 }

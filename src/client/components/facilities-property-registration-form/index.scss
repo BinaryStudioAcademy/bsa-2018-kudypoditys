@@ -1,0 +1,82 @@
+#facilitiesPropertyRegistartionForm{
+  .input{
+    height: auto;
+    input{
+      padding: 15px;
+      border-radius: 0px;
+    }
+    margin: 15px 0 15px 0;  
+  }
+  
+  .header{
+   margin-bottom: 5px;
+  }
+  .wrapper{
+    position: relative;
+    width: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  .meta{
+    padding: 0px 0 10px 0;
+    color:grey;
+    font-size: 13px;
+  }
+  label{
+    font-size:15px;
+  }
+  .menu.transition{
+    border-radius: 0px;
+  }
+  .dropdown{
+    border-radius: 0px;
+    margin: 15px 0 15px 0;
+    padding: 15px;
+  }
+
+  .container{
+    padding: 20px 0px;
+  }
+  .icon{
+    margin-left:7px;
+    font-size: 16px;
+  }
+  .default.text{
+    margin: 0px;
+  }
+  .label{
+    margin: 0px 5px;
+  }
+  .ui.fluid.input{
+    margin-left: 0px;
+    }
+  .dropdown.icon{
+    margin: 0px;
+    padding: 0px;
+  }
+  .internet-options .container{
+    display: inline-grid;
+    grid-template-columns: fit-content(0);
+    grid-row-gap: 20px;
+    width: auto;
+    align-items: center;
+    input,.label{
+      &:first-of-type{
+      grid-row: 1
+      }
+    }
+    .label{
+      background: white;
+      color: black;
+      font-size: 14px;
+      font-weight: 300;
+    }
+  }
+  .internet-options{
+    .container{
+      padding-top: 10px;
+    }
+
+  }
+}
