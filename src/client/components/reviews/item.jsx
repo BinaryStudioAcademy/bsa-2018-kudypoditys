@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 
 import './index.scss';
 
-import defaultUserPic from './img/matt.jpg';
+import defaultUserPic from './img/default_avatar.png';
 import anonPic from './img/anon.jpg'
 import ReviewForm from './addReviewForm';
 

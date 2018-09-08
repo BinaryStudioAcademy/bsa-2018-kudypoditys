@@ -26,7 +26,6 @@ export default class MapWidgetModal extends Component {
                     closeIcon
                     className="map-widget-modal"
                 >
-                    {console.log(this.props.properties)}
                     <Modal.Content>
                         <MapView
                             properties={this.props.properties}
