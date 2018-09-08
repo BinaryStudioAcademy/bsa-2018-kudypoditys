@@ -269,7 +269,7 @@ class PropertyRepository extends Repository {
                 where: {
                     id: { $in: filter.propertiesIds }
                 },
-                //order: sortingOption,
+                order: sortingOption,
                 include: [
                     {
                         model: City
@@ -336,7 +336,6 @@ class PropertyRepository extends Repository {
                     {
                         model: Review
                     },
-
                     {
                         model: Room,
                         include: [

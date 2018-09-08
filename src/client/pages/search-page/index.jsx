@@ -42,14 +42,14 @@ class SearchPage extends React.Component {
             properties: searchData.searchResults.properties,
         });
     };
-    onSortingSelected = value => {
-        this.setState({ sortBy: value });
-    };
-    paginationChanged = (event, data) => {
-        console.log('event' + Object.keys(event));
-        console.log('data' + JSON.stringify(data));
-        this.setState({ selectedPage: data.activePage });
-    };
+    // onSortingSelected = value => {
+    //     this.setState({ sortBy: value });
+    // };
+    // paginationChanged = (event, data) => {
+    //     console.log('event' + Object.keys(event));
+    //     console.log('data' + JSON.stringify(data));
+    //     this.setState({ selectedPage: data.activePage });
+    // };
     handleList_Map = (e, data) => {
         this.setState({
             switch: data.value,
@@ -181,11 +181,21 @@ class SearchPage extends React.Component {
                             </div>
                         )}
 
+                        <RankingBar
+                            key="RankingBar"
+                            onSortingSelected={this.onSortingSelected}
+                        />
+                        {this.state.listItems}
+                        {/* <div className="search-page__pagination">
+                            <Pagination
+                                pagesCount={this.state.itemCount / 5}
+                            />
+                        </div> */}
                         {this.state.switch === 'list' ? (
                             <div className="search-page__pagination">
                                 <Pagination
                                     pagesCount={this.state.itemCount / 5}
-                                    searchRequest={this.state.searchRequest}
+                                    // searchRequest={this.state.searchRequest}
                                 />
                             </div>
                         ) : null}
