@@ -59,9 +59,7 @@ class PropertyService {
     }
 
     createProperty = (data) => {
-        console.log('create property');
         const body = this.normalizeProperty(data);
-        console.log(body);
 
         return api
             .sendAuthRequest("/api/property/", "post", body)
@@ -70,8 +68,7 @@ class PropertyService {
                     history.push("/");
                 }
 
-                console.log(response);
-                return response;
+                return response.data;
             });
     }
     updatePropery(data) {

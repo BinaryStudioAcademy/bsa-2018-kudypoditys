@@ -16,6 +16,7 @@ export function mapDispatchToProps(dispatch) {
         },
         getFacilities() {
             dispatch(facilitiesGet());
-        }
+        },
+
     }
 }

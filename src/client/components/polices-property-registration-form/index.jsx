@@ -20,7 +20,7 @@ class PolicesPropertyRegistrationForm extends Component {
       {
         key: 2,
         value: 'false',
-        text: 'No'
+        text: 'No, my guests will look the booking fee if they cancel'
       },
     ];
 

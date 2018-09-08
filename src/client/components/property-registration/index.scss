@@ -4,6 +4,23 @@
 }
 
 #propertyRegistration {
+    .pointing.label {
+        margin-top: -20px !important;
+        margin-bottom: -20px !important;
+    }
+
+    .dropdown {
+        &>i {
+            position: absolute;
+            left: 12px;
+
+            &::before {
+                position: absolute;
+                right: 2px;
+            }
+        }
+    }
+
     button {
         border-radius: 0px;
 

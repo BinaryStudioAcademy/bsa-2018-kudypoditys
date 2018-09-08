@@ -31,6 +31,7 @@ import roomTypes from 'client/logic/room-types/reducer';
 import bedTypes from 'client/logic/bed-types/reducer';
 import testRoomsTab from 'client/logic/1test-rooms-tab/reducer';
 import currencies from 'client/logic/currencies/reducer';
+import propertyTypes from 'client/logic/property-type/reducer';
 
 export default combineReducers({
     search,
@@ -69,4 +70,5 @@ export default combineReducers({
     bedTypes,
     testRoomsTab,
     currencies,
+    propertyTypes,
 });

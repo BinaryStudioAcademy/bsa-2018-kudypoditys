@@ -2,10 +2,18 @@
     color: red;
 }
 
+.fileInput__files {
+    text-align: left;
+
+    .fileInput__file{
+        display: inline-block;
+    }
+    
+}
+
 textarea, .dropdown {
     max-width: 100%;
     width: 100%;
-    // border: 1px solid lightgray;
     border-radius: 5px;
     padding: {
         left: 2.67142857em!important;

@@ -69,7 +69,6 @@ export default class PhotoDropZone extends Component {
 
     return (
       <Fragment>
-
         <Dropzone
           style={{
             position: "relative",
@@ -109,7 +108,7 @@ export default class PhotoDropZone extends Component {
         <ul className="fileInput__files">
           {images.map((image, index) => (
             <li key={index} className="fileInput__file">
-              <img src={image.url} style={{ height: 150, width: 150 }} />
+              <img src={image.url} style={{ height: 'auto', width: 150 }} />
 
               <Icon
                 name='trash alternate'

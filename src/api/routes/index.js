@@ -21,6 +21,7 @@ const paymentType = require('./paymentTypeRoutes');
 const roomType = require('./roomTypeRoutes');
 const bedType = require('./bedTypeRoutes');
 const currency = require('./currencyRoutes');
+const propertyType = require('./propertyTypeRoutes');
 
 const elasticsearch = require("./elasticsearchRoutes");
 
@@ -49,4 +50,5 @@ module.exports = function (app) {
     app.use('/api/roomtype', roomType);
     app.use('/api/bedtype', bedType);
     app.use('/api/currency', currency);
+    app.use('/api/propertytype', propertyType);
 };

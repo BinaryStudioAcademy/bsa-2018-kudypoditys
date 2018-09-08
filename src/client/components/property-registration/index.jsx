@@ -1,7 +1,6 @@
 import './index.scss';
 import React from 'react';
 import { Tab, Container } from 'semantic-ui-react';
-import { MenuItems } from "./config";
 import { DrawTab } from "./DrawTab";
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from "./container";
@@ -60,9 +59,10 @@ export class PropertyRegistration extends React.Component {
     }
 
     onFormSubmit = (data) => {
-        data.facilities = this.normalizeFacilities(data.facilities)
+        data.facilities = this.normalizeFacilities(data.facilities);
 
-        this.props.createProperty(data)
+        this.props.createProperty(data);
+
     }
 
     getWizardForms() {
@@ -73,9 +73,7 @@ export class PropertyRegistration extends React.Component {
                 content: 'Basic Info',
                 customHeader: 'Welcome Nataliya',
                 subheader: 'Start by telling us your property\'s name, contact details and address.',
-                component: <BasicInfoPropertyRegistrationForm onSubmit={
-                    this.nextTab
-                } />
+                component: <BasicInfoPropertyRegistrationForm onSubmit={this.nextTab} />
             },
             {
                 key: 'menuItem rooms',
@@ -91,9 +89,7 @@ export class PropertyRegistration extends React.Component {
                 content: 'Facilities & services',
                 customHeader: ' Facilities & services',
                 subheader: 'Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.',
-                component: <FacilitiesPropertyRegistrationForm onSubmit={
-                    this.nextTab
-                } />
+                component: <FacilitiesPropertyRegistrationForm onSubmit={this.nextTab} />
             },
             {
                 key: 'Rules',
@@ -101,9 +97,7 @@ export class PropertyRegistration extends React.Component {
                 content: 'Rules',
                 customHeader: ' Polices',
                 subheader: ' Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?',
-                component: <PolicesPropertyRegistrationForm onSubmit={
-                    this.nextTab
-                } />,
+                component: <PolicesPropertyRegistrationForm onSubmit={this.nextTab} />,
             },
             {
                 key: 'Photo',
@@ -111,9 +105,7 @@ export class PropertyRegistration extends React.Component {
                 content: 'Property photos',
                 customHeader: '  Property photos',
                 subheader: 'Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property\'s page on the Booking.com website.',
-                component: <PhotoRegistrationPropertyForm onSubmit={
-                    this.nextTab
-                } />
+                component: <PhotoRegistrationPropertyForm onSubmit={this.nextTab} />
             },
             {
                 key: 'menuItem pricing',
@@ -121,8 +113,7 @@ export class PropertyRegistration extends React.Component {
                 content: 'Layout and pricing', //temporary
                 customHeader: ' Layout and pricing',
                 subheader: 'Tell us about layout and pricing',
-                component: <PaymentPropertyRegistrationForm onSubmit={this.onFormSubmit
-                } />,
+                component: <PaymentPropertyRegistrationForm onSubmit={this.onFormSubmit} />,
             }
         ];
     }

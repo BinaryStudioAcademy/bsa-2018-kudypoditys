@@ -370,6 +370,9 @@ const state = {
     currenciesData: {
         currencies: []
     },
+    propertyTypesData: {
+        propertyTypes: []
+    },
 
     testRoomsTab: {
         editRoomIndex: -1
