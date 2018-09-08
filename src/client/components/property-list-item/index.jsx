@@ -42,8 +42,7 @@ export class PropertyListItem extends React.Component {
 
     render() {
         const { propertyItemData } = this.props;
-        console.log("propertyItemData"
-        +propertyItemData);
+        console.log(propertyItemData);
 
         let ratingStatus = "";
         if (propertyItemData.rating >= 9) {
