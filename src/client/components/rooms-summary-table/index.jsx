@@ -44,7 +44,7 @@ export class RoomsSummaryTable extends React.Component {
                                 fontSize: "18px"
                             }}
                         >
-                            <Icon name="bed" />
+                            <Icon name="bed"/>
                             {" " + room.roomType.name}
                         </p>
                         <p>{this.getBedsSummary(room.bedInRooms)}</p>
@@ -74,7 +74,7 @@ export class RoomsSummaryTable extends React.Component {
                                             margin: "0"
                                         }}
                                     >
-                                        <button style={{ height: "100%" }}>
+                                        <button style={{height: "100%"}}>
                                             Book now
                                         </button>
                                     </div>

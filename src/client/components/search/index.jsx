@@ -146,7 +146,7 @@ export class MainSearch extends React.Component {
             query = queryCopy;
             this.setState({ query: queryCopy });
         }
-        if (query===undefined||query===null||query==="") return
+        if (query === undefined || query === null || query === "") return
         history.push({
             pathname: "/search-page",
             search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
@@ -334,10 +334,10 @@ export class MainSearch extends React.Component {
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
-                    <div style={{width:170}}
-                        ref={this.roomSelector}
-                        className="room-selector hidden"
-                        onMouseLeave={this.hideRoomSelector}
+                    <div style={{width: 170}}
+                         ref={this.roomSelector}
+                         className="room-selector hidden"
+                         onMouseLeave={this.hideRoomSelector}
                     >
                         <Grid>
                             <Grid.Row>

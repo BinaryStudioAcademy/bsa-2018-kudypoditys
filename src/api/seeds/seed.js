@@ -2105,12 +2105,12 @@ const BED_IN_ROOM = [
     { id: 22, count: 7, roomId: 22, bedTypeId: 3 },
     { id: 23, count: 2, roomId: 23, bedTypeId: 4 },
     { id: 24, count: 3, roomId: 24, bedTypeId: 5 },
-    { id: 25, count: 2, roomId: 25, bedTypeId: 6 },
-    { id: 26, count: 2, roomId: 26, bedTypeId: 4 },
-    { id: 27, count: 1, roomId: 27, bedTypeId: 2 },
-    { id: 28, count: 1, roomId: 28, bedTypeId: 2 },
-    { id: 29, count: 1, roomId: 28, bedTypeId: 3 },
-    { id: 30, count: 1, roomId: 29, bedTypeId: 2 }
+    {id: 25, count: 2, roomId: 25, bedTypeId: 6},
+    {id: 26, count: 2, roomId: 26, bedTypeId: 4},
+    {id: 27, count: 1, roomId: 27, bedTypeId: 2},
+    {id: 28, count: 1, roomId: 28, bedTypeId: 2},
+    {id: 29, count: 1, roomId: 28, bedTypeId: 3},
+    {id: 30, count: 1, roomId: 29, bedTypeId: 2}
 ];
 const BED_TYPES = [
     {
