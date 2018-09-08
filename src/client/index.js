@@ -24,7 +24,7 @@ import UserCabinet from "./pages/user-cabinet";
 import AuthHOC from "./components/auth-hoc";
 import VerifyEmail from "client/components/verify-email";
 import ForgotPasswordPage from "client/pages/forgot-password-page";
-
+import SimpleModal from 'client/components/simple-modal';
 import ErrorBoundary from "client/components/error-boundary-handler";
 
 const sagaMiddelware = createSagaMidddelware();
@@ -47,11 +47,6 @@ ReactDOM.render(
                     <Route exact path="/login" component={LoginPage} />
                     <Route exact path="/resetpassword" component={ResetPasswordPage} />
                     <Route exact path="/forgotpassword" component={ForgotPasswordPage} />
-                    <Route
-                        exact
-                        path="/checkin-checkout"
-                        component={CheckInCheckOut}
-                    />
                     <Route path="/search-page" component={SearchPage} />
                     <Route path="/property/:id" component={PropertyPage} />
                     <Route
@@ -68,6 +63,7 @@ ReactDOM.render(
                     <Route component={NotFoundPage} />
                 </Switch>
             </Router>
+            <SimpleModal />
         </ErrorBoundary>
     </Provider>,
     document.getElementById("root")

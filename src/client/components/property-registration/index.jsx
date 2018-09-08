@@ -1,6 +1,6 @@
 import './index.scss';
 import React from 'react';
-import { Tab, Container } from 'semantic-ui-react';
+import { Tab, Container, Button } from 'semantic-ui-react';
 import { DrawTab } from "./DrawTab";
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from "./container";

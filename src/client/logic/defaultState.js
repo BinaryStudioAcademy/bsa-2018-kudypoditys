@@ -378,6 +378,13 @@ const state = {
         editRoomIndex: -1
     },
 
+    simpleModal: {
+        buttons: undefined,
+        open: false,
+        header: undefined,
+        content: undefined,
+    },
+
     checkInCheckOut: {
         arrivalFrom: "12:00",
         arrivalTo: "13:00",

@@ -1,15 +1,20 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects';
 import { reset } from 'redux-form';
+import history from 'client/history';
+
 import propertyService from 'client/services/propertyService';
 import * as actionTypes from './actionTypes';
+import { modalShow } from 'client/logic/simple-modal/actions';
 
 function* createProperty(action) {
     try {
-        yield call(propertyService.createProperty, action.payload);
+        const property = yield call(propertyService.createProperty, action.payload);
         yield put({
             type: actionTypes.CREATE_PROPERTY_SUCCESS
         });
         yield put(reset('propertyRegistrationForm'));
+
+        yield put(modalShow(getSuccessModalConfig(property.id)));
     }
     catch (error) {
         yield put({
@@ -24,3 +29,25 @@ export default function* propertySaga() {
         takeLatest(actionTypes.CREATE_PROPERTY, createProperty)
     ])
 }
+
+const getSuccessModalConfig = (propertyId) => ({
+    header: 'Property registration success',
+    content: 'You have created property, please click any button to continue',
+    buttons: [
+        {
+            content: 'Add one more',
+            icon: 'add',
+            onClick: () => history.push('/add-property')
+        },
+        {
+            content: 'Show my property',
+            positive: true,
+            onClick: () => history.push(`/property/${propertyId}`)
+        },
+        {
+            content: 'Close',
+            negative: true,
+            onClick: () => { }
+        }
+    ]
+});
