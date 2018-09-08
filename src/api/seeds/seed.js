@@ -38,7 +38,7 @@ const PROPERTIES = [
             "This property is 15 minutes walk from the beach. Located on Independence Square in the heart of Kiev, this hotel offers air-conditioned rooms and suites with elegant décor. It is a 3-minute walk from the Maidan Nezalezhnosti and Kreschatik Metro Stations. In-room facilities at the Ukraine Hotel include satellite TV and a refrigerator. Your bathroom includes free toiletries and perfumes. Guests enjoy views of the Kreschatyk Street and the surrounding area. A large breakfast buffet is available at the Ukraine Hotel, and 24-hour room service is offered. Ukrainian and European cuisine is served for lunch and dinner. Live music is sometimes played here. The hotel features a beauty salon, sauna and massage facilities. A private laundry service is also available. Hotel Ukraine is a 10-minute walk from Mariyinsky Park and the St. Sofia Cathedral. Secure parking is available on site. Pecherskyj is a great choice for travellers interested in restaurants, food and friendly locals. This is our guests' favourite part of Kiev, according to independent reviews. This property also has one of the best-rated locations in Kiev! Guests are happier about it compared to other properties in the area.",
         contactPhone: "0509832174",
         coordinates: { lat: 49.137089, lng: 24.027161 },
-        distanceToCentre:1.7,
+        distanceToCentre: 1.7,
         userId: 1,
         propertyTypeId: 9,
         cityId: 2,
@@ -2105,12 +2105,12 @@ const BED_IN_ROOM = [
     { id: 22, count: 7, roomId: 22, bedTypeId: 3 },
     { id: 23, count: 2, roomId: 23, bedTypeId: 4 },
     { id: 24, count: 3, roomId: 24, bedTypeId: 5 },
-    {id: 25, count: 2, roomId: 25, bedTypeId: 6},
-    {id: 26, count: 2, roomId: 26, bedTypeId: 4},
-    {id: 27, count: 1, roomId: 27, bedTypeId: 2},
-    {id: 28, count: 1, roomId: 28, bedTypeId: 2},
-    {id: 29, count: 1, roomId: 28, bedTypeId: 3},
-    {id: 30, count: 1, roomId: 29, bedTypeId: 2}
+    { id: 25, count: 2, roomId: 25, bedTypeId: 6 },
+    { id: 26, count: 2, roomId: 26, bedTypeId: 4 },
+    { id: 27, count: 1, roomId: 27, bedTypeId: 2 },
+    { id: 28, count: 1, roomId: 28, bedTypeId: 2 },
+    { id: 29, count: 1, roomId: 28, bedTypeId: 3 },
+    { id: 30, count: 1, roomId: 29, bedTypeId: 2 }
 ];
 const BED_TYPES = [
     {
@@ -2387,6 +2387,24 @@ const REVIEWS = [
     }
 ];
 
+const CURRENCIES = [
+    {
+        name: 'EURO',
+        code: 'EUR',
+        number: '978'
+    },
+    {
+        name: 'US DOLLAR',
+        code: 'USD',
+        number: '840'
+    },
+    {
+        name: 'Hryvnia',
+        code: 'UAH',
+        number: '980'
+    },
+];
+
 module.exports = {
     USERS,
     PROPERTIES,
@@ -2407,5 +2425,6 @@ module.exports = {
     ROOM_TYPES,
     PROPERTY_TYPE,
     LANGUAGES,
-    REVIEWS
+    REVIEWS,
+    CURRENCIES,
 };

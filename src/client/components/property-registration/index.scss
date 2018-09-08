@@ -2,3 +2,36 @@
     text-align: center;
     margin-top: 10px;
 }
+
+#propertyRegistration {
+    .pointing.label {
+        margin-top: -20px !important;
+        margin-bottom: -20px !important;
+    }
+
+    .dropdown {
+        &>i {
+            position: absolute;
+            left: 12px;
+
+            &::before {
+                position: absolute;
+                right: 2px;
+            }
+        }
+    }
+
+    button {
+        border-radius: 0px;
+
+        &:not([type="button"]) {
+            background:rgb(2, 143, 197);
+        }
+    }
+
+    .meta{
+        padding: 0px 0 10px 0;
+        color:grey;
+        font-size: 13px;
+      }
+}

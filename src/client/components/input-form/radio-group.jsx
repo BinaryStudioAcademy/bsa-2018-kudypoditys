@@ -9,8 +9,8 @@ class RadioGroup extends Component {
       <Container>
         {options.map((x, i) =>
           <Fragment key={i}>
-            <input {...input} key={i} type="radio" value={x.value} />
-            <Label>{x.label}</Label>
+            <input {...input} key={i} type="radio" value={x.value} checked={input.value == x.value} />
+            <Label style={{ cursor: 'pointer' }} onClick={() => { input.onChange(x.value); }}>{x.label}</Label>
           </Fragment>
         )}
       </Container>

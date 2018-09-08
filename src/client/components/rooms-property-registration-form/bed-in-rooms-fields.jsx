@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Button, List, Divider } from "semantic-ui-react";
+import { Button, List, Divider, Icon, Grid } from "semantic-ui-react";
 import { required } from 'client/regexValidationService';
 import { Field } from 'redux-form';
 
@@ -19,29 +19,43 @@ class BedInRoomsFields extends Component {
         </List.Item>
         {fields.map((bed, index) => (
           <Fragment>
-            <List.Item key={index}>
-              <Field
-                component={renderDropdown}
-                options={bedTypesOptions}
-                name={`${bed}.bedType`}
-                label="Bed Type"
-                icon="bed"
-                validate={[required]}
-              />
-              <Field
-                name={`${bed}.count`}
-                type="number"
-                component={renderField}
-                label="Total"
-                validate={[required]}
-              />
-              <Button
-                type="button"
-                title="Remove Hobby"
-                icon={'trash'}
-                onClick={() => fields.remove(index)}
-              />
-            </List.Item>
+            <Grid columns={3} >
+              <Grid.Row>
+                <Grid.Column>
+                  <label> Select bed type</label>
+                  <Field
+                    component={renderDropdown}
+                    options={bedTypesOptions}
+                    name={`${bed}.bedType`}
+                    label="Bed Type"
+                    validate={[required]}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <label> Bed count</label>
+                  <Field
+                    name={`${bed}.count`}
+                    type="number"
+                    component={renderField}
+                    label="Count"
+                    validate={[required]}
+                    icon="money bill alternate outline"
+                  />
+                </Grid.Column>
+                <Grid.Column style={{ width: "12%", alignItems: 'center', display: 'flex' }}>
+                  <Button
+                    type="button"
+                    title="Remove Hobby"
+                    onClick={() => fields.remove(index)}
+                    style={{ marginTop: '20px' }}
+                  >
+                    < Button.Content visible>
+                      <Icon name="trash" />
+                    </Button.Content>
+                  </Button>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
             <Divider />
           </Fragment>
         ))}
