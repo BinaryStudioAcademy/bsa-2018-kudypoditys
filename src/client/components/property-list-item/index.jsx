@@ -20,7 +20,11 @@ import { mapStateToProps } from "./container";
 import { connect } from "react-redux";
 import MapWidgetModal from "client/components/map-widget-modal";
 import history from "client/history";
-
+import {
+    getGroupedArray,
+    getAvgFromArray
+} from "client/helpers/avgReviewRating";
+import RatingBlock from "../reviews/ratingBlock";
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
         //todo  handleRedirectToMap
@@ -42,19 +46,27 @@ export class PropertyListItem extends React.Component {
 
     render() {
         const { propertyItemData } = this.props;
-        console.log("propertyItemData"
-        +propertyItemData);
+        console.log(propertyItemData);
 
-        let ratingStatus = "";
-        if (propertyItemData.rating >= 9) {
-            ratingStatus = "Excellent";
-        } else if (propertyItemData.rating >= 7) {
-            ratingStatus = "Very Good";
-        } else if (propertyItemData.rating >= 5) {
-            ratingStatus = "Good";
-        } else if (propertyItemData.rating >= 1) {
-            ratingStatus = "Not good";
-        }
+        // let ratingStatus = "";
+        // if (propertyItemData.rating >= 9) {
+        //     ratingStatus = "Excellent";
+        // } else if (propertyItemData.rating >= 7) {
+        //     ratingStatus = "Very Good";
+        // } else if (propertyItemData.rating >= 5) {
+        //     ratingStatus = "Good";
+        // } else if (propertyItemData.rating >= 1) {
+        //     ratingStatus = "Not good";
+        // }
+
+        // AVG PROPERTY RATING
+        const avgPropRatingArray = getGroupedArray(
+            propertyItemData.reviews,
+            "avgReview"
+        );
+        const avgPropRating = getAvgFromArray(avgPropRatingArray);
+
+
 
         return (
             <Card
@@ -134,31 +146,38 @@ export class PropertyListItem extends React.Component {
                                         disabled
                                     />
                                 </div>
-                                <div className="rating_block">
-                                    <div
-                                        style={{
-                                            textAlign: "center",
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            paddingRight: 10
-                                        }}
-                                    >
-                                        <div className="ratingName">
-                                            {" "}
-                                            {ratingStatus}
-                                        </div>
-                                        <br />
-                                        <span className="reviewsNumber">
-                                            {propertyItemData.reviewsNamber}{" "}
-                                            reviews
-                                        </span>
+
+                                    {/*<div*/}
+                                        {/*style={{*/}
+                                            {/*textAlign: "center",*/}
+                                            {/*display: "flex",*/}
+                                            {/*flexDirection: "column",*/}
+                                            {/*paddingRight: 10*/}
+                                        {/*}}*/}
+                                    {/*>*/}
+                                        {/*<div className="ratingName">*/}
+                                            {/*{" "}*/}
+                                            {/*{ratingStatus}*/}
+                                        {/*</div>*/}
+                                        {/*<br />*/}
+                                        {/*<span className="reviewsNumber">*/}
+                                            {/*{propertyItemData.reviewsNamber}{" "}*/}
+                                            {/*reviews*/}
+                                        {/*</span>*/}
+                                    {/*</div>*/}
+
+                                    {/*<div className="rating_num">*/}
+                                        {/*{" "}*/}
+                                        {/*{propertyItemData.rating}*/}
+                                    {/*</div>*/}
+                                    <div className="rating_listItem">
+                                    <RatingBlock
+                                        avgPropRating={avgPropRating}
+                                        reviewsCount={propertyItemData.reviews.length}
+                                        property={propertyItemData}
+                                    />
                                     </div>
 
-                                    <div className="rating_num">
-                                        {" "}
-                                        {propertyItemData.rating}
-                                    </div>
-                                </div>
                             </div>
                             <div className="card_row__location">
                                 <div className="location__span">

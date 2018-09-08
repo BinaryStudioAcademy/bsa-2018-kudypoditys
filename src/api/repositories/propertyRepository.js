@@ -90,7 +90,7 @@ const includeOptions = [
             {
                 model: Facility,
                 attributes: ["id", "name"],
-                include: { model: FacilityCategory, attributes: ["name"] }
+                include: {model: FacilityCategory, attributes: ["name"]}
             }
         ]
     },
@@ -161,6 +161,9 @@ class PropertyRepository extends Repository {
                     {
                         model: Image
                     },
+                    {
+                        model: Review
+                    },
 
                     {
                         model: Room,
@@ -201,7 +204,7 @@ class PropertyRepository extends Repository {
                     }
                 ]
             })
-            .then(({ dataValues: newProperty }) => {
+            .then(({dataValues: newProperty}) => {
                 let facilityList = entity.facilities.map(f => ({
                     propertyId: newProperty.id,
                     facilityId: f.id
@@ -274,11 +277,14 @@ class PropertyRepository extends Repository {
                     {
                         model: Image
                     },
+                    {
+                        model: Review
+                    },
 
                     {
                         model: Room,
                         where: {
-                            amount: { $gte: filter.rooms }
+                            amount: {$gte: filter.rooms}
                         },
                         include: [
                             RoomType,
@@ -291,22 +297,22 @@ class PropertyRepository extends Repository {
 
                             {
                                 model: Reservation,
-                               // where: {
-                                    // from: {
-                                    //     $between: [filter.dateIn, filter.dateOut]
-                                    //    }
-                                    // $or:[{
-                                    //     dateOut: {
-                                    //         $lte: filter.dateIn,
-                                    //         $gte: filter.dateOut
-                                    //     },
+                                // where: {
+                                // from: {
+                                //     $between: [filter.dateIn, filter.dateOut]
+                                //    }
+                                // $or:[{
+                                //     dateOut: {
+                                //         $lte: filter.dateIn,
+                                //         $gte: filter.dateOut
+                                //     },
 
-                                    //     dateIn: {
-                                    //         $lte: filter.dateIn,
-                                    //         $gte: filter.dateOut
-                                    //     }
-                                    // }],
-                               // }
+                                //     dateIn: {
+                                //         $lte: filter.dateIn,
+                                //         $gte: filter.dateOut
+                                //     }
+                                // }],
+                                // }
                             }
                         ]
                     }

@@ -60,8 +60,10 @@ elastic.route("/delete_all").post((req, res) => {
     ES_service.deleteAll(req, res);
 });
 elastic.route("/add_property").post((req, res) => {
-    const { property}=req.body
-    elasticService.indexNewAddedProperty(property).then(responce => {res.json(responce) })
+    const {property} = req.body
+    elasticService.indexNewAddedProperty(property).then(responce => {
+        res.json(responce)
+    })
 });
 
 module.exports = elastic;
