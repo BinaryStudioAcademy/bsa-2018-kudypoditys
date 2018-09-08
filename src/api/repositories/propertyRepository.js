@@ -161,6 +161,9 @@ class PropertyRepository extends Repository {
                     {
                         model: Image
                     },
+                    {
+                        model: Review
+                    },
 
                     {
                         model: Room,
@@ -274,6 +277,9 @@ class PropertyRepository extends Repository {
                     {
                         model: Image
                     },
+                    {
+                        model: Review
+                    },
 
                     {
                         model: Room,
@@ -326,6 +332,9 @@ class PropertyRepository extends Repository {
                     },
                     {
                         model: Image
+                    },
+                    {
+                        model: Review
                     },
 
                     {
