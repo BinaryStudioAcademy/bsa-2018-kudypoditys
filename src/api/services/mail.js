@@ -30,11 +30,11 @@ class MailService {
                 "https://sqs.eu-central-1.amazonaws.com/048714216392/kudypoditys_email"
         };
 
-        return sqs.sendMessage(params, function(err, data) {
+        sqs.sendMessage(params, function(err, data) {
             if (err) {
-                console.log("Error", err);
+                console.log("Error sqs");
             } else {
-                console.log("Success", data.MessageId);
+                console.log("Success");
             }
         });
     }
