@@ -509,6 +509,9 @@ class PropertyRepository extends Repository {
                 {
                     model: Image,
                     attributes: ["id", "url", "propertyId", "roomId"]
+                },
+                {
+                    model: Review
                 }
             ]
         });

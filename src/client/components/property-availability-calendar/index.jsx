@@ -25,23 +25,21 @@ export class AvailabilityCalendar extends React.Component {
         // console.log(name);
         console.log(defaultValue);
         console.log(value);
-        if (this.props[0].rooms[0].amount !== defaultValue) {
-            //статус в базе изменено, нужно апдейтить
-        } else {
-            //Нету в базе, нужно добавлять
-            console.log("ADD");
-            this.setState({
-                add: [
-                    ...this.state.add,
-                    {
-                        id: this.props[0].rooms[0].id,
-                        propertyId: this.props[0].id,
-                        amount: value,
-                        availabilityStart: name
-                    }
-                ]
-            });
-        }
+        // if (this.props[0].rooms[0].amount !== defaultValue) {
+        // } else {
+        //     console.log("ADD");
+        //     this.setState({
+        //         add: [
+        //             ...this.state.add,
+        //             {
+        //                 id: this.props[0].rooms[0].id,
+        //                 propertyId: this.props[0].id,
+        //                 amount: value,
+        //                 availabilityStart: name
+        //             }
+        //         ]
+        //     });
+        // }
     };
 
     getDaysArrayByMonth() {
@@ -65,19 +63,18 @@ export class AvailabilityCalendar extends React.Component {
     }
 
     componentWillMount() {
-        this.props.fetchUserInfo(this.props[0].userId);
+        // this.props.fetchUserInfo(this.props.userId);
     }
 
     render() {
         const daysArray = this.getDaysArrayByMonth();
         return (
             <Fragment>
-                <Header as="h2">Your properties</Header>
                 <Message info>
                     This is the calendar for booking your rooms.
                 </Message>
                 <div style={{ overflow: "auto" }}>
-                    {console.log(this.props[0].rooms[0])}
+                    {/* {console.log(this.props.rooms[0])} */}
                     <Table compact celled padded>
                         <Table.Header>
                             <Table.Row style={{ textAlign: "center" }}>
@@ -102,7 +99,7 @@ export class AvailabilityCalendar extends React.Component {
                                 </Table.Cell>
                                 <DrawCount
                                     onAmountChange={this.roomAmountChanged}
-                                    amount={this.props[0].rooms[0].amount}
+                                    amount={this.props.rooms[0].amount}
                                     days={daysArray}
                                 />
                             </Table.Row>
@@ -112,15 +109,13 @@ export class AvailabilityCalendar extends React.Component {
                                 </Table.Cell>
                                 <DrawReservations
                                     reservations={
-                                        this.props[0].rooms[0].reservations
+                                        this.props.rooms[0].reservations
                                     }
                                 />
                             </Table.Row>
                             <Table.Row>
                                 <Table.Cell collapsing>Price</Table.Cell>
-                                <DrawPrices
-                                    price={this.props[0].rooms[0].price}
-                                />
+                                <DrawPrices price={this.props.rooms[0].price} />
                             </Table.Row>
                         </Table.Body>
                         <Table.Footer fullWidth>

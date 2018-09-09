@@ -15,10 +15,18 @@ import {
 import "./index.scss";
 import { PropertyItem } from "./propertyItem";
 import history from "client/history";
+import { PropertyPage } from "./property-page";
 
 export class ReviewsTab extends React.Component {
     addPropertyClicked = () => {
         history.push("/add-property");
+    };
+
+    viewProperty = property => {
+        this.props.chooseProperty(property);
+    };
+    backToAllProperties = () => {
+        this.props.unchooseProperty();
     };
 
     getPropertyItems = properties => {
@@ -28,11 +36,9 @@ export class ReviewsTab extends React.Component {
             return (
                 <PropertyItem
                     {...property}
-                    // key={index}
-                    // {...review}
-                    // images={booking.room.property.images}
-                    // booking={booking}
-                    // viewBooking={() => this.viewBooking(booking)}
+                    key={index}
+                    property={property}
+                    viewProperty={() => this.viewProperty(property)}
                 />
             );
         });
@@ -43,23 +49,32 @@ export class ReviewsTab extends React.Component {
     }
 
     render() {
-        const { properties } = this.props;
+        const { properties, activeProperty } = this.props;
         return (
-            <Segment className="reviews-segment">
-                <Header as="h2">Your properties</Header>
-                <Message info>This is a list of your properties.</Message>
-                <Button onClick={this.props.fetchUserInfo} />
-                {!properties
-                    ? "You dont have properties :("
-                    : this.getPropertyItems(properties)}
-
-                <Button
-                    // className="property-page__add-button"
-                    floated="right"
-                    onClick={this.addPropertyClicked}
-                >
-                    Add property
-                </Button>
+            <Segment className="property-segment">
+                {activeProperty ? (
+                    <PropertyPage
+                        property={activeProperty}
+                        backToAllProperties={this.backToAllProperties}
+                    />
+                ) : (
+                    <Segment>
+                        <Header as="h2">Your properties</Header>
+                        <Message info>
+                            This is a list of your properties.
+                        </Message>
+                        <Button
+                            style={{ marginBottom: "1%" }}
+                            floated="right"
+                            onClick={this.addPropertyClicked}
+                        >
+                            Add property
+                        </Button>
+                        {!properties
+                            ? "You dont have properties :("
+                            : this.getPropertyItems(properties)}
+                    </Segment>
+                )}
             </Segment>
         );
     }

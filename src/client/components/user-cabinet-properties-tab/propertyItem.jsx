@@ -17,39 +17,11 @@ import {
 import "./index.scss";
 
 export class PropertyItem extends React.Component {
-    handleRedirectToMap = id => {
-        //todo  handleRedirectToMap
-    };
-    handleAddToComparison = id => {
-        //todo
-    };
-    handleAddToFavorites = id => {
-        //todo
-    };
-    // handleRedirectToDetails = () => {
-    //     console.log(JSON.stringify(this.props.propertyItemData));
-    //     history.push("/property/" + this.props.propertyItemData.id); // this.props.actions.redirectToDetails(id)
-    // };
-
-    // componentDidMount() {
-    //     this.props.actions.fetchUserInfo();
-    // }
-
     render() {
         // const { propertyItemData } = this.props;
         console.log("ITEM = " + this.props);
 
         let ratingStatus = "";
-        // if (propertyItemData.rating >= 9) {
-        //     ratingStatus = "Excellent";
-        // } else if (propertyItemData.rating >= 7) {
-        //     ratingStatus = "Very Good";
-        // } else if (propertyItemData.rating >= 5) {
-        //     ratingStatus = "Good";
-        // } else if (propertyItemData.rating >= 1) {
-        //     ratingStatus = "Not good";
-        // }
-
         return (
             <Card
                 className="property_card"
@@ -91,9 +63,7 @@ export class PropertyItem extends React.Component {
                                         style={{
                                             marginBottom: 6
                                         }}
-                                        onClick={this.handleRedirectToDetails}
                                     >
-                                        {" "}
                                         <Header.Content
                                             style={{
                                                 fontSize: 24,
@@ -164,11 +134,7 @@ export class PropertyItem extends React.Component {
                                 <Button
                                     className="property-page__main-button"
                                     floated="right"
-                                    // onClick={
-                                    //     this.props.availableRoomsCount === 0
-                                    //         ? ""
-                                    //         : this.handleRedirectToDetails
-                                    // }
+                                    onClick={this.props.viewProperty}
                                 >
                                     Details
                                 </Button>
