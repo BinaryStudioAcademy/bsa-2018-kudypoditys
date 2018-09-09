@@ -1,5 +1,56 @@
-.polices-property-registration-form {
+#policesPropertyRegistrationForm{
+  .input{
+    height: auto;
+    input{
+      padding: 15px;
+      border-radius: 0px;
+    }
+    margin: 15px 0 15px 0;  
+  }
   .ui.selection.dropdown {
     min-width: auto;
+  }
+  
+  .header{
+   margin-bottom: 5px;
+  }
+
+
+  .meta{
+    padding: 0px 0 10px 0;
+    color:grey;
+    font-size: 13px;
+  }
+  label{
+    font-size:15px;
+  }
+  .menu.transition{
+    border-radius: 0px;
+  }
+
+  .container{
+    padding: 20px 0px;
+  }
+  .icon{
+    margin-left:7px;
+    font-size: 16px;
+  }
+  .default.text{
+    margin: 0px;
+  }
+  .label{
+    margin: 0px 5px;
+  }
+  .ui.fluid.input{
+    margin-left: 0px;
+    }
+  .dropdown.icon{
+    margin: 0px;
+    padding: 0px;
+  }
+  .grid{
+    .row{
+      padding: 0px;
+    }
   }
 }

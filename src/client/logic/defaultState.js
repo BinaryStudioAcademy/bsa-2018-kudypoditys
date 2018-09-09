@@ -427,9 +427,22 @@ const state = {
     bedTypesData: {
         bedTypes: []
     },
+    currenciesData: {
+        currencies: []
+    },
+    propertyTypesData: {
+        propertyTypes: []
+    },
 
     testRoomsTab: {
         editRoomIndex: -1
+    },
+
+    simpleModal: {
+        buttons: undefined,
+        open: false,
+        header: undefined,
+        content: undefined,
     },
 
     checkInCheckOut: {

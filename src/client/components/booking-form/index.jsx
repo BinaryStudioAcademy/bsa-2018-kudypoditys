@@ -58,7 +58,8 @@ export class BookingForm extends React.Component {
             rooms,
             propertyName,
             error,
-            message
+            message,
+            cancelForFree
         } = this.props;
         const startDate = checkIn === null ? null : moment(checkIn);
         const endDate = checkOut === null ? null : moment(checkOut);
@@ -83,6 +84,14 @@ export class BookingForm extends React.Component {
                 >
                     Make your booking at {propertyName}
                 </Header>
+                {!cancelForFree ? (
+                    <Header
+                        as="h5"
+                        style={{ margin: "5px", padding: 0, color: "#d12b2b" }}
+                    >
+                        Careful. You can`t cancel this booking for free!
+                    </Header>
+                ) : null}
                 <Form
                     className="booking-form"
                     onSubmit={event => {
@@ -124,6 +133,8 @@ export class BookingForm extends React.Component {
                                 onFocusChange={focusedInput => {
                                     this.setState({ focusedInput });
                                 }}
+                                small={true}
+                                x
                             />
                         </div>
                     </Form.Field>
