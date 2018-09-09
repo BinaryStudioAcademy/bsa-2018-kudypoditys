@@ -15,6 +15,7 @@ searchProperty.route("/").get((req, res) => {
     const endDate = req.query.endDate;
     const sortBy = req.query.sortBy;
     const page = req.query.page;
+
     // const autocomplitType = req.query.autocomplitType;
     const _fields = ["city", "name"];
     elasticClient
@@ -35,11 +36,6 @@ searchProperty.route("/").get((req, res) => {
             resp => {
                 let ids = [];
                 let items = resp.hits.hits;
-                // const topIndex = items.findIndex(
-                //     property => property._source.name === query
-                // );
-
-                // items.push(...items.splice(0, topIndex));
                 let topPropId = [];
                 items.forEach(p => {
                     if (p._source.name === query) {
@@ -49,12 +45,16 @@ searchProperty.route("/").get((req, res) => {
 
                 console.log("topPropId - " + topPropId);
                 if (topPropId.length > 0) {
+                    ids = items
+                        .map(property => {
+                            return property._source.id;
+                        })
+                       .filter(id => id !== topPropId[0]);
+                } else {
                     ids = items.map(property => {
                         return property._source.id;
-                    }).filter(id => id !== topPropId[0]);
-                }else  {ids = items.map(property => {
-                    return property._source.id;
-                })}
+                    });
+                }
                 console.log("ids - " + ids);
                 let filter = {
                     propertiesIds: ids,
@@ -63,27 +63,17 @@ searchProperty.route("/").get((req, res) => {
                     sortBy: sortBy,
                     page: Number(page),
                     dateIn: new Date(Number(startDate)),
-                    dateOut: new Date(Number(endDate))
+                    dateOut: new Date(Number(endDate)),
+                    fitness_spa_locker_rooms:
+                        req.query.Fitness_spa_locker_rooms?req.query.Fitness_spa_locker_rooms:"",
+                    queen_bed: req.query.Queen_bed?req.query.Queen_bed:"",
+                    dogs: req.query.Dogs?req.query.Dogs:""
                 };
                 propertyService
                     .getFilteredProperties(filter)
                     .then(properties => {
-
-                        // const topProertyIndex = properties.findIndex(
-                        //     property => property.name === query
-                        // );
-                        // properties.push(
-                        //     ...properties.splice(0, topProertyIndex)
-                        // );
-                        // return res.send({
-                        //     properties: properties,
-                        //     propertiesCount: ids.length
-                        // });
-                        //console.log('topPropId - properties -'+JSON.stringify(properties))
-
                         if (filter.page === 1 && topPropId.length > 0) {
-
-                            let propertiesWithQueredFirst = properties//.filter(p=> (p.id!=topPropId[0]))
+                            let propertiesWithQueredFirst = properties; //.filter(p=> (p.id!=topPropId[0]))
                             filter.propertiesIds = topPropId;
                             return propertyService
                                 .getFilteredProperties(filter)
