@@ -164,7 +164,7 @@ export class BookingSegment extends React.Component {
 
                         <Grid.Column
                             width={12}
-                            style={{ display: "flex", flexDirection: "row" }}
+                            style={{ flexDirection: "row" }}
                         >
                             <Button
                                 floated="right"
@@ -182,6 +182,7 @@ export class BookingSegment extends React.Component {
                                             <div className="user_cabinet_add_review__btn">
                                                 <Button
                                                     primary
+                                                    floated="right"
                                                     // color="teal"
                                                     fluid
                                                     content="Add review"

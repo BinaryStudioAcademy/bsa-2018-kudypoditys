@@ -2,7 +2,7 @@ const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
 const Facility = require("../models/Facility");
 const PaymentType = require("../models/PaymentType");
-const Sequelize = require("sequelize")
+const Sequelize = require("sequelize");
 const Reservation = require("../models/Reservation");
 const RoomType = require("../models/RoomType");
 const Image = require("../models/Image");
@@ -290,23 +290,23 @@ class PropertyRepository extends Repository {
                             },
 
                             {
-                                model: Reservation,
-                               // where: {
-                                    // from: {
-                                    //     $between: [filter.dateIn, filter.dateOut]
-                                    //    }
-                                    // $or:[{
-                                    //     dateOut: {
-                                    //         $lte: filter.dateIn,
-                                    //         $gte: filter.dateOut
-                                    //     },
+                                model: Reservation
+                                // where: {
+                                // from: {
+                                //     $between: [filter.dateIn, filter.dateOut]
+                                //    }
+                                // $or:[{
+                                //     dateOut: {
+                                //         $lte: filter.dateIn,
+                                //         $gte: filter.dateOut
+                                //     },
 
-                                    //     dateIn: {
-                                    //         $lte: filter.dateIn,
-                                    //         $gte: filter.dateOut
-                                    //     }
-                                    // }],
-                               // }
+                                //     dateIn: {
+                                //         $lte: filter.dateIn,
+                                //         $gte: filter.dateOut
+                                //     }
+                                // }],
+                                // }
                             }
                         ]
                     }
@@ -372,6 +372,10 @@ class PropertyRepository extends Repository {
                             model: Availability
                         }
                     ]
+                },
+                {
+                    model: Image,
+                    attributes: ["id", "url", "propertyId", "roomId"]
                 }
             ]
         });

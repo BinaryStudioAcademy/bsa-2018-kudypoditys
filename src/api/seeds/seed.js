@@ -54,6 +54,7 @@ const PROPERTIES = [
         contactPhone: "0509842174",
         coordinates: { lat: 49.837089, lng: 24.021161 },
         propertyTypeId: 9,
+        userId: 1,
         distanceToCentre: 0.7,
         cityId: 1,
         accommodationRuleId: 1

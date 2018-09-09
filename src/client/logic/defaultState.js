@@ -386,7 +386,9 @@ const state = {
 
     propertyRegistration: {
         error: null
-    }
+    },
+
+    userCabinetProperties: {}
 
     // _____________________
 };
