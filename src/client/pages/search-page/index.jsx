@@ -11,7 +11,6 @@ import MapGlobalWidget from 'client/components/map-global-widget';
 import { connect } from 'react-redux';
 import { mapStateToProps } from './container';
 
-
 class SearchPage extends React.Component {
     constructor(props) {
         super(props);
@@ -33,7 +32,9 @@ class SearchPage extends React.Component {
         };
     }
     handleSearchResults = searchData => {
-       let properties= searchData.searchResults.properties.filter(property=>( property!==null))
+        let properties = searchData.searchResults.properties.filter(
+            property => property !== null,
+        );
         const listItems = properties.map(property => (
             <PropertyListItem key={property.id} propertyItemData={property} />
         ));
@@ -43,27 +44,12 @@ class SearchPage extends React.Component {
             searchRequest: searchData.searchRequest,
             properties: searchData.searchResults.properties,
         });
-    };
-    // onSortingSelected = value => {
-    //     this.setState({ sortBy: value });
-    // };
-    // paginationChanged = (event, data) => {
-    //     console.log('event' + Object.keys(event));
-    //     console.log('data' + JSON.stringify(data));
-    //     this.setState({ selectedPage: data.activePage });
-    // };
-    handleList_Map = (e, data) => {
-        this.setState({
-            switch: data.value,
-            active: !this.state.active,
-        });
-
         console.log(this.state.properties);
         let tempArr = [];
 
         console.log(this.state.properties);
 
-        this.state.properties.forEach(i => {
+        properties.forEach(i => {
             console.log(i.rooms[0]);
             tempArr.push({
                 price: i.rooms[0].price,
@@ -82,8 +68,22 @@ class SearchPage extends React.Component {
 
         this.setState({ mapProp: tempArr });
     };
+    // onSortingSelected = value => {
+    //     this.setState({ sortBy: value });
+    // };
+    // paginationChanged = (event, data) => {
+    //     console.log('event' + Object.keys(event));
+    //     console.log('data' + JSON.stringify(data));
+    //     this.setState({ selectedPage: data.activePage });
+    // };
+    handleList_Map = (e, data) => {
+        this.setState({
+            switch: data.value,
+        });
+    };
     render() {
-        const { active } = this.state;
+        const active = this.state.switch;
+
         return (
             <div className="mock">
                 <Header
@@ -102,8 +102,7 @@ class SearchPage extends React.Component {
                             style={{
                                 marginTop: '4%',
                             }}
-                        >
-                        </div>
+                        />
                     </Container>
                     <Container className="search-page__wrapper-right_side">
                         <div className="search-page__row">
@@ -111,34 +110,34 @@ class SearchPage extends React.Component {
                                 totalCount={this.state.itemCount}
                                 destination={this.state.searchRequest.query}
                             />
-                            {this.state.itemCount === 0 ? null : (
+
                                 <div className="switch">
                                     <Button
                                         icon
                                         className="list_btn"
                                         toggle
-                                        active={!active}
-                                        value="list"
+                                        active={active === LIST}
+                                        value={LIST}
                                         onClick={this.handleList_Map}
                                     >
-                                        <Icon name="list ul" color="white" />
+                                        <Icon name="list ul"  />
                                         List
                                     </Button>
                                     <Button
                                         icon
                                         className="map_btn"
                                         toggle
-                                        active={active}
-                                        value="map"
+                                        active={active === MAP}
+                                        value={MAP}
                                         onClick={this.handleList_Map}
                                     >
                                         <Icon name="world" />
                                         Map
                                     </Button>
                                 </div>
-                            )}
+
                         </div>
-                        {this.state.switch === 'list' ? (
+                        {this.state.switch === LIST ? (
                             <div>
                                 <RankingBar
                                     key="RankingBar"
@@ -176,7 +175,7 @@ class SearchPage extends React.Component {
                                 pagesCount={this.state.itemCount / 5}
                             />
                         </div> */}
-                        {this.state.switch === 'list' ? (
+                        {this.state.switch === LIST ? (
                             <div className="search-page__pagination">
                                 <Pagination
                                     pagesCount={this.state.itemCount / 5}
@@ -190,5 +189,11 @@ class SearchPage extends React.Component {
         );
     }
 }
+
+const SWITCH_VALUE = {
+    LIST: 'list',
+    MAP: 'map',
+};
+const { LIST, MAP } = SWITCH_VALUE;
 
 export default connect(mapStateToProps)(SearchPage);
