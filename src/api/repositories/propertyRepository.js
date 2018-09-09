@@ -22,6 +22,8 @@ const BedType = require("../models/BedType");
 const PropertyLanguage = require("../models/PropertyLanguage");
 const BasicFacility = require("../models/BasicFacility");
 const FacilityCategory = require("../models/FacilityCategory");
+const AvailabilityRepository = require("./availabilityRepository");
+const moment = require("moment");
 
 const includeOptions = [
     {
@@ -191,7 +193,24 @@ class PropertyRepository extends Repository {
             });
     }
 
+    getDaysArrayByMonth(id, amount, price) {
+        let daysInMonth = moment().daysInMonth();
+        const arrDays = [];
+        while (daysInMonth) {
+            let current = {
+                roomId: id,
+                amount: amount,
+                price: price,
+                date: moment().date(daysInMonth)
+            };
+            arrDays.push(current);
+            daysInMonth--;
+        }
+        return arrDays.reverse();
+    }
+
     createDetails(entity) {
+        console.log(entity);
         return this.model
             .create(entity, {
                 include: [
@@ -203,6 +222,10 @@ class PropertyRepository extends Repository {
                         include: [BedInRoom]
                     }
                 ]
+            })
+            .then(entity => {
+                let availabilities = this.getDaysArrayByMonth();
+                AvailabilityRepository.create(availabilities);
             })
             .then(({ dataValues: newProperty }) => {
                 let facilityList = entity.facilities.map(f => ({
