@@ -20,7 +20,7 @@ class RoomForm extends Component {
       <Form onSubmit={handleSubmit} id="roomRegistartion" >
         <div className="wrapper" style={{ display: "flex", justifyContent: "space-between" }}>
           <div className="inner-wrapper">
-            <label>Price</label>
+            <label className="required">Price</label>
             <Field
               name={`price`}
               type="number"
@@ -31,7 +31,7 @@ class RoomForm extends Component {
             />
           </div>
           <div className="inner-wrapper">
-            <label>Amount</label>
+            <label className="required">Amount</label>
             <Field
               name={`amount`}
               type="number"
@@ -41,7 +41,7 @@ class RoomForm extends Component {
               icon="th"
             /></div>
           <div className="inner-wrapper">
-            <label>Amount</label>
+            <label className="required">Area</label>
             <Field
               name={`area`}
               type="number"
@@ -52,7 +52,7 @@ class RoomForm extends Component {
             /></div>
         </div>
         <div className="wrapper">
-          <label>Description</label>
+          <label className="required">Description</label>
           <Field
             name={`description`}
             component={renderTextarea}
@@ -63,7 +63,7 @@ class RoomForm extends Component {
         </div>
 
         <div className="wrapper">
-          <label>Select room type</label>
+          <label className="required">Select room type</label>
           <Field
             component={renderDropdown}
             options={roomTypesOptions}
@@ -75,7 +75,7 @@ class RoomForm extends Component {
         <FieldArray name={`bedInRooms`} component={BedInRoomsFields} bedTypesOptions={bedTypesOptions} />
         <Button floated='right' negative animated='vertical' type="button" onClick={handleCancel}>
           <Button.Content hidden>Cancel</Button.Content>
-          < Button.Content visible>
+          <Button.Content visible>
             <Icon name="cancel" />
           </Button.Content>
         </Button>

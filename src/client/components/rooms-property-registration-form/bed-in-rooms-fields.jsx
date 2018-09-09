@@ -22,7 +22,7 @@ class BedInRoomsFields extends Component {
             <Grid columns={3} >
               <Grid.Row>
                 <Grid.Column>
-                  <label> Select bed type</label>
+                  <label className="required"> Select bed type</label>
                   <Field
                     component={renderDropdown}
                     options={bedTypesOptions}
@@ -32,7 +32,7 @@ class BedInRoomsFields extends Component {
                   />
                 </Grid.Column>
                 <Grid.Column>
-                  <label> Bed count</label>
+                  <label className="required"> Bed count</label>
                   <Field
                     name={`${bed}.count`}
                     type="number"

@@ -83,7 +83,7 @@ export default class PhotoDropZone extends Component {
           multiple={false}
           accept="image/*">
           <div className="dropzone-text">
-            <div className="dropzone-title">
+            <div className="dropzone-title" >
               Upload at least one photo
             </div>
             Drag and drop your photos here

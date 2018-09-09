@@ -24,7 +24,7 @@ export const email = value =>
         : undefined;
 
 export const phoneNumber = value =>
-    value && !/^[0-9]{2,3}[0-9]{9}$/i.test(value)
+    value && !/^([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}$/i.test(value)
         ? "Invalid phone number format"
         : undefined;
 

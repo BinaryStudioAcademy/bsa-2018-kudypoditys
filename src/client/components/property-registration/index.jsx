@@ -66,12 +66,13 @@ export class PropertyRegistration extends React.Component {
     }
 
     getWizardForms() {
+        const { user } = this.props;
         return [
             {
                 key: 'Basic Info',
                 icon: 'info circle',
                 content: 'Basic Info',
-                customHeader: 'Welcome Nataliya',
+                customHeader: `Welcome ${user.fullName}`,
                 subheader: 'Start by telling us your property\'s name, contact details and address.',
                 component: <BasicInfoPropertyRegistrationForm onSubmit={this.nextTab} />
             },

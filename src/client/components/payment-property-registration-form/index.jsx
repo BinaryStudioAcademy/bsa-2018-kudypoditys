@@ -34,7 +34,7 @@ class PaymentPropertyRegistrationForm extends Component {
     return (
       <Fragment>
         <div className="wrapper">
-          <Header as='h2' style={{ fontSize: "18px" }}>
+          <Header as='h2' style={{ fontSize: "18px" }} className="required">
             Payment. Ways of payment for guests
          </Header>
           <Field
@@ -72,33 +72,31 @@ class PaymentPropertyRegistrationForm extends Component {
 
     return (
       <Fragment>
-        <Card.Content>
-          <Header as='h2' style={{ fontSize: "18px" }}>
-            Fee. City tax and additional charges.
+        <Header as='h2' style={{ fontSize: "18px" }} className="required">
+          Fee. City tax and additional charges.
          </Header>
 
-          <Field
-            component={renderDropdown}
-            options={vatTaxesOptions}
-            name="vatIncluded"
-            label="VAT"
-            icon="dollar"
-            validate={[required]}
-          />
+        <Field
+          component={renderDropdown}
+          options={vatTaxesOptions}
+          name="vatIncluded"
+          label="VAT"
+          icon="dollar"
+          validate={[required]}
+        />
 
-          <div className="wrapper">
-            <label>Additional fees</label>
-            <Field
-              component={renderTextarea}
-              options={vatTaxesOptions}
-              name="additionalFees"
-              label="Additional fees"
-              icon="credit card outline"
-              validate={[required, maxLength255]}
-            />
-            <Icon disabled name='credit card outline' className='texarea-icon' style={{ marginLeft: "0px" }} />
-          </div>
-        </Card.Content>
+        <div className="wrapper">
+          <label>Additional fees</label>
+          <Field
+            component={renderTextarea}
+            options={vatTaxesOptions}
+            name="additionalFees"
+            label="Additional fees"
+            icon="credit card outline"
+            validate={[maxLength255]}
+          />
+          <Icon disabled name='credit card outline' className='texarea-icon' style={{ marginLeft: "0px" }} />
+        </div>
       </Fragment>
     );
   }

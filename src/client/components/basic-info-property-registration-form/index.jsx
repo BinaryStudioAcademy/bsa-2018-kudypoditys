@@ -113,7 +113,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
             </div>
 
             <div className="wrapper">
-              <label>Property name</label>
+              <label className="required">Property name</label>
               <Field
                 component={renderField}
                 name="name"
@@ -125,7 +125,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
             </div>
 
             <div className="wrapper">
-              <label>Property description</label>
+              <label className="required">Property description</label>
               <Field
                 component={renderTextarea}
                 name="description"
@@ -136,7 +136,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
             </div>
 
             <div className="wrapper">
-              <label>Property Type</label>
+              <label className="required">Property Type</label>
               <Field
                 icon="home"
                 style={{ borderRadius: "0px" }}
@@ -151,13 +151,13 @@ class BasicInfoPropertyRegistrationForm extends Component {
           <Container>
             <Header as='h2' style={{ fontSize: "18px" }}>
               In what currency are all prices for Your property?
-                        </Header>
+            </Header>
             <div className="meta ">
               Guests will see price of rooms in this currency
-                        </div>
+            </div>
 
             <div className="wrapper">
-              <label>Prefered currency</label>
+              <label className="required">Prefered currency</label>
               <Field
                 icon="dollar"
                 style={{ borderRadius: "0px" }}
@@ -176,7 +176,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
                 What are the contact details for this property?
                             </Header>
               <div className="wrapper">
-                <label>Contact name</label>
+                <label className="required">Contact name</label>
                 <Field
                   component={renderField}
                   name="contactPersonName"
@@ -187,7 +187,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
                 />
               </div>
               <div className="wrapper">
-                <label>
+                <label className="required">
                   Contact number(so we can assist with your registration
                  when needed)
                         </label>
@@ -210,7 +210,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
                 Where's your property located?
                         </Header>
               <div className="wrapper">
-                <label>
+                <label className="required">
                   Street address
                         </label>
                 <Field
@@ -230,12 +230,12 @@ class BasicInfoPropertyRegistrationForm extends Component {
                   type="text"
                   label="For example: flat number and etc."
                   icon="map marker"
-                  validate={[required, maxLength40]}
+                  validate={[maxLength40]}
 
                 />
               </div>
               <div className="wrapper">
-                <label>
+                <label className="required">
                   Country/Region
                             </label>
 
@@ -252,9 +252,9 @@ class BasicInfoPropertyRegistrationForm extends Component {
                 />
               </div>
               <div className="wrapper">
-                <label>
+                <label className="required">
                   City
-                        </label>
+                </label>
                 <Field
                   icon="map signs"
                   style={{ borderRadius: "0px" }}
@@ -270,13 +270,13 @@ class BasicInfoPropertyRegistrationForm extends Component {
             </Card.Content>
           </Container>
 
-          <Container style={{ paddingTop: "0px" }}
-          ><Button
-            color="teal"
-            fluid
-            disabled={pristine || submitting}
-            type="submit"
-          >Continue</Button>
+          <Container style={{ paddingTop: "0px" }}>
+            <Button
+              color="teal"
+              fluid
+              disabled={pristine || submitting}
+              type="submit"
+            >Continue</Button>
           </Container>
         </Form >
 
