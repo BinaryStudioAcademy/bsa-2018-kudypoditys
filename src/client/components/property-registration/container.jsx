@@ -2,10 +2,11 @@ import { propertyCreate } from 'client/logic/property-registration/actions'
 import { facilitiesGet } from 'client/logic/facilities/actions';
 
 export function mapStateToProps(state) {
-    const { propertyRegistration, facilities } = state;
+    const { propertyRegistration, facilities, header } = state;
     return {
         ...propertyRegistration,
-        facilities: facilities.facilities
+        facilities: facilities.facilities,
+        user: header.currentUser
     };
 }
 
