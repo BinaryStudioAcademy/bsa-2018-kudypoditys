@@ -51,7 +51,7 @@ class ReservationService extends Service {
             subject: "KudyPoditys booking success",
             html: `You have successfully booked, your order code <b> ${orderCode} </b>`
         };
-        return transporter.sendMail(mailOptions).then(_ => true);
+        return transporter.sendMail(mailOptions);
     }
 
     async create(reservation) {
@@ -64,7 +64,7 @@ class ReservationService extends Service {
                 reservation,
                 bookings
             );
-            const email = await this.sendMailBookingSuccess(
+            this.sendMailBookingSuccess(
                 reservation.userId,
                 reservation.orderCode
             );

@@ -1,95 +1,57 @@
 import React from "react";
 import "./index.scss";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {mapStateToProps, mapDispatchToProps} from "./container";
-import request from 'superagent';
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./container";
+import request from "superagent";
+import { Checkbox, Card, List } from "semantic-ui-react";
+import history from "client/history";
+import queryString from "query-string";
+// import Checkbox from './Checkbox';
 
-import Checkbox from './Checkbox';
-
-import {ratingScore, facilities, bedTypes} from './filters'
-
+import { ratingScore, facilities, bedTypes } from "./filters";
 
 class Quickfilter extends React.Component {
-    constructor(props) {
-        super(props);
-
+    constructor() {
+        super();
         this.state = {
-            checkedItems: new Map(),
+            searchRequest: {} //todo
+        };
+    }
+    componentDidMount() {
+        if (history.location.search !== "") {
+            const searchRequest = queryString.parse(history.location.search);
+            this.setState({ searchRequest: searchRequest });
         }
-
-        this.handleChange = this.handleChange.bind(this);
     }
-
-    handleChange = (e) => {
-        const item = e.target.name;
-        const isChecked = e.target.checked;
-        this.props.selectFilter({
-            [item]:isChecked
-        });
-
-
-        console.log("check" + isChecked)
-        this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
-
-    }
-
-
-
-    handleItemClick(box) {
-        // const request = this.props.searchRequest
-        // request.facilityFilter = box
-        // this.props.selectFilter(request);
-        // console.log(box)
-
-
-    }
-    // handleOpen = () => {
-    //     this.setState({ modalOpen: true })
-    //     console.log(this.state)
-    // }
-    // sortByType(type) {
-    //     return this.props.boxes.filter(function (obj) {
-    //         return obj.type === type;
-    //     });
-    // }
+    handleChange = (e, data) => {
+        console.log("eve" + JSON.stringify(e));
+        console.log("data" + JSON.stringify(data));
+        if (history.location.search !== "") {
+            let searchRequest = queryString.parse(history.location.search);
+            const item = data.name;
+            const value = data.checked?data.value:""
+            this.props.selectFilter({ ...searchRequest, ...{ [item]: value } });
+        }
+    };
 
     drawBoxes(arr) {
-        const temp = arr.map(item => (
-
-            <div
-                key={item.name}
-                className="box_item"
-
-            >
-
-            <div className="ui input checkbox">
-            <Checkbox name={item.name} checked={this.state.checkedItems.get(item.name)} onChange={this.handleChange} />
-                <label className="box_label" key={item.key}>
-                    {" "}
-                    {item.label}{" "}
-
-
-                </label>
-        </div>
-            </div>
-
-
-
-
+        const temp = arr.map((item, i) => (
+            <List.Item key={i} style={{ margin: "1rem", padding: "0" }}>
+                <Checkbox
+                    name={item.name}
+                    label={item.label}
+                    value={item.value}
+                    onChange={(e, data) => this.handleChange(item.key, data)}
+                />
+            </List.Item>
         ));
         return temp;
     }
     render() {
-        // const PropertyType = this.sortByType("Property Type");
-        // const Facility = this.sortByType("Facility");
-        // const ReviewScore = this.sortByType("Review Score");
-        // const HotelClass = this.sortByType("Hotel Class");
-
         const list1 = this.drawBoxes(ratingScore);
-        const list2 = this.drawBoxes(facilities);
+
         const list3 = this.drawBoxes(bedTypes);
-        // const list4 = this.drawBoxes(HotelClass);
 
         return (
             <div className="box">
@@ -98,11 +60,14 @@ class Quickfilter extends React.Component {
                 </div>
 
                 <p className="box_group">Facility</p>
-                {list2}
-                <p className="box_group">Review Score</p>
-                {list1}
-                <p className="box_group">Bed Types</p>
-                {list3}
+                {/*{list2}*/}
+                <List>{list3}</List>
+                {/* <p className="box_group">Review Score</p>
+                {/*{list1}*/}
+                {/* <p className="box_group">Bed Types</p>
+                {list3} */}
+
+                {/* <List>{list1}</List> */}
             </div>
         );
     }

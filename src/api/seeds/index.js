@@ -19,6 +19,7 @@ const {
     BED_IN_ROOM,
     REVIEWS,
     LANGUAGES,
+    CURRENCIES,
 } = require("./seed");
 
 function upsertAllData(models) {
@@ -46,6 +47,7 @@ function upsertAllData(models) {
         User,
         Language,
         Review,
+        Currency,
     } = models;
 
     const SimpleUpsertMap = [
@@ -68,6 +70,7 @@ function upsertAllData(models) {
         [Reservation, RESERVATIONS],
         [Language, LANGUAGES],
         [Review, REVIEWS],
+        [Currency, CURRENCIES],
     ];
 
     //Country & City

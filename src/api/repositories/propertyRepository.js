@@ -161,6 +161,9 @@ class PropertyRepository extends Repository {
                     {
                         model: Image
                     },
+                    {
+                        model: Review
+                    },
 
                     {
                         model: Room,
@@ -232,8 +235,37 @@ class PropertyRepository extends Repository {
             })
             .then(newProperty => this.findById(newProperty.id));
     }
+    getFacilityId(facilityStr) {
+        let facilityId;
+        switch (facilityStr) {
+            case "Fitness_spa_locker_rooms":
+                facilityId = 1; //id from seed
+                break;
+            // case 'Queen_bed':
+            //     facilityId = 3;
+            //     break;
+            case "Dogs":
+                facilityId = 5;
+                break;
+            default:
+                facilityId = -1;
+        }
 
+        return facilityId;
+    }
+    getBedTypeId(bedTypeStr) {
+        let bedTypeId;
+        switch (bedTypeStr) {
+            case "Queen_bed":
+                bedTypeId = 3; //id from seed
+                break;
+            default:
+                bedTypeId = -1;
+        }
+        return bedTypeId;
+    }
     getFilteredProperties(filter) {
+        console.log("filter " + JSON.stringify(filter));
         const SORT_VALUE = {
             PRICE: "price",
             DISTANCE: "distance_to_center",
@@ -258,7 +290,48 @@ class PropertyRepository extends Repository {
             default:
                 sortingOption = [["rating"]];
         }
+
+        let facilityOption =
+            filter.dogs !== "" || filter.fitness_spa_locker_rooms !== ""
+                ? [
+                      {
+                          model: Facility,
+                          required: true,
+                          where: {
+                              id: {
+                                  $in: [
+                                      this.getFacilityId(filter.dogs),
+                                      this.getFacilityId(
+                                          filter.fitness_spa_locker_rooms
+                                      )
+                                  ]
+                              }
+                          },
+                          include: { model: FacilityCategory }
+                      }
+                  ]
+                : [Facility];
+
+        let bedsInRoomOption =
+            filter.queen_bed || filter.full_bed //we don't send full bad type yet
+                ? {
+                      model: BedInRoom,
+                      where: {
+                          count: { $gte: filter.bedsCount },
+                          bedTypeId: {
+                              $in: [this.getBedTypeId(filter.queen_bed)]
+                          }
+                      }
+                  }
+                : {
+                      model: BedInRoom,
+                      where: {
+                          count: { $gte: filter.bedsCount }
+                      }
+                  };
+
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
+
         return this.model
             .findAll({
                 limit: 5,
@@ -266,13 +339,27 @@ class PropertyRepository extends Repository {
                 where: {
                     id: { $in: filter.propertiesIds }
                 },
-                //order: sortingOption,
+                order: sortingOption,
                 include: [
                     {
                         model: City
                     },
                     {
                         model: Image
+                    },
+                    {
+                        model: Review
+                    },
+                    {
+                        model: FacilityList,
+                        include: facilityOption
+
+                        //     [
+                        //     {
+                        //         model: Facility,
+                        //         where: { id: { $in: [5] } },
+                        //     }
+                        // ]
                     },
 
                     {
@@ -282,13 +369,8 @@ class PropertyRepository extends Repository {
                         },
                         include: [
                             RoomType,
-                            {
-                                model: BedInRoom,
-                                where: {
-                                    count: { $gte: filter.bedsCount }
-                                }
-                            },
 
+                            bedsInRoomOption,
                             {
                                 model: Reservation
                                 // where: {
@@ -320,6 +402,7 @@ class PropertyRepository extends Repository {
     findAll() {
         return this.model
             .findAll({
+                where: {},
                 include: [
                     {
                         model: City
@@ -327,6 +410,21 @@ class PropertyRepository extends Repository {
                     {
                         model: Image
                     },
+                    {
+                        model: Review
+                    },
+                    // {
+                    //     model: FacilityList,
+                    //     required: true,
+                    //     include: [
+                    //         {
+                    //             model: Facility,
+                    //             required: true,
+                    //             where: { id: { $in: [5] } },
+                    //             include: { model: FacilityCategory }
+                    //         }
+                    //     ]
+                    // },
 
                     {
                         model: Room,

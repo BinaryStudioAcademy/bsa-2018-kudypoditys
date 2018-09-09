@@ -31,11 +31,11 @@ export class BookingSegment extends React.Component {
     }
 
     handleOpen = () => {
-        this.setState({ modalOpen: true });
+        this.setState({modalOpen: true});
     };
 
     handleClose = () => {
-        this.setState({ modalOpen: false });
+        this.setState({modalOpen: false});
     };
 
     viewBooking = (event, id) => {
@@ -70,7 +70,7 @@ export class BookingSegment extends React.Component {
                             <Header as="h4">
                                 {booking.room.property.name}
                             </Header>
-                            <Icon name="map marker alternate" />
+                            <Icon name="map marker alternate"/>
                             {console.log(
                                 "price",
                                 booking.room.price,
@@ -96,18 +96,18 @@ export class BookingSegment extends React.Component {
                                         price: booking.room.price,
                                         name: booking.room.property.name,
                                         coordinates:
-                                            booking.room.property.coordinates,
+                                        booking.room.property.coordinates,
                                         imageSrc:
-                                            booking.room.property.images[0].url,
+                                        booking.room.property.images[0].url,
                                         address: booking.room.property.address,
                                         rating: booking.room.property.rating
                                     }
                                 ]}
                                 startPosition={{
                                     latitude:
-                                        booking.room.property.coordinates.lat,
+                                    booking.room.property.coordinates.lat,
                                     longitude:
-                                        booking.room.property.coordinates.lng
+                                    booking.room.property.coordinates.lng
                                 }}
                                 zoom={13}
                                 controlEnable={true}

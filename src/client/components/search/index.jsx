@@ -36,7 +36,11 @@ export class MainSearch extends React.Component {
                     adults: parsed.adults,
                     children: parsed.children,
                     startDate: moment(Number(parsed.startDate)),
-                    endDate: moment(Number(parsed.endDate))
+                    endDate: moment(Number(parsed.endDate)),
+                    sortBy: parsed.sortBy,
+                    page:parsed.page
+
+
                 },
                 () => {
                     this.handleSubmit();
@@ -56,9 +60,6 @@ export class MainSearch extends React.Component {
                 }`
             )
             .then(citiesResponse => {
-                console.log(
-                    "response Cities= " + JSON.stringify(citiesResponse)
-                );
                 if (
                     citiesResponse &&
                     citiesResponse.data &&
@@ -80,9 +81,7 @@ export class MainSearch extends React.Component {
             })
 
             .then(propertiesResponse => {
-                console.log(
-                    "response Roperties= " + JSON.stringify(propertiesResponse)
-                );
+
                 if (
                     propertiesResponse &&
                     propertiesResponse.data &&
@@ -137,7 +136,9 @@ export class MainSearch extends React.Component {
             endDate,
             sortBy,
             queryCopy,
-            isSelectedResult
+            isSelectedResult,
+            page
+
         } = this.state;
         console.log("handleSubmit trigered");
         let { query } = this.state;
@@ -147,10 +148,10 @@ export class MainSearch extends React.Component {
             this.setState({ query: queryCopy });
         }
         if (query===undefined||query===null||query==="") return
-        history.push({
-            pathname: "/search-page",
-            search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
-        });
+        // history.push({
+        //     pathname: "/search-page",
+        //     search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
+        // });
         this.props.onSearch({
             query: query,
             rooms: rooms,
@@ -158,7 +159,8 @@ export class MainSearch extends React.Component {
             children: children,
             startDate: startDate,
             endDate: endDate,
-            page: 1
+            page: page,
+            sortBy:sortBy
         });
     };
 
@@ -173,6 +175,7 @@ export class MainSearch extends React.Component {
             adults: 1,
             children: 1,
             query: "",
+            page:1,
             results: [],
         };
     }
@@ -334,14 +337,14 @@ export class MainSearch extends React.Component {
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
-                    <div style={{width:170}}
-                        ref={this.roomSelector}
-                        className="room-selector hidden"
-                        onMouseLeave={this.hideRoomSelector}
+                    <div style={{width: 170}}
+                         ref={this.roomSelector}
+                         className="room-selector hidden"
+                         onMouseLeave={this.hideRoomSelector}
                     >
                         <Grid>
                             <Grid.Row>
-                                <Grid.Column width={5} verticalAlign={"middle"}>
+                                <Grid.Column width={6} verticalAlign={"middle"}>
                                     <label>Rooms</label>
                                 </Grid.Column>
                                 <Grid.Column width={10}>
@@ -358,7 +361,7 @@ export class MainSearch extends React.Component {
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
-                                <Grid.Column width={5} verticalAlign={"middle"}>
+                                <Grid.Column width={6} verticalAlign={"middle"}>
                                     <label>Adults</label>
                                 </Grid.Column>
                                 <Grid.Column width={10}>
@@ -375,7 +378,7 @@ export class MainSearch extends React.Component {
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
-                                <Grid.Column width={5} verticalAlign={"middle"}>
+                                <Grid.Column width={6} verticalAlign={"middle"}>
                                     <label>Children</label>
                                 </Grid.Column>
                                 <Grid.Column width={10}>

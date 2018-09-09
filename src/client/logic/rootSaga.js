@@ -19,6 +19,8 @@ import languagesSaga from "client/logic/languages/saga";
 import paymentTypesSaga from "client/logic/payment-type/saga";
 import roomTypesSaga from "client/logic/room-types/saga";
 import bedTypesSaga from "client/logic/bed-types/saga";
+import currenciesSaga from "client/logic/currencies/saga";
+import propertyTypesSaga from "client/logic/property-type/saga";
 import userCabinetPropertiesSaga from "client/logic/user-cabinet-properties-tab/saga";
 
 export default function* rootSaga() {
@@ -35,7 +37,7 @@ export default function* rootSaga() {
         fork(resetPasswordSaga),
         fork(forgotPasswordSaga),
         fork(bannerListSaga),
-        // fork(availabilityCalendar),
+        fork(availabilityCalendar),
         // fork(propertySaga) ???
         fork(propertyRegistrationSaga),
         fork(countriesSaga),
@@ -44,6 +46,8 @@ export default function* rootSaga() {
         fork(paymentTypesSaga),
         fork(roomTypesSaga),
         fork(bedTypesSaga),
+        fork(currenciesSaga),
+        fork(propertyTypesSaga),
         fork(userCabinetPropertiesSaga)
     ]);
 }

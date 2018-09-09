@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from "react";
 import { connect } from 'react-redux';
 import './index.scss';
-import { Card, Button, Form, List } from "semantic-ui-react";
+import { Header, Button, Form, List, Container } from "semantic-ui-react";
 import { FieldArray, reduxForm } from 'redux-form';
 
 import RoomItems from './room-items';
@@ -56,7 +56,7 @@ class RoomsPropertyRegistrationForm extends Component {
               handleEdit={(index) => { this.updateActiveIndex(index) }}
             />
 
-            <Button type="button" onClick={() => { this.updateActiveIndex(fields.length); }}>
+            <Button className="add-room-btn" type="button" onClick={() => { this.updateActiveIndex(fields.length); }}>
               Add Room
             </Button>
             {submitFailed && error && <span>{error}</span> || <Fragment />}
@@ -93,15 +93,12 @@ class RoomsPropertyRegistrationForm extends Component {
       <Fragment>
         <Form id="roomsPropertyRegistrationForm" onSubmit={handleSubmit}></Form>
 
-        <Card style={{ width: '900px' }} color='teal'>
-          <Card.Content>
-            <Card.Description style={{ fontSize: '18px' }}>
-              Rooms
-            </Card.Description>
-            <br />
-            <FieldArray form="roomsPropertyRegistrationForm" name={`rooms`} component={this.renderRoomFields} />
-          </Card.Content>
-        </Card>
+        <Container fluid>
+          <Header as="h2" style={{ fontSize: '18px' }}>
+            Rooms
+            </Header>
+          <FieldArray form="roomsPropertyRegistrationForm" name={`rooms`} component={this.renderRoomFields} />
+        </Container>
 
         <Button
           color="teal"

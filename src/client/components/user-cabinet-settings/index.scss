@@ -1,4 +1,15 @@
 .personal_settings-segment {
+    .dropdown {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 5px;
+        padding: {
+            left: 1em !important;
+            right: 1em;
+            top: 1em;
+            bottom: 1em;
+        }
+    }
     display: grid;
     grid-template-columns:
         minmax(100px, 200px) minmax(100px, 300px) minmax(100px, 200px)
