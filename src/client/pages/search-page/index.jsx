@@ -38,19 +38,17 @@ class SearchPage extends React.Component {
         const listItems = properties.map(property => (
             <PropertyListItem key={property.id} propertyItemData={property} />
         ));
+
         this.setState({
             listItems: listItems,
             itemCount: searchData.searchResults.propertiesCount,
             searchRequest: searchData.searchRequest,
             properties: searchData.searchResults.properties,
         });
-        console.log(this.state.properties);
+
         let tempArr = [];
 
-        console.log(this.state.properties);
-
         properties.forEach(i => {
-            console.log(i.rooms[0]);
             tempArr.push({
                 price: i.rooms[0].price,
                 name: i.name,
@@ -65,6 +63,8 @@ class SearchPage extends React.Component {
                 rating: i.rating,
             });
         });
+
+
 
         this.setState({ mapProp: tempArr });
     };
@@ -111,31 +111,31 @@ class SearchPage extends React.Component {
                                 destination={this.state.searchRequest.query}
                             />
 
-                                <div className="switch">
-                                    <Button
-                                        icon
-                                        className="list_btn"
-                                        toggle
-                                        active={active === LIST}
-                                        value={LIST}
-                                        onClick={this.handleList_Map}
-                                    >
-                                        <Icon name="list ul"  />
-                                        List
-                                    </Button>
-                                    <Button
-                                        icon
-                                        className="map_btn"
-                                        toggle
-                                        active={active === MAP}
-                                        value={MAP}
-                                        onClick={this.handleList_Map}
-                                    >
-                                        <Icon name="world" />
-                                        Map
-                                    </Button>
-                                </div>
-
+                            <div className="switch">
+                                <Button
+                                    icon
+                                    className="list_btn"
+                                    toggle
+                                    active={active === LIST}
+                                    value={LIST}
+                                    onClick={this.handleList_Map}
+                                >
+                                    <Icon name="list ul" />
+                                    List
+                                </Button>
+                                <Button
+                                    icon
+                                    disabled={!this.state.mapProp.length}
+                                    className="map_btn"
+                                    toggle
+                                    active={active === MAP}
+                                    value={MAP}
+                                    onClick={this.handleList_Map}
+                                >
+                                    <Icon name="world" />
+                                    Map
+                                </Button>
+                            </div>
                         </div>
                         {this.state.switch === LIST ? (
                             <div>
@@ -153,12 +153,18 @@ class SearchPage extends React.Component {
                             >
                                 <MapGlobalWidget
                                     properties={this.state.mapProp}
-                                    startPosition={{
-                                        latitude: this.state.mapProp[0]
-                                            .coordinates.lat,
-                                        longitude: this.state.mapProp[0]
-                                            .coordinates.lng,
-                                    }}
+                                    startPosition={
+                                        this.state.mapProp.length
+                                            ? {
+                                                  latitude: this.state
+                                                      .mapProp[0].coordinates
+                                                      .lat,
+                                                  longitude: this.state
+                                                      .mapProp[0].coordinates
+                                                      .lng,
+                                              }
+                                            : undefined
+                                    }
                                     zoom={13}
                                     controlEnable={true}
                                 />

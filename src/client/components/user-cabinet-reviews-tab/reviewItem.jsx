@@ -32,7 +32,7 @@ export default class ReviewItem extends React.Component {
         return (
 
             <Card>
-                <Image src={property.images[0].url} />
+                <Image style={{height: 160}} src={property.images[0].url} />
                 <Card.Content>
                     <Card.Header>{property.name}</Card.Header>
                     <Card.Meta>Your review</Card.Meta>
@@ -42,7 +42,7 @@ export default class ReviewItem extends React.Component {
                                 progress="value"
                                 color="blue"
                                 size="small"
-                                total="5"
+                                total="10"
                                 value={this.props.Cleanliness}
                                 label="Cleanliness"
                             />
@@ -50,7 +50,7 @@ export default class ReviewItem extends React.Component {
                                 progress="value"
                                 color="blue"
                                 size="small"
-                                total="5"
+                                total="10"
                                 value={this.props.Facilities}
                                 label="Facilities"
                             />
@@ -58,7 +58,7 @@ export default class ReviewItem extends React.Component {
                                 progress="value"
                                 color="blue"
                                 size="small"
-                                total="5"
+                                total="10"
                                 value={this.props.Comfort}
                                 label="Comfort"
                             />
@@ -66,7 +66,7 @@ export default class ReviewItem extends React.Component {
                                 progress="value"
                                 color="blue"
                                 size="small"
-                                total="5"
+                                total="10"
                                 value={this.props.Price}
                                 label="Price"
                             />
@@ -74,7 +74,7 @@ export default class ReviewItem extends React.Component {
                                 progress="value"
                                 color="blue"
                                 size="small"
-                                total="5"
+                                total="10"
                                 value={this.props.Location}
                                 label="Location"
                             />
