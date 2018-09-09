@@ -114,6 +114,9 @@ export class AvailabilityPanel extends React.Component {
                                     onFocusChange={focusedInput => {
                                         this.setState({ focusedInput });
                                     }}
+                                    showDefaultInputIcon={false}
+                                    small={true}
+                                    x
                                 />
                             </div>
                             <Form.Group className="room-selector" inline>
@@ -176,6 +179,7 @@ export class AvailabilityPanel extends React.Component {
                                     />
                                 </div>
                             }
+                            closeIcon
                         >
                             {error ? (
                                 <Message negative>{error}</Message>

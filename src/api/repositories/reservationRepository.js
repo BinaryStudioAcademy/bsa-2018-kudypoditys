@@ -10,7 +10,7 @@ const Image = require(".././models/Image");
 class ReservationRepository extends Repository {
     findAll() {
         return this.model.findAll({
-            attributes: ["id", "dateIn", "dateOut", "guestsCount"],
+            attributes: ["id", "dateIn", "dateOut", "guestsCount", "orderCode"],
             include: [
                 {
                     model: User,

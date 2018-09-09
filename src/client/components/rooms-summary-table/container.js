@@ -13,6 +13,9 @@ export function mapDispatchToProps(dispatch) {
     return {
         clearBookingForm() {
             dispatch(bookingInputUpdate({ message: "", error: "" }));
+        },
+        setRoom(roomId) {
+            dispatch(bookingInputUpdate({ roomId: roomId }));
         }
     };
 }
