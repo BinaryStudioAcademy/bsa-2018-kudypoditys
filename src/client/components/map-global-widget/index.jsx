@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import MapView from '../map-view';
-import {NavigationBar} from "../navigation-bar";
+
 
 export default class MapGlobalWidget extends Component {
     render() {
@@ -35,6 +35,4 @@ MapGlobalWidget.defaultProps = {
     }
 };
 
-MapGlobalWidget.propTypes = {
-    reviewsCount: PropTypes.number.isRequired
-};
+
