@@ -62,12 +62,12 @@ class Quickfilter extends React.Component {
                 <p className="box_group">Facility</p>
                 {/*{list2}*/}
                 <List>{list3}</List>
-                <p className="box_group">Review Score</p>
+                {/* <p className="box_group">Review Score</p>
                 {/*{list1}*/}
-                <p className="box_group">Bed Types</p>
-                {/*{list3}*/}
+                {/* <p className="box_group">Bed Types</p>
+                {list3} */}
 
-                <List>{list1}</List>
+                {/* <List>{list1}</List> */}
             </div>
         );
     }
