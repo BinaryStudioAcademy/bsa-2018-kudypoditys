@@ -477,7 +477,7 @@ const ACCOMMODATION_RULES = [
     {
         id: 1,
         allowPets: false,
-        cancelReservation: true,
+        cancelReservation: false,
         minimumStay: 1,
         arrivalTimeStart: "10:00",
         arrivalTimeEnd: "14:00",
@@ -1035,6 +1035,14 @@ const ROOMS = [
         area: 77,
         roomTypeId: 6,
         propertyId: 3
+    },
+    {
+        id: 31,
+        price: 40,
+        amount: 4,
+        area: 50,
+        roomTypeId: 8,
+        propertyId: 4
     }
 ];
 
@@ -1084,7 +1092,7 @@ const IMAGES = [
     {
         id: 8,
         url:
-            "https://www.publicdomainpictures.net/en/view-image.php?image=95146&picture=hotel-room",
+            "https://www.publicdomainpictures.net/pictures/50000/velka/hotel.jpg",
         propertyId: 4
     },
     {
@@ -1741,6 +1749,446 @@ const FACILITY_LISTS = [
     {
         propertyId: 3,
         facilityId: 29
+    },
+    {
+        propertyId: 4,
+        facilityId: 25
+    },
+    {
+        propertyId: 4,
+        facilityId: 24
+    },
+    {
+        propertyId: 4,
+        facilityId: 23
+    },
+    {
+        propertyId: 4,
+        facilityId: 15
+    },
+    {
+        propertyId: 4,
+        facilityId: 16
+    },
+    {
+        propertyId: 5,
+        facilityId: 16
+    },
+    {
+        propertyId: 5,
+        facilityId: 23
+    },
+    {
+        propertyId: 5,
+        facilityId: 22
+    },
+    {
+        propertyId: 5,
+        facilityId: 2
+    },
+    {
+        propertyId: 5,
+        facilityId: 5
+    },
+    {
+        propertyId: 6,
+        facilityId: 1
+    },
+    {
+        propertyId: 6,
+        facilityId: 2
+    },
+    {
+        propertyId: 6,
+        facilityId: 3
+    },
+    {
+        propertyId: 6,
+        facilityId: 6
+    },
+    {
+        propertyId: 6,
+        facilityId: 7
+    },
+    {
+        propertyId: 7,
+        facilityId: 12
+    },
+    {
+        propertyId: 7,
+        facilityId: 2
+    },
+    {
+        propertyId: 7,
+        facilityId: 6
+    },
+    {
+        propertyId: 7,
+        facilityId: 9
+    },
+    {
+        propertyId: 7,
+        facilityId: 10
+    },
+    {
+        propertyId: 8,
+        facilityId: 21
+    },
+    {
+        propertyId: 8,
+        facilityId: 22
+    },
+    {
+        propertyId: 8,
+        facilityId: 18
+    },
+    {
+        propertyId: 8,
+        facilityId: 14
+    },
+    {
+        propertyId: 8,
+        facilityId: 13
+    },
+    {
+        propertyId: 9,
+        facilityId: 12
+    },
+    {
+        propertyId: 9,
+        facilityId: 27
+    },
+    {
+        propertyId: 9,
+        facilityId: 30
+    },
+    {
+        propertyId: 9,
+        facilityId: 29
+    },
+    {
+        propertyId: 9,
+        facilityId: 10
+    },
+    {
+        propertyId: 10,
+        facilityId: 27
+    },
+    {
+        propertyId: 10,
+        facilityId: 28
+    },
+    {
+        propertyId: 10,
+        facilityId: 29
+    },
+    {
+        propertyId: 10,
+        facilityId: 30
+    },
+    {
+        propertyId: 10,
+        facilityId: 33
+    },
+    {
+        propertyId: 11,
+        facilityId: 30
+    },
+    {
+        propertyId: 11,
+        facilityId: 31
+    },
+    {
+        propertyId: 11,
+        facilityId: 32
+    },
+    {
+        propertyId: 11,
+        facilityId: 33
+    },
+    {
+        propertyId: 11,
+        facilityId: 34
+    },
+    {
+        propertyId: 12,
+        facilityId: 18
+    },
+    {
+        propertyId: 12,
+        facilityId: 19
+    },
+    {
+        propertyId: 12,
+        facilityId: 13
+    },
+    {
+        propertyId: 12,
+        facilityId: 12
+    },
+    {
+        propertyId: 12,
+        facilityId: 11
+    },
+    {
+        propertyId: 13,
+        facilityId: 9
+    },
+    {
+        propertyId: 13,
+        facilityId: 10
+    },
+    {
+        propertyId: 13,
+        facilityId: 11
+    },
+    {
+        propertyId: 13,
+        facilityId: 12
+    },
+    {
+        propertyId: 13,
+        facilityId: 13
+    },
+    {
+        propertyId: 14,
+        facilityId: 5
+    },
+    {
+        propertyId: 14,
+        facilityId: 6
+    },
+    {
+        propertyId: 14,
+        facilityId: 7
+    },
+    {
+        propertyId: 14,
+        facilityId: 8
+    },
+    {
+        propertyId: 14,
+        facilityId: 9
+    },
+    {
+        propertyId: 15,
+        facilityId: 1
+    },
+    {
+        propertyId: 15,
+        facilityId: 3
+    },
+    {
+        propertyId: 15,
+        facilityId: 7
+    },
+    {
+        propertyId: 15,
+        facilityId: 11
+    },
+    {
+        propertyId: 15,
+        facilityId: 12
+    },
+    {
+        propertyId: 16,
+        facilityId: 29
+    },
+    {
+        propertyId: 16,
+        facilityId: 28
+    },
+    {
+        propertyId: 16,
+        facilityId: 27
+    },
+    {
+        propertyId: 16,
+        facilityId: 26
+    },
+    {
+        propertyId: 16,
+        facilityId: 24
+    },
+    {
+        propertyId: 17,
+        facilityId: 1
+    },
+    {
+        propertyId: 17,
+        facilityId: 5
+    },
+    {
+        propertyId: 17,
+        facilityId: 4
+    },
+    {
+        propertyId: 17,
+        facilityId: 8
+    },
+    {
+        propertyId: 17,
+        facilityId: 10
+    },
+    {
+        propertyId: 18,
+        facilityId: 31
+    },
+    {
+        propertyId: 18,
+        facilityId: 29
+    },
+    {
+        propertyId: 18,
+        facilityId: 33
+    },
+    {
+        propertyId: 18,
+        facilityId: 3
+    },
+    {
+        propertyId: 18,
+        facilityId: 2
+    },
+    {
+        propertyId: 19,
+        facilityId: 26
+    },
+    {
+        propertyId: 19,
+        facilityId: 27
+    },
+    {
+        propertyId: 19,
+        facilityId: 28
+    },
+    {
+        propertyId: 19,
+        facilityId: 11
+    },
+    {
+        propertyId: 19,
+        facilityId: 9
+    },
+    {
+        propertyId: 20,
+        facilityId: 22
+    },
+    {
+        propertyId: 20,
+        facilityId: 24
+    },
+    {
+        propertyId: 20,
+        facilityId: 26
+    },
+    {
+        propertyId: 20,
+        facilityId: 28
+    },
+    {
+        propertyId: 20,
+        facilityId: 29
+    },
+    {
+        propertyId: 21,
+        facilityId: 21
+    },
+    {
+        propertyId: 21,
+        facilityId: 22
+    },
+    {
+        propertyId: 21,
+        facilityId: 18
+    },
+    {
+        propertyId: 21,
+        facilityId: 14
+    },
+    {
+        propertyId: 21,
+        facilityId: 13
+    },
+    {
+        propertyId: 22,
+        facilityId: 27
+    },
+    {
+        propertyId: 22,
+        facilityId: 29
+    },
+    {
+        propertyId: 22,
+        facilityId: 31
+    },
+    {
+        propertyId: 22,
+        facilityId: 33
+    },
+    {
+        propertyId: 22,
+        facilityId: 35
+    },
+    {
+        propertyId: 23,
+        facilityId: 22
+    },
+    {
+        propertyId: 23,
+        facilityId: 32
+    },
+    {
+        propertyId: 23,
+        facilityId: 2
+    },
+    {
+        propertyId: 23,
+        facilityId: 12
+    },
+    {
+        propertyId: 23,
+        facilityId: 34
+    },
+    {
+        propertyId: 24,
+        facilityId: 28
+    },
+    {
+        propertyId: 24,
+        facilityId: 30
+    },
+    {
+        propertyId: 24,
+        facilityId: 32
+    },
+    {
+        propertyId: 24,
+        facilityId: 34
+    },
+    {
+        propertyId: 24,
+        facilityId: 35
+    },
+    {
+        propertyId: 25,
+        facilityId: 29
+    },
+    {
+        propertyId: 25,
+        facilityId: 31
+    },
+    {
+        propertyId: 25,
+        facilityId: 33
+    },
+    {
+        propertyId: 25,
+        facilityId: 35
+    },
+    {
+        propertyId: 25,
+        facilityId: 1
     }
 ];
 
@@ -2160,7 +2608,8 @@ const BED_IN_ROOM = [
     { id: 29, count: 1, roomId: 28, bedTypeId: 3 },
     { id: 30, count: 1, roomId: 29, bedTypeId: 2 },
     { id: 31, count: 2, roomId: 30, bedTypeId: 3 },
-    { id: 32, count: 1, roomId: 30, bedTypeId: 1 }
+    { id: 32, count: 1, roomId: 30, bedTypeId: 1 },
+    { id: 33, count: 1, roomId: 31, bedTypeId: 4 }
 ];
 const BED_TYPES = [
     {
@@ -2472,6 +2921,62 @@ const REVIEWS = [
         avgReview: 4.4,
         userId: 1,
         propertyId: 3,
+        anon: false
+    },
+    {
+        id: 7,
+        pros: "Would like to see more facilities",
+        cons: "A bit expensive",
+        Cleanliness: 8,
+        Price: 6,
+        Comfort: 8,
+        Facilities: 4,
+        Location: 7,
+        avgReview: 6.6,
+        userId: 1,
+        propertyId: 4,
+        anon: false
+    },
+    {
+        id: 8,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 5,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+        userId: 2,
+        propertyId: 4,
+        anon: false
+    },
+    {
+        id: 9,
+        pros: "Nice place for a romantic weekend, liked it",
+        cons: "Location is uncomfortable a bit",
+        Cleanliness: 7,
+        Price: 6,
+        Comfort: 9,
+        Facilities: 8,
+        Location: 4,
+        avgReview: 6.8,
+        userId: 2,
+        propertyId: 5,
+        anon: false
+    },
+    {
+        id: 10,
+        pros: "Nice place. Realy liked it",
+        cons: "Could be closer to a historic center",
+        Cleanliness: 6,
+        Price: 7,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 4,
+        avgReview: 7.4,
+        userId: 1,
+        propertyId: 5,
         anon: false
     }
 ];
