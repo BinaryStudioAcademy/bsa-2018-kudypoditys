@@ -37,8 +37,8 @@ export class CheckInCheckOut extends Component {
                     <Grid.Row>
                         <Grid.Column width={8}>
                             <Header as='h3'>
-                                Guest arrival time
-                                    <Header.Subheader>From:</Header.Subheader>
+                                <span className="required">Guest arrival time</span>
+                                <Header.Subheader>From:</Header.Subheader>
                             </Header>
 
 
@@ -51,9 +51,9 @@ export class CheckInCheckOut extends Component {
                             </Form.Group>
                         </Grid.Column>
                         <Grid.Column width={8}>
-                            <Header as='h3'>
-                                Guest departure time
-                                    <Header.Subheader>From:</Header.Subheader>
+                            <Header as='h3' >
+                                <span className="required">Guest departure time</span>
+                                <Header.Subheader>From:</Header.Subheader>
                             </Header>
 
 

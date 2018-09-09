@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Form, Button, Container, Card } from 'semantic-ui-react';
+import { Form, Button, Container, Card, Header } from 'semantic-ui-react';
 import { required } from 'client/regexValidationService';
 import { Field, reduxForm } from 'redux-form';
 
@@ -26,33 +26,27 @@ class PolicesPropertyRegistrationForm extends Component {
 
     return (
       <Fragment>
-        <Card.Content>
-          <Card.Description style={{ fontSize: '18px' }}>
-            Cancellations. Can your guests cancel their booking for free?
-          </Card.Description>
-          <br />
-          <Field
-            name="accommodationRule.cancelReservation"
-            component={renderDropdown}
-            icon="user cancel"
-            options={cancelOptions}
-            validate={[required]}
-          />
-        </Card.Content>
+        <Header as="h2" style={{ fontSize: '18px' }} className="required">
+          Cancellations. Can your guests cancel their booking for free?
+          </Header>
+        <br />
+        <Field
+          name="accommodationRule.cancelReservation"
+          component={renderDropdown}
+          icon="user cancel"
+          options={cancelOptions}
+          validate={[required]}
+        />
       </Fragment>
     );
   }
 
   renderCheckInCheckOutCard() {
     return (
-      <Fragment>
-        <Card.Content>
-          <Field
-            name="accommodationRule.checkInCheckOut"
-            component={CheckInCheckOut}
-          />
-        </Card.Content>
-      </Fragment>
+      <Field
+        name="accommodationRule.checkInCheckOut"
+        component={CheckInCheckOut}
+      />
     );
   }
 

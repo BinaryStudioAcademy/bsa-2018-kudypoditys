@@ -56,7 +56,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
 
         return (
             <Fragment>
-                <Header as='h2' style={{ fontSize: "18px" }}>
+                <Header as='h2' style={{ fontSize: "18px" }} className="required">
                     Internet. Do you provide guests with Wi-Fi?
                 </Header>
                 <div className="internet-options">
@@ -148,7 +148,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
 
         return (
             <Fragment >
-                <Header as='h2' style={{ fontSize: "18px" }}>
+                <Header as='h2' style={{ fontSize: "18px" }} className="required">
                     Parking. This information is especially important to those who travel by car.
                 </Header>
                 <Field
@@ -220,7 +220,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
 
         return (
             <Fragment>
-                <Header style={{ fontSize: "18px" }}>
+                <Header style={{ fontSize: "18px" }} className="required">
                     Languages. What languages do you or your staff speak?
                 </Header>
 
@@ -245,7 +245,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
 
         return (
             <Fragment>
-                <Header as="h2" style={{ fontSize: "18px" }}>
+                <Header as="h2" style={{ fontSize: "18px" }} className="required">
                     Facilities. What facilities do You offer?
                 </Header>
 
