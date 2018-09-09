@@ -12,8 +12,8 @@ export function mapStateToProps(state) {
 export function mapDispatchToProps(dispatch) {
     return {
         selectFilter(data) {
-            dispatch(searchUpdate(data));
-            // dispatch(searchSubmit(data))
+            //dispatch(searchUpdate(data));
+            dispatch(searchSubmit(data))
         },
     };
 }

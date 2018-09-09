@@ -1418,7 +1418,7 @@ const FACILITY_LISTS = [
     {
         id: 1,
         propertyId: 1,
-        facilityId: 1
+        facilityId: 5
     },
     {
         id: 2,
