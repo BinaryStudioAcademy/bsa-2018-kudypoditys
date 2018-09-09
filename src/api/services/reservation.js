@@ -1,6 +1,9 @@
 const Service = require("./generalService");
 const reservationRepository = require("../repositories/reservationRepository");
 const roomService = require("./room");
+const userRepository = require("../repositories/userRepository");
+const shortid = require("shortid");
+const nodemailer = require("nodemailer");
 
 class ReservationService extends Service {
     async findAll() {
@@ -30,7 +33,29 @@ class ReservationService extends Service {
         }
     }
 
+    async sendMailBookingSuccess(userId, orderCode) {
+        const EMAIL_USER = process.env.EMAIL_USER;
+        const EMAIL_PASS = process.env.EMAIL_PASS;
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: EMAIL_USER,
+                pass: EMAIL_PASS
+            }
+        });
+
+        const user = await userRepository.findById(userId);
+        const mailOptions = {
+            from: EMAIL_USER,
+            to: user.email,
+            subject: "KudyPoditys booking success",
+            html: `You have successfully booked, your order code <b> ${orderCode} </b>`
+        };
+        return transporter.sendMail(mailOptions);
+    }
+
     async create(reservation) {
+        reservation.orderCode = shortid.generate().toUpperCase();
         try {
             const bookings = await this.findByOptions({
                 roomId: reservation.roomId
@@ -38,6 +63,10 @@ class ReservationService extends Service {
             const available = await this.checkAvailability(
                 reservation,
                 bookings
+            );
+            this.sendMailBookingSuccess(
+                reservation.userId,
+                reservation.orderCode
             );
             if (available) return this.repository.create(reservation);
             return Promise.reject(

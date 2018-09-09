@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import {
-  Button, Card, Form
+  Button, Card, Form,
+  Container, Header, Icon
 } from "semantic-ui-react";
 import { reduxForm, Field } from "redux-form";
 import { required, maxLength255 } from "client/regexValidationService";
@@ -9,6 +10,7 @@ import renderDropdown from 'client/components/input-form/dropdown';
 import renderTextarea from 'client/components/input-form/textarea';
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from './container';
+import './index.scss';
 
 class PaymentPropertyRegistrationForm extends Component {
 
@@ -30,23 +32,21 @@ class PaymentPropertyRegistrationForm extends Component {
     }));
 
     return (
-      <Card style={{ width: '900px' }} color="teal">
-        <Card.Content>
-          <Card.Description style={{ fontSize: '18px' }}>
+      <Fragment>
+        <div className="wrapper">
+          <Header as='h2' style={{ fontSize: "18px" }} className="required">
             Payment. Ways of payment for guests
-          </Card.Description>
-          <br />
+         </Header>
           <Field
             component={renderDropdown}
             options={paymentOptions}
             name="paymentTypes"
             label="Payment"
-            icon="dollar"
             multiple
             validate={[required]}
           />
-        </Card.Content>
-      </Card>
+        </div>
+      </Fragment>
     );
   }
 
@@ -71,31 +71,33 @@ class PaymentPropertyRegistrationForm extends Component {
     ];
 
     return (
-      <Card style={{ width: '900px' }} color="teal">
-        <Card.Content>
-          <Card.Description style={{ fontSize: '18px' }}>
-            Fee. City tax and additional charges.
-          </Card.Description>
-          <br />
-          <Field
-            component={renderDropdown}
-            options={vatTaxesOptions}
-            name="vatIncluded"
-            label="VAT"
-            icon="dollar"
-            validate={[required]}
-          />
-          <br />
+      <Fragment>
+        <Header as='h2' style={{ fontSize: "18px" }} className="required">
+          Fee. City tax and additional charges.
+         </Header>
+
+        <Field
+          component={renderDropdown}
+          options={vatTaxesOptions}
+          name="vatIncluded"
+          label="VAT"
+          icon="dollar"
+          validate={[required]}
+        />
+
+        <div className="wrapper">
+          <label>Additional fees</label>
           <Field
             component={renderTextarea}
             options={vatTaxesOptions}
             name="additionalFees"
-            label="additional fees"
-            icon="dollar"
-            validate={[required, maxLength255]}
+            label="Additional fees"
+            icon="credit card outline"
+            validate={[maxLength255]}
           />
-        </Card.Content>
-      </Card>
+          <Icon disabled name='credit card outline' className='texarea-icon' style={{ marginLeft: "0px" }} />
+        </div>
+      </Fragment>
     );
   }
 
@@ -105,11 +107,13 @@ class PaymentPropertyRegistrationForm extends Component {
     } = this.props;
 
     return (
-      <Form onSubmit={handleSubmit}>
-
-        {this.renderPaymentTypeCard()}
-
-        {this.renderFeeCard()}
+      <Form onSubmit={handleSubmit} id="paymentPropertyRegistartionForm">
+        <Container>
+          {this.renderPaymentTypeCard()}
+        </Container>
+        <Container>
+          {this.renderFeeCard()}
+        </Container>
 
         <Button
           color="teal"

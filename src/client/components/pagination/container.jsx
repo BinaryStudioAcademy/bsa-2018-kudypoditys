@@ -12,9 +12,9 @@ export function mapDispatchToProps(dispatch) {
 
     return {
 
-        paginationChanged(pageNumber) {
-            console.log(JSON.stringify('pageNumber'+ pageNumber))
-            dispatch(paginationUpdate(pageNumber));
+        paginationChanged(searchRequest) {
+            console.log('pag  searchRequest'+ JSON.stringify(searchRequest))
+            dispatch(paginationUpdate(searchRequest));
         }
     };
 }

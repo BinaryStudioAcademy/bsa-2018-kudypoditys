@@ -1,50 +1,4 @@
-.ratingName {
 
-    opacity: 0.5;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #182c4f;
-    position: relative;
-    top: -5%;
-}
-
-.reviewsNumber {
-
-    opacity: 0.27;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-
-    color: #182c4f;
-    white-space: nowrap;
-    position: relative;
-    top: -50%;
-}
-
-.rating_num {
-
-    opacity: 0.8;
-    font-family: Arial, sans-serif;
-    font-size: 38px;
-    font-weight: 900;
-    font-style: normal;
-    font-stretch: normal;
-
-    letter-spacing: normal;
-    text-align: left;
-    color: #182c4f;
-    //padding-left: 10px;
-}
 
 .ui.grid.search_page__grid > .row > .column {
 
@@ -203,9 +157,8 @@
     margin-left: 20px;
 }
 
-.rating_block {
-    display: flex;
-
+.rating_listItem .rating_status {
+    padding-top: 0px;
 }
 
 .card_row__price {

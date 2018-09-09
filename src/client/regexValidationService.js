@@ -7,6 +7,7 @@ export const maxLength = max => value =>
         : undefined;
 
 export const maxLength20 = maxLength(20);
+export const maxLength40 = maxLength(40);
 export const maxLength255 = maxLength(255);
 
 export const minLength = min => value =>
@@ -23,7 +24,7 @@ export const email = value =>
         : undefined;
 
 export const phoneNumber = value =>
-    value && !/^[0-9]{2,3}[0-9]{9}$/i.test(value)
+    value && !/^([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}$/i.test(value)
         ? "Invalid phone number format"
         : undefined;
 

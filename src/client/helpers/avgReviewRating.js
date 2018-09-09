@@ -38,14 +38,19 @@ export function getAvgFromArray(array) {
 export function getPropertyStatus(rating){
     let ratingStatus = "";
 
-    if (rating >= 4) {
-        ratingStatus = "Excellent";
-    } else if (rating >= 3) {
+    if (rating >= 9) {
+        ratingStatus = "Wonderful";
+    } else if (rating >= 8) {
+        ratingStatus = "Very Good";
+    } else if (rating >= 7) {
         ratingStatus = "Good";
-    } else if (rating >= 2) {
-        ratingStatus = "Not good";
-    } else if (rating >= 1) {
-        ratingStatus = "Awful!";
+    } else if (rating >= 6) {
+        ratingStatus = "Pleasant";
+    } else if (rating === 0) {
+            ratingStatus = "No rating";
+        }
+     else if (rating < 6) {
+        ratingStatus = "It`s Ok";
     }
 
     return ratingStatus
