@@ -71,15 +71,15 @@ searchProperty.route("/").get((req, res) => {
                 };
                 propertyService
                     .getFilteredProperties(filter)
-                    .then(properties => {
+                    .then(propertiesData => {
                         if (filter.page === 1 && topPropId.length > 0) {
-                            let propertiesWithQueredFirst = properties; //.filter(p=> (p.id!=topPropId[0]))
+                            let propertiesWithQueredFirst = propertiesData.rows; //.filter(p=> (p.id!=topPropId[0]))
                             filter.propertiesIds = topPropId;
                             return propertyService
                                 .getFilteredProperties(filter)
                                 .then(propertiesWithOneOnItem => {
                                     propertiesWithQueredFirst.unshift(
-                                        propertiesWithOneOnItem[0]
+                                        propertiesWithOneOnItem.rows[0]
                                     );
                                     console.log(
                                         "propertiesWithQueredFirst - " +
@@ -88,7 +88,7 @@ searchProperty.route("/").get((req, res) => {
 
                                     return res.send({
                                         properties: propertiesWithQueredFirst,
-                                        propertiesCount: ids.length
+                                        propertiesCount: propertiesData.count
                                     });
                                 })
                                 .catch(err => {
@@ -96,8 +96,8 @@ searchProperty.route("/").get((req, res) => {
                                 });
                         } else {
                             return res.send({
-                                properties: properties,
-                                propertiesCount: ids.length
+                                properties:  propertiesData.rows,
+                                propertiesCount: propertiesData.count
                             });
                         }
                     })
