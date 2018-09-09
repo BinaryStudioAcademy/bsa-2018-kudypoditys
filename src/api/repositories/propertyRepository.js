@@ -240,7 +240,7 @@ class PropertyRepository extends Repository {
         switch (facilityStr) {
             case "Fitness_spa_locker_rooms":
                 facilityId = 1; //id from seed
-                break
+                break;
             case "Dogs":
                 facilityId = 5;
                 break;
@@ -285,7 +285,15 @@ class PropertyRepository extends Repository {
                 sortingOption = [["rating", "DESC"]];
                 break;
             default:
-                sortingOption = [["rating"]];
+                sortingOption = Sequelize.literal(
+                    "(" +
+                        filter.propertiesIds
+                            .map(function(id) {
+                                return '"property"."id" = \'' + id + "'";
+                            })
+                            .join(", ") +
+                        ") DESC"
+                );
         }
 
         let facilityOption =
@@ -337,7 +345,16 @@ class PropertyRepository extends Repository {
                     id: { $in: filter.propertiesIds }
                 },
                 distinct: true,
-                order: sortingOption,
+                // order: Sequelize.literal(
+                //     "(" +
+                //         filter.propertiesIds
+                //             .map(function(id) {
+                //                 return '"property"."id" = \'' + id + "'";
+                //             })
+                //             .join(", ") +
+                //         ") DESC"
+                // ),
+                 order: sortingOption,
                 include: [
                     {
                         model: City
@@ -382,7 +399,7 @@ class PropertyRepository extends Repository {
                                                     filter.dateOut // new Date("2018-09-17")
                                                 ]
                                             }
-                                        },
+                                        }
                                         // {
                                         //     $not: [
                                         //         {
