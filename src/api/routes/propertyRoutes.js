@@ -16,6 +16,8 @@ property
             });
     })
     .post((req, res) => {
+        const { id } = req.user;
+        req.body.userId = id;
         propertyService
             .addProperty(req.body)
             .then(property => {

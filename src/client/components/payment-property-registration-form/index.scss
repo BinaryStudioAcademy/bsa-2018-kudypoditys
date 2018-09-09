@@ -1,4 +1,4 @@
-#policesPropertyRegistrationForm{
+#paymentPropertyRegistartionForm{
   .input{
     height: auto;
     input{
@@ -7,14 +7,21 @@
     }
     margin: 15px 0 15px 0;  
   }
-  .ui.selection.dropdown {
-    min-width: auto;
+  textarea{
+    border-radius: 0px ;
+    padding: 15px 15px 15px 39px;
+    margin-top: 14px;
   }
-  
+
   .header{
    margin-bottom: 5px;
   }
-
+  .wrapper{
+    position: relative;
+    width: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
 
   .meta{
     padding: 0px 0 10px 0;
@@ -27,12 +34,23 @@
   .menu.transition{
     border-radius: 0px;
   }
+  .dropdown{
+    border-radius: 0px;
+    margin: 15px 0 15px 0;
+    padding: 15px;
+  }
 
   .container{
     padding: 20px 0px;
   }
+  .texarea-icon{
+    position: absolute;
+    left: 1.5%;
+    top: 44%;
+    font-size: 16px;
+  
+  }
   .icon{
-    margin-left:7px;
     font-size: 16px;
   }
   .default.text{
@@ -47,10 +65,5 @@
   .dropdown.icon{
     margin: 0px;
     padding: 0px;
-  }
-  .grid{
-    .row{
-      padding: 0px;
-    }
   }
 }

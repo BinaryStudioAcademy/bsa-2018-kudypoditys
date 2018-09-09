@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Card, Form, Button } from 'semantic-ui-react';
+import React, { Component, Fragment } from 'react';
+import { Form, Button, Container, Card } from 'semantic-ui-react';
 import { required } from 'client/regexValidationService';
 import { Field, reduxForm } from 'redux-form';
 
@@ -20,12 +20,12 @@ class PolicesPropertyRegistrationForm extends Component {
       {
         key: 2,
         value: 'false',
-        text: 'No'
+        text: 'No, my guests will look the booking fee if they cancel'
       },
     ];
 
     return (
-      <Card style={{ width: '900px' }} color="teal">
+      <Fragment>
         <Card.Content>
           <Card.Description style={{ fontSize: '18px' }}>
             Cancellations. Can your guests cancel their booking for free?
@@ -39,20 +39,20 @@ class PolicesPropertyRegistrationForm extends Component {
             validate={[required]}
           />
         </Card.Content>
-      </Card>
+      </Fragment>
     );
   }
 
   renderCheckInCheckOutCard() {
     return (
-      <Card style={{ width: '900px' }} color="teal">
+      <Fragment>
         <Card.Content>
           <Field
             name="accommodationRule.checkInCheckOut"
             component={CheckInCheckOut}
           />
         </Card.Content>
-      </Card>
+      </Fragment>
     );
   }
 
@@ -62,12 +62,13 @@ class PolicesPropertyRegistrationForm extends Component {
     } = this.props;
 
     return (
-      <Form className="polices-property-registration-form" onSubmit={handleSubmit}>
-
-        {this.renderCancellationCard()}
-
-        {this.renderCheckInCheckOutCard()}
-
+      <Form id="policesPropertyRegistrationForm" onSubmit={handleSubmit}>
+        <Container >
+          {this.renderCancellationCard()}
+        </Container>
+        <Container >
+          {this.renderCheckInCheckOutCard()}
+        </Container>
         <Button
           color="teal"
           fluid

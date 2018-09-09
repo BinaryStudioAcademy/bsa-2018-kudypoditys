@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from 'react-redux';
 import { reduxForm, Field } from "redux-form";
 import {
-    Button, Container, List, Form, Card
+    Button, Container, Form, Card, Header, Grid
 } from "semantic-ui-react";
 import { required } from "client/regexValidationService.js";
 import RadioGroup from "client/components/input-form/radio-group";
@@ -11,6 +11,7 @@ import renderDropdown from 'client/components/input-form/dropdown';
 import renderCheckbox from 'client/components/input-form/checkbox';
 
 import { mapDispatchToProps, mapStateToProps } from './container';
+import './index.scss'
 
 const parseNumber = value => {
     const number = Number(value);
@@ -54,17 +55,19 @@ class FacilitiesPropertyRegistrationForm extends Component {
         ];
 
         return (
-            <Card style={{ width: "900px" }} color="teal">
-                <Card.Content>
-                    <Card.Description style={{ fontSize: "18px" }}>
-                        Internet. Do you provide guests with Wi-Fi?
-                    </Card.Description>
+            <Fragment>
+                <Header as='h2' style={{ fontSize: "18px" }}>
+                    Internet. Do you provide guests with Wi-Fi?
+                </Header>
+                <div className="internet-options">
                     <Field
                         component={RadioGroup}
                         name="basicFacility.hasInternet"
                         options={internetOptions}
                     />
-                    {hasInternet !== 'paid' ? <Fragment /> :
+                </div>
+                {hasInternet !== 'paid' ? <Fragment /> :
+                    <div className="wrapper">
                         <Field
                             component={renderField}
                             name="basicFacility.internetPrice"
@@ -74,13 +77,12 @@ class FacilitiesPropertyRegistrationForm extends Component {
                             validate={[required]}
                             parse={parseNumber}
                         />
-                    }
-                    <Card.Meta>
-                        Guests will see this name when they search for a place
-                        to stay.
-                    </Card.Meta>
-                </Card.Content>
-            </Card>
+                    </div>
+                }
+                <div className="meta">
+                    Guests should know if they have to pay for internet.
+                </div>
+            </Fragment>
         );
     }
 
@@ -145,70 +147,66 @@ class FacilitiesPropertyRegistrationForm extends Component {
         ];
 
         return (
-            <Card style={{ width: "900px" }} color="teal">
-                <Card.Content>
-                    <Card.Description style={{ fontSize: "18px" }}>
-                        Parking. This information is especially important to those who travel by car.
-                    </Card.Description>
-                    <br />
-                    <Field
-                        component={renderDropdown}
-                        options={parkingOptions}
-                        name="basicFacility.hasParking"
-                        label="Parking"
-                        icon="car"
-                        validate={[required]}
-                    />
+            <Fragment >
+                <Header as='h2' style={{ fontSize: "18px" }}>
+                    Parking. This information is especially important to those who travel by car.
+                </Header>
+                <Field
+                    component={renderDropdown}
+                    options={parkingOptions}
+                    name="basicFacility.hasParking"
+                    label="Parking"
+                    icon="car"
+                    validate={[required]}
+                />
 
-                    {hasParking && hasParking !== 'absent' &&
-                        <Fragment>
+                {hasParking && hasParking !== 'absent' &&
+                    <Fragment>
+                        <Field
+                            component={renderDropdown}
+                            options={parkingTypeOptions}
+                            name="basicFacility.isPrivate"
+                            label="Parking Type"
+                            icon="privacy"
+                            validate={[required]}
+                        />
+
+                        <Field
+                            component={renderDropdown}
+                            options={territoryOptions}
+                            name="basicFacility.isOnTerritory"
+                            label="Placement"
+                            icon="street view"
+                            validate={[required]}
+                        />
+
+                        <Field
+                            component={renderDropdown}
+                            options={needToBookOptions}
+                            name="basicFacility.needToBook"
+                            label="Booking"
+                            icon="clipboard list"
+                            validate={[required]}
+                        />
+
+                        {hasParking === 'paid' &&
                             <Field
-                                component={renderDropdown}
-                                options={parkingTypeOptions}
-                                name="basicFacility.isPrivate"
-                                label="Parking Type"
-                                icon="privacy"
+                                component={renderField}
+                                name="basicFacility.parkingPrice"
+                                label="USD"
+                                type="number"
+                                icon="dollar sign"
                                 validate={[required]}
+                                parse={parseNumber}
                             />
+                        }
+                    </Fragment>
+                }
 
-                            <Field
-                                component={renderDropdown}
-                                options={territoryOptions}
-                                name="basicFacility.isOnTerritory"
-                                label="Placement"
-                                icon="street view"
-                                validate={[required]}
-                            />
-
-                            <Field
-                                component={renderDropdown}
-                                options={needToBookOptions}
-                                name="basicFacility.needToBook"
-                                label="Booking"
-                                icon="street view"
-                                validate={[required]}
-                            />
-
-                            {hasParking === 'paid' &&
-                                <Field
-                                    component={renderField}
-                                    name="basicFacility.parkingPrice"
-                                    label="USD"
-                                    type="number"
-                                    icon="dollar sign"
-                                    validate={[required]}
-                                    parse={parseNumber}
-                                />
-                            }
-                        </Fragment>
-                    }
-
-                    <Card.Meta>
-                        Guests will see this name when they search for a place
-                        to stay.
-                    </Card.Meta>
-                </Card.Content>
-            </Card>
+                <div className="meta">
+                    This is very important for quests if they travel by car.
+                </div>
+            </Fragment>
         );
     }
 
@@ -221,28 +219,24 @@ class FacilitiesPropertyRegistrationForm extends Component {
         }));
 
         return (
-            <Card style={{ width: "900px" }} color="teal">
-                <Card.Content>
-                    <Card.Description style={{ fontSize: "18px" }}>
-                        Languages. What languages do you or your staff speak?
-                    </Card.Description>
+            <Fragment>
+                <Header style={{ fontSize: "18px" }}>
+                    Languages. What languages do you or your staff speak?
+                </Header>
 
-                    <Field
-                        component={renderDropdown}
-                        options={languagesOptions}
-                        name="languages"
-                        label="Languages"
-                        icon="language"
-                        multiple
-                        validate={[required]}
-                    />
+                <Field
+                    component={renderDropdown}
+                    options={languagesOptions}
+                    name="languages"
+                    label="Languages"
+                    multiple
+                    validate={[required]}
+                />
 
-                    <Card.Meta>
-                        Guests will see this name when they search for a place
-                        to stay.
-                    </Card.Meta>
-                </Card.Content>
-            </Card>
+                <div className="meta">
+                    Guests should know what languages You know, before booking
+                </div>
+            </Fragment>
         );
     }
 
@@ -250,33 +244,27 @@ class FacilitiesPropertyRegistrationForm extends Component {
         const { facilities = [] } = this.props;
 
         return (
-            <Card style={{ width: "900px" }} color="teal">
-                <Card.Content>
-                    <Card.Description style={{ fontSize: "18px" }}>
-                        Languages. What languages do you or your staff speak?
-                    </Card.Description>
+            <Fragment>
+                <Header as="h2" style={{ fontSize: "18px" }}>
+                    Facilities. What facilities do You offer?
+                </Header>
 
-                    <List horizontal relaxed>
-                        {
-                            facilities.map((facility, i) => (
-                                <List.Item key={i} style={{ margin: '1rem', padding: '0' }}>
-                                    <Field
-                                        component={renderCheckbox}
-                                        name={`facilities.${facility.id}`}
-                                        label={facility.name}
-                                    />
-                                </List.Item>
+                <Grid padded columns={3} style={{ marginTop: "20px", marginBottom: "20px" }}>
+                    {facilities.map((facility, i) => (
+                        <Grid.Column key={i} style={{ padding: "10px" }}>
+                            <Field
+                                component={renderCheckbox}
+                                name={`facilities.${facility.id}`}
+                                label={facility.name}
+                            />
+                        </Grid.Column>
+                    ))}
+                </Grid>
 
-                            ))
-                        }
-                    </List>
-
-                    <Card.Meta>
-                        Guests will see this name when they search for a place
-                        to stay.
-                    </Card.Meta>
-                </Card.Content>
-            </Card>
+                <div className="meta">
+                    Guests will see these facilities on property page
+                    </div>
+            </Fragment>
         );
     }
 
@@ -285,14 +273,17 @@ class FacilitiesPropertyRegistrationForm extends Component {
             handleSubmit, submitting, pristine
         } = this.props;
         return (
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} id="facilitiesPropertyRegistartionForm">
                 <Container className="property_services_tab-container">
                     {this.renderInternetCard()}
-
+                </Container>
+                <Container className="property_services_tab-container">
                     {this.renderParkingCard()}
-
+                </Container>
+                <Container className="property_services_tab-container">
                     {this.renderLanguagesCard()}
-
+                </Container>
+                <Container className="property_services_tab-container">
                     {this.renderFacilitiesCard()}
                 </Container>
 
@@ -311,12 +302,6 @@ const ReduxForm = reduxForm({
     form: 'propertyRegistrationForm',
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
-    initialValues: { // ????
-        basicFacility: {
-            hasParking: 'false',
-            hasInternet: 'false'
-        }
-    }
 })(FacilitiesPropertyRegistrationForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

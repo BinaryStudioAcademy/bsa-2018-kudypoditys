@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, Component } from 'react';
 import './index.scss';
 import { Container, Form, Header, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import DrawInputs from './DrawInputs'
 import { mapStateToProps, mapDispatchToProps } from './container';
 
-export class CheckInCheckOut extends React.Component {
+export class CheckInCheckOut extends Component {
     handleClick = (e, value) => {
         e.preventDefault();
 
@@ -32,87 +32,80 @@ export class CheckInCheckOut extends React.Component {
             arrivalFrom, arrivalTo, departureFrom, departureTo
         } = this.props;
         return (
-            <Container>
+            <Fragment>
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={8}>
-                            <Container>
-                                <Header as='h3'>
-                                    Guest arrival time
+                            <Header as='h3'>
+                                Guest arrival time
                                     <Header.Subheader>From:</Header.Subheader>
-                                </Header>
+                            </Header>
 
 
-                                <Form.Group widths='equal'>
-                                    <DrawInputs
-                                        active={arrivalFrom}
-                                        type={'arrivalFrom'}
-                                        handleClick={this.handleClick}
-                                    />
-                                </Form.Group>
-                            </Container>
+                            <Form.Group widths='equal'>
+                                <DrawInputs
+                                    active={arrivalFrom}
+                                    type={'arrivalFrom'}
+                                    handleClick={this.handleClick}
+                                />
+                            </Form.Group>
                         </Grid.Column>
                         <Grid.Column width={8}>
-                            <Container>
-                                <Header as='h3'>
-                                    Guest departure time
+                            <Header as='h3'>
+                                Guest departure time
                                     <Header.Subheader>From:</Header.Subheader>
-                                </Header>
+                            </Header>
 
 
-                                <Form.Group widths="equal">
-                                    <DrawInputs
-                                        active={departureFrom}
-                                        handleClick={this.handleClick}
-                                        type={'departureFrom'}
-                                    />
+                            <Form.Group widths="equal">
+                                <DrawInputs
+                                    active={departureFrom}
+                                    handleClick={this.handleClick}
+                                    type={'departureFrom'}
+                                />
 
-                                </Form.Group>
-                            </Container>
+                            </Form.Group>
                         </Grid.Column>
                     </Grid.Row>
 
                     <Grid.Row>
                         <Grid.Column width={8}>
-                            <Container>
-                                <Header as='h3'>
+                            <Header as='h3'>
 
-                                    <Header.Subheader>To:</Header.Subheader>
-                                </Header>
+                                <Header.Subheader>To:</Header.Subheader>
+                            </Header>
 
-                                <Form.Group widths='equal'>
+                            <Form.Group widths='equal'>
 
-                                    <DrawInputs
-                                        active={arrivalTo}
-                                        handleClick={this.handleClick}
-                                        type={'arrivalTo'}
-                                    />
+                                <DrawInputs
+                                    active={arrivalTo}
+                                    handleClick={this.handleClick}
+                                    type={'arrivalTo'}
+                                />
 
-                                </Form.Group>
-                            </Container>
+                            </Form.Group>
                         </Grid.Column>
                         <Grid.Column width={8}>
-                            <Container>
-                                <Header as='h3'>
+                            <Header as='h3'>
 
-                                    <Header.Subheader>To:</Header.Subheader>
-                                </Header>
+                                <Header.Subheader>To:</Header.Subheader>
+                            </Header>
 
 
-                                <Form.Group widths='equal'>
+                            <Form.Group widths='equal'>
 
-                                    <DrawInputs
-                                        active={departureTo}
-                                        handleClick={this.handleClick}
-                                        type={'departureTo'}
-                                    />
+                                <DrawInputs
+                                    active={departureTo}
+                                    handleClick={this.handleClick}
+                                    type={'departureTo'}
+                                />
 
-                                </Form.Group>
-                            </Container>
+                            </Form.Group>
+
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
-            </Container>
+            </Fragment>
         )
     }
 }
