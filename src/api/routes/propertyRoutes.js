@@ -16,11 +16,12 @@ property
             });
     })
     .post((req, res) => {
+        const { id } = req.user;
+        req.body.userId = id;
         propertyService
             .addProperty(req.body)
             .then(property => {
-                // this does not work
-                //elasticService.addOneProperty(req, res, property);
+                elasticService.indexNewAddedProperty(property);
                 console.log(property.name, property.id);
                 res.send(property);
             })

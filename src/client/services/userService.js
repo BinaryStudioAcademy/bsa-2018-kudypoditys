@@ -28,7 +28,6 @@ class UserService {
             .then(response => response.data);
     }
     changePassword(action) {
-        console.log(action);
         return api
             .sendRequest("/api/changepassword", "post", action.payload)
             .then(response => response.data);

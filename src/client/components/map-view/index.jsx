@@ -32,8 +32,8 @@ class MapView extends React.Component {
                     tipSize={15}
                     anchor="left"
                     offsetLeft={10}
-                    latitude={popupInfo.latitude}
-                    longitude={popupInfo.longitude}
+                    latitude={popupInfo.coordinates.lat}
+                    longitude={popupInfo.coordinates.lng}
                     closeButton={false}
                     dynamicPosition={true}
                     onClose={() => this.setState({ popupInfo: null })}

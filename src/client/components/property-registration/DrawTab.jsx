@@ -6,7 +6,7 @@ export class DrawTab extends Component {
     render() {
         const { customHeader, subheader, component } = this.props;
         return (
-            <Tab.Pane>
+            <Tab.Pane style={{ border: "none" }}>
                 <Header as="h2">
                     {customHeader}
                 </Header>

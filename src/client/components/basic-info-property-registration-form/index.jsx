@@ -1,205 +1,294 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { Card, CardDescription, Button, Form } from "semantic-ui-react";
+import { Card, Button, Form, Icon, Container, Header } from "semantic-ui-react";
 import renderField from "../input-form/renderField";
 import {
-    required, maxLength20, phoneNumber
+  required, maxLength40, phoneNumber
 } from "client/regexValidationService";
 import { Field, reduxForm } from "redux-form";
 import renderTextarea from "client/components/input-form/textarea";
 import renderDropdown from "../input-form/dropdown";
 import { mapDispatchToProps, mapStateToProps } from "./container";
+import './index.scss';
+import AlgoliaPlaces from "algolia-places-react";
 
 class BasicInfoPropertyRegistrationForm extends Component {
-    constructor(props) {
-        super(props);
+  state = {};
 
-        this.state = {};
-    }
+  componentDidMount() {
+    this.props.getCountries();
+    this.props.getCurrencies();
+    this.props.getPropertyTypes();
+  }
 
-    componentDidMount() {
-        this.props.getCountries()
-    }
+  onCountryChange = (_, value) => {
+    const { countries } = this.props;
+    const country = countries.find(x => x.id == value);
 
-    onCountryChange = (_, value) => {
-        const { countries } = this.props;
-        const country = countries.find(x => x.id == value);
+    this.setState({
+      selectedCountry: country
+    });
+  }
 
-        this.setState({
-            selectedCountry: country
-        });
-    }
-
-    getCountries() {
-        const { countries } = this.props;
-        return countries.map(c => ({
-            key: c.id,
-            value: c.id,
-            text: c.name
-        }));
-    }
-
-    getCities() {
-        const { selectedCountry } = this.state;
-
-        let cityOptions = [];
-        if (selectedCountry) {
-            cityOptions = selectedCountry.cities.map(cc => ({
-                key: cc.id,
-                value: cc.id,
-                text: cc.name
-            }))
+  renderAngolia = ({ input }) => {
+    return (
+      <AlgoliaPlaces
+        name={input.name}
+        options={{
+          type: "address"
+        }}
+        value={input.value.fullAddress}
+        onChange={({ suggestion }) => {
+          input.onChange({
+            fullAddress: `${suggestion.name}, ${suggestion.administrative}, ${suggestion.country}`,
+            ...suggestion.latlng
+          })
         }
+        }
+      />);
+  }
 
-        return cityOptions;
+  getCountries() {
+    const { countries } = this.props;
+    return countries.map(c => ({
+      key: c.id,
+      value: c.id,
+      text: c.name
+    }));
+  }
+
+  getCities() {
+    const { selectedCountry } = this.state;
+
+    let cityOptions = [];
+    if (selectedCountry) {
+      cityOptions = selectedCountry.cities.map(cc => ({
+        key: cc.id,
+        value: cc.id,
+        text: cc.name
+      }))
     }
 
-    render() {
-        const {
-            pristine, submitting, handleSubmit, countries
-        } = this.props;
+    return cityOptions;
+  }
 
-        const countriesOptions = this.getCountries(countries);
-        const cityOptions = this.getCities(countries);
+  getCurrencies() {
+    const { currencies } = this.props;
+    return currencies.map(x => ({
+      key: x.id,
+      value: x.id,
+      text: `${x.name}, ${x.code} (${x.number})`
+    }))
+  }
 
-        return (
-            <Form onSubmit={handleSubmit}>
-                <Card style={{ width: "900px" }} color="teal">
-                    <Card.Content>
-                        <Card.Description style={{ fontSize: "18px" }}>
-                            What's the name of your property?
-                        </Card.Description>
-                        <br />
-                        <Field
-                            component={renderField}
-                            name="name"
-                            label="Property name"
-                            type="text"
-                            validate={[required, maxLength20]}
-                        />
-                        <br />
-                        <Field
-                            component={renderTextarea}
-                            name="description"
-                            label="Property description"
-                            validate={[required]}
-                        />
-                        <br />
-                        <Card.Meta>
-                            Guests will see this name when they search for a place
-                            to stay.
-                        </Card.Meta>
-                    </Card.Content>
-                </Card>
-                <Card style={{ width: "900px" }} color="teal">
-                    <Card.Content>
-                        <Card.Description style={{ fontSize: "18px" }}>
-                            What are the contact details for this property?
-                        </Card.Description>
-                        <br />
-                        <CardDescription>Contact name</CardDescription>
-                        <Field
-                            component={renderField}
-                            name="contactPersonName"
-                            type="text"
-                            icon="user"
-                            validate={[required, maxLength20]}
-                        />
-                        <CardDescription>
-                            <br />
-                            Contact number (so we can assist with your registration
-                            when needed)
-                    </CardDescription>
-                        <Field
-                            component={renderField}
-                            name="contactPhone"
-                            type="tel"
-                            icon="phone"
-                            validate={[required, phoneNumber]}
+  getPropertyTypes() {
+    const { propertyTypes } = this.props;
+    return propertyTypes.map(x => ({
+      key: x.id,
+      value: x.id,
+      text: x.name
+    }))
+  }
 
-                        />
-                    </Card.Content>
-                </Card>
-                <Card style={{ width: "900px" }} color="teal">
-                    <Card.Content>
-                        <Card.Description style={{ fontSize: "18px" }}>
-                            Where's your property located?
-                        </Card.Description>
-                        <CardDescription>
-                            <br />
-                            Street address
-                        </CardDescription>
-                        <Field
-                            component={renderField}
-                            name="address"
-                            type="text"
-                            label="For example:10 Zelena street"
-                            icon="map marker"
-                            validate={[required, maxLength20]}
+  render() {
+    const {
+      pristine, submitting, handleSubmit
+    } = this.props;
 
-                        />
-                        <CardDescription>
-                            <br />
-                            Address line 2
-                        </CardDescription>
-                        <Field
-                            component={renderField}
-                            name="address1"
-                            type="text"
-                            label="For example: flat number and etc."
-                            icon="map marker"
-                            validate={[required, maxLength20]}
+    const countriesOptions = this.getCountries();
+    const cityOptions = this.getCities();
+    const currenciesOptions = this.getCurrencies();
+    const propertyTypesOptions = this.getPropertyTypes();
 
-                        />
-                        <CardDescription>
-                            <br />
-                            Country/Region
-                    </CardDescription>
-                        <Field
-                            component={renderDropdown}
-                            options={countriesOptions}
-                            name="countryId"
-                            label="Country"
-                            icon="map marker"
-                            onChange={this.onCountryChange}
-                            validate={[required]}
-                        />
-                        <br />
-                        <CardDescription>
-                            City
-                        </CardDescription>
-                        <Field
-                            component={renderDropdown}
-                            selection
-                            options={cityOptions}
-                            name="cityId"
-                            label="City"
-                            icon="map marker"
-                            validate={[required]}
-                        />
-                        <Field
-                            component={renderField}
-                            name="userId"
-                            type="hidden"
-                        />
-                    </Card.Content>
-                </Card>
+    return (
+      <div id="basicInfoPropertyRegistration">
+        <Form onSubmit={handleSubmit} >
+          <Container>
+            <Header as='h2' style={{ fontSize: "18px" }}>
+              What's the name of your property?
+                        </Header>
+            <div className="meta">
+              Guests will see this name when they search for a place
+              to stay.
+            </div>
 
-                <Button
-                    color="teal"
-                    fluid
-                    disabled={pristine || submitting}
-                    type="submit"
-                >Continue</Button>
-            </Form>
-        );
-    }
+            <div className="wrapper">
+              <label className="required">Property name</label>
+              <Field
+                component={renderField}
+                name="name"
+                label="Property name"
+                type="text"
+                validate={[required, maxLength40]}
+                icon="edit"
+              />
+            </div>
+
+            <div className="wrapper">
+              <label className="required">Property description</label>
+              <Field
+                component={renderTextarea}
+                name="description"
+                label="Property description"
+                validate={[required]}
+              />
+              <Icon disabled name='paperclip' className='texarea-icon' />
+            </div>
+
+            <div className="wrapper">
+              <label className="required">Property Type</label>
+              <Field
+                icon="home"
+                style={{ borderRadius: "0px" }}
+                component={renderDropdown}
+                options={propertyTypesOptions || []}
+                name="propertyTypeId"
+                label="Property Type"
+                validate={[required]}
+              />
+            </div>
+          </Container>
+          <Container>
+            <Header as='h2' style={{ fontSize: "18px" }}>
+              In what currency are all prices for Your property?
+            </Header>
+            <div className="meta ">
+              Guests will see price of rooms in this currency
+            </div>
+
+            <div className="wrapper">
+              <label className="required">Prefered currency</label>
+              <Field
+                icon="dollar"
+                style={{ borderRadius: "0px" }}
+                component={renderDropdown}
+                selection
+                options={currenciesOptions}
+                name="currencyId"
+                label="Currency"
+                validate={[required]}
+              />
+            </div>
+          </Container>
+          <Container style={{ width: "900px" }} color="teal">
+            <Card.Content>
+              <Header as='h2' style={{ fontSize: "18px" }}>
+                What are the contact details for this property?
+                            </Header>
+              <div className="wrapper">
+                <label className="required">Contact name</label>
+                <Field
+                  component={renderField}
+                  name="contactPersonName"
+                  label="Contact name"
+                  type="text"
+                  icon="user"
+                  validate={[required, maxLength40]}
+                />
+              </div>
+              <div className="wrapper">
+                <label className="required">
+                  Contact number(so we can assist with your registration
+                 when needed)
+                        </label>
+                <Field
+                  component={renderField}
+                  name="contactPhone"
+                  label="Contact number"
+                  type="tel"
+                  icon="phone"
+                  validate={[required, phoneNumber]}
+                />
+              </div>
+            </Card.Content>
+
+          </Container>
+
+          <Container style={{ width: "900px" }} color="teal">
+            <Card.Content>
+              <Header as='h2' style={{ fontSize: "18px" }}>
+                Where's your property located?
+                        </Header>
+              <div className="wrapper">
+                <label className="required">
+                  Street address
+                        </label>
+                <Field
+                  component={this.renderAngolia}
+                  name="address"
+                  icon="map marker"
+                  validate={[required]}
+                />
+              </div>
+              <div className="wrapper">
+                <label>
+                  Address line 2
+                            </label>
+                <Field
+                  component={renderField}
+                  name="address1"
+                  type="text"
+                  label="For example: flat number and etc."
+                  icon="map marker"
+                  validate={[maxLength40]}
+
+                />
+              </div>
+              <div className="wrapper">
+                <label className="required">
+                  Country/Region
+                            </label>
+
+                <Field
+                  icon="map pin"
+                  style={{ borderRadius: "0px" }}
+                  component={renderDropdown}
+                  options={countriesOptions}
+                  name="countryId"
+                  label="Country"
+
+                  onChange={this.onCountryChange}
+                  validate={[required]}
+                />
+              </div>
+              <div className="wrapper">
+                <label className="required">
+                  City
+                </label>
+                <Field
+                  icon="map signs"
+                  style={{ borderRadius: "0px" }}
+                  component={renderDropdown}
+                  selection
+                  options={cityOptions || []}
+                  name="cityId"
+                  label="City"
+                  id="city-dropdown"
+                  validate={[required]}
+                />
+              </div>
+            </Card.Content>
+          </Container>
+
+          <Container style={{ paddingTop: "0px" }}>
+            <Button
+              color="teal"
+              fluid
+              disabled={pristine || submitting}
+              type="submit"
+            >Continue</Button>
+          </Container>
+        </Form >
+
+      </div>
+    );
+  }
 }
 
 const ReduxForm = reduxForm({
-    form: 'propertyRegistrationForm',
-    destroyOnUnmount: false,
-    forceUnregisterOnUnmount: true,
+  form: 'propertyRegistrationForm',
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
 })(BasicInfoPropertyRegistrationForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

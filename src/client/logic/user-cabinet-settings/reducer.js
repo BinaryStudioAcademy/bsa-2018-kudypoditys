@@ -52,7 +52,6 @@ export default function userSettingsReducer(
             };
         }
         case USER_PASSWORD_CHANGE_SUCCESS: {
-            console.log("action.payload = ", action.payload);
             return {
                 ...state,
                 passwordMessage: action.payload

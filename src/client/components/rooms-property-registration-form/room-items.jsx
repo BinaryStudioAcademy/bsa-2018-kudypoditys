@@ -25,7 +25,7 @@ class RoomItems extends Component {
     return (
       <Segment>
         <Grid centered >
-          <Grid.Row columns={5} inverted>
+          <Grid.Row columns={5} inverted style={{ background: 'aliceblue' }}>
             <Grid.Column>
               Room Type
             </Grid.Column>
@@ -47,13 +47,13 @@ class RoomItems extends Component {
               {room.roomType && room.roomType.name}
             </Grid.Column>
             <Grid.Column>
-              Amount: {room.amount}
+              {room.amount}
             </Grid.Column>
             <Grid.Column>
-              Price: {room.price}
+              {room.price}
             </Grid.Column>
             <Grid.Column>
-              Area: {room.area}
+              {room.area}
             </Grid.Column>
             <Grid.Column>
               <Popup trigger={<Button icon='info' />} >
@@ -62,7 +62,7 @@ class RoomItems extends Component {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row columns={2} inverted>
+          <Grid.Row columns={2} style={{ background: 'whitesmoke' }}>
             <Grid.Column>
               Bed Type
             </Grid.Column>
