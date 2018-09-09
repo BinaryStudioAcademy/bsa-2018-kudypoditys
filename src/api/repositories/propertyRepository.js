@@ -6,7 +6,6 @@ const Sequelize = require("sequelize");
 const Reservation = require("../models/Reservation");
 const RoomType = require("../models/RoomType");
 const Image = require("../models/Image");
-const Availability = require("../models/Availability");
 const Favorite = require("../models/Favorite");
 const AccommodationRule = require("../models/AccommodationRule");
 const PropertyType = require("../models/PropertyType");
@@ -23,6 +22,8 @@ const PropertyLanguage = require("../models/PropertyLanguage");
 const BasicFacility = require("../models/BasicFacility");
 const FacilityCategory = require("../models/FacilityCategory");
 const AvailabilityRepository = require("./availabilityRepository");
+const RoomRepository = require("./roomRepository");
+const Availability = require("../models/Availability");
 const moment = require("moment");
 
 const includeOptions = [
@@ -200,8 +201,8 @@ class PropertyRepository extends Repository {
             let current = {
                 roomId: id,
                 amount: amount,
-                price: price,
-                date: moment().date(daysInMonth)
+                date: moment().date(daysInMonth),
+                price: price
             };
             arrDays.push(current);
             daysInMonth--;
@@ -210,7 +211,6 @@ class PropertyRepository extends Repository {
     }
 
     createDetails(entity) {
-        console.log(entity);
         return this.model
             .create(entity, {
                 include: [
@@ -222,10 +222,6 @@ class PropertyRepository extends Repository {
                         include: [BedInRoom]
                     }
                 ]
-            })
-            .then(entity => {
-                let availabilities = this.getDaysArrayByMonth();
-                AvailabilityRepository.create(availabilities);
             })
             .then(({ dataValues: newProperty }) => {
                 let facilityList = entity.facilities.map(f => ({
@@ -255,6 +251,22 @@ class PropertyRepository extends Repository {
                 return PropertyPaymentType.bulkCreate(paymentTypes).then(
                     _ => newProperty
                 );
+            })
+            .then(newProperty => {
+                let propertyRooms = RoomRepository.findByOptions({
+                    propertyId: newProperty.id
+                });
+                propertyRooms.map(room => {
+                    let availabilities = this.getDaysArrayByMonth(
+                        room.id,
+                        room.amount,
+                        room.price
+                    );
+                    availabilities.map(availability => {
+                        AvailabilityRepository.create(availability);
+                    });
+                });
+                return newProperty;
             })
             .then(newProperty => this.findById(newProperty.id));
     }
