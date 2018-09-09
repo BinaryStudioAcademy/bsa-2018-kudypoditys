@@ -137,7 +137,6 @@ export class MainSearch extends React.Component {
             sortBy,
             queryCopy,
             isSelectedResult,
-            page
 
         } = this.state;
         console.log("handleSubmit trigered");
@@ -148,10 +147,7 @@ export class MainSearch extends React.Component {
             this.setState({ query: queryCopy });
         }
         if (query===undefined||query===null||query==="") return
-        // history.push({
-        //     pathname: "/search-page",
-        //     search: `?query=${query}&rooms=${rooms}&adults=${adults}&children=${children}&startDate=${startDate}&endDate=${endDate}&sortBy=${sortBy}`
-        // });
+
         this.props.onSearch({
             query: query,
             rooms: rooms,
@@ -159,8 +155,8 @@ export class MainSearch extends React.Component {
             children: children,
             startDate: startDate,
             endDate: endDate,
-            page: page,
-            sortBy:sortBy
+            page: 1,
+            sortBy:""
         });
     };
 
@@ -280,7 +276,9 @@ export class MainSearch extends React.Component {
                     adults: this.state.adults,
                     children: this.state.children,
                     startDate: this.state.startDate,
-                    endDate: this.state.endDate
+                    endDate: this.state.endDate,
+                    page: 1,
+                    sortBy:this.state.sortBy
                 }
             });
             //   }
