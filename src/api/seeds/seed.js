@@ -1692,7 +1692,11 @@ const FACILITY_LISTS = [
     },
     {
         propertyId: 1,
-        facilityId: 16
+        facilityId: 11
+    },
+    {
+        propertyId: 2,
+        facilityId: 17
     }
 ];
 

@@ -247,6 +247,34 @@ class PropertyRepository extends Repository {
             case "Dogs":
                 facilityId = 5;
                 break;
+
+            case "Full_body_massage":
+                facilityId = 3;
+                break;
+
+            case "Daily_maid_service":
+                facilityId = 8;
+                break;
+            case "Laundry":
+                facilityId = 11;
+                break;
+
+            case "Walking tours":
+                facilityId = 16;
+                break;
+            case "Live_music_performance":
+                facilityId = 13;
+                break;
+            case "Live_sport_events":
+                facilityId = 12;
+                break;
+            case "Themed_dinner_nights":
+                facilityId = 14;
+                break;
+
+            case "Movie_nights":
+                facilityId = 17;
+                break;
             default:
                 facilityId = -1;
         }
@@ -292,7 +320,7 @@ class PropertyRepository extends Repository {
         }
 
         let facilityOption =
-            filter.dogs !== "" || filter.fitness_spa_locker_rooms !== ""
+            filter.dogs !=="" || filter.fitness_spa_locker_rooms !=="" || filter.full_body_massage !=="" || filter.daily_maid_service  !=="" || filter.laundry  !=="" || filter.walking_tours  !=="" || filter.live_music_performance  !=="" || filter.live_sport_events !=="" || filter.themed_dinner_nights !=="" || filter.movie_nights !==""
                 ? [
                       {
                           model: Facility,
@@ -303,7 +331,16 @@ class PropertyRepository extends Repository {
                                       this.getFacilityId(filter.dogs),
                                       this.getFacilityId(
                                           filter.fitness_spa_locker_rooms
-                                      )
+                                      ),
+                                      this.getFacilityId(filter.full_body_massage),
+                                      this.getFacilityId(filter.daily_maid_service),
+                                      this.getFacilityId(filter.laundry),
+                                      this.getFacilityId(filter.walking_tours),
+                                      this.getFacilityId(filter.live_music_performance),
+                                      this.getFacilityId(filter.live_sport_events),
+                                      this.getFacilityId(filter.themed_dinner_nights),
+                                      this.getFacilityId(filter.themed_dinner_nights),
+                                      this.getFacilityId(filter.movie_nights)
                                   ]
                               }
                           },
