@@ -46,16 +46,21 @@ export class MainHeader extends Component {
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
     handleCurrancyChange= (e, { name, value }) =>{
+        this.props.getCityInfos(value);
         console.log(value)
         this.props.onCurrencyChange(value)
+
     }
     updateUserCurrency = (e, { name, value }) => {
+        this.props.onCurrencyChange(value)
+        this.props.getCityInfos(value);
         const data = {
             id:this.props.currentUser.id,
             preferredCurrency: value
         };
         this.props.sendSettings(data);
-        this.props.onCurrencyChange(value)
+
+
 
     }
     render() {
@@ -89,6 +94,16 @@ export class MainHeader extends Component {
                                     return (
                                         <Fragment>
                                             <Dropdown
+                                                style = {{
+                                                    width:"70px" ,
+                                                    fontSize:"14px",
+                                                    //padding:"3px 5px",
+                                                    background:"none",
+                                                    color:"#fff",
+                                                    border:"none",
+                                                    float: "right",
+                                                    opacity: "0.94"
+                                                }}
                                                 name="preferredCurrency"
                                                 fluid
                                                 selection
@@ -114,6 +129,16 @@ export class MainHeader extends Component {
                                             {hideSignUpIn ? null : (
                                                 <Fragment>
                                                     <Dropdown
+                                                        style = {{
+                                                            width:"70px" ,
+                                                            fontSize:"14px",
+                                                            //padding:"3px 5px",
+                                                            background:"none",
+                                                            color:"#fff",
+                                                            border:"none",
+                                                            float: "right",
+                                                            opacity: "0.94"
+                                                        }}
                                                         name="preferredCurrency"
                                                         fluid
                                                         selection

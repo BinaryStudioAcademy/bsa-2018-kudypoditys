@@ -9,12 +9,12 @@ import api from "../../helpers/api";
 
 function* getProperties(action) {
     console.log('Hello from SAGA' + action.type)
-    const URL1 = `1`
-    const URL2 = `2`
-    const URL3 = `3`
-    const URL4 = `4`
-    const URL5 = `5`
-    const URL6 = `6`
+    const URL1 = `1/${action.payload}`
+    const URL2 = `2/${action.payload}`
+    const URL3 = `3/${action.payload}`
+    const URL4 = `4/${action.payload}`
+    const URL5 = `5/${action.payload}`
+    const URL6 = `6/${action.payload}`
     try {
         const response1 = yield call(PropertyService.getPropertiesByCity, URL1 );
         const response2 = yield call(PropertyService.getPropertiesByCity, URL2 );

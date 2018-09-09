@@ -2,6 +2,7 @@ import {
     CITY_INFOS_GET
 } from './actionType';
 
-export const cityInfosGet = () => ({
-    type: CITY_INFOS_GET
+export const cityInfosGet = (currency) => ({
+    type: CITY_INFOS_GET,
+    payload: currency
 });

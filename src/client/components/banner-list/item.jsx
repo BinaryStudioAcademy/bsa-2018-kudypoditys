@@ -17,12 +17,12 @@ export class Banner extends Component {
             background: `url(${url})`,
             backgroundSize: 'cover',
         });
-        const val = (Number(cityInfo.avgPrice)*Number(this.props.rate)).toFixed(0)
+        const val = Number(cityInfo.avgPrice).toFixed(0)
 
         return (
 
             cityInfo ?
-                < Container onClick={()=>this.handleClick(cityInfo)} className="banner">
+                < Container onClick={()=>this.handleClick(cityInfo.city)} className="banner">
 
                     <Card.Content className="banner__content" style={imgStyles(cityInfo.pictureUrl)}>
                         <Card.Header className="banner__title">

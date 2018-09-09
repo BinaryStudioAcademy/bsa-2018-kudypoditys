@@ -14,32 +14,14 @@ function* logout() {
         })
     };
 }
-function* changeCurrency(action){
-    const URL = `http://free.currencyconverterapi.com/api/v5/convert?q=USD_${action.payload}&compact=y`;
-    try{
-       const response =  yield call(fetch, URL)
-       const body = yield response.json()
-       const rate = body['USD_'+action.payload].val
-       yield put({
-           type: actionTypes.CURRENCY_SELECT,
-           payload:{
-                selectedCurrency: action.payload,
-                rate: rate
-           }
-       })
-    } catch(err){
-        yield put({
-            type: actionTypes.CURRENCY_RATE_GET_FAILED
-        })
-    }
-}
 function* changeUserCurrency(action){
     try {
         const user = yield call(userService.updateUser, action);
-        console.log(user)
+        console.log('-->SAGA '+action.payload.preferredCurrency)
         yield put({
             type: 'actionTypes.USER_SETTINGS_SEND_SUCCES',
-            payload: user
+            payload: user,
+            selectedCurrency: action.payload.preferredCurrency
         });
     } catch (err) {
         console.log(err);
@@ -51,7 +33,6 @@ function* changeUserCurrency(action){
 export default function* headerSaga() {
     yield all([
         takeLatest(actionTypes.LOGOUT, logout),
-        takeLatest(actionTypes.CURRENCY_RATE_GET, changeCurrency),
         takeLatest(actionTypes.USER_CURRENCY_UPDATE, changeUserCurrency)
     ])
 }

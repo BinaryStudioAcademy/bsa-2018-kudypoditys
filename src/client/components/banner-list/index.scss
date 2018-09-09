@@ -4,16 +4,15 @@
 }
 .banner{
     color:white;
-    background: #dfe3eb;
+    background: rgba(255, 255, 255, 0.9);
     padding: 17px;
     position: relative;
     cursor: pointer;
 }
 
 .banner:hover, a:focus {
-    top: -4px;
-    left: -4px;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 1);
 }
 .banner__content{
     padding:20px;

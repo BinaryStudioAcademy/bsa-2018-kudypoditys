@@ -10,18 +10,12 @@ import { mapStateToProps, mapDispatchToProps } from './container';
 import history from "client/history";
 
 export class BannerList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            req: '1'
-        }
-    }
-    componentWillMount(){
+    componentDidMount(){
         console.log('Hello from component Did mount')
-        this.props.getCityInfos();
-        //this.setState({req:1});
-        // this.setState({lviv:this.props.city1}, ()=>console.log(this.state.city1))
+        this.props.getCityInfos(this.props.selectedCurrency);
+
     }
+
     onCardClick = (query) => {
         console.log(query)
         let path = `/search-page`;
@@ -32,7 +26,6 @@ export class BannerList extends Component {
     }
 
     render() {
-        console.log(this.props)
         const { rate, selectedCurrency } = this.props;
         const {cityInfos} = this.props.cityInfos;
         const cities = Object.values(cityInfos)
@@ -50,7 +43,7 @@ export class BannerList extends Component {
                     <Grid.Column >
                         <Banner currency={selectedCurrency} rate={rate} cityInfo={city2} onClick={() => this.onCardClick('Dnipro')} />
                     </Grid.Column>
-                    <Grid.Column width={8}>
+                    <Grid.Column width={7}>
                         <Banner currency={selectedCurrency} rate={rate} cityInfo={city3} onClick={() => this.onCardClick('Ternopil')} />
                     </Grid.Column>
 

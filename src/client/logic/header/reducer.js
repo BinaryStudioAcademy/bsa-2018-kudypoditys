@@ -6,9 +6,9 @@ import {GET_CURRENT_USER_SUCCESS} from "../login/actionTypes";
 function headerReducer(state = defaultState.header, action) {
     switch (action.type) {
         case CURRENCY_SELECT:
+            console.log(action.payload)
             return { ...state,
-                    selectedCurrency: action.payload.selectedCurrency,
-                    rate: action.payload.rate
+                    selectedCurrency: action.payload,
                  };
         case CURRENCIES_GET:
             return {
@@ -19,7 +19,7 @@ function headerReducer(state = defaultState.header, action) {
                 };
 
         case GET_CURRENT_USER_SUCCESS:
-            return { ...state, currentUser: action.payload };
+            return { ...state, currentUser: action.payload, selectedCurrency:action.preferredCurrency};
 
         case LOGOUT_SUCCESS:
             return { ...state, currentUser: null };

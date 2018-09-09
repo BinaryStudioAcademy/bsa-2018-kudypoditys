@@ -98,29 +98,38 @@ property.route("/:id/details").get((req, res) => {
         });
 });
 
-property.route("/city/:id").get((req, res) => {
-    console.log(req.params.id)
+property.route("/city/:id/:currency").get((req, res) => {
     propertyService
         .getPropertiesByCity(req.params.id)
         .then(properties => {
+
             var roomAmount = 0;
             var totalPrice = 0;
             var avgPrice = 0;
-            for (const property of properties) {
-                for (const room of property.rooms) {
-                    totalPrice += Number(room.price)
+            propertyService
+                .rate()
+                .then(rates=>{
+                    for (const property of properties) {
+                        for (const room of property.rooms) {
+                            //totalPrice += Number(room.price)*course[property.prefferCurrency+'_'+req.params.currency]
+                            totalPrice += Number(room.price)*
+                                          Number(rates['USD_'+req.params.currency]['USD_'+req.params.currency].val)
 
-                }
-                roomAmount++
-            }
-            console.log(roomAmount, totalPrice)
-            avgPrice = (totalPrice / roomAmount).toFixed(0)
-            const data = {
-                properties: roomAmount,
-                avgPrice: avgPrice
-            }
+                        }
+                        roomAmount++
+                    }
+                    avgPrice = (totalPrice / roomAmount).toFixed(0)
+                    const data = {
+                        properties: roomAmount,
+                        avgPrice: avgPrice,
+                        curr: rates
+                    }
 
-            res.status(200).send(data);
+                    res.status(200).send(data);
+            }).catch(err=>{
+                return err
+            });
+
 
         })
         .catch(err => {

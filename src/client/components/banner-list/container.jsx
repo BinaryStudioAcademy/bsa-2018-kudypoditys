@@ -10,9 +10,9 @@ export function mapStateToProps(state, ownProps) {
 
 export function mapDispatchToProps(dispatch, ownProps,data) {
     return {
-        getCityInfos() {
+        getCityInfos(data) {
             console.log('gone get city info')
-            dispatch(cityInfosGet());
+            dispatch(cityInfosGet(data));
         },
         onSearch(data) {
             console.log("gone dispatch data: "+JSON.stringify(data))

@@ -2,6 +2,8 @@ const Service = require("./generalService");
 const propertyRepository = require("../repositories/propertyRepository");
 const roomService = require("./room");
 const reservationService = require("./reservation");
+const request = require('request');
+const fetch = require("node-fetch");
 
 class PropertyService extends Service {
     async findById(id) {
@@ -56,6 +58,27 @@ class PropertyService extends Service {
             return Promise.resolve(true);
         } catch (err) {
             return Promise.reject(err);
+        }
+    }
+    async rate() {
+        try {
+
+            const currencies = ['UAH', 'USD', 'EUR']
+                var rates = {}
+                    for(let i = 0; i < currencies.length; i++){
+                        for(let j = 0; j < currencies.length; j++){
+                                const URL = `http://free.currencyconverterapi.com/api/v5/convert?q=${currencies[i]}_${currencies[j]}&compact=y`;
+                                const response = await fetch(URL);
+                                const json = await response.json();
+                                rates[currencies[i]+'_'+currencies[j]] = json
+                            }
+                        }
+
+                console.log('###RATES' + rates)
+                console.log('property'+rates)
+                return rates;
+        }catch (err) {
+                return Promise.reject(err);
         }
     }
 

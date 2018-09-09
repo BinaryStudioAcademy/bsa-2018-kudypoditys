@@ -69,6 +69,7 @@
     "lodash": "^4.17.10",
     "mapbox-gl": "^0.47.0",
     "moment": "^2.22.2",
+    "node-fetch": "^2.2.0",
     "node-sass": "^4.9.2",
     "nodemailer": "^4.6.8",
     "object-assign": "^4.1.1",

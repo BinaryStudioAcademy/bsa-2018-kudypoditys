@@ -27,7 +27,7 @@ export class HomePage extends Component {
                     content={"Now you can login."}
                 />
 
-                <BannerList />
+                <BannerList/>
             </div>
         );
     }

@@ -8,7 +8,7 @@ import {
 
 export function selectCurrency(payload) {
     return {
-        type: CURRENCY_RATE_GET,
+        type: CURRENCY_SELECT,
         payload
     };
 }
