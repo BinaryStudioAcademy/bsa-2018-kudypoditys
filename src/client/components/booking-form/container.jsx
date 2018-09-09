@@ -8,6 +8,7 @@ export function mapStateToProps(state, ownProps) {
     const { property, bookingInput } = state.propertyPage;
     return {
         propertyName: property.name,
+        cancelForFree: property.accommodationRule.cancelReservation,
         propertyId: property.id,
         checkIn: bookingInput.checkIn,
         checkOut: bookingInput.checkOut,
