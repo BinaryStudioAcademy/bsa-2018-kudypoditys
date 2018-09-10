@@ -5,6 +5,7 @@ import {
   SEND_RESET_PASSWORD_EMAIL_SUCCESS
 } from './actionTypes';
 import authService from 'client/services/authService';
+import { modalShow } from 'client/logic/simple-modal/actions';
 
 function* sendResetPasswordEmail(action) {
   try {
@@ -13,6 +14,7 @@ function* sendResetPasswordEmail(action) {
     yield put({
       type: SEND_RESET_PASSWORD_EMAIL_SUCCESS
     });
+    yield put(modalShow(getSuccessEmailSend()))
   } catch (err) {
     yield put({
       type: SEND_RESET_PASSWORD_EMAIL_FAILED,
@@ -26,3 +28,15 @@ export default function* forgotPasswordSaga() {
     takeLatest(SEND_RESET_PASSWORD_EMAIL, sendResetPasswordEmail)
   ])
 }
+
+const getSuccessEmailSend = () => ({
+  header: 'Email sent',
+  content: 'Email with reset password link was sent successfully',
+  buttons: [
+    {
+      content: 'OK',
+      icon: 'check',
+      positive: true,
+    }
+  ]
+});

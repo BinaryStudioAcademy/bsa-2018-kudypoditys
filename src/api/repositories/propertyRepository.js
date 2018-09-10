@@ -276,9 +276,6 @@ class PropertyRepository extends Repository {
             case "Fitness_spa_locker_rooms":
                 facilityId = 1; //id from seed
                 break;
-            // case 'Queen_bed':
-            //     facilityId = 3;
-            //     break;
             case "Dogs":
                 facilityId = 5;
                 break;
@@ -323,7 +320,15 @@ class PropertyRepository extends Repository {
                 sortingOption = [["rating", "DESC"]];
                 break;
             default:
-                sortingOption = [["rating"]];
+                sortingOption = Sequelize.literal(
+                    "(" +
+                        filter.propertiesIds
+                            .map(function(id) {
+                                return '"property"."id" = \'' + id + "'";
+                            })
+                            .join(", ") +
+                        ") DESC"
+                );
         }
 
         let facilityOption =
@@ -368,13 +373,23 @@ class PropertyRepository extends Repository {
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
 
         return this.model
-            .findAll({
+            .findAndCountAll({
                 limit: 5,
                 offset: offsetData,
                 where: {
                     id: { $in: filter.propertiesIds }
                 },
-                order: sortingOption,
+                distinct: true,
+                // order: Sequelize.literal(
+                //     "(" +
+                //         filter.propertiesIds
+                //             .map(function(id) {
+                //                 return '"property"."id" = \'' + id + "'";
+                //             })
+                //             .join(", ") +
+                //         ") DESC"
+                // ),
+                 order: sortingOption,
                 include: [
                     {
                         model: City
@@ -388,13 +403,6 @@ class PropertyRepository extends Repository {
                     {
                         model: FacilityList,
                         include: facilityOption
-
-                        //     [
-                        //     {
-                        //         model: Facility,
-                        //         where: { id: { $in: [5] } },
-                        //     }
-                        // ]
                     },
 
                     {
@@ -407,23 +415,48 @@ class PropertyRepository extends Repository {
 
                             bedsInRoomOption,
                             {
-                                model: Reservation
-                                // where: {
-                                // from: {
-                                //     $between: [filter.dateIn, filter.dateOut]
-                                //    }
-                                // $or:[{
-                                //     dateOut: {
-                                //         $lte: filter.dateIn,
-                                //         $gte: filter.dateOut
-                                //     },
-
-                                //     dateIn: {
-                                //         $lte: filter.dateIn,
-                                //         $gte: filter.dateOut
-                                //     }
-                                // }],
-                                // }
+                                model: Reservation,
+                                required: false,
+                                where: {
+                                    $and: [
+                                        {
+                                            dateIn: {
+                                                $notBetween: [
+                                                    filter.dateIn, // new Date("2018-09-16"),
+                                                    filter.dateOut // new Date("2018-09-17")
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            dateOut: {
+                                                $notBetween: [
+                                                    filter.dateIn, // new Date("2018-09-16"),
+                                                    filter.dateOut // new Date("2018-09-17")
+                                                ]
+                                            }
+                                        }
+                                        // {
+                                        //     $not: [
+                                        //         {
+                                        //             $and: [
+                                        //                 {
+                                        //                     dateIn: {
+                                        //                         $gte:
+                                        //                             filter.dateIn
+                                        //                     }
+                                        //                 },
+                                        //                 {
+                                        //                     dateOut: {
+                                        //                         $lte:
+                                        //                             filter.dateOut
+                                        //                     }
+                                        //                 }
+                                        //             ]
+                                        //         }
+                                        //     ]
+                                        // }
+                                    ]
+                                }
                             }
                         ]
                     }
@@ -448,32 +481,13 @@ class PropertyRepository extends Repository {
                     {
                         model: Review
                     },
-                    // {
-                    //     model: FacilityList,
-                    //     required: true,
-                    //     include: [
-                    //         {
-                    //             model: Facility,
-                    //             required: true,
-                    //             where: { id: { $in: [5] } },
-                    //             include: { model: FacilityCategory }
-                    //         }
-                    //     ]
-                    // },
-
                     {
                         model: Room,
+                        required: true,
                         include: [
-                            RoomType,
+                            { model: RoomType },
                             {
                                 model: BedInRoom
-                            },
-                            {
-                                model: Reservation
-                                //    where: {
-                                // dateIn: { $gte: moment().subtract(10, 'days').toDate()},
-                                //dateOut: { $lte: moment().add(5, 'days').toDate()}
-                                //   }
                             }
                         ]
                     }
