@@ -1,4 +1,4 @@
-import {reviewSubmit, reviewUpdate, ratingUpdate} from 'client/logic/reviews/actions';
+import {reviewSubmit, reviewUpdate, ratingUpdate, propertyUpdate} from 'client/logic/reviews/actions';
 
 
 export function mapStateToProps(state, ownProps) {
@@ -20,6 +20,9 @@ export function mapDispatchToProps(dispatch) {
         },
         updateRating(data) {
             dispatch(ratingUpdate(data));
+        },
+        updateProperty(data) {
+            dispatch(propertyUpdate(data));
         }
     };
 }

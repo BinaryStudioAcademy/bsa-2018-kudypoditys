@@ -71,11 +71,12 @@ class PropertyService {
                 return response.data;
             });
     }
-    updatePropery(data) {
+    updateProperty(data) {
+        console.log(data);
         return api
-            .sendRequest(`/api/add-property/${data.propertyId}`, "put", data)
+            .sendAuthRequest(`/api/property/${data.propertyId}`, "put", data)
             .then(response => {
-                history.push("/add-property/");
+                console.log(response);
             });
     }
 
