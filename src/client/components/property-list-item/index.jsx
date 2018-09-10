@@ -258,7 +258,7 @@ export class PropertyListItem extends React.Component {
                                 {/*padding: 10*/}
                                 {/*}} >*/}
                                 <span className="priceInfo">
-                                    US ${propertyItemData.rooms[0].price}
+                                    ${propertyItemData.rooms[0].price}
                                 </span>
 
                                 {/*</div>*/}

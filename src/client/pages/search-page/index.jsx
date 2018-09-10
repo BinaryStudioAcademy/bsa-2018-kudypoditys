@@ -16,7 +16,7 @@ class SearchPage extends React.Component {
         super(props);
         this.state = {
             mapProp: [],
-            switch: 'list',
+            switch: localStorage.getItem('switch'),
             listItems: [],
             itemCount: 0,
             searchRequest: {},
@@ -51,6 +51,7 @@ class SearchPage extends React.Component {
 
         properties.forEach(i => {
             tempArr.push({
+                id: i.id,
                 price: i.rooms[0].price,
                 name: i.name,
                 coordinates: {
@@ -65,7 +66,13 @@ class SearchPage extends React.Component {
             });
         });
 
-
+        // const positionToLocalStorage = {
+        //     latitude: properties[0].coordinates.lat,
+        //     longitude: properties[0].coordinates.lng,
+        // }
+        //
+        localStorage.setItem('lastPositionLat', properties[0].coordinates.lat)
+        localStorage.setItem('lastPositionLng', properties[0].coordinates.lng)
 
         this.setState({ mapProp: tempArr });
     };
@@ -73,10 +80,14 @@ class SearchPage extends React.Component {
         this.setState({
             switch: data.value,
         });
+        localStorage.setItem('switch', data.value);
     };
     render() {
         const active = this.state.switch;
-
+       const LastStartPosition = {
+           latitude: JSON.parse(localStorage.getItem('lastPositionLat')),
+           longitude: JSON.parse(localStorage.getItem('lastPositionLng')),
+       }
         return (
             <div className="mock">
                 <Header
@@ -156,7 +167,8 @@ class SearchPage extends React.Component {
                                                       .mapProp[0].coordinates
                                                       .lng,
                                               }
-                                            : undefined
+                                            : LastStartPosition
+
                                     }
                                     zoom={13}
                                     controlEnable={true}
