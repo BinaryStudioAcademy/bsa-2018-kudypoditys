@@ -353,8 +353,9 @@ class PropertyRepository extends Repository {
                         ") DESC"
                 );
         }
+        //
 
-        let facilityOption =
+        let fo =
             filter.dogs !== "" ||
             filter.fitness_spa_locker_rooms !== "" ||
             filter.full_body_massage !== "" ||
@@ -365,12 +366,12 @@ class PropertyRepository extends Repository {
             filter.live_sport_events !== "" ||
             filter.themed_dinner_nights !== "" ||
             filter.movie_nights !== ""
-                ? [
-                      {
-                          model: Facility,
-                          required: true,
-                          where: {
-                              id: [
+                ? {
+                      model: FacilityList,
+                      required: true,
+                      where: {
+                        facilityId: {
+                              $and: [
                                   this.getFacilityId(filter.dogs),
                                   this.getFacilityId(
                                       filter.fitness_spa_locker_rooms
@@ -390,12 +391,13 @@ class PropertyRepository extends Repository {
                                       filter.themed_dinner_nights
                                   ),
                                   this.getFacilityId(filter.movie_nights)
-                              ]
-                          },
-                          include: { model: FacilityCategory }
-                      }
-                  ]
-                : [Facility];
+                              ].filter(id=>id!==-1)
+                          }
+                      },
+                      include:[  Facility],
+                       required: true,
+                  }
+                : { model: FacilityList };
 
         let bedsInRoomOption =
             filter.queen_bed ||
@@ -460,11 +462,7 @@ class PropertyRepository extends Repository {
                     {
                         model: Review
                     },
-                    {
-                        model: FacilityList,
-                        required: true,
-                        include: facilityOption
-                    },
+                    fo,
 
                     {
                         model: Room,
@@ -544,6 +542,11 @@ class PropertyRepository extends Repository {
                     {
                         model: Review
                     },
+                    // {
+                    //     model: FacilityList,
+                    //     required: true,
+                    // },
+
                     {
                         model: Room,
 
