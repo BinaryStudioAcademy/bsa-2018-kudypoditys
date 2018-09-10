@@ -26,7 +26,7 @@ export class LoginComponent extends React.Component {
                         fontSize: "26px"
                     }}
                 >
-                    Sign up
+                    Login
                 </Header>
                 <LoginForm
                     onSubmit={this.props.handleLoginSubmit}

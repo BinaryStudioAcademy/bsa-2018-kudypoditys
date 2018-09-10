@@ -14,7 +14,7 @@ import renderField from "client/components/input-form/renderField";
 import { required, email } from "client/regexValidationService";
 
 let LoginForm = props => {
-    const { handleSubmit, submitting } = props;
+    const { handleSubmit, submitting, pristine } = props;
     return (
         <Segment className="login_form-wrapper" padded='very' raised>
             <Form onSubmit={handleSubmit} id="login-form">
@@ -77,7 +77,7 @@ let LoginForm = props => {
                         className="auth_btn"
                         type="submit"
                         name="register"
-                        disabled={submitting}
+                        disabled={submitting || pristine}
                         icon
                         color='blue'
                         labelPosition='right'>
