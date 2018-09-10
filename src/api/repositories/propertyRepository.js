@@ -22,6 +22,9 @@ const BedType = require("../models/BedType");
 const PropertyLanguage = require("../models/PropertyLanguage");
 const BasicFacility = require("../models/BasicFacility");
 const FacilityCategory = require("../models/FacilityCategory");
+const AvailabilityRepository = require("./availabilityRepository");
+const RoomRepository = require("./roomRepository");
+const moment = require("moment");
 
 const includeOptions = [
     {
@@ -191,6 +194,22 @@ class PropertyRepository extends Repository {
             });
     }
 
+    getDaysArrayByMonth(id, amount, price) {
+        let daysInMonth = moment().daysInMonth();
+        const arrDays = [];
+        while (daysInMonth) {
+            let current = {
+                roomId: id,
+                amount: amount,
+                date: moment().date(daysInMonth),
+                price: price
+            };
+            arrDays.push(current);
+            daysInMonth--;
+        }
+        return arrDays.reverse();
+    }
+
     createDetails(entity) {
         return this.model
             .create(entity, {
@@ -233,6 +252,22 @@ class PropertyRepository extends Repository {
                     _ => newProperty
                 );
             })
+            .then(newProperty => {
+                let propertyRooms = RoomRepository.findByOptions({
+                    propertyId: newProperty.id
+                });
+                propertyRooms.map(room => {
+                    let availabilities = this.getDaysArrayByMonth(
+                        room.id,
+                        room.amount,
+                        room.price
+                    );
+                    availabilities.map(availability => {
+                        AvailabilityRepository.create(availability);
+                    });
+                });
+                return newProperty;
+            })
             .then(newProperty => this.findById(newProperty.id));
     }
     getFacilityId(facilityStr) {
@@ -241,8 +276,40 @@ class PropertyRepository extends Repository {
             case "Fitness_spa_locker_rooms":
                 facilityId = 1; //id from seed
                 break;
+            // case 'Queen_bed':
+            //     facilityId = 3;
+            //     break;
+            case "Dogs":
             case "Dogs":
                 facilityId = 5;
+                break;
+
+            case "Full_body_massage":
+                facilityId = 3;
+                break;
+
+            case "Daily_maid_service":
+                facilityId = 8;
+                break;
+            case "Laundry":
+                facilityId = 11;
+                break;
+
+            case "Walking tours":
+                facilityId = 16;
+                break;
+            case "Live_music_performance":
+                facilityId = 13;
+                break;
+            case "Live_sport_events":
+                facilityId = 12;
+                break;
+            case "Themed_dinner_nights":
+                facilityId = 14;
+                break;
+
+            case "Movie_nights":
+                facilityId = 17;
                 break;
             default:
                 facilityId = -1;
@@ -254,12 +321,41 @@ class PropertyRepository extends Repository {
         let bedTypeId;
         switch (bedTypeStr) {
             case "Queen_bed":
-                bedTypeId = 3; //id from seed
+                bedTypeId = 3;
+                break;
+            case "Full_bed":
+                bedTypeId = 2;
+                break;
+            case "Twin_bed":
+                bedTypeId = 1;
+                break;
+            case "King_bed":
+                bedTypeId = 4;
                 break;
             default:
                 bedTypeId = -1;
         }
         return bedTypeId;
+    }
+    getRoomTypePriceId(roomTypePriceStr) {
+        let roomTypeTypeId;
+        switch (roomTypePriceStr) {
+            case "Queen_bed":
+                roomTypeTypeId = 3;
+                break;
+            case "Full_bed":
+                roomTypeTypeId = 2;
+                break;
+            case "Twin_bed":
+                roomTypeTypeId = 1;
+                break;
+            case "King_bed":
+                roomTypeTypeId = 4;
+                break;
+            default:
+                roomTypeTypeId = -1;
+        }
+        return roomTypeTypeId;
     }
     getFilteredProperties(filter) {
         console.log("filter " + JSON.stringify(filter));
@@ -285,6 +381,7 @@ class PropertyRepository extends Repository {
                 sortingOption = [["rating", "DESC"]];
                 break;
             default:
+                sortingOption = [["rating"]];
                 sortingOption = Sequelize.literal(
                     "(" +
                         filter.propertiesIds
@@ -297,20 +394,42 @@ class PropertyRepository extends Repository {
         }
 
         let facilityOption =
-            filter.dogs !== "" || filter.fitness_spa_locker_rooms !== ""
+            filter.dogs !== "" ||
+            filter.fitness_spa_locker_rooms !== "" ||
+            filter.full_body_massage !== "" ||
+            filter.daily_maid_service !== "" ||
+            filter.laundry !== "" ||
+            filter.walking_tours !== "" ||
+            filter.live_music_performance !== "" ||
+            filter.live_sport_events !== "" ||
+            filter.themed_dinner_nights !== "" ||
+            filter.movie_nights !== ""
                 ? [
                       {
                           model: Facility,
                           required: true,
                           where: {
-                              id: {
-                                  $in: [
-                                      this.getFacilityId(filter.dogs),
-                                      this.getFacilityId(
-                                          filter.fitness_spa_locker_rooms
-                                      )
-                                  ]
-                              }
+                              id: [
+                                  this.getFacilityId(filter.dogs),
+                                  this.getFacilityId(
+                                      filter.fitness_spa_locker_rooms
+                                  ),
+                                  this.getFacilityId(filter.full_body_massage),
+                                  this.getFacilityId(filter.daily_maid_service),
+                                  this.getFacilityId(filter.laundry),
+                                  this.getFacilityId(filter.walking_tours),
+                                  this.getFacilityId(
+                                      filter.live_music_performance
+                                  ),
+                                  this.getFacilityId(filter.live_sport_events),
+                                  this.getFacilityId(
+                                      filter.themed_dinner_nights
+                                  ),
+                                  this.getFacilityId(
+                                      filter.themed_dinner_nights
+                                  ),
+                                  this.getFacilityId(filter.movie_nights)
+                              ]
                           },
                           include: { model: FacilityCategory }
                       }
@@ -318,13 +437,22 @@ class PropertyRepository extends Repository {
                 : [Facility];
 
         let bedsInRoomOption =
-            filter.queen_bed || filter.full_bed //we don't send full bad type yet
+            filter.queen_bed ||
+            filter.Full_bed ||
+            filter.Twin_bed ||
+            filter.King_bed
                 ? {
                       model: BedInRoom,
+                      required: true,
                       where: {
                           count: { $gte: filter.bedsCount },
                           bedTypeId: {
-                              $in: [this.getBedTypeId(filter.queen_bed)]
+                              $in: [
+                                  this.getBedTypeId(filter.queen_bed),
+                                  this.getBedTypeId(filter.Full_bed),
+                                  this.getBedTypeId(filter.Twin_bed),
+                                  this.getBedTypeId(filter.King_bed)
+                              ]
                           }
                       }
                   }
@@ -335,6 +463,29 @@ class PropertyRepository extends Repository {
                       }
                   };
 
+        let roomTypePriceOption =
+            filter.US0_US30 ||
+            filter.US30_US60 ||
+            filter.US60_US90 ||
+            filter.US90
+                ? {
+                      model: RoomType,
+                      required: true,
+                      RoomTypeId: {
+                          $in: [
+                              this.getBedTypeId(filter.US0_US30),
+                              this.getBedTypeId(filter.US30_US60),
+                              this.getBedTypeId(filter.US60_US90),
+                              this.getBedTypeId(filter.US90)
+                          ]
+                      }
+                  }
+                : {
+                      model: BedInRoom,
+                      where: {
+                          count: { $gte: filter.bedsCount }
+                      }
+                  };
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
 
         return this.model
@@ -345,16 +496,7 @@ class PropertyRepository extends Repository {
                     id: { $in: filter.propertiesIds }
                 },
                 distinct: true,
-                // order: Sequelize.literal(
-                //     "(" +
-                //         filter.propertiesIds
-                //             .map(function(id) {
-                //                 return '"property"."id" = \'' + id + "'";
-                //             })
-                //             .join(", ") +
-                //         ") DESC"
-                // ),
-                 order: sortingOption,
+                order: sortingOption,
                 include: [
                     {
                         model: City
@@ -367,7 +509,15 @@ class PropertyRepository extends Repository {
                     },
                     {
                         model: FacilityList,
+                        required: true,
                         include: facilityOption
+
+                        //     [
+                        //     {
+                        //         model: Facility,
+                        //         where: { id: { $in: [5] } },
+                        //     }
+                        // ]
                     },
 
                     {
@@ -466,7 +616,7 @@ class PropertyRepository extends Repository {
     getUserPropertiesInfo(id) {
         return this.model.findAll({
             where: {
-                userId: 1
+                userId: id
             },
             include: [
                 {
@@ -482,8 +632,18 @@ class PropertyRepository extends Repository {
                         },
                         {
                             model: Availability
+                        },
+                        {
+                            model: RoomType
                         }
                     ]
+                },
+                {
+                    model: Image,
+                    attributes: ["id", "url", "propertyId", "roomId"]
+                },
+                {
+                    model: Review
                 }
             ]
         });

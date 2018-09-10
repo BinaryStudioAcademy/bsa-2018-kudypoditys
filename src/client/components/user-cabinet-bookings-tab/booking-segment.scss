@@ -1,5 +1,48 @@
 .booking-container {
-    padding: 20px 5px 0 5px;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+}
+
+.booking--left-section {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.booking-info {
+    margin-left: 10px;
+    color: #465672;
+}
+
+.booking-info p {
+    margin: 10px;
+}
+
+.booking-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.booking-buttons button {
+    width: fit-content !important;
+}
+
+.booking--right-section {
+    color: #465672;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.booking--right-section div.ui.grid {
+    padding: 5px;
+}
+
+.booking--right-section .check-date {
+    padding: 5px 10px !important;
+    width: fit-content !important;
 }
 
 .booking {

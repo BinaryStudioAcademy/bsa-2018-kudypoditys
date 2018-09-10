@@ -35,7 +35,13 @@
     opacity: 0.8;
     width: 230px !important;
 }
+.DateRangePickerInput__withBorder {
+    border-radius: 2px;
+    border: 0;
 
+    border-left: 1px solid #dbdbdb;
+
+}
 .search--view-bar {
     width: 1050px;
     //max-width: 1050px !important;
