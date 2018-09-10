@@ -26,6 +26,7 @@ export class PropertyRegistration extends React.Component {
 
     handleTabChange = (e, { activeIndex }) => {
         this.setState({ activeIndex });
+        window.scrollTo(0, 0);
     }
 
     nextTab = (data) => {
