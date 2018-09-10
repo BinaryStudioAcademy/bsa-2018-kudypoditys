@@ -276,10 +276,6 @@ class PropertyRepository extends Repository {
             case "Fitness_spa_locker_rooms":
                 facilityId = 1; //id from seed
                 break;
-            // case 'Queen_bed':
-            //     facilityId = 3;
-            //     break;
-            case "Dogs":
             case "Dogs":
                 facilityId = 5;
                 break;
@@ -337,25 +333,25 @@ class PropertyRepository extends Repository {
         }
         return bedTypeId;
     }
-    getRoomTypePriceId(roomTypePriceStr) {
-        let roomTypeTypeId;
-        switch (roomTypePriceStr) {
-            case "Queen_bed":
-                roomTypeTypeId = 3;
+    getPriceRange(priceRangeStr) {
+        let priceRange;
+        switch (priceRangeStr) {
+            case "US0_US30":
+                priceRange = [0, 30];
                 break;
-            case "Full_bed":
-                roomTypeTypeId = 2;
+            case "US30_US60":
+                priceRange = [30, 60];
                 break;
-            case "Twin_bed":
-                roomTypeTypeId = 1;
+            case "US60_US90":
+                priceRange = [60, 90];
                 break;
-            case "King_bed":
-                roomTypeTypeId = 4;
+            case "US90":
+                priceRange = [90, 10000000];
                 break;
             default:
-                roomTypeTypeId = -1;
+                priceRange = [0];
         }
-        return roomTypeTypeId;
+        return priceRange;
     }
     getFilteredProperties(filter) {
         console.log("filter " + JSON.stringify(filter));
@@ -392,8 +388,9 @@ class PropertyRepository extends Repository {
                         ") DESC"
                 );
         }
+        //
 
-        let facilityOption =
+        let fo =
             filter.dogs !== "" ||
             filter.fitness_spa_locker_rooms !== "" ||
             filter.full_body_massage !== "" ||
@@ -404,12 +401,12 @@ class PropertyRepository extends Repository {
             filter.live_sport_events !== "" ||
             filter.themed_dinner_nights !== "" ||
             filter.movie_nights !== ""
-                ? [
-                      {
-                          model: Facility,
-                          required: true,
-                          where: {
-                              id: [
+                ? {
+                      model: FacilityList,
+                      required: true,
+                      where: {
+                        facilityId: {
+                              $and: [
                                   this.getFacilityId(filter.dogs),
                                   this.getFacilityId(
                                       filter.fitness_spa_locker_rooms
@@ -429,12 +426,13 @@ class PropertyRepository extends Repository {
                                       filter.themed_dinner_nights
                                   ),
                                   this.getFacilityId(filter.movie_nights)
-                              ]
-                          },
-                          include: { model: FacilityCategory }
-                      }
-                  ]
-                : [Facility];
+                              ].filter(id=>id!==-1)
+                          }
+                      },
+                      include:[  Facility],
+                       required: true,
+                  }
+                : { model: FacilityList };
 
         let bedsInRoomOption =
             filter.queen_bed ||
@@ -463,29 +461,21 @@ class PropertyRepository extends Repository {
                       }
                   };
 
-        let roomTypePriceOption =
-            filter.US0_US30 ||
-            filter.US30_US60 ||
-            filter.US60_US90 ||
-            filter.US90
+        let roomPriceOption =
+            filter.US0_US30 !== "" ||
+            filter.US30_US60 !== "" ||
+            filter.US60_US90 !== "" ||
+            filter.US90 !== ""
                 ? {
-                      model: RoomType,
-                      required: true,
-                      RoomTypeId: {
-                          $in: [
-                              this.getBedTypeId(filter.US0_US30),
-                              this.getBedTypeId(filter.US30_US60),
-                              this.getBedTypeId(filter.US60_US90),
-                              this.getBedTypeId(filter.US90)
-                          ]
-                      }
+                      $or: [
+                          { $between: this.getPriceRange(filter.US0_US30) },
+                          { $between: this.getPriceRange(filter.US30_US60) },
+                          { $between: this.getPriceRange(filter.US60_US90) },
+                          { $between: this.getPriceRange(filter.US90) }
+                      ]
                   }
-                : {
-                      model: BedInRoom,
-                      where: {
-                          count: { $gte: filter.bedsCount }
-                      }
-                  };
+                : { $between: [0, 1000000] };
+
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
 
         return this.model
@@ -507,23 +497,14 @@ class PropertyRepository extends Repository {
                     {
                         model: Review
                     },
-                    {
-                        model: FacilityList,
-                        required: true,
-                        include: facilityOption
-
-                        //     [
-                        //     {
-                        //         model: Facility,
-                        //         where: { id: { $in: [5] } },
-                        //     }
-                        // ]
-                    },
+                    fo,
 
                     {
                         model: Room,
+                        required: true,
                         where: {
-                            amount: { $gte: filter.rooms }
+                            amount: { $gte: filter.rooms },
+                            price: roomPriceOption
                         },
                         include: [
                             RoomType,
@@ -596,9 +577,14 @@ class PropertyRepository extends Repository {
                     {
                         model: Review
                     },
+                    // {
+                    //     model: FacilityList,
+                    //     required: true,
+                    // },
+
                     {
                         model: Room,
-                        required: true,
+
                         include: [
                             { model: RoomType },
                             {
