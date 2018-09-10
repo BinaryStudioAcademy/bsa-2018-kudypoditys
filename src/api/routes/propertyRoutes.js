@@ -71,8 +71,8 @@ property
     .get((req, res) => {
         propertyService
             .findById(req.params.id)
-            .then(property => {
-                res.send(property);
+            .then(response => {
+                res.send(response);
             })
             .catch(err => {
                 res.status(404).send(err.message);

@@ -47,6 +47,7 @@ export class MainSearch extends React.Component {
                 }
             );
         }
+        console.log(this.state.adults)
     }
     resetComponent = () =>
         this.setState({ isLoading: false, results: [], value: "" });
@@ -211,6 +212,7 @@ export class MainSearch extends React.Component {
         }
     };
     onAdultsSelected = count => {
+        console.log(count)
         this.setState({ adults: count });
         this.props.onAdultsChange(count);
     };
@@ -264,6 +266,9 @@ export class MainSearch extends React.Component {
             adults,
             children
         } = this.state;
+
+
+        console.log(typeof(adults))
         // console.log("props!!!=" + JSON.stringify(this.props));
         if (this.props.search.data !== undefined) {
             const { data } = this.props.search;
@@ -351,7 +356,8 @@ export class MainSearch extends React.Component {
                                         selection
                                         name="rooms"
                                         options={selectOptionsRooms}
-                                        value={rooms}
+                                        value={JSON.parse(rooms)}
+
                                         onChange={(event, input) =>
                                             this.onRoomsSelected(input.value)
                                         }
@@ -368,7 +374,8 @@ export class MainSearch extends React.Component {
                                         selection
                                         name="adults"
                                         options={selectOptionsAdults}
-                                        value={adults}
+                                        value={JSON.parse(adults)}
+
                                         onChange={(event, input) =>
                                             this.onAdultsSelected(input.value)
                                         }
@@ -385,7 +392,7 @@ export class MainSearch extends React.Component {
                                         selection
                                         name="children"
                                         options={childrenOptions}
-                                        value={children}
+                                        value={JSON.parse(children)}
                                         onChange={(event, input) =>
                                             this.onChildrenSelected(input.value)
                                         }
