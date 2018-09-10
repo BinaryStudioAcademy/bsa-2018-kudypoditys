@@ -189,13 +189,15 @@ export class SettingsForm extends Component {
                     imgExtension={[".jpg", ".gif", ".png", ".gif"]}
                     maxFileSize={5242880}
                 />
-                <Button
-                    primary
-                    className="avatar_del_btn"
-                    onClick={this.props.avatarDelete}
-                >
-                    Delete
-                </Button>
+                {this.props.avatar ? (
+                    <Button
+                        primary
+                        className="avatar_del_btn"
+                        onClick={this.props.avatarDelete}
+                    >
+                        Delete
+                    </Button>
+                ) : null}
             </div>
         );
         return (
@@ -281,7 +283,7 @@ export class SettingsForm extends Component {
                     <Field
                         component={inputField}
                         name="phoneNumber"
-                        label="Phone number"
+                        label="Phone number ex.8095XXXXXX"
                         type="tel"
                         min={4}
                         max={16}
@@ -303,6 +305,7 @@ export class SettingsForm extends Component {
                         placeholder={this.props.address}
                         name="address"
                         options={{
+                            language: "en",
                             type: "address"
                         }}
                         onChange={({ suggestion }) =>
@@ -343,7 +346,7 @@ export class SettingsForm extends Component {
                         defaultValue={this.props.preferredCurrency}
                         options={currencyOptions}
                     />
-                    <p className="personal_settings-p">Password</p>
+                    <p className="personal_settings-p">Old password</p>
                     <Field
                         component={inputField}
                         name="oldPassword"
@@ -357,7 +360,7 @@ export class SettingsForm extends Component {
                         validate={[password]}
                         onChange={e => this.handleChange(e, e.target)}
                     />
-
+                    <p className="personal_settings-p">New password</p>
                     <Field
                         component={inputField}
                         name="newPassword"
@@ -371,14 +374,29 @@ export class SettingsForm extends Component {
                         validate={[password, minLength8]}
                         onChange={e => this.handleChange(e, e.target)}
                     />
+                    <p className="personal_settings-p" />
                     <Button primary onClick={this.hadleChangePassword}>
                         <Icon name="erase" />
                         Change password
                     </Button>
-                    {this.props.passwordMessage}
+                    <p className="personal_settings-p" />
+                    <p
+                        className="password_message_p"
+                        style={
+                            this.props.userPasswordError
+                                ? { color: "red" }
+                                : { color: "green" }
+                        }
+                    >
+                        {this.props.passwordMessage}{" "}
+                    </p>
                 </Segment>
                 <Segment>
-                    <Button primary onClick={this.sendSettings}>
+                    <Button
+                        attached="right"
+                        primary
+                        onClick={this.sendSettings}
+                    >
                         <Icon name="save outline" />
                         Save
                     </Button>

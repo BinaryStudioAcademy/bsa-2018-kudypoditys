@@ -33,7 +33,6 @@ export function cancelBooking(booking) {
 }
 
 export function getUserReviews(data) {
-    console.log(data)
     return {
         type: GET_USER_REVIEWS,
         payload: data

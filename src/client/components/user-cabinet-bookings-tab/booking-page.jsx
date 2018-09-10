@@ -1,19 +1,16 @@
 import React from "react";
 import {
     Container,
-    Header,
-    Image,
     Button,
     Modal,
     Icon,
-    Table,
     Divider,
     Confirm
 } from "semantic-ui-react";
 import { Slider } from "../slider";
 import moment from "moment";
 import "./booking-page.scss";
-import BasicMapWidget from "../basic-map-widget";
+// import BasicMapWidget from "../basic-map-widget";
 import {
     getGroupedArray,
     getAvgFromArray
@@ -29,6 +26,8 @@ export class BookingPage extends React.Component {
     cancelBooking = (event, booking) => {
         this.props.cancelBooking(booking);
     };
+    handleCancel = () => this.setState({ open: false });
+
     render() {
         const { booking, images } = this.props;
         const { orderCode } = this.props.booking;
@@ -123,6 +122,13 @@ export class BookingPage extends React.Component {
                         </p>
                     </div>
                 </div>
+                <Confirm
+                    open={this.state.open}
+                    onCancel={this.handleCancel}
+                    header="Cancel reservation"
+                    content="Are you sure you want to cancel your reservation?"
+                    onConfirm={event => this.handleConfirm(booking)}
+                />
                 <div className="property-images">
                     <Slider pics={images} />
                 </div>

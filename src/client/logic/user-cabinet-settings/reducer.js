@@ -4,7 +4,8 @@ import {
     USER_SETTINGS_SEND_SUCCES,
     USER_AVATAR_DELETE,
     UPLOAD_USER_AVATAR,
-    USER_PASSWORD_CHANGE_SUCCESS
+    USER_PASSWORD_CHANGE_SUCCESS,
+    USER_PASSWORD_CHANGE_FAILURE
 } from "./actionTypes";
 import { GET_CURRENT_USER_SUCCESS } from "../login/actionTypes";
 import defaultState from "client/logic/defaultState";
@@ -54,7 +55,16 @@ export default function userSettingsReducer(
         case USER_PASSWORD_CHANGE_SUCCESS: {
             return {
                 ...state,
-                passwordMessage: action.payload
+                passwordMessage: action.payload,
+                userPasswordError: false
+            };
+        }
+
+        case USER_PASSWORD_CHANGE_FAILURE: {
+            return {
+                ...state,
+                passwordMessage: action.payload,
+                userPasswordError: true
             };
         }
 
