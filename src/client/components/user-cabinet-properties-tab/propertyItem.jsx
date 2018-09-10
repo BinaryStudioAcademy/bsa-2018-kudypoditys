@@ -160,6 +160,7 @@ export class PropertyItem extends React.Component {
                                 <Button
                                     className="property-page__main-button"
                                     floated="right"
+                                    primary
                                     onClick={this.props.viewProperty}
                                 >
                                     Details
