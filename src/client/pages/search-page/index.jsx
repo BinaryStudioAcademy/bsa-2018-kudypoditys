@@ -1,16 +1,16 @@
-import React from 'react';
-import './index.scss';
-import { Container, Segment, Icon, Button, Image } from 'semantic-ui-react';
-import SearchSummary from 'client/components/search-summary';
-import RankingBar from 'client/components/ranking-bar';
-import PropertyListItem from 'client/components/property-list-item';
-import Pagination from 'client/components/pagination';
-import Header from 'client/components/header';
-import QuickFilter from 'client/components/quick-filter';
-import MapGlobalWidget from 'client/components/map-global-widget';
-import { connect } from 'react-redux';
-import { mapStateToProps } from './container';
-import sorry from './img/nothing.png';
+import React from "react";
+import "./index.scss";
+import { Container, Segment, Icon, Button, Image } from "semantic-ui-react";
+import SearchSummary from "client/components/search-summary";
+import RankingBar from "client/components/ranking-bar";
+import PropertyListItem from "client/components/property-list-item";
+import Pagination from "client/components/pagination";
+import Header from "client/components/header";
+import QuickFilter from "client/components/quick-filter";
+import MapGlobalWidget from "client/components/map-global-widget";
+import { connect } from "react-redux";
+import { mapStateToProps } from "./container";
+import sorry from "./img/nothing.png";
 class SearchPage extends React.Component {
     constructor(props) {
         super(props);
@@ -25,25 +25,30 @@ class SearchPage extends React.Component {
                 {
                     coordinates: {
                         lat: 49.837089,
-                        lng: 24.021161,
-                    },
-                },
-            ],
+                        lng: 24.021161
+                    }
+                }
+            ]
         };
     }
     handleSearchResults = searchData => {
         let properties = searchData.searchResults.properties.filter(
-            property => property !== null,
+            property => property !== null
         );
+
         const listItems = properties.map(property => (
-            <PropertyListItem key={property.id} propertyItemData={property} />
+            <PropertyListItem
+                key={property.id}
+                propertyItemData={property}
+                itemIndex={properties.indexOf(property)}
+            />
         ));
 
         this.setState({
             listItems: listItems,
             itemCount: searchData.searchResults.propertiesCount,
             searchRequest: searchData.searchRequest,
-            properties: searchData.searchResults.properties,
+            properties: searchData.searchResults.properties
         });
 
         let tempArr = [];
@@ -55,13 +60,13 @@ class SearchPage extends React.Component {
                 name: i.name,
                 coordinates: {
                     lat: i.coordinates.lat,
-                    lng: i.coordinates.lng,
+                    lng: i.coordinates.lng
                 },
                 latitude: i.coordinates.lat,
                 longitude: i.coordinates.lng,
                 imageSrc: i.images[0].url,
                 address: i.address,
-                rating: i.rating,
+                rating: i.rating
             });
         });
 
@@ -70,25 +75,31 @@ class SearchPage extends React.Component {
         //     longitude: properties[0].coordinates.lng,
         // }
         //
-       if (properties) {
-        localStorage.setItem('lastPositionLat', properties[0].coordinates.lat);
-        localStorage.setItem('lastPositionLng', properties[0].coordinates.lng);
-           }
+        if (properties) {
+            localStorage.setItem(
+                "lastPositionLat",
+                properties[0] ? properties[0].coordinates.lat : 0
+            );
+            localStorage.setItem(
+                "lastPositionLng",
+                properties[0] ? properties[0].coordinates.lng : 0
+            );
+        }
 
         this.setState({ mapProp: tempArr });
     };
-      handleList_Map = (e, data) => {
+    handleList_Map = (e, data) => {
         this.setState({
-            switch: data.value,
+            switch: data.value
         });
-        localStorage.setItem('switch', data.value);
+        localStorage.setItem("switch", data.value);
     };
     render() {
         const active = this.state.switch;
-       const LastStartPosition = {
-           latitude: JSON.parse(localStorage.getItem('lastPositionLat')),
-           longitude: JSON.parse(localStorage.getItem('lastPositionLng')),
-       }
+        const LastStartPosition = {
+            latitude: JSON.parse(localStorage.getItem("lastPositionLat")),
+            longitude: JSON.parse(localStorage.getItem("lastPositionLng"))
+        };
         return (
             <div className="mock">
                 <Header
@@ -105,7 +116,7 @@ class SearchPage extends React.Component {
 
                         <div
                             style={{
-                                marginTop: '4%',
+                                marginTop: "4%"
                             }}
                         />
                     </Container>
@@ -142,36 +153,51 @@ class SearchPage extends React.Component {
                                 </Button>
                             </div>
                         </div>
-                        {this.state.itemCount === 0 ? <div><Image style={{paddingTop: 50}} src={sorry} size='medium' centered /> <div className="sorry" >Sorry, no properties found</div> </div> :
+                        {this.state.itemCount === 0 ? (
+                            <div>
+                                <Image
+                                    style={{ paddingTop: 50 }}
+                                    src={sorry}
+                                    size="medium"
+                                    centered
+                                />{" "}
+                                <div className="sorry">
+                                    Sorry, no properties found
+                                </div>{" "}
+                            </div>
+                        ) : (
                             <div>
                                 {this.state.switch === LIST ? (
                                     <div>
                                         <RankingBar
                                             key="RankingBar"
-                                            searchRequest={this.state.searchRequest}
-                                            onSortingSelected={this.onSortingSelected}
+                                            searchRequest={
+                                                this.state.searchRequest
+                                            }
+                                            onSortingSelected={
+                                                this.onSortingSelected
+                                            }
                                         />
                                         {this.state.listItems}
                                     </div>
                                 ) : (
                                     <div
                                         className="search_page__globalMap"
-                                        style={{marginTop: 20}}
+                                        style={{ marginTop: 20 }}
                                     >
                                         <MapGlobalWidget
                                             properties={this.state.mapProp}
                                             startPosition={
                                                 this.state.mapProp.length
                                                     ? {
-                                                        latitude: this.state
-                                                            .mapProp[0].coordinates
-                                                            .lat,
-                                                        longitude: this.state
-                                                            .mapProp[0].coordinates
-                                                            .lng,
-                                                    }
+                                                          latitude: this.state
+                                                              .mapProp[0]
+                                                              .coordinates.lat,
+                                                          longitude: this.state
+                                                              .mapProp[0]
+                                                              .coordinates.lng
+                                                      }
                                                     : LastStartPosition
-
                                             }
                                             zoom={13}
                                             controlEnable={true}
@@ -181,12 +207,14 @@ class SearchPage extends React.Component {
                                 {this.state.switch === LIST ? (
                                     <div className="search-page__pagination">
                                         <Pagination
-                                            pagesCount={this.state.itemCount / 5}
+                                            pagesCount={
+                                                this.state.itemCount / 5
+                                            }
                                         />
                                     </div>
                                 ) : null}
                             </div>
-                        }
+                        )}
                     </Container>
                 </div>
             </div>
@@ -195,8 +223,8 @@ class SearchPage extends React.Component {
 }
 
 const SWITCH_VALUE = {
-    LIST: 'list',
-    MAP: 'map',
+    LIST: "list",
+    MAP: "map"
 };
 const { LIST, MAP } = SWITCH_VALUE;
 

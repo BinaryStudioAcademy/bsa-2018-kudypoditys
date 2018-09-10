@@ -9,7 +9,7 @@ import history from "client/history";
 import queryString from "query-string";
 // import Checkbox from './Checkbox';
 
-import { ratingScore, facilities, bedTypes } from "./filters";
+import { ratingScore,  bedTypes,priceScore,bedsType } from "./filters";
 
 class Quickfilter extends React.Component {
     constructor() {
@@ -30,7 +30,7 @@ class Quickfilter extends React.Component {
         if (history.location.search !== "") {
             let searchRequest = queryString.parse(history.location.search);
             const item = data.name;
-            const value = data.checked?data.value:""
+            const value = data.checked ? data.value : "";
             this.props.selectFilter({ ...searchRequest, ...{ [item]: value } });
         }
     };
@@ -50,8 +50,9 @@ class Quickfilter extends React.Component {
     }
     render() {
         const list1 = this.drawBoxes(ratingScore);
-
-        const list3 = this.drawBoxes(bedTypes);
+        const list2= this.drawBoxes(priceScore);
+        const list3= this.drawBoxes(bedTypes);
+        const list4= this.drawBoxes(bedsType);
 
         return (
             <div className="box">
@@ -60,14 +61,15 @@ class Quickfilter extends React.Component {
                 </div>
 
                 <p className="box_group">Facility</p>
-                {/*{list2}*/}
-                <List>{list3}</List>
-                {/* <p className="box_group">Review Score</p>
-                {/*{list1}*/}
-                {/* <p className="box_group">Bed Types</p>
-                {list3} */}
 
-                {/* <List>{list1}</List> */}
+                <List>{list3}</List>
+                <p className="box_group">Bed types</p>
+
+                <List>{list4}</List>
+                <p className="box_group">Rating</p>
+                <List>{list1}</List>
+                 <p className="box_group">Price</p>
+                 <List>{list2}</List>
             </div>
         );
     }
