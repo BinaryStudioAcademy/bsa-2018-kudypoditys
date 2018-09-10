@@ -9,7 +9,9 @@
 
 div.booking-property-wrp {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto 20px auto;
 }
 
 .property-info {

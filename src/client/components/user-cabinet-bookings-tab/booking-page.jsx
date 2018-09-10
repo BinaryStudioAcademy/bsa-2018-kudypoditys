@@ -46,7 +46,7 @@ export class BookingPage extends React.Component {
             "avgReview"
         );
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
-        const pStyle = { marginLeft: "10px" };
+        const pStyle = { marginLeft: "10px", marginBottom: "7px" };
 
         return (
             <Container>
@@ -64,14 +64,6 @@ export class BookingPage extends React.Component {
                 </a>
                 <Divider />
                 <div className="booking-property-wrp">
-                    <BasicMapWidget
-                        key="BasicMapWidget"
-                        properties={[property]}
-                        coordinates={property.coordinates}
-                        controlEnable={false}
-                        rounded
-                        centered
-                    />
                     <div className="property-info">
                         <PropertySummary
                             rating={avgPropRating}
@@ -84,9 +76,9 @@ export class BookingPage extends React.Component {
                         </p>
                         <p style={pStyle}>
                             <Icon name="calendar alternate" />
-                            {moment(booking.dateIn).format("ddd, MMMM DD") +
+                            {moment(booking.dateIn).format("MMMM DD, YYYY") +
                                 " - " +
-                                moment(booking.dateOut).format("ddd, MMMM DD")}
+                                moment(booking.dateOut).format("MMMM DD, YYYY")}
                         </p>
                         <p style={pStyle}>
                             <Icon name="bed" />
