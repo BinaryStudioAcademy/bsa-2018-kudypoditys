@@ -16,14 +16,22 @@ class RatingBlock extends React.Component {
         const ratingColor = getPropertyColor(avgPropRating);
         console.log(avgPropRating);
         return (
-            <div className="rating_block">
+            <div
+                className="rating_block"
+                style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center"
+                }}
+            >
                 <div
                     className="rating_status"
                     style={{
                         textAlign: "center",
                         display: "flex",
                         flexDirection: "column",
-                        paddingRight: 10
+                        paddingRight: 10,
+                        paddingTop: 0
                     }}
                 >
                     <div className="ratingName"> {ratingStatus}</div>
