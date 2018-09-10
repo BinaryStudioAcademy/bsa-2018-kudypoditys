@@ -4,7 +4,6 @@ import {
 
 
 export function sendVerificationData() {
-    console.log("verify dispatched");
     return {
         type: VERIFICATION_DATA_SEND
     }
