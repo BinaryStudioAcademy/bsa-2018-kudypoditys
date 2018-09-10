@@ -21,7 +21,6 @@ export class PropertySummary extends React.Component {
                     <Header
                         as="h1"
                         style={{
-                            fontSize: 23,
                             padding: 0,
                             lineHeight: 1.2,
                             color: "#465672",
