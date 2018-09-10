@@ -74,9 +74,10 @@
     box-shadow: none;
     padding: 4px 0 10px;
     font-size: 14px;
+    text-decoration: underline;
 }
 
-.button.searchMapButton:hover {
+.ui.button.searchMapButton:hover {
     background: #fff !important;
     color: #005dff !important;
     -webkit-box-shadow: none;
