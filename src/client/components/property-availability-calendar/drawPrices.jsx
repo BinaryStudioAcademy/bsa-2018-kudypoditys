@@ -10,10 +10,10 @@ export class DrawPrices extends React.Component {
             inputs.push(
                 <Table.Cell key={index}>
                     <Input
-                        // name={this.props.days[index].fullDate}
+                        name={index}
                         className={"table-price"}
                         size={"mini"}
-                        value={this.props.price}
+                        value={this.props.availability[index].price}
                         onChange={this.props.onPriceChange}
                     />
                 </Table.Cell>

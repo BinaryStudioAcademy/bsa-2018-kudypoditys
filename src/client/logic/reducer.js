@@ -66,7 +66,7 @@ export default combineReducers({
     countries,
     languages,
     facilities,
-    // availabilityCalendar,
+    availabilityCalendar,
     paymentTypes,
     roomTypes,
     bedTypes,

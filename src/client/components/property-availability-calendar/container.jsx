@@ -21,9 +21,6 @@ export function mapDispatchToProps(dispatch) {
         },
         handleUpdate(data) {
             dispatch(calendarUpdate(data));
-        },
-        fetchUserInfo(id) {
-            dispatch(getUserpropertiesInfo(id));
         }
     };
 }

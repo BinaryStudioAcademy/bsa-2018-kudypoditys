@@ -2,7 +2,7 @@ import React from "react";
 import { Tab, Button } from "semantic-ui-react";
 import { ReviewsTab } from "./reviewsTab";
 import AvailabilityCalendar from "client/components/property-availability-calendar";
-import { Segment, Icon } from "semantic-ui-react";
+import { Segment, Icon, Divider } from "semantic-ui-react";
 
 export class PropertyPage extends React.Component {
     panes = [
@@ -14,10 +14,7 @@ export class PropertyPage extends React.Component {
             menuItem: "Availability calendar",
             render: () => (
                 <Tab.Pane attached={false}>
-                    <AvailabilityCalendar
-                        userId={this.props.property.userId}
-                        {...this.props.property}
-                    />
+                    <AvailabilityCalendar />
                     <Button
                         floated="left"
                         icon
@@ -54,9 +51,10 @@ export class PropertyPage extends React.Component {
                 >
                     <span>
                         <Icon name="triangle left" />
-                        Back to all bookings
+                        Back to all properties
                     </span>
                 </a>
+                <Divider />
                 <Tab
                     menu={{ secondary: true, pointing: true }}
                     panes={this.panes}

@@ -11,35 +11,58 @@ import moment from "moment";
 import "./index.scss";
 
 export class AvailabilityCalendar extends React.Component {
-    constructor() {
-        super();
-        this.state = { add: [], update: [] };
-    }
-
     submitHandle = data => {
         console.log("Submit");
     };
 
-    roomAmountChanged = (e, { name, value, defaultValue }) => {
-        // console.log(e);
-        // console.log(name);
-        console.log(defaultValue);
-        console.log(value);
-        // if (this.props[0].rooms[0].amount !== defaultValue) {
-        // } else {
-        //     console.log("ADD");
-        //     this.setState({
-        //         add: [
-        //             ...this.state.add,
-        //             {
-        //                 id: this.props[0].rooms[0].id,
-        //                 propertyId: this.props[0].id,
-        //                 amount: value,
-        //                 availabilityStart: name
-        //             }
-        //         ]
-        //     });
-        // }
+    // roomAmountChanged = (e, { name, value, defaultValue }) => {
+    //     // console.log(e);
+    //     // console.log(name);
+    //     console.log(defaultValue);
+    //     console.log(value);
+    //     // if (this.props[0].rooms[0].amount !== defaultValue) {
+    //     // } else {
+    //     //     console.log("ADD");
+    //     //     this.setState({
+    //     //         add: [
+    //     //             ...this.state.add,
+    //     //             {
+    //     //                 id: this.props[0].rooms[0].id,
+    //     //                 propertyId: this.props[0].id,
+    //     //                 amount: value,
+    //     //                 availabilityStart: name
+    //     //             }
+    //     //         ]
+    //     //     });
+    //     // }
+    // };
+
+    componentWillMount() {
+        // this.props.fetchUserInfo(this.props.userId);
+    }
+
+    handleAmountChange = (e, { name, value }) => {
+        // console.log("Change", e, "\n");
+        // console.log("E");
+        // console.log("name = ", name);
+        // console.log("value = ", value);
+        // console.log("avail = ", this.props.rooms[0]);
+        const data = this.props.rooms[0].availabilities[name];
+        data.amount = value;
+
+        this.props.handleUpdate(data);
+    };
+
+    handlePriceChange = (e, { name, value }) => {
+        // console.log("Change", e, "\n");
+        // console.log("E");
+        // console.log("name = ", name);
+        // console.log("value = ", value);
+        // console.log("avail = ", this.props.rooms[0]);
+        const data = this.props.rooms[0].availabilities[name];
+        data.price = value;
+
+        this.props.handleUpdate(data);
     };
 
     getDaysArrayByMonth() {
@@ -60,10 +83,6 @@ export class AvailabilityCalendar extends React.Component {
             daysInMonth--;
         }
         return arrDays.reverse();
-    }
-
-    componentWillMount() {
-        // this.props.fetchUserInfo(this.props.userId);
     }
 
     render() {
@@ -89,17 +108,20 @@ export class AvailabilityCalendar extends React.Component {
                         </Table.Header>
 
                         <Table.Body style={{ textAlign: "center" }}>
-                            <Table.Row>
+                            {/* <Table.Row>
                                 <Table.Cell collapsing>Room status</Table.Cell>
                                 <DrawStatus />
-                            </Table.Row>
+                            </Table.Row> */}
                             <Table.Row>
                                 <Table.Cell collapsing>
                                     Number of rooms
                                 </Table.Cell>
                                 <DrawCount
-                                    onAmountChange={this.roomAmountChanged}
-                                    amount={this.props.rooms[0].amount}
+                                    onAmountChange={this.handleAmountChange}
+                                    // amount={this.props.rooms[0].amount}
+                                    availability={
+                                        this.props.rooms[0].availabilities
+                                    }
                                     days={daysArray}
                                 />
                             </Table.Row>
@@ -115,7 +137,12 @@ export class AvailabilityCalendar extends React.Component {
                             </Table.Row>
                             <Table.Row>
                                 <Table.Cell collapsing>Price</Table.Cell>
-                                <DrawPrices price={this.props.rooms[0].price} />
+                                <DrawPrices
+                                    availability={
+                                        this.props.rooms[0].availabilities
+                                    }
+                                    onPriceChange={this.handlePriceChange}
+                                />
                             </Table.Row>
                         </Table.Body>
                         <Table.Footer fullWidth>

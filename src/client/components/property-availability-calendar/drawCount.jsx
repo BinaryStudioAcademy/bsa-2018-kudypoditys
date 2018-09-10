@@ -6,14 +6,15 @@ const count = 30;
 export class DrawCount extends React.Component {
     listItems = () => {
         let inputs = [];
+        console.log("List items = ", this.props);
         for (let index = 0; index < count; index++) {
             inputs.push(
                 <Table.Cell key={index}>
                     <Input
-                        name={this.props.days[index].fullDate}
+                        name={index}
                         className={"table-rooms-input"}
                         size={"mini"}
-                        value={this.props.amount}
+                        value={this.props.availability[index].amount}
                         onChange={this.props.onAmountChange}
                     />
                 </Table.Cell>

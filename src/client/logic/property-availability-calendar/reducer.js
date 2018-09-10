@@ -5,10 +5,9 @@ import {
     GET_CURRENT_USER_INFO_SUCCESS
 } from "./actionTypes";
 
-export default function availabilityCalendarReducer(
-    state = defaultState.availabilityCalendar,
-    action
-) {
+import { CHOOSE_PROPERTY } from "../user-cabinet-properties-tab/actionTypes";
+
+export default function availabilityCalendarReducer(state = {}, action) {
     switch (action.type) {
         case PROPERTY_CALENDAR_UPDATE: {
             return {
@@ -23,6 +22,13 @@ export default function availabilityCalendarReducer(
             };
         }
         case GET_CURRENT_USER_INFO_SUCCESS: {
+            return {
+                ...state,
+                property: action.payload
+            };
+        }
+
+        case CHOOSE_PROPERTY: {
             return {
                 ...state,
                 ...action.payload
