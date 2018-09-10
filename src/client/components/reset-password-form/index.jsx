@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import history from 'client/history';
 import {
-  Button, Form, Header, Grid, Segment
+  Button, Form, Header, Segment, Container, Icon
 } from "semantic-ui-react";
 import { Field, reduxForm } from 'redux-form';
 
@@ -16,11 +17,20 @@ class ResetPasswordForm extends Component {
     } = this.props;
 
     return (
-      <Grid centered columns={3}>
-        <Grid.Column textAlign="center">
-          <Header as="h1">Reset password</Header>
-          <Form onSubmit={handleSubmit} loading={loading}>
-            <Segment stacked secondary>
+      <Container text>
+        <Header
+          textAlign="center"
+          style={{
+            cursor: "default",
+            color: "white",
+            fontSize: "26px"
+          }}
+        >
+          Reset Password
+                </Header>
+        <Segment className="registartion_form-wrapper" padded='very' raised >
+          <Form onSubmit={handleSubmit} loading={loading} id="reset-password-form">
+            <div className="field-wrapper">
               <Field
                 style={{ marginTop: "5%" }}
                 name="password"
@@ -29,9 +39,11 @@ class ResetPasswordForm extends Component {
                 label="Password"
                 validate={[required, password, minLength8]}
                 icon="lock"
-                className=""
+                pointing="left"
                 iconPosition="left"
               />
+            </div>
+            <div className="field-wrapper">
               <Field
                 style={{ marginTop: "5%" }}
                 name="repeatPassword"
@@ -40,14 +52,37 @@ class ResetPasswordForm extends Component {
                 label="Repeat password"
                 validate={[required, isEqualToPassword]}
                 icon="lock"
-                className=""
+                pointing="left"
                 iconPosition="left"
               />
-              <Button positive type="submit" disabled={pristine || submitting}>Reset</Button>
-            </Segment>
+            </div>
+            <div className="btn-wrapper">
+              <Button
+                className="auth_btn"
+                type="button"
+                color='blue'
+                icon
+                labelPosition='left'
+                onClick={() => history.push('/')}>
+                <Icon name='left arrow' />
+                Home</Button>
+              <Button
+                className="auth_btn"
+                type="submit"
+                name="register"
+                disabled={submitting || pristine}
+                icon
+                color='blue'
+                labelPosition='right'>
+                Reset
+                    <Icon name='right arrow' />
+              </Button>
+
+
+            </div>
           </Form>
-        </Grid.Column>
-      </Grid>
+        </Segment>
+      </Container>
     );
   }
 }
