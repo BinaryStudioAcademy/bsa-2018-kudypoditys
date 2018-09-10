@@ -14,7 +14,7 @@ class SimpleModal extends Component {
     const { header, content, buttons, open } = this.props;
 
     return (
-      <Modal dimmer={'blurring'} open={open}>
+      <Modal dimmer={'blurring'} open={open} style={{ maxWidth: '500px' }}>
         <Modal.Header>{header}</Modal.Header>
         <Modal.Content>
           <p>{content}</p>

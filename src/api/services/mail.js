@@ -9,7 +9,7 @@ AWS.config.update({ region: "eu-central-1" });
 var sqs = new AWS.SQS({ apiVersion: "2012-11-05" });
 
 class MailService {
-    sendMail(user, mailOptionsObj, action) {
+    sendMail____(user, mailOptionsObj, action) {
         console.log(user, mailOptionsObj);
         const mailOptions = {
             from: "kudypoditys@gmail.com",
@@ -18,7 +18,7 @@ class MailService {
             html: `
         <a href="http://localhost:3000/${action}?email=${user.email}&token=${
                 mailOptionsObj.verifyStringParam
-            }">
+                }">
           ${mailOptionsObj.message}
         </a>`
         };
@@ -30,9 +30,11 @@ class MailService {
                 "https://sqs.eu-central-1.amazonaws.com/048714216392/kudypoditys_email"
         };
 
-        sqs.sendMessage(params, function(err, data) {
+
+
+        sqs.sendMessage(params, function (err, data) {
             if (err) {
-                console.log("Error sqs");
+                console.log("Error sqs", err);
             } else {
                 console.log("Success");
             }
@@ -42,9 +44,9 @@ class MailService {
     sendData() {
         amqp.connect(
             "amqp://rabbitmq:5672",
-            function(err, conn) {
+            function (err, conn) {
                 console.log(err);
-                conn.createChannel(function(err, ch) {
+                conn.createChannel(function (err, ch) {
                     var q = "hello";
 
                     ch.assertQueue(q, { durable: false });
@@ -56,7 +58,7 @@ class MailService {
         );
     }
 
-    sendEmailOld(user, mailOptionsObj, action) {
+    sendMail(user, mailOptionsObj, action) {
         const EMAIL_USER = process.env.EMAIL_USER;
         const EMAIL_PASS = process.env.EMAIL_PASS;
 
@@ -75,7 +77,7 @@ class MailService {
             html: `
         <a href="http://localhost:3000/${action}?email=${user.email}&token=${
                 mailOptionsObj.verifyStringParam
-            }">
+                }">
           ${mailOptionsObj.message}
         </a>`
         };
