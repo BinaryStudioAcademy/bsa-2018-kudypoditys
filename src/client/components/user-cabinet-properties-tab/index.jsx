@@ -64,6 +64,7 @@ export class ReviewsTab extends React.Component {
                         {/* <Button
                             style={{ marginTop: "1%" }}
                             floated="right"
+                            primary
                             onClick={this.addPropertyClicked}
                             primary
                         >

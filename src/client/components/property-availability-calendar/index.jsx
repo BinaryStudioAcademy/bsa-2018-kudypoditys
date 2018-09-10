@@ -5,7 +5,7 @@ import {
     Icon,
     Header,
     Message,
-    Dimmer,
+    Divider,
     Dropdown
 } from "semantic-ui-react";
 import { connect } from "react-redux";
@@ -84,17 +84,16 @@ export class AvailabilityCalendar extends React.Component {
                 <Message info>
                     This is the calendar for booking your rooms.
                 </Message>
-                <Dimmer />
+                <Divider />
                 <p className="room-p">Room</p>
                 <Dropdown
                     name="room"
-                    // fluid
                     selection
                     onChange={this.selectedRoomChange}
                     defaultValue={0}
                     options={this.getRoomsOptions()}
                 />
-                <Dimmer />
+                <Divider />
                 <div style={{ overflow: "auto" }}>
                     <Table compact celled padded>
                         <Table.Header>
