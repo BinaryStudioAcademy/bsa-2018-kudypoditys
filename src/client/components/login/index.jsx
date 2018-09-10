@@ -47,6 +47,10 @@ export class LoginComponent extends React.Component {
             </Container>
         );
     }
+
+    componentWillUnmount() {
+        this.props.reset();
+    }
 }
 
 export default connect(
