@@ -63,9 +63,13 @@ export class BookingSegment extends React.Component {
         }
 
         return (
-            <Segment className="booking-container">
+            <Segment className="booking-container" style={{ padding: "10px" }}>
                 <div className="booking--left-section">
-                    <Image src={images[0].url} size="medium" />
+                    <Image
+                        src={images[0].url}
+                        size="medium"
+                        style={{ maxHeight: "200px" }}
+                    />
                     <div className="booking-info">
                         <Header
                             as="h3"
@@ -104,7 +108,10 @@ export class BookingSegment extends React.Component {
                             <Icon name="phone" />
                             {booking.room.property.contactPhone}
                         </p>
-                        <p className="booking-price">
+                        <p
+                            className="booking-price"
+                            style={{ fontSize: "18px" }}
+                        >
                             <Icon name="dollar sign" />
                             {" " + price}
                         </p>
