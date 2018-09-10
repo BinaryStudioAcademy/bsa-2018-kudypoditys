@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss'
 const renderField = (field) => (
-    <div className="input">
+    <div id="input-form" >
         <input {...field.input}
             type={field.type}
             placeholder={field.label}

@@ -32,7 +32,7 @@ class MailService {
 
         sqs.sendMessage(params, function(err, data) {
             if (err) {
-                console.log("Error sqs");
+                console.log("Error sqs", err);
             } else {
                 console.log("Success");
             }
@@ -56,7 +56,7 @@ class MailService {
         );
     }
 
-    sendEmailOld(user, mailOptionsObj, action) {
+    sendMail____(user, mailOptionsObj, action) {
         const EMAIL_USER = process.env.EMAIL_USER;
         const EMAIL_PASS = process.env.EMAIL_PASS;
 

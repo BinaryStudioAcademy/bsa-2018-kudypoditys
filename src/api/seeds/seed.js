@@ -38,7 +38,7 @@ const PROPERTIES = [
             "This property is 15 minutes walk from the beach. Located on Independence Square in the heart of Kiev, this hotel offers air-conditioned rooms and suites with elegant décor. It is a 3-minute walk from the Maidan Nezalezhnosti and Kreschatik Metro Stations. In-room facilities at the Ukraine Hotel include satellite TV and a refrigerator. Your bathroom includes free toiletries and perfumes. Guests enjoy views of the Kreschatyk Street and the surrounding area. A large breakfast buffet is available at the Ukraine Hotel, and 24-hour room service is offered. Ukrainian and European cuisine is served for lunch and dinner. Live music is sometimes played here. The hotel features a beauty salon, sauna and massage facilities. A private laundry service is also available. Hotel Ukraine is a 10-minute walk from Mariyinsky Park and the St. Sofia Cathedral. Secure parking is available on site. Pecherskyj is a great choice for travellers interested in restaurants, food and friendly locals. This is our guests' favourite part of Kiev, according to independent reviews. This property also has one of the best-rated locations in Kiev! Guests are happier about it compared to other properties in the area.",
         contactPhone: "0509832174",
         coordinates: { lat: 49.137089, lng: 24.027161 },
-        distanceToCentre:1.7,
+        distanceToCentre: 1.7,
         userId: 1,
         propertyTypeId: 9,
         cityId: 2,
@@ -477,7 +477,7 @@ const ACCOMMODATION_RULES = [
     {
         id: 1,
         allowPets: false,
-        cancelReservation: true,
+        cancelReservation: false,
         minimumStay: 1,
         arrivalTimeStart: "10:00",
         arrivalTimeEnd: "14:00",
@@ -1027,6 +1027,22 @@ const ROOMS = [
         area: 67,
         roomTypeId: 1,
         propertyId: 2
+    },
+    {
+        id: 30,
+        price: 80,
+        amount: 2,
+        area: 77,
+        roomTypeId: 6,
+        propertyId: 3
+    },
+    {
+        id: 31,
+        price: 40,
+        amount: 4,
+        area: 50,
+        roomTypeId: 8,
+        propertyId: 4
     }
 ];
 
@@ -1076,7 +1092,7 @@ const IMAGES = [
     {
         id: 8,
         url:
-            "https://www.publicdomainpictures.net/en/view-image.php?image=95146&picture=hotel-room",
+            "https://www.publicdomainpictures.net/pictures/50000/velka/hotel.jpg",
         propertyId: 4
     },
     {
@@ -1418,7 +1434,7 @@ const FACILITY_LISTS = [
     {
         id: 1,
         propertyId: 1,
-        facilityId: 1
+        facilityId: 5
     },
     {
         id: 2,
@@ -1693,6 +1709,486 @@ const FACILITY_LISTS = [
     {
         propertyId: 1,
         facilityId: 16
+    },
+    {
+        propertyId: 2,
+        facilityId: 20
+    },
+    {
+        propertyId: 2,
+        facilityId: 16
+    },
+    {
+        propertyId: 2,
+        facilityId: 18
+    },
+    {
+        propertyId: 2,
+        facilityId: 29
+    },
+    {
+        propertyId: 2,
+        facilityId: 25
+    },
+    {
+        propertyId: 3,
+        facilityId: 15
+    },
+    {
+        propertyId: 3,
+        facilityId: 17
+    },
+    {
+        propertyId: 3,
+        facilityId: 31
+    },
+    {
+        propertyId: 3,
+        facilityId: 35
+    },
+    {
+        propertyId: 3,
+        facilityId: 29
+    },
+    {
+        propertyId: 4,
+        facilityId: 25
+    },
+    {
+        propertyId: 4,
+        facilityId: 24
+    },
+    {
+        propertyId: 4,
+        facilityId: 23
+    },
+    {
+        propertyId: 4,
+        facilityId: 15
+    },
+    {
+        propertyId: 4,
+        facilityId: 16
+    },
+    {
+        propertyId: 5,
+        facilityId: 16
+    },
+    {
+        propertyId: 5,
+        facilityId: 23
+    },
+    {
+        propertyId: 5,
+        facilityId: 22
+    },
+    {
+        propertyId: 5,
+        facilityId: 2
+    },
+    {
+        propertyId: 5,
+        facilityId: 5
+    },
+    {
+        propertyId: 6,
+        facilityId: 1
+    },
+    {
+        propertyId: 6,
+        facilityId: 2
+    },
+    {
+        propertyId: 6,
+        facilityId: 3
+    },
+    {
+        propertyId: 6,
+        facilityId: 6
+    },
+    {
+        propertyId: 6,
+        facilityId: 7
+    },
+    {
+        propertyId: 7,
+        facilityId: 12
+    },
+    {
+        propertyId: 7,
+        facilityId: 2
+    },
+    {
+        propertyId: 7,
+        facilityId: 6
+    },
+    {
+        propertyId: 7,
+        facilityId: 9
+    },
+    {
+        propertyId: 7,
+        facilityId: 10
+    },
+    {
+        propertyId: 8,
+        facilityId: 21
+    },
+    {
+        propertyId: 8,
+        facilityId: 22
+    },
+    {
+        propertyId: 8,
+        facilityId: 18
+    },
+    {
+        propertyId: 8,
+        facilityId: 14
+    },
+    {
+        propertyId: 8,
+        facilityId: 13
+    },
+    {
+        propertyId: 9,
+        facilityId: 12
+    },
+    {
+        propertyId: 9,
+        facilityId: 27
+    },
+    {
+        propertyId: 9,
+        facilityId: 30
+    },
+    {
+        propertyId: 9,
+        facilityId: 29
+    },
+    {
+        propertyId: 9,
+        facilityId: 10
+    },
+    {
+        propertyId: 10,
+        facilityId: 27
+    },
+    {
+        propertyId: 10,
+        facilityId: 28
+    },
+    {
+        propertyId: 10,
+        facilityId: 29
+    },
+    {
+        propertyId: 10,
+        facilityId: 30
+    },
+    {
+        propertyId: 10,
+        facilityId: 33
+    },
+    {
+        propertyId: 11,
+        facilityId: 30
+    },
+    {
+        propertyId: 11,
+        facilityId: 31
+    },
+    {
+        propertyId: 11,
+        facilityId: 32
+    },
+    {
+        propertyId: 11,
+        facilityId: 33
+    },
+    {
+        propertyId: 11,
+        facilityId: 34
+    },
+    {
+        propertyId: 12,
+        facilityId: 18
+    },
+    {
+        propertyId: 12,
+        facilityId: 19
+    },
+    {
+        propertyId: 12,
+        facilityId: 13
+    },
+    {
+        propertyId: 12,
+        facilityId: 12
+    },
+    {
+        propertyId: 12,
+        facilityId: 11
+    },
+    {
+        propertyId: 13,
+        facilityId: 9
+    },
+    {
+        propertyId: 13,
+        facilityId: 10
+    },
+    {
+        propertyId: 13,
+        facilityId: 11
+    },
+    {
+        propertyId: 13,
+        facilityId: 12
+    },
+    {
+        propertyId: 13,
+        facilityId: 13
+    },
+    {
+        propertyId: 14,
+        facilityId: 5
+    },
+    {
+        propertyId: 14,
+        facilityId: 6
+    },
+    {
+        propertyId: 14,
+        facilityId: 7
+    },
+    {
+        propertyId: 14,
+        facilityId: 8
+    },
+    {
+        propertyId: 14,
+        facilityId: 9
+    },
+    {
+        propertyId: 15,
+        facilityId: 1
+    },
+    {
+        propertyId: 15,
+        facilityId: 3
+    },
+    {
+        propertyId: 15,
+        facilityId: 7
+    },
+    {
+        propertyId: 15,
+        facilityId: 11
+    },
+    {
+        propertyId: 15,
+        facilityId: 12
+    },
+    {
+        propertyId: 16,
+        facilityId: 29
+    },
+    {
+        propertyId: 16,
+        facilityId: 28
+    },
+    {
+        propertyId: 16,
+        facilityId: 27
+    },
+    {
+        propertyId: 16,
+        facilityId: 26
+    },
+    {
+        propertyId: 16,
+        facilityId: 24
+    },
+    {
+        propertyId: 17,
+        facilityId: 1
+    },
+    {
+        propertyId: 17,
+        facilityId: 5
+    },
+    {
+        propertyId: 17,
+        facilityId: 4
+    },
+    {
+        propertyId: 17,
+        facilityId: 8
+    },
+    {
+        propertyId: 17,
+        facilityId: 10
+    },
+    {
+        propertyId: 18,
+        facilityId: 31
+    },
+    {
+        propertyId: 18,
+        facilityId: 29
+    },
+    {
+        propertyId: 18,
+        facilityId: 33
+    },
+    {
+        propertyId: 18,
+        facilityId: 3
+    },
+    {
+        propertyId: 18,
+        facilityId: 2
+    },
+    {
+        propertyId: 19,
+        facilityId: 26
+    },
+    {
+        propertyId: 19,
+        facilityId: 27
+    },
+    {
+        propertyId: 19,
+        facilityId: 28
+    },
+    {
+        propertyId: 19,
+        facilityId: 11
+    },
+    {
+        propertyId: 19,
+        facilityId: 9
+    },
+    {
+        propertyId: 20,
+        facilityId: 22
+    },
+    {
+        propertyId: 20,
+        facilityId: 24
+    },
+    {
+        propertyId: 20,
+        facilityId: 26
+    },
+    {
+        propertyId: 20,
+        facilityId: 28
+    },
+    {
+        propertyId: 20,
+        facilityId: 29
+    },
+    {
+        propertyId: 21,
+        facilityId: 21
+    },
+    {
+        propertyId: 21,
+        facilityId: 22
+    },
+    {
+        propertyId: 21,
+        facilityId: 18
+    },
+    {
+        propertyId: 21,
+        facilityId: 14
+    },
+    {
+        propertyId: 21,
+        facilityId: 13
+    },
+    {
+        propertyId: 22,
+        facilityId: 27
+    },
+    {
+        propertyId: 22,
+        facilityId: 29
+    },
+    {
+        propertyId: 22,
+        facilityId: 31
+    },
+    {
+        propertyId: 22,
+        facilityId: 33
+    },
+    {
+        propertyId: 22,
+        facilityId: 35
+    },
+    {
+        propertyId: 23,
+        facilityId: 22
+    },
+    {
+        propertyId: 23,
+        facilityId: 32
+    },
+    {
+        propertyId: 23,
+        facilityId: 2
+    },
+    {
+        propertyId: 23,
+        facilityId: 12
+    },
+    {
+        propertyId: 23,
+        facilityId: 34
+    },
+    {
+        propertyId: 24,
+        facilityId: 28
+    },
+    {
+        propertyId: 24,
+        facilityId: 30
+    },
+    {
+        propertyId: 24,
+        facilityId: 32
+    },
+    {
+        propertyId: 24,
+        facilityId: 34
+    },
+    {
+        propertyId: 24,
+        facilityId: 35
+    },
+    {
+        propertyId: 25,
+        facilityId: 29
+    },
+    {
+        propertyId: 25,
+        facilityId: 31
+    },
+    {
+        propertyId: 25,
+        facilityId: 33
+    },
+    {
+        propertyId: 25,
+        facilityId: 35
+    },
+    {
+        propertyId: 25,
+        facilityId: 1
     }
 ];
 
@@ -2105,12 +2601,15 @@ const BED_IN_ROOM = [
     { id: 22, count: 7, roomId: 22, bedTypeId: 3 },
     { id: 23, count: 2, roomId: 23, bedTypeId: 4 },
     { id: 24, count: 3, roomId: 24, bedTypeId: 5 },
-    {id: 25, count: 2, roomId: 25, bedTypeId: 6},
-    {id: 26, count: 2, roomId: 26, bedTypeId: 4},
-    {id: 27, count: 1, roomId: 27, bedTypeId: 2},
-    {id: 28, count: 1, roomId: 28, bedTypeId: 2},
-    {id: 29, count: 1, roomId: 28, bedTypeId: 3},
-    {id: 30, count: 1, roomId: 29, bedTypeId: 2}
+    { id: 25, count: 2, roomId: 25, bedTypeId: 6 },
+    { id: 26, count: 2, roomId: 26, bedTypeId: 4 },
+    { id: 27, count: 1, roomId: 27, bedTypeId: 2 },
+    { id: 28, count: 1, roomId: 28, bedTypeId: 2 },
+    { id: 29, count: 1, roomId: 28, bedTypeId: 3 },
+    { id: 30, count: 1, roomId: 29, bedTypeId: 2 },
+    { id: 31, count: 2, roomId: 30, bedTypeId: 3 },
+    { id: 32, count: 1, roomId: 30, bedTypeId: 1 },
+    { id: 33, count: 1, roomId: 31, bedTypeId: 4 }
 ];
 const BED_TYPES = [
     {
@@ -2354,36 +2853,729 @@ const REVIEWS = [
         propertyId: 1,
         anon: true
     },
-
     {
-        id: 1,
-        pros: "very nice place for family ",
-        cons: "It was hard to find a hostel.",
-        Cleanliness: 3,
-        Price: 5,
+        id: 2,
+        pros: "Nice staff",
+        cons: "A bit expensive",
+        Cleanliness: 4,
+        Price: 3,
         Comfort: 5,
         Facilities: 4,
-        Location: 2,
-        avgReview: 3.8,
-
+        Location: 4,
+        avgReview: 4,
+        userId: 2,
+        propertyId: 1,
+        anon: false
+    },
+    {
+        id: 3,
+        pros: "Perfect location",
+        cons: "Had some problems with check-in and check-out time",
+        Cleanliness: 3,
+        Price: 5,
+        Comfort: 4,
+        Facilities: 3,
+        Location: 5,
+        avgReview: 4,
         userId: 1,
         propertyId: 2,
         anon: false
     },
     {
-        id: 1,
-        pros: "very nice place for family ",
-        cons: "It was hard to find a hostel.",
-        Cleanliness: 3,
+        id: 4,
+        pros: "Nice facilities here",
+        cons: "None",
+        Cleanliness: 5,
         Price: 5,
         Comfort: 5,
-        Facilities: 4,
-        Location: 2,
-        avgReview: 3.8,
-
-        userId: 1,
+        Facilities: 5,
+        Location: 5,
+        avgReview: 5,
+        userId: 2,
         propertyId: 2,
         anon: false
+    },
+    {
+        id: 5,
+        pros: "You can pay with allmost anything",
+        cons: "Dinner time is a bit uncomfortable. It is also untidy somewhere",
+        Cleanliness: 3,
+        Price: 5,
+        Comfort: 4,
+        Facilities: 5,
+        Location: 5,
+        avgReview: 4.4,
+        userId: 2,
+        propertyId: 3,
+        anon: false
+    },
+    {
+        id: 6,
+        pros: "Brilliant location. Left the hotel 20 minutes prior to my train",
+        cons: "Would like to have my room cleaned more often",
+        Cleanliness: 3,
+        Price: 4,
+        Comfort: 5,
+        Facilities: 5,
+        Location: 5,
+        avgReview: 4.4,
+        userId: 1,
+        propertyId: 3,
+        anon: false
+    },
+    {
+        id: 7,
+        pros: "Would like to see more facilities",
+        cons: "A bit expensive",
+        Cleanliness: 8,
+        Price: 6,
+        Comfort: 8,
+        Facilities: 4,
+        Location: 7,
+        avgReview: 6.6,
+        userId: 1,
+        propertyId: 4,
+        anon: false
+    },
+    {
+        id: 8,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 5,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+        userId: 2,
+        propertyId: 4,
+        anon: false
+    },
+    {
+        id: 9,
+        pros: "Nice place for a romantic weekend, liked it",
+        cons: "Location is uncomfortable a bit",
+        Cleanliness: 7,
+        Price: 6,
+        Comfort: 9,
+        Facilities: 8,
+        Location: 4,
+        avgReview: 6.8,
+        userId: 2,
+        propertyId: 5,
+        anon: false
+    },
+    {
+        id: 10,
+        pros: "Nice place. Realy liked it",
+        cons: "Could be closer to a historic center",
+        Cleanliness: 6,
+        Price: 7,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 4,
+        avgReview: 7.4,
+        userId: 1,
+        propertyId: 5,
+        anon: false
+    },
+    {
+        id: 11,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 6,
+        anon: true
+    },
+    {
+        id: 12,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 6,
+        anon: false
+    },
+    {
+        id: 13,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 25,
+        anon: true
+    },
+    {
+        id: 14,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 25,
+        anon: false
+    },
+    {
+        id: 15,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 7,
+        anon: false
+    },
+    {
+        id: 16,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 7,
+        anon: false
+    },
+    {
+        id: 17,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 8,
+        anon: false
+    },
+    {
+        id: 18,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 8,
+        anon: false
+    },
+    {
+        id: 19,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 9,
+        anon: false
+    },
+    {
+        id: 20,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 9,
+        anon: false
+    },
+    {
+        id: 21,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 10,
+        anon: false
+    },
+    {
+        id: 22,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 10,
+        anon: false
+    },
+    {
+        id: 23,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 11,
+        anon: false
+    },
+    {
+        id: 24,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 11,
+        anon: false
+    },
+    {
+        id: 25,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 12,
+        anon: false
+    },
+    {
+        id: 26,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 12,
+        anon: false
+    },
+    {
+        id: 27,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 13,
+        anon: false
+    },
+    {
+        id: 28,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 13,
+        anon: false
+    },
+    {
+        id: 29,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 14,
+        anon: false
+    },
+    {
+        id: 30,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 14,
+        anon: false
+    },
+    {
+        id: 31,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 15,
+        anon: false
+    },
+    {
+        id: 32,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 15,
+        anon: false
+    },
+    {
+        id: 33,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 16,
+        anon: false
+    },
+    {
+        id: 34,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 16,
+        anon: false
+    },
+    {
+        id: 35,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 17,
+        anon: false
+    },
+    {
+        id: 36,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 17,
+        anon: false
+    },
+    {
+        id: 37,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 18,
+        anon: false
+    },
+    {
+        id: 38,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 18,
+        anon: false
+    },
+    {
+        id: 39,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 19,
+        anon: false
+    },
+    {
+        id: 40,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 19,
+        anon: false
+    },
+    {
+        id: 41,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 20,
+        anon: false
+    },
+    {
+        id: 42,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 20,
+        anon: false
+    },
+    {
+        id: 43,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 21,
+        anon: false
+    },
+    {
+        id: 44,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 21,
+        anon: false
+    },
+    {
+        id: 45,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 22,
+        anon: false
+    },
+    {
+        id: 46,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 22,
+        anon: false
+    },
+    {
+        id: 47,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 23,
+        anon: false
+    },
+    {
+        id: 48,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 23,
+        anon: false
+    },
+    {
+        id: 49,
+        pros: "very nice place for family ",
+        cons: "It was hard to find a hostel",
+        Cleanliness: 7,
+        Price: 8,
+        Comfort: 8,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.4,
+
+        userId: 1,
+        propertyId: 24,
+        anon: false
+    },
+    {
+        id: 50,
+        pros: "Quite clean. Realy liked it",
+        cons: "Would love it to be less expensive(",
+        Cleanliness: 9,
+        Price: 4,
+        Comfort: 9,
+        Facilities: 6,
+        Location: 8,
+        avgReview: 7.2,
+        userId: 2,
+        propertyId: 24,
+        anon: false
+    }
+];
+
+const CURRENCIES = [
+    {
+        name: "EURO",
+        code: "EUR",
+        number: "978"
+    },
+    {
+        name: "US DOLLAR",
+        code: "USD",
+        number: "840"
+    },
+    {
+        name: "Hryvnia",
+        code: "UAH",
+        number: "980"
     }
 ];
 
@@ -2407,5 +3599,6 @@ module.exports = {
     ROOM_TYPES,
     PROPERTY_TYPE,
     LANGUAGES,
-    REVIEWS
+    REVIEWS,
+    CURRENCIES
 };

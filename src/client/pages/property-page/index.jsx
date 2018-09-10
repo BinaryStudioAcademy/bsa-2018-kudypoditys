@@ -131,9 +131,13 @@ export class PropertyPage extends React.Component {
                                             className="book-btn"
                                             style={{
                                                 height: "33px",
-                                                visibility: !user
-                                                    ? "hidden"
-                                                    : "visible"
+                                                visibility:
+                                                    !user ||
+                                                    ((!rooms ||
+                                                        !rooms.length) &&
+                                                        user)
+                                                        ? "hidden"
+                                                        : "visible"
                                             }}
                                         >
                                             <button>Book now</button>
@@ -154,7 +158,7 @@ export class PropertyPage extends React.Component {
                                     closeIcon
                                 >
                                     <BookingForm
-                                        rooms={property.rooms}
+                                        rooms={rooms}
                                         paymentTypes={property.paymentTypes}
                                     />
                                 </Modal>
