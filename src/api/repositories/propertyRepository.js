@@ -381,7 +381,7 @@ class PropertyRepository extends Repository {
                             bedsInRoomOption,
                             {
                                 model: Reservation,
-                                required: false,
+                                required:false,
                                 where: {
                                     $and: [
                                         {

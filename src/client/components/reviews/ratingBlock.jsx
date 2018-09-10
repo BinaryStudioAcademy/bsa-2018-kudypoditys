@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import './index.scss';
 
-import { getPropertyStatus } from 'client/helpers/avgReviewRating';
+import { getPropertyStatus,getPropertyColor } from 'client/helpers/avgReviewRating';
 import {Icon, Popup} from "semantic-ui-react";
 import RatingBar from "./ratingBar";
 
@@ -10,7 +10,7 @@ class RatingBlock extends React.Component {
         const { avgPropRating, reviewsCount, property } = this.props;
 
         const ratingStatus = getPropertyStatus(avgPropRating);
-
+const ratingColor = getPropertyColor(avgPropRating)
         return (
             <div className="rating_block">
                 <div className="rating_status"
@@ -37,7 +37,7 @@ class RatingBlock extends React.Component {
 
                         }}
                         trigger={
-                            <div className="rating_num"> {avgPropRating}</div>
+                            <div className="rating_num" style={{color:ratingColor}}> {avgPropRating}</div>
                         }
                         content={ <div style={{padding: 10} }>  <RatingBar property={property} /> </div>}
                         hoverable
