@@ -1,7 +1,7 @@
 import {
     PROPERTY_CALENDAR_UPDATE,
-    AVAILABILITY_UPDATE,
-    GET_CURRENT_USER_INFO
+    AVAILABILITY_SUBMIT,
+    SELECTED_ROOM_CHANGE
 } from "./actionTypes";
 
 export function calendarUpdate(payload) {
@@ -13,14 +13,14 @@ export function calendarUpdate(payload) {
 
 export function availabilitySubmit(payload) {
     return {
-        type: AVAILABILITY_UPDATE,
+        type: AVAILABILITY_SUBMIT,
         payload
     };
 }
 
-export function getUserpropertiesInfo(id) {
+export function selectedRoomChange(payload) {
     return {
-        type: GET_CURRENT_USER_INFO,
-        id
+        type: SELECTED_ROOM_CHANGE,
+        payload
     };
 }

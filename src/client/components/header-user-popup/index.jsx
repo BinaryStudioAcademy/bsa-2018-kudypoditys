@@ -5,7 +5,6 @@ import "./index.scss";
 
 export default class UserPopup extends React.Component {
     handleItemClick = (e, { name }) => {
-        console.log(name);
         let tabIndex;
         switch (name) {
             case "bookings":
@@ -33,7 +32,8 @@ export default class UserPopup extends React.Component {
     render() {
         const { currentUser } = this.props;
         return (
-            <Popup className="header-user-popup"
+            <Popup
+                className="header-user-popup"
                 trigger={
                     <span
                         style={{

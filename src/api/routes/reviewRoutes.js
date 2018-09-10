@@ -59,9 +59,19 @@ review
     });
 
 review.route("/:id/byuserid").get((req, res) => {
-    console.log("byuser");
     reviewService
         .findByOptions({ userId: req.params.id })
+        .then(reservations => {
+            res.send(reservations);
+        })
+        .catch(err => {
+            res.status(404).send(err.message);
+        });
+});
+
+review.route("/:id/byPropertyId").get((req, res) => {
+    reviewService
+        .findByOptions({ propertyId: req.params.id })
         .then(reservations => {
             res.send(reservations);
         })

@@ -75,6 +75,7 @@ class ReservationRepository extends Repository {
         return this.model.findAll({
             where: options,
             attributes: ["id", "dateIn", "dateOut", "guestsCount", "orderCode"],
+            // attributes: ["id", "dateIn", "dateOut", "guestsCount"],
             include: [
                 {
                     model: User,

@@ -1,26 +1,7 @@
 import React from "react";
-import {
-    Button,
-    Icon,
-    Image,
-    Item,
-    Label,
-    Card,
-    Divider,
-    Progress,
-    Header
-} from "semantic-ui-react";
-import history from "client/history";
-import { Comment } from "semantic-ui-react/dist/commonjs/views/Comment/Comment";
+import { Icon, Image, Card, Progress, Header } from "semantic-ui-react";
 
 export default class ReviewItem extends React.Component {
-    state = {
-        id: this.props.property.id
-    };
-    handleBookAgain = id => {
-        history.push(`/property/${this.state.id}`);
-    };
-
     render() {
         const { property } = this.props;
         let shouldRenderComments = true;
@@ -31,17 +12,17 @@ export default class ReviewItem extends React.Component {
 
         return (
             <Card>
-                <Image style={{ height: 160 }} src={property.images[0].url} />
+                <Image src={property.images[0].url} />
                 <Card.Content>
                     <Card.Header>{property.name}</Card.Header>
-                    <Card.Meta>Your review</Card.Meta>
+                    <Card.Meta>User review</Card.Meta>
                     <Card.Description>
                         <div className="avg_rating___block">
                             <Progress
                                 progress="value"
                                 color="blue"
                                 size="small"
-                                total="10"
+                                total="5"
                                 value={this.props.Cleanliness}
                                 label="Cleanliness"
                             />
@@ -49,7 +30,7 @@ export default class ReviewItem extends React.Component {
                                 progress="value"
                                 color="blue"
                                 size="small"
-                                total="10"
+                                total="5"
                                 value={this.props.Facilities}
                                 label="Facilities"
                             />
@@ -57,7 +38,7 @@ export default class ReviewItem extends React.Component {
                                 progress="value"
                                 color="blue"
                                 size="small"
-                                total="10"
+                                total="5"
                                 value={this.props.Comfort}
                                 label="Comfort"
                             />
@@ -65,7 +46,7 @@ export default class ReviewItem extends React.Component {
                                 progress="value"
                                 color="blue"
                                 size="small"
-                                total="10"
+                                total="5"
                                 value={this.props.Price}
                                 label="Price"
                             />
@@ -73,7 +54,7 @@ export default class ReviewItem extends React.Component {
                                 progress="value"
                                 color="blue"
                                 size="small"
-                                total="10"
+                                total="5"
                                 value={this.props.Location}
                                 label="Location"
                             />
@@ -117,13 +98,6 @@ export default class ReviewItem extends React.Component {
                             </Header>
                         )}
                     </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <div className="ui two buttons">
-                        <Button primary fluid onClick={this.handleBookAgain}>
-                            Book again
-                        </Button>
-                    </div>
                 </Card.Content>
             </Card>
         );

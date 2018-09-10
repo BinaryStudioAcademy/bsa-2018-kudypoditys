@@ -2,50 +2,61 @@ import api from "../helpers/api";
 import history from "client/history";
 
 class PropertyService {
-    normalizeProperty = (data) => {
+    normalizeProperty = data => {
         const {
-            basicFacility, accommodationRule, vatIncluded, rooms, address
+            basicFacility,
+            accommodationRule,
+            vatIncluded,
+            rooms,
+            address
         } = data;
 
         return {
             ...data,
             basicFacility: this.normalizeBasicFacility(basicFacility),
-            accommodationRule: this.normalizeAccommodationRule(accommodationRule),
+            accommodationRule: this.normalizeAccommodationRule(
+                accommodationRule
+            ),
             vatIncluded: Boolean(vatIncluded),
             coordinates: this.normalizeCoordinates(address),
             address: address.fullAddress,
             rooms: rooms.map(x => ({
                 ...x,
                 roomTypeId: x.roomType.id,
-                bedInRooms: x.bedInRooms.map(bir => ({ ...bir, bedTypeId: bir.bedType.id }))
+                bedInRooms: x.bedInRooms.map(bir => ({
+                    ...bir,
+                    bedTypeId: bir.bedType.id
+                }))
             }))
-        }
-    }
+        };
+    };
 
-    normalizeCoordinates = (address) => {
+    normalizeCoordinates = address => {
         if (!address) return {};
         const { lat, lng } = address;
         return { lat, lng };
-    }
+    };
 
-
-    normalizeBasicFacility = (basicFacility) => {
+    normalizeBasicFacility = basicFacility => {
         if (!basicFacility) return {};
 
         const {
-            hasInternet, hasParking, isPrivate, isOnTerritory,
+            hasInternet,
+            hasParking,
+            isPrivate,
+            isOnTerritory,
             needToBook
         } = basicFacility;
         return {
-            hasInternet: hasInternet !== 'absent',
-            hasParking: hasParking !== 'absent',
+            hasInternet: hasInternet !== "absent",
+            hasParking: hasParking !== "absent",
             isPrivate: Boolean(isPrivate),
             isOnTerritory: Boolean(isOnTerritory),
             needToBook: Boolean(needToBook)
-        }
-    }
+        };
+    };
 
-    normalizeAccommodationRule = (accommodationRule) => {
+    normalizeAccommodationRule = accommodationRule => {
         if (!accommodationRule) return {};
         const { cancelReservation, checkInCheckOut = {} } = accommodationRule;
 
@@ -56,9 +67,9 @@ class PropertyService {
             departureTimeStart: checkInCheckOut.departureFrom,
             departureTimeEnd: checkInCheckOut.departureTo
         };
-    }
+    };
 
-    createProperty = (data) => {
+    createProperty = data => {
         const body = this.normalizeProperty(data);
 
         return api
@@ -70,9 +81,8 @@ class PropertyService {
 
                 return response.data;
             });
-    }
-    updateProperty(data) {
-        console.log(data);
+    };
+    updatePropery(data) {
         return api
             .sendAuthRequest(`/api/property/${data.propertyId}`, "put", data)
             .then(response => {
@@ -80,15 +90,15 @@ class PropertyService {
             });
     }
 
-    getUserPropertiesInfo(id) {
+    getUserPropertiesInfo(data) {
         return api
-            .sendRequest(`/api/property/${id}/info`, "get")
+            .sendRequest(`/api/property/${data.id}/info`, "get")
             .then(response => response.data);
     }
     getPropertiesByCity(city) {
         return api
             .sendRequest(`api/property/city/${city}`, "get")
-            .then(response => response.data)
+            .then(response => response.data);
     }
 }
 

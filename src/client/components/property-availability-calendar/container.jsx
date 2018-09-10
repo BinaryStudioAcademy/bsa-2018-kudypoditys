@@ -1,13 +1,12 @@
 import {
     availabilitySubmit,
     calendarUpdate,
-    getUserpropertiesInfo
+    selectedRoomChange
 } from "client/logic/property-availability-calendar/actions";
 
 export function mapStateToProps(state) {
     const { availabilityCalendar } = state;
     const { userCabinet } = state;
-    console.log("mapStateToProps", availabilityCalendar);
     return {
         ...availabilityCalendar,
         userId: userCabinet.user.id
@@ -16,14 +15,14 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        handleSubmit(userData) {
-            dispatch(availabilitySubmit(userData));
+        handleSubmit(data) {
+            dispatch(availabilitySubmit(data));
         },
         handleUpdate(data) {
             dispatch(calendarUpdate(data));
         },
-        fetchUserInfo(id) {
-            dispatch(getUserpropertiesInfo(id));
+        selectedRoomChange(data) {
+            dispatch(selectedRoomChange(data));
         }
     };
 }

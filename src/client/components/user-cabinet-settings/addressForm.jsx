@@ -1,15 +1,13 @@
-import React, {Component} from "react";
-import {reduxForm, Field} from "redux-form";
-import {Dropdown, Label} from "semantic-ui-react";
+import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form";
+import { Dropdown, Label } from "semantic-ui-react";
 import renderField from "client/components/input-form/renderField";
 
-
 export class AddressForm extends Component {
-    handleChange = (e, {name, value}) => {
-        console.log(name, value);
+    handleChange = (e, { name, value }) => {
         this.setState({
             [name]: value
-        })
+        });
     };
 
     constructor(props) {
@@ -19,12 +17,12 @@ export class AddressForm extends Component {
             city: this.props.city,
             country: this.props.country,
             postcode: this.props.postcode
-        }
+        };
     }
 
     render() {
-        const {address, city, country, postcode} = this.state;
-        const {countryOptions} = this.props;
+        const { address, city, country, postcode } = this.state;
+        const { countryOptions } = this.props;
         return (
             <form onSubmit={this.props.handleSubmit}>
                 <div className="personal_settings-adding-address">
@@ -75,10 +73,7 @@ export class AddressForm extends Component {
                             as="a"
                             content="Undo"
                             onClick={() =>
-                                this.addingItem(
-                                    "addingAddress",
-                                    false,
-                                )
+                                this.addingItem("addingAddress", false)
                             }
                             basic
                             className="personal_settings-btn"
@@ -86,7 +81,7 @@ export class AddressForm extends Component {
                     </div>
                 </div>
             </form>
-        )
+        );
     }
 }
 
