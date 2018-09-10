@@ -119,9 +119,9 @@ export class AvailabilityCalendar extends React.Component {
                             </Table.Row>
                         </Table.Body>
                         <Table.Footer fullWidth>
-                            <Table.Row>
-                                {/* <Table.HeaderCell /> */}
-                                <Table.HeaderCell colSpan="1">
+                            {/* <Table.Row> */}
+                            {/* <Table.HeaderCell /> */}
+                            {/* <Table.HeaderCell colSpan="1">
                                     <Button
                                         floated="left"
                                         icon
@@ -133,7 +133,7 @@ export class AvailabilityCalendar extends React.Component {
                                         <Icon name="save outline" /> Save
                                     </Button>
                                 </Table.HeaderCell>
-                            </Table.Row>
+                            </Table.Row> */}
                         </Table.Footer>
                     </Table>
                     <br />

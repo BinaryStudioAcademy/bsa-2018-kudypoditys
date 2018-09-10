@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Table, Label } from "semantic-ui-react";
+import { Table, Input } from "semantic-ui-react";
 
 const count = 30;
 
@@ -9,7 +9,13 @@ export class DrawPrices extends React.Component {
         for (let index = 0; index < count; index++) {
             inputs.push(
                 <Table.Cell key={index}>
-                    <Label className={"table-price"}>{this.props.price}</Label>
+                    <Input
+                        // name={this.props.days[index].fullDate}
+                        className={"table-price"}
+                        size={"mini"}
+                        value={this.props.price}
+                        onChange={this.props.onPriceChange}
+                    />
                 </Table.Cell>
             );
         }

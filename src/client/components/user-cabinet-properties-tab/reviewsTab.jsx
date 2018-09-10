@@ -17,7 +17,7 @@ export class ReviewsTab extends React.Component {
             <Segment className="reviews-segment">
                 <Header as="h2">Property reviews</Header>
                 <Card.Group itemsPerRow={4}>
-                    {!property.reviews
+                    {!property.reviews.length
                         ? "Property dont have review :("
                         : this.getReviewsItems(property)}
                 </Card.Group>

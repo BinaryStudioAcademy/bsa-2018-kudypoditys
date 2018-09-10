@@ -1,5 +1,5 @@
 import React from "react";
-import { Tab } from "semantic-ui-react";
+import { Tab, Button } from "semantic-ui-react";
 import { ReviewsTab } from "./reviewsTab";
 import AvailabilityCalendar from "client/components/property-availability-calendar";
 import { Segment, Icon } from "semantic-ui-react";
@@ -18,6 +18,16 @@ export class PropertyPage extends React.Component {
                         userId={this.props.property.userId}
                         {...this.props.property}
                     />
+                    <Button
+                        floated="left"
+                        icon
+                        labelPosition="left"
+                        primary
+                        size="small"
+                        onClick={this.submitHandle}
+                    >
+                        <Icon name="save outline" /> Save
+                    </Button>
                 </Tab.Pane>
             )
         },

@@ -126,7 +126,7 @@ export class PropertyItem extends React.Component {
                                 </div>
                             </div>
 
-                            <div className="card_row__price" />
+                            {/* <div className="card_row__price" /> */}
 
                             <div className="card_row__order">
                                 <div className="property-page__messages" />

@@ -487,7 +487,7 @@ class PropertyRepository extends Repository {
     getUserPropertiesInfo(id) {
         return this.model.findAll({
             where: {
-                userId: 1
+                userId: id
             },
             include: [
                 {
