@@ -30,9 +30,7 @@ export class ReviewsTab extends React.Component {
     };
 
     getPropertyItems = properties => {
-        // console.log(properties);
         return properties.map((property, index) => {
-            console.log("MAP =", property);
             return (
                 <PropertyItem
                     {...property}
@@ -45,6 +43,7 @@ export class ReviewsTab extends React.Component {
     };
 
     componentWillMount() {
+        console.log("1231=========");
         this.props.fetchUserInfo({ id: this.props.user.id });
     }
 

@@ -6,7 +6,6 @@ import {
 
 export function mapStateToProps(state) {
     const { userCabinetProperties, userCabinet } = state;
-    console.log("mapStateToProps", userCabinetProperties);
     return {
         ...userCabinetProperties,
         ...userCabinet

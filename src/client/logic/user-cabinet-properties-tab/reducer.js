@@ -12,7 +12,6 @@ export default function availabilityCalendarReducer(
 ) {
     switch (action.type) {
         case GET_CURRENT_USER_INFO_SUCCESS: {
-            console.log("reducer =", action.payload);
             return {
                 ...state,
                 properties: action.payload.propetyResponse

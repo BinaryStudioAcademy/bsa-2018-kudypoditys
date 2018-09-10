@@ -19,14 +19,12 @@ import "./index.scss";
 
 export class ReviewsTab extends React.Component {
     getReviewsItems = reviews => {
-        console.log(reviews);
         return reviews.map((review, index) => {
             return <ReviewItem key={index} {...review} />;
         });
     };
 
     componentWillMount() {
-        console.log(this.props);
         this.props.getUserReviews({ id: this.props.user.id });
     }
 

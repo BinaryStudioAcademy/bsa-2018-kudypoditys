@@ -1,13 +1,16 @@
 import defaultState from "client/logic/defaultState";
 import {
     PROPERTY_CALENDAR_UPDATE,
-    AVAILABILITY_UPDATE_SUCCESS,
-    GET_CURRENT_USER_INFO_SUCCESS
+    AVAILABILITY_SUBMIT_SUCCESS,
+    SELECTED_ROOM_CHANGE
 } from "./actionTypes";
 
 import { CHOOSE_PROPERTY } from "../user-cabinet-properties-tab/actionTypes";
 
-export default function availabilityCalendarReducer(state = {}, action) {
+export default function availabilityCalendarReducer(
+    state = defaultState.availabilityCalendar,
+    action
+) {
     switch (action.type) {
         case PROPERTY_CALENDAR_UPDATE: {
             return {
@@ -15,23 +18,18 @@ export default function availabilityCalendarReducer(state = {}, action) {
                 ...action.payload
             };
         }
-        case AVAILABILITY_UPDATE_SUCCESS: {
-            return {
-                ...state,
-                ...action.payload
-            };
-        }
-        case GET_CURRENT_USER_INFO_SUCCESS: {
-            return {
-                ...state,
-                property: action.payload
-            };
-        }
 
         case CHOOSE_PROPERTY: {
             return {
                 ...state,
                 ...action.payload
+            };
+        }
+
+        case SELECTED_ROOM_CHANGE: {
+            return {
+                ...state,
+                selectedRoom: action.payload
             };
         }
 

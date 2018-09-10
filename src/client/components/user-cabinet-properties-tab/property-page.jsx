@@ -15,16 +15,6 @@ export class PropertyPage extends React.Component {
             render: () => (
                 <Tab.Pane attached={false}>
                     <AvailabilityCalendar />
-                    <Button
-                        floated="left"
-                        icon
-                        labelPosition="left"
-                        primary
-                        size="small"
-                        onClick={this.submitHandle}
-                    >
-                        <Icon name="save outline" /> Save
-                    </Button>
                 </Tab.Pane>
             )
         },
@@ -39,7 +29,6 @@ export class PropertyPage extends React.Component {
     ];
     render() {
         const { property } = this.props;
-        console.log("activeProperty", property);
         return (
             <Segment className="property-segment">
                 <a

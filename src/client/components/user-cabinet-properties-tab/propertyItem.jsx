@@ -18,9 +18,6 @@ import "./index.scss";
 
 export class PropertyItem extends React.Component {
     render() {
-        // const { propertyItemData } = this.props;
-        console.log("ITEM = " + this.props);
-
         let ratingStatus = "";
         return (
             <Card

@@ -1,5 +1,13 @@
 import React, { Fragment } from "react";
-import { Table, Button, Icon, Header, Message } from "semantic-ui-react";
+import {
+    Table,
+    Button,
+    Icon,
+    Header,
+    Message,
+    Dimmer,
+    Dropdown
+} from "semantic-ui-react";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "./container";
 import { DrawCount } from "./drawCount";
@@ -12,54 +20,18 @@ import "./index.scss";
 
 export class AvailabilityCalendar extends React.Component {
     submitHandle = data => {
-        console.log("Submit");
+        this.props.handleSubmit(this.props.selectedRoom.availabilities);
     };
 
-    // roomAmountChanged = (e, { name, value, defaultValue }) => {
-    //     // console.log(e);
-    //     // console.log(name);
-    //     console.log(defaultValue);
-    //     console.log(value);
-    //     // if (this.props[0].rooms[0].amount !== defaultValue) {
-    //     // } else {
-    //     //     console.log("ADD");
-    //     //     this.setState({
-    //     //         add: [
-    //     //             ...this.state.add,
-    //     //             {
-    //     //                 id: this.props[0].rooms[0].id,
-    //     //                 propertyId: this.props[0].id,
-    //     //                 amount: value,
-    //     //                 availabilityStart: name
-    //     //             }
-    //     //         ]
-    //     //     });
-    //     // }
-    // };
-
-    componentWillMount() {
-        // this.props.fetchUserInfo(this.props.userId);
-    }
-
     handleAmountChange = (e, { name, value }) => {
-        // console.log("Change", e, "\n");
-        // console.log("E");
-        // console.log("name = ", name);
-        // console.log("value = ", value);
-        // console.log("avail = ", this.props.rooms[0]);
-        const data = this.props.rooms[0].availabilities[name];
+        const data = this.props.selectedRoom.availabilities[name];
         data.amount = value;
 
         this.props.handleUpdate(data);
     };
 
     handlePriceChange = (e, { name, value }) => {
-        // console.log("Change", e, "\n");
-        // console.log("E");
-        // console.log("name = ", name);
-        // console.log("value = ", value);
-        // console.log("avail = ", this.props.rooms[0]);
-        const data = this.props.rooms[0].availabilities[name];
+        const data = this.props.selectedRoom.availabilities[name];
         data.price = value;
 
         this.props.handleUpdate(data);
@@ -85,6 +57,26 @@ export class AvailabilityCalendar extends React.Component {
         return arrDays.reverse();
     }
 
+    selectedRoomChange = (e, { value }) => {
+        this.props.selectedRoomChange(this.props.rooms[value]);
+    };
+
+    getRoomsOptions() {
+        const { rooms } = this.props;
+        const options = rooms.map((room, index) => {
+            return {
+                key: index,
+                text: room.roomType.name,
+                value: index
+            };
+        });
+        return options;
+    }
+
+    componentWillMount() {
+        this.props.selectedRoomChange(this.props.rooms[0]);
+    }
+
     render() {
         const daysArray = this.getDaysArrayByMonth();
         return (
@@ -92,8 +84,18 @@ export class AvailabilityCalendar extends React.Component {
                 <Message info>
                     This is the calendar for booking your rooms.
                 </Message>
+                <Dimmer />
+                <p className="room-p">Room</p>
+                <Dropdown
+                    name="room"
+                    // fluid
+                    selection
+                    onChange={this.selectedRoomChange}
+                    defaultValue={0}
+                    options={this.getRoomsOptions()}
+                />
+                <Dimmer />
                 <div style={{ overflow: "auto" }}>
-                    {/* {console.log(this.props.rooms[0])} */}
                     <Table compact celled padded>
                         <Table.Header>
                             <Table.Row style={{ textAlign: "center" }}>
@@ -120,7 +122,7 @@ export class AvailabilityCalendar extends React.Component {
                                     onAmountChange={this.handleAmountChange}
                                     // amount={this.props.rooms[0].amount}
                                     availability={
-                                        this.props.rooms[0].availabilities
+                                        this.props.selectedRoom.availabilities
                                     }
                                     days={daysArray}
                                 />
@@ -131,7 +133,7 @@ export class AvailabilityCalendar extends React.Component {
                                 </Table.Cell>
                                 <DrawReservations
                                     reservations={
-                                        this.props.rooms[0].reservations
+                                        this.props.selectedRoom.reservations
                                     }
                                 />
                             </Table.Row>
@@ -139,16 +141,16 @@ export class AvailabilityCalendar extends React.Component {
                                 <Table.Cell collapsing>Price</Table.Cell>
                                 <DrawPrices
                                     availability={
-                                        this.props.rooms[0].availabilities
+                                        this.props.selectedRoom.availabilities
                                     }
                                     onPriceChange={this.handlePriceChange}
                                 />
                             </Table.Row>
                         </Table.Body>
                         <Table.Footer fullWidth>
-                            {/* <Table.Row> */}
-                            {/* <Table.HeaderCell /> */}
-                            {/* <Table.HeaderCell colSpan="1">
+                            {/* <Table.Row>
+                                <Table.HeaderCell />
+                                <Table.HeaderCell colSpan="1">
                                     <Button
                                         floated="left"
                                         icon
@@ -164,6 +166,16 @@ export class AvailabilityCalendar extends React.Component {
                         </Table.Footer>
                     </Table>
                     <br />
+                    <Button
+                        floated="left"
+                        icon
+                        labelPosition="left"
+                        primary
+                        size="small"
+                        onClick={this.submitHandle}
+                    >
+                        <Icon name="save outline" /> Save
+                    </Button>
                 </div>
             </Fragment>
         );

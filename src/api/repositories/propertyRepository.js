@@ -389,7 +389,7 @@ class PropertyRepository extends Repository {
                 //             .join(", ") +
                 //         ") DESC"
                 // ),
-                 order: sortingOption,
+                order: sortingOption,
                 include: [
                     {
                         model: City
@@ -517,6 +517,9 @@ class PropertyRepository extends Repository {
                         },
                         {
                             model: Availability
+                        },
+                        {
+                            model: RoomType
                         }
                     ]
                 },
