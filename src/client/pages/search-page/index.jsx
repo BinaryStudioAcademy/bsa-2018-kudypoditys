@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.scss';
-import { Container, Segment, Icon, Button } from 'semantic-ui-react';
+import { Container, Segment, Icon, Button, Image } from 'semantic-ui-react';
 import SearchSummary from 'client/components/search-summary';
 import RankingBar from 'client/components/ranking-bar';
 import PropertyListItem from 'client/components/property-list-item';
@@ -10,7 +10,7 @@ import QuickFilter from 'client/components/quick-filter';
 import MapGlobalWidget from 'client/components/map-global-widget';
 import { connect } from 'react-redux';
 import { mapStateToProps } from './container';
-
+import sorry from './img/nothing.png';
 class SearchPage extends React.Component {
     constructor(props) {
         super(props);
@@ -71,8 +71,10 @@ class SearchPage extends React.Component {
         //     longitude: properties[0].coordinates.lng,
         // }
         //
-        localStorage.setItem('lastPositionLat', properties[0].coordinates.lat)
-        localStorage.setItem('lastPositionLng', properties[0].coordinates.lng)
+       if (properties) {
+        localStorage.setItem('lastPositionLat', properties[0].coordinates.lat);
+        localStorage.setItem('lastPositionLng', properties[0].coordinates.lng);
+           }
 
         this.setState({ mapProp: tempArr });
     };
@@ -141,47 +143,51 @@ class SearchPage extends React.Component {
                                 </Button>
                             </div>
                         </div>
-                        {this.state.switch === LIST ? (
+                        {this.state.itemCount === 0 ? <div><Image style={{paddingTop: 50}} src={sorry} size='medium' centered /> <div className="sorry" >Sorry, no properties found</div> </div> :
                             <div>
-                                <RankingBar
-                                    key="RankingBar"
-                                    searchRequest={this.state.searchRequest}
-                                    onSortingSelected={this.onSortingSelected}
-                                />
-                                {this.state.listItems}
-                            </div>
-                        ) : (
-                            <div
-                                className="search_page__globalMap"
-                                style={{ marginTop: 20 }}
-                            >
-                                <MapGlobalWidget
-                                    properties={this.state.mapProp}
-                                    startPosition={
-                                        this.state.mapProp.length
-                                            ? {
-                                                  latitude: this.state
-                                                      .mapProp[0].coordinates
-                                                      .lat,
-                                                  longitude: this.state
-                                                      .mapProp[0].coordinates
-                                                      .lng,
-                                              }
-                                            : LastStartPosition
+                                {this.state.switch === LIST ? (
+                                    <div>
+                                        <RankingBar
+                                            key="RankingBar"
+                                            searchRequest={this.state.searchRequest}
+                                            onSortingSelected={this.onSortingSelected}
+                                        />
+                                        {this.state.listItems}
+                                    </div>
+                                ) : (
+                                    <div
+                                        className="search_page__globalMap"
+                                        style={{marginTop: 20}}
+                                    >
+                                        <MapGlobalWidget
+                                            properties={this.state.mapProp}
+                                            startPosition={
+                                                this.state.mapProp.length
+                                                    ? {
+                                                        latitude: this.state
+                                                            .mapProp[0].coordinates
+                                                            .lat,
+                                                        longitude: this.state
+                                                            .mapProp[0].coordinates
+                                                            .lng,
+                                                    }
+                                                    : LastStartPosition
 
-                                    }
-                                    zoom={13}
-                                    controlEnable={true}
-                                />
+                                            }
+                                            zoom={13}
+                                            controlEnable={true}
+                                        />
+                                    </div>
+                                )}
+                                {this.state.switch === LIST ? (
+                                    <div className="search-page__pagination">
+                                        <Pagination
+                                            pagesCount={this.state.itemCount / 5}
+                                        />
+                                    </div>
+                                ) : null}
                             </div>
-                        )}
-                        {this.state.switch === LIST ? (
-                            <div className="search-page__pagination">
-                                <Pagination
-                                    pagesCount={this.state.itemCount / 5}
-                                />
-                            </div>
-                        ) : null}
+                        }
                     </Container>
                 </div>
             </div>
