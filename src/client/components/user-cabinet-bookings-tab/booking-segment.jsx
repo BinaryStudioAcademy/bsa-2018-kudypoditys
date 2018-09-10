@@ -72,8 +72,11 @@ export class BookingSegment extends React.Component {
                     />
                     <div className="booking-info">
                         <Header
-                            as="h3"
-                            style={{ ...headerStyle, marginLeft: "10px" }}
+                            as="h1"
+                            style={{
+                                ...headerStyle,
+                                marginLeft: "10px"
+                            }}
                         >
                             {booking.room.property.name}
                         </Header>
@@ -136,7 +139,7 @@ export class BookingSegment extends React.Component {
                     </Grid>
                     <div className="booking-buttons">
                         <Button
-                            style={{ margin: "5px" }}
+                            style={{ margin: "0px 5px" }}
                             floated="right"
                             primary
                             content="View booking"
@@ -149,7 +152,7 @@ export class BookingSegment extends React.Component {
                                 className="user_cabinet_add_review__modal"
                                 trigger={
                                     <Button
-                                        style={{ margin: "5px" }}
+                                        style={{ margin: "0px 5px" }}
                                         primary
                                         // color="teal"
                                         fluid
