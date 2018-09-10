@@ -87,12 +87,7 @@ export class BookingPage extends React.Component {
                             },
                             { key: "no", content: "No", positive: true }
                         ]}
-                        trigger={
-                            <Button negative>
-                                <Icon name="remove" />
-                                Cancel this booking
-                            </Button>
-                        }
+                        trigger={<Button negative>Cancel this booking</Button>}
                     />
                 </div>
                 <Divider />
