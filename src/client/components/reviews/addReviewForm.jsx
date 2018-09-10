@@ -14,7 +14,7 @@ import {
 import { connect } from 'react-redux';
 import RatingForm from './rating';
 import './index.scss';
-import { getReviewAvg } from 'client/helpers/avgReviewRating';
+import { getReviewAvg, getGroupedArray, getAvgFromArray } from 'client/helpers/avgReviewRating';
 
 import { mapStateToProps, mapDispatchToProps } from './container';
 
@@ -58,8 +58,14 @@ export class addReviewForm extends React.Component {
             Facilities,
             Location,
         } = this.props.reviewRating;
-        const avg = getReviewAvg(reviewRating);
+        const avg = getReviewAvg(reviewRating),
+            avgPropRatingArray = getGroupedArray(property.reviews, 'avgReview');
 
+
+
+        avgPropRatingArray.push(avg);
+        const avgProp = getAvgFromArray(avgPropRatingArray);
+        console.log(avgProp); // this we should write to Property table as Rating
         if (!userc) {
         property.reviews.push({
             pros: pros,
@@ -75,13 +81,11 @@ export class addReviewForm extends React.Component {
             anon: this.state.anon,
             userId: user.id,
             propertyId: property.id,
-
             Cleanliness: Cleanliness,
             Price: Price,
             Comfort: Comfort,
             Facilities: Facilities,
             Location: Location,
-
             avgReview: avg,
         });
     };

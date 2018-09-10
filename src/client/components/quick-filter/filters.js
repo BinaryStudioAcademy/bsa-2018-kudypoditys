@@ -146,6 +146,55 @@ export const bedTypes = [
         value: "Fitness_spa_locker_rooms"
     },
     {
+        name: "Full_body_massage",
+        key: "Full_body_massage",
+        label: "Full body massage",
+        value: "Full_body_massage"
+    },
+    {
+        name: "Daily_maid_service",
+        key: "Daily_maid_service",
+        label: "Daily maid service",
+        value: "Daily_maid_service"
+    },
+    {
+        name: "Laundry",
+        key: "Laundry",
+        label: "Laundry",
+        value: "Laundry"
+    },
+
+    {
+        name: "Walking_tours",
+        key: "Walking_tours",
+        label: "Walking tours",
+        value: "Walking_tours"
+    },
+    {
+        name: "Live_music_performance",
+        key: "Live_music_performance",
+        label: "Live music/performance",
+        value: "Live_music_performance"
+    },
+    {
+        name: "Live_sport_events",
+        key: "Live_sport_events",
+        label: "Live sport events (broadcast)",
+        value: "Live_sport_events"
+    },
+    {
+        name: "Themed_dinner_nights",
+        key: "Themed_dinner_nights",
+        label: "Themed dinner nights",
+        value: "Themed_dinner_nights"
+    },
+    {
+        name: "Movie_nights",
+        key: "Movie_nights",
+        label: "Movie nights",
+        value: "Movie_nights"
+    },
+    {
         name: "Queen_bed",
         key: "Queen bed",
         label: "Queen bed",
@@ -154,7 +203,7 @@ export const bedTypes = [
     {
         name: "Dogs",
         key: "Dogs",
-        label: "Dogs",
+        label: "Pets",
         value: "Dogs"
 
     },
