@@ -94,6 +94,8 @@ export class addReviewForm extends React.Component {
             propertyId: property.id
         })
 
+        this.props.getProperty(property.id)
+
     };
 
     render() {

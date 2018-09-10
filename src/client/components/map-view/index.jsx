@@ -25,6 +25,7 @@ class MapView extends React.Component {
     }
     renderPopup = () => {
         const { popupInfo, controlEnable } = this.state;
+
         return (
             controlEnable &&
             popupInfo && (
@@ -65,6 +66,7 @@ class MapView extends React.Component {
         });
     };
     renderPropertyMarker = (property, index) => {
+        console.log(property)
         return (
             <Marker
                 key={`marker-${index}`}
@@ -81,10 +83,14 @@ class MapView extends React.Component {
                     onClick={() => {
                         this.handleMarkerClicked(property);
                     }}
-                    >   <Label style={{whiteSpace: "nowrap",
-                    fontSize: 9,
-                    position: "relative",
-                    top: -12}} color="black" >$ {property.price}</Label></Icon>
+                    >
+                    {property.price ? <Label style={{whiteSpace: "nowrap",
+                        fontSize: 9,
+                        position: "relative",
+                        top: -12}} color="black" >$ {property.price}</Label> : null}
+
+
+                    </Icon>
 
             </Marker>
         );
@@ -124,6 +130,7 @@ class MapView extends React.Component {
 
     render() {
         const { disablePopup } = this.props;
+        console.log(this.props)
         return (
             <Fragment>
                 <ReactMapGL

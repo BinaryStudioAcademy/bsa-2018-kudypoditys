@@ -68,75 +68,96 @@ let filters = [
 
 export const ratingScore = [
     {
-        name: "rating",
-        key: "rating",
-        label: "5",
-        value: "5"
+        name: "Wonderful",
+        key:"Wonderful",
+        label: "Wonderful",
+        value: "Wonderful"
     },
     {
-        name: "rating",
-        key: "rating",
-        label: "4",
-        value: "4"
+        name: "Very_Good",
+        key: "Very_Good",
+        label: "Very Good",
+        value: "Very_Good"
     },
     {
-        name: "rating",
-        key: "rating",
-        label: "3",
-        value: "3"
+        name: "Good",
+        key: "Good",
+        label:"Good",
+        value: "Good"
     },
     {
-        name: "rating",
-        key: "rating",
-        label: "2",
-        value: "2"
+        name: "Pleasant",
+        key: "Pleasant",
+        label:"Pleasant",
+        value: "Pleasant"
     },
     {
-        name: "rating",
-        key: "rating",
-        label: "1",
-        value: "1"
+        name: "Its_Ok",
+        key: "Its_Ok",
+        label: "It`s Ok",
+        value: "Its_Ok"
     },
     {
-        name: "rating",
-        key: "undefined",
-        label: "unrated",
-        value: "undefined"
+        name: "No_rating",
+        key: "No_rating",
+        label: "No rating",
+        value: "No_rating"
+    }
+];
+export const priceScore= [
+    {
+        name: "US0_US30_for_night",
+        key:"US0_US30_for_night",
+        label: "US 0-US 30 per night",
+        value: "US0_US30"
+    },
+    {
+        name: "US30_US60_for_night",
+        key:"US30_US60_for_night",
+        label: "US 30-US 60 per night",
+        value: "US30_US60"
+    },
+    {
+        name: "US60_US90_for_night",
+        key:"US60_US90_for_night",
+        label: "US 60-US 90 per night",
+        value: "US60_US90"
+    },
+    {
+        name: "US90_+_for_night",
+        key:"US90_+_for_night",
+        label: "US 90 + per night",
+        value: "US90"
+    },
+
+];
+export const bedsType = [
+    {
+        name: "Queen_bed",
+        key: "Queen bed",
+        label: "Queen bed",
+        value: "Queen_bed"
+    },
+    {
+        name: "Twin_bed",
+        key: "Twin_bed",
+        label: "Twin bed",
+        value: "Twin_bed"
+    },
+    {
+        name: "Full_bed",
+        key: "Full_bed",
+        label:"Full bed",
+        value: "Full_bed"
+    },
+    {
+        name: "King_bed",
+        key: "King_bed",
+        label:"King bed",
+        value: "King_bed"
     }
 ];
 
-// export const facilities = [
-//     {
-//         name: 'wellness_facilities',
-//         key: 'Wellness facilities',
-//         label: 'Wellness facilities',
-//     },
-//     {
-//         name: 'pets',
-//         key: 'pets',
-//         label: 'Pets',
-//     },
-//     {
-//         name: 'outdoors',
-//         key: 'outdoors',
-//         label: 'Outdoors',
-//     },
-//     {
-//         name: 'cleaning_services',
-//         key: 'rating2',
-//         label: 'Cleaning services',
-//     },
-//     {
-//         name: 'gctivities',
-//         key: 'activities',
-//         label: 'Activities',
-//     },
-//     {
-//         name: 'general',
-//         key: 'general',
-//         label: 'General',
-//     },
-// ];
 
 export const bedTypes = [
     {
@@ -194,12 +215,7 @@ export const bedTypes = [
         label: "Movie nights",
         value: "Movie_nights"
     },
-    {
-        name: "Queen_bed",
-        key: "Queen bed",
-        label: "Queen bed",
-        value: "Queen_bed"
-    },
+
     {
         name: "Dogs",
         key: "Dogs",

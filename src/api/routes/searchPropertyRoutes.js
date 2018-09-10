@@ -57,7 +57,10 @@ searchProperty.route("/").get((req, res) => {
                     dateOut: new Date(Number(endDate)),
                     fitness_spa_locker_rooms:
                         req.query.Fitness_spa_locker_rooms?req.query.Fitness_spa_locker_rooms:"",
-                    queen_bed: req.query.Queen_bed?req.query.Queen_bed:"",
+                    queen_bed: req.query.Queen_bed ? req.query.Queen_bed : "",
+                    Twin_bed: req.query.Twin_bed ? req.query.Twin_bed : "",
+                    Full_bed: req.query.Full_bed ? req.query.Full_bed : "",
+                    King_bed: req.query.King_bed?req.query.King_bed:"",
                     dogs: req.query.Dogs?req.query.Dogs:"",
                     full_body_massage: req.query.Full_body_massage?req.query.Full_body_massage:"",
                     daily_maid_service: req.query.Daily_maid_service?req.query.Daily_maid_service:"",
@@ -66,7 +69,17 @@ searchProperty.route("/").get((req, res) => {
                     live_music_performance: req.query.Live_music_performance?req.query.Live_music_performance:"",
                     live_sport_events: req.query.Live_sport_events?req.query.Live_sport_events:"",
                     themed_dinner_nights: req.query.Themed_dinner_nights?req.query.Themed_dinner_nights:"",
-                    movie_nights: req.query.Movie_nights?req.query.Movie_nights:"",
+                    movie_nights: req.query.Movie_nights ? req.query.Movie_nights : "",
+                    Wonderful: req.query.Wonderful ? req.query.Wonderful: "",
+                    Very_Good: req.query.Very_Good? req.query.Very_Good: "",
+                    Good: req.query.Good ? req.query.Good : "",
+                    Pleasant: req.query.Pleasant ? req.query.Pleasant : "",
+                    Its_Ok: req.query.Its_Ok ? req.query.Its_Ok : "",
+                    No_rating: req.query.No_rating ? req.query.No_rating : "",
+                    US0_US30: req.query.US0_US30 ? req.query.US0_US30 : "",
+                    US30_US60: req.query.US30_US60 ? req.query.US30_US60 : "",
+                    US60_US90: req.query.US60_US90 ? req.query.US60_US90 : "",
+                    US90: req.query.US90 ? req.query.US90 : "",
                 };
                 propertyService
                     .getFilteredProperties(filter)
