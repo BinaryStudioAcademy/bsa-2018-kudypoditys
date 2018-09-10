@@ -6,7 +6,7 @@ import MapView from '../map-view';
 export default class MapGlobalWidget extends Component {
     render() {
         const { fullScreen } = this.props;
-
+        console.log(this.props.startPosition)
 
 
         return (
@@ -30,8 +30,8 @@ export default class MapGlobalWidget extends Component {
 
 MapGlobalWidget.defaultProps = {
     startPosition: {
-        latitude: 16.469391,
-        longitude: 10.746883
+        latitude: 46.469391,
+        longitude: 30.746883
     }
 };
 
