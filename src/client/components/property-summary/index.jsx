@@ -31,6 +31,7 @@ export class PropertySummary extends React.Component {
                     >
                         {property.name}
                     </Header>
+
                     <Rating
                         rating={rating}
                         maxRating={5}
