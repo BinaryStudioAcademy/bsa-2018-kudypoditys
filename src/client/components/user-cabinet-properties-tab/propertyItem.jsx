@@ -6,15 +6,14 @@ import {
     Button,
     CardContent,
     Grid,
-    CardMeta,
-    CardDescription,
-    Container,
     Icon,
     Header,
     Label,
     Rating
 } from "semantic-ui-react";
 import "./index.scss";
+import BasicMapWidget from "../basic-map-widget";
+import Modal from "../modal";
 
 export class PropertyItem extends React.Component {
     render() {
@@ -97,7 +96,8 @@ export class PropertyItem extends React.Component {
                                         </div>
                                         <br />
                                         <span className="reviewsNumber">
-                                            {this.props.reviewsNamber} reviews
+                                            {this.props.reviewsNamber || 0}{" "}
+                                            reviews
                                         </span>
                                     </div>
 
@@ -109,12 +109,41 @@ export class PropertyItem extends React.Component {
                             </div>
                             <div className="card_row__location">
                                 <div className="location__span">
-                                    <Icon
-                                        name="map marker alternate"
-                                        size="small"
-                                        onClick={this.handleRedirectToMap}
-                                    />
-                                    {this.props.address + " - "}
+                                    <Modal
+                                        trigger={
+                                            <p>
+                                                <Icon name="map marker alternate" />
+                                                <span
+                                                    style={{
+                                                        cursor: "pointer",
+                                                        color: "#465672",
+                                                        textDecoration:
+                                                            "underline"
+                                                    }}
+                                                >
+                                                    {
+                                                        this.props.property
+                                                            .address
+                                                    }
+                                                </span>
+                                            </p>
+                                        }
+                                        fullScreen
+                                    >
+                                        <BasicMapWidget
+                                            style={{
+                                                width: "100%",
+                                                height: "100%"
+                                            }}
+                                            coordinates={
+                                                this.props.property.coordinates
+                                            }
+                                            properties={[this.props.property]}
+                                            controlEnable={true}
+                                            disablePopup={true}
+                                            fullScreen
+                                        />
+                                    </Modal>
 
                                     <span className="Property_list__distanceToCenter">
                                         ({this.props.distanceToCentre} km from

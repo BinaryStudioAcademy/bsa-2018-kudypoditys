@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 
 const USERS = [
     {
-        id: 2,
+        id: 1,
         fullName: "Natalya",
         password: bcrypt.hashSync("nata1NATA", 10),
         email: "natalya@gmail.com",
@@ -15,7 +15,7 @@ const USERS = [
         paymentTypeId: 1
     },
     {
-        id: 1,
+        id: 2,
         fullName: "Nikolay Datsko",
         password: bcrypt.hashSync("102938abC", 10),
         email: "sayber1990@gmail.com",

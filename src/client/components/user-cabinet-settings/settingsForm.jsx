@@ -380,10 +380,23 @@ export class SettingsForm extends Component {
                         Change password
                     </Button>
                     <p className="personal_settings-p" />
-                    {this.props.passwordMessage}
+                    <p
+                        className="password_message_p"
+                        style={
+                            this.props.userPasswordError
+                                ? { color: "red" }
+                                : { color: "green" }
+                        }
+                    >
+                        {this.props.passwordMessage}{" "}
+                    </p>
                 </Segment>
                 <Segment>
-                    <Button primary onClick={this.sendSettings}>
+                    <Button
+                        attached="right"
+                        primary
+                        onClick={this.sendSettings}
+                    >
                         <Icon name="save outline" />
                         Save
                     </Button>
