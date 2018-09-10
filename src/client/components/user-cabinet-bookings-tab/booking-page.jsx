@@ -2,9 +2,9 @@ import React from "react";
 import {
     Container,
     Header,
-    Grid,
     Image,
     Button,
+    Modal,
     Icon,
     Table,
     Divider,
@@ -13,15 +13,25 @@ import {
 import { Slider } from "../slider";
 import moment from "moment";
 import "./booking-page.scss";
-import MapWidgetModal from "client/components/map-widget-modal";
+import BasicMapWidget from "../basic-map-widget";
+import {
+    getGroupedArray,
+    getAvgFromArray
+} from "client/helpers/avgReviewRating";
+import { PropertySummary } from "../property-summary";
 
 export class BookingPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { modalOpen: false };
+    }
+
     cancelBooking = (event, booking) => {
         this.props.cancelBooking(booking);
     };
     render() {
         const { booking, images } = this.props;
-        const {orderCode} = this.props.booking;
+        const { orderCode } = this.props.booking;
         const { room } = booking;
         const { property } = room;
         const dateIn = new Date(booking.dateIn),
@@ -31,6 +41,13 @@ export class BookingPage extends React.Component {
         const duration = moment.duration(end.diff(start));
         const days = Math.round(duration.asDays());
         const price = Number(room.price) * days;
+        const avgPropRatingArray = getGroupedArray(
+            property.reviews,
+            "avgReview"
+        );
+        const avgPropRating = getAvgFromArray(avgPropRatingArray);
+        const pStyle = { marginLeft: "10px" };
+
         return (
             <Container>
                 <a
@@ -46,120 +63,87 @@ export class BookingPage extends React.Component {
                     </span>
                 </a>
                 <Divider />
-                <div className="property-images">
-                    <Slider pics={images} />
-                </div>
-                <Divider />
-                <div className="booking-page-top-section">
-                    <Table collapsing celled className="booking-info">
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell
-                                    colSpan={2}
-                                    textAlign="center"
-                                >
-                                    Booking Info
-                                </Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>
-                            <Table.Row>
-                                <Table.Cell>
-                                    <Icon name="bed" />
-                                    Room
-                                </Table.Cell>
-                                <Table.Cell>{room.roomType.name}</Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell>
-                                    <Icon name="calendar alternate" />
-                                    Check-in
-                                </Table.Cell>
-                                <Table.Cell>
-                                    {moment(booking.dateIn).format(
-                                        "ddd, MMMM DD"
-                                    )}
-                                </Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell>
-                                    <Icon name="calendar alternate" />
-                                    Check-out
-                                </Table.Cell>
-                                <Table.Cell>
-                                    {moment(booking.dateOut).format(
-                                        "ddd, MMMM DD"
-                                    )}
-                                </Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell>
-                                    <Icon name="dollar" />
-                                    Total
-                                </Table.Cell>
-                                <Table.Cell>{price} USD</Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell>
-                                    <Icon name="barcode"/>
-                                    Order code
-                                </Table.Cell>
-                                <Table.Cell>{orderCode}</Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell colSpan="2">
-                                    <Button
-                                        negative
-                                        fluid
-                                        onClick={event =>
-                                            this.cancelBooking(event, booking)
-                                        }
-                                    >
-                                        Cancel your booking
-                                    </Button>
-                                </Table.Cell>
-                            </Table.Row>
-                        </Table.Body>
-                    </Table>
+                <div className="booking-property-wrp">
+                    <BasicMapWidget
+                        key="BasicMapWidget"
+                        properties={[property]}
+                        coordinates={property.coordinates}
+                        controlEnable={false}
+                        rounded
+                        centered
+                    />
                     <div className="property-info">
-                        <Header
-                            textAlign="center"
-                            className="property-name"
-                            as="h2"
-                        >
-                            <a style={{ color: "#465672", cursor: "pointer" }}>
-                                {room.property.name}
-                            </a>
-                        </Header>
-                        <p>
-                            <Icon name="map marker alternate" />
-                            <MapWidgetModal
-                                buttonText={room.property.address}
-                                properties={[
-                                    {
-                                        price: room.price,
-                                        name: property.name,
-                                        coordinates: property.coordinates,
-                                        imageSrc: property.images[0].url,
-                                        address: property.address,
-                                        rating: property.rating
-                                    }
-                                ]}
-                                startPosition={{
-                                    latitude: property.coordinates.lat,
-                                    longitude: property.coordinates.lng
-                                }}
-                                zoom={13}
-                                controlEnable={true}
-                                buttonClass={"searchMapButton"}
-                            />
-                        </p>
-                        <p>
+                        <PropertySummary
+                            rating={avgPropRating}
+                            totalReviews={property.reviews.length}
+                            property={property}
+                        />
+                        <p style={pStyle}>
                             <Icon name="phone" />
                             {room.property.contactPhone}
                         </p>
-                        {/* <p>{room.property.description}</p> */}
+                        <p style={pStyle}>
+                            <Icon name="calendar alternate" />
+                            {moment(booking.dateIn).format("ddd, MMMM DD") +
+                                " - " +
+                                moment(booking.dateOut).format("ddd, MMMM DD")}
+                        </p>
+                        <p style={pStyle}>
+                            <Icon name="bed" />
+                            {room.roomType.name}
+                        </p>
+                        <p style={pStyle}>
+                            <Icon name="barcode" />
+                            {"Confirmation code: " + orderCode}
+                        </p>
+                        <Modal
+                            open={this.state.modalOpen}
+                            closeOnDimmerClick
+                            trigger={
+                                <Button
+                                    negative
+                                    centered
+                                    style={{
+                                        position: "relative",
+                                        left: "50%",
+                                        transform: "translateX(-50%)"
+                                    }}
+                                    content="Cancel this booking"
+                                    onClick={() => {
+                                        this.setState({ modalOpen: true });
+                                    }}
+                                />
+                            }
+                        >
+                            <Modal.Header>Are you sure?</Modal.Header>
+                            <Modal.Content>
+                                <p>
+                                    Do you really want to cancel your booking at{" "}
+                                    {property.name}?
+                                </p>
+                            </Modal.Content>
+                            <Modal.Actions>
+                                <Button
+                                    onClick={event =>
+                                        this.cancelBooking(event, booking)
+                                    }
+                                    negative
+                                >
+                                    Yes
+                                </Button>
+                                <Button
+                                    onClick={() => {
+                                        this.setState({ modalOpen: false });
+                                    }}
+                                    positive
+                                    content="No"
+                                />
+                            </Modal.Actions>
+                        </Modal>
                     </div>
+                </div>
+                <div className="property-images">
+                    <Slider pics={images} />
                 </div>
             </Container>
         );
