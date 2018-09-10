@@ -10,6 +10,7 @@ export default class MapWidgetModal extends Component {
     };
 
     render() {
+       const {fullScreen} = this.props;
         return (
             <React.Fragment>
                 <Modal
@@ -32,6 +33,8 @@ export default class MapWidgetModal extends Component {
                             startPosition={this.props.startPosition}
                             zoom={13}
                             controlEnable={true}
+                            width={fullScreen}
+                            height={fullScreen}
                         />
                     </Modal.Content>
                 </Modal>

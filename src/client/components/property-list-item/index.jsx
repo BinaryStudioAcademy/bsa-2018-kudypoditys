@@ -224,6 +224,7 @@ export class PropertyListItem extends React.Component {
                                         }}
                                         zoom={13}
                                         controlEnable={true}
+
                                         buttonClass={"searchMapButton"}
                                     />
                                      <span className="Property_list__distanceToCenter">
