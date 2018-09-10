@@ -10,7 +10,7 @@ class RatingBlock extends React.Component {
         const { avgPropRating, reviewsCount, property } = this.props;
 
         const ratingStatus = getPropertyStatus(avgPropRating);
-
+            console.log(avgPropRating)
         return (
             <div
                 className="rating_block"
@@ -36,24 +36,30 @@ class RatingBlock extends React.Component {
                         {reviewsCount} reviews
                     </span>
                 </div>
-                <Popup
-                    style={{
-                        overflow: "hidden",
-                        opacity: "1",
-                        width: 250
-                    }}
-                    trigger={<div className="rating_num"> {avgPropRating}</div>}
-                    content={
-                        <div style={{ padding: 10 }}>
-                            {" "}
-                            <RatingBar property={property} />{" "}
-                        </div>
-                    }
-                    hoverable
-                    basic
-                    hideOnScroll
-                    position="bottom center"
-                />
+                    <Popup
+                        style={{
+                            overflow: "hidden",
+                            opacity: "1",
+                            width: 250,
+
+                        }}
+                        trigger={
+
+                            <div className="rating_num" style = {{
+                                width: 70,
+                                visibility:
+
+                                    avgPropRating === 0 ? "hidden" : "block"
+
+                            }}> {avgPropRating}
+                            </div>
+                        }
+                        content={ <div style={{padding: 10} }>  <RatingBar property={property} /> </div>}
+                        hoverable
+                        basic
+                        hideOnScroll
+                        position='bottom center'
+                    />
             </div>
         );
     }

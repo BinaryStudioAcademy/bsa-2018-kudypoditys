@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { MAPBOX_TOKEN } from "client/constants";
-import { Icon } from "semantic-ui-react";
+import { Icon, Label } from "semantic-ui-react";
 import MapPropertyItem from "client/components/map-property-item";
 import PropTypes from "prop-types";
 import MapPopupItem from "client/components/map-popup-item";
@@ -38,10 +38,18 @@ class MapView extends React.Component {
                     dynamicPosition={true}
                     onClose={() => this.setState({ popupInfo: null })}
                 >
+                    {/*<MapPopupItem*/}
+                        {/*propertyName={popupInfo.name}*/}
+                        {/*price={popupInfo.price}*/}
+                        {/*rating={popupInfo.rating}*/}
+                    {/*/>*/}
                     <MapPopupItem
                         propertyName={popupInfo.name}
+                        propertyAddress={popupInfo.address}
                         price={popupInfo.price}
                         rating={popupInfo.rating}
+                        imageSrc={popupInfo.imageSrc}
+                        // closeClicked={() => this.setState({ propertyInfo: null })}
                     />
                 </Popup>
             )
@@ -73,7 +81,11 @@ class MapView extends React.Component {
                     onClick={() => {
                         this.handleMarkerClicked(property);
                     }}
-                />
+                    >   <Label style={{whiteSpace: "nowrap",
+                    fontSize: 9,
+                    position: "relative",
+                    top: -12}} color="black" >$ {property.price}</Label></Icon>
+
             </Marker>
         );
     };
@@ -91,6 +103,7 @@ class MapView extends React.Component {
                     rating={propertyInfo.rating}
                     imageSrc={propertyInfo.imageSrc}
                     closeClicked={() => this.setState({ propertyInfo: null })}
+                    propertyId={propertyInfo.id}
                 />
             )
         );
