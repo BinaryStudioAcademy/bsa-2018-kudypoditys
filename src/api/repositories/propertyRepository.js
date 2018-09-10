@@ -6,6 +6,7 @@ const Sequelize = require("sequelize");
 const Reservation = require("../models/Reservation");
 const RoomType = require("../models/RoomType");
 const Image = require("../models/Image");
+const Availability = require("../models/Availability");
 const Favorite = require("../models/Favorite");
 const AccommodationRule = require("../models/AccommodationRule");
 const PropertyType = require("../models/PropertyType");
@@ -23,7 +24,6 @@ const BasicFacility = require("../models/BasicFacility");
 const FacilityCategory = require("../models/FacilityCategory");
 const AvailabilityRepository = require("./availabilityRepository");
 const RoomRepository = require("./roomRepository");
-const Availability = require("../models/Availability");
 const moment = require("moment");
 
 const includeOptions = [
@@ -321,12 +321,41 @@ class PropertyRepository extends Repository {
         let bedTypeId;
         switch (bedTypeStr) {
             case "Queen_bed":
-                bedTypeId = 3; //id from seed
+                bedTypeId = 3;
+                break;
+            case "Full_bed":
+                bedTypeId = 2;
+                break;
+            case "Twin_bed":
+                bedTypeId = 1;
+                break;
+            case "King_bed":
+                bedTypeId = 4;
                 break;
             default:
                 bedTypeId = -1;
         }
         return bedTypeId;
+    }
+    getRoomTypePriceId(roomTypePriceStr) {
+        let roomTypeTypeId;
+        switch (roomTypePriceStr) {
+            case "Queen_bed":
+                roomTypeTypeId = 3;
+                break;
+            case "Full_bed":
+                roomTypeTypeId = 2;
+                break;
+            case "Twin_bed":
+                roomTypeTypeId = 1;
+                break;
+            case "King_bed":
+                roomTypeTypeId = 4;
+                break;
+            default:
+                roomTypeTypeId = -1;
+        }
+        return roomTypeTypeId;
     }
     getFilteredProperties(filter) {
         console.log("filter " + JSON.stringify(filter));
@@ -408,13 +437,22 @@ class PropertyRepository extends Repository {
                 : [Facility];
 
         let bedsInRoomOption =
-            filter.queen_bed || filter.full_bed //we don't send full bad type yet
+            filter.queen_bed ||
+            filter.Full_bed ||
+            filter.Twin_bed ||
+            filter.King_bed
                 ? {
                       model: BedInRoom,
+                      required: true,
                       where: {
                           count: { $gte: filter.bedsCount },
                           bedTypeId: {
-                              $in: [this.getBedTypeId(filter.queen_bed)]
+                              $in: [
+                                  this.getBedTypeId(filter.queen_bed),
+                                  this.getBedTypeId(filter.Full_bed),
+                                  this.getBedTypeId(filter.Twin_bed),
+                                  this.getBedTypeId(filter.King_bed)
+                              ]
                           }
                       }
                   }
@@ -425,6 +463,29 @@ class PropertyRepository extends Repository {
                       }
                   };
 
+        let roomTypePriceOption =
+            filter.US0_US30 ||
+            filter.US30_US60 ||
+            filter.US60_US90 ||
+            filter.US90
+                ? {
+                      model: RoomType,
+                      required: true,
+                      RoomTypeId: {
+                          $in: [
+                              this.getBedTypeId(filter.US0_US30),
+                              this.getBedTypeId(filter.US30_US60),
+                              this.getBedTypeId(filter.US60_US90),
+                              this.getBedTypeId(filter.US90)
+                          ]
+                      }
+                  }
+                : {
+                      model: BedInRoom,
+                      where: {
+                          count: { $gte: filter.bedsCount }
+                      }
+                  };
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
 
         return this.model
@@ -435,15 +496,6 @@ class PropertyRepository extends Repository {
                     id: { $in: filter.propertiesIds }
                 },
                 distinct: true,
-                // order: Sequelize.literal(
-                //     "(" +
-                //         filter.propertiesIds
-                //             .map(function(id) {
-                //                 return '"property"."id" = \'' + id + "'";
-                //             })
-                //             .join(", ") +
-                //         ") DESC"
-                // ),
                 order: sortingOption,
                 include: [
                     {
@@ -457,6 +509,7 @@ class PropertyRepository extends Repository {
                     },
                     {
                         model: FacilityList,
+                        required: true,
                         include: facilityOption
 
                         //     [

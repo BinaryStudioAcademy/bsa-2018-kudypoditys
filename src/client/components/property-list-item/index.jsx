@@ -25,6 +25,7 @@ import {
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
 import RatingBlock from "../reviews/ratingBlock";
+
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
         //todo  handleRedirectToMap
@@ -45,7 +46,7 @@ export class PropertyListItem extends React.Component {
     }
 
     render() {
-        const { propertyItemData } = this.props;
+        const { propertyItemData, itemIndex } = this.props;
         console.log(propertyItemData);
 
         // let ratingStatus = "";
@@ -66,14 +67,24 @@ export class PropertyListItem extends React.Component {
         );
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
 
-
-
+        let currentBg;
+        let borderBg;
+        if (itemIndex === 0) {
+            currentBg = "#f9fbff";
+            borderBg ='blue'
+        } else {
+            currentBg = "";
+            borderBg =''
+        }
         return (
             <Card
                 className="property_card"
-                fluid
+                fluid  color ={borderBg}
                 style={{
-                    padding: 0
+                    padding: 0,
+                    backgroundColor: currentBg,
+
+
                 }}
             >
                 <CardContent>
@@ -147,37 +158,38 @@ export class PropertyListItem extends React.Component {
                                     />
                                 </div>
 
-                                    {/*<div*/}
-                                        {/*style={{*/}
-                                            {/*textAlign: "center",*/}
-                                            {/*display: "flex",*/}
-                                            {/*flexDirection: "column",*/}
-                                            {/*paddingRight: 10*/}
-                                        {/*}}*/}
-                                    {/*>*/}
-                                        {/*<div className="ratingName">*/}
-                                            {/*{" "}*/}
-                                            {/*{ratingStatus}*/}
-                                        {/*</div>*/}
-                                        {/*<br />*/}
-                                        {/*<span className="reviewsNumber">*/}
-                                            {/*{propertyItemData.reviewsNamber}{" "}*/}
-                                            {/*reviews*/}
-                                        {/*</span>*/}
-                                    {/*</div>*/}
+                                {/*<div*/}
+                                {/*style={{*/}
+                                {/*textAlign: "center",*/}
+                                {/*display: "flex",*/}
+                                {/*flexDirection: "column",*/}
+                                {/*paddingRight: 10*/}
+                                {/*}}*/}
+                                {/*>*/}
+                                {/*<div className="ratingName">*/}
+                                {/*{" "}*/}
+                                {/*{ratingStatus}*/}
+                                {/*</div>*/}
+                                {/*<br />*/}
+                                {/*<span className="reviewsNumber">*/}
+                                {/*{propertyItemData.reviewsNamber}{" "}*/}
+                                {/*reviews*/}
+                                {/*</span>*/}
+                                {/*</div>*/}
 
-                                    {/*<div className="rating_num">*/}
-                                        {/*{" "}*/}
-                                        {/*{propertyItemData.rating}*/}
-                                    {/*</div>*/}
-                                    <div className="rating_listItem">
+                                {/*<div className="rating_num">*/}
+                                {/*{" "}*/}
+                                {/*{propertyItemData.rating}*/}
+                                {/*</div>*/}
+                                <div className="rating_listItem">
                                     <RatingBlock
                                         avgPropRating={avgPropRating}
-                                        reviewsCount={propertyItemData.reviews.length}
+                                        reviewsCount={
+                                            propertyItemData.reviews.length
+                                        }
                                         property={propertyItemData}
                                     />
-                                    </div>
-
+                                </div>
                             </div>
                             <div className="card_row__location">
                                 <div className="location__span">
@@ -192,7 +204,9 @@ export class PropertyListItem extends React.Component {
                                         style={{ width: "100%", height: "100%" }}
                                         properties={[
                                             {
-                                                price: propertyItemData.rooms[0].price,
+                                                price:
+                                                    propertyItemData.rooms[0]
+                                                        .price,
                                                 name: propertyItemData.name,
                                                 coordinates: {
                                                     lat:
@@ -228,7 +242,7 @@ export class PropertyListItem extends React.Component {
                                         fullScreen
                                         buttonClass={"searchMapButton"}
                                     />
-                                     <span className="Property_list__distanceToCenter">
+                                    <span className="Property_list__distanceToCenter">
                                         ({propertyItemData.distanceToCentre} km
                                         from center)
                                     </span>
@@ -258,8 +272,8 @@ export class PropertyListItem extends React.Component {
                                         className="search_result__message"
                                         style={{
                                             display:
-                                                propertyItemData.id% 2 === 0 ?
-                                                     "block"
+                                                propertyItemData.id % 2 === 0
+                                                    ? "block"
                                                     : "none"
                                         }}
                                     >
