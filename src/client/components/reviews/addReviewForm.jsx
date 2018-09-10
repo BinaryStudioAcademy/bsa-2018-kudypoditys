@@ -88,6 +88,12 @@ export class addReviewForm extends React.Component {
             Location: Location,
             avgReview: avg,
         });
+
+        this.props.updateProperty({
+            rating: avgProp,
+            propertyId: property.id
+        })
+
     };
 
     render() {
