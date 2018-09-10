@@ -10,8 +10,14 @@
 div.booking-property-wrp {
     display: flex;
     justify-content: center;
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto 20px auto;
+}
+
+div.booking-page--back-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .property-info {
@@ -23,6 +29,7 @@ div.booking-property-wrp {
 
 .property-info .property-summary__container {
     margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .property-info a {

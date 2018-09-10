@@ -13,7 +13,7 @@ export class PropertySummary extends React.Component {
     };
 
     render() {
-        const { property, rating, totalReviews } = this.props;
+        const { property, rating, totalReviews, bookingPage } = this.props;
 
         return (
             <div className="property-summary__container">
@@ -75,7 +75,10 @@ export class PropertySummary extends React.Component {
                         </p>
                     </div>
                 </div>
-                <div className="property-summary--right-section">
+                <div
+                    className="property-summary--right-section"
+                    style={bookingPage ? { paddingRight: "30px" } : null}
+                >
                     <RatingBlock
                         avgPropRating={rating}
                         reviewsCount={totalReviews}

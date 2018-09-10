@@ -46,22 +46,55 @@ export class BookingPage extends React.Component {
             "avgReview"
         );
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
-        const pStyle = { marginLeft: "10px", marginBottom: "7px" };
+        const pStyle = {
+            marginLeft: "10px",
+            lineHeight: "1.2",
+            fontSize: "16px",
+            marginBottom: "5px"
+        };
 
         return (
             <Container>
-                <a
-                    onClick={this.props.backToAllBookings}
-                    style={{
-                        cursor: "pointer",
-                        color: "#465672"
-                    }}
-                >
-                    <span>
-                        <Icon name="triangle left" />
-                        Back to all bookings
-                    </span>
-                </a>
+                <div className="booking-page--back-section">
+                    <div>
+                        <a
+                            onClick={this.props.backToAllBookings}
+                            style={{
+                                cursor: "pointer",
+                                color: "#465672"
+                            }}
+                        >
+                            <span>
+                                <Icon name="triangle left" />
+                                Back to all bookings
+                            </span>
+                        </a>
+                    </div>
+                    <Modal
+                        closeIcon
+                        closeOnDimmerClick
+                        header="Are you sure?"
+                        content={`Do you really want to cancel your booking at ${
+                            property.name
+                        }?`}
+                        actions={[
+                            {
+                                key: "no",
+                                negative: true,
+                                content: "Yes",
+                                onClick: event =>
+                                    this.cancelBooking(event, booking)
+                            },
+                            { key: "no", content: "No", positive: true }
+                        ]}
+                        trigger={
+                            <Button negative>
+                                <Icon name="remove" />
+                                Cancel this booking
+                            </Button>
+                        }
+                    />
+                </div>
                 <Divider />
                 <div className="booking-property-wrp">
                     <div className="property-info">
@@ -69,6 +102,7 @@ export class BookingPage extends React.Component {
                             rating={avgPropRating}
                             totalReviews={property.reviews.length}
                             property={property}
+                            bookingPage
                         />
                         <p style={pStyle}>
                             <Icon name="phone" />
@@ -88,50 +122,10 @@ export class BookingPage extends React.Component {
                             <Icon name="barcode" />
                             {"Confirmation code: " + orderCode}
                         </p>
-                        <Modal
-                            open={this.state.modalOpen}
-                            closeOnDimmerClick
-                            trigger={
-                                <Button
-                                    negative
-                                    centered
-                                    style={{
-                                        position: "relative",
-                                        left: "50%",
-                                        transform: "translateX(-50%)"
-                                    }}
-                                    content="Cancel this booking"
-                                    onClick={() => {
-                                        this.setState({ modalOpen: true });
-                                    }}
-                                />
-                            }
-                        >
-                            <Modal.Header>Are you sure?</Modal.Header>
-                            <Modal.Content>
-                                <p>
-                                    Do you really want to cancel your booking at{" "}
-                                    {property.name}?
-                                </p>
-                            </Modal.Content>
-                            <Modal.Actions>
-                                <Button
-                                    onClick={event =>
-                                        this.cancelBooking(event, booking)
-                                    }
-                                    negative
-                                >
-                                    Yes
-                                </Button>
-                                <Button
-                                    onClick={() => {
-                                        this.setState({ modalOpen: false });
-                                    }}
-                                    positive
-                                    content="No"
-                                />
-                            </Modal.Actions>
-                        </Modal>
+                        <p style={pStyle}>
+                            <Icon name="dollar" />
+                            {price}
+                        </p>
                     </div>
                 </div>
                 <div className="property-images">
