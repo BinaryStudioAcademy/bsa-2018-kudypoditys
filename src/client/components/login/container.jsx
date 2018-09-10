@@ -1,4 +1,4 @@
-import { loginSubmit } from "client/logic/login/actions";
+import { loginSubmit, reset } from "client/logic/login/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { login } = state;
@@ -11,6 +11,9 @@ export function mapDispatchToProps(dispatch, ownProps) {
     return {
         handleLoginSubmit(userData) {
             dispatch(loginSubmit(userData));
+        },
+        reset() {
+            dispatch(reset());
         }
     };
 }

@@ -23,6 +23,17 @@ availability
             .catch(err => {
                 res.status(500).send(err);
             });
+    })
+    .put((req, res) => {
+        res.send(req.body);
+        availabilityService
+            .updateAvailabilityArray(req.body)
+            .then(availability => {
+                res.send(availability);
+            })
+            .catch(err => {
+                res.status(500).send(err);
+            });
     });
 
 availability
@@ -57,5 +68,18 @@ availability
                 res.status(500).send(err);
             });
     });
+
+// availability.route("/updateall").put((req, res) => {
+//     console.log("/updateall");
+//     res.send(req.body);
+//     // availabilityService
+//     //     .updateAvailability(req.params.id, req.body)
+//     //     .then(availability => {
+//     //         res.send(availability);
+//     //     })
+//     //     .catch(err => {
+//     //         res.status(500).send(err);
+//     //     });
+// });
 
 module.exports = availability;

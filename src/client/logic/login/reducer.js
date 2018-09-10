@@ -1,5 +1,5 @@
 import defaultState from "client/logic/defaultState";
-import { LOGIN_SUCCESS, LOGIN_FAILURE } from "./actionTypes";
+import { LOGIN_SUCCESS, LOGIN_FAILURE, RESET_LOGIN } from "./actionTypes";
 
 export default function loginReducer(state = defaultState.login, action) {
     switch (action.type) {
@@ -17,6 +17,9 @@ export default function loginReducer(state = defaultState.login, action) {
                 ...action.payload
             };
         }
+
+        case RESET_LOGIN:
+            return defaultState.login;
 
         default: {
             return state;

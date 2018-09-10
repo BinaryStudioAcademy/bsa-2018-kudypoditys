@@ -27,7 +27,8 @@ function* changePassword(action) {
     } catch (err) {
         console.log(err);
         yield put({
-            type: actionTypes.USER_PASSWORD_CHANGE_FAILURE
+            type: actionTypes.USER_PASSWORD_CHANGE_FAILURE,
+            payload: err.message
         });
     }
 }

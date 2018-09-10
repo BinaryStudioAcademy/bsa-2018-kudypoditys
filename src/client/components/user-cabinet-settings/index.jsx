@@ -7,10 +7,6 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 
 export class EditPersonalSettings extends Component {
-    handleSubmit = data => {
-        // console.log(data);
-    };
-
     handleUpdate = data => {
         this.props.updateSettings(data);
     };

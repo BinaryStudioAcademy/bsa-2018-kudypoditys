@@ -21,6 +21,15 @@ class AvailabilityService extends Service {
     deleteAvailability(id) {
         return availabilityRepository.deleteById({ _id: id });
     }
+    async updateAvailabilityArray(availabilities) {
+        const response = await availabilities.map(availability => {
+            return availabilityRepository.updateById(
+                availability.id,
+                availability
+            );
+        });
+        return response;
+    }
 }
 
 module.exports = new AvailabilityService(AvailabilityService);

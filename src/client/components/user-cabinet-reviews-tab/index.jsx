@@ -19,33 +19,16 @@ import "./index.scss";
 
 export class ReviewsTab extends React.Component {
     getReviewsItems = reviews => {
-        console.log(reviews);
         return reviews.map((review, index) => {
-            {
-                console.log(review)
-            }
-
-            return (
-
-                <ReviewItem
-                    key={index}
-                    {...review}
-                    // images={booking.room.property.images}
-                    // booking={booking}
-                    // viewBooking={() => this.viewBooking(booking)}
-                />
-
-            );
+            return <ReviewItem key={index} {...review} />;
         });
     };
 
     componentWillMount() {
-        console.log(this.props)
-        this.props.getUserReviews({id: this.props.user.id});
+        this.props.getUserReviews({ id: this.props.user.id });
     }
 
     render() {
-        // <Button onClick={this.props.getUserReviews} />
         const { reviews } = this.props;
 
         return (

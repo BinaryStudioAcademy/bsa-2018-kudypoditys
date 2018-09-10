@@ -10,9 +10,11 @@ export default class MapWidgetModal extends Component {
     };
 
     render() {
+       const {fullScreen} = this.props;
         return (
             <React.Fragment>
                 <Modal
+                    style={{ width: "100%", height: "100%" }}
                     trigger={
                         <Button
                             basic
@@ -26,12 +28,19 @@ export default class MapWidgetModal extends Component {
                     closeIcon
                     className="map-widget-modal"
                 >
-                    <Modal.Content>
+                    <Modal.Content style={{ width: "100%", height: "100%" }}>
                         <MapView
+
                             properties={this.props.properties}
                             startPosition={this.props.startPosition}
                             zoom={13}
                             controlEnable={true}
+                            style={{
+                                width: fullScreen ? "100%" : "default",
+                                height: fullScreen ? "100%" : "default"
+                            }}
+                            width={!fullScreen ? 250 : null}
+                            height={!fullScreen ? 250 : null}
                         />
                     </Modal.Content>
                 </Modal>
