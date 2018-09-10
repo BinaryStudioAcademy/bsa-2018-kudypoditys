@@ -6,6 +6,8 @@ import qs from 'query-string';
 import history from 'client/history';
 import MessageBox from 'client/components/message-box';
 import ResetPasswordForm from 'client/components/reset-password-form';
+import Header from 'client/components/header';
+
 import { mapStateToProps, mapDispatchToProps } from 'client/pages/reset-password-page/container';
 
 export class ResetPasswordPage extends Component {
@@ -38,15 +40,24 @@ export class ResetPasswordPage extends Component {
 
         return (
             <Fragment>
-                <ResetPasswordForm loading={isLoading} onSubmit={this.onFormSubmit} />
-                {!error ||
-                    <Grid centered columns={3}>
-                        <Grid.Column textAlign="center">
-                            <MessageBox error={true} headerText={'Ooops'} bodyText={error} />
-                        </Grid.Column>
-                    </Grid>
-                }
-
+                <div
+                    style={{
+                        height: "100vh",
+                        backgroundSize: "cover",
+                        backgroundImage:
+                            'url("https://s3.eu-central-1.amazonaws.com/kudypoditys/img/application/background.jpg")'
+                    }}
+                >
+                    <Header hideSignUpIn noBackground />
+                    <ResetPasswordForm loading={isLoading} onSubmit={this.onFormSubmit} />
+                    {!error ||
+                        <Grid centered columns={3} style={{ marginTop: '10px' }}>
+                            <Grid.Column textAlign="center">
+                                <MessageBox error={true} headerText={'Ooops'} bodyText={error} />
+                            </Grid.Column>
+                        </Grid>
+                    }
+                </div>
             </Fragment>
         );
     }

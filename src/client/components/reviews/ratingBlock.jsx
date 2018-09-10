@@ -27,7 +27,7 @@ class RatingBlock extends React.Component {
                     }}
                 >
                     <div className="ratingName"> {ratingStatus}</div>
-                    <br />
+
                     <span className="reviewsNumber">
                         {reviewsCount} reviews
                     </span>

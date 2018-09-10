@@ -16,7 +16,7 @@ class SearchPage extends React.Component {
         super(props);
         this.state = {
             mapProp: [],
-            switch: localStorage.getItem("switch"),
+            switch: localStorage.getItem('switch') === null ? "list" : localStorage.getItem('switch'),
             listItems: [],
             itemCount: 0,
             searchRequest: {},

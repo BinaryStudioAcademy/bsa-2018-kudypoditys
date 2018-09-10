@@ -1,5 +1,8 @@
-import {reviewSubmit, reviewUpdate, ratingUpdate} from 'client/logic/reviews/actions';
+import {reviewSubmit, reviewUpdate, ratingUpdate, propertyUpdate} from 'client/logic/reviews/actions';
+import {
+    getPropertyInfoById,
 
+} from "../../logic/property-page/actions";
 
 export function mapStateToProps(state, ownProps) {
     const reviewData = state.review;
@@ -20,6 +23,12 @@ export function mapDispatchToProps(dispatch) {
         },
         updateRating(data) {
             dispatch(ratingUpdate(data));
+        },
+        updateProperty(data) {
+            dispatch(propertyUpdate(data));
+        },
+        getProperty(id) {
+            dispatch(getPropertyInfoById(id));
         }
     };
 }

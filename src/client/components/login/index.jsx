@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import history from 'client/history';
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import LoginForm from "./loginForm";
-import { Message, Grid } from "semantic-ui-react";
+import { Message, Grid, Container, Header } from "semantic-ui-react";
 
 export class LoginComponent extends React.Component {
     handleForgotClicked = () => {
@@ -17,7 +17,17 @@ export class LoginComponent extends React.Component {
 
     render() {
         return (
-            <Fragment>
+            <Container text className="registration-c-wrapper">
+                <Header
+                    textAlign="center"
+                    style={{
+                        cursor: "default",
+                        color: "white",
+                        fontSize: "26px"
+                    }}
+                >
+                    Login
+                </Header>
                 <LoginForm
                     onSubmit={this.props.handleLoginSubmit}
                     handleForgotClicked={this.handleForgotClicked}
@@ -25,7 +35,7 @@ export class LoginComponent extends React.Component {
                 />
 
                 {this.props.error ? (
-                    <Grid centered columns={5}>
+                    <Grid centered columns={5} style={{ marginTop: '10px' }}>
                         <Message floating negative>
                             <Message.Header>Error</Message.Header>
                             <div style={{ margin: "10px" }}>
@@ -34,8 +44,12 @@ export class LoginComponent extends React.Component {
                         </Message>
                     </Grid>
                 ) : null}
-            </Fragment>
+            </Container>
         );
+    }
+
+    componentWillUnmount() {
+        this.props.reset();
     }
 }
 

@@ -47,7 +47,7 @@ export class RoomsSummaryTable extends React.Component {
                             <Icon name="bed" />
                             {" " + room.roomType.name}
                         </p>
-                        <p>{this.getBedsSummary(room.bedInRooms)}</p>
+                        <div>{this.getBedsSummary(room.bedInRooms)}</div>
                     </div>
                     <div className="room-row--right-section">
                         <p
