@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import history from 'client/history';
 import {
-    Button, Form, Header, Grid, Segment
+    Button, Form, Header, Container, Segment, Icon
 } from "semantic-ui-react";
 import { Field, reduxForm } from 'redux-form';
 
@@ -14,11 +15,20 @@ class ForgotPasswordForm extends Component {
         } = this.props;
 
         return (
-            <Grid centered columns={3}>
-                <Grid.Column textAlign="center">
-                    <Header as="h1">Forgot password</Header>
-                    <Form onSubmit={handleSubmit} loading={loading}>
-                        <Segment stacked secondary>
+            <Container text className="registration-c-wrapper">
+                <Header
+                    textAlign="center"
+                    style={{
+                        cursor: "default",
+                        color: "white",
+                        fontSize: "26px"
+                    }}
+                >
+                    Forgot password
+                </Header>
+                <Segment className="forgot_form-wrapper" padded='very' raised>
+                    <Form onSubmit={handleSubmit} loading={loading} id="forgot-password-form">
+                        <div className="field-wrapper">
                             <Field
                                 style={{ marginTop: "5%" }}
                                 name="email"
@@ -28,12 +38,32 @@ class ForgotPasswordForm extends Component {
                                 validate={[required, email]}
                                 icon="mail"
                                 iconPosition="left"
+                                pointing="left"
                             />
-                            <Button positive type="submit" disabled={pristine || submitting}>Send Email</Button>
-                        </Segment>
+                        </div>
+                        <div className="btn-wrapper">
+                            <Button
+                                className="auth_btn"
+                                type="button"
+                                color='blue'
+                                icon
+                                labelPosition='left'
+                                onClick={() => history.goBack()}>
+                                <Icon name='left arrow' />
+                                Back</Button>
+                            <Button
+                                type="submit"
+                                disabled={submitting || pristine}
+                                icon
+                                color='blue'
+                                labelPosition='right'>
+                                Send Email
+                                <Icon name='send' />
+                            </Button>
+                        </div>
                     </Form>
-                </Grid.Column>
-            </Grid>
+                </Segment>
+            </Container>
         );
     }
 }

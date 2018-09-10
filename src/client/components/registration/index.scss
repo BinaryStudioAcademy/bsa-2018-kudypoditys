@@ -1,4 +1,4 @@
-#registration-form, #login-form{
+#registration-form, #login-form, #forgot-password-form, #reset-password-form{
 .input{
     height: auto;
     input{
@@ -29,7 +29,9 @@
 
 .ui.segment{
 
-&.registartion_form-wrapper, &.login_form-wrapper{
+&.registartion_form-wrapper,
+&.login_form-wrapper,
+&.forgot_form-wrapper {
     width: 65%;
     margin: auto;
     border-radius: 0px;

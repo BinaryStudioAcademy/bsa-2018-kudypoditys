@@ -25,8 +25,6 @@ export class Registration extends Component {
                     registerFeedback={this.props.registerFeedback}
                     onSubmit={this.props.handleRegistrationSubmit}
                 />
-
-                <Divider hidden />
             </Container>
         );
     }

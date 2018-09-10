@@ -35,7 +35,7 @@ export class LoginComponent extends React.Component {
                 />
 
                 {this.props.error ? (
-                    <Grid centered columns={5}>
+                    <Grid centered columns={5} style={{ marginTop: '10px' }}>
                         <Message floating negative>
                             <Message.Header>Error</Message.Header>
                             <div style={{ margin: "10px" }}>
