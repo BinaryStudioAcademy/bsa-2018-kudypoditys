@@ -6,6 +6,7 @@ const RoomType = require("../models/RoomType");
 const PaymentType = require("../models/PaymentType");
 const Property = require("../models/Property");
 const Image = require(".././models/Image");
+const Review = require("../models/Review");
 
 class ReservationRepository extends Repository {
     findAll() {
@@ -26,15 +27,32 @@ class ReservationRepository extends Repository {
                         },
                         {
                             model: Property,
-                            include: {
-                                model: Image,
-                                attributes: [
-                                    "id",
-                                    "url",
-                                    "propertyId",
-                                    "roomId"
-                                ]
-                            },
+                            include: [
+                                {
+                                    model: Image,
+                                    attributes: [
+                                        "id",
+                                        "url",
+                                        "propertyId",
+                                        "roomId"
+                                    ]
+                                },
+                                {
+                                    model: Review,
+                                    attributes: [
+                                        "id",
+                                        "pros",
+                                        "cons",
+                                        "Cleanliness",
+                                        "Price",
+                                        "Comfort",
+                                        "Facilities",
+                                        "avgReview",
+                                        "createdAt",
+                                        "anon"
+                                    ]
+                                }
+                            ],
                             attributes: [
                                 "id",
                                 "name",
@@ -72,15 +90,32 @@ class ReservationRepository extends Repository {
                         },
                         {
                             model: Property,
-                            include: {
-                                model: Image,
-                                attributes: [
-                                    "id",
-                                    "url",
-                                    "propertyId",
-                                    "roomId"
-                                ]
-                            },
+                            include: [
+                                {
+                                    model: Image,
+                                    attributes: [
+                                        "id",
+                                        "url",
+                                        "propertyId",
+                                        "roomId"
+                                    ]
+                                },
+                                {
+                                    model: Review,
+                                    attributes: [
+                                        "id",
+                                        "pros",
+                                        "cons",
+                                        "Cleanliness",
+                                        "Price",
+                                        "Comfort",
+                                        "Facilities",
+                                        "avgReview",
+                                        "createdAt",
+                                        "anon"
+                                    ]
+                                }
+                            ],
                             attributes: [
                                 "id",
                                 "name",

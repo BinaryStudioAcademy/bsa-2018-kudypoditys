@@ -7,9 +7,29 @@
     align-content: center;
 }
 
+div.booking-property-wrp {
+    display: flex;
+    justify-content: center;
+    max-width: 750px;
+    margin: 0 auto 20px auto;
+}
+
+div.booking-page--back-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .property-info {
     min-width: 500px;
     color: #465672;
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.property-info .property-summary__container {
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .property-info a {
@@ -20,6 +40,6 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    margin: auto;
+    margin: 20px auto;
     max-width: 700px;
 }
