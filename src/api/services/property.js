@@ -2,12 +2,22 @@ const Service = require("./generalService");
 const propertyRepository = require("../repositories/propertyRepository");
 const roomService = require("./room");
 const reservationService = require("./reservation");
+const moment = require("moment");
 
 class PropertyService extends Service {
     async findById(id) {
         try {
-            const property = await this.repository.findById(id);
-            return Promise.resolve(property);
+            let property = await this.repository.findById(id);
+            let notes = {
+                recentlyBooked: 0
+            };
+            notes.recentlyBooked = await this.wasBookedLastDay(property.id);
+            property.notes = notes;
+            const response = {
+                property: property,
+                notes: notes
+            };
+            return Promise.resolve(response);
         } catch (err) {
             return Promise.reject(err);
         }
@@ -30,6 +40,30 @@ class PropertyService extends Service {
                     result.push(rooms[i]);
             }
             return Promise.resolve(result);
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    }
+
+    async wasBookedLastDay(propertyId) {
+        try {
+            const rooms = await roomService.findByOptions({
+                propertyId: propertyId
+            });
+            let booked = 0;
+            for (let i = 0; i < rooms.length; i++) {
+                const reservations = await reservationService.findByOptions({
+                    roomId: rooms[i].id
+                });
+                for (let i = 0; i < reservations.length; i++) {
+                    if (
+                        moment(reservations[i].createdAt).add(1, "days") >
+                        moment()
+                    )
+                        booked++;
+                }
+            }
+            return Promise.resolve(booked);
         } catch (err) {
             return Promise.reject(err);
         }

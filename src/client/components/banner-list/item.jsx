@@ -22,22 +22,24 @@ export class Banner extends Component {
         return (
 
             cityInfo ?
-                < Container onClick={()=>this.handleClick(cityInfo)} className="banner">
+                < Container onClick={()=>this.handleClick(cityInfo)} className="banner transition">
 
                     <Card.Content className="banner__content" style={imgStyles(cityInfo.pictureUrl)}>
                         <Card.Header className="banner__title">
                             {cityInfo.city}
-
                         </Card.Header>
                         <Card.Meta>
                             <h5 className="banner__subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
                         </Card.Meta>
-                        <div className="banner___flag" style={imgStyles(cityInfo.flagUrl)}/>
+                        <div className = "banner__rectangle">
+                            <div className="banner___flag" style={imgStyles(cityInfo.flagUrl)}/>
+                            <Card.Description className="banner__avgprice">
+                                <span>Average price</span>
+                                <span> US$  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}</span>
+                            </Card.Description>
+                        </div>
                     </Card.Content>
-                    <Card.Description className="banner__avgprice">
-                            <span>Average price</span>
-                            <span> US$  {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}</span>
-                        </Card.Description>
+
 
                 </Container >
                 : <Fragment>

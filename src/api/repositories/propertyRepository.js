@@ -22,6 +22,9 @@ const BedType = require("../models/BedType");
 const PropertyLanguage = require("../models/PropertyLanguage");
 const BasicFacility = require("../models/BasicFacility");
 const FacilityCategory = require("../models/FacilityCategory");
+const AvailabilityRepository = require("./availabilityRepository");
+const RoomRepository = require("./roomRepository");
+const moment = require("moment");
 
 const includeOptions = [
     {
@@ -191,6 +194,22 @@ class PropertyRepository extends Repository {
             });
     }
 
+    getDaysArrayByMonth(id, amount, price) {
+        let daysInMonth = moment().daysInMonth();
+        const arrDays = [];
+        while (daysInMonth) {
+            let current = {
+                roomId: id,
+                amount: amount,
+                date: moment().date(daysInMonth),
+                price: price
+            };
+            arrDays.push(current);
+            daysInMonth--;
+        }
+        return arrDays.reverse();
+    }
+
     createDetails(entity) {
         return this.model
             .create(entity, {
@@ -232,6 +251,22 @@ class PropertyRepository extends Repository {
                 return PropertyPaymentType.bulkCreate(paymentTypes).then(
                     _ => newProperty
                 );
+            })
+            .then(newProperty => {
+                let propertyRooms = RoomRepository.findByOptions({
+                    propertyId: newProperty.id
+                });
+                propertyRooms.map(room => {
+                    let availabilities = this.getDaysArrayByMonth(
+                        room.id,
+                        room.amount,
+                        room.price
+                    );
+                    availabilities.map(availability => {
+                        AvailabilityRepository.create(availability);
+                    });
+                });
+                return newProperty;
             })
             .then(newProperty => this.findById(newProperty.id));
     }
@@ -567,7 +602,7 @@ class PropertyRepository extends Repository {
     getUserPropertiesInfo(id) {
         return this.model.findAll({
             where: {
-                userId: 1
+                userId: id
             },
             include: [
                 {
@@ -583,8 +618,18 @@ class PropertyRepository extends Repository {
                         },
                         {
                             model: Availability
+                        },
+                        {
+                            model: RoomType
                         }
                     ]
+                },
+                {
+                    model: Image,
+                    attributes: ["id", "url", "propertyId", "roomId"]
+                },
+                {
+                    model: Review
                 }
             ]
         });
