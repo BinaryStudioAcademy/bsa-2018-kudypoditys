@@ -62,17 +62,6 @@ export class MainHeader extends Component {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-                            <a
-                                style={{
-                                    marginRight: "24px",
-                                    fontSize: 16,
-                                    opacity: 0.8,
-                                    cursor: "pointer"
-                                }}
-                            >
-                                EN
-                            </a>
-
                             <AuthHOC
                                 Component={() => {
                                     return (
