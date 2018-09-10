@@ -1,4 +1,3 @@
-
 const Repository = require("./generalRepository");
 const propertyModel = require("../models/Property");
 const Facility = require("../models/Facility");
@@ -242,10 +241,6 @@ class PropertyRepository extends Repository {
             case "Fitness_spa_locker_rooms":
                 facilityId = 1; //id from seed
                 break;
-            // case 'Queen_bed':
-            //     facilityId = 3;
-            //     break;
-            case "Dogs":
             case "Dogs":
                 facilityId = 5;
                 break;
@@ -289,13 +284,13 @@ class PropertyRepository extends Repository {
             case "Queen_bed":
                 bedTypeId = 3;
                 break;
-                case "Full_bed":
+            case "Full_bed":
                 bedTypeId = 2;
                 break;
-                case "Twin_bed":
+            case "Twin_bed":
                 bedTypeId = 1;
                 break;
-                case "King_bed":
+            case "King_bed":
                 bedTypeId = 4;
                 break;
             default:
@@ -303,25 +298,25 @@ class PropertyRepository extends Repository {
         }
         return bedTypeId;
     }
-    getRoomTypePriceId(roomTypePriceStr) {
-        let roomTypeTypeId;
-        switch (roomTypePriceStr) {
-            case "Queen_bed":
-            roomTypeTypeId = 3;
+    getPriceRange(priceRangeStr) {
+        let priceRange;
+        switch (priceRangeStr) {
+            case "US0_US30":
+                priceRange = [0, 30];
                 break;
-                case "Full_bed":
-                roomTypeTypeId = 2;
+            case "US30_US60":
+                priceRange = [30, 60];
                 break;
-                case "Twin_bed":
-                roomTypeTypeId = 1;
+            case "US60_US90":
+                priceRange = [60, 90];
                 break;
-                case "King_bed":
-                roomTypeTypeId = 4;
+            case "US90":
+                priceRange = [90, 10000000];
                 break;
             default:
-            roomTypeTypeId = -1;
+                priceRange = [0];
         }
-        return roomTypeTypeId;
+        return priceRange;
     }
     getFilteredProperties(filter) {
         console.log("filter " + JSON.stringify(filter));
@@ -408,8 +403,8 @@ class PropertyRepository extends Repository {
             filter.Twin_bed ||
             filter.King_bed
                 ? {
-                    model: BedInRoom,
-                    required:true,
+                      model: BedInRoom,
+                      required: true,
                       where: {
                           count: { $gte: filter.bedsCount },
                           bedTypeId: {
@@ -417,7 +412,7 @@ class PropertyRepository extends Repository {
                                   this.getBedTypeId(filter.queen_bed),
                                   this.getBedTypeId(filter.Full_bed),
                                   this.getBedTypeId(filter.Twin_bed),
-                                  this.getBedTypeId(filter.King_bed),
+                                  this.getBedTypeId(filter.King_bed)
                               ]
                           }
                       }
@@ -429,29 +424,21 @@ class PropertyRepository extends Repository {
                       }
                   };
 
-                  let roomTypePriceOption =
-                  filter.US0_US30 ||
-                  filter.US30_US60 ||
-                  filter.US60_US90 ||
-                  filter.US90
-                      ? {
-                          model: RoomType,
-                          required:true,
-                          RoomTypeId: {
-                                    $in: [
-                                        this.getBedTypeId(filter.US0_US30),
-                                        this.getBedTypeId(filter.US30_US60),
-                                        this.getBedTypeId(filter.US60_US90),
-                                        this.getBedTypeId(filter.US90),
-                                    ]
-                                }
-                            }
-                      : {
-                            model: BedInRoom,
-                            where: {
-                                count: { $gte: filter.bedsCount }
-                            }
-                        };
+        let roomPriceOption =
+            filter.US0_US30 !== "" ||
+            filter.US30_US60 !== "" ||
+            filter.US60_US90 !== "" ||
+            filter.US90 !== ""
+                ? {
+                      $or: [
+                          { $between: this.getPriceRange(filter.US0_US30) },
+                          { $between: this.getPriceRange(filter.US30_US60) },
+                          { $between: this.getPriceRange(filter.US60_US90) },
+                          { $between: this.getPriceRange(filter.US90) }
+                      ]
+                  }
+                : { $between: [0, 1000000] };
+
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
 
         return this.model
@@ -477,19 +464,14 @@ class PropertyRepository extends Repository {
                         model: FacilityList,
                         required: true,
                         include: facilityOption
-
-                        //     [
-                        //     {
-                        //         model: Facility,
-                        //         where: { id: { $in: [5] } },
-                        //     }
-                        // ]
                     },
 
                     {
                         model: Room,
+                        required: true,
                         where: {
-                            amount: { $gte: filter.rooms }
+                            amount: { $gte: filter.rooms },
+                            price: roomPriceOption
                         },
                         include: [
                             RoomType,
@@ -564,7 +546,7 @@ class PropertyRepository extends Repository {
                     },
                     {
                         model: Room,
-                        required: true,
+
                         include: [
                             { model: RoomType },
                             {
