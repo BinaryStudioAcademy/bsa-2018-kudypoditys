@@ -189,13 +189,15 @@ export class SettingsForm extends Component {
                     imgExtension={[".jpg", ".gif", ".png", ".gif"]}
                     maxFileSize={5242880}
                 />
-                <Button
-                    primary
-                    className="avatar_del_btn"
-                    onClick={this.props.avatarDelete}
-                >
-                    Delete
-                </Button>
+                {this.props.avatar ? (
+                    <Button
+                        primary
+                        className="avatar_del_btn"
+                        onClick={this.props.avatarDelete}
+                    >
+                        Delete
+                    </Button>
+                ) : null}
             </div>
         );
         return (
@@ -281,7 +283,7 @@ export class SettingsForm extends Component {
                     <Field
                         component={inputField}
                         name="phoneNumber"
-                        label="Phone number"
+                        label="Phone number ex.8095XXXXXX"
                         type="tel"
                         min={4}
                         max={16}
@@ -303,6 +305,7 @@ export class SettingsForm extends Component {
                         placeholder={this.props.address}
                         name="address"
                         options={{
+                            language: "en",
                             type: "address"
                         }}
                         onChange={({ suggestion }) =>

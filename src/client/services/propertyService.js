@@ -84,9 +84,9 @@ class PropertyService {
     };
     updatePropery(data) {
         return api
-            .sendRequest(`/api/add-property/${data.propertyId}`, "put", data)
+            .sendAuthRequest(`/api/property/${data.propertyId}`, "put", data)
             .then(response => {
-                history.push("/add-property/");
+                console.log(response);
             });
     }
 

@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
-import './index.scss';
+import React, { Fragment } from "react";
+import "./index.scss";
 
-import { getPropertyStatus } from 'client/helpers/avgReviewRating';
-import {Icon, Popup} from "semantic-ui-react";
+import { getPropertyStatus } from "client/helpers/avgReviewRating";
+import { Icon, Popup } from "semantic-ui-react";
 import RatingBar from "./ratingBar";
 
 class RatingBlock extends React.Component {
@@ -10,21 +10,28 @@ class RatingBlock extends React.Component {
         const { avgPropRating, reviewsCount, property } = this.props;
 
         const ratingStatus = getPropertyStatus(avgPropRating);
-
+            console.log(avgPropRating)
         return (
-            <div className="rating_block">
-                <div className="rating_status"
+            <div
+                className="rating_block"
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                }}
+            >
+                <div
+                    className="rating_status"
                     style={{
-                        textAlign: 'center',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        paddingRight: 10,
-
-
+                        textAlign: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-start",
+                        padding: "0 10px 0 0"
                     }}
                 >
                     <div className="ratingName"> {ratingStatus}</div>
-                    <br />
+
                     <span className="reviewsNumber">
                         {reviewsCount} reviews
                     </span>
@@ -37,7 +44,15 @@ class RatingBlock extends React.Component {
 
                         }}
                         trigger={
-                            <div className="rating_num"> {avgPropRating}</div>
+
+                            <div className="rating_num" style = {{
+                                width: 70,
+                                visibility:
+
+                                    avgPropRating === 0 ? "hidden" : "block"
+
+                            }}> {avgPropRating}
+                            </div>
                         }
                         content={ <div style={{padding: 10} }>  <RatingBar property={property} /> </div>}
                         hoverable
@@ -45,9 +60,6 @@ class RatingBlock extends React.Component {
                         hideOnScroll
                         position='bottom center'
                     />
-
-
-
             </div>
         );
     }

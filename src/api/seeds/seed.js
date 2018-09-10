@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 
 const USERS = [
     {
-        id: 1,
+        id: 2,
         fullName: "Natalya",
         password: bcrypt.hashSync("nata1NATA", 10),
         email: "natalya@gmail.com",
@@ -15,10 +15,10 @@ const USERS = [
         paymentTypeId: 1
     },
     {
-        id: 2,
+        id: 1,
         fullName: "Nikolay Datsko",
         password: bcrypt.hashSync("102938abC", 10),
-        email: "lorem@lorem.com",
+        email: "sayber1990@gmail.com",
         phoneNumber: "80954568261",
         nickname: "Lorem",
         appeal: "Mrs.",
@@ -1044,6 +1044,279 @@ const ROOMS = [
         area: 50,
         roomTypeId: 8,
         propertyId: 4
+    }
+];
+
+const AVAILABILITY = [
+    {
+        id: 1,
+        amount: 100,
+        date: "2018-09-01T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.254Z",
+        updatedAt: "2018-09-10T16:42:58.776Z",
+        roomId: 1
+    },
+    {
+        id: 2,
+        amount: 1,
+        date: "2018-09-02T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.254Z",
+        updatedAt: "2018-09-10T16:42:58.777Z",
+        roomId: 1
+    },
+    {
+        id: 3,
+        amount: 1,
+        date: "2018-09-03T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.255Z",
+        updatedAt: "2018-09-10T16:42:58.777Z",
+        roomId: 1
+    },
+    {
+        id: 4,
+        amount: 1,
+        date: "2018-09-04T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.777Z",
+        roomId: 1
+    },
+    {
+        id: 5,
+        amount: 1,
+        date: "2018-09-05T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.777Z",
+        roomId: 1
+    },
+    {
+        id: 6,
+        amount: 1,
+        date: "2018-09-06T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.777Z",
+        roomId: 1
+    },
+    {
+        id: 7,
+        amount: 1,
+        date: "2018-09-07T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.777Z",
+        roomId: 1
+    },
+    {
+        id: 8,
+        amount: 1,
+        date: "2018-09-08T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.777Z",
+        roomId: 1
+    },
+    {
+        id: 9,
+        amount: 1,
+        date: "2018-09-09T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.254Z",
+        updatedAt: "2018-09-10T16:42:58.777Z",
+        roomId: 1
+    },
+    {
+        id: 10,
+        amount: 1,
+        date: "2018-09-10T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.255Z",
+        updatedAt: "2018-09-10T16:42:58.778Z",
+        roomId: 1
+    },
+    {
+        id: 11,
+        amount: 1,
+        date: "2018-09-11T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.255Z",
+        updatedAt: "2018-09-10T16:42:58.778Z",
+        roomId: 1
+    },
+    {
+        id: 12,
+        amount: 1,
+        date: "2018-09-12T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.778Z",
+        roomId: 1
+    },
+    {
+        id: 13,
+        amount: 1,
+        date: "2018-09-13T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.778Z",
+        roomId: 1
+    },
+    {
+        id: 14,
+        amount: 1,
+        date: "2018-09-14T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.778Z",
+        roomId: 1
+    },
+    {
+        id: 15,
+        amount: 1,
+        date: "2018-09-15T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.778Z",
+        roomId: 1
+    },
+    {
+        id: 16,
+        amount: 1,
+        date: "2018-09-16T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.254Z",
+        updatedAt: "2018-09-10T16:42:58.778Z",
+        roomId: 1
+    },
+    {
+        id: 17,
+        amount: 1,
+        date: "2018-09-17T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.254Z",
+        updatedAt: "2018-09-10T16:42:58.779Z",
+        roomId: 1
+    },
+    {
+        id: 18,
+        amount: 1,
+        date: "2018-09-18T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.255Z",
+        updatedAt: "2018-09-10T16:42:58.779Z",
+        roomId: 1
+    },
+    {
+        id: 19,
+        amount: 1,
+        date: "2018-09-19T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.255Z",
+        updatedAt: "2018-09-10T16:42:58.779Z",
+        roomId: 1
+    },
+    {
+        id: 20,
+        amount: 1,
+        date: "2018-09-20T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.255Z",
+        updatedAt: "2018-09-10T16:42:58.779Z",
+        roomId: 1
+    },
+    {
+        id: 21,
+        amount: 1,
+        date: "2018-09-21T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.255Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 1
+    },
+    {
+        id: 22,
+        amount: 1,
+        date: "2018-09-22T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 1
+    },
+    {
+        id: 23,
+        amount: 1,
+        date: "2018-09-23T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 1
+    },
+    {
+        id: 24,
+        amount: 1,
+        date: "2018-09-24T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 1
+    },
+    {
+        id: 25,
+        amount: 1,
+        date: "2018-09-25T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 1
+    },
+    {
+        id: 26,
+        amount: 1,
+        date: "2018-09-26T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.256Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 1
+    },
+    {
+        id: 27,
+        amount: 1,
+        date: "2018-09-27T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 1
+    },
+    {
+        id: 28,
+        amount: 1,
+        date: "2018-09-28T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 1
+    },
+    {
+        id: 29,
+        amount: 1,
+        date: "2018-09-29T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 1
+    },
+    {
+        id: 30,
+        amount: 1,
+        date: "2018-09-30T09:53:49.254Z",
+        price: 1,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.781Z",
+        roomId: 1
     }
 ];
 
@@ -3601,5 +3874,6 @@ module.exports = {
     PROPERTY_TYPE,
     LANGUAGES,
     REVIEWS,
-    CURRENCIES
+    CURRENCIES,
+    AVAILABILITY
 };

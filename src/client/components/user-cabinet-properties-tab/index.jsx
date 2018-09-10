@@ -43,7 +43,6 @@ export class ReviewsTab extends React.Component {
     };
 
     componentWillMount() {
-        console.log("1231=========");
         this.props.fetchUserInfo({ id: this.props.user.id });
     }
 

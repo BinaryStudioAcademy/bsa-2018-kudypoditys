@@ -189,6 +189,7 @@ export class PropertyListItem extends React.Component {
                                     {propertyItemData.address + " - "}
 
                                     <MapWidgetModal
+                                        style={{ width: "100%", height: "100%" }}
                                         properties={[
                                             {
                                                 price: propertyItemData.rooms[0].price,
@@ -224,6 +225,7 @@ export class PropertyListItem extends React.Component {
                                         }}
                                         zoom={13}
                                         controlEnable={true}
+                                        fullScreen
                                         buttonClass={"searchMapButton"}
                                     />
                                      <span className="Property_list__distanceToCenter">
@@ -244,7 +246,7 @@ export class PropertyListItem extends React.Component {
                                 {/*padding: 10*/}
                                 {/*}} >*/}
                                 <span className="priceInfo">
-                                    US ${propertyItemData.rooms[0].price}
+                                    ${propertyItemData.rooms[0].price}
                                 </span>
 
                                 {/*</div>*/}
