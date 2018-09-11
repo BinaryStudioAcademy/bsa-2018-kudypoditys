@@ -516,8 +516,7 @@ class PropertyRepository extends Repository {
             filter.Its_Ok !== "" ||
             filter.No_rating !== ""
                 ? {
-                    where: {
-                        rating: {
+
                     $in: [
                         { $between: this.getRatingRange(filter.Wonderful) },
                         { $between: this.getRatingRange(filter.Very_Good) },
@@ -527,9 +526,8 @@ class PropertyRepository extends Repository {
                         { $between: this.getRatingRange(filter.No_rating) },
 
                     ]
-                }}}
-                : {  where: {
-                        rating: {$between: [0, 10]} }};
+                }
+                : { $between: [0, 10]};
 
 
         return this.model
@@ -537,8 +535,8 @@ class PropertyRepository extends Repository {
                 limit: 5,
                 offset: offsetData,
                 where: {
-                    id: { $in: filter.propertiesIds },
-
+                    id: { $in: filter.propertiesIds},
+                    rating: ratingOption
 
                 },
                 distinct: true,
@@ -553,7 +551,7 @@ class PropertyRepository extends Repository {
                     {
                         model: Review
                     },
-                    ratingOption,
+
                     fo,
 
 
