@@ -355,6 +355,33 @@ class PropertyRepository extends Repository {
         }
         return priceRange;
     }
+    getRatingRange(ratingRangeStr) {
+        let ratingRange;
+        switch (ratingRangeStr) {
+            case "Wonderful":
+                ratingRange = [9, 10];
+                break;
+            case "Very_Good":
+                ratingRange = [8, 8.9];
+                break;
+            case "Good":
+                ratingRange = [7, 7.9];
+                break;
+            case "Pleasant":
+                ratingRange = [6, 6.9];
+                break;
+            case "Its_Ok":
+                ratingRange = [0.1, 6];
+                break;
+            case "No_rating":
+                ratingRange = [0];
+                break;
+            default:
+                ratingRange = [0, 10];
+        }
+        console.log(ratingRange)
+        return ratingRange;
+    }
     getFilteredProperties(filter) {
         console.log("filter " + JSON.stringify(filter));
         const SORT_VALUE = {
@@ -432,7 +459,7 @@ class PropertyRepository extends Repository {
                           }
                       },
                       include:[  Facility],
-                       required: true,
+                       // required: true,
                   }
                 : { model: FacilityList };
 
@@ -469,23 +496,50 @@ class PropertyRepository extends Repository {
             filter.US60_US90 !== "" ||
             filter.US90 !== ""
                 ? {
-                      $or: [
-                          { $between: this.getPriceRange(filter.US0_US30) },
-                          { $between: this.getPriceRange(filter.US30_US60) },
-                          { $between: this.getPriceRange(filter.US60_US90) },
-                          { $between: this.getPriceRange(filter.US90) }
-                      ]
-                  }
+                        $or: [
+                            {$between: this.getPriceRange(filter.US0_US30)},
+                            {$between: this.getPriceRange(filter.US30_US60)},
+                            {$between: this.getPriceRange(filter.US60_US90)},
+                            {$between: this.getPriceRange(filter.US90)}
+                        ]
+                    }
+
                 : { $between: [0, 1000000] };
 
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
+
+        let ratingOption =
+            filter.Wonderful !== "" ||
+            filter.Very_Good !== "" ||
+            filter.Good !== "" ||
+            filter.Pleasant !== "" ||
+            filter.Its_Ok !== "" ||
+            filter.No_rating !== ""
+                ? {
+                    where: {
+                        rating: {
+                    $in: [
+                        { $between: this.getRatingRange(filter.Wonderful) },
+                        { $between: this.getRatingRange(filter.Very_Good) },
+                        { $between: this.getRatingRange(filter.Good) },
+                        { $between: this.getRatingRange(filter.Pleasant) },
+                        { $between: this.getRatingRange(filter.Its_Ok) },
+                        { $between: this.getRatingRange(filter.No_rating) },
+
+                    ]
+                }}}
+                : {  where: {
+                        rating: {$between: [0, 10]} }};
+
 
         return this.model
             .findAndCountAll({
                 limit: 5,
                 offset: offsetData,
                 where: {
-                    id: { $in: filter.propertiesIds }
+                    id: { $in: filter.propertiesIds },
+
+
                 },
                 distinct: true,
                 order: sortingOption,
@@ -499,7 +553,9 @@ class PropertyRepository extends Repository {
                     {
                         model: Review
                     },
+                    ratingOption,
                     fo,
+
 
                     {
                         model: Room,
