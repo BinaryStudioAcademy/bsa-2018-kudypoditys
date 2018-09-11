@@ -25,9 +25,9 @@ export function unchooseProperty() {
     };
 }
 
-export function cancelBooking(reason) {
+export function cancelBooking(data) {
     return {
         type: CANCEL_OWNER_BOOKING,
-        payload: reason
+        payload: data
     };
 }

@@ -1,6 +1,7 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
 import propertyService from "client/services/propertyService";
 import * as actionTypes from "./actionTypes";
+import api from "../../helpers/api";
 
 function* getUserpropertiesInfo(id) {
     try {
@@ -22,7 +23,12 @@ function* getUserpropertiesInfo(id) {
 
 function* cancelBooking(action) {
     try {
-        console.log("cancel booking saga, reason: " + action.payload);
+        yield call(
+            api.sendAuthRequest,
+            `/api/reservation/owner/${action.payload.id}`,
+            "put",
+            { reason: action.payload.reason }
+        );
         yield put({
             type: actionTypes.CANCEL_OWNER_BOOKING_SUCCESS
         });

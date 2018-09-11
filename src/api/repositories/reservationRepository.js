@@ -145,7 +145,7 @@ class ReservationRepository extends Repository {
 
     findById(id) {
         return this.model.findById(id, {
-            attributes: ["id", "dateIn", "dateOut", "guestsCount"],
+            attributes: ["id", "dateIn", "dateOut", "guestsCount", "orderCode"],
             include: [
                 {
                     model: User,

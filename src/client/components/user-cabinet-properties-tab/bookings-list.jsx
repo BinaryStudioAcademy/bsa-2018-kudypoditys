@@ -68,7 +68,10 @@ export class BookingsList extends React.Component {
                         >
                             <CancelBookingForm
                                 handleCancelSubmit={value => {
-                                    this.props.cancelBooking(value);
+                                    this.props.cancelBooking({
+                                        reason: value,
+                                        id: reservation.id
+                                    });
                                 }}
                             />
                         </Modal>

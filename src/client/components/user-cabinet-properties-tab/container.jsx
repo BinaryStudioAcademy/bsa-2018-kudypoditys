@@ -26,8 +26,8 @@ export function mapDispatchToProps(dispatch) {
         unchooseProperty() {
             dispatch(unchooseProperty());
         },
-        cancelBooking(reason) {
-            dispatch(cancelBooking(reason));
+        cancelBooking(data) {
+            dispatch(cancelBooking(data));
         }
     };
 }
