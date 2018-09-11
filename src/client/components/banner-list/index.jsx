@@ -66,7 +66,7 @@ export class BannerList extends Component {
 
                 <Grid.Row columns={3}>
                     <Grid.Column >
-                        <Banner cityInfo={city4} onClick={() => this.onCardClick('Kiyv')} />
+                        <Banner cityInfo={city4} onClick={() => this.onCardClick('Kiev')} />
                     </Grid.Column>
                     <Grid.Column >
                         <Banner cityInfo={city5} onClick={() => this.onCardClick('Odessa')} />
