@@ -80,6 +80,7 @@ searchProperty.route("/").get((req, res) => {
                     US30_US60: req.query.US30_US60 ? req.query.US30_US60 : "",
                     US60_US90: req.query.US60_US90 ? req.query.US60_US90 : "",
                     US90: req.query.US90 ? req.query.US90 : "",
+
                 };
                 propertyService
                     .getFilteredProperties(filter)
