@@ -129,6 +129,10 @@ export class MainSearch extends React.Component {
         );
     };
     handleSubmit = () => {
+        let searchRequest = {};
+        if (history.location.search !== "") {
+            searchRequest = queryString.parse(history.location.search);
+        }
         const {
             rooms,
             adults,
@@ -147,9 +151,9 @@ export class MainSearch extends React.Component {
             query = queryCopy;
             this.setState({ query: queryCopy });
         }
-        if (query===undefined||query===null||query==="") return
+        if (query === undefined || query === null || query === "") return
 
-        this.props.onSearch({
+        this.props.onSearch(searchRequest,{
             query: query,
             rooms: rooms,
             adults: adults,
@@ -157,7 +161,8 @@ export class MainSearch extends React.Component {
             startDate: startDate,
             endDate: endDate,
             page: 1,
-            sortBy:""
+            sortBy: "",
+           // Queen_bed: searchRequest.Queen_bed
         });
     };
 
