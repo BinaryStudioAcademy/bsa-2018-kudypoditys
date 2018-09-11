@@ -2,7 +2,7 @@ import {
     GET_CURRENT_USER_INFO,
     CHOOSE_PROPERTY,
     UNCHOOSE_PROPERTY,
-    CANCEL_BOOKING
+    CANCEL_OWNER_BOOKING
 } from "./actionTypes";
 
 export function getUserpropertiesInfo(id) {
@@ -27,7 +27,7 @@ export function unchooseProperty() {
 
 export function cancelBooking(reason) {
     return {
-        type: CANCEL_BOOKING,
+        type: CANCEL_OWNER_BOOKING,
         payload: reason
     };
 }
