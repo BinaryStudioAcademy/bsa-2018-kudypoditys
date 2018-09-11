@@ -380,16 +380,17 @@ export class SettingsForm extends Component {
                         Change password
                     </Button>
                     <p className="personal_settings-p" />
-                    <p
-                        className="password_message_p"
-                        style={
-                            this.props.userPasswordError
-                                ? { color: "red" }
-                                : { color: "green" }
-                        }
-                    >
-                        {this.props.passwordMessage}{" "}
-                    </p>
+                    {this.props.passwordMessage ? (
+                        this.props.userPasswordError ? (
+                            <Message negative>
+                                <p>{this.props.passwordMessage}</p>
+                            </Message>
+                        ) : (
+                            <Message positive>
+                                <p>{this.props.passwordMessage}</p>
+                            </Message>
+                        )
+                    ) : null}
                 </Segment>
                 <Segment>
                     <Button

@@ -130,8 +130,20 @@ class PropertyService extends Service {
     getPropertiesByCity(city) {
         return propertyRepository.getPropertiesByCity(city);
     }
-    getUserPropertiesInfo(id) {
-        return propertyRepository.getUserPropertiesInfo(id);
+    async getUserPropertiesInfo(id) {
+        const data = await propertyRepository.getUserPropertiesInfo(id);
+        const response = data.map(property => {
+            property.rooms = property.rooms.map(room => {
+                room.availabilities = room.availabilities.sort(
+                    (current, next) => {
+                        return new Date(next.date) - new Date(current.date);
+                    }
+                );
+                return room;
+            });
+            return property;
+        });
+        return response;
     }
 }
 

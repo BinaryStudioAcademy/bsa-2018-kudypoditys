@@ -25,7 +25,7 @@ export const email = value =>
 
 export const phoneNumber = value =>
     value && !/^([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}$/i.test(value)
-        ? "Invalid phone number format"
+        ? "Invalid phone number format ex.8095XXXXXX"
         : undefined;
 
 export const alphaNumeric = value =>
@@ -44,19 +44,17 @@ export const isValidZip = value =>
         : undefined;
 export const password = value =>
     value && !/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))/.test(value)
-        ? 'Password must contain uppercase, downcase letter and at least 1 number'
-        : undefined
+        ? "Password must contain uppercase, downcase letter and at least 1 number"
+        : undefined;
 export const number = value =>
-    value && !/[0-9]/i.test(value)
-        ? 'Must be a number'
-        : undefined
+    value && !/[0-9]/i.test(value) ? "Must be a number" : undefined;
 
 export const isEqualToFields = (...fields) => (value, allValues) => {
     for (const field of fields) {
         if (allValues[field] !== value) {
-            return 'Should be equal to ' + field;
+            return "Should be equal to " + field;
         }
     }
 
     return undefined;
-}
+};

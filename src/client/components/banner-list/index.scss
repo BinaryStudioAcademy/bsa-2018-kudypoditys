@@ -4,32 +4,52 @@
 }
 .banner{
     color:white;
-    background: #dfe3eb;
-    padding: 17px;
+    background: rgba(223,227,235, 0.7);
+    padding: 3px;
     position: relative;
     cursor: pointer;
+    transition: transform 200ms;
+    transform: 200ms;
+    -webkit-transform: 200ms; /** Chrome & Safari **/
+    -o-transform: 200ms; /** Opera **/
+    -moz-transform: 200ms; /** Firefox **/
 }
-
+.transition {
+    transition: 0.5s;
+  }
 .banner:hover, a:focus {
-    top: -4px;
-    left: -4px;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.2);
+    top: -3px;
+    background: rgba(255,255,255, 1);
+    box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.2 );
 }
 .banner__content{
-    padding:20px;
-    border-radius: 4px;
-    height: 217px;
+    // padding:20px;
+    // border-radius: 4px;
+    height: 240px;
+}
+.banner__title{
+    padding: 20px 0px 0px 20px
+}
+.banner__subtitle{
+    padding: 0px 0px 0px 20px
+}
+.banner__rectangle{
+    height: 50px;
+    width: 100%;
+    background-color: rgba(0,0,0,.55);
+    position: relative;
+    top: 123px;
 }
 
 .banner___flag{
     width: 30px;
     padding-left: 9px;
     height: 30px;
-    display: inline-flex;
     background-size: cover;
     border-radius: 50%;
     position: relative;
-    top: 135px;
+    top: -15px;
+    left: 10px;
 }
 
 .banner__title{
@@ -39,22 +59,26 @@
     margin-bottom: 10px;
 }
 
-.banner__avgprice{
-    //height: 70px;
-    //margin-top: 100px;
+
+.banner__avgprice {
+    float: right;
     text-align: right;
     font-size: 15px;
     background-position-y: 100%;
     background-position-x: 100%;
     background-repeat: no-repeat;
     background-size: contain;
+    width: 120px;
+    position: relative;
+    top: -35px;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column;
     flex-direction: column;
     padding: 10px;
-    color: #182c4f;
-    font-family: ArialMT, sans-serif;
+    font-family: ArialMT,sans-serif;
     font-weight: 600;
-    opacity: 0.8;
+    opacity: 1;
 
 }
 

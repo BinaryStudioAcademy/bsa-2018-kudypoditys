@@ -61,16 +61,46 @@ export class ReviewsTab extends React.Component {
                         <Message info>
                             This is a list of your properties.
                         </Message>
-                        <Button
-                            style={{ marginBottom: "1%" }}
+                        {/* <Button
+                            style={{ marginTop: "1%" }}
                             floated="right"
+                            primary
                             onClick={this.addPropertyClicked}
+                            primary
                         >
                             Add property
-                        </Button>
-                        {!properties
-                            ? "You dont have properties :("
-                            : this.getPropertyItems(properties)}
+                        </Button> */}
+                        {properties ? (
+                            !properties.length ? (
+                                <Fragment>
+                                    <div style={{ textAlign: "center" }}>
+                                        <Header>
+                                            You do not have properties.
+                                        </Header>
+                                        {/* <Button
+                                            content="Add property"
+                                            primary
+                                            onClick={this.addPropertyClicked}
+                                        /> */}
+                                    </div>
+                                </Fragment>
+                            ) : (
+                                this.getPropertyItems(properties)
+                            )
+                        ) : (
+                            <Fragment>
+                                <div style={{ textAlign: "center" }}>
+                                    <Header>You do not have properties.</Header>
+                                </div>
+                            </Fragment>
+                        )}
+                        <div style={{ textAlign: "center", marginTop: "20px" }}>
+                            <Button
+                                content="Add property"
+                                primary
+                                onClick={this.addPropertyClicked}
+                            />
+                        </div>
                     </Segment>
                 )}
             </Segment>

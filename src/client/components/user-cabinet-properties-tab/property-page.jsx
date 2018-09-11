@@ -2,13 +2,19 @@ import React from "react";
 import { Tab, Button } from "semantic-ui-react";
 import { ReviewsTab } from "./reviewsTab";
 import AvailabilityCalendar from "client/components/property-availability-calendar";
+import { BookingsList } from "./bookings-list";
 import { Segment, Icon, Divider } from "semantic-ui-react";
 
 export class PropertyPage extends React.Component {
     panes = [
         {
             menuItem: "Bookings",
-            render: () => <Tab.Pane attached={false}>Bookings</Tab.Pane>
+            render: () => (
+                <Tab.Pane attached={false}>
+                    {" "}
+                    <BookingsList {...this.props.property} />
+                </Tab.Pane>
+            )
         },
         {
             menuItem: "Availability calendar",

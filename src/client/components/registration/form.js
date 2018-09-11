@@ -83,7 +83,6 @@ const RegistrationForm = props => {
                     <Button
                         className="auth_btn"
                         type="button"
-                        color='blue'
                         icon
                         labelPosition='left'
                         onClick={() => history.goBack()}>
