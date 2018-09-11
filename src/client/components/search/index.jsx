@@ -268,7 +268,7 @@ export class MainSearch extends React.Component {
         } = this.state;
 
 
-        console.log(typeof(adults))
+        console.log(adults)
         // console.log("props!!!=" + JSON.stringify(this.props));
         if (this.props.search.data !== undefined) {
             const { data } = this.props.search;
@@ -356,7 +356,7 @@ export class MainSearch extends React.Component {
                                         selection
                                         name="rooms"
                                         options={selectOptionsRooms}
-                                        value={JSON.parse(rooms)}
+                                        value={rooms ? JSON.parse(rooms) : 1}
 
                                         onChange={(event, input) =>
                                             this.onRoomsSelected(input.value)
@@ -374,7 +374,7 @@ export class MainSearch extends React.Component {
                                         selection
                                         name="adults"
                                         options={selectOptionsAdults}
-                                        value={JSON.parse(adults)}
+                                        value={adults ? JSON.parse(adults) : 1}
 
                                         onChange={(event, input) =>
                                             this.onAdultsSelected(input.value)
@@ -392,7 +392,7 @@ export class MainSearch extends React.Component {
                                         selection
                                         name="children"
                                         options={childrenOptions}
-                                        value={JSON.parse(children)}
+                                        value={children ?  JSON.parse(children) : 1}
                                         onChange={(event, input) =>
                                             this.onChildrenSelected(input.value)
                                         }

@@ -8,6 +8,7 @@ import './index.scss';
 import { Banner } from './item';
 import { mapStateToProps, mapDispatchToProps } from './container';
 import history from "client/history";
+import moment from "moment";
 
 export class BannerList extends Component {
     constructor(props) {
@@ -30,7 +31,13 @@ export class BannerList extends Component {
         let path = `/search-page`;
         history.push(path);
         this.props.onSearch({
-            query:query
+            query:query,
+            rooms: 1,
+            adults: 1,
+            children: 1,
+            startDate: moment(),
+            endDate: moment(),
+
         })
     }
 
