@@ -38,16 +38,14 @@ export class MainSearch extends React.Component {
                     startDate: moment(Number(parsed.startDate)),
                     endDate: moment(Number(parsed.endDate)),
                     sortBy: parsed.sortBy,
-                    page:parsed.page
-
-
+                    page: parsed.page
                 },
                 () => {
                     this.handleSubmit();
                 }
             );
         }
-        console.log(this.state.adults)
+        console.log(this.state.adults);
     }
     resetComponent = () =>
         this.setState({ isLoading: false, results: [], value: "" });
@@ -82,7 +80,6 @@ export class MainSearch extends React.Component {
             })
 
             .then(propertiesResponse => {
-
                 if (
                     propertiesResponse &&
                     propertiesResponse.data &&
@@ -129,6 +126,10 @@ export class MainSearch extends React.Component {
         );
     };
     handleSubmit = () => {
+        let searchRequest = {};
+        if (history.location.search !== "") {
+            searchRequest = queryString.parse(history.location.search);
+        }
         const {
             rooms,
             adults,
@@ -137,8 +138,7 @@ export class MainSearch extends React.Component {
             endDate,
             sortBy,
             queryCopy,
-            isSelectedResult,
-
+            isSelectedResult
         } = this.state;
         console.log("handleSubmit trigered");
         let { query } = this.state;
@@ -147,17 +147,20 @@ export class MainSearch extends React.Component {
             query = queryCopy;
             this.setState({ query: queryCopy });
         }
-        if (query===undefined||query===null||query==="") return
+        if (query === undefined || query === null || query === "") return;
 
         this.props.onSearch({
-            query: query,
-            rooms: rooms,
-            adults: adults,
-            children: children,
-            startDate: startDate,
-            endDate: endDate,
-            page: 1,
-            sortBy:""
+            ...searchRequest,
+            ...{
+                query: query,
+                rooms: rooms,
+                adults: adults,
+                children: children,
+                startDate: startDate,
+                endDate: endDate,
+                page: 1,
+                sortBy: ""
+            }
         });
     };
 
@@ -172,8 +175,8 @@ export class MainSearch extends React.Component {
             adults: 1,
             children: 1,
             query: "",
-            page:1,
-            results: [],
+            page: 1,
+            results: []
         };
     }
     generateOptions = (from, to) => {
@@ -212,7 +215,7 @@ export class MainSearch extends React.Component {
         }
     };
     onAdultsSelected = count => {
-        console.log(count)
+        console.log(count);
         this.setState({ adults: count });
         this.props.onAdultsChange(count);
     };
@@ -244,9 +247,7 @@ export class MainSearch extends React.Component {
         this.setState(selectedDates);
     };
     renderResults = ({ image, price, title, description }) => [
-        image && (
-                <Image src={image} avatar />
-        ),
+        image && <Image src={image} avatar />,
         <div key="content" className="content">
             {price && <div className="price">{price}</div>}
             {title && <div className="title">{title}</div>}
@@ -267,8 +268,7 @@ export class MainSearch extends React.Component {
             children
         } = this.state;
 
-
-        console.log(typeof(adults))
+        console.log(typeof adults);
         // console.log("props!!!=" + JSON.stringify(this.props));
         if (this.props.search.data !== undefined) {
             const { data } = this.props.search;
@@ -283,7 +283,7 @@ export class MainSearch extends React.Component {
                     startDate: this.state.startDate,
                     endDate: this.state.endDate,
                     page: 1,
-                    sortBy:this.state.sortBy
+                    sortBy: this.state.sortBy
                 }
             });
             //   }
@@ -306,7 +306,6 @@ export class MainSearch extends React.Component {
                         onSearchChange={this.handleSearchChange}
                         results={results}
                         value={query}
-
                         {...this.props}
                         required
                     />
@@ -340,10 +339,11 @@ export class MainSearch extends React.Component {
                         value={`${this.adultsOutput()} · ${this.childrenOutput()}`}
                         onClick={this.toggleRoomSelector}
                     />
-                    <div style={{width: 170}}
-                         ref={this.roomSelector}
-                         className="room-selector hidden"
-                         onMouseLeave={this.hideRoomSelector}
+                    <div
+                        style={{ width: 170 }}
+                        ref={this.roomSelector}
+                        className="room-selector hidden"
+                        onMouseLeave={this.hideRoomSelector}
                     >
                         <Grid>
                             <Grid.Row>
@@ -357,7 +357,6 @@ export class MainSearch extends React.Component {
                                         name="rooms"
                                         options={selectOptionsRooms}
                                         value={JSON.parse(rooms)}
-
                                         onChange={(event, input) =>
                                             this.onRoomsSelected(input.value)
                                         }
@@ -375,7 +374,6 @@ export class MainSearch extends React.Component {
                                         name="adults"
                                         options={selectOptionsAdults}
                                         value={JSON.parse(adults)}
-
                                         onChange={(event, input) =>
                                             this.onAdultsSelected(input.value)
                                         }

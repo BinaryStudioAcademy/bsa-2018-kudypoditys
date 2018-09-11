@@ -32,10 +32,12 @@ class SearchPage extends React.Component {
         };
     }
     handleSearchResults = searchData => {
-        let properties = searchData.searchResults.properties.filter(
-            property => property !== null
-        );
-
+        let properties =[]
+        if (searchData.searchResults.properties) {
+            properties = searchData.searchResults.properties.filter(
+                property => property !== null
+            )
+        }
         const listItems = properties.map(property => (
             <PropertyListItem
                 key={property.id}
