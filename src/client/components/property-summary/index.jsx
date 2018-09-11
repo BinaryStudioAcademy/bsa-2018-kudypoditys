@@ -24,10 +24,17 @@ export class PropertySummary extends React.Component {
                             padding: 0,
                             lineHeight: 1.2,
                             color: "#465672",
-                            cursor: "default",
+                            cursor: this.props.onHeaderClick
+                                ? "pointer"
+                                : "default",
                             margin: "0",
                             paddingLeft: "10px"
                         }}
+                        onClick={
+                            this.props.onHeaderClick
+                                ? this.props.onHeaderClick
+                                : () => {}
+                        }
                     >
                         {property.name}
                     </Header>

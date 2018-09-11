@@ -18,6 +18,7 @@ import {
 import Modal from "../modal";
 import ReviewForm from "../reviews/addReviewForm";
 import BasicMapWidget from "../basic-map-widget";
+import history from "client/history";
 
 export class BookingSegment extends React.Component {
     constructor(props) {
@@ -76,6 +77,11 @@ export class BookingSegment extends React.Component {
                             style={{
                                 ...headerStyle,
                                 marginLeft: "10px"
+                            }}
+                            onClick={() => {
+                                history.push(
+                                    `/property/${booking.room.property.id}`
+                                );
                             }}
                         >
                             {booking.room.property.name}
