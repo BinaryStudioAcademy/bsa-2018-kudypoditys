@@ -54,6 +54,12 @@ export class ReviewsTab extends React.Component {
                     <PropertyPage
                         property={activeProperty}
                         backToAllProperties={this.backToAllProperties}
+                        cancelBooking={value => {
+                            this.props.cancelBooking(value);
+                            this.props.fetchUserInfo({
+                                id: this.props.user.id
+                            });
+                        }}
                     />
                 ) : (
                     <Segment>
