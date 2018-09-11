@@ -49,9 +49,9 @@ export class RankingBar extends React.Component {
                         onClick={this.handleItemClick}
                     />
                     <Dropdown
-                        style={{ width: 100, border: 0 }}
+                        style={{ width:70, border: 0 }}
                         item
-                        text="Rating"
+                        text="Stars"
                         simple
                         icon="caret down"
                     >
@@ -61,14 +61,14 @@ export class RankingBar extends React.Component {
                                 active={sortBy === HIGH_RANK}
                                 onClick={this.handleItemClick}
                             >
-                                rating [10→1]
+                            stars [5→1]
                             </Dropdown.Item>
                             <Dropdown.Item
                                 value={LOW_RANK}
                                 active={sortBy === LOW_RANK}
                                 onClick={this.handleItemClick}
                             >
-                                rating [1→10]
+                                stars [1→5]
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

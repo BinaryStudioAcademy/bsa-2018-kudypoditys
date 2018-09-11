@@ -22,6 +22,9 @@ const BedType = require("../models/BedType");
 const PropertyLanguage = require("../models/PropertyLanguage");
 const BasicFacility = require("../models/BasicFacility");
 const FacilityCategory = require("../models/FacilityCategory");
+const AvailabilityRepository = require("./availabilityRepository");
+const RoomRepository = require("./roomRepository");
+const moment = require("moment");
 
 const includeOptions = [
     {
@@ -191,6 +194,22 @@ class PropertyRepository extends Repository {
             });
     }
 
+    getDaysArrayByMonth(id, amount, price) {
+        let daysInMonth = moment().daysInMonth();
+        const arrDays = [];
+        while (daysInMonth) {
+            let current = {
+                roomId: id,
+                amount: amount,
+                date: moment().date(daysInMonth),
+                price: price
+            };
+            arrDays.push(current);
+            daysInMonth--;
+        }
+        return arrDays.reverse();
+    }
+
     createDetails(entity) {
         return this.model
             .create(entity, {
@@ -233,6 +252,24 @@ class PropertyRepository extends Repository {
                     _ => newProperty
                 );
             })
+            .then(newProperty => {
+                RoomRepository.findByOptions({
+                    propertyId: newProperty.id
+                }).then(propertyRooms => {
+                    console.log("ROOMS = = ", propertyRooms);
+                    propertyRooms.map(room => {
+                        let availabilities = this.getDaysArrayByMonth(
+                            room.id,
+                            room.amount,
+                            room.price
+                        );
+                        availabilities.map(availability => {
+                            AvailabilityRepository.create(availability);
+                        });
+                    });
+                });
+                return newProperty;
+            })
             .then(newProperty => this.findById(newProperty.id));
     }
     getFacilityId(facilityStr) {
@@ -244,6 +281,34 @@ class PropertyRepository extends Repository {
             case "Dogs":
                 facilityId = 5;
                 break;
+
+            case "Full_body_massage":
+                facilityId = 3;
+                break;
+
+            case "Daily_maid_service":
+                facilityId = 8;
+                break;
+            case "Laundry":
+                facilityId = 11;
+                break;
+
+            case "Walking tours":
+                facilityId = 16;
+                break;
+            case "Live_music_performance":
+                facilityId = 13;
+                break;
+            case "Live_sport_events":
+                facilityId = 12;
+                break;
+            case "Themed_dinner_nights":
+                facilityId = 14;
+                break;
+
+            case "Movie_nights":
+                facilityId = 17;
+                break;
             default:
                 facilityId = -1;
         }
@@ -254,12 +319,68 @@ class PropertyRepository extends Repository {
         let bedTypeId;
         switch (bedTypeStr) {
             case "Queen_bed":
-                bedTypeId = 3; //id from seed
+                bedTypeId = 3;
+                break;
+            case "Full_bed":
+                bedTypeId = 2;
+                break;
+            case "Twin_bed":
+                bedTypeId = 1;
+                break;
+            case "King_bed":
+                bedTypeId = 4;
                 break;
             default:
                 bedTypeId = -1;
         }
         return bedTypeId;
+    }
+    getPriceRange(priceRangeStr) {
+        let priceRange;
+        switch (priceRangeStr) {
+            case "US0_US30":
+                priceRange = [0, 30];
+                break;
+            case "US30_US60":
+                priceRange = [30, 60];
+                break;
+            case "US60_US90":
+                priceRange = [60, 90];
+                break;
+            case "US90":
+                priceRange = [90, 10000000];
+                break;
+            default:
+                priceRange = [0];
+        }
+        return priceRange;
+    }
+    getRatingRange(ratingRangeStr) {
+        let ratingRange;
+        switch (ratingRangeStr) {
+            case "Wonderful":
+                ratingRange = [9, 10];
+                break;
+            case "Very_Good":
+                ratingRange = [8, 8.9];
+                break;
+            case "Good":
+                ratingRange = [7, 7.9];
+                break;
+            case "Pleasant":
+                ratingRange = [6, 6.9];
+                break;
+            case "Its_Ok":
+                ratingRange = [0, 6];
+                break;
+            case "No_rating":
+                ratingRange = [0];
+                break;
+            default:
+                ratingRange = [11];
+        }
+        console.log(ratingRange)
+        return ratingRange;
     }
     getFilteredProperties(filter) {
         console.log("filter " + JSON.stringify(filter));
@@ -285,6 +406,7 @@ class PropertyRepository extends Repository {
                 sortingOption = [["rating", "DESC"]];
                 break;
             default:
+                sortingOption = [["rating"]];
                 sortingOption = Sequelize.literal(
                     "(" +
                         filter.propertiesIds
@@ -295,36 +417,69 @@ class PropertyRepository extends Repository {
                         ") DESC"
                 );
         }
+        //
 
-        let facilityOption =
-            filter.dogs !== "" || filter.fitness_spa_locker_rooms !== ""
-                ? [
-                      {
-                          model: Facility,
-                          required: true,
-                          where: {
-                              id: {
-                                  $in: [
-                                      this.getFacilityId(filter.dogs),
-                                      this.getFacilityId(
-                                          filter.fitness_spa_locker_rooms
-                                      )
-                                  ]
-                              }
-                          },
-                          include: { model: FacilityCategory }
-                      }
-                  ]
-                : [Facility];
+        let fo =
+            filter.dogs !== "" ||
+            filter.fitness_spa_locker_rooms !== "" ||
+            filter.full_body_massage !== "" ||
+            filter.daily_maid_service !== "" ||
+            filter.laundry !== "" ||
+            filter.walking_tours !== "" ||
+            filter.live_music_performance !== "" ||
+            filter.live_sport_events !== "" ||
+            filter.themed_dinner_nights !== "" ||
+            filter.movie_nights !== ""
+                ? {
+                      model: FacilityList,
+                      required: true,
+                      where: {
+                        facilityId: {
+                              $and: [
+                                  this.getFacilityId(filter.dogs),
+                                  this.getFacilityId(
+                                      filter.fitness_spa_locker_rooms
+                                  ),
+                                  this.getFacilityId(filter.full_body_massage),
+                                  this.getFacilityId(filter.daily_maid_service),
+                                  this.getFacilityId(filter.laundry),
+                                  this.getFacilityId(filter.walking_tours),
+                                  this.getFacilityId(
+                                      filter.live_music_performance
+                                  ),
+                                  this.getFacilityId(filter.live_sport_events),
+                                  this.getFacilityId(
+                                      filter.themed_dinner_nights
+                                  ),
+                                  this.getFacilityId(
+                                      filter.themed_dinner_nights
+                                  ),
+                                  this.getFacilityId(filter.movie_nights)
+                              ].filter(id=>id!==-1)
+                          }
+                      },
+                      include:[  Facility],
+                       // required: true,
+                  }
+                : { model: FacilityList };
 
         let bedsInRoomOption =
-            filter.queen_bed || filter.full_bed //we don't send full bad type yet
+            filter.queen_bed ||
+            filter.Full_bed ||
+            filter.Twin_bed ||
+            filter.King_bed
                 ? {
                       model: BedInRoom,
+                      required: true,
                       where: {
                           count: { $gte: filter.bedsCount },
                           bedTypeId: {
-                              $in: [this.getBedTypeId(filter.queen_bed)]
+                              $in: [
+                                  this.getBedTypeId(filter.queen_bed),
+                                  this.getBedTypeId(filter.Full_bed),
+                                  this.getBedTypeId(filter.Twin_bed),
+                                  this.getBedTypeId(filter.King_bed)
+                              ]
                           }
                       }
                   }
@@ -335,26 +490,57 @@ class PropertyRepository extends Repository {
                       }
                   };
 
+        let roomPriceOption =
+            filter.US0_US30 !== "" ||
+            filter.US30_US60 !== "" ||
+            filter.US60_US90 !== "" ||
+            filter.US90 !== ""
+                ? {
+                        $or: [
+                            {$between: this.getPriceRange(filter.US0_US30)},
+                            {$between: this.getPriceRange(filter.US30_US60)},
+                            {$between: this.getPriceRange(filter.US60_US90)},
+                            {$between: this.getPriceRange(filter.US90)}
+                        ]
+                    }
+
+                : { $between: [0, 1000000] };
+
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
+
+        let ratingOption =
+            filter.Wonderful !== "" ||
+            filter.Very_Good !== "" ||
+            filter.Good !== "" ||
+            filter.Pleasant !== "" ||
+            filter.Its_Ok !== "" ||
+            filter.No_rating !== ""
+                ? {
+
+                    $or: [
+                        { $between: this.getRatingRange(filter.Wonderful) },
+                        { $between: this.getRatingRange(filter.Very_Good) },
+                        { $between: this.getRatingRange(filter.Good) },
+                        { $between: this.getRatingRange(filter.Pleasant) },
+                        { $between: this.getRatingRange(filter.Its_Ok) },
+                        { $between: this.getRatingRange(filter.No_rating) },
+
+                    ]
+                }
+                : { $between: [0, 10]};
+
 
         return this.model
             .findAndCountAll({
                 limit: 5,
                 offset: offsetData,
                 where: {
-                    id: { $in: filter.propertiesIds }
+                    id: { $in: filter.propertiesIds},
+                    rating: ratingOption
+
                 },
                 distinct: true,
-                // order: Sequelize.literal(
-                //     "(" +
-                //         filter.propertiesIds
-                //             .map(function(id) {
-                //                 return '"property"."id" = \'' + id + "'";
-                //             })
-                //             .join(", ") +
-                //         ") DESC"
-                // ),
-                 order: sortingOption,
+                order: sortingOption,
                 include: [
                     {
                         model: City
@@ -365,15 +551,16 @@ class PropertyRepository extends Repository {
                     {
                         model: Review
                     },
-                    {
-                        model: FacilityList,
-                        include: facilityOption
-                    },
+
+                    fo,
+
 
                     {
                         model: Room,
+                        required: true,
                         where: {
-                            amount: { $gte: filter.rooms }
+                            amount: { $gte: filter.rooms },
+                            price: roomPriceOption
                         },
                         include: [
                             RoomType,
@@ -446,9 +633,14 @@ class PropertyRepository extends Repository {
                     {
                         model: Review
                     },
+                    // {
+                    //     model: FacilityList,
+                    //     required: true,
+                    // },
+
                     {
                         model: Room,
-                        required: true,
+
                         include: [
                             { model: RoomType },
                             {
@@ -466,7 +658,7 @@ class PropertyRepository extends Repository {
     getUserPropertiesInfo(id) {
         return this.model.findAll({
             where: {
-                userId: 1
+                userId: id
             },
             include: [
                 {
@@ -482,8 +674,18 @@ class PropertyRepository extends Repository {
                         },
                         {
                             model: Availability
+                        },
+                        {
+                            model: RoomType
                         }
                     ]
+                },
+                {
+                    model: Image,
+                    attributes: ["id", "url", "propertyId", "roomId"]
+                },
+                {
+                    model: Review
                 }
             ]
         });

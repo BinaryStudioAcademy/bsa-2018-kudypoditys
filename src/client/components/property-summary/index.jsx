@@ -13,7 +13,7 @@ export class PropertySummary extends React.Component {
     };
 
     render() {
-        const { property, rating, totalReviews } = this.props;
+        const { property, rating, totalReviews, bookingPage } = this.props;
 
         return (
             <div className="property-summary__container">
@@ -21,7 +21,6 @@ export class PropertySummary extends React.Component {
                     <Header
                         as="h1"
                         style={{
-                            fontSize: 23,
                             padding: 0,
                             lineHeight: 1.2,
                             color: "#465672",
@@ -32,6 +31,7 @@ export class PropertySummary extends React.Component {
                     >
                         {property.name}
                     </Header>
+
                     <Rating
                         rating={rating}
                         maxRating={5}
@@ -76,7 +76,10 @@ export class PropertySummary extends React.Component {
                         </p>
                     </div>
                 </div>
-                <div className="property-summary--right-section">
+                <div
+                    className="property-summary--right-section"
+                    style={bookingPage ? { paddingRight: "30px" } : null}
+                >
                     <RatingBlock
                         avgPropRating={rating}
                         reviewsCount={totalReviews}

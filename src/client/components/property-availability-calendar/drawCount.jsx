@@ -10,10 +10,10 @@ export class DrawCount extends React.Component {
             inputs.push(
                 <Table.Cell key={index}>
                     <Input
-                        name={this.props.days[index].fullDate}
+                        name={index}
                         className={"table-rooms-input"}
                         size={"mini"}
-                        value={this.props.amount}
+                        value={this.props.availability[index].amount}
                         onChange={this.props.onAmountChange}
                     />
                 </Table.Cell>

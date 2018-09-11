@@ -2,61 +2,45 @@ import React, { Fragment } from "react";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { connect } from "react-redux";
 import history from "client/history";
-import {
-    Button,
-    Icon,
-    Image,
-    Item,
-    Label,
-    Card,
-    Header,
-    Message,
-    Segment
-} from "semantic-ui-react";
+import { Card, Header, Message, Segment } from "semantic-ui-react";
 import ReviewItem from "./reviewItem";
 import Review from "../reviews/item";
 import "./index.scss";
 
 export class ReviewsTab extends React.Component {
     getReviewsItems = reviews => {
-        console.log(reviews);
         return reviews.map((review, index) => {
-            {
-                console.log(review)
-            }
-
-            return (
-
-                <ReviewItem
-                    key={index}
-                    {...review}
-                    // images={booking.room.property.images}
-                    // booking={booking}
-                    // viewBooking={() => this.viewBooking(booking)}
-                />
-
-            );
+            return <ReviewItem key={index} {...review} />;
         });
     };
 
     componentWillMount() {
-        console.log(this.props)
-        this.props.getUserReviews({id: this.props.user.id});
+        this.props.getUserReviews({ id: this.props.user.id });
     }
 
     render() {
-        // <Button onClick={this.props.getUserReviews} />
         const { reviews } = this.props;
 
         return (
             <Segment className="reviews-segment">
                 <Header as="h2">Your reviews</Header>
                 <Message info>This is a list of your reviews.</Message>
-                <Card.Group itemsPerRow={4}>
-                    {!reviews
-                        ? "You dont have review :("
-                        : this.getReviewsItems(reviews)}
-                </Card.Group>
+                {reviews ? (
+                    !reviews.length ? (
+                        <Header
+                            textAlign="center"
+                            style={{
+                                margin: "25px"
+                            }}
+                        >
+                            You do not have any reviews.
+                        </Header>
+                    ) : (
+                        <Card.Group itemsPerRow={4}>
+                            {this.getReviewsItems(reviews)}
+                        </Card.Group>
+                    )
+                ) : null}
             </Segment>
         );
     }

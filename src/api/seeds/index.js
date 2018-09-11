@@ -20,6 +20,7 @@ const {
     REVIEWS,
     LANGUAGES,
     CURRENCIES,
+    AVAILABILITY
 } = require("./seed");
 
 function upsertAllData(models) {
@@ -48,6 +49,7 @@ function upsertAllData(models) {
         Language,
         Review,
         Currency,
+        Availability
     } = models;
 
     const SimpleUpsertMap = [
@@ -71,6 +73,7 @@ function upsertAllData(models) {
         [Language, LANGUAGES],
         [Review, REVIEWS],
         [Currency, CURRENCIES],
+        [Availability, AVAILABILITY]
     ];
 
     //Country & City

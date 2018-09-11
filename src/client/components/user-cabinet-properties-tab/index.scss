@@ -1,0 +1,22 @@
+.property-segment {
+    .message {
+        border-radius: 0px;
+        color: #465672 !important;
+    }
+    box-shadow: 2px 2px 30px -4px #0000001f !important;
+    border: none !important;
+}
+
+.property-segment {
+    .dropdown {
+        max-width: 100%;
+        width: 10% !important;
+        border-radius: 5px;
+        padding: {
+            left: 1% !important;
+            right: 1em;
+            top: 1em;
+            bottom: 1em;
+        }
+    }
+}
