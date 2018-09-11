@@ -1,7 +1,8 @@
 import {
     getUserpropertiesInfo,
     chooseProperty,
-    unchooseProperty
+    unchooseProperty,
+    cancelBooking
 } from "client/logic/user-cabinet-properties-tab/actions";
 
 export function mapStateToProps(state) {
@@ -24,6 +25,9 @@ export function mapDispatchToProps(dispatch) {
 
         unchooseProperty() {
             dispatch(unchooseProperty());
+        },
+        cancelBooking(reason) {
+            dispatch(cancelBooking(reason));
         }
     };
 }

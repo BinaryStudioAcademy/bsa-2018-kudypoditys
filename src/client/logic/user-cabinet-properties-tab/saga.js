@@ -20,8 +20,21 @@ function* getUserpropertiesInfo(id) {
     }
 }
 
+function* cancelBooking(action) {
+    try {
+        console.log("cancel booking saga, reason: " + action.payload);
+        yield put({
+            type: actionTypes.CANCEL_BOOKING_SUCCESS
+        });
+    } catch (error) {
+        console.log(error.message);
+        yield put({ type: actionTypes.CANCEL_BOOKING_FAILURE });
+    }
+}
+
 export default function* availabilitySaga() {
     yield all([
-        takeLatest(actionTypes.GET_CURRENT_USER_INFO, getUserpropertiesInfo)
+        takeLatest(actionTypes.GET_CURRENT_USER_INFO, getUserpropertiesInfo),
+        takeLatest(actionTypes.CANCEL_BOOKING, cancelBooking)
     ]);
 }

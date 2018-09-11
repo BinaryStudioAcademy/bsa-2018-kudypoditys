@@ -11,6 +11,8 @@ import {
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "./container";
 import moment from "moment";
+import Modal from "../modal";
+import CancelBookingForm from "./cancelForm";
 
 import "./index.scss";
 
@@ -59,6 +61,18 @@ export class BookingsList extends React.Component {
                         {reservation.guestsCount}
                     </Table.Cell>
                     <Table.Cell collapsing>{roomType}</Table.Cell>
+                    <Table.Cell collapsing>
+                        <Modal
+                            trigger={<Button negative>Cancel</Button>}
+                            closeIcon
+                        >
+                            <CancelBookingForm
+                                handleCancelSubmit={value => {
+                                    this.props.cancelBooking(value);
+                                }}
+                            />
+                        </Modal>
+                    </Table.Cell>
                 </Table.Row>
             );
         });
@@ -85,8 +99,8 @@ export class BookingsList extends React.Component {
                     <Table compact celled padded>
                         <Table.Header>
                             <Table.Row style={{ textAlign: "center" }}>
-                                <Table.HeaderCell>Chek In</Table.HeaderCell>
-                                <Table.HeaderCell>Chek Out</Table.HeaderCell>
+                                <Table.HeaderCell>Check In</Table.HeaderCell>
+                                <Table.HeaderCell>Check Out</Table.HeaderCell>
                                 <Table.HeaderCell>
                                     Customer name
                                 </Table.HeaderCell>
@@ -94,9 +108,10 @@ export class BookingsList extends React.Component {
                                     Customer phone
                                 </Table.HeaderCell>
                                 <Table.HeaderCell>
-                                    Quests Count
+                                    Guests Count
                                 </Table.HeaderCell>
                                 <Table.HeaderCell>Room type</Table.HeaderCell>
+                                <Table.HeaderCell />
                             </Table.Row>
                         </Table.Header>
 
