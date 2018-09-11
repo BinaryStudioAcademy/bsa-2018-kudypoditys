@@ -68,18 +68,15 @@ export class PropertyListItem extends React.Component {
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
 
         let currentBg;
-        let borderBg;
         if (itemIndex === 0) {
             currentBg = "#f9fbff";
-            borderBg ='blue'
         } else {
             currentBg = "";
-            borderBg =''
         }
         return (
             <Card
                 className="property_card"
-                fluid  color ={borderBg}
+                fluid // color ={borderBg}
                 style={{
                     padding: 0,
                     backgroundColor: currentBg,
