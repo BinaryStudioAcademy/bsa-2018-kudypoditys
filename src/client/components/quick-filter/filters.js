@@ -108,25 +108,25 @@ export const priceScore= [
     {
         name: "US0_US30",
         key:"US0_US30_for_night",
-        label: "US 0-US 30 per night",
+        label: "$0 - $30 per night",
         value: "US0_US30"
     },
     {
         name: "US30_US60",
         key:"US30_US60_for_night",
-        label: "US 30-US 60 per night",
+        label: "$30 - $60 per night",
         value: "US30_US60"
     },
     {
         name: "US60_US90",
         key:"US60_US90_for_night",
-        label: "US 60-US 90 per night",
+        label: "$60 - $90 per night",
         value: "US60_US90"
     },
     {
         name: "US90",
         key:"US90_+_for_night",
-        label: "US 90 + per night",
+        label: "$90 + per night",
         value: "US90"
     },
 
