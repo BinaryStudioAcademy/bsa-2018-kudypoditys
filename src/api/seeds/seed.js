@@ -12,7 +12,8 @@ const USERS = [
         appeal: "Mrs.",
         preferredCurrency: "USD",
         countryId: 1,
-        paymentTypeId: 1
+        paymentTypeId: 1,
+        verifyEmailToken: "verified"
     },
     {
         id: 2,
