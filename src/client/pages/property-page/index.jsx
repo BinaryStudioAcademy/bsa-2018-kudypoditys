@@ -205,6 +205,7 @@ export class PropertyPage extends React.Component {
                                 rating={avgPropRating}
                                 totalReviews={property.reviews.length}
                                 property={property}
+                                labelBelow={notes && notes.recentlyBooked}
                             />
                             {notes && notes.recentlyBooked ? (
                                 <Label
