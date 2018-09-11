@@ -253,17 +253,19 @@ class PropertyRepository extends Repository {
                 );
             })
             .then(newProperty => {
-                let propertyRooms = RoomRepository.findByOptions({
+                RoomRepository.findByOptions({
                     propertyId: newProperty.id
-                });
-                propertyRooms.map(room => {
-                    let availabilities = this.getDaysArrayByMonth(
-                        room.id,
-                        room.amount,
-                        room.price
-                    );
-                    availabilities.map(availability => {
-                        AvailabilityRepository.create(availability);
+                }).then(propertyRooms => {
+                    console.log("ROOMS = = ", propertyRooms);
+                    propertyRooms.map(room => {
+                        let availabilities = this.getDaysArrayByMonth(
+                            room.id,
+                            room.amount,
+                            room.price
+                        );
+                        availabilities.map(availability => {
+                            AvailabilityRepository.create(availability);
+                        });
                     });
                 });
                 return newProperty;
