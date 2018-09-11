@@ -18,7 +18,7 @@ const USERS = [
         id: 2,
         fullName: "Nikolay Datsko",
         password: bcrypt.hashSync("102938abC", 10),
-        email: "sayber1990@gmail.com",
+        email: "lorem@gmail.com",
         phoneNumber: "80954568261",
         nickname: "Lorem",
         appeal: "Mrs.",
