@@ -40,7 +40,7 @@ const CITY_INFOS = [{
         flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
     }, {
         id: 4,
-        city: 'Kyiv',
+        city: 'Kiev',
         properties: 92202,
         avgPrice: 182032,
         pictureUrl: 'https://s.inyourpocket.com/gallery/130361.jpg',
