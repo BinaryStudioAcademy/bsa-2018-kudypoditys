@@ -371,13 +371,13 @@ class PropertyRepository extends Repository {
                 ratingRange = [6, 6.9];
                 break;
             case "Its_Ok":
-                ratingRange = [0.1, 6];
+                ratingRange = [0, 6];
                 break;
             case "No_rating":
                 ratingRange = [0];
                 break;
             default:
-                ratingRange = [0, 10];
+                ratingRange = [11];
         }
         console.log(ratingRange)
         return ratingRange;
@@ -517,7 +517,7 @@ class PropertyRepository extends Repository {
             filter.No_rating !== ""
                 ? {
 
-                    $in: [
+                    $or: [
                         { $between: this.getRatingRange(filter.Wonderful) },
                         { $between: this.getRatingRange(filter.Very_Good) },
                         { $between: this.getRatingRange(filter.Good) },
