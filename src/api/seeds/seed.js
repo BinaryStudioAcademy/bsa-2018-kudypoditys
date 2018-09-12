@@ -29,7 +29,7 @@ const USERS = [
     }
 ];
 
-const PROPERTIES = [
+let PROPERTIES = [
     {
         id: 1,
         name: "Ukraine Hotel",
