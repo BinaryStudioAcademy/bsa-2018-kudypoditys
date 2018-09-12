@@ -46,6 +46,10 @@ export class PropertyPage extends React.Component {
         );
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     getImagesArray(propertyImages) {
         let images = [];
         for (let i = 0; i < propertyImages.length; i++) {
@@ -201,6 +205,7 @@ export class PropertyPage extends React.Component {
                                 rating={avgPropRating}
                                 totalReviews={property.reviews.length}
                                 property={property}
+                                labelBelow={notes && notes.recentlyBooked}
                             />
                             {notes && notes.recentlyBooked ? (
                                 <Label

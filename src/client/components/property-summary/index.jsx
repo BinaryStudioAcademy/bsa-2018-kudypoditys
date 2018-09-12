@@ -13,10 +13,21 @@ export class PropertySummary extends React.Component {
     };
 
     render() {
-        const { property, rating, totalReviews, bookingPage } = this.props;
+        const {
+            property,
+            rating,
+            totalReviews,
+            bookingPage,
+            labelBelow
+        } = this.props;
 
         return (
-            <div className="property-summary__container">
+            <div
+                className="property-summary__container"
+                style={{
+                    margin: labelBelow ? "15px 0 0 0" : "15px 0 20px 0"
+                }}
+            >
                 <div className="property-summary--left-section">
                     <Header
                         as="h1"
@@ -24,10 +35,17 @@ export class PropertySummary extends React.Component {
                             padding: 0,
                             lineHeight: 1.2,
                             color: "#465672",
-                            cursor: "default",
+                            cursor: this.props.onHeaderClick
+                                ? "pointer"
+                                : "default",
                             margin: "0",
                             paddingLeft: "10px"
                         }}
+                        onClick={
+                            this.props.onHeaderClick
+                                ? this.props.onHeaderClick
+                                : () => {}
+                        }
                     >
                         {property.name}
                     </Header>

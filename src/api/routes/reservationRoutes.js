@@ -46,6 +46,17 @@ reservation.route("/byuser").get((req, res) => {
         });
 });
 
+reservation.route("/owner/:id").put((req, res) => {
+    reservationService
+        .ownerCancel(req.params.id, req.body.reason)
+        .then(cancelled => {
+            res.send(true);
+        })
+        .catch(err => {
+            res.send(err);
+        });
+});
+
 reservation
     .route("/:id")
     .put((req, res) => {

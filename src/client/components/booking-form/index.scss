@@ -26,6 +26,7 @@ button.book-btn:hover {
 
 .booking-form .DateRangePickerInput_arrow {
     color: #182c4f;
+    z-index: 5;
 }
 
 .booking-form {
@@ -34,10 +35,20 @@ button.book-btn:hover {
     flex-direction: column;
 }
 
-.booking-form .DateRangePicker {
+.booking-form .DateRangePicker.DateRangePicker_1 {
     width: fit-content !important;
 }
 
 .booking-form .DateInput_input {
-    width: 130px !important;
+    text-align: center;
+    width: 120px !important;
+    border: 0 !important;
+}
+
+.booking-form .DateInput {
+    width: fit-content !important;
+}
+
+.booking-form .DateRangePickerInput {
+    width: fit-content !important;
 }

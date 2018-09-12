@@ -110,8 +110,7 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                 availabilityInput: {
                     ...state.availabilityInput,
                     ...action.payload,
-                    error: "",
-                    result: null
+                    error: ""
                 },
                 bookingInput: {
                     ...state.bookingInput,

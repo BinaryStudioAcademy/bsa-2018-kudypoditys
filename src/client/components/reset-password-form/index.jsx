@@ -60,7 +60,6 @@ class ResetPasswordForm extends Component {
               <Button
                 className="auth_btn"
                 type="button"
-                color='blue'
                 icon
                 labelPosition='left'
                 onClick={() => history.push('/')}>
