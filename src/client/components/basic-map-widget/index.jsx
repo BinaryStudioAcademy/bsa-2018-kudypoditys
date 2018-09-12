@@ -3,7 +3,6 @@ import MapView from "../map-view";
 
 class BasicMapWidget extends React.Component {
     render() {
-        console.log(this.props)
         const {
             controlEnable,
             disablePopup,

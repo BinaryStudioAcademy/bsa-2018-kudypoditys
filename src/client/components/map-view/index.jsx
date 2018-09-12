@@ -40,9 +40,9 @@ class MapView extends React.Component {
                     onClose={() => this.setState({ popupInfo: null })}
                 >
                     {/*<MapPopupItem*/}
-                        {/*propertyName={popupInfo.name}*/}
-                        {/*price={popupInfo.price}*/}
-                        {/*rating={popupInfo.rating}*/}
+                    {/*propertyName={popupInfo.name}*/}
+                    {/*price={popupInfo.price}*/}
+                    {/*rating={popupInfo.rating}*/}
                     {/*/>*/}
                     <MapPopupItem
                         propertyName={popupInfo.name}
@@ -66,7 +66,6 @@ class MapView extends React.Component {
         });
     };
     renderPropertyMarker = (property, index) => {
-        console.log(property)
         return (
             <Marker
                 key={`marker-${index}`}
@@ -83,15 +82,21 @@ class MapView extends React.Component {
                     onClick={() => {
                         this.handleMarkerClicked(property);
                     }}
-                    >
-                    {property.price ? <Label style={{whiteSpace: "nowrap",
-                        fontSize: 9,
-                        position: "relative",
-                        top: -12}} color="black" >$ {property.price}</Label> : null}
-
-
-                    </Icon>
-
+                >
+                    {property.price ? (
+                        <Label
+                            style={{
+                                whiteSpace: "nowrap",
+                                fontSize: 9,
+                                position: "relative",
+                                top: -12
+                            }}
+                            color="black"
+                        >
+                            $ {property.price}
+                        </Label>
+                    ) : null}
+                </Icon>
             </Marker>
         );
     };
@@ -130,7 +135,6 @@ class MapView extends React.Component {
 
     render() {
         const { disablePopup } = this.props;
-        console.log(this.props)
         return (
             <Fragment>
                 <ReactMapGL

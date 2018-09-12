@@ -6,9 +6,6 @@ import {
     Button,
     CardContent,
     Grid,
-    CardMeta,
-    CardDescription,
-    Container,
     Icon,
     Header,
     Label,
@@ -37,7 +34,6 @@ export class PropertyListItem extends React.Component {
         //todo
     };
     handleRedirectToDetails = () => {
-        console.log(JSON.stringify(this.props.propertyItemData));
         history.push("/property/" + this.props.propertyItemData.id); // this.props.actions.redirectToDetails(id)
     };
 
@@ -47,7 +43,6 @@ export class PropertyListItem extends React.Component {
 
     render() {
         const { propertyItemData, itemIndex } = this.props;
-        console.log(propertyItemData);
 
         // let ratingStatus = "";
         // if (propertyItemData.rating >= 9) {
@@ -79,9 +74,7 @@ export class PropertyListItem extends React.Component {
                 fluid // color ={borderBg}
                 style={{
                     padding: 0,
-                    backgroundColor: currentBg,
-
-
+                    backgroundColor: currentBg
                 }}
             >
                 <CardContent>
@@ -138,7 +131,7 @@ export class PropertyListItem extends React.Component {
                                                 fontSize: 24,
                                                 fontWeight: "bold",
                                                 color: "#182c4f",
-                                                opacity: 0.8,
+                                                // opacity: 0.8,
                                                 cursor: "pointer"
                                             }}
                                             onClick={
@@ -198,7 +191,10 @@ export class PropertyListItem extends React.Component {
                                     {propertyItemData.address + " - "}
 
                                     <MapWidgetModal
-                                        style={{ width: "100%", height: "100%" }}
+                                        style={{
+                                            width: "100%",
+                                            height: "100%"
+                                        }}
                                         properties={[
                                             {
                                                 price:
