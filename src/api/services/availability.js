@@ -32,4 +32,4 @@ class AvailabilityService extends Service {
     }
 }
 
-module.exports = new AvailabilityService(AvailabilityService);
+module.exports = new AvailabilityService(availabilityRepository);
