@@ -34,7 +34,7 @@ export class PropertyListItem extends React.Component {
         //todo
     };
     handleRedirectToDetails = () => {
-        history.push("/property/" + this.props.propertyItemData.id); // this.props.actions.redirectToDetails(id)
+        history.push("/property/" + this.props.propertyItemData.id);
     };
 
     componentDidMount() {
@@ -43,17 +43,6 @@ export class PropertyListItem extends React.Component {
 
     render() {
         const { propertyItemData, itemIndex } = this.props;
-
-        // let ratingStatus = "";
-        // if (propertyItemData.rating >= 9) {
-        //     ratingStatus = "Excellent";
-        // } else if (propertyItemData.rating >= 7) {
-        //     ratingStatus = "Very Good";
-        // } else if (propertyItemData.rating >= 5) {
-        //     ratingStatus = "Good";
-        // } else if (propertyItemData.rating >= 1) {
-        //     ratingStatus = "Not good";
-        // }
 
         // AVG PROPERTY RATING
         const avgPropRatingArray = getGroupedArray(
@@ -71,7 +60,7 @@ export class PropertyListItem extends React.Component {
         return (
             <Card
                 className="property_card"
-                fluid // color ={borderBg}
+                fluid
                 style={{
                     padding: 0,
                     backgroundColor: currentBg
@@ -226,15 +215,9 @@ export class PropertyListItem extends React.Component {
 
                                     {propertyItemData.rooms[0].roomType.name}
                                 </div>
-
-                                {/*<div className="price"style={{*/}
-                                {/*padding: 10*/}
-                                {/*}} >*/}
                                 <span className="priceInfo">
                                     ${propertyItemData.rooms[0].price}
                                 </span>
-
-                                {/*</div>*/}
                             </div>
 
                             <div className="card_row__order">
