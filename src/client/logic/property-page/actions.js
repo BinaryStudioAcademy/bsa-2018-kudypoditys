@@ -5,7 +5,8 @@ import {
     BOOKING_INPUT_UPDATE,
     BOOK_PROPERTY,
     CHECK_AVAILABILITY,
-    GET_ROOMS_INFO
+    GET_ROOMS_INFO,
+    CLEAR_PROPERTY_PAGE
 } from "./actionTypes";
 
 export function descriptionUpdate(payload) {
@@ -58,5 +59,11 @@ export function getRoomsInfo(propertyId, checkIn, checkOut) {
             checkIn,
             checkOut
         }
+    };
+}
+
+export function clearPropertyPageSlice() {
+    return {
+        type: CLEAR_PROPERTY_PAGE
     };
 }

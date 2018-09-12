@@ -181,7 +181,7 @@ export class BookingForm extends React.Component {
                                 }
                             />
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field style={{ width: "170px" }}>
                             <label style={{ color: "#274560" }}>
                                 Payment type
                             </label>
