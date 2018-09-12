@@ -255,11 +255,12 @@ class PropertyRepository extends Repository {
                             room.amount,
                             room.price
                         );
-                        availabilities.map(availability => {
-                            AvailabilityRepository.create(availability);
+                        availabilities.map(async availability => {
+                            await AvailabilityRepository.create(availability);
                         });
                     });
                 });
+
                 return newProperty;
             })
             .then(newProperty => this.findById(newProperty.id));
