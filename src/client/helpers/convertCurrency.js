@@ -13,12 +13,17 @@ export const converterObj = {
     }
 };
 
+function round(value, decimals = 2) {
+    const pow10 = Math.pow(10, decimals);
+    return Math.round(value * pow10) / pow10;
+}
+
 export function convert(currentCurrency, value, tagetCurrency) {
-    const from = currentCurrency.toLowerCase(),
-        to = tagetCurrency.toLowerCase();
+    const from = currentCurrency && currentCurrency.toLowerCase(),
+        to = tagetCurrency && tagetCurrency.toLowerCase();
 
     if (from === to) return value;
 
     return converterObj[from] && converterObj[from][to] &&
-        converterObj[from][to] * value || 0;
+        round(converterObj[from][to] * value) || value;
 }

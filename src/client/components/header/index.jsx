@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Grid } from "semantic-ui-react";
+import { Grid, Dropdown } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
@@ -23,7 +23,7 @@ export class MainHeader extends Component {
         return currencies.map(x => ({
             key: x.id,
             value: x.id,
-            text: x.name
+            text: x.code
         }))
 
     };
@@ -83,6 +83,23 @@ export class MainHeader extends Component {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
+                            <Dropdown
+                                style={{
+                                    width: "70px",
+                                    fontSize: "14px",
+                                    background: "none",
+                                    color: "#fff",
+                                    border: "none",
+                                    float: "right",
+                                    opacity: "0.94"
+                                }}
+                                name="preferredCurrency"
+                                fluid
+                                selection
+                                value={this.props.selectedCurrency.id}
+                                options={currenciesOptions}
+                                onChange={this.handleCurrancyChange}
+                            />
                             <AuthHOC
                                 Component={() => {
                                     return (
@@ -104,23 +121,7 @@ export class MainHeader extends Component {
                                         <Fragment>
                                             {hideSignUpIn ? null : (
                                                 <Fragment>
-                                                    <Dropdown
-                                                        style={{
-                                                            width: "70px",
-                                                            fontSize: "14px",
-                                                            background: "none",
-                                                            color: "#fff",
-                                                            border: "none",
-                                                            float: "right",
-                                                            opacity: "0.94"
-                                                        }}
-                                                        name="preferredCurrency"
-                                                        fluid
-                                                        selection
-                                                        value={this.props.selectedCurrency.id}
-                                                        options={currenciesOptions}
-                                                        onChange={this.handleCurrancyChange}
-                                                    />
+
                                                     <a
                                                         style={{
                                                             cursor: "pointer",

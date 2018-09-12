@@ -7,6 +7,7 @@ import { Icon, Popup, Divider } from "semantic-ui-react";
 import BookingForm from "../booking-form";
 import Modal from "../modal";
 import { Header } from "semantic-ui-react";
+import { convert } from "../../helpers/convertCurrency";
 
 export class RoomsSummaryTable extends React.Component {
     getBedsSummary = bedsInRoom => {
@@ -33,6 +34,11 @@ export class RoomsSummaryTable extends React.Component {
     };
 
     getRoomsSummary = (rooms, bookButton, property) => {
+        const { currency } = this.props;
+        const { currency: propCurrency } = property;
+
+        const priceFunc = (price) => convert(propCurrency.code, price, currency.code);
+
         return rooms.map(room => (
             <React.Fragment>
                 <div className="room-row">
@@ -60,7 +66,7 @@ export class RoomsSummaryTable extends React.Component {
                                 paddingRight: "5px"
                             }}
                         >
-                            US ${room.price}
+                            {currency.code} {priceFunc(room.price)}
                         </p>
                         {bookButton ? (
                             <Modal
