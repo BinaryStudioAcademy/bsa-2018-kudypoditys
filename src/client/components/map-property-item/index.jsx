@@ -1,13 +1,15 @@
 import React, {Component} from "react";
 import {Card, Icon, Image} from "semantic-ui-react";
 import PropTypes from "prop-types";
-
+import history from 'client/history';
 export class MapPropertyItem extends Component {
     nameClicked = () => {
-        console.log("Name clicked");
+        history.push(`/property/${this.props.propertyId}`)
     };
 
     render() {
+
+
         return (
             <Card
                 style={{

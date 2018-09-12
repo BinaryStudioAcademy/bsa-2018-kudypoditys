@@ -36,12 +36,24 @@ reservation
 
 reservation.route("/byuser").get((req, res) => {
     reservationService
-        .findByOptions({userId: req.user.id})
+        .findByOptions({ userId: req.user.id })
         .then(reservations => {
+            console.log("reservations", reservations);
             res.send(reservations);
         })
         .catch(err => {
             res.status(404).send(err.message);
+        });
+});
+
+reservation.route("/owner/:id").put((req, res) => {
+    reservationService
+        .ownerCancel(req.params.id, req.body.reason)
+        .then(cancelled => {
+            res.send(true);
+        })
+        .catch(err => {
+            res.send(err);
         });
 });
 

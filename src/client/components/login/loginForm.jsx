@@ -1,9 +1,10 @@
 import React from "react";
+import history from 'client/history';
 import { Field, reduxForm } from "redux-form";
 import {
     Button,
     Form,
-    Header,
+    Icon,
     Grid,
     Segment,
     Message,
@@ -13,76 +14,78 @@ import renderField from "client/components/input-form/renderField";
 import { required, email } from "client/regexValidationService";
 
 let LoginForm = props => {
-    const { handleSubmit, handleRegisterClicked, handleForgotClicked } = props;
+    const { handleSubmit, submitting, pristine } = props;
     return (
-        <Grid centered columns={3}>
-            <Grid.Column textAlign="center">
-                <Header as="h1" style={{ cursor: "default", color: "white" }}>
-                    Log-in to your account
-                </Header>
-                <Form onSubmit={handleSubmit}>
-                    <Segment style={{ padding: "25px" }} stacked secondary>
-                        <Field
-                            name="email"
-                            type="email"
-                            component={renderField}
-                            label="Email"
-                            validate={[required, email]}
-                            icon="mail"
-                            className="login-mail-input"
-                            iconPosition="left"
-                        />
-                        <Divider hidden style={{ margin: "3px" }} />
-                        <Field
-                            style={{ marginTop: "5%" }}
-                            name="password"
-                            type="password"
-                            component={renderField}
-                            label="Password"
-                            validate={[required]}
-                            icon="lock"
-                            className="login-password-input"
-                            iconPosition="left"
-                        />
-                        <Form.Field
-                            style={{
-                                textAlign: "right",
-                                marginTop: "5px"
-                            }}
-                        >
-                            <a
-                                style={{
-                                    color: "#465672",
-                                    cursor: "pointer"
-                                }}
-                                tabIndex="0"
-                                onClick={handleForgotClicked}
-                            >
-                                Forgot the password ?
+        <Segment className="login_form-wrapper" padded='very' raised>
+            <Form onSubmit={handleSubmit} id="login-form">
+
+                <div className="field-wrapper">
+                    <Field
+                        name="email"
+                        type="email"
+                        component={renderField}
+                        label="Email"
+                        validate={[required, email]}
+                        icon="mail"
+                        className="login-mail-input"
+                        iconPosition="left"
+                        pointing="left"
+                    />
+                </div>
+                <div className="field-wrapper">
+                    <Field
+                        style={{ marginTop: "5%" }}
+                        name="password"
+                        type="password"
+                        component={renderField}
+                        label="Password"
+                        validate={[required]}
+                        icon="lock"
+                        className="login-password-input"
+                        iconPosition="left"
+                        pointing="left"
+                    />
+                </div>
+                <Form.Field
+                    style={{
+                        textAlign: "right",
+                        marginTop: "5px"
+                    }}
+                >
+                    <a
+                        style={{
+                            color: "#465672",
+                            cursor: "pointer"
+                        }}
+                        tabIndex="0"
+                        onClick={() => history.push('/forgotpassword')}
+                    >
+                        Forgot the password ?
                             </a>
-                        </Form.Field>
-                        <Button.Group>
-                            <Button
-                                style={{ backgroundColor: "#465672" }}
-                                positive
-                                type="submit"
-                            >
-                                Login
-                            </Button>
-                            <Button.Or />
-                            <Button
-                                style={{ backgroundColor: "#465672" }}
-                                primary
-                                type="button"
-                                onClick={handleRegisterClicked}
-                            >
-                                Sign Up
-                            </Button>
-                        </Button.Group>
-                    </Segment>
-                </Form>
-            </Grid.Column>
-        </Grid>
+                </Form.Field>
+                <div className="btn-wrapper">
+                    <Button
+                        className="auth_btn"
+                        type="button"
+                        icon
+                        labelPosition='left'
+                        onClick={() => history.goBack()}>
+                        <Icon name='left arrow' />
+                        Back</Button>
+                    <Button
+                        className="auth_btn"
+                        type="submit"
+                        name="register"
+                        disabled={submitting || pristine}
+                        icon
+                        color='blue'
+                        labelPosition='right'>
+                        Login
+                    <Icon name='right arrow' />
+                    </Button></div>
+
+            </Form>
+        </Segment>
     );
 };
 

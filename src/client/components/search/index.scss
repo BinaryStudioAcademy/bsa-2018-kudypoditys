@@ -1,4 +1,3 @@
-
 .search--view-bar > .room-options > .room-selector.hidden {
     display: none;
 }
@@ -7,19 +6,18 @@
     display: flex;
     background-color: #ffffff;
     width: fit-content;
-    size: 16px ;
+    size: 16px;
     margin: 0px auto 50px;
 }
 
-.DateRangePickerInput_arrow {
-    color: #182c4f
+.search .DateRangePickerInput_arrow {
+    color: #182c4f;
 }
 
-.DateRangePickerInput_icon {
-    display: none
-
+.search .DateRangePickerInput_icon {
+    display: none;
 }
-.DateInput_input_1 {
+.search .DateInput_input_1 {
     border: 0px solid !important;
     border-left: 1px;
     height: 58px;
@@ -35,7 +33,12 @@
     opacity: 0.8;
     width: 230px !important;
 }
+.search .DateRangePickerInput__withBorder {
+    border-radius: 2px;
+    border: 0;
 
+    border-left: 1px solid #dbdbdb;
+}
 .search--view-bar {
     width: 1050px;
     //max-width: 1050px !important;
@@ -50,7 +53,7 @@
 .destination {
     height: 60px;
     input {
-        min-width:520px;
+        min-width: 520px;
     }
 }
 
@@ -72,13 +75,12 @@
     width: fit-content;
 }
 .destination div.results.transition {
-    width: 100% ;
- }
+    width: 100%;
+}
 
- .destination div.results.image.transition {
-    width: 100% ;
- }
-
+.destination div.results.image.transition {
+    width: 100%;
+}
 
 .search--view-bar > .room-options > .room-selector {
     box-shadow: 0 0 3px 1px #dddddd;
@@ -90,16 +92,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 205px ;
+    width: 205px;
     height: 210px;
-    border-right:1px #182c4f
+    border-right: 1px #182c4f;
 }
 
 .room-selector > .field {
     display: flex;
     justify-content: space-between;
     align-content: center;
-
 }
 
 .room-selector > .field > label {
@@ -130,11 +131,10 @@
 }
 
 .ui.input {
-    height: 60px
+    height: 60px;
 }
 
 .ui.grid > .row {
-
     padding-left: 10px;
 }
 

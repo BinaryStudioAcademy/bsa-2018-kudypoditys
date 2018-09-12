@@ -99,8 +99,6 @@ export class MainHeader extends Component {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
-
-
                             <AuthHOC
                                 Component={() => {
                                     return (

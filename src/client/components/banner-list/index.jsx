@@ -8,9 +8,10 @@ import './index.scss';
 import { Banner } from './item';
 import { mapStateToProps, mapDispatchToProps } from './container';
 import history from "client/history";
+import moment from "moment";
 
 export class BannerList extends Component {
-    componentDidMount(){
+    componentDidMount() {
         console.log('Hello from component Did mount')
         this.props.getCityInfos(this.props.selectedCurrency);
 
@@ -21,46 +22,52 @@ export class BannerList extends Component {
         let path = `/search-page`;
         history.push(path);
         this.props.onSearch({
-            query:query
+            query: query,
+            rooms: 1,
+            adults: 1,
+            children: 1,
+            startDate: moment(),
+            endDate: moment(),
+
         })
     }
 
     render() {
         const { rate, selectedCurrency } = this.props;
-        const {cityInfos} = this.props.cityInfos;
+        const { cityInfos } = this.props.cityInfos;
         const cities = Object.values(cityInfos)
         const [
             city1, city2,
             city3, city4, city5, city6
-            ] = cities;
+        ] = cities;
         return (
             <div className='container'>
-            <Grid >
-                <Grid.Row columns='equal'>
-                    <Grid.Column>
-                        <Banner currency={selectedCurrency} rate={rate} cityInfo={city1} onClick={() => this.onCardClick('Lviv')} />
-                    </Grid.Column>
-                    <Grid.Column >
-                        <Banner currency={selectedCurrency} rate={rate} cityInfo={city2} onClick={() => this.onCardClick('Dnipro')} />
-                    </Grid.Column>
-                    <Grid.Column width={7}>
-                        <Banner currency={selectedCurrency} rate={rate} cityInfo={city3} onClick={() => this.onCardClick('Ternopil')} />
-                    </Grid.Column>
+                <Grid >
+                    <Grid.Row columns='equal'>
+                        <Grid.Column>
+                            <Banner currency={selectedCurrency} rate={rate} cityInfo={city1} onClick={() => this.onCardClick('Lviv')} />
+                        </Grid.Column>
+                        <Grid.Column >
+                            <Banner currency={selectedCurrency} rate={rate} cityInfo={city2} onClick={() => this.onCardClick('Dnipro')} />
+                        </Grid.Column>
+                        <Grid.Column width={7}>
+                            <Banner currency={selectedCurrency} rate={rate} cityInfo={city3} onClick={() => this.onCardClick('Ternopil')} />
+                        </Grid.Column>
 
-                </Grid.Row>
+                    </Grid.Row>
 
-                <Grid.Row columns={3}>
-                    <Grid.Column >
-                        <Banner currency={selectedCurrency} rate={rate} cityInfo={city4} onClick={() => this.onCardClick('Kiyv')} />
-                    </Grid.Column>
-                    <Grid.Column >
-                        <Banner currency={selectedCurrency} rate={rate} cityInfo={city5} onClick={() => this.onCardClick('Odessa')} />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Banner currency={selectedCurrency} rate={rate} cityInfo={city6} onClick={() => this.onCardClick('Kharkiv')}/>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+                    <Grid.Row columns={3}>
+                        <Grid.Column >
+                            <Banner cityInfo={city4} onClick={() => this.onCardClick('Kiev')} />
+                        </Grid.Column>
+                        <Grid.Column >
+                            <Banner currency={selectedCurrency} rate={rate} cityInfo={city5} onClick={() => this.onCardClick('Odessa')} />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Banner currency={selectedCurrency} rate={rate} cityInfo={city6} onClick={() => this.onCardClick('Kharkiv')} />
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
             </div>
         );
 

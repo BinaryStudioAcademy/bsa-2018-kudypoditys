@@ -38,6 +38,7 @@ export function getAvgFromArray(array) {
 export function getPropertyStatus(rating){
     let ratingStatus = "";
 
+
     if (rating >= 9) {
         ratingStatus = "Wonderful";
     } else if (rating >= 8) {
@@ -47,11 +48,32 @@ export function getPropertyStatus(rating){
     } else if (rating >= 6) {
         ratingStatus = "Pleasant";
     } else if (rating === 0) {
-            ratingStatus = "No rating";
+        ratingStatus = "No rating";
         }
      else if (rating < 6) {
-        ratingStatus = "It`s Ok";
+        ratingStatus = "It's Ok";
+
     }
 
     return ratingStatus
+}
+
+export function getPropertyColor(rating) {
+    let ratingColor = "";
+
+    if (rating >= 9) {
+        ratingColor = '#0a3d91'
+    } else if (rating >= 8) {
+        ratingColor = '#255ebc'
+    } else if (rating >= 7) {
+        ratingColor = '#5473a8'
+    } else if (rating >= 6) {
+        ratingColor = '#7b9ace'
+    } else if (rating === 0) {
+        ratingColor = '#44272b'
+    }
+    else if (rating < 6) {
+        ratingColor = '#9ab5e2'
+    }
+    return ratingColor
 }

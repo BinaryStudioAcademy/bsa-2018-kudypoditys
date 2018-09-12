@@ -57,10 +57,6 @@
     display: block;
 }
 
-.availability-form .DateInput_input {
-    height: 38px;
-}
-
 .availability-form div.inline.fields.room-selector {
     margin: 0;
 }
@@ -69,21 +65,20 @@
     color: #182c4f;
 }
 
-.availability-form .DateInput_input_1 {
-    border: 0px solid !important;
-    border-left: 1px !important;
-    font-family: ArialMT, sans-serif;
-    font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: black;
-    opacity: 0.8;
+.availability-form .DateRangePicker.DateRangePicker_1 {
+    width: fit-content !important;
 }
 
-.availability-form div.DateInput.DateInput_1 {
-    overflow: hidden;
+.availability-form .DateInput_input {
+    text-align: center;
+    width: 120px !important;
+    border: 0 !important;
+}
+
+.availability-form .DateInput {
+    width: fit-content !important;
+}
+
+.availability-form .DateRangePickerInput {
+    width: fit-content !important;
 }

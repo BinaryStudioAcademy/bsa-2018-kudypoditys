@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
     Button,
     Icon,
@@ -7,17 +7,17 @@ import {
     Label,
     Card,
     Divider,
-    Progress, Header,
-} from 'semantic-ui-react';
-import history from 'client/history';
-import {Comment} from 'semantic-ui-react/dist/commonjs/views/Comment/Comment';
+    Progress,
+    Header
+} from "semantic-ui-react";
+import history from "client/history";
+import { Comment } from "semantic-ui-react/dist/commonjs/views/Comment/Comment";
 
 export default class ReviewItem extends React.Component {
     state = {
         id: this.props.property.id
-    }
-    handleBookAgain = (id) => {
-        console.log(id)
+    };
+    handleBookAgain = id => {
         history.push(`/property/${this.state.id}`);
     };
 
@@ -30,9 +30,8 @@ export default class ReviewItem extends React.Component {
         }
 
         return (
-
             <Card>
-                <Image style={{height: 160}} src={property.images[0].url} />
+                <Image style={{ height: 160 }} src={property.images[0].url} />
                 <Card.Content>
                     <Card.Header>{property.name}</Card.Header>
                     <Card.Meta>Your review</Card.Meta>
@@ -80,39 +79,40 @@ export default class ReviewItem extends React.Component {
                             />
                         </div>
 
-
                         {shouldRenderComments ? (
                             <div className="user_cabinet__reviews_content_block">
                                 <div
                                     style={{
                                         padding: 10,
-                                        backgroundColor: '#f7f8f9',
-                                        color: '#465672',
-                                        marginBottom: 10,
+                                        backgroundColor: "#f7f8f9",
+                                        color: "#465672",
+                                        marginBottom: 10
                                     }}
                                 >
-                                    <Icon color="green" name="plus circle"/>
+                                    <Icon color="green" name="plus circle" />
                                     {this.props.pros}
                                 </div>
                                 <div
                                     style={{
                                         padding: 10,
-                                        backgroundColor: '#f7f8f9',
-                                        color: '#465672',
+                                        backgroundColor: "#f7f8f9",
+                                        color: "#465672"
                                     }}
                                 >
-                                    {' '}
-                                    <Icon color="grey" name="minus circle"/>
+                                    {" "}
+                                    <Icon color="grey" name="minus circle" />
                                     {this.props.cons}
-                        </div>
+                                </div>
                             </div>
                         ) : (
-                            <Header as="h4" style={{
-                                padding: 10,
-                                backgroundColor: "#f7f8f9",
-                                color: "#465672",
-
-                            }}>
+                            <Header
+                                as="h4"
+                                style={{
+                                    padding: 10,
+                                    backgroundColor: "#f7f8f9",
+                                    color: "#465672"
+                                }}
+                            >
                                 There are no comments available for this review
                             </Header>
                         )}
@@ -120,10 +120,7 @@ export default class ReviewItem extends React.Component {
                 </Card.Content>
                 <Card.Content extra>
                     <div className="ui two buttons">
-                        <Button primary fluid
-                                onClick={this.handleBookAgain}
-
-                        >
+                        <Button primary fluid onClick={this.handleBookAgain}>
                             Book again
                         </Button>
                     </div>

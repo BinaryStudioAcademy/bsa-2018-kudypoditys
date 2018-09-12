@@ -1,4 +1,4 @@
-import {LOGIN, GET_CURRENT_USER} from "./actionTypes";
+import { LOGIN, GET_CURRENT_USER, RESET_LOGIN } from "./actionTypes";
 
 export function loginSubmit(payload) {
     return {
@@ -11,4 +11,10 @@ export function getCurrentUser() {
     return {
         type: GET_CURRENT_USER
     };
+}
+
+export function reset() {
+    return {
+        type: RESET_LOGIN
+    }
 }

@@ -5,7 +5,7 @@ import {
 } from "../../logic/property-page/actions";
 
 export function mapStateToProps(state, ownProps) {
-    const { property, availabilityInput } = state.propertyPage;
+    const { property, availabilityInput, rooms } = state.propertyPage;
     return {
         propertyName: property.name,
         propertyId: property.id,
@@ -14,7 +14,7 @@ export function mapStateToProps(state, ownProps) {
         adults: availabilityInput.adults,
         children: availabilityInput.children,
         rooms: availabilityInput.rooms,
-        result: availabilityInput.result,
+        result: rooms,
         error: availabilityInput.error
     };
 }

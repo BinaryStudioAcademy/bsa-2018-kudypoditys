@@ -2,14 +2,23 @@ const Service = require("./generalService");
 const propertyRepository = require("../repositories/propertyRepository");
 const roomService = require("./room");
 const reservationService = require("./reservation");
-const request = require('request');
 const fetch = require("node-fetch");
+const moment = require("moment");
 
 class PropertyService extends Service {
     async findById(id) {
         try {
-            const property = await this.repository.findById(id);
-            return Promise.resolve(property);
+            let property = await this.repository.findById(id);
+            let notes = {
+                recentlyBooked: 0
+            };
+            notes.recentlyBooked = await this.wasBookedLastDay(property.id);
+            property.notes = notes;
+            const response = {
+                property: property,
+                notes: notes
+            };
+            return Promise.resolve(response);
         } catch (err) {
             return Promise.reject(err);
         }
@@ -32,6 +41,30 @@ class PropertyService extends Service {
                     result.push(rooms[i]);
             }
             return Promise.resolve(result);
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    }
+
+    async wasBookedLastDay(propertyId) {
+        try {
+            const rooms = await roomService.findByOptions({
+                propertyId: propertyId
+            });
+            let booked = 0;
+            for (let i = 0; i < rooms.length; i++) {
+                const reservations = await reservationService.findByOptions({
+                    roomId: rooms[i].id
+                });
+                for (let i = 0; i < reservations.length; i++) {
+                    if (
+                        moment(reservations[i].createdAt).add(1, "days") >
+                        moment()
+                    )
+                        booked++;
+                }
+            }
+            return Promise.resolve(booked);
         } catch (err) {
             return Promise.reject(err);
         }
@@ -64,21 +97,21 @@ class PropertyService extends Service {
         try {
 
             const currencies = ['UAH', 'USD', 'EUR']
-                var rates = {}
-                    for(let i = 0; i < currencies.length; i++){
-                        for(let j = 0; j < currencies.length; j++){
-                                const URL = `http://free.currencyconverterapi.com/api/v5/convert?q=${currencies[i]}_${currencies[j]}&compact=y`;
-                                const response = await fetch(URL);
-                                const json = await response.json();
-                                rates[currencies[i]+'_'+currencies[j]] = json
-                            }
-                        }
+            var rates = {}
+            for (let i = 0; i < currencies.length; i++) {
+                for (let j = 0; j < currencies.length; j++) {
+                    const URL = `http://free.currencyconverterapi.com/api/v5/convert?q=${currencies[i]}_${currencies[j]}&compact=y`;
+                    const response = await fetch(URL);
+                    const json = await response.json();
+                    rates[currencies[i] + '_' + currencies[j]] = json
+                }
+            }
 
-                console.log('###RATES' + rates)
-                console.log('property'+rates)
-                return rates;
-        }catch (err) {
-                return Promise.reject(err);
+            console.log('###RATES' + rates)
+            console.log('property' + rates)
+            return rates;
+        } catch (err) {
+            return Promise.reject(err);
         }
     }
 
@@ -119,8 +152,20 @@ class PropertyService extends Service {
     getPropertiesByCity(city) {
         return propertyRepository.getPropertiesByCity(city);
     }
-    getUserPropertiesInfo(id) {
-        return propertyRepository.getUserPropertiesInfo(id);
+    async getUserPropertiesInfo(id) {
+        const data = await propertyRepository.getUserPropertiesInfo(id);
+        const response = data.map(property => {
+            property.rooms = property.rooms.map(room => {
+                room.availabilities = room.availabilities.sort(
+                    (current, next) => {
+                        return new Date(next.date) - new Date(current.date);
+                    }
+                );
+                return room;
+            });
+            return property;
+        });
+        return response;
     }
 }
 

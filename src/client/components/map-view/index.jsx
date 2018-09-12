@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { MAPBOX_TOKEN } from "client/constants";
-import { Icon } from "semantic-ui-react";
+import { Icon, Label } from "semantic-ui-react";
 import MapPropertyItem from "client/components/map-property-item";
 import PropTypes from "prop-types";
 import MapPopupItem from "client/components/map-popup-item";
@@ -25,6 +25,7 @@ class MapView extends React.Component {
     }
     renderPopup = () => {
         const { popupInfo, controlEnable } = this.state;
+
         return (
             controlEnable &&
             popupInfo && (
@@ -38,10 +39,18 @@ class MapView extends React.Component {
                     dynamicPosition={true}
                     onClose={() => this.setState({ popupInfo: null })}
                 >
+                    {/*<MapPopupItem*/}
+                        {/*propertyName={popupInfo.name}*/}
+                        {/*price={popupInfo.price}*/}
+                        {/*rating={popupInfo.rating}*/}
+                    {/*/>*/}
                     <MapPopupItem
                         propertyName={popupInfo.name}
+                        propertyAddress={popupInfo.address}
                         price={popupInfo.price}
                         rating={popupInfo.rating}
+                        imageSrc={popupInfo.imageSrc}
+                        // closeClicked={() => this.setState({ propertyInfo: null })}
                     />
                 </Popup>
             )
@@ -52,11 +61,12 @@ class MapView extends React.Component {
             viewport: {
                 ...this.state.viewport,
                 width: this.props.width || window.innerWidth - 75,
-                height: this.props.height || window.innerHeight - 150
+                height: this.props.height || window.innerHeight - 65
             }
         });
     };
     renderPropertyMarker = (property, index) => {
+        console.log(property)
         return (
             <Marker
                 key={`marker-${index}`}
@@ -73,7 +83,15 @@ class MapView extends React.Component {
                     onClick={() => {
                         this.handleMarkerClicked(property);
                     }}
-                />
+                    >
+                    {property.price ? <Label style={{whiteSpace: "nowrap",
+                        fontSize: 9,
+                        position: "relative",
+                        top: -12}} color="black" >$ {property.price}</Label> : null}
+
+
+                    </Icon>
+
             </Marker>
         );
     };
@@ -91,6 +109,7 @@ class MapView extends React.Component {
                     rating={propertyInfo.rating}
                     imageSrc={propertyInfo.imageSrc}
                     closeClicked={() => this.setState({ propertyInfo: null })}
+                    propertyId={propertyInfo.id}
                 />
             )
         );
@@ -111,6 +130,7 @@ class MapView extends React.Component {
 
     render() {
         const { disablePopup } = this.props;
+        console.log(this.props)
         return (
             <Fragment>
                 <ReactMapGL

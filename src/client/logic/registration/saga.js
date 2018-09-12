@@ -1,9 +1,9 @@
-import {call, put, all, takeLatest} from "redux-saga/effects";
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
-import {LOGIN_SUCCESS} from "../login/actionTypes";
 import authService from "client/services/authService";
 import history from "client/history";
-import {registerSuccess, registerFailure} from "./actions";
+import { registerSuccess, registerFailure } from "./actions";
+import { modalShow } from 'client/logic/simple-modal/actions';
 
 function* signup(action) {
     try {
@@ -14,15 +14,30 @@ function* signup(action) {
                 message: "Signed up successfully!"
             })
         );
-        yield put({
-            type: LOGIN_SUCCESS
-        });
         history.push("/");
+
+        yield put(modalShow(getSuccessSignUp()))
     } catch (err) {
-        yield put(registerFailure({error: true, message: err.message}));
+        yield put(registerFailure({ error: true, message: err.message }));
     }
 }
 
 export default function* signUpSaga() {
     yield all([takeLatest(actionTypes.REGISTER_SUBMIT, signup)]);
 }
+
+const getSuccessSignUp = () => ({
+    header: 'Sign up success!',
+    content: `
+        You have successfully created your account.
+        Now, to complete your registration you need to verify your email.
+        Without email verification, you cannot create your property, make reviews and other.
+        Please follow link in email.`,
+    buttons: [
+        {
+            content: 'OK',
+            icon: 'check',
+            positive: true,
+        },
+    ]
+});

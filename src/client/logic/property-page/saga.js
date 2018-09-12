@@ -10,9 +10,11 @@ export default function* propertyPageSaga() {
                 `/api/property/${action.payload}`,
                 "get"
             );
+            let propertyData = response.data.property;
+            propertyData.notes = response.data.notes;
             yield put({
                 type: actionTypes.GET_PROPERTY_INFO_SUCCESS,
-                payload: response.data
+                payload: propertyData
             });
         } catch (err) {
             console.log(err);

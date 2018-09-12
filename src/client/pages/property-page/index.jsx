@@ -6,7 +6,8 @@ import {
     List,
     Header,
     Icon,
-    Sidebar
+    Sidebar,
+    Label
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
@@ -43,6 +44,10 @@ export class PropertyPage extends React.Component {
             this.props.checkIn,
             this.props.checkOut
         );
+    }
+
+    componentDidMount() {
+        window.scrollTo(0, 0);
     }
 
     getImagesArray(propertyImages) {
@@ -83,7 +88,7 @@ export class PropertyPage extends React.Component {
         };
 
         if (!property) return null;
-
+        const notes = property.notes;
         //AVG PROPERTY RATING
         const avgPropRatingArray = getGroupedArray(
             property.reviews,
@@ -200,8 +205,20 @@ export class PropertyPage extends React.Component {
                                 rating={avgPropRating}
                                 totalReviews={property.reviews.length}
                                 property={property}
+                                labelBelow={notes && notes.recentlyBooked}
                             />
-
+                            {notes && notes.recentlyBooked ? (
+                                <Label
+                                    color="orange"
+                                    tag
+                                    style={{ left: "0px", marginBottom: "5px" }}
+                                >
+                                    This property was booked{" "}
+                                    {notes.recentlyBooked} time
+                                    {notes.recentlyBooked === 1 ? "" : "s"}{" "}
+                                    today
+                                </Label>
+                            ) : null}
                             <Slider pics={pics} slideIndex={0} />
 
                             <Divider hidden />

@@ -25,7 +25,7 @@ property
                 console.log(property.name, property.id);
                 res.send(property);
             })
-            .catch((err) => {
+            .catch(err => {
                 res.status(500).send(err);
             });
     });
@@ -71,8 +71,8 @@ property
     .get((req, res) => {
         propertyService
             .findById(req.params.id)
-            .then(property => {
-                res.send(property);
+            .then(response => {
+                res.send(response);
             })
             .catch(err => {
                 res.status(404).send(err.message);
@@ -100,7 +100,8 @@ property.route("/:id/details").get((req, res) => {
         });
 });
 
-property.route("/city/:id/:currency").get((req, res) => {
+property.route("/city/:id").get((req, res) => {
+    console.log(req.params.id);
     propertyService
         .getPropertiesByCity(req.params.id)
         .then(properties => {
@@ -108,37 +109,25 @@ property.route("/city/:id/:currency").get((req, res) => {
             var roomAmount = 0;
             var totalPrice = 0;
             var avgPrice = 0;
-            propertyService
-                .rate()
-                .then(rates=>{
-                    for (const property of properties) {
-                        for (const room of property.rooms) {
-                            //totalPrice += Number(room.price)*course[property.prefferCurrency+'_'+req.params.currency]
-                            totalPrice += Number(room.price)*
-                                          Number(rates['USD_'+req.params.currency]['USD_'+req.params.currency].val)
+            for (const property of properties) {
+                for (const room of property.rooms) {
+                    totalPrice += Number(room.price);
+                }
+                roomAmount++;
+            }
+            console.log(roomAmount, totalPrice);
+            avgPrice = (totalPrice / roomAmount).toFixed(0);
+            const data = {
+                properties: roomAmount,
+                avgPrice: avgPrice
+            };
 
-                        }
-                        roomAmount++
-                    }
-                    avgPrice = (totalPrice / roomAmount).toFixed(0)
-                    const data = {
-                        properties: roomAmount,
-                        avgPrice: avgPrice,
-                        curr: rates
-                    }
-
-                    res.status(200).send(data);
-            }).catch(err=>{
-                return err
-            });
-
-
+            res.status(200).send(data);
         })
         .catch(err => {
             res.status(404).send(err.message);
         });
 });
-
 
 property.route("/:id/info").get((req, res) => {
     propertyService

@@ -2,7 +2,7 @@ import {
     CREATE_REVIEW_FAILED,
     CREATE_REVIEW_SUCCESS,
     UPDATE_REVIEW,
-    UPDATE_RATING
+    UPDATE_RATING, UPDATE_PROPERTY, UPDATE_PROPERTY_SUCCESS, UPDATE_PROPERTY_FAILED
 
 } from './actionTypes'
 
@@ -38,6 +38,25 @@ export default function reviewsReducer(state = defaultState.reviewData, action) 
             }
         }
         case CREATE_REVIEW_SUCCESS: {
+            return {
+                ...state,
+                ...action.payload
+            }
+        }
+
+        case UPDATE_PROPERTY: {
+            return {
+                ...state,
+                ...action.payload
+            }
+        }
+        case UPDATE_PROPERTY_FAILED: {
+            return {
+                ...state,
+                ...action.payload
+            }
+        }
+        case UPDATE_PROPERTY_SUCCESS: {
             return {
                 ...state,
                 ...action.payload

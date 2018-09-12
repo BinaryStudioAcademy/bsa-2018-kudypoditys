@@ -26,6 +26,7 @@ export class PropertyRegistration extends React.Component {
 
     handleTabChange = (e, { activeIndex }) => {
         this.setState({ activeIndex });
+        window.scrollTo(0, 0);
     }
 
     nextTab = (data) => {
@@ -34,7 +35,7 @@ export class PropertyRegistration extends React.Component {
         this.setState({
             activeIndex: activeIndex + 1
         });
-
+        window.scrollTo(0, 0);
     }
 
     normalizeFacilities(submitedFacilities) {
