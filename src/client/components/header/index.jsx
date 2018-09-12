@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Grid, Popup, Button } from "semantic-ui-react";
+import { Grid, Popup, Button, Dropdown } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
@@ -8,10 +8,25 @@ import AuthHOC from "client/components/auth-hoc";
 import UserPopup from "client/components/header-user-popup";
 import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
+import state from '../../logic/defaultState';
 
 export class MainHeader extends Component {
+    componentDidMount() {
+        this.props.getCurrencies();
+    }
+
     logoutClicked = () => {
         this.props.logout();
+    };
+
+    getCurrencies() {
+        const { currencies } = this.props;
+        return currencies.map(x => ({
+            key: x.id,
+            value: x.id,
+            text: x.name
+        }))
+
     };
 
     addPropertyClicked = () => {
@@ -34,20 +49,32 @@ export class MainHeader extends Component {
         history.push("/user-cabinet");
     };
 
-    state = { activeItem: "about-us" };
+    handleCurrancyChange = (e, { value }) => {
+        console.log("value  ", value);
+        const { currencies } = this.props;
+        const currency = currencies.find(x => x.id == value);
+        console.log("currency  ", currency);
+        this.props.onCurrencyChange(currency);
+
+        // console.log('state ', state.header.selectedCurrency);
+        console.log("props.selectedCurrency  ", this.props.selectedCurrency);
+    }
+
+    // state = { activeItem: "about-us" };
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
     render() {
         const { currentUser, hideSignUpIn, noBackground } = this.props;
+        const currenciesOptions = this.getCurrencies();
         return (
             <div
                 className="header--wraper"
                 style={
                     noBackground
                         ? {
-                              backgroundImage: "none"
-                          }
+                            backgroundImage: "none"
+                        }
                         : { backgroundColor: "#028fc5" }
                 }
             >
@@ -83,6 +110,23 @@ export class MainHeader extends Component {
                                         <Fragment>
                                             {hideSignUpIn ? null : (
                                                 <Fragment>
+                                                    <Dropdown
+                                                        style={{
+                                                            width: "70px",
+                                                            fontSize: "14px",
+                                                            background: "none",
+                                                            color: "#fff",
+                                                            border: "none",
+                                                            float: "right",
+                                                            opacity: "0.94"
+                                                        }}
+                                                        name="preferredCurrency"
+                                                        fluid
+                                                        selection
+                                                        options={currenciesOptions}
+                                                        defaultValue={this.props.selectedCurrency}
+                                                        onChange={this.handleCurrancyChange}
+                                                    />
                                                     <a
                                                         style={{
                                                             cursor: "pointer",
