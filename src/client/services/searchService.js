@@ -3,7 +3,6 @@ import history from "client/history";
 
 class SearchService {
     submitSearch(data) {
-        console.log("SearchService submitSearch  - " + JSON.stringify(data));
         let queryData = "?";
         Object.keys(data).forEach(key => {
             queryData = queryData + `${key}=${data[key]}&`;

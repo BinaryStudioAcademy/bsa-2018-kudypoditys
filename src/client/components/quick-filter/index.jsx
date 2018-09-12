@@ -9,7 +9,7 @@ import history from "client/history";
 import queryString from "query-string";
 // import Checkbox from './Checkbox';
 
-import { ratingScore,  bedTypes,priceScore,bedsType } from "./filters";
+import { ratingScore, bedTypes, priceScore, bedsType } from "./filters";
 
 class Quickfilter extends React.Component {
     constructor() {
@@ -25,8 +25,6 @@ class Quickfilter extends React.Component {
         }
     }
     handleChange = (e, data) => {
-        console.log("eve" + JSON.stringify(e));
-        console.log("data" + JSON.stringify(data));
         if (history.location.search !== "") {
             let searchRequest = queryString.parse(history.location.search);
             const item = data.name;
@@ -50,9 +48,9 @@ class Quickfilter extends React.Component {
     }
     render() {
         const list1 = this.drawBoxes(ratingScore);
-        const list2= this.drawBoxes(priceScore);
-        const list3= this.drawBoxes(bedTypes);
-        const list4= this.drawBoxes(bedsType);
+        const list2 = this.drawBoxes(priceScore);
+        const list3 = this.drawBoxes(bedTypes);
+        const list4 = this.drawBoxes(bedsType);
 
         return (
             <div className="box">
@@ -68,8 +66,8 @@ class Quickfilter extends React.Component {
                 <List>{list4}</List>
                 <p className="box_group">Rating</p>
                 <List>{list1}</List>
-                 <p className="box_group">Price</p>
-                 <List>{list2}</List>
+                <p className="box_group">Price</p>
+                <List>{list2}</List>
             </div>
         );
     }

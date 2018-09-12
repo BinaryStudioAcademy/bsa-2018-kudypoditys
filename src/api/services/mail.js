@@ -18,7 +18,7 @@ class MailService {
             html: `
         <a href="http://localhost:3000/${action}?email=${user.email}&token=${
                 mailOptionsObj.verifyStringParam
-                }">
+            }">
           ${mailOptionsObj.message}
         </a>`
         };
@@ -30,9 +30,7 @@ class MailService {
                 "https://sqs.eu-central-1.amazonaws.com/048714216392/kudypoditys_email"
         };
 
-
-
-        sqs.sendMessage(params, function (err, data) {
+        sqs.sendMessage(params, function(err, data) {
             if (err) {
                 console.log("Error sqs", err);
             } else {
@@ -44,9 +42,9 @@ class MailService {
     sendData() {
         amqp.connect(
             "amqp://rabbitmq:5672",
-            function (err, conn) {
+            function(err, conn) {
                 console.log(err);
-                conn.createChannel(function (err, ch) {
+                conn.createChannel(function(err, ch) {
                     var q = "hello";
 
                     ch.assertQueue(q, { durable: false });
@@ -69,19 +67,18 @@ class MailService {
                 pass: EMAIL_PASS
             }
         });
-
+        const BASE_URL = process.env.BASE_URL;
         const mailOptions = {
             from: EMAIL_USER,
             to: user.email,
             subject: mailOptionsObj.subject,
             html: `
-        <a href="http://localhost:3000/${action}?email=${user.email}&token=${
+        <a href="${BASE_URL}:3000/${action}?email=${user.email}&token=${
                 mailOptionsObj.verifyStringParam
-                }">
+            }">
           ${mailOptionsObj.message}
         </a>`
         };
-
         return transporter.sendMail(mailOptions).then(_ => true);
     }
 }

@@ -1,7 +1,7 @@
-import {sortUpdate} from 'client/logic/ranking-bar/actions';
+import { sortUpdate } from "client/logic/ranking-bar/actions";
 
 export function mapStateToProps(state) {
-    const {search} = state;
+    const { search } = state;
     return {
         activeItem: search.sortBy
     };
@@ -10,10 +10,6 @@ export function mapStateToProps(state) {
 export function mapDispatchToProps(dispatch) {
     return {
         onSelect(searchRequest) {
-            console.log(
-                "mapDispatchToProps =   " +
-                    JSON.stringify(searchRequest)
-            );
             dispatch(sortUpdate(searchRequest));
         }
     };

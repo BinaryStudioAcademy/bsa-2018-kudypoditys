@@ -1,15 +1,5 @@
 import React, { Fragment } from "react";
-import {
-    Table,
-    Button,
-    Icon,
-    Header,
-    Message,
-    Divider,
-    Dropdown
-} from "semantic-ui-react";
-import { connect } from "react-redux";
-import { mapDispatchToProps, mapStateToProps } from "./container";
+import { Table, Header, Message, Divider, Dropdown } from "semantic-ui-react";
 import moment from "moment";
 
 import "./index.scss";
@@ -101,7 +91,6 @@ export class BookingsList extends React.Component {
                         </Table.Header>
 
                         <Table.Body style={{ textAlign: "center" }}>
-                            {console.log("selectedRoom = ", selectedRoom)}
                             {this.getRows(
                                 selectedRoom.reservations,
                                 selectedRoom.roomType.name

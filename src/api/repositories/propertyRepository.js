@@ -151,7 +151,6 @@ class PropertyRepository extends Repository {
     }
 
     getPropertiesByCity(city) {
-        console.log(city);
         return this.model
             .findAll({
                 where: {
@@ -256,7 +255,6 @@ class PropertyRepository extends Repository {
                 RoomRepository.findByOptions({
                     propertyId: newProperty.id
                 }).then(propertyRooms => {
-                    console.log("ROOMS = = ", propertyRooms);
                     propertyRooms.map(room => {
                         let availabilities = this.getDaysArrayByMonth(
                             room.id,
@@ -379,7 +377,7 @@ class PropertyRepository extends Repository {
             default:
                 ratingRange = [11];
         }
-        console.log(ratingRange)
+        console.log(ratingRange);
         return ratingRange;
     }
     getFilteredProperties(filter) {
@@ -434,7 +432,7 @@ class PropertyRepository extends Repository {
                       model: FacilityList,
                       required: true,
                       where: {
-                        facilityId: {
+                          facilityId: {
                               $and: [
                                   this.getFacilityId(filter.dogs),
                                   this.getFacilityId(
@@ -455,11 +453,11 @@ class PropertyRepository extends Repository {
                                       filter.themed_dinner_nights
                                   ),
                                   this.getFacilityId(filter.movie_nights)
-                              ].filter(id=>id!==-1)
+                              ].filter(id => id !== -1)
                           }
                       },
-                      include:[  Facility],
-                       // required: true,
+                      include: [Facility]
+                      // required: true,
                   }
                 : { model: FacilityList };
 
@@ -496,14 +494,13 @@ class PropertyRepository extends Repository {
             filter.US60_US90 !== "" ||
             filter.US90 !== ""
                 ? {
-                        $or: [
-                            {$between: this.getPriceRange(filter.US0_US30)},
-                            {$between: this.getPriceRange(filter.US30_US60)},
-                            {$between: this.getPriceRange(filter.US60_US90)},
-                            {$between: this.getPriceRange(filter.US90)}
-                        ]
-                    }
-
+                      $or: [
+                          { $between: this.getPriceRange(filter.US0_US30) },
+                          { $between: this.getPriceRange(filter.US30_US60) },
+                          { $between: this.getPriceRange(filter.US60_US90) },
+                          { $between: this.getPriceRange(filter.US90) }
+                      ]
+                  }
                 : { $between: [0, 1000000] };
 
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
@@ -516,28 +513,24 @@ class PropertyRepository extends Repository {
             filter.Its_Ok !== "" ||
             filter.No_rating !== ""
                 ? {
-
-                    $or: [
-                        { $between: this.getRatingRange(filter.Wonderful) },
-                        { $between: this.getRatingRange(filter.Very_Good) },
-                        { $between: this.getRatingRange(filter.Good) },
-                        { $between: this.getRatingRange(filter.Pleasant) },
-                        { $between: this.getRatingRange(filter.Its_Ok) },
-                        { $between: this.getRatingRange(filter.No_rating) },
-
-                    ]
-                }
-                : { $between: [0, 10]};
-
+                      $or: [
+                          { $between: this.getRatingRange(filter.Wonderful) },
+                          { $between: this.getRatingRange(filter.Very_Good) },
+                          { $between: this.getRatingRange(filter.Good) },
+                          { $between: this.getRatingRange(filter.Pleasant) },
+                          { $between: this.getRatingRange(filter.Its_Ok) },
+                          { $between: this.getRatingRange(filter.No_rating) }
+                      ]
+                  }
+                : { $between: [0, 10] };
 
         return this.model
             .findAndCountAll({
                 limit: 5,
                 offset: offsetData,
                 where: {
-                    id: { $in: filter.propertiesIds},
+                    id: { $in: filter.propertiesIds },
                     rating: ratingOption
-
                 },
                 distinct: true,
                 order: sortingOption,
@@ -553,7 +546,6 @@ class PropertyRepository extends Repository {
                     },
 
                     fo,
-
 
                     {
                         model: Room,
