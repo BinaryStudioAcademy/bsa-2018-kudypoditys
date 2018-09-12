@@ -1,4 +1,4 @@
-import { searchUpdate, searchSubmit } from "../../logic/search/actions";
+import { searchUpdate, searchSubmit, clearSearchPageSlice } from '../../logic/search/actions';
 
 export function mapStateToProps(state, ownProps) {
     const { search } = state;
@@ -32,6 +32,9 @@ export function mapDispatchToProps(dispatch, ownProps) {
         },
         onRoomsChange(value) {
             dispatch(searchUpdate({ rooms: value }));
+        },
+        clearSearchPageSlice() {
+            dispatch(clearSearchPageSlice());
         }
     };
 }

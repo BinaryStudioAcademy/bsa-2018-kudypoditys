@@ -218,8 +218,10 @@ export class MainSearch extends React.Component {
 
     componentWillMount() {
         this.resetComponent();
+    };
+    componentWillUnmount() {
+        this.props.clearSearchPageSlice();
     }
-
     datesChanged = selectedDates => {
         if (selectedDates.startDate && selectedDates.endDate) {
             this.props.onDatesChange(selectedDates);
