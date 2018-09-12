@@ -90,8 +90,25 @@ export class PropertyPage extends React.Component {
             color: "#465672",
             cursor: "default"
         };
-
-        if (!property) return null;
+        if (!property)
+            return (
+                <div className="centeredqqq">
+                    <div class="lds-spinner">
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                    </div>
+                </div>
+            );
         const notes = property.notes;
         //AVG PROPERTY RATING
         const avgPropRatingArray = getGroupedArray(

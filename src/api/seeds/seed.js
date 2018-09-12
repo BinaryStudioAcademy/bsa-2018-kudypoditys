@@ -1630,7 +1630,7 @@ const AVAILABILITY = [
         price: 33,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.776Z",
-        roomId: 27
+        roomId: 26
     },
     {
         id: 63,
