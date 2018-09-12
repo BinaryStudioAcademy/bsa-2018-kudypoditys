@@ -173,16 +173,10 @@ class PropertyRepository extends Repository {
                             RoomType,
                             {
                                 model: BedInRoom
-                                // where: {
-                                //     count: { $gte: filter.bedsCount }
-                                // }
                             },
                             {
                                 model: Reservation
-                                //    where: {
-                                // dateIn: { $gte: moment().subtract(10, 'days').toDate()},
-                                //dateOut: { $lte: moment().add(5, 'days').toDate()}
-                                //   }
+
                             }
                         ]
                     }
@@ -456,8 +450,8 @@ class PropertyRepository extends Repository {
                               ].filter(id => id !== -1)
                           }
                       },
-                      include: [Facility]
-                      // required: true,
+                   // include: [{ model: Facility }],
+                       // required: true,
                   }
                 : { model: FacilityList };
 
@@ -513,6 +507,7 @@ class PropertyRepository extends Repository {
             filter.Its_Ok !== "" ||
             filter.No_rating !== ""
                 ? {
+<<<<<<< HEAD
                       $or: [
                           { $between: this.getRatingRange(filter.Wonderful) },
                           { $between: this.getRatingRange(filter.Very_Good) },
@@ -524,6 +519,22 @@ class PropertyRepository extends Repository {
                   }
                 : { $between: [0, 10] };
 
+=======
+
+                    $or: [
+                        { $between: this.getRatingRange(filter.Wonderful) },
+                        { $between: this.getRatingRange(filter.Very_Good) },
+                        { $between: this.getRatingRange(filter.Good) },
+                        { $between: this.getRatingRange(filter.Pleasant) },
+                        { $between: this.getRatingRange(filter.Its_Ok) },
+                        { $between: this.getRatingRange(filter.No_rating) },
+
+                    ]
+                }
+                : { $between: [0, 10]};
+
+console.log("foo  = "+JSON.stringify(fo))
+>>>>>>> beta
         return this.model
             .findAndCountAll({
                 limit: 5,

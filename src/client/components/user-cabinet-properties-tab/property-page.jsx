@@ -12,7 +12,10 @@ export class PropertyPage extends React.Component {
             render: () => (
                 <Tab.Pane attached={false}>
                     {" "}
-                    <BookingsList {...this.props.property} />
+                    <BookingsList
+                        {...this.props.property}
+                        cancelBooking={this.props.cancelBooking}
+                    />
                 </Tab.Pane>
             )
         },
