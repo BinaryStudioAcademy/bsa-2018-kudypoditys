@@ -16,9 +16,14 @@ class SearchPage extends React.Component {
         super(props);
         this.state = {
             mapProp: [],
-            switch: localStorage.getItem('switch') === null ? "list" : localStorage.getItem('switch'),
+            switch:
+                localStorage.getItem("switch") === null
+                    ? "list"
+                    : localStorage.getItem("switch"),
             listItems: [],
             itemCount: 0,
+            showEmptyList: false,
+            showLoading: true,
             searchRequest: {},
             selectedPage: 1,
             properties: [
@@ -31,12 +36,13 @@ class SearchPage extends React.Component {
             ]
         };
     }
+
     handleSearchResults = searchData => {
-        let properties = []
+        let properties = [];
         if (searchData.searchResults.properties) {
             properties = searchData.searchResults.properties.filter(
                 property => property !== null
-            )
+            );
         }
         const listItems = properties.map(property => (
             <PropertyListItem
@@ -50,7 +56,9 @@ class SearchPage extends React.Component {
             listItems: listItems,
             itemCount: searchData.searchResults.propertiesCount,
             searchRequest: searchData.searchRequest,
-            properties: searchData.searchResults.properties
+            properties: searchData.searchResults.properties,
+            showLoading: false,
+            showEmptyList: searchData.searchResults.propertiesCount === 0
         });
 
         let tempArr = [];
@@ -72,11 +80,6 @@ class SearchPage extends React.Component {
             });
         });
 
-        // const positionToLocalStorage = {
-        //     latitude: properties[0].coordinates.lat,
-        //     longitude: properties[0].coordinates.lng,
-        // }
-        //
         if (properties) {
             localStorage.setItem(
                 "lastPositionLat",
@@ -102,123 +105,147 @@ class SearchPage extends React.Component {
             latitude: JSON.parse(localStorage.getItem("lastPositionLat")),
             longitude: JSON.parse(localStorage.getItem("lastPositionLng"))
         };
+        console.log("this.state.showLoading = " + this.state.showLoading);
         return (
             <div className="mock">
                 <Header
                     handleSearchResults={this.handleSearchResults}
                     showSearch={true}
                 />
-                <div className="search-page__wrapper">
-                    <div className="breadcrumb_wrapper">
-                        <Segment className="breadcrumb__segment" />
-                    </div>
-
-                    <Container className="search-page__wrapper-left_side">
-                        <QuickFilter />
-
-                        <div
-                            style={{
-                                marginTop: "4%"
-                            }}
-                        />
-                    </Container>
-                    <Container className="search-page__wrapper-right_side">
-                        <div className="search-page__row">
-                            <SearchSummary
-                                totalCount={this.state.itemCount}
-                                destination={this.state.searchRequest.query}
-                            />
-
-                            <div className="switch">
-                                <Button
-                                    icon
-                                    className="list_btn"
-                                    toggle
-                                    active={active === LIST}
-                                    value={LIST}
-                                    onClick={this.handleList_Map}
-                                >
-                                    <Icon name="list ul" />
-                                    List
-                                </Button>
-                                <Button
-                                    icon
-                                    disabled={!this.state.mapProp.length}
-                                    className="map_btn"
-                                    toggle
-                                    active={active === MAP}
-                                    value={MAP}
-                                    onClick={this.handleList_Map}
-                                >
-                                    <Icon name="world" />
-                                    Map
-                                </Button>
-                            </div>
+                {this.state.showLoading ? (
+                    <div className="centeredqqq" >
+                        <div  class="lds-spinner">
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                            <div />
                         </div>
-                        {this.state.itemCount === 0 ? (
-                            <div>
-                                <Image
-                                    style={{ paddingTop: 50 }}
-                                    src={sorry}
-                                    size="medium"
-                                    centered
-                                />{" "}
-                                <div className="sorry">
-                                    Sorry, no properties found
-                                </div>{" "}
-                            </div>
-                        ) : (
-                            <div>
-                                {this.state.switch === LIST ? (
-                                    <div>
-                                        <RankingBar
-                                            key="RankingBar"
-                                            searchRequest={
-                                                this.state.searchRequest
-                                            }
-                                            onSortingSelected={
-                                                this.onSortingSelected
-                                            }
-                                        />
-                                        {this.state.listItems}
-                                    </div>
-                                ) : (
-                                    <div
-                                        className="search_page__globalMap"
-                                        style={{ marginTop: 20 }}
+                    </div>
+                ) : (
+                    <div className="search-page__wrapper">
+                        <div className="breadcrumb_wrapper">
+                            <Segment className="breadcrumb__segment" />
+                        </div>
+
+                        <Container className="search-page__wrapper-left_side">
+                            <QuickFilter />
+
+                            <div
+                                style={{
+                                    marginTop: "4%"
+                                }}
+                            />
+                        </Container>
+                        <Container className="search-page__wrapper-right_side">
+                            <div className="search-page__row">
+                                <SearchSummary
+                                    totalCount={this.state.itemCount}
+                                    destination={this.state.searchRequest.query}
+                                />
+
+                                <div className="switch">
+                                    <Button
+                                        icon
+                                        className="list_btn"
+                                        toggle
+                                        active={active === LIST}
+                                        value={LIST}
+                                        onClick={this.handleList_Map}
                                     >
-                                        <MapGlobalWidget
-                                            properties={this.state.mapProp}
-                                            startPosition={
-                                                this.state.mapProp.length
-                                                    ? {
-                                                          latitude: this.state
-                                                              .mapProp[0]
-                                                              .coordinates.lat,
-                                                          longitude: this.state
-                                                              .mapProp[0]
-                                                              .coordinates.lng
-                                                      }
-                                                    : LastStartPosition
-                                            }
-                                            zoom={13}
-                                            controlEnable={true}
-                                        />
-                                    </div>
-                                )}
-                                {this.state.switch === LIST ? (
-                                    <div className="search-page__pagination">
-                                        <Pagination
-                                            pagesCount={
-                                                this.state.itemCount / 5
-                                            }
-                                        />
-                                    </div>
-                                ) : null}
+                                        <Icon name="list ul" />
+                                        List
+                                    </Button>
+                                    <Button
+                                        icon
+                                        disabled={!this.state.mapProp.length}
+                                        className="map_btn"
+                                        toggle
+                                        active={active === MAP}
+                                        value={MAP}
+                                        onClick={this.handleList_Map}
+                                    >
+                                        <Icon name="world" />
+                                        Map
+                                    </Button>
+                                </div>
                             </div>
-                        )}
-                    </Container>
-                </div>
+                            {this.state.showEmptyList ? (
+                                <div>
+                                    <Image
+                                        style={{ paddingTop: 50 }}
+                                        src={sorry}
+                                        size="medium"
+                                        centered
+                                    />{" "}
+                                    <div className="sorry">
+                                        Sorry, no properties found
+                                    </div>{" "}
+                                </div>
+                            ) : (
+                                <div>
+                                    {this.state.switch === LIST ? (
+                                        <div>
+                                            <RankingBar
+                                                key="RankingBar"
+                                                searchRequest={
+                                                    this.state.searchRequest
+                                                }
+                                                onSortingSelected={
+                                                    this.onSortingSelected
+                                                }
+                                            />
+                                            {this.state.listItems}
+                                        </div>
+                                    ) : (
+                                        <div
+                                            className="search_page__globalMap"
+                                            style={{ marginTop: 20 }}
+                                        >
+                                            <MapGlobalWidget
+                                                properties={this.state.mapProp}
+                                                startPosition={
+                                                    this.state.mapProp.length
+                                                        ? {
+                                                              latitude: this
+                                                                  .state
+                                                                  .mapProp[0]
+                                                                  .coordinates
+                                                                  .lat,
+                                                              longitude: this
+                                                                  .state
+                                                                  .mapProp[0]
+                                                                  .coordinates
+                                                                  .lng
+                                                          }
+                                                        : LastStartPosition
+                                                }
+                                                zoom={13}
+                                                controlEnable={true}
+                                            />
+                                        </div>
+                                    )}
+                                    {this.state.switch === LIST ? (
+                                        <div className="search-page__pagination">
+                                            <Pagination
+                                                pagesCount={
+                                                    this.state.itemCount / 5
+                                                }
+                                            />
+                                        </div>
+                                    ) : null}
+                                </div>
+                            )}
+                        </Container>
+                    </div>
+                )}
             </div>
         );
     }
