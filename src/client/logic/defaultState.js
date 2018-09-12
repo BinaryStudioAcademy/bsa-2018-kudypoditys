@@ -118,7 +118,9 @@ const state = {
         shownFrom: 1,
         shownTo: 5
     },
-    cityInfos: [],
+    cityInfos: {
+        cityAVG: {}
+    },
     filters: [
         {
             id: "1",

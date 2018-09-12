@@ -11,6 +11,7 @@ export class Banner extends Component {
         this.props.onClick(cityInfo);
     }
     render() {
+        const flagUrl= 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
         const { cityInfo } = this.props;
         const imgStyles = url => ({
             background: `url(${url})`,
@@ -24,10 +25,10 @@ export class Banner extends Component {
             >
                 <Card.Content
                     className="banner__content"
-                    style={imgStyles(cityInfo.pictureUrl)}
+                    style={imgStyles(cityInfo.imageUrl)}
                 >
                     <Card.Header className="banner__title">
-                        {cityInfo.city}
+                        {cityInfo.name}
                     </Card.Header>
                     <Card.Meta>
                         <h5 className="banner__subtitle">
@@ -40,7 +41,7 @@ export class Banner extends Component {
                     <div className="banner__rectangle">
                         <div
                             className="banner___flag"
-                            style={imgStyles(cityInfo.flagUrl)}
+                            style={imgStyles(flagUrl)}
                         />
                         <Card.Description className="banner__avgprice">
                             <span>Average price</span>
