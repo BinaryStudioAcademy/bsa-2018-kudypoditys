@@ -176,7 +176,6 @@ class PropertyRepository extends Repository {
                             },
                             {
                                 model: Reservation
-
                             }
                         ]
                     }
@@ -449,9 +448,9 @@ class PropertyRepository extends Repository {
                                   this.getFacilityId(filter.movie_nights)
                               ].filter(id => id !== -1)
                           }
-                      },
-                   // include: [{ model: Facility }],
-                       // required: true,
+                      }
+                      // include: [{ model: Facility }],
+                      // required: true,
                   }
                 : { model: FacilityList };
 
@@ -507,7 +506,6 @@ class PropertyRepository extends Repository {
             filter.Its_Ok !== "" ||
             filter.No_rating !== ""
                 ? {
-<<<<<<< HEAD
                       $or: [
                           { $between: this.getRatingRange(filter.Wonderful) },
                           { $between: this.getRatingRange(filter.Very_Good) },
@@ -519,22 +517,7 @@ class PropertyRepository extends Repository {
                   }
                 : { $between: [0, 10] };
 
-=======
-
-                    $or: [
-                        { $between: this.getRatingRange(filter.Wonderful) },
-                        { $between: this.getRatingRange(filter.Very_Good) },
-                        { $between: this.getRatingRange(filter.Good) },
-                        { $between: this.getRatingRange(filter.Pleasant) },
-                        { $between: this.getRatingRange(filter.Its_Ok) },
-                        { $between: this.getRatingRange(filter.No_rating) },
-
-                    ]
-                }
-                : { $between: [0, 10]};
-
-console.log("foo  = "+JSON.stringify(fo))
->>>>>>> beta
+        console.log("foo  = " + JSON.stringify(fo));
         return this.model
             .findAndCountAll({
                 limit: 5,
