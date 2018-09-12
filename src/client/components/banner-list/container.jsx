@@ -1,12 +1,12 @@
 import { cityInfosGet } from 'client/logic/banner-list/actions';
 import { searchUpdate, searchSubmit } from "client/logic/search/actions";
 
-export function mapStateToProps(state, ownProps) {
-    const { cityInfos } = state;
-    return { cityInfos };
+export function mapStateToProps(state) {
+    const { cityInfos, header } = state;
+    return { cityInfos, currency: header.selectedCurrency.code };
 }
 
-export function mapDispatchToProps(dispatch, ownProps, data) {
+export function mapDispatchToProps(dispatch) {
     return {
         getCityInfos() {
             dispatch(cityInfosGet());

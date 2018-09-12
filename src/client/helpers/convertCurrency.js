@@ -14,9 +14,11 @@ export const converterObj = {
 };
 
 export function convert(currentCurrency, value, tagetCurrency) {
-    console.log(converterObj);
-    return
-    converterObj[currentCurrency] &&
-        converterObj[currentCurrency][tagetCurrency] &&
-        converterObj[currentCurrency][tagetCurrency] * value || 0;
+    const from = currentCurrency.toLowerCase(),
+        to = tagetCurrency.toLowerCase();
+
+    if (from === to) return value;
+
+    return converterObj[from] && converterObj[from][to] &&
+        converterObj[from][to] * value || 0;
 }

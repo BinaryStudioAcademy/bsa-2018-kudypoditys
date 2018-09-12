@@ -21,7 +21,7 @@ export class BannerList extends Component {
     componentWillMount() {
 
     }
-    componentDidMount(){
+    componentDidMount() {
         console.log('Hello from component Did mount')
         this.props.getCityInfos();
         // this.setState({lviv:this.props.city1}, ()=>console.log(this.state.city1))
@@ -31,7 +31,7 @@ export class BannerList extends Component {
         let path = `/search-page`;
         history.push(path);
         this.props.onSearch({
-            query:query,
+            query: query,
             rooms: 1,
             adults: 1,
             children: 1,
@@ -42,7 +42,7 @@ export class BannerList extends Component {
     }
 
     render() {
-        const { cityInfos } = this.props;
+        const { cityInfos, currency } = this.props;
         const [
             city1, city2,
             city3, city4, city5, city6
@@ -50,32 +50,32 @@ export class BannerList extends Component {
         console.log(this.props.lviv)
         return (
             <div className='container'>
-            <Grid >
-                <Grid.Row columns='equal'>
-                    <Grid.Column>
-                        <Banner cityInfo={city1} onClick={() => this.onCardClick('Lviv')} />
-                    </Grid.Column>
-                    <Grid.Column >
-                        <Banner cityInfo={city2} onClick={() => this.onCardClick('Dnipro')} />
-                    </Grid.Column>
-                    <Grid.Column width={8}>
-                        <Banner cityInfo={city3} onClick={() => this.onCardClick('Ternopil')} />
-                    </Grid.Column>
+                <Grid >
+                    <Grid.Row columns='equal'>
+                        <Grid.Column>
+                            <Banner currency={currency} cityInfo={city1} onClick={() => this.onCardClick('Lviv')} />
+                        </Grid.Column>
+                        <Grid.Column >
+                            <Banner currency={currency} cityInfo={city2} onClick={() => this.onCardClick('Dnipro')} />
+                        </Grid.Column>
+                        <Grid.Column width={8}>
+                            <Banner currency={currency} cityInfo={city3} onClick={() => this.onCardClick('Ternopil')} />
+                        </Grid.Column>
 
-                </Grid.Row>
+                    </Grid.Row>
 
-                <Grid.Row columns={3}>
-                    <Grid.Column >
-                        <Banner cityInfo={city4} onClick={() => this.onCardClick('Kiev')} />
-                    </Grid.Column>
-                    <Grid.Column >
-                        <Banner cityInfo={city5} onClick={() => this.onCardClick('Odessa')} />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Banner cityInfo={city6} onClick={() => this.onCardClick('Kharkiv')}/>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+                    <Grid.Row columns={3}>
+                        <Grid.Column >
+                            <Banner currency={currency} cityInfo={city4} onClick={() => this.onCardClick('Kiev')} />
+                        </Grid.Column>
+                        <Grid.Column >
+                            <Banner currency={currency} cityInfo={city5} onClick={() => this.onCardClick('Odessa')} />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Banner currency={currency} cityInfo={city6} onClick={() => this.onCardClick('Kharkiv')} />
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
             </div>
         );
 

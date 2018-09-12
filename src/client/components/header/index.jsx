@@ -8,7 +8,6 @@ import AuthHOC from "client/components/auth-hoc";
 import UserPopup from "client/components/header-user-popup";
 import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-import state from '../../logic/defaultState';
 
 export class MainHeader extends Component {
     componentDidMount() {
@@ -50,14 +49,9 @@ export class MainHeader extends Component {
     };
 
     handleCurrancyChange = (e, { value }) => {
-        console.log("value  ", value);
         const { currencies } = this.props;
-        const currency = currencies.find(x => x.id == value);
-        console.log("currency  ", currency);
+        const currency = currencies.find(x => x.id === value);
         this.props.onCurrencyChange(currency);
-
-        // console.log('state ', state.header.selectedCurrency);
-        console.log("props.selectedCurrency  ", this.props.selectedCurrency);
     }
 
     // state = { activeItem: "about-us" };
@@ -123,8 +117,8 @@ export class MainHeader extends Component {
                                                         name="preferredCurrency"
                                                         fluid
                                                         selection
+                                                        value={this.props.selectedCurrency.id}
                                                         options={currenciesOptions}
-                                                        defaultValue={this.props.selectedCurrency}
                                                         onChange={this.handleCurrancyChange}
                                                     />
                                                     <a

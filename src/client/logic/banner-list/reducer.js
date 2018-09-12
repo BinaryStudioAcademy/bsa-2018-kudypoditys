@@ -1,13 +1,20 @@
 import defaultState from 'client/logic/defaultState';
-import { convert, converterObj } from '../../helpers/convertCurrency';
+import { convert } from '../../helpers/convertCurrency';
 import {
     CITY_INFOS_GET
 } from './actionType';
+import { CURENCY_SELECT } from '../header/actionTypes'
 
 function cityInfosReducer(state = defaultState.cityInfos, action) {
     switch (action.type) {
         case CITY_INFOS_GET:
             return CITY_INFOS.map(x => ({ ...x }));
+
+        case CURENCY_SELECT:
+            return state.map(x => ({
+                ...x,
+                avgPrice: convert('usd', x.avgPrice, action.payload.code)
+            }));
         default:
             return state;
 
@@ -21,7 +28,7 @@ const CITY_INFOS = [{
     id: 1,
     city: 'Lviv',
     properties: 4098,
-    avgPrice: `${convert('eur', 12012, 'usd')}`,
+    avgPrice: 200,
     pictureUrl: 'http://www.mgi4ua.com/wp-content/uploads/2017/11/lviv-ukraine.jpg',
     flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
 },
