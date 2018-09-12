@@ -187,13 +187,14 @@ class PropertyRepository extends Repository {
     }
 
     getDaysArrayByMonth(id, amount, price) {
-        let daysInMonth = moment().daysInMonth();
+        // let daysInMonth = moment().daysInMonth();
         const arrDays = [];
+        let daysInMonth = 31;
         while (daysInMonth) {
             let current = {
                 roomId: id,
                 amount: amount,
-                date: moment().date(daysInMonth),
+                date: daysInMonth,
                 price: price
             };
             arrDays.push(current);
