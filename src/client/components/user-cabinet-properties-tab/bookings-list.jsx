@@ -1,15 +1,12 @@
 import React, { Fragment } from "react";
 import {
     Table,
-    Button,
-    Icon,
     Header,
     Message,
     Divider,
-    Dropdown
+    Dropdown,
+    Button
 } from "semantic-ui-react";
-import { connect } from "react-redux";
-import { mapDispatchToProps, mapStateToProps } from "./container";
 import moment from "moment";
 import Modal from "../modal";
 import CancelBookingForm from "./cancelForm";
@@ -119,7 +116,6 @@ export class BookingsList extends React.Component {
                         </Table.Header>
 
                         <Table.Body style={{ textAlign: "center" }}>
-                            {console.log("selectedRoom = ", selectedRoom)}
                             {this.getRows(
                                 selectedRoom.reservations,
                                 selectedRoom.roomType.name
