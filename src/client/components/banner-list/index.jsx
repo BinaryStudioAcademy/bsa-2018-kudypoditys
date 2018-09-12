@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import { Grid, Image } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { Grid } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import './index.scss';
+import "./index.scss";
 
-import { Banner } from './item';
-import { mapStateToProps, mapDispatchToProps } from './container';
+import { Banner } from "./item";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 import history from "client/history";
 import moment from "moment";
 
@@ -14,8 +14,8 @@ export class BannerList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            req: '1'
-        }
+            req: "1"
+        };
     }
 
     componentWillMount() {
@@ -26,8 +26,7 @@ export class BannerList extends Component {
         this.props.getCityInfos();
         // this.setState({lviv:this.props.city1}, ()=>console.log(this.state.city1))
     }
-    onCardClick = (query) => {
-        console.log(query)
+    onCardClick = query => {
         let path = `/search-page`;
         history.push(path);
         this.props.onSearch({
@@ -36,10 +35,9 @@ export class BannerList extends Component {
             adults: 1,
             children: 1,
             startDate: moment(),
-            endDate: moment(),
-
-        })
-    }
+            endDate: moment()
+        });
+    };
 
     render() {
         const { cityInfos, currency } = this.props;
@@ -78,7 +76,6 @@ export class BannerList extends Component {
                 </Grid>
             </div>
         );
-
     }
 }
 
@@ -99,6 +96,7 @@ BannerList.defaultProps = {
     cityInfos: []
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BannerList);
-
-
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(BannerList);

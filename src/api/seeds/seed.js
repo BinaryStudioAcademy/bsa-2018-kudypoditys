@@ -63,7 +63,7 @@ const PROPERTIES = [
     {
         id: 3,
         name: "Hotel Atlas Deluxe",
-        rating:4.4,
+        rating: 4.4,
         address: "Prospekt Shevchenka 27, Lviv",
         description:
             "Hotel Atlas Deluxe is located in the heart of Lviv, within a 2-minute walk of Ploshcha Rynok Square and a 10-minute walk of Ivana Franko Park. It offers a sauna, fitness centre and concierge service. The classic-style air-conditioned rooms feature a flat-screen TV with satellite channels. The bathroom comes with a hairdryer and free toiletries. Guests can order a meal in the on-site restaurant. After a busy day, you can enjoy your favourite drink at the bar. Lviv Train Station is within a 10-minute drive of Hotel Atlas Deluxe. A shuttle to Lviv International Airport (6.5 km) is available at surcharge. This is our guests' favourite part of Lviv, according to independent reviews.",
@@ -91,7 +91,7 @@ const PROPERTIES = [
     {
         id: 5,
         name: "British Club Lviv",
-        rating:7.1,
+        rating: 7.1,
         address: "Nalyvaika Street 18, Lviv",
         description:
             "This hotel is located in the historic centre of Lviv, just a 10-minute walk from Ploschad Rynok Square. Free Wi-Fi and a 24-hour reception are featured at British Club Lviv. The elegant, air-conditioned rooms and apartments of this hotel are decorated in classical English style. Each one includes a flat-screen TV, a refrigerator and a private bathroom with bathrobes and a hairdryer. Breakfast is served every morning in the hotel’s dining area. Lviv Opera Theatre is just a 2-minute walk away, and Ivana Franko Park is a 5-minute walk from the hotel. A bus stop on Prospekt Svobody is 150 m from British Club Lviv. Lviv Central Train Station is 2.5 km away, and Lviv International Airport is 6 km from the hotel. ",
@@ -105,7 +105,7 @@ const PROPERTIES = [
     {
         id: 6,
         name: "Complimente Guest House",
-        rating:7.3,
+        rating: 7.3,
         address: "Pereulok Kravtsova 13 V, Kharkov",
         description:
             "This guest house is located in the centre of Kharkov, a 5-minute walk from Konstitutsii Square. Free Wi-Fi, a 24-hour reception and private parking are featured at Complimente Guest House. The bright, air-conditioned rooms are decorated in classic style. Every room includes a flat-screen TV, a kitchenette equipped with a fridge and a private bathroom. A hairdryer is available. The on-site café serves European cuisine, and a selection of drinks is available at the bar. Kharkov Opera and Ballet Theatre is a 7-minute walk away, and the Shevchenko Park is within a walking distance of the guest house. Istoricheskiy Muzey and Sovetskaya Metro Stations are 500 m from Complimente Guest House. Kharkov Central Train Station is 5 km away, and Kharkov Airport is 12 km from the guest house. This is our guests' favourite part of Kharkov, according to independent reviews.",
@@ -134,7 +134,7 @@ const PROPERTIES = [
     {
         id: 8,
         name: "Londonskaya SPA Hotel",
-        rating:7.3,
+        rating: 7.3,
         address: "Primorskiy Boulevard 11, Odessa",
         description:
             "his property is 6 minutes walk from the beach. Offering great views of the Black Sea, this historic, classical-style hotel is within a 10-minute walk of Deribasovskaya street, Potemkin Stairs and Duke de Richelieu monument. Opera and Ballet Theatre is 300 m away. Spacious, soundproofed rooms and suites provide a flat-screen TV, desk and safety deposit box. A three-storeyed spa area features a hammam, spa bath, 2 swimming pool and gym. Guests can also enjoy a wide range of massages and cosmetology treatments. The on-site restaurant serves traditional Ukrainian and European cuisine. In summer, guests can dine in the paio. Airport shuttles can be booked at the Londonskaya’s 24-hour reception. The hotel is 2 km from Odessa Train Station and 10 km from Odessa International Airport. Primorsky is a great choice for travellers interested in food, restaurants and architecture.",
@@ -375,7 +375,7 @@ const PROPERTIES = [
     {
         id: 21,
         name: "Bartolomeo",
-        rating:7.3,
+        rating: 7.3,
         address: "Naberezhnaya Pobedy 9B, Dnipro",
         description: `This property is 1 minute walk from the beach. Bartolomeo Best River Resort in the city of Dnepropetrovsk offers 2-storey wooden bungalows apartments directly on the River Dnepr. For your comfort you will find a cable TV and safe in every room. Free WiFi is available throughout the property.
 
@@ -1052,7 +1052,7 @@ const AVAILABILITY = [
     {
         id: 1,
         amount: 10,
-        date: "2018-09-01T09:53:49.254Z",
+        date: 1,
         price: 20,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.776Z",
@@ -1061,7 +1061,7 @@ const AVAILABILITY = [
     {
         id: 2,
         amount: 10,
-        date: "2018-09-02T09:53:49.254Z",
+        date: 2,
         price: 20,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1070,7 +1070,7 @@ const AVAILABILITY = [
     {
         id: 3,
         amount: 10,
-        date: "2018-09-03T09:53:49.254Z",
+        date: 3,
         price: 20,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1079,7 +1079,7 @@ const AVAILABILITY = [
     {
         id: 4,
         amount: 10,
-        date: "2018-09-04T09:53:49.254Z",
+        date: 4,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1088,7 +1088,7 @@ const AVAILABILITY = [
     {
         id: 5,
         amount: 10,
-        date: "2018-09-05T09:53:49.254Z",
+        date: 5,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1097,7 +1097,7 @@ const AVAILABILITY = [
     {
         id: 6,
         amount: 10,
-        date: "2018-09-06T09:53:49.254Z",
+        date: 6,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1106,7 +1106,7 @@ const AVAILABILITY = [
     {
         id: 7,
         amount: 10,
-        date: "2018-09-07T09:53:49.254Z",
+        date: 7,
         price: 20,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1115,7 +1115,7 @@ const AVAILABILITY = [
     {
         id: 8,
         amount: 10,
-        date: "2018-09-08T09:53:49.254Z",
+        date: 8,
         price: 20,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1124,7 +1124,7 @@ const AVAILABILITY = [
     {
         id: 9,
         amount: 10,
-        date: "2018-09-09T09:53:49.254Z",
+        date: 9,
         price: 20,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1133,7 +1133,7 @@ const AVAILABILITY = [
     {
         id: 10,
         amount: 10,
-        date: "2018-09-10T09:53:49.254Z",
+        date: 10,
         price: 20,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1142,7 +1142,7 @@ const AVAILABILITY = [
     {
         id: 11,
         amount: 10,
-        date: "2018-09-11T09:53:49.254Z",
+        date: 11,
         price: 20,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1151,7 +1151,7 @@ const AVAILABILITY = [
     {
         id: 12,
         amount: 10,
-        date: "2018-09-12T09:53:49.254Z",
+        date: 12,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1160,7 +1160,7 @@ const AVAILABILITY = [
     {
         id: 13,
         amount: 10,
-        date: "2018-09-13T09:53:49.254Z",
+        date: 13,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1169,7 +1169,7 @@ const AVAILABILITY = [
     {
         id: 14,
         amount: 10,
-        date: "2018-09-14T09:53:49.254Z",
+        date: 14,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1178,7 +1178,7 @@ const AVAILABILITY = [
     {
         id: 15,
         amount: 10,
-        date: "2018-09-15T09:53:49.254Z",
+        date: 15,
         price: 20,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1187,7 +1187,7 @@ const AVAILABILITY = [
     {
         id: 16,
         amount: 10,
-        date: "2018-09-16T09:53:49.254Z",
+        date: 16,
         price: 20,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1196,7 +1196,7 @@ const AVAILABILITY = [
     {
         id: 17,
         amount: 10,
-        date: "2018-09-17T09:53:49.254Z",
+        date: 17,
         price: 20,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.779Z",
@@ -1205,7 +1205,7 @@ const AVAILABILITY = [
     {
         id: 18,
         amount: 10,
-        date: "2018-09-18T09:53:49.254Z",
+        date: 18,
         price: 20,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.779Z",
@@ -1214,7 +1214,7 @@ const AVAILABILITY = [
     {
         id: 19,
         amount: 10,
-        date: "2018-09-19T09:53:49.254Z",
+        date: 19,
         price: 20,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.779Z",
@@ -1223,7 +1223,7 @@ const AVAILABILITY = [
     {
         id: 20,
         amount: 10,
-        date: "2018-09-20T09:53:49.254Z",
+        date: 20,
         price: 20,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.779Z",
@@ -1232,7 +1232,7 @@ const AVAILABILITY = [
     {
         id: 21,
         amount: 10,
-        date: "2018-09-21T09:53:49.254Z",
+        date: 21,
         price: 20,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1241,7 +1241,7 @@ const AVAILABILITY = [
     {
         id: 22,
         amount: 10,
-        date: "2018-09-22T09:53:49.254Z",
+        date: 22,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1250,7 +1250,7 @@ const AVAILABILITY = [
     {
         id: 23,
         amount: 10,
-        date: "2018-09-23T09:53:49.254Z",
+        date: 23,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1259,7 +1259,7 @@ const AVAILABILITY = [
     {
         id: 24,
         amount: 10,
-        date: "2018-09-24T09:53:49.254Z",
+        date: 24,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1268,7 +1268,7 @@ const AVAILABILITY = [
     {
         id: 25,
         amount: 10,
-        date: "2018-09-25T09:53:49.254Z",
+        date: 25,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1277,7 +1277,7 @@ const AVAILABILITY = [
     {
         id: 26,
         amount: 10,
-        date: "2018-09-26T09:53:49.254Z",
+        date: 26,
         price: 20,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1286,7 +1286,7 @@ const AVAILABILITY = [
     {
         id: 27,
         amount: 10,
-        date: "2018-09-27T09:53:49.254Z",
+        date: 27,
         price: 20,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1295,16 +1295,16 @@ const AVAILABILITY = [
     {
         id: 28,
         amount: 10,
-        date: "2018-09-28T09:53:49.254Z",
+        date: 28,
         price: 20,
-        createdAt: "2018-09-10T09:53:49.257Z",
+        createdAt: 28,
         updatedAt: "2018-09-10T16:42:58.780Z",
         roomId: 1
     },
     {
         id: 29,
         amount: 10,
-        date: "2018-09-29T09:53:49.254Z",
+        date: 29,
         price: 20,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1313,7 +1313,7 @@ const AVAILABILITY = [
     {
         id: 30,
         amount: 10,
-        date: "2018-09-30T09:53:49.254Z",
+        date: 30,
         price: 20,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.781Z",
@@ -1321,44 +1321,44 @@ const AVAILABILITY = [
     },
     {
         id: 31,
+        amount: 10,
+        date: 31,
+        price: 20,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.781Z",
+        roomId: 1
+    },
+    {
+        id: 32,
         amount: 2,
-        date: "2018-09-01T09:53:49.254Z",
+        date: 31,
         price: 33,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.776Z",
         roomId: 26
     },
     {
-        id: 32,
+        id: 33,
         amount: 2,
-        date: "2018-09-02T09:53:49.254Z",
+        date: 1,
         price: 33,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
         roomId: 26
     },
     {
-        id: 33,
+        id: 34,
         amount: 2,
-        date: "2018-09-03T09:53:49.254Z",
+        date: 2,
         price: 33,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
         roomId: 26
     },
     {
-        id: 34,
-        amount: 2,
-        date: "2018-09-04T09:53:49.254Z",
-        price: 33,
-        createdAt: "2018-09-10T09:53:49.256Z",
-        updatedAt: "2018-09-10T16:42:58.777Z",
-        roomId: 26
-    },
-    {
         id: 35,
         amount: 2,
-        date: "2018-09-05T09:53:49.254Z",
+        date: 3,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1367,7 +1367,7 @@ const AVAILABILITY = [
     {
         id: 36,
         amount: 2,
-        date: "2018-09-06T09:53:49.254Z",
+        date: 4,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1376,16 +1376,16 @@ const AVAILABILITY = [
     {
         id: 37,
         amount: 2,
-        date: "2018-09-07T09:53:49.254Z",
+        date: 5,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.257Z",
+        createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
         roomId: 26
     },
     {
         id: 38,
         amount: 2,
-        date: "2018-09-08T09:53:49.254Z",
+        date: 6,
         price: 33,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1394,25 +1394,25 @@ const AVAILABILITY = [
     {
         id: 39,
         amount: 2,
-        date: "2018-09-09T09:53:49.254Z",
+        date: 7,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.254Z",
+        createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
         roomId: 26
     },
     {
         id: 40,
         amount: 2,
-        date: "2018-09-10T09:53:49.254Z",
+        date: 8,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.255Z",
-        updatedAt: "2018-09-10T16:42:58.778Z",
+        createdAt: "2018-09-10T09:53:49.254Z",
+        updatedAt: "2018-09-10T16:42:58.777Z",
         roomId: 26
     },
     {
         id: 41,
         amount: 2,
-        date: "2018-09-11T09:53:49.254Z",
+        date: 9,
         price: 33,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1421,16 +1421,16 @@ const AVAILABILITY = [
     {
         id: 42,
         amount: 2,
-        date: "2018-09-12T09:53:49.254Z",
+        date: 10,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.256Z",
+        createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
         roomId: 26
     },
     {
         id: 43,
         amount: 2,
-        date: "2018-09-13T09:53:49.254Z",
+        date: 11,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1439,7 +1439,7 @@ const AVAILABILITY = [
     {
         id: 44,
         amount: 2,
-        date: "2018-09-14T09:53:49.254Z",
+        date: 12,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1448,43 +1448,43 @@ const AVAILABILITY = [
     {
         id: 45,
         amount: 2,
-        date: "2018-09-15T09:53:49.254Z",
+        date: 13,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.257Z",
+        createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
         roomId: 26
     },
     {
         id: 46,
         amount: 2,
-        date: "2018-09-16T09:53:49.254Z",
+        date: 14,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.254Z",
+        createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
         roomId: 26
     },
     {
         id: 47,
         amount: 2,
-        date: "2018-09-17T09:53:49.254Z",
+        date: 15,
+        price: 33,
+        createdAt: "2018-09-10T09:53:49.254Z",
+        updatedAt: "2018-09-10T16:42:58.778Z",
+        roomId: 26
+    },
+    {
+        id: 48,
+        amount: 2,
+        date: 16,
         price: 33,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.779Z",
         roomId: 26
     },
     {
-        id: 48,
-        amount: 2,
-        date: "2018-09-18T09:53:49.254Z",
-        price: 33,
-        createdAt: "2018-09-10T09:53:49.255Z",
-        updatedAt: "2018-09-10T16:42:58.779Z",
-        roomId: 26
-    },
-    {
         id: 49,
         amount: 2,
-        date: "2018-09-19T09:53:49.254Z",
+        date: 17,
         price: 33,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.779Z",
@@ -1493,7 +1493,7 @@ const AVAILABILITY = [
     {
         id: 50,
         amount: 2,
-        date: "2018-09-20T09:53:49.254Z",
+        date: 18,
         price: 33,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.779Z",
@@ -1502,25 +1502,25 @@ const AVAILABILITY = [
     {
         id: 51,
         amount: 2,
-        date: "2018-09-21T09:53:49.254Z",
+        date: 19,
+        price: 33,
+        createdAt: "2018-09-10T09:53:49.255Z",
+        updatedAt: "2018-09-10T16:42:58.779Z",
+        roomId: 26
+    },
+    {
+        id: 52,
+        amount: 2,
+        date: 20,
         price: 33,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
         roomId: 26
     },
     {
-        id: 52,
-        amount: 2,
-        date: "2018-09-22T09:53:49.254Z",
-        price: 33,
-        createdAt: "2018-09-10T09:53:49.256Z",
-        updatedAt: "2018-09-10T16:42:58.780Z",
-        roomId: 26
-    },
-    {
         id: 53,
         amount: 2,
-        date: "2018-09-23T09:53:49.254Z",
+        date: 21,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1529,7 +1529,7 @@ const AVAILABILITY = [
     {
         id: 54,
         amount: 2,
-        date: "2018-09-24T09:53:49.254Z",
+        date: 22,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1538,7 +1538,7 @@ const AVAILABILITY = [
     {
         id: 55,
         amount: 2,
-        date: "2018-09-25T09:53:49.254Z",
+        date: 23,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1547,7 +1547,7 @@ const AVAILABILITY = [
     {
         id: 56,
         amount: 2,
-        date: "2018-09-26T09:53:49.254Z",
+        date: 24,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1556,16 +1556,16 @@ const AVAILABILITY = [
     {
         id: 57,
         amount: 2,
-        date: "2018-09-27T09:53:49.254Z",
+        date: 25,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.257Z",
+        createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
         roomId: 26
     },
     {
         id: 58,
         amount: 2,
-        date: "2018-09-28T09:53:49.254Z",
+        date: 26,
         price: 33,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1574,7 +1574,7 @@ const AVAILABILITY = [
     {
         id: 59,
         amount: 2,
-        date: "2018-09-29T09:53:49.254Z",
+        date: 27,
         price: 33,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1583,52 +1583,52 @@ const AVAILABILITY = [
     {
         id: 60,
         amount: 2,
-        date: "2018-09-30T09:53:49.254Z",
+        date: 28,
+        price: 33,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 26
+    },
+    {
+        id: 61,
+        amount: 2,
+        date: 29,
         price: 33,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.781Z",
         roomId: 26
     },
     {
-        id: 61,
+        id: 62,
         amount: 2,
-        date: "2018-09-01T09:53:49.254Z",
+        date: 30,
         price: 33,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.776Z",
         roomId: 27
     },
     {
-        id: 62,
+        id: 63,
         amount: 2,
-        date: "2018-09-02T09:53:49.254Z",
+        date: 31,
         price: 33,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
         roomId: 27
     },
     {
-        id: 63,
+        id: 64,
         amount: 2,
-        date: "2018-09-03T09:53:49.254Z",
+        date: 1,
         price: 33,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
         roomId: 27
     },
     {
-        id: 64,
-        amount: 2,
-        date: "2018-09-04T09:53:49.254Z",
-        price: 33,
-        createdAt: "2018-09-10T09:53:49.256Z",
-        updatedAt: "2018-09-10T16:42:58.777Z",
-        roomId: 27
-    },
-    {
         id: 65,
         amount: 2,
-        date: "2018-09-05T09:53:49.254Z",
+        date: 2,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1637,7 +1637,7 @@ const AVAILABILITY = [
     {
         id: 66,
         amount: 2,
-        date: "2018-09-06T09:53:49.254Z",
+        date: 3,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1646,16 +1646,16 @@ const AVAILABILITY = [
     {
         id: 67,
         amount: 2,
-        date: "2018-09-07T09:53:49.254Z",
+        date: 4,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.257Z",
+        createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
         roomId: 27
     },
     {
         id: 68,
         amount: 2,
-        date: "2018-09-08T09:53:49.254Z",
+        date: 5,
         price: 33,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
@@ -1664,25 +1664,25 @@ const AVAILABILITY = [
     {
         id: 69,
         amount: 2,
-        date: "2018-09-09T09:53:49.254Z",
+        date: 6,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.254Z",
+        createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.777Z",
         roomId: 27
     },
     {
         id: 70,
         amount: 2,
-        date: "2018-09-10T09:53:49.254Z",
+        date: 7,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.255Z",
-        updatedAt: "2018-09-10T16:42:58.778Z",
+        createdAt: "2018-09-10T09:53:49.254Z",
+        updatedAt: "2018-09-10T16:42:58.777Z",
         roomId: 27
     },
     {
         id: 71,
         amount: 2,
-        date: "2018-09-11T09:53:49.254Z",
+        date: 8,
         price: 33,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1691,16 +1691,16 @@ const AVAILABILITY = [
     {
         id: 72,
         amount: 2,
-        date: "2018-09-12T09:53:49.254Z",
+        date: 9,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.256Z",
+        createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
         roomId: 27
     },
     {
         id: 73,
         amount: 2,
-        date: "2018-09-13T09:53:49.254Z",
+        date: 10,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1709,7 +1709,7 @@ const AVAILABILITY = [
     {
         id: 74,
         amount: 2,
-        date: "2018-09-14T09:53:49.254Z",
+        date: 11,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
@@ -1718,43 +1718,43 @@ const AVAILABILITY = [
     {
         id: 75,
         amount: 2,
-        date: "2018-09-15T09:53:49.254Z",
+        date: 12,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.257Z",
+        createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
         roomId: 27
     },
     {
         id: 76,
         amount: 2,
-        date: "2018-09-16T09:53:49.254Z",
+        date: 13,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.254Z",
+        createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.778Z",
         roomId: 27
     },
     {
         id: 77,
         amount: 2,
-        date: "2018-09-17T09:53:49.254Z",
+        date: 14,
+        price: 33,
+        createdAt: "2018-09-10T09:53:49.254Z",
+        updatedAt: "2018-09-10T16:42:58.778Z",
+        roomId: 27
+    },
+    {
+        id: 78,
+        amount: 2,
+        date: 15,
         price: 33,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.779Z",
         roomId: 27
     },
     {
-        id: 78,
-        amount: 2,
-        date: "2018-09-18T09:53:49.254Z",
-        price: 33,
-        createdAt: "2018-09-10T09:53:49.255Z",
-        updatedAt: "2018-09-10T16:42:58.779Z",
-        roomId: 27
-    },
-    {
         id: 79,
         amount: 2,
-        date: "2018-09-19T09:53:49.254Z",
+        date: 16,
         price: 33,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.779Z",
@@ -1763,7 +1763,7 @@ const AVAILABILITY = [
     {
         id: 80,
         amount: 2,
-        date: "2018-09-20T09:53:49.254Z",
+        date: 17,
         price: 33,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.779Z",
@@ -1772,25 +1772,25 @@ const AVAILABILITY = [
     {
         id: 81,
         amount: 2,
-        date: "2018-09-21T09:53:49.254Z",
+        date: 18,
+        price: 33,
+        createdAt: "2018-09-10T09:53:49.255Z",
+        updatedAt: "2018-09-10T16:42:58.779Z",
+        roomId: 27
+    },
+    {
+        id: 82,
+        amount: 2,
+        date: 19,
         price: 33,
         createdAt: "2018-09-10T09:53:49.255Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
         roomId: 27
     },
     {
-        id: 82,
-        amount: 2,
-        date: "2018-09-22T09:53:49.254Z",
-        price: 33,
-        createdAt: "2018-09-10T09:53:49.256Z",
-        updatedAt: "2018-09-10T16:42:58.780Z",
-        roomId: 27
-    },
-    {
         id: 83,
         amount: 2,
-        date: "2018-09-23T09:53:49.254Z",
+        date: 20,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1799,7 +1799,7 @@ const AVAILABILITY = [
     {
         id: 84,
         amount: 2,
-        date: "2018-09-24T09:53:49.254Z",
+        date: 21,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1808,7 +1808,7 @@ const AVAILABILITY = [
     {
         id: 85,
         amount: 2,
-        date: "2018-09-25T09:53:49.254Z",
+        date: 22,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1817,7 +1817,7 @@ const AVAILABILITY = [
     {
         id: 86,
         amount: 2,
-        date: "2018-09-26T09:53:49.254Z",
+        date: 23,
         price: 33,
         createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1826,16 +1826,16 @@ const AVAILABILITY = [
     {
         id: 87,
         amount: 2,
-        date: "2018-09-27T09:53:49.254Z",
+        date: 24,
         price: 33,
-        createdAt: "2018-09-10T09:53:49.257Z",
+        createdAt: "2018-09-10T09:53:49.256Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
         roomId: 27
     },
     {
         id: 88,
         amount: 2,
-        date: "2018-09-28T09:53:49.254Z",
+        date: 25,
         price: 33,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1844,7 +1844,7 @@ const AVAILABILITY = [
     {
         id: 89,
         amount: 2,
-        date: "2018-09-29T09:53:49.254Z",
+        date: 26,
         price: 33,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.780Z",
@@ -1853,7 +1853,43 @@ const AVAILABILITY = [
     {
         id: 90,
         amount: 2,
-        date: "2018-09-30T09:53:49.254Z",
+        date: 27,
+        price: 33,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.780Z",
+        roomId: 27
+    },
+    {
+        id: 91,
+        amount: 2,
+        date: 28,
+        price: 33,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.781Z",
+        roomId: 27
+    },
+    {
+        id: 92,
+        amount: 2,
+        date: 29,
+        price: 33,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.781Z",
+        roomId: 27
+    },
+    {
+        id: 93,
+        amount: 2,
+        date: 30,
+        price: 33,
+        createdAt: "2018-09-10T09:53:49.257Z",
+        updatedAt: "2018-09-10T16:42:58.781Z",
+        roomId: 27
+    },
+    {
+        id: 94,
+        amount: 2,
+        date: 31,
         price: 33,
         createdAt: "2018-09-10T09:53:49.257Z",
         updatedAt: "2018-09-10T16:42:58.781Z",

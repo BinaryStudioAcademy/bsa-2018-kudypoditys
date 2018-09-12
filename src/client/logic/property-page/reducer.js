@@ -7,7 +7,8 @@ import {
     BOOK_PROPERTY_FAILURE,
     CHECK_AVAILABILITY_SUCCESS,
     CHECK_AVAILABILITY_FAILURE,
-    GET_ROOMS_INFO_SUCCESS
+    GET_ROOMS_INFO_SUCCESS,
+    CLEAR_PROPERTY_PAGE
 } from "./actionTypes";
 
 import { SEARCH_UPDATE } from "../search/actionTypes";
@@ -18,6 +19,13 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
             return {
                 ...state,
                 property: action.payload
+            };
+        }
+
+        case CLEAR_PROPERTY_PAGE: {
+            return {
+                ...state,
+                property: null
             };
         }
 

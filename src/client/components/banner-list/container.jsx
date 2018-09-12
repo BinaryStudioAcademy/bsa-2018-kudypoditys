@@ -6,15 +6,14 @@ export function mapStateToProps(state) {
     return { cityInfos, currency: header.selectedCurrency.code };
 }
 
-export function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch, ownProps, data) {
     return {
         getCityInfos() {
             dispatch(cityInfosGet());
         },
         onSearch(data) {
-            console.log("gone dispatch data: " + JSON.stringify(data))
             dispatch(searchUpdate({ query: data }));
             dispatch(searchSubmit(data));
         }
-    }
+    };
 }

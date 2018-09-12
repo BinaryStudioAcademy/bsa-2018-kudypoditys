@@ -7,13 +7,10 @@ import { PAGINATION_UPDATE } from "../pagination/actionType";
 
 function* submitSearch(action) {
     try {
-        console.log("saga submitSearch");
-        console.log("request " + JSON.stringify(action.payload));
         const searchResponse = yield call(
             searchService.submitSearch,
             action.payload
         );
-        console.log("reponse " + JSON.stringify(searchResponse));
         yield put({
             type: actionTypes.SEARCH_SUBMIT_SUCCESS,
             payload: {
@@ -24,7 +21,7 @@ function* submitSearch(action) {
         console.log(error.message);
         yield put({
             type: actionTypes.SEARCH_SUBMIT_FAILED,
-            payload: { data: { properties: [],propertiesCount:0 } }
+            payload: { data: { properties: [], propertiesCount: 0 } }
         });
     }
 }

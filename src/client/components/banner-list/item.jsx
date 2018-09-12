@@ -2,9 +2,9 @@ import React, { Component, Fragment, connect } from 'react';
 import { Card, Container, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import './index.scss';
-import tag from 'client/components/banner-list/img/tag.svg';
-import shortParagraphImg from './img/short-paragraph.png';
+import "./index.scss";
+// import tag from "client/components/banner-list/img/tag.svg";
+import shortParagraphImg from "./img/short-paragraph.png";
 
 export class Banner extends Component {
 
@@ -16,7 +16,7 @@ export class Banner extends Component {
         const { cityInfo, currency } = this.props;
         const imgStyles = (url) => ({
             background: `url(${url})`,
-            backgroundSize: 'cover',
+            backgroundSize: "cover"
         });
 
         return (
@@ -48,7 +48,6 @@ export class Banner extends Component {
                 </Fragment>
 
         );
-
     }
 }
 
@@ -64,4 +63,3 @@ Banner.propTypes = {
 
     onCardClick: PropTypes.func
 };
-

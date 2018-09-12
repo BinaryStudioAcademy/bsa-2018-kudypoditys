@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Grid, Popup, Button, Dropdown } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
@@ -125,8 +125,8 @@ export class MainHeader extends Component {
                                                         style={{
                                                             cursor: "pointer",
                                                             marginRight: "24px",
-                                                            fontSize: 16,
-                                                            opacity: 0.8
+                                                            fontSize: 16
+                                                            // opacity: 0.8
                                                         }}
                                                         onClick={
                                                             this.loginClicked
@@ -138,8 +138,8 @@ export class MainHeader extends Component {
                                                     <a
                                                         style={{
                                                             cursor: "pointer",
-                                                            fontSize: 16,
-                                                            opacity: 0.8
+                                                            fontSize: 16
+                                                            // opacity: 0.8
                                                         }}
                                                         onClick={
                                                             this.registerClicked
@@ -168,31 +168,6 @@ export class MainHeader extends Component {
                                     children={0}
                                     handleSearchResults={
                                         this.props.handleSearchResults
-                                    }
-                                    onDestinationChange={value =>
-                                        console.log(`destination: ${value}`)
-                                    }
-                                    onCheckInChange={value =>
-                                        console.log(
-                                            `check-in: ${new Date(value)}`
-                                        )
-                                    }
-                                    onCheckOutChange={value =>
-                                        console.log(
-                                            `check-in: ${new Date(value)}`
-                                        )
-                                    }
-                                    onAdultsChange={value =>
-                                        console.log(`adults: ${value}`)
-                                    }
-                                    onChildrenChange={value =>
-                                        console.log(`children: ${value}`)
-                                    }
-                                    onRoomsChange={value =>
-                                        console.log(`rooms: ${value}`)
-                                    }
-                                    onSearch={() =>
-                                        console.log("Search propeties!")
                                     }
                                 />
                             </Grid.Column>

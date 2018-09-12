@@ -46,6 +46,10 @@ export class PropertyPage extends React.Component {
         );
     }
 
+    componentWillUnmount() {
+        this.props.clearPropertyPageSlice();
+    }
+
     componentDidMount() {
         window.scrollTo(0, 0);
     }
@@ -174,14 +178,30 @@ export class PropertyPage extends React.Component {
                                     width: "250px"
                                 }}
                             />
-                            <BasicMapWidget
-                                key="BasicMapWidget"
-                                properties={[property]}
-                                coordinates={property.coordinates}
-                                controlEnable={false}
-                                rounded
-                                centered
-                            />
+                            <Modal
+                                trigger={
+                                    <span>
+                                        <BasicMapWidget
+                                            key="BasicMapWidget"
+                                            properties={[property]}
+                                            coordinates={property.coordinates}
+                                            controlEnable={false}
+                                            rounded
+                                            centered
+                                        />
+                                    </span>
+                                }
+                                fullScreen
+                            >
+                                <BasicMapWidget
+                                    style={{ width: "100%", height: "100%" }}
+                                    coordinates={property.coordinates}
+                                    properties={[property]}
+                                    controlEnable={true}
+                                    disablePopup={true}
+                                    fullScreen
+                                />
+                            </Modal>
                         </div>
 
                         <Container

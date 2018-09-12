@@ -14,8 +14,6 @@ import { ratingScore, bedTypes, priceScore, bedsType } from "./filters";
 class Quickfilter extends React.Component {
 
     handleChange = (e, data) => {
-        console.log("eve" + JSON.stringify(e));
-        console.log("data" + JSON.stringify(data));
         if (history.location.search !== "") {
             let searchRequest = queryString.parse(history.location.search);
             const item = data.name;

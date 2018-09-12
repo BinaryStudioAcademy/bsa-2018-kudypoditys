@@ -6,11 +6,10 @@ import Modal from "../modal";
 import BasicMapWidget from "../basic-map-widget";
 import RatingBlock from "../../components/reviews/ratingBlock";
 
-import MapWidgetModal from "client/components/map-widget-modal";
 export class PropertySummary extends React.Component {
-    handleRedirectToMap = () => {
-        console.log(this.props.property.coordinates);
-    };
+    // handleRedirectToMap = () => {
+    //     console.log(this.props.property.coordinates);
+    // };
 
     render() {
         const {
