@@ -7,8 +7,7 @@ module.exports = orm.define("availability", {
         allowNull: false
     },
     date: {
-        type: Sequelize.DATE,
-        validate: { isDate: true },
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     price: {
