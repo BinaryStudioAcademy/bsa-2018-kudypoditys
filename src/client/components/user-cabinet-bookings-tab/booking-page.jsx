@@ -16,6 +16,7 @@ import {
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
 import { PropertySummary } from "../property-summary";
+import history from "client/history";
 
 export class BookingPage extends React.Component {
     constructor(props) {
@@ -93,6 +94,9 @@ export class BookingPage extends React.Component {
                 <div className="booking-property-wrp">
                     <div className="property-info">
                         <PropertySummary
+                            onHeaderClick={() => {
+                                history.push(`/property/${property.id}`);
+                            }}
                             rating={avgPropRating}
                             totalReviews={property.reviews.length}
                             property={property}
