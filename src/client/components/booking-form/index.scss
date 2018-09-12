@@ -35,6 +35,10 @@ button.book-btn:hover {
     flex-direction: column;
 }
 
+.booking-form .ui.dropdown {
+    padding: 0.78571429em 2.1em 0.78571429em 1em !important;
+}
+
 .booking-form .DateRangePicker.DateRangePicker_1 {
     width: fit-content !important;
 }

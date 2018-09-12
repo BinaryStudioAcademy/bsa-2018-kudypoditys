@@ -1,24 +1,15 @@
 import React from "react";
-import history from 'client/history';
+import history from "client/history";
 import { Field, reduxForm } from "redux-form";
-import {
-    Button,
-    Form,
-    Icon,
-    Grid,
-    Segment,
-    Message,
-    Divider
-} from "semantic-ui-react";
+import { Button, Form, Icon, Segment } from "semantic-ui-react";
 import renderField from "client/components/input-form/renderField";
 import { required, email } from "client/regexValidationService";
 
 let LoginForm = props => {
     const { handleSubmit, submitting, pristine } = props;
     return (
-        <Segment className="login_form-wrapper" padded='very' raised>
+        <Segment className="login_form-wrapper" padded="very" raised>
             <Form onSubmit={handleSubmit} id="login-form">
-
                 <div className="field-wrapper">
                     <Field
                         name="email"
@@ -58,32 +49,35 @@ let LoginForm = props => {
                             cursor: "pointer"
                         }}
                         tabIndex="0"
-                        onClick={() => history.push('/forgotpassword')}
+                        onClick={() => history.push("/forgotpassword")}
                     >
                         Forgot the password ?
-                            </a>
+                    </a>
                 </Form.Field>
                 <div className="btn-wrapper">
                     <Button
                         className="auth_btn"
                         type="button"
                         icon
-                        labelPosition='left'
-                        onClick={() => history.goBack()}>
-                        <Icon name='left arrow' />
-                        Back</Button>
+                        labelPosition="left"
+                        onClick={() => history.goBack()}
+                    >
+                        <Icon name="left arrow" />
+                        Back
+                    </Button>
                     <Button
                         className="auth_btn"
                         type="submit"
                         name="register"
                         disabled={submitting || pristine}
                         icon
-                        color='blue'
-                        labelPosition='right'>
+                        color="blue"
+                        labelPosition="right"
+                    >
                         Login
-                    <Icon name='right arrow' />
-                    </Button></div>
-
+                        <Icon name="right arrow" />
+                    </Button>
+                </div>
             </Form>
         </Segment>
     );

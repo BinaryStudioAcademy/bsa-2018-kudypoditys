@@ -76,7 +76,6 @@ export default function* propertyPageSaga() {
         try {
             //TODO api call
             const input = action.payload;
-            console.log(JSON.stringify(input));
             const response = yield call(
                 api.sendRequest,
                 "/api/property/availability",

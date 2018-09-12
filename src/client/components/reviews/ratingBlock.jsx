@@ -14,7 +14,6 @@ class RatingBlock extends React.Component {
 
         const ratingStatus = getPropertyStatus(avgPropRating);
         const ratingColor = getPropertyColor(avgPropRating);
-        console.log(avgPropRating);
         return (
             <div
                 className="rating_block"

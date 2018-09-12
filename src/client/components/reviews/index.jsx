@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
     Header,
     Comment,
@@ -8,36 +8,35 @@ import {
     Transition,
     Progress,
     Message,
-    Icon,
-} from 'semantic-ui-react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+    Icon
+} from "semantic-ui-react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import './index.scss';
-import ReviewForm from './addReviewForm';
-import Review from './item';
-import { mapStateToProps, mapDispatchToProps } from './container';
+import "./index.scss";
+import ReviewForm from "./addReviewForm";
+import Review from "./item";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 import {
     getPropReviewsArray,
-    getPropToggler,
-} from 'client/helpers/reviewToggler';
+    getPropToggler
+} from "client/helpers/reviewToggler";
 import {
     getGroupedArray,
-    getAvgFromArray,
-} from 'client/helpers/avgReviewRating';
-import RatingBar from './ratingBar';
-import Modal from '../modal';
-import BookingForm from '../booking-form';
+    getAvgFromArray
+} from "client/helpers/avgReviewRating";
+import RatingBar from "./ratingBar";
+import Modal from "../modal";
+import BookingForm from "../booking-form";
 
 export class Reviews extends React.Component {
     toggleVisibility = () =>
         this.setState({
-            visible: !this.state.visible,
+            visible: !this.state.visible
         });
 
     constructor(props) {
         super(props);
-
 
         this.state = {
             visible: true,
@@ -47,35 +46,30 @@ export class Reviews extends React.Component {
 
     // handleCheckbox = (e, {checked}) => this.setState({collapsed: checked});
     handleOpen = () => {
-        this.setState({ modalOpen: true })
-        console.log(this.state)
-    }
+        this.setState({ modalOpen: true });
+    };
 
     handleClose = () => {
-
-        this.setState({ modalOpen: false })
-
-    }
-
+        this.setState({ modalOpen: false });
+    };
 
     render() {
-        console.log(this.props);
         const { property, user, bookings } = this.props;
         let shouldRenderForm = true;
         const { visible } = this.state;
 
         const avgPropRatingArray = getGroupedArray(
                 property.reviews,
-                'avgReview',
+                "avgReview"
             ),
             avgPropCleanliness = getGroupedArray(
                 property.reviews,
-                'Cleanliness',
+                "Cleanliness"
             ),
-            avgPropComfort = getGroupedArray(property.reviews, 'Comfort'),
-            avgPropFacilities = getGroupedArray(property.reviews, 'Facilities'),
-            avgPropPrice = getGroupedArray(property.reviews, 'Price'),
-            avgPropLocation = getGroupedArray(property.reviews, 'Cleanliness');
+            avgPropComfort = getGroupedArray(property.reviews, "Comfort"),
+            avgPropFacilities = getGroupedArray(property.reviews, "Facilities"),
+            avgPropPrice = getGroupedArray(property.reviews, "Price"),
+            avgPropLocation = getGroupedArray(property.reviews, "Cleanliness");
 
         const avgCleanliness = getAvgFromArray(avgPropCleanliness),
             avgFacilities = getAvgFromArray(avgPropFacilities),
@@ -85,13 +79,10 @@ export class Reviews extends React.Component {
             avgPropRating = getAvgFromArray(avgPropRatingArray);
 
         let legitArray = getPropReviewsArray(bookings);
-        console.log(legitArray.length);
 
         if (legitArray.length > 0) {
             shouldRenderForm = getPropToggler(legitArray, property);
         }
-
-        console.log(shouldRenderForm);
         // if (!reviewData.cons && !reviewData.pros) {
         //     shouldRenderComments = false;
         // }
@@ -109,16 +100,21 @@ export class Reviews extends React.Component {
                             <Modal
                                 className="reviews_add_review__modal"
                                 trigger={
-                                    <div onClick={this.handleOpen} className="reviews_add_review_btn">
+                                    <div
+                                        onClick={this.handleOpen}
+                                        className="reviews_add_review_btn"
+                                    >
                                         add review?
                                     </div>
                                 }
                                 open={this.state.modalOpen}
                                 // onClose={this.handleClose}
                                 onClose={this.close}
-
                             >
-                                <ReviewForm property={property} onFormClick={this.handleClose} />
+                                <ReviewForm
+                                    property={property}
+                                    onFormClick={this.handleClose}
+                                />
                             </Modal>
                         </div>
                     ) : null}
@@ -129,11 +125,11 @@ export class Reviews extends React.Component {
                             as="mytagаSOSNOOOOLEY"
                             dividing
                             style={{
-                                color: '#465672',
-                                borderBottomColor: '#465672',
+                                color: "#465672",
+                                borderBottomColor: "#465672"
                             }}
                         >
-                            There are no reviews yet. Be the first to review{' '}
+                            There are no reviews yet. Be the first to review{" "}
                             {property.name}
                         </Header>
                     </div>
@@ -171,5 +167,5 @@ Reviews.defaultProps = {};
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps,
+    mapDispatchToProps
 )(Reviews);

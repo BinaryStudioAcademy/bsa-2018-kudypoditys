@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from "moment";
 export function getPropReviewsArray(bookingArray) {
     let array = [],
         now = moment();
@@ -21,13 +21,13 @@ export function getPropToggler(bookingArray, property) {
 
     for (let i = 0; i < bookingArray.length; i++) {
         if (bookingArray[i].room.property.id === property.id) {
-            console.log(bookingArray[i].room.property.id)
-            console.log(property.id)
-            console.log((bookingArray[i].room.property.id === property.id))
+            // console.log(bookingArray[i].room.property.id)
+            // console.log(property.id)
+            // console.log((bookingArray[i].room.property.id === property.id))
             b = 1;
             return b;
         }
     }
-    console.log(b)
+    console.log(b);
     return b;
 }
