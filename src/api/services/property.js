@@ -2,6 +2,7 @@ const Service = require("./generalService");
 const propertyRepository = require("../repositories/propertyRepository");
 const roomService = require("./room");
 const reservationService = require("./reservation");
+const availabilityService = require("./availability");
 const moment = require("moment");
 
 class PropertyService extends Service {
@@ -74,20 +75,49 @@ class PropertyService extends Service {
             const bookings = await reservationService.findByOptions({
                 roomId: room.id
             });
-            let roomAmount = room.amount;
-            for (let i = 0; i < bookings.length; i++) {
-                if (
-                    reservationService.datesIntersect(
-                        checkIn,
-                        checkOut,
-                        bookings[i].dateIn,
-                        bookings[i].dateOut
+            const availabilities = await availabilityService.findByOptions({
+                roomId: room.id
+            });
+
+            if (availabilities.length) {
+                for (
+                    let i = moment(checkIn);
+                    i <= moment(checkOut);
+                    i = moment(i).add(1, "day")
+                ) {
+                    let availability = await availabilities.find(item => {
+                        return item.date === moment(i).date();
+                    });
+                    let roomAmount = availability.amount;
+
+                    for (let i = 0; i < bookings.length; i++) {
+                        if (
+                            moment(bookings[i].dateIn).date() <
+                                availability.date &&
+                            moment(bookings[i].dateOut).date() >
+                                availability.date
+                        )
+                            roomAmount--;
+                    }
+                    if (roomAmount <= 0) return Promise.resolve(false);
+                }
+                return Promise.resolve(true);
+            } else {
+                let roomAmount = room.amount;
+                for (let i = 0; i < bookings.length; i++) {
+                    if (
+                        reservationService.datesIntersect(
+                            checkIn,
+                            checkOut,
+                            bookings[i].dateIn,
+                            bookings[i].dateOut
+                        )
                     )
-                )
-                    roomAmount--;
+                        roomAmount--;
+                }
+                if (roomAmount <= 0) return Promise.resolve(false);
+                return Promise.resolve(true);
             }
-            if (roomAmount <= 0) return Promise.resolve(false);
-            return Promise.resolve(true);
         } catch (err) {
             return Promise.reject(err);
         }
