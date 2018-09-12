@@ -21,6 +21,8 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
             };
         }
 
+
+
         case GET_ROOMS_INFO_SUCCESS: {
             return {
                 ...state,

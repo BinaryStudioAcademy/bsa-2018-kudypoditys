@@ -28,4 +28,6 @@ function countriesReducer(state = defaultState.currenciesData, action) {
   }
 }
 
+
+
 export default countriesReducer;

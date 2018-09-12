@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Grid,Dropdown } from "semantic-ui-react";
+import { Grid, Dropdown } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
@@ -14,12 +14,23 @@ import currencyOptions from 'client/components/user-cabinet-settings/staticData.
 
 export class MainHeader extends Component {
 
-    componentDidMount(){
-        this.props.getCurrencies()
+    componentDidMount() {
+        this.props.getCurrencies();
     }
     logoutClicked = () => {
         this.props.logout();
     };
+
+
+    getCurrencies() {
+        const { currencies } = this.props;
+        return currencies.map(x => ({
+            key: x.id,
+            value: x.id,
+            text: x.name
+        }))
+    }
+
 
     addPropertyClicked = () => {
         history.push("/add-property");
@@ -45,7 +56,7 @@ export class MainHeader extends Component {
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-    handleCurrancyChange= (e, { name, value }) =>{
+    handleCurrancyChange = (e, { name, value }) => {
         this.props.getCityInfos(value);
         console.log(value)
         this.props.onCurrencyChange(value)
@@ -55,7 +66,7 @@ export class MainHeader extends Component {
         this.props.onCurrencyChange(value)
         this.props.getCityInfos(value);
         const data = {
-            id:this.props.currentUser.id,
+            id: this.props.currentUser.id,
             preferredCurrency: value
         };
         this.props.sendSettings(data);
@@ -65,14 +76,15 @@ export class MainHeader extends Component {
     }
     render() {
         const { currentUser, hideSignUpIn, noBackground } = this.props;
+        const currenciesOptions = this.getCurrencies();
         return (
             <div
                 className="header--wraper"
                 style={
                     noBackground
                         ? {
-                              backgroundImage: "none"
-                          }
+                            backgroundImage: "none"
+                        }
                         : { backgroundColor: "#028fc5" }
                 }
             >
@@ -94,13 +106,13 @@ export class MainHeader extends Component {
                                     return (
                                         <Fragment>
                                             <Dropdown
-                                                style = {{
-                                                    width:"70px" ,
-                                                    fontSize:"14px",
+                                                style={{
+                                                    width: "70px",
+                                                    fontSize: "14px",
                                                     //padding:"3px 5px",
-                                                    background:"none",
-                                                    color:"#fff",
-                                                    border:"none",
+                                                    background: "none",
+                                                    color: "#fff",
+                                                    border: "none",
                                                     float: "right",
                                                     opacity: "0.94"
                                                 }}
@@ -129,22 +141,22 @@ export class MainHeader extends Component {
                                             {hideSignUpIn ? null : (
                                                 <Fragment>
                                                     <Dropdown
-                                                        style = {{
-                                                            width:"70px" ,
-                                                            fontSize:"14px",
+                                                        style={{
+                                                            width: "70px",
+                                                            fontSize: "14px",
                                                             //padding:"3px 5px",
-                                                            background:"none",
-                                                            color:"#fff",
-                                                            border:"none",
+                                                            background: "none",
+                                                            color: "#fff",
+                                                            border: "none",
                                                             float: "right",
                                                             opacity: "0.94"
                                                         }}
                                                         name="preferredCurrency"
                                                         fluid
                                                         selection
-                                                        options={this.props.currencies}
+                                                        options={currenciesOptions}
                                                         defaultValue={this.props.selectedCurrency}
-                                                        onChange= {this.handleCurrancyChange}
+                                                        onChange={this.handleCurrancyChange}
                                                     />
                                                     <a
                                                         style={{

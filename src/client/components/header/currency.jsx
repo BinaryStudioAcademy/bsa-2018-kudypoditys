@@ -8,20 +8,19 @@ import { Field, reduxForm } from 'redux-form';
 import { Card, Button, Form } from "semantic-ui-react";
 
 class Currency extends React.Component {
-    handleCurrencyChange(val){
+    handleCurrencyChange(val) {
         let currency = '';
-        for(const symb in val){
+        for (const symb in val) {
             currency += symb
         }
         console.log('hello from currency', currency)
         this.props.onChange(currency)
-       // this.props.updateUserCurrancy(currency)
+        // this.props.updateUserCurrancy(currency)
     }
-    render(){
-
-        return(
+    render() {
+        return (
             <Field
-                style={{margin:'0 0 0 10px', width:'60px', fontSize:'12px'}}
+                style={{ margin: '0 0 0 10px', width: '60px', fontSize: '12px' }}
                 name="type"
                 component={semanticSelectorFormField}
                 as={Form.Select}
@@ -30,7 +29,7 @@ class Currency extends React.Component {
                 onChange={this.handleCurrencyChange}
                 //label="USD"
                 placeholder={this.props.value}
-                validate={required}/>
+                validate={required} />
         )
     }
 }

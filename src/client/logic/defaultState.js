@@ -82,14 +82,14 @@ const state = {
     },
     header: {
         currencies: [
-                {key:1, text:'UAH', value: 'UAH'},
-                {key:2, text:'USD', value: 'USD'},
-                {key:3, text:'EUR', value: 'EUR'}
+            // {key:1, text:'UAH', value: 'UAH'},
+            // {key:2, text:'USD', value: 'USD'},
+            // {key:3, text:'EUR', value: 'EUR'}
 
         ],
         selectedCurrency: 'USD',
         currentUser: null,
-        rate:1
+        rate: 1
     },
     shownProperties: {
         "xyz-1": {
@@ -125,15 +125,15 @@ const state = {
         shownTo: 5
     },
     cityInfos: {
-        0:{
+        0: {
             id: 1,
             city: 'Lviv',
             properties: 1,
             avgPrice: 1,
             pictureUrl: 'http://www.mgi4ua.com/wp-content/uploads/2017/11/lviv-ukraine.jpg',
             flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
-            },
-        1:{
+        },
+        1: {
             id: 2,
             city: 'Dnipro',
             properties: 1,
@@ -141,7 +141,7 @@ const state = {
             pictureUrl: 'http://meandyoukraine.com/mainContent/DniproCity/DniproCity_featuredImage.jpg',
             flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
         },
-        2:{
+        2: {
             id: 3,
             city: 'Ternopil',
             properties: 1,
@@ -149,7 +149,7 @@ const state = {
             pictureUrl: 'http://www.gazeta-misto.te.ua/wp-content/uploads/2017/05/18671255_1124933304279283_1785861677540967562_n.jpg',
             flagUrl: 'http://proudfofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
         },
-        3:{
+        3: {
             id: 4,
             city: 'Kyiv',
             properties: 1,
@@ -157,7 +157,7 @@ const state = {
             pictureUrl: 'https://s.inyourpocket.com/gallery/130361.jpg',
             flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
         },
-        4:{
+        4: {
             id: 5,
             city: 'Odessa',
             properties: 1,
@@ -165,7 +165,7 @@ const state = {
             pictureUrl: 'https://www.hotel-deribas.com/wp-content/uploads/2018/03/19odessa.jpg',
             flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
         },
-        5:{
+        5: {
             id: 6,
             city: 'Kharkiv',
             properties: 1,
