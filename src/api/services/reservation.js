@@ -3,6 +3,8 @@ const reservationRepository = require("../repositories/reservationRepository");
 const roomService = require("./room");
 const userRepository = require("../repositories/userRepository");
 const userService = require("./user");
+const availabilityService = require("./availability");
+const moment = require("moment");
 const shortid = require("shortid");
 const nodemailer = require("nodemailer");
 
@@ -97,18 +99,20 @@ class ReservationService extends Service {
     async create(reservation) {
         reservation.orderCode = shortid.generate().toUpperCase();
         try {
-            const bookings = await this.findByOptions({
-                roomId: reservation.roomId
-            });
-            const available = await this.checkAvailability(
-                reservation,
-                bookings
+            const room = await roomService.findById(reservation.roomId);
+            const available = await this.available(
+                room,
+                reservation.dateIn,
+                reservation.dateOut
             );
-            this.sendMailBookingSuccess(
-                reservation.userId,
-                reservation.orderCode
-            );
-            if (available) return this.repository.create(reservation);
+
+            if (available) {
+                this.sendMailBookingSuccess(
+                    reservation.userId,
+                    reservation.orderCode
+                );
+                return this.repository.create(reservation);
+            }
             return Promise.reject(
                 new Error("No such rooms available for these dates")
             );
@@ -170,6 +174,59 @@ class ReservationService extends Service {
             return true;
         }
         return false;
+    }
+
+    async available(room, checkIn, checkOut) {
+        try {
+            const bookings = await this.findByOptions({
+                roomId: room.id
+            });
+            const availabilities = await availabilityService.findByOptions({
+                roomId: room.id
+            });
+
+            if (availabilities.length) {
+                for (
+                    let i = moment(checkIn);
+                    i <= moment(checkOut);
+                    i = moment(i).add(1, "day")
+                ) {
+                    let availability = await availabilities.find(item => {
+                        return item.date === moment(i).date();
+                    });
+                    let roomAmount = availability.amount;
+
+                    for (let i = 0; i < bookings.length; i++) {
+                        if (
+                            moment(bookings[i].dateIn).date() <
+                                availability.date &&
+                            moment(bookings[i].dateOut).date() >
+                                availability.date
+                        )
+                            roomAmount--;
+                    }
+                    if (roomAmount <= 0) return Promise.resolve(false);
+                }
+                return Promise.resolve(true);
+            } else {
+                let roomAmount = room.amount;
+                for (let i = 0; i < bookings.length; i++) {
+                    if (
+                        this.datesIntersect(
+                            checkIn,
+                            checkOut,
+                            bookings[i].dateIn,
+                            bookings[i].dateOut
+                        )
+                    )
+                        roomAmount--;
+                }
+                if (roomAmount <= 0) return Promise.resolve(false);
+                return Promise.resolve(true);
+            }
+        } catch (err) {
+            return Promise.reject(err);
+        }
     }
 }
 

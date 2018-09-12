@@ -218,8 +218,10 @@ export class MainSearch extends React.Component {
 
     componentWillMount() {
         this.resetComponent();
+    };
+    componentWillUnmount() {
+        this.props.clearSearchPageSlice();
     }
-
     datesChanged = selectedDates => {
         if (selectedDates.startDate && selectedDates.endDate) {
             this.props.onDatesChange(selectedDates);
@@ -250,7 +252,7 @@ export class MainSearch extends React.Component {
     }
 
     render() {
-        // console.log("state=" + JSON.stringify(this.state));
+         console.log("state=" + JSON.stringify(this.state));
 
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
