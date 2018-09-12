@@ -46,6 +46,10 @@ export class PropertyPage extends React.Component {
         );
     }
 
+    componentWillUnmount() {
+        this.props.clearPropertyPageSlice();
+    }
+
     componentDidMount() {
         window.scrollTo(0, 0);
     }
