@@ -33,7 +33,7 @@ let PROPERTIES = [
     {
         id: 1,
         name: "Ukraine Hotel",
-        rating: 5,
+        rating: 7.3,
         address: "Koval street 16, Kyiv",
         description:
             "This property is 15 minutes walk from the beach. Located on Independence Square in the heart of Kiev, this hotel offers air-conditioned rooms and suites with elegant décor. It is a 3-minute walk from the Maidan Nezalezhnosti and Kreschatik Metro Stations. In-room facilities at the Ukraine Hotel include satellite TV and a refrigerator. Your bathroom includes free toiletries and perfumes. Guests enjoy views of the Kreschatyk Street and the surrounding area. A large breakfast buffet is available at the Ukraine Hotel, and 24-hour room service is offered. Ukrainian and European cuisine is served for lunch and dinner. Live music is sometimes played here. The hotel features a beauty salon, sauna and massage facilities. A private laundry service is also available. Hotel Ukraine is a 10-minute walk from Mariyinsky Park and the St. Sofia Cathedral. Secure parking is available on site. Pecherskyj is a great choice for travellers interested in restaurants, food and friendly locals. This is our guests' favourite part of Kiev, according to independent reviews. This property also has one of the best-rated locations in Kiev! Guests are happier about it compared to other properties in the area.",
@@ -48,8 +48,8 @@ let PROPERTIES = [
     {
         id: 2,
         name: "Hotel Dolynskyi",
-        rating: 4,
-        address: "Prospekt Shevchenka 1, Lviv",
+        rating: 4.5,
+        address: "Koval street 16, Lviv",
         description: `Providing free WiFi, Hotel Dolynskiy is set in Lviv. This property is situated a short distance from attractions such as The St. Onuphrius Church and Monastery and The Church of St. Nicholas. The property is 700 m from The High Castle Park and a 9-minute walk from Zankovetski Drama Theater.
         At the hotel, rooms are equipped with a wardrobe. The private bathroom is equipped with free toiletries. Lviv State Academic Opera and Ballet Theater is 800 m from Hotel Dolynskiy, while The Armenian Cathedral is a 10-minute walk away. The nearest airport is Lviv International Airport, 7 km from the accommodation. This is our guests' favourite part of Lviv, according to independent reviews.`,
         contactPhone: "0509842174",
@@ -63,7 +63,7 @@ let PROPERTIES = [
     {
         id: 3,
         name: "Hotel Atlas Deluxe",
-        rating: 9.1,
+        rating:4.4,
         address: "Prospekt Shevchenka 27, Lviv",
         description:
             "Hotel Atlas Deluxe is located in the heart of Lviv, within a 2-minute walk of Ploshcha Rynok Square and a 10-minute walk of Ivana Franko Park. It offers a sauna, fitness centre and concierge service. The classic-style air-conditioned rooms feature a flat-screen TV with satellite channels. The bathroom comes with a hairdryer and free toiletries. Guests can order a meal in the on-site restaurant. After a busy day, you can enjoy your favourite drink at the bar. Lviv Train Station is within a 10-minute drive of Hotel Atlas Deluxe. A shuttle to Lviv International Airport (6.5 km) is available at surcharge. This is our guests' favourite part of Lviv, according to independent reviews.",
@@ -77,7 +77,7 @@ let PROPERTIES = [
     {
         id: 4,
         name: "Rius Hotel",
-        rating: 9.0,
+        rating: 7.0,
         address: "12A Hnatiuka St, Lviv",
         description:
             "Located in the city centre of Lviv, less than a 2-minute walk from Svobody Prospekt and a 5-minute walk from Market Square, Rius hotel features free Wi-Fi throughout the property. The modern rooms here provide guests with panoramic windows with a city view, a minibar, a balcony or a terrace, a flat-screen TV with satellite channels, air conditioning, and a private bathroom with a bath or shower. The Lviv Theatre of Opera and Ballet is a 6-minute walk, and the City Hall is a 7-minute walk away. Rius hotel is 2.5 km from Lviv Train Station, 1 km from Doroshenka tram stop, and 7 km from Lviv International Airport. Guarded underground parking is provided. This is our guests' favourite part of Lviv, according to independent reviews. This property also has one of the best-rated locations in Lviv! Guests are happier about it compared to other properties in the area.",
@@ -91,7 +91,7 @@ let PROPERTIES = [
     {
         id: 5,
         name: "British Club Lviv",
-        rating: 9.4,
+        rating:7.1,
         address: "Nalyvaika Street 18, Lviv",
         description:
             "This hotel is located in the historic centre of Lviv, just a 10-minute walk from Ploschad Rynok Square. Free Wi-Fi and a 24-hour reception are featured at British Club Lviv. The elegant, air-conditioned rooms and apartments of this hotel are decorated in classical English style. Each one includes a flat-screen TV, a refrigerator and a private bathroom with bathrobes and a hairdryer. Breakfast is served every morning in the hotel’s dining area. Lviv Opera Theatre is just a 2-minute walk away, and Ivana Franko Park is a 5-minute walk from the hotel. A bus stop on Prospekt Svobody is 150 m from British Club Lviv. Lviv Central Train Station is 2.5 km away, and Lviv International Airport is 6 km from the hotel. ",
@@ -105,7 +105,7 @@ let PROPERTIES = [
     {
         id: 6,
         name: "Complimente Guest House",
-        rating: 9.3,
+        rating:7.3,
         address: "Pereulok Kravtsova 13 V, Kharkov",
         description:
             "This guest house is located in the centre of Kharkov, a 5-minute walk from Konstitutsii Square. Free Wi-Fi, a 24-hour reception and private parking are featured at Complimente Guest House. The bright, air-conditioned rooms are decorated in classic style. Every room includes a flat-screen TV, a kitchenette equipped with a fridge and a private bathroom. A hairdryer is available. The on-site café serves European cuisine, and a selection of drinks is available at the bar. Kharkov Opera and Ballet Theatre is a 7-minute walk away, and the Shevchenko Park is within a walking distance of the guest house. Istoricheskiy Muzey and Sovetskaya Metro Stations are 500 m from Complimente Guest House. Kharkov Central Train Station is 5 km away, and Kharkov Airport is 12 km from the guest house. This is our guests' favourite part of Kharkov, according to independent reviews.",
@@ -119,7 +119,7 @@ let PROPERTIES = [
     {
         id: 7,
         name: "Pletnevskiy Inn",
-        rating: 5.6,
+        rating: 7.3,
         address:
             "Kooperatyvna St. 6/8 (entrance from Pletnevskiy lane), Kharkov",
         description:
@@ -134,7 +134,7 @@ let PROPERTIES = [
     {
         id: 8,
         name: "Londonskaya SPA Hotel",
-        rating: 8.6,
+        rating:7.3,
         address: "Primorskiy Boulevard 11, Odessa",
         description:
             "his property is 6 minutes walk from the beach. Offering great views of the Black Sea, this historic, classical-style hotel is within a 10-minute walk of Deribasovskaya street, Potemkin Stairs and Duke de Richelieu monument. Opera and Ballet Theatre is 300 m away. Spacious, soundproofed rooms and suites provide a flat-screen TV, desk and safety deposit box. A three-storeyed spa area features a hammam, spa bath, 2 swimming pool and gym. Guests can also enjoy a wide range of massages and cosmetology treatments. The on-site restaurant serves traditional Ukrainian and European cuisine. In summer, guests can dine in the paio. Airport shuttles can be booked at the Londonskaya’s 24-hour reception. The hotel is 2 km from Odessa Train Station and 10 km from Odessa International Airport. Primorsky is a great choice for travellers interested in food, restaurants and architecture.",
@@ -148,7 +148,7 @@ let PROPERTIES = [
     {
         id: 9,
         name: "UNO Design Hotel",
-        rating: 3.4,
+        rating: 7.3,
         address: "Rishelievskaya Street 17, Odessa",
         description:
             "Stylish rooms with free WiFi and unique décor, UNO Design Hotel is just a 2-minute walk from Deribasovskaya Street and 800 m from the sandy Black Sea Coast. UNO Design Hotel offers spacious suites and rooms with a flat-screen TV and a fully equipped kitchenette. Slippers and toiletries are provided. There are many restaurants and bars within walking distance of UNO Design Hotel. The property is centrally located in the city, just a 5-minute walk from sights such as Odessa Opera and Ballet House and the Potemkin Steps. Odessa Main Train Station is a 10-minute drive and Odessa International Airport is 30 minutes' away by car. Primorsky is a great choice for travellers interested in food, restaurants and architecture. This is our guests' favourite part of Odessa, according to independent reviews.",
@@ -162,7 +162,7 @@ let PROPERTIES = [
     {
         id: 10,
         name: "Resort & Spa Hotel NEMO",
-        rating: 7.9,
+        rating: 7.3,
         address: "Plyazh Lanzheron 25, Odessa",
         description:
             "This property is 2 minutes walk from the beach. Featuring the on-site Dolphinarium, Oceanarium and the Dolphin assisted therapy centre, Resort & SPA Hotel NEMO with dolphins is set in the historical centre of Odessa, on Lanzheron Beach. It offers 9 heated sea-water swimming pools, fitness & spa zone, a 24-hour room service and free WiFi. All rooms are air-conditioned and come with a balcony, flat-screen TV, a safety deposit box and minibar. All suites feature a spa bath. Guests can enjoy Ukrainian, European and Japanese cuisine in the hotel's restaurant, or have a drink at the bar. Odessa city centre is a 5-minute drive from Resort & Spa Hotel Nemo with dolphins. Central Train Station is a 10-minute drive from the resort. Odessa International Airport is 10 km away. Primorsky is a great choice for travellers interested in food, restaurants and architecture.",
@@ -176,7 +176,7 @@ let PROPERTIES = [
     {
         id: 11,
         name: "Odesskiy Hostel",
-        rating: 4.9,
+        rating: 7.3,
         address: "Troitskaya Street, 21, Odessa",
         description:
             "This hostel in Odessa city centre is only 15 minutes’ walk from Odessa Central Train Station. It features a lounge area with a TV, a well-equipped kitchen and free Wi-Fi. Hostel-Hotel Odesskiy offers shared dormitory rooms with access to shared bathroom facilities. Every room is heated, and includes a desk and wardrobe. Guests at Hostel-Hotel Odesskiy can use the accommodation’s shared kitchen facilities to prepare meals. The kitchen includes a refrigerator, microwave and electric kettle, and a super market is located next door. Odessa attractions such as the Opera and Ballet Theatre and Odessa Philharmonic can be found within 1 km from the hostel. Chernomorets football stadium is only 300 m away. The hostel is located 7 km from Odessa Airport and a public bus runs from here to Troitskaya bus stop, 50 m from the hostel. Primorsky is a great choice for travellers interested in food, restaurants and architecture. This is our guests' favourite part of Odessa, according to independent reviews.",
@@ -190,7 +190,7 @@ let PROPERTIES = [
     {
         id: 12,
         name: "Apartment on Krushelnytskoi Street",
-        rating: 7.7,
+        rating: 7.3,
         address: "Krushelnytskoi Street 1, Ternopilʼ",
         description: `This property is 6 minutes walk from the beach. Set in Ternopilʼ in the Ternopil region, Apartment on Krushelnytskoi Street features a balcony and lake views. This apartment offers accommodation with free WiFi.
 
@@ -209,7 +209,7 @@ let PROPERTIES = [
     {
         id: 13,
         name: "Hotel Ternopil",
-        rating: 8.9,
+        rating: 7.3,
         address: "Zamkova Street 14, Ternopilʼ",
         description: `A 2-minute walk from Ternopil Lake, this hotel offers air-conditioned rooms with free Wi-Fi.
 
@@ -230,7 +230,7 @@ let PROPERTIES = [
     {
         id: 14,
         name: "Kamelot",
-        rating: 7.7,
+        rating: 7.3,
         address: "Ob'yizdna Street 6 , Ternopilʼ",
         description: `Located 8 minutes’ drive from Ternopil’s 16th-century castle, this hotel offers a sauna and air-conditioned rooms with a flat-screen TV. There is also a 24-hour reception.
 
@@ -251,7 +251,7 @@ let PROPERTIES = [
     {
         id: 15,
         name: "Hotel Verhovina",
-        rating: 7.9,
+        rating: 7.3,
         address:
             "Petropavlivs'ka Street 24, Petropavlivs'ka Borshchahivka, Kiev",
         description: `Featuring free Wi-Fi and a restaurant with a terrace, this hotel is 7 minutes’ drive from Zhitomirskaya Metro Station in Kiev. It offers air-conditioned rooms with a flat-screen TV.
@@ -313,7 +313,7 @@ let PROPERTIES = [
     {
         id: 18,
         name: "City Holiday Resort & SPA",
-        rating: 9.0,
+        rating: 7.3,
         address: "Velyka Kiltseva str. 5,  Petropavlovskaya Borshagovka, Kiev",
         description: `Featuring equipped conference rooms and other business facilities, City Holiday Resort & SPA offers accommodation in Kiev, 11.9 km from Khreshchatyk and Maidan Nezalezhnosti. Free private parking is available on site and free WiFi is provided throughout the property. There is also a free charging station for electric cars at the City Holiday Resort & SPA.
 
@@ -336,7 +336,7 @@ let PROPERTIES = [
     {
         id: 19,
         name: "MarySmart",
-        rating: 7.5,
+        rating: 7.3,
         address: "39 Mashynobudivna Street, Kiev",
         description: `Situated within 6 km of St. Volodymyr's Cathedral in Kiev, MarySmart features accommodation with a kitchenette. Complimentary WiFi is featured.
 
@@ -353,7 +353,7 @@ let PROPERTIES = [
     {
         id: 20,
         name: "Andreevsky Guest House",
-        rating: 5.4,
+        rating: 7.3,
         address: "Vozdvyzhens'ka Street 60 B, Kiev",
         description: ` One of our bestsellers in Kiev!
             Andreevsky Guest House is located in Kiev, 700 m from St. Michael's Golden-Domed Monastery and a 9-minute walk from Saint Sophia Cathedral. The property is around 1.7 km from St. Volodymyr's Cathedral and 2.9 km from Olympic Stadium. Kiev Pechersk Lavra is 4 km from the hotel and International Exhibition Centre is 6 km away.
@@ -375,7 +375,7 @@ let PROPERTIES = [
     {
         id: 21,
         name: "Bartolomeo",
-        rating: 6.7,
+        rating:7.3,
         address: "Naberezhnaya Pobedy 9B, Dnipro",
         description: `This property is 1 minute walk from the beach. Bartolomeo Best River Resort in the city of Dnepropetrovsk offers 2-storey wooden bungalows apartments directly on the River Dnepr. For your comfort you will find a cable TV and safe in every room. Free WiFi is available throughout the property.
 
@@ -394,7 +394,7 @@ let PROPERTIES = [
     {
         id: 22,
         name: "Tsunami Spa Hotel",
-        rating: 6.0,
+        rating: 7.3,
         address: "Oktyabrska Pl.12A, Dnipro",
         description: `This property is 13 minutes walk from the beach. This 5-star spa hotel with pool stands beside the Saviour's Transfiguration Cathedral, in the historic centre of Dnipro. It offers free Wi-Fi, healthy cuisine and various spa and fitness facilities.
 
@@ -415,7 +415,7 @@ let PROPERTIES = [
     {
         id: 23,
         name: "Apartments on Kirova",
-        rating: 6.9,
+        rating: 7.3,
         address: "Kirova Prospekt  27D, Dnipro",
         description: `Apartments on Kirova is located in the Adler City Centre district of Adler, 200 m from Novy Vek Shopping Centre, an 11-minute walk from Saint Sarkis Cathedral and 1.2 km from Yuzhnye Kultury Park. This apartment is 3 km from Ice Cube Curling Centre and 3 km from Adler-Arena Skating Centre.
 
@@ -432,7 +432,7 @@ let PROPERTIES = [
     {
         id: 24,
         name: "Ratusha Apartments",
-        rating: 8.9,
+        rating: 7.3,
         address: "Area of Rynok Plosha , Lviv",
         description: `Located in the historic centre of Lviv, within a 10-minute walk of the City Hall, these apartments feature a fully equipped kitchen. The 15th-century Dominican Church is about 15 minutes’ walk away.
 
@@ -455,7 +455,7 @@ let PROPERTIES = [
     {
         id: 25,
         name: "Avangard Franko VIP Apartment",
-        rating: 6.6,
+        rating: 7.3,
         address: "Ivana Franka Street, Lviv",
         description: `Offering free WiFi and city views, Avangard Franko VIP Apartment is an accommodation situated in the middle of Lviv. This property is 200 m from Volodymyr Ivasyuk Monument.
 

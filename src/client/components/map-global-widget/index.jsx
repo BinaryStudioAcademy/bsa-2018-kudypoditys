@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from "prop-types";
-import MapView from '../map-view';
-
+import React, { Component } from "react";
+import MapView from "../map-view";
 
 export default class MapGlobalWidget extends Component {
     render() {
         const { fullScreen } = this.props;
-        console.log(this.props.startPosition)
-
 
         return (
             <React.Fragment>
                 <MapView
                     style={{
-                        width: fullScreen ? '100%' : 'default',
-                        height: fullScreen ? '100%' : 'default',
+                        width: fullScreen ? "100%" : "default",
+                        height: fullScreen ? "100%" : "default"
                     }}
                     width={765}
                     height={550}
@@ -34,5 +30,3 @@ MapGlobalWidget.defaultProps = {
         longitude: 30.746883
     }
 };
-
-
