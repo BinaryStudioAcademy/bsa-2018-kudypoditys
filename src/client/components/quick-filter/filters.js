@@ -1,71 +1,3 @@
-let filters = [
-    { id: "1", ischecked: true, label: "Pool", amount: 321, type: "Facility" },
-    {
-        id: "2",
-        ischecked: false,
-        label: "Very good location: 8+",
-        amount: 658,
-        type: "Review Score"
-    },
-    {
-        id: "4",
-        ischecked: false,
-        label: "Hotel",
-        amount: 658,
-        type: "Property Type"
-    },
-    {
-        id: "3",
-        ischecked: false,
-        label: "Hostel",
-        amount: 658,
-        type: "Property Type"
-    },
-    {
-        id: "5",
-        ischecked: false,
-        label: "5-star hotels",
-        amount: 658,
-        type: "Hotel Class"
-    },
-    {
-        id: "6",
-        ischecked: false,
-        label: "4-star hotels",
-        amount: 658,
-        type: "Hotel Class"
-    },
-    {
-        id: "7",
-        ischecked: false,
-        label: "3-star hotels",
-        amount: 658,
-        type: "Hotel Class"
-    },
-    {
-        id: "8",
-        ischecked: false,
-        label: "2-star hotels",
-        amount: 658,
-        type: "Hotel Class"
-    },
-    {
-        id: "9",
-        ischecked: false,
-        label: "1-star hotels",
-        amount: 658,
-        type: "Hotel Class"
-    },
-    {
-        id: "10",
-        ischecked: false,
-        label: "Unrated",
-        amount: 658,
-        type: "Hotel Class"
-    },
-    { id: "11", ischecked: true, label: "Pool2", amount: 321, type: "Facility" }
-];
-
 export const ratingScore = [
     {
         name: "Wonderful",
@@ -94,7 +26,7 @@ export const ratingScore = [
     {
         name: "Its_Ok",
         key: "Its_Ok",
-        label: "It`s Ok",
+        label: "It's Ok",
         value: "Its_Ok"
     },
     {
@@ -223,38 +155,4 @@ export const bedTypes = [
         value: "Dogs"
 
     },
-
-
-
-
-    // {
-    //     name: "queen_bed",
-    //     key: "queen_bed",
-    //     label: "Queen bed",
-    //     value: "3"
-    // },
-    // {
-    //     name: "king_bed",
-    //     key: "king_bed",
-    //     label: "King bed",
-    //     value: "4"
-    // },
-    // {
-    //     name: "bunk_bed",
-    //     key: "bunk_bed",
-    //     label: "Bunk bed",
-    //     value: "5"
-    // },
-    // {
-    //     name: "sofa_bed",
-    //     key: "sofa_bed",
-    //     label: "Sofa bed",
-    //     value: "6"
-    // },
-    // {
-    //     name: "futon_bed",
-    //     key: "futon_bed",
-    //     label: "Futon bed",
-    //     value: "7"
-    // }
 ];
