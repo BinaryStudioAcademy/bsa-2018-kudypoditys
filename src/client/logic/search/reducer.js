@@ -1,5 +1,5 @@
 import defaultState from "client/logic/defaultState";
-import { SEARCH_UPDATE, SEARCH_SUBMIT_SUCCESS, SEARCH_SUBMIT_FAILED} from "./actionTypes";
+import { SEARCH_UPDATE, SEARCH_SUBMIT_SUCCESS, SEARCH_SUBMIT_FAILED,LOADING_FINISH ,LOADING_START } from "./actionTypes";
 
 function searchReducer(state = defaultState.search, action) {
     switch (action.type) {
@@ -21,7 +21,8 @@ function searchReducer(state = defaultState.search, action) {
                 ...state,
                 ...action.payload
             }
-        }
+
+       }
         default: {
             return state;
         }

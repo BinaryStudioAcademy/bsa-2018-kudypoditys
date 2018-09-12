@@ -38,7 +38,7 @@ export class PropertyListItem extends React.Component {
     };
     handleRedirectToDetails = () => {
         console.log(JSON.stringify(this.props.propertyItemData));
-        history.push("/property/" + this.props.propertyItemData.id); // this.props.actions.redirectToDetails(id)
+        history.push("/property/" + this.props.propertyItemData.id);
     };
 
     componentDidMount() {
@@ -155,29 +155,7 @@ export class PropertyListItem extends React.Component {
                                     />
                                 </div>
 
-                                {/*<div*/}
-                                {/*style={{*/}
-                                {/*textAlign: "center",*/}
-                                {/*display: "flex",*/}
-                                {/*flexDirection: "column",*/}
-                                {/*paddingRight: 10*/}
-                                {/*}}*/}
-                                {/*>*/}
-                                {/*<div className="ratingName">*/}
-                                {/*{" "}*/}
-                                {/*{ratingStatus}*/}
-                                {/*</div>*/}
-                                {/*<br />*/}
-                                {/*<span className="reviewsNumber">*/}
-                                {/*{propertyItemData.reviewsNamber}{" "}*/}
-                                {/*reviews*/}
-                                {/*</span>*/}
-                                {/*</div>*/}
 
-                                {/*<div className="rating_num">*/}
-                                {/*{" "}*/}
-                                {/*{propertyItemData.rating}*/}
-                                {/*</div>*/}
                                 <div className="rating_listItem">
                                     <RatingBlock
                                         avgPropRating={avgPropRating}

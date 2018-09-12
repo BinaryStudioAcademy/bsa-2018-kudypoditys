@@ -1,5 +1,5 @@
 import {
-    SEARCH_UPDATE,SEARCH_SUBMIT
+    SEARCH_UPDATE,SEARCH_SUBMIT,
 } from './actionTypes';
 
 export function searchUpdate(payload) {
