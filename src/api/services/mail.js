@@ -73,7 +73,7 @@ class MailService {
             to: user.email,
             subject: mailOptionsObj.subject,
             html: `
-        <a href="${BASE_URL}:3000/${action}?email=${user.email}&token=${
+        <a href="http://localhost:3000/${action}?email=${user.email}&token=${
                 mailOptionsObj.verifyStringParam
             }">
           ${mailOptionsObj.message}

@@ -7,6 +7,7 @@ import {
     USER_PASSWORD_CHANGE_SUCCESS,
     USER_PASSWORD_CHANGE_FAILURE
 } from "./actionTypes";
+import { LOGOUT } from "../header/actionTypes";
 import { GET_CURRENT_USER_SUCCESS } from "../login/actionTypes";
 import defaultState from "client/logic/defaultState";
 
@@ -66,6 +67,9 @@ export default function userSettingsReducer(
                 passwordMessage: action.payload,
                 userPasswordError: true
             };
+        }
+        case LOGOUT: {
+            return (state = {});
         }
 
         default: {
