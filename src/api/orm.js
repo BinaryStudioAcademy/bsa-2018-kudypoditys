@@ -11,8 +11,8 @@ const DB_NAME = process.env.DB_NAME,
         pool: {
             max: 5,
             min: 0,
-            idle: 20000,
-            acquire: 20000
+            idle: 60000,
+            acquire: 60000
         }
     };
 

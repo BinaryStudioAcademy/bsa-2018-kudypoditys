@@ -5,7 +5,8 @@ export function mapStateToProps(state) {
     const { property } = state.propertyPage;
     return {
         user: user,
-        property: property
+        property: property,
+        currency: state.header.selectedCurrency,
     };
 }
 

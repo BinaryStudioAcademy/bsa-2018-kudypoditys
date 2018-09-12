@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
+import { connect } from 'react-redux';
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { MAPBOX_TOKEN } from "client/constants";
 import { Icon, Label } from "semantic-ui-react";
 import MapPropertyItem from "client/components/map-property-item";
 import PropTypes from "prop-types";
 import MapPopupItem from "client/components/map-popup-item";
+import { convert } from '../../helpers/convertCurrency';
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -25,6 +27,8 @@ class MapView extends React.Component {
     }
     renderPopup = () => {
         const { popupInfo, controlEnable } = this.state;
+
+        const propertyCurrency = popupInfo && popupInfo.currency && popupInfo.currency.code;
 
         return (
             controlEnable &&
@@ -47,10 +51,11 @@ class MapView extends React.Component {
                     <MapPopupItem
                         propertyName={popupInfo.name}
                         propertyAddress={popupInfo.address}
+                        propertyCurrency={propertyCurrency}
                         price={popupInfo.price}
                         rating={popupInfo.rating}
                         imageSrc={popupInfo.imageSrc}
-                        // closeClicked={() => this.setState({ propertyInfo: null })}
+                    // closeClicked={() => this.setState({ propertyInfo: null })}
                     />
                 </Popup>
             )
@@ -66,6 +71,11 @@ class MapView extends React.Component {
         });
     };
     renderPropertyMarker = (property, index) => {
+        const propCurrency = property.currency && property.currency.code;
+        const currency = this.props.currency.code;
+
+        const price = convert(propCurrency, property.price, currency);
+
         return (
             <Marker
                 key={`marker-${index}`}
@@ -93,7 +103,7 @@ class MapView extends React.Component {
                             }}
                             color="black"
                         >
-                            $ {property.price}
+                            {currency} {price}
                         </Label>
                     ) : null}
                 </Icon>
@@ -105,11 +115,13 @@ class MapView extends React.Component {
     };
     renderInfo = () => {
         const { propertyInfo } = this.state;
+        console.log(propertyInfo);
         return (
             propertyInfo && (
                 <MapPropertyItem
                     propertyName={propertyInfo.name}
                     propertyAddress={propertyInfo.address}
+                    propertyCurrency={propertyInfo.currency.code}
                     price={propertyInfo.price}
                     rating={propertyInfo.rating}
                     imageSrc={propertyInfo.imageSrc}
@@ -160,4 +172,4 @@ MapPropertyItem.propTypes = {
     controlEnable: PropTypes.bool
 };
 
-export default MapView;
+export default connect((state) => ({ currency: state.header.selectedCurrency }))(MapView);
