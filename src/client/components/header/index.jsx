@@ -23,7 +23,7 @@ export class MainHeader extends Component {
         return currencies.map(x => ({
             key: x.id,
             value: x.id,
-            text: x.code
+            text: x.codeTitle
         }))
 
     };
@@ -87,7 +87,8 @@ export class MainHeader extends Component {
                         <Grid.Column width={8} textAlign={"right"}>
                             <Dropdown
                                 style={{
-                                    width: "70px",
+                                    paddingTop:"6px",
+                                    width: "90px",
                                     fontSize: "14px",
                                     background: "none",
                                     color: "#fff",

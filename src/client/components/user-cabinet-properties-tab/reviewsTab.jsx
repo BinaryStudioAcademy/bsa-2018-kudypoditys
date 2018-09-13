@@ -14,14 +14,24 @@ export class ReviewsTab extends React.Component {
         const { property } = this.props;
 
         return (
-            <Segment className="reviews-segment">
-                <Header as="h2">Property reviews</Header>
-                <Card.Group itemsPerRow={4}>
-                    {!property.reviews.length
-                        ? "Property dont have review :("
-                        : this.getReviewsItems(property)}
-                </Card.Group>
-            </Segment>
+            <div>
+                {!property.reviews.length ? (
+                    <Header
+                        textAlign="center"
+                        className="no-reviews"
+                        style={{ margin: "20px" }}
+                    >
+                        Property doesn't have review.
+                    </Header>
+                ) : (
+                    <Segment className="reviews-segment">
+                        <Header as="h2">Property reviews</Header>
+                        <Card.Group itemsPerRow={4}>
+                            {this.getReviewsItems(property)}
+                        </Card.Group>
+                    </Segment>
+                )}
+            </div>
         );
     }
 }
