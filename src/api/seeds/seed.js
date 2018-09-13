@@ -4440,17 +4440,20 @@ const REVIEWS = [
 const CURRENCIES = [
     {
         name: "EURO",
-        code: "EUR",
+        code: "€",
+        codeTitle:"EUR",
         number: "978"
     },
     {
         name: "US DOLLAR",
-        code: "USD",
+        code: "$",
+        codeTitle:"USD",
         number: "840"
     },
     {
         name: "Hryvnia",
-        code: "UAH",
+        code: "₴",
+        codeTitle:"UAH",
         number: "980"
     }
 ];
