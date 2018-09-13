@@ -17,13 +17,22 @@ function cityInfosReducer(state = defaultState.cityInfos, action) {
                     action.payload.code,
                 );
                 state[city].currency = action.payload.code;
+                
             }
 
             return { ...state };
 
         case CITY_INFOS_GET_SUCCESS: {
+            const currency = localStorage.getItem('selectedCurrency')
+            console.log(currency)
             for (let city in action.payload) {
-                action.payload[city].currency = cur;
+                action.payload[city].currency = currency.code;
+                // action.payload[city].avgPrice = convert(
+                //     "USD",
+                //     state[city].avgPrice,
+                //     action.payload[city].currency
+                //     ,
+                // );
             }
 
             return {

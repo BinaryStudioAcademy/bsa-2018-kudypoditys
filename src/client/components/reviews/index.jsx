@@ -107,8 +107,7 @@ export class Reviews extends React.Component {
                     100% verified reviews.
                     {shouldRenderForm  ? (
                         <div className="reviews_add_review__container">
-                            Recently you visited {property.name}. Would you like
-                            to
+                            Recently you visited {property.name}.
                             <Modal
                                 className="reviews_add_review__modal"
                                 trigger={
@@ -116,7 +115,7 @@ export class Reviews extends React.Component {
                                         onClick={this.handleOpen}
                                         className="reviews_add_review_btn"
                                     >
-                                        add review?
+                                        Add review
                                     </div>
                                 }
                                 open={this.state.modalOpen}
