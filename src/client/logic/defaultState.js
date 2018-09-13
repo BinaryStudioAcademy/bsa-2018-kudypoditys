@@ -82,7 +82,7 @@ const state = {
     },
     header: {
         currencies: [],
-        selectedCurrency: 1,
+        selectedCurrency: { id: 2, name: 'US DOLLAR', code: 'USD', number: 840 },
         currentUser: null
     },
     shownProperties: {

@@ -1,13 +1,18 @@
-import { getCurrencies, selectCurrency, logout } from 'client/logic/header/actions';
+import { selectCurrency, logout } from 'client/logic/header/actions';
+import { currenciesGet } from 'client/logic/currencies/actions';
 
 export function mapStateToProps(state, ownProps) {
-    return { ...state.header };
+    const { currencies } = state;
+    return {
+        ...state.header,
+        currencies: currencies.currencies || [],
+    };
 }
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
         getCurrencies() {
-            dispatch(getCurrencies());
+            dispatch(currenciesGet());
         },
 
         onCurrencyChange(payload) {

@@ -20,9 +20,6 @@ export class BannerList extends Component {
 
     componentWillMount() {
         this.props.getCityInfos();
-    }
-    componentDidMount() {
-
         // this.setState({lviv:this.props.city1}, ()=>console.log(this.state.city1))
     }
     onCardClick = query => {
@@ -41,42 +38,48 @@ export class BannerList extends Component {
     render() {
 
 
-        const { cityInfos } = this.props;
+        const { cityInfos, currency} = this.props;
         const {Dnipro, Kiev, Odessa, Lviv, Kharkiv, Ternopil} = cityInfos;
 
         return (
-            <div className="container">
-                <Grid>
-                    <Grid.Row columns="equal">
+            <div className='container'>
+                <Grid >
+                    <Grid.Row columns='equal'>
                         <Grid.Column>
                             <Banner
+                                currency={currency}
                                 cityInfo={Lviv}
                                 onClick={() => this.onCardClick("Lviv")}
                             />
                         </Grid.Column>
                         <Grid.Column>
                             <Banner
+                                currency={currency}
                                 cityInfo={Dnipro}
                                 onClick={() => this.onCardClick("Dnipro")}
                             />
                         </Grid.Column>
                         <Grid.Column width={8}>
                             <Banner
+                                currency={currency}
                                 cityInfo={Ternopil}
                                 onClick={() => this.onCardClick("Ternopil")}
                             />
                         </Grid.Column>
+
                     </Grid.Row>
 
                     <Grid.Row columns={3}>
                         <Grid.Column>
                             <Banner
+                                currency={currency}
                                 cityInfo={Kiev}
                                 onClick={() => this.onCardClick("Kiev")}
                             />
                         </Grid.Column>
                         <Grid.Column>
                             <Banner
+                                currency={currency}
                                 cityInfo={Odessa}
                                 onClick={() => this.onCardClick("Odessa")}
                             />

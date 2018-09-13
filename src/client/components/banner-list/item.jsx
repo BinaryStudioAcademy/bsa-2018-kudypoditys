@@ -1,19 +1,22 @@
-import React, { Component, Fragment } from "react";
-import { Card, Container, Image } from "semantic-ui-react";
-import PropTypes from "prop-types";
+import React, { Component, Fragment, connect } from 'react';
+import { Card, Container, Image } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 import "./index.scss";
 // import tag from "client/components/banner-list/img/tag.svg";
 import shortParagraphImg from "./img/short-paragraph.png";
 
 export class Banner extends Component {
+
     handleClick(cityInfo) {
-        this.props.onClick(cityInfo);
+        console.log('Hello from item')
+        this.props.onClick(cityInfo)
     }
     render() {
         const flagUrl= 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
-        const { cityInfo } = this.props;
-        const imgStyles = url => ({
+
+        const { cityInfo, currency } = this.props;
+        const imgStyles = (url) => ({
             background: `url(${url})`,
             backgroundSize: "cover"
         });
@@ -46,8 +49,7 @@ export class Banner extends Component {
                         <Card.Description className="banner__avgprice">
                             <span>Average price</span>
                             <span>
-                                {" "}
-                                US${" "}
+                               {currency}
                                 {Intl.NumberFormat("en-US").format(
                                     cityInfo.avgPrice
                                 )}

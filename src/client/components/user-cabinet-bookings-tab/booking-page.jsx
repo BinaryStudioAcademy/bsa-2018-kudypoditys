@@ -7,6 +7,7 @@ import {
     Divider,
     Confirm
 } from "semantic-ui-react";
+import { connect } from 'react-redux';
 import { Slider } from "../slider";
 import moment from "moment";
 import "./booking-page.scss";
@@ -17,8 +18,9 @@ import {
 } from "client/helpers/avgReviewRating";
 import { PropertySummary } from "../property-summary";
 import history from "client/history";
+import { convert } from "../../helpers/convertCurrency";
 
-export class BookingPage extends React.Component {
+class BookingPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = { modalOpen: false };
@@ -30,7 +32,7 @@ export class BookingPage extends React.Component {
     handleCancel = () => this.setState({ open: false });
 
     render() {
-        const { booking, images } = this.props;
+        const { booking, images, currency } = this.props;
         const { orderCode } = this.props.booking;
         const { room } = booking;
         const { property } = room;
@@ -52,6 +54,9 @@ export class BookingPage extends React.Component {
             fontSize: "16px",
             marginBottom: "5px"
         };
+
+        const propCurrency = booking.room.property.currency;
+        const roomPrice = convert(propCurrency.code, price, currency.code);
 
         return (
             <Container>
@@ -76,7 +81,7 @@ export class BookingPage extends React.Component {
                         header="Are you sure?"
                         content={`Do you really want to cancel your booking at ${
                             property.name
-                        }?`}
+                            }?`}
                         actions={[
                             {
                                 key: "no",
@@ -122,7 +127,7 @@ export class BookingPage extends React.Component {
                         </p>
                         <p style={pStyle}>
                             <Icon name="dollar" />
-                            {price}
+                            {currency.code} {roomPrice}
                         </p>
                     </div>
                 </div>
@@ -140,3 +145,7 @@ export class BookingPage extends React.Component {
         );
     }
 }
+
+export default connect(state => ({
+    currency: state.header.selectedCurrency
+}))(BookingPage);
