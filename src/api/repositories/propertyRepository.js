@@ -557,43 +557,10 @@ class PropertyRepository extends Repository {
                                 model: Reservation,
                                 required: false,
                                 where: {
-                                    $and: [
-                                        {
-                                            dateIn: {
-                                                $notBetween: [
-                                                    filter.dateIn, // new Date("2018-09-16"),
-                                                    filter.dateOut // new Date("2018-09-17")
-                                                ]
-                                            }
-                                        },
-                                        {
-                                            dateOut: {
-                                                $notBetween: [
-                                                    filter.dateIn, // new Date("2018-09-16"),
-                                                    filter.dateOut // new Date("2018-09-17")
-                                                ]
-                                            }
-                                        }
-                                        // {
-                                        //     $not: [
-                                        //         {
-                                        //             $and: [
-                                        //                 {
-                                        //                     dateIn: {
-                                        //                         $gte:
-                                        //                             filter.dateIn
-                                        //                     }
-                                        //                 },
-                                        //                 {
-                                        //                     dateOut: {
-                                        //                         $lte:
-                                        //                             filter.dateOut
-                                        //                     }
-                                        //                 }
-                                        //             ]
-                                        //         }
-                                        //     ]
-                                        // }
+                                    $or: [
+                                        { dateIn: { $gt: filter.dateOut } },
+                                        { dateOut: { $lt: filter.dateIn } }
+
                                     ]
                                 }
                             }
