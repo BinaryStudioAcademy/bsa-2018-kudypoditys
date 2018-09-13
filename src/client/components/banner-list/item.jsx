@@ -20,6 +20,7 @@ export class Banner extends Component {
             background: `url(${url})`,
             backgroundSize: "cover"
         });
+        console.log(this.props)
 
         return cityInfo ? (
             <Container
@@ -48,8 +49,8 @@ export class Banner extends Component {
                         />
                         <Card.Description className="banner__avgprice">
                             <span>Average price</span>
-                            <span>
-                               {currency}
+                            <span className="avgPrice">
+                               {currency}{' '}
                                 {Intl.NumberFormat("en-US").format(
                                     cityInfo.avgPrice
                                 )}

@@ -9,20 +9,28 @@ function cityInfosReducer(state = defaultState.cityInfos, action) {
             return CITY_INFOS;
 
         case CURENCY_SELECT:
-            // return state.forEach(city => {
-            //     city.avgPrice = convert('usd', city.avgPrice, action.payload.code);
-            // });
+
+
+
               for (let city in state) {
-                 state[city].avgPrice = convert('usd', state[city].avgPrice, action.payload.code)
-             // city.avgPrice = convert('usd', city.avgPrice, action.payload.code)
-                 console.log(state[city].avgPrice)
+
+                 state[city].avgPrice = convert(state[city].currency, state[city].avgPrice, action.payload.code);
+                  state[city].currency = action.payload.code;
+
         }
-            return {...state}   
+
+            return {...state}
 
         case CITY_INFOS_GET_SUCCESS: {
+            for (let city in action.payload) {
+                action.payload[city].currency = 'USD'
+            }
+
+          
             return {
                 ...state,
-                ...action.payload,
+                ...action.payload
+
 
                 // ...state[action.payload],
                 // ...action.payload

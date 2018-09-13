@@ -40,7 +40,9 @@
     font-weight: 700;
 }
 .rating_item {
-    padding: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .add_review__button > .ui.primary.button {
@@ -168,4 +170,8 @@ cursor: pointer;
     position: relative;
     left: 87%;;
     cursor: pointer;
+    padding-bottom: 10px;
+}
+.scale.visible.transition .ui.header {
+    margin: 5px;
 }
