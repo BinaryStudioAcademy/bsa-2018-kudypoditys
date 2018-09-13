@@ -82,7 +82,7 @@ class PropertyService {
                 return response.data;
             });
     };
-    updatePropery(data) {
+    updateProperty(data) {
         return api
             .sendAuthRequest(`/api/property/${data.propertyId}`, "put", data)
             .then(response => {

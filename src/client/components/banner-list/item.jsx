@@ -13,40 +13,56 @@ export class Banner extends Component {
         this.props.onClick(cityInfo)
     }
     render() {
+        const flagUrl= 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+
         const { cityInfo, currency } = this.props;
         const imgStyles = (url) => ({
             background: `url(${url})`,
             backgroundSize: "cover"
         });
 
-        return (
-
-            cityInfo ?
-                < Container onClick={() => this.handleClick(cityInfo)} className="banner transition">
-
-                    <Card.Content className="banner__content" style={imgStyles(cityInfo.pictureUrl)}>
-                        <Card.Header className="banner__title">
-                            {cityInfo.city}
-                        </Card.Header>
-                        <Card.Meta>
-                            <h5 className="banner__subtitle">{Intl.NumberFormat('en-US').format(cityInfo.properties)}   properties</h5>
-                        </Card.Meta>
-                        <div className="banner__rectangle">
-                            <div className="banner___flag" style={imgStyles(cityInfo.flagUrl)} />
-                            <Card.Description className="banner__avgprice">
-                                <span>Average price</span>
-                                <span> {currency} {Intl.NumberFormat('en-US').format(cityInfo.avgPrice)}</span>
-                            </Card.Description>
-                        </div>
-                    </Card.Content>
-
-
-                </Container >
-                : <Fragment>
-                    <Image src={shortParagraphImg} className="shortParagraphImg" />
-                    <Image src={shortParagraphImg} className="shortParagraphImg" />
-                </Fragment>
-
+        return cityInfo ? (
+            <Container
+                onClick={() => this.handleClick(cityInfo)}
+                className="banner transition"
+            >
+                <Card.Content
+                    className="banner__content"
+                    style={imgStyles(cityInfo.imageUrl)}
+                >
+                    <Card.Header className="banner__title">
+                        {cityInfo.name}
+                    </Card.Header>
+                    <Card.Meta>
+                        <h5 className="banner__subtitle">
+                            {Intl.NumberFormat("en-US").format(
+                                cityInfo.properties
+                            )}{" "}
+                            properties
+                        </h5>
+                    </Card.Meta>
+                    <div className="banner__rectangle">
+                        <div
+                            className="banner___flag"
+                            style={imgStyles(flagUrl)}
+                        />
+                        <Card.Description className="banner__avgprice">
+                            <span>Average price</span>
+                            <span>
+                               {currency}
+                                {Intl.NumberFormat("en-US").format(
+                                    cityInfo.avgPrice
+                                )}
+                            </span>
+                        </Card.Description>
+                    </div>
+                </Card.Content>
+            </Container>
+        ) : (
+            <Fragment>
+                <Image src={shortParagraphImg} className="shortParagraphImg" />
+                <Image src={shortParagraphImg} className="shortParagraphImg" />
+            </Fragment>
         );
     }
 }

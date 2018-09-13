@@ -162,6 +162,7 @@ class PropertyRepository extends Repository {
                     cityId: city
                 },
                 include: [
+
                     {
                         model: City
                     },

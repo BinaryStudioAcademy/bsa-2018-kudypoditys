@@ -2,15 +2,11 @@ import React from "react";
 import {
     Header,
     Comment,
-    Form,
-    Button,
-    Checkbox,
-    Transition,
-    Progress,
+
     Message,
-    Icon
+
 } from "semantic-ui-react";
-import PropTypes from "prop-types";
+
 import { connect } from "react-redux";
 
 import "./index.scss";
@@ -19,7 +15,8 @@ import Review from "./item";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import {
     getPropReviewsArray,
-    getPropToggler
+    getPropToggler,
+    getPropToggler2
 } from "client/helpers/reviewToggler";
 import {
     getGroupedArray,
@@ -27,9 +24,14 @@ import {
 } from "client/helpers/avgReviewRating";
 import RatingBar from "./ratingBar";
 import Modal from "../modal";
-import BookingForm from "../booking-form";
+
 
 export class Reviews extends React.Component {
+
+
+
+
+
     toggleVisibility = () =>
         this.setState({
             visible: !this.state.visible
@@ -40,7 +42,8 @@ export class Reviews extends React.Component {
 
         this.state = {
             visible: true,
-            modalOpen: false
+            modalOpen: false,
+            reviewLeft: false
         };
     }
 
@@ -54,8 +57,11 @@ export class Reviews extends React.Component {
     };
 
     render() {
-        const { property, user, bookings } = this.props;
-        let shouldRenderForm = true;
+        const { property, user, bookings, } = this.props;
+        let shouldRenderForm = false;
+        let reviewLeft = false;
+
+
         const { visible } = this.state;
 
         const avgPropRatingArray = getGroupedArray(
@@ -80,20 +86,22 @@ export class Reviews extends React.Component {
 
         let legitArray = getPropReviewsArray(bookings);
 
-        if (legitArray.length > 0) {
-            shouldRenderForm = getPropToggler(legitArray, property);
+        if (legitArray.length > 0 ) {
+            shouldRenderForm = getPropToggler(legitArray, property, user);
+
         }
-        // if (!reviewData.cons && !reviewData.pros) {
-        //     shouldRenderComments = false;
-        // }
-        //
-        // console.log(shouldRenderForm);
+
+        if ( property.reviews.length && user) {
+            reviewLeft = getPropToggler2(property, user)
+        }
+
         return (
             <Comment.Group size="large" style={{ marginBottom: 20 }}>
                 {/*<Checkbox defaultChecked label='Show reviews' />*/}
+                {/*{reviewLeft ? (null) : (*/}
                 <Message className="review_message">
                     100% verified reviews.
-                    {shouldRenderForm ? (
+                    {shouldRenderForm  ? (
                         <div className="reviews_add_review__container">
                             Recently you visited {property.name}. Would you like
                             to
@@ -109,6 +117,8 @@ export class Reviews extends React.Component {
                                 }
                                 open={this.state.modalOpen}
                                 // onClose={this.handleClose}
+                                closeOnDimmerClick={true}
+                                // closeIcon
                                 onClose={this.close}
                             >
                                 <ReviewForm
@@ -119,10 +129,11 @@ export class Reviews extends React.Component {
                         </div>
                     ) : null}
                 </Message>
+                {/*)}*/}
                 {property.reviews.length === 0 ? (
                     <div>
                         <Header
-                            as="mytagаSOSNOOOOLEY"
+                            as="h3"
                             dividing
                             style={{
                                 color: "#465672",
@@ -137,9 +148,9 @@ export class Reviews extends React.Component {
                     <div className="reviews__container">
                         <RatingBar property={property} />
 
-                        {property.reviews.map(review => (
+                        {property.reviews.map((review, i) => (
                             <Review
-                                key={review.createdAt}
+                                key={i}
                                 reviewData={review}
                             />
                         ))}

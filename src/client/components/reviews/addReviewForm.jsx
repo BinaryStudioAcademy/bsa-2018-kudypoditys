@@ -63,7 +63,7 @@ export class addReviewForm extends React.Component {
 
         avgPropRatingArray.push(avg);
         const avgProp = getAvgFromArray(avgPropRatingArray);
-        console.log(avgProp); // this we should write to Property table as Rating
+
         if (!userc) {
             property.reviews.push({
                 pros: pros,
@@ -125,6 +125,12 @@ export class addReviewForm extends React.Component {
                 </Transition>
                 <Transition visible={visible} animation="scale" duration={500}>
                     <div>
+                        <div
+                            className="close_icon"
+                            onClick={this.handleClose}
+                        >
+                            <Icon name="close" size="large" />Close
+                        </div>
                         <RatingForm
                             onSelect={this.handleRate}
                             name={"Cleanliness"}
@@ -173,6 +179,7 @@ export class addReviewForm extends React.Component {
                                 onClick={this.toggleVisibility}
                             />
                         </div>
+
                     </div>
                 </Transition>
             </Form>

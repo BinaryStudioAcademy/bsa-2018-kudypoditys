@@ -1,6 +1,7 @@
 const {
     USERS,
     PROPERTIES,
+    // PROPWITHCALCULATEDRATING,
     ACCOMMODATION_RULES,
     FACILITY_LISTS,
     ROOMS,
@@ -21,7 +22,61 @@ const {
     LANGUAGES,
     CURRENCIES,
     AVAILABILITY
+
 } = require("./seed");
+
+let TEMP = [
+    {
+        id: 1,
+        name: "Ukraine Hotel",
+        rating: 5,
+        address: "Koval street 16, Kyiv",
+        description:
+            "This property is 15 minutes walk from the beach. Located on Independence Square in the heart of Kiev, this hotel offers air-conditioned rooms and suites with elegant décor. It is a 3-minute walk from the Maidan Nezalezhnosti and Kreschatik Metro Stations. In-room facilities at the Ukraine Hotel include satellite TV and a refrigerator. Your bathroom includes free toiletries and perfumes. Guests enjoy views of the Kreschatyk Street and the surrounding area. A large breakfast buffet is available at the Ukraine Hotel, and 24-hour room service is offered. Ukrainian and European cuisine is served for lunch and dinner. Live music is sometimes played here. The hotel features a beauty salon, sauna and massage facilities. A private laundry service is also available. Hotel Ukraine is a 10-minute walk from Mariyinsky Park and the St. Sofia Cathedral. Secure parking is available on site. Pecherskyj is a great choice for travellers interested in restaurants, food and friendly locals. This is our guests' favourite part of Kiev, according to independent reviews. This property also has one of the best-rated locations in Kiev! Guests are happier about it compared to other properties in the area.",
+        contactPhone: "0509832174",
+        coordinates: { lat: 49.137089, lng: 24.027161 },
+        distanceToCentre: 1.7,
+        userId: 1,
+        propertyTypeId: 9,
+        cityId: 2,
+        accommodationRuleId: 1
+    }
+
+
+]
+function calc(){
+    let Arr = []
+
+    PROPERTIES.forEach(prop => {
+        let propReviewArr = [];
+
+
+        REVIEWS.forEach(review => {
+            if (review.propertyId === prop.id) {
+                propReviewArr.push(review.avgReview)
+            }
+        });
+        let total = 0;
+        let avg;
+        for (let i = 0; i < propReviewArr.length; i++) {
+            total += propReviewArr[i];
+        }
+        avg = total / propReviewArr.length;
+        if (isNaN(avg)) {
+            avg =  0
+        }
+
+        prop.rating = JSON.parse( avg.toFixed(1));
+
+
+        TEMP.push(prop)
+        console.log(TEMP)
+    })
+
+
+}
+calc();
+
 
 function upsertAllData(models) {
     const upsertPromises = [];
@@ -52,6 +107,10 @@ function upsertAllData(models) {
         Availability
     } = models;
 
+
+
+
+
     const SimpleUpsertMap = [
         [PaymentType, PAYMENT_TYPES],
         [BedType, BED_TYPES],
@@ -62,7 +121,7 @@ function upsertAllData(models) {
         [PropertyType, PROPERTY_TYPE],
         [AccommodationRule, ACCOMMODATION_RULES],
         [User, USERS],
-        [Property, PROPERTIES],
+        [Property, TEMP],
         [FacilityList, FACILITY_LISTS],
         [PropertyPaymentType, PROPERTY_PAYMENT_TYPES],
         [Room, ROOMS],
