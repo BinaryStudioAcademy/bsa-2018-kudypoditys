@@ -261,11 +261,12 @@ class PropertyRepository extends Repository {
                             room.amount,
                             room.price
                         );
-                        availabilities.map(availability => {
-                            AvailabilityRepository.create(availability);
+                        availabilities.map(async availability => {
+                            await AvailabilityRepository.create(availability);
                         });
                     });
                 });
+
                 return newProperty;
             })
             .then(newProperty => this.findById(newProperty.id));
@@ -377,11 +378,9 @@ class PropertyRepository extends Repository {
             default:
                 ratingRange = [11];
         }
-        console.log(ratingRange);
         return ratingRange;
     }
     getFilteredProperties(filter) {
-        console.log("filter " + JSON.stringify(filter));
         const SORT_VALUE = {
             PRICE: "price",
             DISTANCE: "distance_to_center",
@@ -523,8 +522,6 @@ class PropertyRepository extends Repository {
                     ]
                 }
                 : { $between: [0, 10] };
-
-        console.log("foo  = " + JSON.stringify(fo));
         return this.model
             .findAndCountAll({
                 limit: 5,
@@ -567,43 +564,10 @@ class PropertyRepository extends Repository {
                                 model: Reservation,
                                 required: false,
                                 where: {
-                                    $and: [
-                                        {
-                                            dateIn: {
-                                                $notBetween: [
-                                                    filter.dateIn, // new Date("2018-09-16"),
-                                                    filter.dateOut // new Date("2018-09-17")
-                                                ]
-                                            }
-                                        },
-                                        {
-                                            dateOut: {
-                                                $notBetween: [
-                                                    filter.dateIn, // new Date("2018-09-16"),
-                                                    filter.dateOut // new Date("2018-09-17")
-                                                ]
-                                            }
-                                        }
-                                        // {
-                                        //     $not: [
-                                        //         {
-                                        //             $and: [
-                                        //                 {
-                                        //                     dateIn: {
-                                        //                         $gte:
-                                        //                             filter.dateIn
-                                        //                     }
-                                        //                 },
-                                        //                 {
-                                        //                     dateOut: {
-                                        //                         $lte:
-                                        //                             filter.dateOut
-                                        //                     }
-                                        //                 }
-                                        //             ]
-                                        //         }
-                                        //     ]
-                                        // }
+                                    $or: [
+                                        { dateIn: { $gt: filter.dateOut } },
+                                        { dateOut: { $lt: filter.dateIn } }
+
                                     ]
                                 }
                             }
