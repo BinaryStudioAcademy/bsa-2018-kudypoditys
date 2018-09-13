@@ -84,6 +84,7 @@ class MapView extends React.Component {
                 offsetLeft={-20}
                 offsetTop={-10}
             >
+                <div className="mark1">
                 <Icon
                     size="big"
                     name="map marker alternate"
@@ -93,20 +94,22 @@ class MapView extends React.Component {
                         this.handleMarkerClicked(property);
                     }}
                 >
+
+                </Icon>
                     {property.price ? (
                         <Label
                             style={{
                                 whiteSpace: "nowrap",
-                                fontSize: 9,
-                                position: "relative",
-                                top: -12
+                                fontSize: 10,
+                                // position: "relative",
+
                             }}
-                            color="black"
+                            color="#d6d3d3"
                         >
                             {currency} {price}
                         </Label>
                     ) : null}
-                </Icon>
+                </div>
             </Marker>
         );
     };
@@ -115,7 +118,7 @@ class MapView extends React.Component {
     };
     renderInfo = () => {
         const { propertyInfo } = this.state;
-        console.log(propertyInfo);
+
         return (
             propertyInfo && (
                 <MapPropertyItem

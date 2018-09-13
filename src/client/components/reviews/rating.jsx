@@ -12,7 +12,7 @@ export default class RatingForm extends React.Component {
         return (
             <Fragment>
                 <div className={"rating_item"}>
-                    <Header as="h4">{name}</Header>
+                    <Header as="h4" style={{margin: 0}}>{name}</Header>
 
                     <Rating name={name} maxRating={10} defaultRating={0}  size='huge'
                             onRate={this.props.onSelect}/>

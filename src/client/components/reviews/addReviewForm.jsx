@@ -19,7 +19,7 @@ import {
     getGroupedArray,
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
-
+import history from "client/history";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 
 // import {Reviews} from "./index";
@@ -91,8 +91,9 @@ export class addReviewForm extends React.Component {
             rating: avgProp,
             propertyId: property.id
         });
+        history.push(`/property/(${property.id})`);
 
-        this.props.getProperty(property.id);
+        // this.props.getProperty(property.id);
     };
 
     render() {
