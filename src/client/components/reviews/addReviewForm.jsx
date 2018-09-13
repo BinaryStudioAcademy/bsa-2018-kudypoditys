@@ -91,7 +91,8 @@ export class addReviewForm extends React.Component {
             rating: avgProp,
             propertyId: property.id
         });
-        history.push(`/property/(${property.id})`);
+        history.push(`/property/${property.id}`);
+        window.location.reload()
 
         // this.props.getProperty(property.id);
     };

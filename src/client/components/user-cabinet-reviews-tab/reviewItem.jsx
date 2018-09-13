@@ -37,45 +37,55 @@ export default class ReviewItem extends React.Component {
                     <Card.Meta>Your review</Card.Meta>
                     <Card.Description>
                         <div className="avg_rating___block">
+                            <span className="rating_name">Cleanliness</span>
                             <Progress
                                 progress="value"
                                 color="blue"
                                 size="small"
                                 total="10"
                                 value={this.props.Cleanliness}
-                                label="Cleanliness"
+                                // label="Cleanliness"
+                                style={{margin:1}}
                             />
+                            <span className="rating_name">Facilities</span>
                             <Progress
                                 progress="value"
                                 color="blue"
                                 size="small"
                                 total="10"
                                 value={this.props.Facilities}
-                                label="Facilities"
+                                // label="Facilities"
+                                style={{margin:1}}
                             />
+                            <span className="rating_name">Comfort</span>
                             <Progress
                                 progress="value"
                                 color="blue"
                                 size="small"
                                 total="10"
                                 value={this.props.Comfort}
-                                label="Comfort"
+                                // label="Comfort"
+                                style={{margin:1}}
                             />
+                            <span className="rating_name">Price</span>
                             <Progress
                                 progress="value"
                                 color="blue"
                                 size="small"
                                 total="10"
                                 value={this.props.Price}
-                                label="Price"
+                                // label="Price"
+                                style={{margin:1}}
                             />
+                            <span className="rating_name">Location</span>
                             <Progress
                                 progress="value"
                                 color="blue"
                                 size="small"
                                 total="10"
                                 value={this.props.Location}
-                                label="Location"
+                                // label="Location"
+
                             />
                         </div>
 
@@ -86,7 +96,10 @@ export default class ReviewItem extends React.Component {
                                         padding: 10,
                                         backgroundColor: "#f7f8f9",
                                         color: "#465672",
-                                        marginBottom: 10
+                                        marginBottom: 10,
+                                        display: this.props.pros
+                                            ? "block"
+                                            : "none"
                                     }}
                                 >
                                     <Icon color="green" name="plus circle" />
@@ -96,7 +109,10 @@ export default class ReviewItem extends React.Component {
                                     style={{
                                         padding: 10,
                                         backgroundColor: "#f7f8f9",
-                                        color: "#465672"
+                                        color: "#465672",
+                                        display: this.props.cons
+                                            ? "block"
+                                            : "none"
                                     }}
                                 >
                                     {" "}

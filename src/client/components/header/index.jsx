@@ -52,6 +52,8 @@ export class MainHeader extends Component {
         const { currencies } = this.props;
         const currency = currencies.find(x => x.id === value);
         this.props.onCurrencyChange(currency);
+
+        localStorage.setItem('selectedCurrency', JSON.stringify(currency));
     }
 
     // state = { activeItem: "about-us" };
