@@ -101,7 +101,8 @@ class MapView extends React.Component {
                             style={{
                                 whiteSpace: "nowrap",
                                 fontSize: 10,
-                                // position: "relative",
+                                position: "relative",
+                                left: -7
 
                             }}
                             color="#d6d3d3"

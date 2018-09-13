@@ -14,8 +14,13 @@ import {
 import "./index.scss";
 import BasicMapWidget from "../basic-map-widget";
 import Modal from "../modal";
+import history from "client/history";
 
 export class PropertyItem extends React.Component {
+    handleRedirectToDetails = () => {
+        history.push("/property/" + this.props.id);
+    };
+
     render() {
         let ratingStatus = "";
         return (
@@ -144,11 +149,6 @@ export class PropertyItem extends React.Component {
                                             fullScreen
                                         />
                                     </Modal>
-
-                                    <span className="Property_list__distanceToCenter">
-                                        ({this.props.distanceToCentre} km from
-                                        center)
-                                    </span>
                                 </div>
                             </div>
 

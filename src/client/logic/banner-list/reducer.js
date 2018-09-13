@@ -4,36 +4,40 @@ import { CITY_INFOS_GET, CITY_INFOS_GET_SUCCESS } from './actionType';
 import { CURENCY_SELECT } from '../header/actionTypes';
 
 function cityInfosReducer(state = defaultState.cityInfos, action) {
+    let cur = defaultState.header.selectedCurrency.code;
     switch (action.type) {
         case CITY_INFOS_GET:
             return CITY_INFOS;
 
         case CURENCY_SELECT:
+            for (let city in state) {
+                state[city].avgPrice = convert(
+                    state[city].currency,
+                    state[city].avgPrice,
+                    action.payload.code,
+                );
+                state[city].currency = action.payload.code;
 
-
-
-              for (let city in state) {
-
-                 state[city].avgPrice = convert(state[city].currency, state[city].avgPrice, action.payload.code);
-                  state[city].currency = action.payload.code;
-
-        }
-
-            return {...state}
-
-        case CITY_INFOS_GET_SUCCESS: {
-            for (let city in action.payload) {
-                action.payload[city].currency = 'USD'
             }
 
-          
+            return { ...state };
+
+        case CITY_INFOS_GET_SUCCESS: {
+            // const currency = localStorage.getItem('selectedCurrency')
+            // console.log(currency)
+            for (let city in action.payload) {
+                action.payload[city].currency = cur;
+                // action.payload[city].avgPrice = convert(
+                //     "USD",
+                //     state[city].avgPrice,
+                //     action.payload[city].currency
+                //     ,
+                // );
+            }
+
             return {
                 ...state,
-                ...action.payload
-
-
-                // ...state[action.payload],
-                // ...action.payload
+                ...action.payload,
             };
         }
 

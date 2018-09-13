@@ -9,3 +9,18 @@
 //.description .avg_rating___block {
 //    width: 50%;
 //}
+
+.rating_name {
+    font-size: 12px;
+    top: 100%;
+    right: auto;
+    left: 0;
+    bottom: auto;
+    color: rgba(0,0,0,.87);
+    font-weight: 700;
+    text-shadow: none;
+    margin-top: .2em;
+    text-align: center;
+    -webkit-transition: color .4s ease;
+    transition: color .4s ease;
+}

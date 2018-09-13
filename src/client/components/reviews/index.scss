@@ -67,8 +67,23 @@
     margin-top: 10px;
 }
 .reviews_add_review_btn {
-cursor: pointer;
-    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #465672;
+    width: 240px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
 }
 .reviews_add_review__modal{
     min-width: 500px;
@@ -174,4 +189,7 @@ cursor: pointer;
 }
 .scale.visible.transition .ui.header {
     margin: 5px;
+}
+.reviews_add_review__container {
+    text-align: -webkit-center;
 }
