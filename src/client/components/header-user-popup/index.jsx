@@ -38,7 +38,7 @@ export default class UserPopup extends React.Component {
                     <span
                         style={{
                             fontSize: 16,
-                            opacity: 0.8,
+                            // opacity: 0.8,
                             cursor: "pointer"
                         }}
                     >
@@ -54,7 +54,7 @@ export default class UserPopup extends React.Component {
                             style={{
                                 marginRight: "2%",
                                 fontSize: 16,
-                                opacity: 0.8,
+                                // opacity: 0.8,
                                 cursor: "pointer"
                             }}
                         />
@@ -67,7 +67,7 @@ export default class UserPopup extends React.Component {
                         fluid
                         style={{
                             fontSize: 13,
-                            opacity: 0.8,
+                            // opacity: 0.8,
                             cursor: "pointer"
                         }}
                     >

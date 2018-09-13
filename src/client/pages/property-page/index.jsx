@@ -46,6 +46,10 @@ export class PropertyPage extends React.Component {
         );
     }
 
+    componentWillUnmount() {
+        this.props.clearPropertyPageSlice();
+    }
+
     componentDidMount() {
         window.scrollTo(0, 0);
     }
@@ -86,8 +90,25 @@ export class PropertyPage extends React.Component {
             color: "#465672",
             cursor: "default"
         };
-
-        if (!property) return null;
+        if (!property)
+            return (
+                <div className="centeredqqq">
+                    <div class="lds-spinner">
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                    </div>
+                </div>
+            );
         const notes = property.notes;
         //AVG PROPERTY RATING
         const avgPropRatingArray = getGroupedArray(
@@ -174,14 +195,30 @@ export class PropertyPage extends React.Component {
                                     width: "250px"
                                 }}
                             />
-                            <BasicMapWidget
-                                key="BasicMapWidget"
-                                properties={[property]}
-                                coordinates={property.coordinates}
-                                controlEnable={false}
-                                rounded
-                                centered
-                            />
+                            <Modal
+                                trigger={
+                                    <span>
+                                        <BasicMapWidget
+                                            key="BasicMapWidget"
+                                            properties={[property]}
+                                            coordinates={property.coordinates}
+                                            controlEnable={false}
+                                            rounded
+                                            centered
+                                        />
+                                    </span>
+                                }
+                                fullScreen
+                            >
+                                <BasicMapWidget
+                                    style={{ width: "100%", height: "100%" }}
+                                    coordinates={property.coordinates}
+                                    properties={[property]}
+                                    controlEnable={true}
+                                    disablePopup={true}
+                                    fullScreen
+                                />
+                            </Modal>
                         </div>
 
                         <Container
@@ -211,7 +248,7 @@ export class PropertyPage extends React.Component {
                                 <Label
                                     color="orange"
                                     tag
-                                    style={{ left: "0px", marginBottom: "5px" }}
+                                    style={{ left: 0, marginBottom: 15 }}
                                 >
                                     This property was booked{" "}
                                     {notes.recentlyBooked} time

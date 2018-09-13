@@ -67,7 +67,7 @@ class MailService {
                 pass: EMAIL_PASS
             }
         });
-
+        const BASE_URL = process.env.BASE_URL;
         const mailOptions = {
             from: EMAIL_USER,
             to: user.email,
@@ -79,7 +79,6 @@ class MailService {
           ${mailOptionsObj.message}
         </a>`
         };
-
         return transporter.sendMail(mailOptions).then(_ => true);
     }
 }

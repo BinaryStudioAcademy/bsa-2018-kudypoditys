@@ -1,20 +1,16 @@
-import {searchUpdate, searchSubmit} from "../../logic/search/actions";
+import { searchUpdate, searchSubmit, clearSearchPageSlice } from '../../logic/search/actions';
 
 export function mapStateToProps(state, ownProps) {
     const { search } = state;
 
-
     return {
         search
-
     };
 }
 
 export function mapDispatchToProps(dispatch, ownProps) {
     return {
         onSearch(data) {
-
-            console.log("gone dispatch data: " + JSON.stringify(data))
             dispatch(searchSubmit(data));
         },
         onQueryChange(value) {
@@ -36,6 +32,9 @@ export function mapDispatchToProps(dispatch, ownProps) {
         },
         onRoomsChange(value) {
             dispatch(searchUpdate({ rooms: value }));
+        },
+        clearSearchPageSlice() {
+            dispatch(clearSearchPageSlice());
         }
     };
 }

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Grid, Popup, Button } from "semantic-ui-react";
+import { Grid, Dropdown } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
@@ -10,8 +10,22 @@ import "./index.scss";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 
 export class MainHeader extends Component {
+    componentDidMount() {
+        this.props.getCurrencies();
+    }
+
     logoutClicked = () => {
         this.props.logout();
+    };
+
+    getCurrencies() {
+        const { currencies } = this.props;
+        return currencies.map(x => ({
+            key: x.id,
+            value: x.id,
+            text: x.code
+        }))
+
     };
 
     addPropertyClicked = () => {
@@ -34,20 +48,27 @@ export class MainHeader extends Component {
         history.push("/user-cabinet");
     };
 
-    state = { activeItem: "about-us" };
+    handleCurrancyChange = (e, { value }) => {
+        const { currencies } = this.props;
+        const currency = currencies.find(x => x.id === value);
+        this.props.onCurrencyChange(currency);
+    }
+
+    // state = { activeItem: "about-us" };
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
     render() {
         const { currentUser, hideSignUpIn, noBackground } = this.props;
+        const currenciesOptions = this.getCurrencies();
         return (
             <div
                 className="header--wraper"
                 style={
                     noBackground
                         ? {
-                              backgroundImage: "none"
-                          }
+                            backgroundImage: "none"
+                        }
                         : { backgroundColor: "#028fc5" }
                 }
             >
@@ -62,6 +83,23 @@ export class MainHeader extends Component {
                             </div>
                         </Grid.Column>
                         <Grid.Column width={8} textAlign={"right"}>
+                            <Dropdown
+                                style={{
+                                    width: "70px",
+                                    fontSize: "14px",
+                                    background: "none",
+                                    color: "#fff",
+                                    border: "none",
+                                    float: "right",
+                                    opacity: "0.94"
+                                }}
+                                name="preferredCurrency"
+                                fluid
+                                selection
+                                value={this.props.selectedCurrency.id}
+                                options={currenciesOptions}
+                                onChange={this.handleCurrancyChange}
+                            />
                             <AuthHOC
                                 Component={() => {
                                     return (
@@ -83,12 +121,13 @@ export class MainHeader extends Component {
                                         <Fragment>
                                             {hideSignUpIn ? null : (
                                                 <Fragment>
+
                                                     <a
                                                         style={{
                                                             cursor: "pointer",
                                                             marginRight: "24px",
-                                                            fontSize: 16,
-                                                            opacity: 0.8
+                                                            fontSize: 16
+                                                            // opacity: 0.8
                                                         }}
                                                         onClick={
                                                             this.loginClicked
@@ -100,8 +139,8 @@ export class MainHeader extends Component {
                                                     <a
                                                         style={{
                                                             cursor: "pointer",
-                                                            fontSize: 16,
-                                                            opacity: 0.8
+                                                            fontSize: 16
+                                                            // opacity: 0.8
                                                         }}
                                                         onClick={
                                                             this.registerClicked
@@ -130,31 +169,6 @@ export class MainHeader extends Component {
                                     children={0}
                                     handleSearchResults={
                                         this.props.handleSearchResults
-                                    }
-                                    onDestinationChange={value =>
-                                        console.log(`destination: ${value}`)
-                                    }
-                                    onCheckInChange={value =>
-                                        console.log(
-                                            `check-in: ${new Date(value)}`
-                                        )
-                                    }
-                                    onCheckOutChange={value =>
-                                        console.log(
-                                            `check-in: ${new Date(value)}`
-                                        )
-                                    }
-                                    onAdultsChange={value =>
-                                        console.log(`adults: ${value}`)
-                                    }
-                                    onChildrenChange={value =>
-                                        console.log(`children: ${value}`)
-                                    }
-                                    onRoomsChange={value =>
-                                        console.log(`rooms: ${value}`)
-                                    }
-                                    onSearch={() =>
-                                        console.log("Search propeties!")
                                     }
                                 />
                             </Grid.Column>

@@ -1,7 +1,8 @@
 import {
     getPropertyInfoById,
     bookingInputUpdate,
-    getRoomsInfo
+    getRoomsInfo,
+    clearPropertyPageSlice
 } from "../../logic/property-page/actions";
 import { getUserBookings } from "../../logic/user-cabinet/actions";
 
@@ -36,6 +37,9 @@ export function mapDispatchToProps(dispatch, ownProps) {
                     error: ""
                 })
             );
+        },
+        clearPropertyPageSlice() {
+            dispatch(clearPropertyPageSlice());
         }
     };
 }
