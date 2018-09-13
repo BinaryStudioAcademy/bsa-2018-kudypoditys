@@ -1,14 +1,18 @@
-import React, {Component} from "react";
-import {Card, Icon, Image} from "semantic-ui-react";
+import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { Card, Icon, Image } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from 'client/history';
+import { convert } from "../../helpers/convertCurrency";
 export class MapPropertyItem extends Component {
     nameClicked = () => {
         history.push(`/property/${this.props.propertyId}`)
     };
 
     render() {
+        const { currency, propertyCurrency } = this.props;
 
+        const price = convert(propertyCurrency, this.props.price, currency.code);
 
         return (
             <Card
@@ -17,7 +21,7 @@ export class MapPropertyItem extends Component {
                     margin: "3%"
                 }}
             >
-                <Image centered src={this.props.imageSrc} size="medium"/>
+                <Image centered src={this.props.imageSrc} size="medium" />
                 <Icon
                     style={{
                         position: "absolute",
@@ -31,7 +35,7 @@ export class MapPropertyItem extends Component {
                     onClick={this.props.closeClicked}
                 />
                 <Card.Content>
-                    <Card.Header style={{textAlight: "center"}}>
+                    <Card.Header style={{ textAlight: "center" }}>
                         <a tabIndex="0" onClick={this.nameClicked}>
                             {this.props.propertyName}
                         </a>
@@ -43,12 +47,12 @@ export class MapPropertyItem extends Component {
                     </Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
-                    <a style={{float: "right"}}>
-                        <Icon name="money"/>
-                        {this.props.price}
+                    <a style={{ float: "right" }}>
+                        <Icon name="money" />
+                        {propertyCurrency} {price}
                     </a>
-                    <a style={{float: "left"}}>
-                        <Icon name="star"/>
+                    <a style={{ float: "left" }}>
+                        <Icon name="star" />
                         {this.props.rating}
                     </a>
                 </Card.Content>
@@ -65,4 +69,6 @@ MapPropertyItem.propTypes = {
     rating: PropTypes.string
 };
 
-export default MapPropertyItem;
+export default connect((state) => ({
+    currency: state.header.selectedCurrency
+}))(MapPropertyItem);
