@@ -26,7 +26,7 @@ function cityInfosReducer(state = defaultState, action) {
 
         case CITY_INFOS_GET_SUCCESS: {
             return {
-                cityInfos,
+                ...cityInfos,
                 ...action.payload,
 
 
