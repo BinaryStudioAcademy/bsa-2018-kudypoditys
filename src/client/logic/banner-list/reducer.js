@@ -3,24 +3,32 @@ import { convert } from '../../helpers/convertCurrency';
 import { CITY_INFOS_GET, CITY_INFOS_GET_SUCCESS } from './actionType';
 import { CURENCY_SELECT } from '../header/actionTypes';
 
-function cityInfosReducer(state = defaultState.cityInfos, action) {
+function cityInfosReducer(state = defaultState, action) {
+  const  { cityInfos, header } = state;
     switch (action.type) {
         case CITY_INFOS_GET:
-            return CITY_INFOS;
+            return {...CITY_INFOS,
+                ...header};
 
         case CURENCY_SELECT:
 
-              for (let city in state) {
-                 state[city].avgPrice = convert('usd', state[city].avgPrice, action.payload.code)
 
-                 console.log(state[city].avgPrice)
+            for (let city in cityInfos) {
+
+                // let lastCur = header.selectedCurrency.code;
+                // cityInfos[city].avgPrice = convert( lastCur, action.payload.code)
+
+                 console.log(header)
+
         }
-            return {...state} ;
+
+            return cityInfos;
 
         case CITY_INFOS_GET_SUCCESS: {
             return {
-                ...state,
+                cityInfos,
                 ...action.payload,
+
 
                 // ...state[action.payload],
                 // ...action.payload
