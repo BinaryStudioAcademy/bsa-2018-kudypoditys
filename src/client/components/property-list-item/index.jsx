@@ -22,6 +22,7 @@ import {
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
 import RatingBlock from "../reviews/ratingBlock";
+import { convert } from '../../helpers/convertCurrency';
 
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
@@ -42,7 +43,11 @@ export class PropertyListItem extends React.Component {
     }
 
     render() {
-        const { propertyItemData, itemIndex } = this.props;
+        const {
+            propertyItemData, itemIndex, currency, allCurrencies
+        } = this.props;
+
+        const propertyCurrency = propertyItemData.currency.code;
 
         // AVG PROPERTY RATING
         const avgPropRatingArray = getGroupedArray(
@@ -164,6 +169,7 @@ export class PropertyListItem extends React.Component {
                                         }}
                                         properties={[
                                             {
+                                                currency: propertyItemData.currency,
                                                 price:
                                                     propertyItemData.rooms[0]
                                                         .price,
@@ -216,7 +222,7 @@ export class PropertyListItem extends React.Component {
                                     {propertyItemData.rooms[0].roomType.name}
                                 </div>
                                 <span className="priceInfo">
-                                    ${propertyItemData.rooms[0].price}
+                                    {currency.code} {convert(propertyCurrency, propertyItemData.rooms[0].price, currency.code)}
                                 </span>
                             </div>
 
@@ -239,14 +245,14 @@ export class PropertyListItem extends React.Component {
                                     className="search-page__main-button"
                                     color={
                                         propertyItemData.availableRoomsCount ===
-                                        0
+                                            0
                                             ? "grey"
                                             : "blue"
                                     }
                                     floated="right"
                                     onClick={
                                         propertyItemData.availableRoomsCount ===
-                                        0
+                                            0
                                             ? ""
                                             : this.handleRedirectToDetails
                                     }

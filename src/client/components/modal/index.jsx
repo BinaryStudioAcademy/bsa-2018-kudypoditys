@@ -13,11 +13,13 @@ export default class ModalComponent extends React.Component {
             children,
             onClose,
             className,
-            open
+            open,
+            closeOnDimmerClick
         } = this.props;
 
         return (
             <Modal
+                closeOnDimmerClick={closeOnDimmerClick}
                 trigger={trigger}
                 closeIcon={fullScreen || closeIcon}
                 className={fullScreen ? "fullScreen" : className}
