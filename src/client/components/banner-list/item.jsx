@@ -49,7 +49,7 @@ export class Banner extends Component {
                         <Card.Description className="banner__avgprice">
                             <span>Average price</span>
                             <span>
-                               {currency}
+                               {currency}{' '}
                                 {Intl.NumberFormat("en-US").format(
                                     cityInfo.avgPrice
                                 )}

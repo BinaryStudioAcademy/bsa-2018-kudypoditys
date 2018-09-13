@@ -86,6 +86,7 @@ export class BannerList extends Component {
                         </Grid.Column>
                         <Grid.Column>
                             <Banner
+                                currency={currency}
                                 cityInfo={Kharkiv}
                                 onClick={() => this.onCardClick("Kharkiv")}
                             />
