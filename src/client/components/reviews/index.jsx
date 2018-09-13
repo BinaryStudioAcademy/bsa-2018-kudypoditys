@@ -98,7 +98,11 @@ export class Reviews extends React.Component {
         return (
             <Comment.Group size="large" style={{ marginBottom: 20 }}>
                 {/*<Checkbox defaultChecked label='Show reviews' />*/}
-                {/*{reviewLeft ? (null) : (*/}
+                {reviewLeft ? (<Message className="review_message">
+                    <div className="reviews_add_review__container">Dear Traveler. Thank you for your review and for
+                        choosing {property.name}.</div>
+
+                </Message>) : (
                 <Message className="review_message">
                     100% verified reviews.
                     {shouldRenderForm  ? (
@@ -129,7 +133,7 @@ export class Reviews extends React.Component {
                         </div>
                     ) : null}
                 </Message>
-                {/*)}*/}
+                )}
                 {property.reviews.length === 0 ? (
                     <div>
                         <Header
