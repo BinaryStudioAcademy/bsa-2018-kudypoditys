@@ -85,7 +85,7 @@ export class MainHeader extends Component {
                         <Grid.Column width={8} textAlign={"right"}>
                             <Dropdown
                                 style={{
-                                    paddingTop:"3",
+                                    paddingTop:"6px",
                                     width: "90px",
                                     fontSize: "14px",
                                     background: "none",
