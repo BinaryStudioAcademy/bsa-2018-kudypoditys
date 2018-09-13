@@ -1,7 +1,8 @@
 export function mapStateToProps(state, ownProps) {
-    const {foundProperties} = state;
+    const { header } = state;
     return {
-   //    propertyItemData: foundProperties[ownProps.id]
+        currency: header.selectedCurrency,
+        allCurrencies: state.currencies.currencies,
     };
 }
 

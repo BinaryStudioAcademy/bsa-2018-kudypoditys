@@ -19,8 +19,10 @@ import Modal from "../modal";
 import ReviewForm from "../reviews/addReviewForm";
 import BasicMapWidget from "../basic-map-widget";
 import history from "client/history";
+import { connect } from "react-redux";
+import { convert } from "../../helpers/convertCurrency";
 
-export class BookingSegment extends React.Component {
+class BookingSegment extends React.Component {
     constructor(props) {
         super(props);
         // this.handleChange = this.handleChange.bind(this);
@@ -45,7 +47,7 @@ export class BookingSegment extends React.Component {
     };
 
     render() {
-        const { images, booking } = this.props;
+        const { images, booking, currency } = this.props;
         const dateIn = new Date(booking.dateIn),
             dateOut = new Date(booking.dateOut);
 
@@ -58,6 +60,9 @@ export class BookingSegment extends React.Component {
 
         let shouldRenderForm = false;
         const headerStyle = { color: "#465672" };
+
+        const propCurrency = booking.room.property.currency;
+        const roomPrice = convert(propCurrency.code, price, currency.code);
 
         if (now > start) {
             shouldRenderForm = true;
@@ -122,7 +127,7 @@ export class BookingSegment extends React.Component {
                             style={{ fontSize: "18px" }}
                         >
                             <Icon name="dollar sign" />
-                            {" " + price}
+                            {currency.code} {roomPrice}
                         </p>
                     </div>
                 </div>
@@ -184,3 +189,7 @@ export class BookingSegment extends React.Component {
         );
     }
 }
+
+export default connect(state => ({
+    currency: state.header.selectedCurrency
+}))(BookingSegment);

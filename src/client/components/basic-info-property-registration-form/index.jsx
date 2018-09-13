@@ -44,7 +44,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
                     input.onChange({
                         fullAddress: `${suggestion.name}, ${
                             suggestion.administrative
-                        }, ${suggestion.country}`,
+                            }, ${suggestion.country}`,
                         ...suggestion.latlng
                     });
                 }}

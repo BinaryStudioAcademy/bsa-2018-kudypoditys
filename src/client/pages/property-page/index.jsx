@@ -90,8 +90,25 @@ export class PropertyPage extends React.Component {
             color: "#465672",
             cursor: "default"
         };
-
-        if (!property) return null;
+        if (!property)
+            return (
+                <div className="centeredqqq">
+                    <div class="lds-spinner">
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                        <div />
+                    </div>
+                </div>
+            );
         const notes = property.notes;
         //AVG PROPERTY RATING
         const avgPropRatingArray = getGroupedArray(
@@ -231,7 +248,7 @@ export class PropertyPage extends React.Component {
                                 <Label
                                     color="orange"
                                     tag
-                                    style={{ left: "0px", marginBottom: "5px" }}
+                                    style={{ left: 0, marginBottom: 15 }}
                                 >
                                     This property was booked{" "}
                                     {notes.recentlyBooked} time

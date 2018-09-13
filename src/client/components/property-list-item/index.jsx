@@ -22,6 +22,7 @@ import {
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
 import RatingBlock from "../reviews/ratingBlock";
+import { convert } from '../../helpers/convertCurrency';
 
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
@@ -34,7 +35,7 @@ export class PropertyListItem extends React.Component {
         //todo
     };
     handleRedirectToDetails = () => {
-        history.push("/property/" + this.props.propertyItemData.id); // this.props.actions.redirectToDetails(id)
+        history.push("/property/" + this.props.propertyItemData.id);
     };
 
     componentDidMount() {
@@ -42,18 +43,11 @@ export class PropertyListItem extends React.Component {
     }
 
     render() {
-        const { propertyItemData, itemIndex } = this.props;
+        const {
+            propertyItemData, itemIndex, currency, allCurrencies
+        } = this.props;
 
-        // let ratingStatus = "";
-        // if (propertyItemData.rating >= 9) {
-        //     ratingStatus = "Excellent";
-        // } else if (propertyItemData.rating >= 7) {
-        //     ratingStatus = "Very Good";
-        // } else if (propertyItemData.rating >= 5) {
-        //     ratingStatus = "Good";
-        // } else if (propertyItemData.rating >= 1) {
-        //     ratingStatus = "Not good";
-        // }
+        const propertyCurrency = propertyItemData.currency.code;
 
         // AVG PROPERTY RATING
         const avgPropRatingArray = getGroupedArray(
@@ -71,7 +65,7 @@ export class PropertyListItem extends React.Component {
         return (
             <Card
                 className="property_card"
-                fluid // color ={borderBg}
+                fluid
                 style={{
                     padding: 0,
                     backgroundColor: currentBg
@@ -148,29 +142,7 @@ export class PropertyListItem extends React.Component {
                                     />
                                 </div>
 
-                                {/*<div*/}
-                                {/*style={{*/}
-                                {/*textAlign: "center",*/}
-                                {/*display: "flex",*/}
-                                {/*flexDirection: "column",*/}
-                                {/*paddingRight: 10*/}
-                                {/*}}*/}
-                                {/*>*/}
-                                {/*<div className="ratingName">*/}
-                                {/*{" "}*/}
-                                {/*{ratingStatus}*/}
-                                {/*</div>*/}
-                                {/*<br />*/}
-                                {/*<span className="reviewsNumber">*/}
-                                {/*{propertyItemData.reviewsNamber}{" "}*/}
-                                {/*reviews*/}
-                                {/*</span>*/}
-                                {/*</div>*/}
 
-                                {/*<div className="rating_num">*/}
-                                {/*{" "}*/}
-                                {/*{propertyItemData.rating}*/}
-                                {/*</div>*/}
                                 <div className="rating_listItem">
                                     <RatingBlock
                                         avgPropRating={avgPropRating}
@@ -197,6 +169,7 @@ export class PropertyListItem extends React.Component {
                                         }}
                                         properties={[
                                             {
+                                                currency: propertyItemData.currency,
                                                 price:
                                                     propertyItemData.rooms[0]
                                                         .price,
@@ -248,15 +221,9 @@ export class PropertyListItem extends React.Component {
 
                                     {propertyItemData.rooms[0].roomType.name}
                                 </div>
-
-                                {/*<div className="price"style={{*/}
-                                {/*padding: 10*/}
-                                {/*}} >*/}
                                 <span className="priceInfo">
-                                    ${propertyItemData.rooms[0].price}
+                                    {currency.code} {convert(propertyCurrency, propertyItemData.rooms[0].price, currency.code)}
                                 </span>
-
-                                {/*</div>*/}
                             </div>
 
                             <div className="card_row__order">
@@ -278,14 +245,14 @@ export class PropertyListItem extends React.Component {
                                     className="search-page__main-button"
                                     color={
                                         propertyItemData.availableRoomsCount ===
-                                        0
+                                            0
                                             ? "grey"
                                             : "blue"
                                     }
                                     floated="right"
                                     onClick={
                                         propertyItemData.availableRoomsCount ===
-                                        0
+                                            0
                                             ? ""
                                             : this.handleRedirectToDetails
                                     }

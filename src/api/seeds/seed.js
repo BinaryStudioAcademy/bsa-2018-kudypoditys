@@ -29,7 +29,7 @@ const USERS = [
     }
 ];
 
-const PROPERTIES = [
+let PROPERTIES = [
     {
         id: 1,
         name: "Ukraine Hotel",
@@ -43,7 +43,8 @@ const PROPERTIES = [
         userId: 1,
         propertyTypeId: 9,
         cityId: 2,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 3,
     },
     {
         id: 2,
@@ -58,7 +59,8 @@ const PROPERTIES = [
         userId: 1,
         distanceToCentre: 0.7,
         cityId: 1,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 1,
     },
     {
         id: 3,
@@ -72,7 +74,8 @@ const PROPERTIES = [
         propertyTypeId: 9,
         distanceToCentre: 1.1,
         cityId: 1,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 2,
     },
     {
         id: 4,
@@ -86,7 +89,8 @@ const PROPERTIES = [
         propertyTypeId: 9,
         distanceToCentre: 0.2,
         cityId: 1,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 1,
     },
     {
         id: 5,
@@ -100,7 +104,8 @@ const PROPERTIES = [
         propertyTypeId: 9,
         distanceToCentre: 2.7,
         cityId: 1,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 3,
     },
     {
         id: 6,
@@ -114,7 +119,8 @@ const PROPERTIES = [
         propertyTypeId: 5,
         distanceToCentre: 3.7,
         cityId: 5,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 1,
     },
     {
         id: 7,
@@ -129,7 +135,8 @@ const PROPERTIES = [
         propertyTypeId: 6,
         distanceToCentre: 1.4,
         cityId: 5,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 1,
     },
     {
         id: 8,
@@ -143,7 +150,8 @@ const PROPERTIES = [
         propertyTypeId: 16,
         distanceToCentre: 3.7,
         cityId: 4,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 2,
     },
     {
         id: 9,
@@ -157,7 +165,8 @@ const PROPERTIES = [
         propertyTypeId: 9,
         distanceToCentre: 1.5,
         cityId: 4,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 2,
     },
     {
         id: 10,
@@ -171,7 +180,8 @@ const PROPERTIES = [
         propertyTypeId: 16,
         distanceToCentre: 6.7,
         cityId: 4,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 2,
     },
     {
         id: 11,
@@ -185,7 +195,8 @@ const PROPERTIES = [
         propertyTypeId: 13,
         distanceToCentre: 8.7,
         cityId: 4,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 1,
     },
     {
         id: 12,
@@ -204,7 +215,8 @@ const PROPERTIES = [
         propertyTypeId: 1,
         distanceToCentre: 1.9,
         cityId: 3,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 1,
     },
     {
         id: 13,
@@ -225,7 +237,8 @@ const PROPERTIES = [
         propertyTypeId: 9,
         distanceToCentre: 9.7,
         cityId: 3,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 2,
     },
     {
         id: 14,
@@ -246,7 +259,8 @@ const PROPERTIES = [
         propertyTypeId: 2,
         distanceToCentre: 1.5,
         cityId: 3,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 3,
     },
     {
         id: 15,
@@ -266,7 +280,8 @@ const PROPERTIES = [
         propertyTypeId: 9,
         distanceToCentre: 4.7,
         cityId: 2,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 2,
     },
     {
         id: 16,
@@ -287,7 +302,8 @@ const PROPERTIES = [
         propertyTypeId: 9,
         distanceToCentre: 3.7,
         cityId: 2,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 1,
     },
     {
         id: 17,
@@ -308,7 +324,8 @@ const PROPERTIES = [
         propertyTypeId: 9,
         distanceToCentre: 7.7,
         cityId: 2,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 3,
     },
     {
         id: 18,
@@ -331,7 +348,8 @@ const PROPERTIES = [
         propertyTypeId: 16,
         distanceToCentre: 1.3,
         cityId: 2,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 2,
     },
     {
         id: 19,
@@ -348,7 +366,8 @@ const PROPERTIES = [
         propertyTypeId: 6,
         distanceToCentre: 3.7,
         cityId: 2,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 1,
     },
     {
         id: 20,
@@ -370,7 +389,8 @@ const PROPERTIES = [
         propertyTypeId: 11,
         distanceToCentre: 2.7,
         cityId: 2,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 3,
     },
     {
         id: 21,
@@ -389,7 +409,8 @@ const PROPERTIES = [
         propertyTypeId: 9,
         cityId: 6,
         distanceToCentre: 3.5,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 2,
     },
     {
         id: 22,
@@ -410,7 +431,8 @@ const PROPERTIES = [
         propertyTypeId: 17,
         distanceToCentre: 2.7,
         cityId: 6,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 1,
     },
     {
         id: 23,
@@ -427,7 +449,8 @@ const PROPERTIES = [
         propertyTypeId: 1,
         distanceToCentre: 1.1,
         cityId: 6,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 3,
     },
     {
         id: 24,
@@ -450,7 +473,8 @@ const PROPERTIES = [
         propertyTypeId: 1,
         cityId: 1,
         distanceToCentre: 7.7,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 2,
     },
     {
         id: 25,
@@ -471,7 +495,8 @@ const PROPERTIES = [
         propertyTypeId: 1,
         distanceToCentre: 7.1,
         cityId: 1,
-        accommodationRuleId: 1
+        accommodationRuleId: 1,
+        currencyId: 1,
     }
 ];
 
@@ -1605,7 +1630,7 @@ const AVAILABILITY = [
         price: 33,
         createdAt: "2018-09-10T09:53:49.254Z",
         updatedAt: "2018-09-10T16:42:58.776Z",
-        roomId: 27
+        roomId: 26
     },
     {
         id: 63,

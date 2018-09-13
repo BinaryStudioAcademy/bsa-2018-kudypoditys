@@ -82,7 +82,7 @@ const state = {
     },
     header: {
         currencies: [],
-        selectedCurrency: 1,
+        selectedCurrency: { id: 2, name: 'US DOLLAR', code: 'USD', number: 840 },
         currentUser: null
     },
     shownProperties: {
@@ -118,7 +118,9 @@ const state = {
         shownFrom: 1,
         shownTo: 5
     },
-    cityInfos: [],
+    cityInfos: {
+        cityAVG: {}
+    },
     filters: [
         {
             id: "1",
