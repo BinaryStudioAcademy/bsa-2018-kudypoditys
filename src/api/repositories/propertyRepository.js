@@ -261,11 +261,12 @@ class PropertyRepository extends Repository {
                             room.amount,
                             room.price
                         );
-                        availabilities.map(availability => {
-                            AvailabilityRepository.create(availability);
+                        availabilities.map(async availability => {
+                            await AvailabilityRepository.create(availability);
                         });
                     });
                 });
+
                 return newProperty;
             })
             .then(newProperty => this.findById(newProperty.id));
@@ -377,11 +378,9 @@ class PropertyRepository extends Repository {
             default:
                 ratingRange = [11];
         }
-        console.log(ratingRange);
         return ratingRange;
     }
     getFilteredProperties(filter) {
-        console.log("filter " + JSON.stringify(filter));
         const SORT_VALUE = {
             PRICE: "price",
             DISTANCE: "distance_to_center",
@@ -523,8 +522,6 @@ class PropertyRepository extends Repository {
                     ]
                 }
                 : { $between: [0, 10] };
-
-        console.log("foo  = " + JSON.stringify(fo));
         return this.model
             .findAndCountAll({
                 limit: 5,
