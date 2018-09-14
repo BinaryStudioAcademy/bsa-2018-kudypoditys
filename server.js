@@ -7,7 +7,6 @@ const path = require("path"),
     compression = require("compression"),
     server = require("http").Server(app),
     elasticService = require("./src/api/elastic/elasticService");
-// routes = require(`${apiRoot}/testModels`);
 
 const io = require("socket.io")(server, { serveClient: true });
 
