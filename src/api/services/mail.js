@@ -16,13 +16,13 @@ class MailService {
             to: user.email,
             subject: mailOptionsObj.subject,
             html: `
-        <a href="http://localhost:3000/${action}?email=${user.email}&token=${
+        <a href="${process.env.BASE_URL}/${action}?email=${user.email}&token=${
                 mailOptionsObj.verifyStringParam
             }">
           ${mailOptionsObj.message}
         </a>`
         };
-
+        console.log(mailOptions);
         var params = {
             DelaySeconds: 10,
             MessageBody: JSON.stringify(mailOptions),
@@ -73,12 +73,13 @@ class MailService {
             to: user.email,
             subject: mailOptionsObj.subject,
             html: `
-        <a href="http://localhost:3000/${action}?email=${user.email}&token=${
+        <a href="${BASE_URL}/${action}?email=${user.email}&token=${
                 mailOptionsObj.verifyStringParam
             }">
           ${mailOptionsObj.message}
         </a>`
         };
+        console.log(mailOptions);
         return transporter.sendMail(mailOptions).then(_ => true);
     }
 }
