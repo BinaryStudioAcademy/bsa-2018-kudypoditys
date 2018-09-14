@@ -504,7 +504,7 @@ class PropertyRepository extends Repository {
 
         let offsetData = filter.page ? 5 * (filter.page - 1) : 0;
 
-        let ratingOption =
+        let propertyOption=
             filter.Wonderful !== "" ||
                 filter.Very_Good !== "" ||
                 filter.Good !== "" ||
@@ -512,24 +512,25 @@ class PropertyRepository extends Repository {
                 filter.Its_Ok !== "" ||
                 filter.No_rating !== ""
                 ? {
-                    $or: [
-                        { $between: this.getRatingRange(filter.Wonderful) },
-                        { $between: this.getRatingRange(filter.Very_Good) },
-                        { $between: this.getRatingRange(filter.Good) },
-                        { $between: this.getRatingRange(filter.Pleasant) },
-                        { $between: this.getRatingRange(filter.Its_Ok) },
-                        { $between: this.getRatingRange(filter.No_rating) }
-                    ]
+                    id: { $in: filter.propertiesIds },
+                    rating: {
+                        $or: [
+                            { $between: this.getRatingRange(filter.Wonderful) },
+                            { $between: this.getRatingRange(filter.Very_Good) },
+                            { $between: this.getRatingRange(filter.Good) },
+                            { $between: this.getRatingRange(filter.Pleasant) },
+                            { $between: this.getRatingRange(filter.Its_Ok) },
+                            { $between: this.getRatingRange(filter.No_rating) }
+                        ]
+                    }
                 }
-                : { $between: [0, 10] };
+                : {  id: { $in: filter.propertiesIds }};
         return this.model
             .findAndCountAll({
                 limit: 5,
                 offset: offsetData,
-                where: {
-                    id: { $in: filter.propertiesIds },
-                    rating: ratingOption
-                },
+                where:propertyOption,
+
                 distinct: true,
                 order: sortingOption,
                 include: [
