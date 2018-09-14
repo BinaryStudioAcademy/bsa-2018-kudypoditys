@@ -12,8 +12,8 @@ function cityInfosReducer(state = defaultState.cityInfos, action) {
         case CURENCY_SELECT:
             for (let city in state) {
                 state[city].avgPrice = convert(
-                    state[city].currency,
-                    state[city].avgPrice,
+                    state[city].baseCurrency,
+                    state[city].baseAvgPrice,
                     action.payload.code,
                 );
                 state[city].currency = action.payload.code;
@@ -23,16 +23,19 @@ function cityInfosReducer(state = defaultState.cityInfos, action) {
             return { ...state };
 
         case CITY_INFOS_GET_SUCCESS: {
-            // const currency = localStorage.getItem('selectedCurrency')
-            // console.log(currency)
+            const currency = localStorage.getItem('selectedCurrency') || {};
+
             for (let city in action.payload) {
-                action.payload[city].currency = cur;
-                // action.payload[city].avgPrice = convert(
-                //     "USD",
-                //     state[city].avgPrice,
-                //     action.payload[city].currency
-                //     ,
-                // );
+                action.payload[city].baseCurrency = '$';
+                action.payload[city].baseAvgPrice = action.payload[city].avgPrice;
+
+                action.payload[city].currency = currency.code || '$';
+                action.payload[city].avgPrice = convert(
+                    action.payload[city].baseCurrency,
+                    action.payload[city].baseAvgPrice,
+                    action.payload[city].currency
+                    ,
+                );
             }
 
             return {

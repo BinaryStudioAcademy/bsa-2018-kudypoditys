@@ -13,16 +13,23 @@ export const converterObj = {
     }
 };
 
+const codeToTitle = new Map();
+codeToTitle.set('€', 'eur');
+codeToTitle.set('$', 'usd');
+codeToTitle.set('₴', 'uah');
+
 function round(value, decimals = 2) {
     const pow10 = Math.pow(10, decimals);
     return Math.round(value * pow10) / pow10;
 }
 
 export function convert(currentCurrency, value, tagetCurrency) {
-    const from = currentCurrency && currentCurrency.toLowerCase(),
-        to = tagetCurrency && tagetCurrency.toLowerCase();
 
-    if (from === to) return value;
+    if (!currentCurrency || !tagetCurrency || currentCurrency == tagetCurrency)
+        return value;
+
+    const from = codeToTitle.get(currentCurrency),
+        to = codeToTitle.get(tagetCurrency)
 
     return converterObj[from] && converterObj[from][to] &&
         round(converterObj[from][to] * value) || value;
