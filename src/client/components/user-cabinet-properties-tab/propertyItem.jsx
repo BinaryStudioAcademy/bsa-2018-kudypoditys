@@ -22,6 +22,7 @@ export class PropertyItem extends React.Component {
     };
 
     render() {
+        const { images } = this.props;
         let ratingStatus = "";
         return (
             <Card
@@ -41,7 +42,13 @@ export class PropertyItem extends React.Component {
                             }}
                         >
                             <Image
-                                src={this.props.images[0].url}
+                                src={
+                                    images
+                                        ? images.length
+                                            ? this.props.images[0].url
+                                            : "https://react.semantic-ui.com/images/wireframe/image.png"
+                                        : "https://react.semantic-ui.com/images/wireframe/image.png"
+                                }
                                 floated="left"
                                 style={{
                                     width: 150,
