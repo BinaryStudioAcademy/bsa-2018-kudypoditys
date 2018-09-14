@@ -70,7 +70,7 @@ function calc(){
 
 
         TEMP.push(prop)
-        console.log(TEMP)
+        // console.log(TEMP)
     })
 
 

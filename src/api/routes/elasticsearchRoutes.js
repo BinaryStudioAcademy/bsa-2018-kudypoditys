@@ -10,7 +10,7 @@ elastic.route("/ping").get((req, res) => {
 
 elastic.route("/index/init").post((req, res) => {
     const { index } = req.body;
-    console.log(index);
+    // console.log(index);
     ES_service.initIndex(req, res, index);
 });
 

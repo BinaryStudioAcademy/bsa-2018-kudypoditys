@@ -165,7 +165,7 @@ module.exports = {
     },
 
     autocompleteSearch: (req, res, _index, _type, _query, _fields) => {
-        console.log(elasticClient);
+        // console.log(elasticClient);
         elasticClient
             .search({
                 index: _index,
