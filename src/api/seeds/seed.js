@@ -34,11 +34,11 @@ let PROPERTIES = [
         id: 1,
         name: "Ukraine Hotel",
         rating: 7.3,
-        address: "Koval street 16, Kyiv",
+        address: "Institutskaya Street 4, Kiev",
         description:
             "This property is 15 minutes walk from the beach. Located on Independence Square in the heart of Kiev, this hotel offers air-conditioned rooms and suites with elegant décor. It is a 3-minute walk from the Maidan Nezalezhnosti and Kreschatik Metro Stations. In-room facilities at the Ukraine Hotel include satellite TV and a refrigerator. Your bathroom includes free toiletries and perfumes. Guests enjoy views of the Kreschatyk Street and the surrounding area. A large breakfast buffet is available at the Ukraine Hotel, and 24-hour room service is offered. Ukrainian and European cuisine is served for lunch and dinner. Live music is sometimes played here. The hotel features a beauty salon, sauna and massage facilities. A private laundry service is also available. Hotel Ukraine is a 10-minute walk from Mariyinsky Park and the St. Sofia Cathedral. Secure parking is available on site. Pecherskyj is a great choice for travellers interested in restaurants, food and friendly locals. This is our guests' favourite part of Kiev, according to independent reviews. This property also has one of the best-rated locations in Kiev! Guests are happier about it compared to other properties in the area.",
         contactPhone: "0509832174",
-        coordinates: { lat: 49.137089, lng: 24.027161 },
+        coordinates: { lat: 50.44857, lng: 30.52734 },
         distanceToCentre: 1.7,
         userId: 1,
         propertyTypeId: 9,
@@ -50,11 +50,11 @@ let PROPERTIES = [
         id: 2,
         name: "Hotel Dolynskyi",
         rating: 4.5,
-        address: "Koval street 16, Lviv",
+        address: "Dolyns'koho Street 2A, Lviv",
         description: `Providing free WiFi, Hotel Dolynskiy is set in Lviv. This property is situated a short distance from attractions such as The St. Onuphrius Church and Monastery and The Church of St. Nicholas. The property is 700 m from The High Castle Park and a 9-minute walk from Zankovetski Drama Theater.
         At the hotel, rooms are equipped with a wardrobe. The private bathroom is equipped with free toiletries. Lviv State Academic Opera and Ballet Theater is 800 m from Hotel Dolynskiy, while The Armenian Cathedral is a 10-minute walk away. The nearest airport is Lviv International Airport, 7 km from the accommodation. This is our guests' favourite part of Lviv, according to independent reviews.`,
         contactPhone: "0509842174",
-        coordinates: { lat: 49.817089, lng: 24.031161 },
+        coordinates: { lat: 49.850813, lng: 24.028545 },
         propertyTypeId: 9,
         userId: 1,
         distanceToCentre: 0.7,
@@ -70,7 +70,7 @@ let PROPERTIES = [
         description:
             "Hotel Atlas Deluxe is located in the heart of Lviv, within a 2-minute walk of Ploshcha Rynok Square and a 10-minute walk of Ivana Franko Park. It offers a sauna, fitness centre and concierge service. The classic-style air-conditioned rooms feature a flat-screen TV with satellite channels. The bathroom comes with a hairdryer and free toiletries. Guests can order a meal in the on-site restaurant. After a busy day, you can enjoy your favourite drink at the bar. Lviv Train Station is within a 10-minute drive of Hotel Atlas Deluxe. A shuttle to Lviv International Airport (6.5 km) is available at surcharge. This is our guests' favourite part of Lviv, according to independent reviews.",
         contactPhone: "0678674908",
-        coordinates: { lat: 49.837189, lng: 24.021161 },
+        coordinates: { lat: 49.835743, lng: 24.032616 },
         propertyTypeId: 9,
         distanceToCentre: 1.1,
         cityId: 1,
@@ -85,7 +85,7 @@ let PROPERTIES = [
         description:
             "Located in the city centre of Lviv, less than a 2-minute walk from Svobody Prospekt and a 5-minute walk from Market Square, Rius hotel features free Wi-Fi throughout the property. The modern rooms here provide guests with panoramic windows with a city view, a minibar, a balcony or a terrace, a flat-screen TV with satellite channels, air conditioning, and a private bathroom with a bath or shower. The Lviv Theatre of Opera and Ballet is a 6-minute walk, and the City Hall is a 7-minute walk away. Rius hotel is 2.5 km from Lviv Train Station, 1 km from Doroshenka tram stop, and 7 km from Lviv International Airport. Guarded underground parking is provided. This is our guests' favourite part of Lviv, according to independent reviews. This property also has one of the best-rated locations in Lviv! Guests are happier about it compared to other properties in the area.",
         contactPhone: "0955679712",
-        coordinates: { lat: 49.867089, lng: 24.029161 },
+        coordinates: { lat: 49.841931, lng: 24.024986 },
         propertyTypeId: 9,
         distanceToCentre: 0.2,
         cityId: 1,
@@ -100,7 +100,7 @@ let PROPERTIES = [
         description:
             "This hotel is located in the historic centre of Lviv, just a 10-minute walk from Ploschad Rynok Square. Free Wi-Fi and a 24-hour reception are featured at British Club Lviv. The elegant, air-conditioned rooms and apartments of this hotel are decorated in classical English style. Each one includes a flat-screen TV, a refrigerator and a private bathroom with bathrobes and a hairdryer. Breakfast is served every morning in the hotel’s dining area. Lviv Opera Theatre is just a 2-minute walk away, and Ivana Franko Park is a 5-minute walk from the hotel. A bus stop on Prospekt Svobody is 150 m from British Club Lviv. Lviv Central Train Station is 2.5 km away, and Lviv International Airport is 6 km from the hotel. ",
         contactPhone: "0509842174",
-        coordinates: { lat: 49.137089, lng: 24.022161 },
+        coordinates: { lat: 49.84325, lng: 24.02388 },
         propertyTypeId: 9,
         distanceToCentre: 2.7,
         cityId: 1,
@@ -115,7 +115,7 @@ let PROPERTIES = [
         description:
             "This guest house is located in the centre of Kharkov, a 5-minute walk from Konstitutsii Square. Free Wi-Fi, a 24-hour reception and private parking are featured at Complimente Guest House. The bright, air-conditioned rooms are decorated in classic style. Every room includes a flat-screen TV, a kitchenette equipped with a fridge and a private bathroom. A hairdryer is available. The on-site café serves European cuisine, and a selection of drinks is available at the bar. Kharkov Opera and Ballet Theatre is a 7-minute walk away, and the Shevchenko Park is within a walking distance of the guest house. Istoricheskiy Muzey and Sovetskaya Metro Stations are 500 m from Complimente Guest House. Kharkov Central Train Station is 5 km away, and Kharkov Airport is 12 km from the guest house. This is our guests' favourite part of Kharkov, according to independent reviews.",
         contactPhone: "0674569222",
-        coordinates: { lat: 49.983358, lng: 36.132845 },
+        coordinates: { lat: 49.995886, lng: 36.228966 },
         propertyTypeId: 5,
         distanceToCentre: 3.7,
         cityId: 5,
@@ -131,7 +131,7 @@ let PROPERTIES = [
         description:
             "Featuring free WiFi throughout the property, Pletnevskiy Inn offers accommodation in the historical building in the centre of Kharkov. Guests can enjoy the on-site restaurant. Every room at this hotel is air conditioned and is equipped with a flat-screen TV with cable channels. Certain units include a seating area to relax in after a busy day. You will find a kettle in the room. Every room has a private bathroom fitted with a shower. Extras include bathrobes, slippers and free toiletries. You will find a 24-hour front desk and a concierge service at the property. The on-site parking is available. Metallist Stadium is 2.1 km from Pletnevskiy Inn, while Kharkov Historical Museum is 700 m from the property. The nearest Metro Station is Maidan Konstitutzii, 700 m from property. The nearest airport is Kharkiv International Airport, 8 km from the property. ",
         contactPhone: "0896789099",
-        coordinates: { lat: 49.968358, lng: 36.262845 },
+        coordinates: { lat: 49.986943, lng: 36.233579 },
         propertyTypeId: 6,
         distanceToCentre: 1.4,
         cityId: 5,
@@ -146,7 +146,7 @@ let PROPERTIES = [
         description:
             "his property is 6 minutes walk from the beach. Offering great views of the Black Sea, this historic, classical-style hotel is within a 10-minute walk of Deribasovskaya street, Potemkin Stairs and Duke de Richelieu monument. Opera and Ballet Theatre is 300 m away. Spacious, soundproofed rooms and suites provide a flat-screen TV, desk and safety deposit box. A three-storeyed spa area features a hammam, spa bath, 2 swimming pool and gym. Guests can also enjoy a wide range of massages and cosmetology treatments. The on-site restaurant serves traditional Ukrainian and European cuisine. In summer, guests can dine in the paio. Airport shuttles can be booked at the Londonskaya’s 24-hour reception. The hotel is 2 km from Odessa Train Station and 10 km from Odessa International Airport. Primorsky is a great choice for travellers interested in food, restaurants and architecture.",
         contactPhone: "05089079871",
-        coordinates: { lat: 46.469391, lng: 30.760883 },
+        coordinates: { lat: 46.486877, lng: 30.741964 },
         propertyTypeId: 16,
         distanceToCentre: 3.7,
         cityId: 4,
@@ -161,7 +161,7 @@ let PROPERTIES = [
         description:
             "Stylish rooms with free WiFi and unique décor, UNO Design Hotel is just a 2-minute walk from Deribasovskaya Street and 800 m from the sandy Black Sea Coast. UNO Design Hotel offers spacious suites and rooms with a flat-screen TV and a fully equipped kitchenette. Slippers and toiletries are provided. There are many restaurants and bars within walking distance of UNO Design Hotel. The property is centrally located in the city, just a 5-minute walk from sights such as Odessa Opera and Ballet House and the Potemkin Steps. Odessa Main Train Station is a 10-minute drive and Odessa International Airport is 30 minutes' away by car. Primorsky is a great choice for travellers interested in food, restaurants and architecture. This is our guests' favourite part of Odessa, according to independent reviews.",
         contactPhone: "0509842174",
-        coordinates: { lat: 46.469391, lng: 30.746883 },
+        coordinates: { lat: 46.479989, lng: 30.740628 },
         propertyTypeId: 9,
         distanceToCentre: 1.5,
         cityId: 4,
@@ -176,7 +176,7 @@ let PROPERTIES = [
         description:
             "This property is 2 minutes walk from the beach. Featuring the on-site Dolphinarium, Oceanarium and the Dolphin assisted therapy centre, Resort & SPA Hotel NEMO with dolphins is set in the historical centre of Odessa, on Lanzheron Beach. It offers 9 heated sea-water swimming pools, fitness & spa zone, a 24-hour room service and free WiFi. All rooms are air-conditioned and come with a balcony, flat-screen TV, a safety deposit box and minibar. All suites feature a spa bath. Guests can enjoy Ukrainian, European and Japanese cuisine in the hotel's restaurant, or have a drink at the bar. Odessa city centre is a 5-minute drive from Resort & Spa Hotel Nemo with dolphins. Central Train Station is a 10-minute drive from the resort. Odessa International Airport is 10 km away. Primorsky is a great choice for travellers interested in food, restaurants and architecture.",
         contactPhone: "05066789078",
-        coordinates: { lat: 46.419391, lng: 30.740783 },
+        coordinates: { lat: 46.477551, lng: 30.764932 },
         propertyTypeId: 16,
         distanceToCentre: 6.7,
         cityId: 4,
@@ -191,7 +191,7 @@ let PROPERTIES = [
         description:
             "This hostel in Odessa city centre is only 15 minutes’ walk from Odessa Central Train Station. It features a lounge area with a TV, a well-equipped kitchen and free Wi-Fi. Hostel-Hotel Odesskiy offers shared dormitory rooms with access to shared bathroom facilities. Every room is heated, and includes a desk and wardrobe. Guests at Hostel-Hotel Odesskiy can use the accommodation’s shared kitchen facilities to prepare meals. The kitchen includes a refrigerator, microwave and electric kettle, and a super market is located next door. Odessa attractions such as the Opera and Ballet Theatre and Odessa Philharmonic can be found within 1 km from the hostel. Chernomorets football stadium is only 300 m away. The hostel is located 7 km from Odessa Airport and a public bus runs from here to Troitskaya bus stop, 50 m from the hostel. Primorsky is a great choice for travellers interested in food, restaurants and architecture. This is our guests' favourite part of Odessa, according to independent reviews.",
         contactPhone: "09565789091",
-        coordinates: { lat: 46.462391, lng: 30.742883 },
+        coordinates: { lat: 46.476261, lng: 30.743401 },
         propertyTypeId: 13,
         distanceToCentre: 8.7,
         cityId: 4,
@@ -211,7 +211,7 @@ let PROPERTIES = [
 
             This property also has one of the best-rated locations in Ternopilʼ!`,
         contactPhone: "0674589485",
-        coordinates: { lat: 49.513516, lng: 25.544767 },
+        coordinates: { lat: 49.557224, lng: 25.591945 },
         propertyTypeId: 1,
         distanceToCentre: 1.9,
         cityId: 3,
@@ -233,7 +233,7 @@ let PROPERTIES = [
 
             Many shops and restaurants are within a 5-minute walk of the Hotel Ternopil. Ternopil Train Station is within a 15-minute walk and Ternopil Airport is a 15-minute drive away. `,
         contactPhone: "0956786121",
-        coordinates: { lat: 49.153516, lng: 25.564767 },
+        coordinates: { lat: 49.552459, lng: 25.588378 },
         propertyTypeId: 9,
         distanceToCentre: 9.7,
         cityId: 3,
@@ -255,7 +255,7 @@ let PROPERTIES = [
 
             Kamelot Hotel is 8 minutes’ drive from Ternopil Train Station and the 18th-century Dominican Church. Ternopil Airport is 15 minutes’ drive away.`,
         contactPhone: "0906786876",
-        coordinates: { lat: 49.563516, lng: 25.592767 },
+        coordinates: { lat: 49.532944, lng: 25.625296 },
         propertyTypeId: 2,
         distanceToCentre: 1.5,
         cityId: 3,
@@ -276,7 +276,7 @@ let PROPERTIES = [
 
             Kiev city centre with Maidan Nezalezhnosti Square is 20 minutes’ metro ride from Hotel Verhovina, and Kiev Train Station is 15 minutes away by metro. Boryspil Airport is 50 km from the hotel.`,
         contactPhone: "0678909456",
-        coordinates: { lat: 50.472626, lng: 30.456608 },
+        coordinates: { lat: 50.442993, lng: 30.355522 },
         propertyTypeId: 9,
         distanceToCentre: 4.7,
         cityId: 2,
@@ -298,7 +298,7 @@ let PROPERTIES = [
 
             Dniprovskyj is a great choice for travellers interested in sightseeing, friendly locals and history.`,
         contactPhone: "0908909422",
-        coordinates: { lat: 50.451626, lng: 30.458608 },
+        coordinates: { lat: 50.450798, lng: 30.597152 },
         propertyTypeId: 9,
         distanceToCentre: 3.7,
         cityId: 2,
@@ -320,7 +320,7 @@ let PROPERTIES = [
 
             Kiev Airport is a 40-minute drive from the hotel, and Kiev Main Station is a 20-minute drive away. `,
         contactPhone: "09567893241",
-        coordinates: { lat: 50.451626, lng: 30.453608 },
+        coordinates: { lat: 50.445877, lng: 30.537976 },
         propertyTypeId: 9,
         distanceToCentre: 7.7,
         cityId: 2,
@@ -344,7 +344,7 @@ let PROPERTIES = [
 
             The nearest airport is Zhuliany Airport, 6 km from City Holiday Resort & SPA. `,
         contactPhone: "0674594012",
-        coordinates: { lat: 50.451626, lng: 30.453608 },
+        coordinates: { lat: 50.432374, lng: 30.35915 },
         propertyTypeId: 16,
         distanceToCentre: 1.3,
         cityId: 2,
@@ -362,7 +362,7 @@ let PROPERTIES = [
 
             Saint Sophia Cathedral is 7 km from the apartment. `,
         contactPhone: "0674099409",
-        coordinates: { lat: 51.471626, lng: 30.253608 },
+        coordinates: { lat: 50.449413, lng: 30.423436 },
         propertyTypeId: 6,
         distanceToCentre: 3.7,
         cityId: 2,
@@ -385,7 +385,7 @@ let PROPERTIES = [
 
             Podilskyj is a great choice for travellers interested in old town exploring, architecture and walking.`,
         contactPhone: "0955589762",
-        coordinates: { lat: 51.471626, lng: 34.453608 },
+        coordinates: { lat: 50.459142, lng: 30.515081 },
         propertyTypeId: 11,
         distanceToCentre: 2.7,
         cityId: 2,
@@ -405,7 +405,7 @@ let PROPERTIES = [
 
             Bartolomeo Best River Resort features two tennis courts, playgrounds for mini-football and beach volleyball. `,
         contactPhone: "0678007800",
-        coordinates: { lat: 48.425, lng: 34.983313 },
+        coordinates: { lat: 48.446454, lng: 35.081028 },
         propertyTypeId: 9,
         cityId: 6,
         distanceToCentre: 3.5,
@@ -427,7 +427,7 @@ let PROPERTIES = [
 
             The Karl Marx Prospekt boulevard is a 3-minute walk from the Tsunami Spa Hotel. The hotel offers free private parking.`,
         contactPhone: "0674108900",
-        coordinates: { lat: 48.425, lng: 34.983233 },
+        coordinates: { lat: 48.457366, lng: 35.068969 },
         propertyTypeId: 17,
         distanceToCentre: 2.7,
         cityId: 6,
@@ -445,7 +445,7 @@ let PROPERTIES = [
 
             Bolshoy Ice Palace is 3.2 km from the apartment. The nearest airport is Adler-Sochi International Airport, 3 km from Apartments on Kirova. `,
         contactPhone: "0904118899",
-        coordinates: { lat: 48.425, lng: 34.983233 },
+        coordinates: { lat: 48.461395, lng: 35.02735 },
         propertyTypeId: 1,
         distanceToCentre: 1.1,
         cityId: 6,
@@ -469,7 +469,7 @@ let PROPERTIES = [
 
             This is our guests' favourite part of Lviv, according to independent reviews.`,
         contactPhone: "0671129412",
-        coordinates: { lat: 49.8374089, lng: 24.071161 },
+        coordinates: { lat: 49.841211, lng: 24.032039 },
         propertyTypeId: 1,
         cityId: 1,
         distanceToCentre: 7.7,
@@ -491,7 +491,7 @@ let PROPERTIES = [
 
             This is our guests' favourite part of Lviv, according to independent reviews.`,
         contactPhone: "0678907890",
-        coordinates: { lat: 43.837089, lng: 22.021161 },
+        coordinates: { lat: 49.837202, lng: 24.035115 },
         propertyTypeId: 1,
         distanceToCentre: 7.1,
         cityId: 1,
@@ -1926,308 +1926,1076 @@ const IMAGES = [
     {
         id: 1,
         url:
-            "https://www.publicdomainpictures.net/pictures/10000/velka/947-1262818585EUqs.jpg",
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/130/130907601.jpg",
         propertyId: 1
     },
     {
         id: 2,
         url:
-            "https://www.publicdomainpictures.net/pictures/270000/velka/classic-interior-lifestyle.jpg",
-        propertyId: 2
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/130/130906982.jpg",
+        propertyId: 1
     },
     {
         id: 3,
         url:
-            "https://www.publicdomainpictures.net/pictures/10000/velka/947-1262818585EUqs.jpg",
-        propertyId: 2
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/103/103303105.jpg",
+        propertyId: 1
     },
     {
         id: 4,
         url:
-            "https://www.publicdomainpictures.net/pictures/60000/velka/world-famous-las-vegas.jpg",
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/505/5056131.jpg",
         propertyId: 1
     },
     {
         id: 5,
         url:
-            "https://www.publicdomainpictures.net/pictures/20000/velka/holiday-resort-11296473620ggd.jpg",
-        propertyId: 3
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/130/130881697.jpg",
+        propertyId: 1
     },
     {
         id: 6,
         url:
-            "https://www.publicdomainpictures.net/pictures/10000/velka/spa-331285343005txlT.jpg",
-        propertyId: 3
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/134/134023287.jpg",
+        propertyId: 1
     },
     {
         id: 7,
         url:
-            "https://www.publicdomainpictures.net/pictures/10000/velka/1-1265292839YS1S.jpg",
-        propertyId: 4
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/134/134023319.jpg",
+        propertyId: 1
     },
     {
         id: 8,
         url:
-            "https://www.publicdomainpictures.net/pictures/50000/velka/hotel.jpg",
-        propertyId: 4
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/134/134023098.jpg",
+        propertyId: 1
     },
     {
         id: 9,
         url:
-            "https://www.publicdomainpictures.net/pictures/10000/velka/beds-331285342771uoMx.jpg",
-        propertyId: 5
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/153/153409181.jpg",
+        propertyId: 2
     },
     {
         id: 10,
         url:
-            "https://www.publicdomainpictures.net/pictures/50000/velka/hotel.jpg",
-        propertyId: 5
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/153/153409390.jpg",
+        propertyId: 2
     },
     {
         id: 11,
         url:
-            "https://www.publicdomainpictures.net/pictures/20000/velka/hotel-a-madrid.jpg",
-        propertyId: 6
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/153/153017030.jpg",
+        propertyId: 2
     },
     {
         id: 12,
         url:
-            "https://www.publicdomainpictures.net/pictures/70000/velka/hotel-room.jpg",
-        propertyId: 6
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/153/153017417.jpg",
+        propertyId: 2
     },
     {
         id: 13,
         url:
-            "https://www.publicdomainpictures.net/pictures/80000/velka/un-decor-de-gemma-4.jpg",
-        propertyId: 7
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/153/153249835.jpg",
+        propertyId: 2
     },
     {
         id: 14,
         url:
-            "https://www.publicdomainpictures.net/pictures/70000/velka/un-decor-de-gemma-1.jpg",
-        propertyId: 7
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/153/153020259.jpg",
+        propertyId: 2
     },
     {
         id: 15,
         url:
-            "https://www.publicdomainpictures.net/pictures/220000/velka/log-home-1492017294F88.jpg",
-        propertyId: 8
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/153/153015987.jpg",
+        propertyId: 2
     },
     {
         id: 16,
         url:
-            "https://www.publicdomainpictures.net/pictures/130000/velka/a-sleeping-cat.jpg",
-        propertyId: 8
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/153/153020256.jpg",
+        propertyId: 2
     },
     {
         id: 17,
         url:
-            "https://www.publicdomainpictures.net/pictures/210000/velka/living-room-1490132509L6W.jpg",
-        propertyId: 9
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/329/32965782.jpg",
+        propertyId: 3
     },
     {
         id: 18,
         url:
-            "https://www.publicdomainpictures.net/pictures/10000/velka/2608-1273404731jPsY.jpg",
-        propertyId: 9
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/337/33762093.jpg",
+        propertyId: 3
     },
     {
         id: 19,
         url:
-            "https://www.publicdomainpictures.net/pictures/10000/velka/1453-125183103390v0.jpg",
-        propertyId: 10
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/335/33545135.jpg",
+        propertyId: 3
     },
     {
         id: 20,
         url:
-            "https://www.publicdomainpictures.net/pictures/10000/velka/954-1236363893mO6T.jpg",
-        propertyId: 10
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/334/33407453.jpg",
+        propertyId: 3
     },
     {
         id: 21,
         url:
-            "https://www.publicdomainpictures.net/pictures/40000/velka/room-at-xmas.jpg",
-        propertyId: 11
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/335/33545298.jpg",
+        propertyId: 3
     },
     {
         id: 22,
         url:
-            "https://www.publicdomainpictures.net/pictures/40000/velka/shabby-chi-room-in-magestic-setting.jpg",
-        propertyId: 11
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/331/33122000.jpg",
+        propertyId: 3
     },
     {
         id: 23,
         url:
-            "https://www.publicdomainpictures.net/pictures/40000/velka/my-room.jpg",
-        propertyId: 12
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/700/70096979.jpg",
+        propertyId: 3
     },
     {
         id: 24,
         url:
-            "https://www.publicdomainpictures.net/pictures/60000/velka/motel-room-1.jpg",
-        propertyId: 12
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/322/32213752.jpg",
+        propertyId: 4
     },
     {
         id: 25,
         url:
-            "https://www.publicdomainpictures.net/pictures/60000/velka/pokoj-z-minuleho-stoleti.jpg",
-        propertyId: 13
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/895/89541314.jpg",
+        propertyId: 4
     },
     {
         id: 26,
         url:
-            "https://www.publicdomainpictures.net/pictures/220000/velka/living-room-1491698999utS.jpg",
-        propertyId: 13
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/155/155797098.jpg",
+        propertyId: 4
     },
     {
         id: 27,
         url:
-            "https://www.publicdomainpictures.net/pictures/210000/velka/dining-room-with-view.jpg",
-        propertyId: 14
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/155/155797017.jpg",
+        propertyId: 4
     },
     {
         id: 28,
         url:
-            "https://www.publicdomainpictures.net/pictures/220000/velka/city-view-1491702306XdV.jpg",
-        propertyId: 14
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/155/155789977.jpg",
+        propertyId: 4
     },
     {
         id: 29,
         url:
-            "https://www.publicdomainpictures.net/pictures/220000/velka/storing-and-canning-room.jpg",
-        propertyId: 15
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/155/155789910.jpg",
+        propertyId: 4
     },
     {
         id: 30,
         url:
-            "https://www.publicdomainpictures.net/pictures/220000/velka/public-domain-pictures-14944035015kq.jpg",
-        propertyId: 15
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/333/33302219.jpg",
+        propertyId: 4
     },
     {
         id: 31,
         url:
-            "https://www.publicdomainpictures.net/pictures/220000/velka/public-domain-pictures-1495445493h97.jpg",
-        propertyId: 16
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/322/32218061.jpg",
+        propertyId: 4
     },
     {
         id: 32,
         url:
-            "https://www.publicdomainpictures.net/pictures/220000/velka/empty-home-with-view.jpg",
-        propertyId: 16
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/383/38355902.jpg",
+        propertyId: 5
     },
     {
         id: 33,
         url:
-            "https://www.publicdomainpictures.net/pictures/220000/velka/childs-bedroom.jpg",
-        propertyId: 17
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/383/38355498.jpg",
+        propertyId: 5
     },
     {
         id: 34,
         url:
-            "https://www.publicdomainpictures.net/pictures/230000/velka/decorated-chamber.jpg",
-        propertyId: 17
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/383/38358859.jpg",
+        propertyId: 5
     },
     {
         id: 35,
         url:
-            "https://www.publicdomainpictures.net/pictures/230000/velka/room-interior.jpg",
-        propertyId: 18
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/383/38358667.jpg",
+        propertyId: 5
     },
     {
         id: 36,
         url:
-            "https://www.publicdomainpictures.net/pictures/230000/velka/bett-15018372700cY.jpg",
-        propertyId: 18
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/383/38368984.jpg",
+        propertyId: 5
     },
     {
         id: 37,
         url:
-            "https://www.publicdomainpictures.net/pictures/80000/velka/bedroom-deluxe.jpg",
-        propertyId: 19
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/160/160594449.jpg",
+        propertyId: 5
     },
     {
         id: 38,
         url:
-            "https://www.publicdomainpictures.net/pictures/90000/velka/living-room.jpg",
-        propertyId: 19
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/160/160594082.jpg",
+        propertyId: 5
     },
     {
         id: 39,
         url:
-            "https://www.publicdomainpictures.net/pictures/100000/velka/une-nuit-a-montreal.jpg",
-        propertyId: 20
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/147/14785565.jpg",
+        propertyId: 6
     },
     {
         id: 40,
         url:
-            "https://www.publicdomainpictures.net/pictures/100000/velka/salle-a-manger-antiquesalle-a-mange.jpg",
-        propertyId: 20
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/270/27035127.jpg",
+        propertyId: 6
     },
     {
         id: 41,
         url:
-            "https://www.publicdomainpictures.net/pictures/100000/velka/hotel-room-1408755932hPV.jpg",
-        propertyId: 21
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/102/102001816.jpg",
+        propertyId: 6
     },
     {
         id: 42,
         url:
-            "https://www.publicdomainpictures.net/pictures/130000/velka/attic-room-arched-windows.jpg",
-        propertyId: 21
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/101/101943223.jpg",
+        propertyId: 6
     },
     {
         id: 43,
         url:
-            "https://www.publicdomainpictures.net/pictures/130000/velka/arched-windows-with-balcony.jpg",
-        propertyId: 22
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/101/101942348.jpg",
+        propertyId: 6
     },
     {
         id: 44,
         url:
-            "https://www.publicdomainpictures.net/pictures/160000/velka/roof-balcony.jpg",
-        propertyId: 22
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/101/101942022.jpg",
+        propertyId: 6
     },
     {
         id: 45,
         url:
-            "https://www.publicdomainpictures.net/pictures/240000/velka/hotel-1509208862T59.jpg",
-        propertyId: 23
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/101/101941661.jpg",
+        propertyId: 6
     },
     {
         id: 46,
         url:
-            "https://www.publicdomainpictures.net/pictures/240000/velka/the-reading-room.jpg",
-        propertyId: 23
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/931/93124366.jpg",
+        propertyId: 7
     },
     {
         id: 47,
         url:
-            "https://www.publicdomainpictures.net/pictures/240000/velka/decor-de-gemma-1.jpg",
-        propertyId: 24
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/920/92085678.jpg",
+        propertyId: 7
     },
     {
         id: 48,
         url:
-            "https://www.publicdomainpictures.net/pictures/240000/velka/decor-de-gemma-7.jpg",
-        propertyId: 24
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/931/93124178.jpg",
+        propertyId: 7
     },
     {
         id: 49,
         url:
-            "https://www.publicdomainpictures.net/pictures/240000/velka/sitting-room-with-grand-piano.jpg",
-        propertyId: 25
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/931/93124092.jpg",
+        propertyId: 7
     },
     {
         id: 50,
         url:
-            "https://www.publicdomainpictures.net/pictures/270000/velka/ghostly-vintage-dance.jpg",
-        propertyId: 25
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/931/93124105.jpg",
+        propertyId: 7
     },
     {
         id: 51,
         url:
-            "https://www.publicdomainpictures.net/pictures/270000/velka/bedroom-interior.jpg",
-        propertyId: 1
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/920/92085679.jpg",
+        propertyId: 7
+    },
+    {
+        id: 52,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/920/92037473.jpg",
+        propertyId: 7
+    },
+    {
+        id: 53,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/701/70163232.jpg",
+        propertyId: 8
+    },
+    {
+        id: 54,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/701/70163222.jpg",
+        propertyId: 8
+    },
+    {
+        id: 55,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/399/39930699.jpg",
+        propertyId: 8
+    },
+    {
+        id: 56,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/330/33011586.jpg",
+        propertyId: 8
+    },
+    {
+        id: 57,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/330/33013389.jpg",
+        propertyId: 8
+    },
+    {
+        id: 58,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/330/33011071.jpg",
+        propertyId: 8
+    },
+    {
+        id: 59,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/399/39929880.jpg",
+        propertyId: 8
+    },
+    {
+        id: 60,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/517/51729276.jpg",
+        propertyId: 9
+    },
+    {
+        id: 61,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/100/100776788.jpg",
+        propertyId: 9
+    },
+    {
+        id: 62,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/119/119282902.jpg",
+        propertyId: 9
+    },
+    {
+        id: 63,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/100/100472902.jpg",
+        propertyId: 9
+    },
+    {
+        id: 64,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/545/54569824.jpg",
+        propertyId: 9
+    },
+    {
+        id: 65,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/544/54477824.jpg",
+        propertyId: 9
+    },
+    {
+        id: 66,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/102/102526287.jpg",
+        propertyId: 9
+    },
+    {
+        id: 67,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/661/66121013.jpg",
+        propertyId: 10
+    },
+    {
+        id: 68,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/655/65550737.jpg",
+        propertyId: 10
+    },
+    {
+        id: 69,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/155/155588429.jpg",
+        propertyId: 10
+    },
+    {
+        id: 70,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/655/65511854.jpg",
+        propertyId: 10
+    },
+    {
+        id: 71,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/433/43332142.jpg",
+        propertyId: 10
+    },
+    {
+        id: 72,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/655/65550741.jpg",
+        propertyId: 10
+    },
+    {
+        id: 73,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1280x900/129/129131118.jpg",
+        propertyId: 10
+    },
+    {
+        id: 74,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/103/103908012.jpg",
+        propertyId: 11
+    },
+    {
+        id: 75,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/154/154686614.jpg",
+        propertyId: 11
+    },
+    {
+        id: 76,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/154/154686622.jpg",
+        propertyId: 11
+    },
+    {
+        id: 77,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/154/154686687.jpg",
+        propertyId: 11
+    },
+    {
+        id: 78,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/154/154686661.jpg",
+        propertyId: 11
+    },
+    {
+        id: 79,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/154/154426413.jpg",
+        propertyId: 11
+    },
+    {
+        id: 80,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1280x900/103/103908327.jpg",
+        propertyId: 11
+    },
+    {
+        id: 81,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/962/96211065.jpg",
+        propertyId: 12
+    },
+    {
+        id: 80,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/967/96793665.jpg",
+        propertyId: 12
+    },
+    {
+        id: 82,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/926/92695474.jpg",
+        propertyId: 12
+    },
+    {
+        id: 83,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/967/96792432.jpg",
+        propertyId: 12
+    },
+    {
+        id: 84,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/936/93682623.jpg",
+        propertyId: 12
+    },
+    {
+        id: 85,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/926/92695466.jpg",
+        propertyId: 12
+    },
+    {
+        id: 86,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/926/92695479.jpg",
+        propertyId: 12
+    },
+    {
+        id: 87,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/445/44580919.jpg",
+        propertyId: 13
+    },
+    {
+        id: 88,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/103/10354922.jpg",
+        propertyId: 13
+    },
+    {
+        id: 89,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/103/10354917.jpg",
+        propertyId: 13
+    },
+    {
+        id: 90,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/445/44581172.jpg",
+        propertyId: 13
+    },
+    {
+        id: 91,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/139/13967166.jpg",
+        propertyId: 13
+    },
+    {
+        id: 92,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/447/4473698.jpg",
+        propertyId: 13
+    },
+    {
+        id: 93,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/771/7715967.jpg",
+        propertyId: 13
+    },
+    {
+        id: 94,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/103/10354884.jpg",
+        propertyId: 13
+    },
+    {
+        id: 95,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/348/34848971.jpg",
+        propertyId: 14
+    },
+    {
+        id: 96,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/727/7272702.jpg",
+        propertyId: 14
+    },
+    {
+        id: 97,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/727/7272691.jpg",
+        propertyId: 14
+    },
+    {
+        id: 98,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/793/7933889.jpg",
+        propertyId: 14
+    },
+    {
+        id: 99,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/793/7933909.jpg",
+        propertyId: 14
+    },
+    {
+        id: 100,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/252/25276794.jpg",
+        propertyId: 14
+    },
+    {
+        id: 101,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/252/25276790.jpg",
+        propertyId: 14
+    },
+    {
+        id: 102,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/535/53557690.jpg",
+        propertyId: 15
+    },
+    {
+        id: 103,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/154/154114953.jpg",
+        propertyId: 15
+    },
+    {
+        id: 104,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/154/154115575.jpg",
+        propertyId: 15
+    },
+    {
+        id: 105,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/154/154115755.jpg",
+        propertyId: 15
+    },
+    {
+        id: 106,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/187/18706066.jpg",
+        propertyId: 15
+    },
+    {
+        id: 107,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/154/154115597.jpg",
+        propertyId: 15
+    },
+    {
+        id: 108,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/157/157788784.jpg",
+        propertyId: 15
+    },
+    {
+        id: 109,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/131/131133997.jpg",
+        propertyId: 16
+    },
+    {
+        id: 110,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/155/155899618.jpg",
+        propertyId: 16
+    },
+    {
+        id: 111,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/155/155899632.jpg",
+        propertyId: 16
+    },
+    {
+        id: 112,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/155/155891959.jpg",
+        propertyId: 16
+    },
+    {
+        id: 113,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/131/131999290.jpg",
+        propertyId: 16
+    },
+    {
+        id: 114,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/155/155891968.jpg",
+        propertyId: 16
+    },
+    {
+        id: 115,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/155/155890607.jpg",
+        propertyId: 16
+    },
+    {
+        id: 116,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/261/26171442.jpg",
+        propertyId: 17
+    },
+    {
+        id: 117,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/859/85968690.jpg",
+        propertyId: 17
+    },
+    {
+        id: 118,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/617/6171806.jpg",
+        propertyId: 17
+    },
+    {
+        id: 119,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/617/6171371.jpg",
+        propertyId: 17
+    },
+    {
+        id: 120,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/126/126183140.jpg",
+        propertyId: 17
+    },
+    {
+        id: 121,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/903/90315755.jpg",
+        propertyId: 17
+    },
+    {
+        id: 122,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/126/126183071.jpg",
+        propertyId: 17
+    },
+    {
+        id: 123,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/764/76475415.jpg",
+        propertyId: 18
+    },
+    {
+        id: 124,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/141/141267539.jpg",
+        propertyId: 18
+    },
+    {
+        id: 125,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/766/76694894.jpg",
+        propertyId: 18
+    },
+    {
+        id: 126,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/122/122464312.jpg",
+        propertyId: 18
+    },
+    {
+        id: 127,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/122/122464347.jpg",
+        propertyId: 18
+    },
+    {
+        id: 128,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/100/100972632.jpg",
+        propertyId: 18
+    },
+    {
+        id: 129,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/974/97432886.jpg",
+        propertyId: 18
+    },
+    {
+        id: 130,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/157/157563995.jpg",
+        propertyId: 19
+    },
+    {
+        id: 131,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/157/157563905.jpg",
+        propertyId: 19
+    },
+    {
+        id: 132,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/157/157563908.jpg",
+        propertyId: 19
+    },
+    {
+        id: 133,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/157/157563914.jpg",
+        propertyId: 19
+    },
+    {
+        id: 134,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/157/157563927.jpg",
+        propertyId: 19
+    },
+    {
+        id: 135,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/157/157563943.jpg",
+        propertyId: 19
+    },
+    {
+        id: 136,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/157/157563961.jpg",
+        propertyId: 19
+    },
+    {
+        id: 137,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/994/99407408.jpg",
+        propertyId: 20
+    },
+    {
+        id: 138,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/154/154412322.jpg",
+        propertyId: 20
+    },
+    {
+        id: 139,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/153/153636269.jpg",
+        propertyId: 20
+    },
+    {
+        id: 140,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/153/153635206.jpg",
+        propertyId: 20
+    },
+    {
+        id: 141,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/997/99735730.jpg",
+        propertyId: 20
+    },
+    {
+        id: 142,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/997/99730508.jpg",
+        propertyId: 20
+    },
+    {
+        id: 143,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/994/99409022.jpg",
+        propertyId: 20
+    },
+    {
+        id: 144,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/127/127565620.jpg",
+        propertyId: 21
+    },
+    {
+        id: 145,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/574/57468174.jpg",
+        propertyId: 21
+    },
+    {
+        id: 146,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/574/57488719.jpg",
+        propertyId: 21
+    },
+    {
+        id: 147,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/815/81582265.jpg",
+        propertyId: 21
+    },
+    {
+        id: 148,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/813/81356901.jpg",
+        propertyId: 21
+    },
+    {
+        id: 149,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/813/81356819.jpg",
+        propertyId: 21
+    },
+    {
+        id: 150,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/813/81356788.jpg",
+        propertyId: 21
+    },
+    {
+        id: 151,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/134/13449531.jpg",
+        propertyId: 22
+    },
+    {
+        id: 152,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/110/110820051.jpg",
+        propertyId: 22
+    },
+    {
+        id: 153,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/110/110820078.jpg",
+        propertyId: 22
+    },
+    {
+        id: 154,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/110/110820069.jpg",
+        propertyId: 22
+    },
+    {
+        id: 155,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/110/110824019.jpg",
+        propertyId: 22
+    },
+    {
+        id: 156,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/156/156980682.jpg",
+        propertyId: 22
+    },
+    {
+        id: 157,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/156/156976644.jpg",
+        propertyId: 22
+    },
+    {
+        id: 158,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/115/115423065.jpg",
+        propertyId: 23
+    },
+    {
+        id: 159,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/115/115423066.jpg",
+        propertyId: 23
+    },
+    {
+        id: 160,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/115/115423068.jpg",
+        propertyId: 23
+    },
+    {
+        id: 161,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/115/115423069.jpg",
+        propertyId: 23
+    },
+    {
+        id: 162,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/115/115423073.jpg",
+        propertyId: 23
+    },
+    {
+        id: 163,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/115/115423074.jpg",
+        propertyId: 23
+    },
+    {
+        id: 164,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/462/46281067.jpg",
+        propertyId: 23
+    },
+    {
+        id: 165,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/139/139183612.jpg",
+        propertyId: 24
+    },
+    {
+        id: 166,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/139/139183432.jpg",
+        propertyId: 24
+    },
+    {
+        id: 167,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/128/128071976.jpg",
+        propertyId: 24
+    },
+    {
+        id: 168,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/128/128052958.jpg",
+        propertyId: 24
+    },
+    {
+        id: 169,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/128/128052772.jpg",
+        propertyId: 24
+    },
+    {
+        id: 170,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/128/128052708.jpg",
+        propertyId: 24
+    },
+    {
+        id: 171,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/128/128052659.jpg",
+        propertyId: 24
+    },
+    {
+        id: 172,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/114/114869009.jpg",
+        propertyId: 25
+    },
+    {
+        id: 173,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/114/114869010.jpg",
+        propertyId: 25
+    },
+    {
+        id: 174,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/114/114869091.jpg",
+        propertyId: 25
+    },
+    {
+        id: 175,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/114/114869058.jpg",
+        propertyId: 25
+    },
+    {
+        id: 176,
+        url:
+            "https://t-ec.bstatic.com/images/hotel/max1024x768/114/114869017.jpg",
+        propertyId: 25
+    },
+    {
+        id: 177,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/114/114869054.jpg",
+        propertyId: 25
+    },
+    {
+        id: 178,
+        url:
+            "https://s-ec.bstatic.com/images/hotel/max1024x768/114/114868988.jpg",
+        propertyId: 25
     }
 ];
 
@@ -4440,19 +5208,19 @@ const REVIEWS = [
 const CURRENCIES = [
     {
         name: "EURO",
-        code: "€",
+        code: "EUR",
         codeTitle:"EUR",
         number: "978"
     },
     {
         name: "US DOLLAR",
-        code: "$",
+        code: "USD",
         codeTitle:"USD",
         number: "840"
     },
     {
         name: "Hryvnia",
-        code: "₴",
+        code: "UAH",
         codeTitle:"UAH",
         number: "980"
     }

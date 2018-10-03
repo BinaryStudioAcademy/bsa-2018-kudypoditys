@@ -47,7 +47,7 @@ export class PropertySummary extends React.Component {
 
                     <Rating
                         rating={rating}
-                        maxRating={5}
+                        maxRating={10}
                         disabled
                         style={{ paddingLeft: '10px' }}
                     />

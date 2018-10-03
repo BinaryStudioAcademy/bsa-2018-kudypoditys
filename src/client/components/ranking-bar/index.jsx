@@ -61,14 +61,14 @@ export class RankingBar extends React.Component {
                                 active={sortBy === HIGH_RANK}
                                 onClick={this.handleItemClick}
                             >
-                            stars [5→1]
+                            stars [1→5]
                             </Dropdown.Item>
                             <Dropdown.Item
                                 value={LOW_RANK}
                                 active={sortBy === LOW_RANK}
                                 onClick={this.handleItemClick}
                             >
-                                stars [1→5]
+                                stars [5→1]
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
