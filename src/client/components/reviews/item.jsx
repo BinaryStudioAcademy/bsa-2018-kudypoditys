@@ -21,6 +21,7 @@ export default class Review extends Component {
         const anon = reviewData.anon;
         let avatar = reviewData.user.avatar;
         let userName = reviewData.user.fullName;
+        let displayName = reviewData.user.nickname;
 
         if (anon) {
             avatar = anonPic;
@@ -43,7 +44,7 @@ export default class Review extends Component {
                     />
 
                     <Comment.Content>
-                        <Comment.Author>{userName}</Comment.Author>
+                        <Comment.Author>{displayName ? displayName : userName}</Comment.Author>
                         <Comment.Metadata>
                             <span>Reviewed: {date}</span>
                             <div className="ratingLabel">

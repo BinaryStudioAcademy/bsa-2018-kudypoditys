@@ -75,7 +75,7 @@ const includeOptions = [
         include: [
             {
                 model: User,
-                attributes: ["id", "fullName", "email", "avatar", "phoneNumber"]
+                attributes: ["id", "fullName", "email", "avatar", "phoneNumber", "nickname"]
             }
         ]
     },
