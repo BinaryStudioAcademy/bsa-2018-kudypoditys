@@ -40,9 +40,16 @@
     max-width: 1021px !important;
 }
 
-// .dropdown.icon {
-//     display: none;
-// }
+.header--wraper {
+    .ui.selection.dropdown>.dropdown.icon {
+        right: 4px;
+    }
+    .ui.fluid.dropdown {
+        padding-top: 11px !important;
+    }
+}
+
+
 
 .menu .item.menu__welcome {
     color: white;

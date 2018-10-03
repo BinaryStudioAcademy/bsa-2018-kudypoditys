@@ -1,24 +1,20 @@
 # Pull base image from stock node image.
 FROM node:10.8.0
 
-# Maintainer
-MAINTAINER Rusinka Bohdan <bohdan.rusinka@binary-studio.com>
-
-# Need global gulp
-RUN npm install gulp -g
-
 # Make app directory
-RUN mkdir /opt/kudypoditys
+RUN mkdir /kudypoditys
 
 # Add the current working folder to the /opt/src dir
-ADD . /opt/kudypoditys
+ADD . /kudypoditys
 
 # Set the current working directory to the new mapped folder.
-WORKDIR /opt/kudypoditys
+WORKDIR /kudypoditys
 
 # Install package.json
 RUN npm install
 
+# Create public folder
+RUN npm run build
 # Expose the node.js port to the Docker host.
 EXPOSE 5000
 

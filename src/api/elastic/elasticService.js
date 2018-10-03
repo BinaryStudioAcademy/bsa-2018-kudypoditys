@@ -1,9 +1,11 @@
+require("dotenv").config();
+const elasticRepository = require("./index");
 const elasticsearch = require("elasticsearch");
 const init = require("./init");
 const PropertyService = require("./../services/property");
 const CityService = require("./../services/city");
 const elasticClient = new elasticsearch.Client({
-    hosts: ["http://localhost:9200"]
+    host: process.env.ELASTIC_HOST
 });
 
 module.exports = {
@@ -177,7 +179,7 @@ module.exports = {
             address: property.address,
             image: property.images[0].url
         };
-        return elasticClient.index({index, id, type, body}).then(responce => {
+        return elasticClient.index({ index, id, type, body }).then(responce => {
             console.log("Elastic added new property : " + responce);
         });
     }

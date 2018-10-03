@@ -7,7 +7,6 @@ const path = require("path"),
     compression = require("compression"),
     server = require("http").Server(app),
     elasticService = require("./src/api/elastic/elasticService");
-// routes = require(`${apiRoot}/testModels`);
 
 const io = require("socket.io")(server, { serveClient: true });
 
@@ -15,9 +14,9 @@ const apiRoot = path.resolve(path.join(__dirname, "src/api"));
 
 require(`${apiRoot}/helpers/passport`);
 
-const port = process.env.PORT || 5000;
+const port = 5000;
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: "*", credentials: true }));
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

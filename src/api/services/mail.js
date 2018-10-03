@@ -9,20 +9,20 @@ AWS.config.update({ region: "eu-central-1" });
 var sqs = new AWS.SQS({ apiVersion: "2012-11-05" });
 
 class MailService {
-    sendMail____(user, mailOptionsObj, action) {
+    sendMail(user, mailOptionsObj, action) {
         console.log(user, mailOptionsObj);
         const mailOptions = {
             from: "kudypoditys@gmail.com",
             to: user.email,
             subject: mailOptionsObj.subject,
             html: `
-        <a href="http://localhost:3000/${action}?email=${user.email}&token=${
+        <a href="${process.env.BASE_URL}/${action}?email=${user.email}&token=${
                 mailOptionsObj.verifyStringParam
             }">
           ${mailOptionsObj.message}
         </a>`
         };
-
+        console.log(mailOptions);
         var params = {
             DelaySeconds: 10,
             MessageBody: JSON.stringify(mailOptions),
@@ -56,7 +56,7 @@ class MailService {
         );
     }
 
-    sendMail(user, mailOptionsObj, action) {
+    sendMail____(user, mailOptionsObj, action) {
         const EMAIL_USER = process.env.EMAIL_USER;
         const EMAIL_PASS = process.env.EMAIL_PASS;
 
@@ -73,12 +73,13 @@ class MailService {
             to: user.email,
             subject: mailOptionsObj.subject,
             html: `
-        <a href="http://localhost:3000/${action}?email=${user.email}&token=${
+        <a href="${BASE_URL}/${action}?email=${user.email}&token=${
                 mailOptionsObj.verifyStringParam
             }">
           ${mailOptionsObj.message}
         </a>`
         };
+        console.log(mailOptions);
         return transporter.sendMail(mailOptions).then(_ => true);
     }
 }

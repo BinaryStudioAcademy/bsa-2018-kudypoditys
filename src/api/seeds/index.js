@@ -70,7 +70,7 @@ function calc(){
 
 
         TEMP.push(prop)
-        console.log(TEMP)
+        // console.log(TEMP)
     })
 
 
@@ -204,6 +204,7 @@ function inTransaction(orm, action) {
 }
 
 function toggleTablesTriggers(tableList, orm, enable) {
+    return Promise.resolve();
     const what = enable ? "ENABLE" : "DISABLE";
 
     const toggleTriggerQuery = tableList

@@ -129,8 +129,9 @@ export class MainHeader extends Component {
                                                         style={{
                                                             cursor: "pointer",
                                                             marginRight: "24px",
-                                                            fontSize: 16
-                                                            // opacity: 0.8
+                                                            fontSize: 16,
+                                                            top: 4,
+                                                            position: 'relative'
                                                         }}
                                                         onClick={
                                                             this.loginClicked
@@ -142,8 +143,9 @@ export class MainHeader extends Component {
                                                     <a
                                                         style={{
                                                             cursor: "pointer",
-                                                            fontSize: 16
-                                                            // opacity: 0.8
+                                                            fontSize: 16,
+                                                            top: 4,
+                                                            position: 'relative'
                                                         }}
                                                         onClick={
                                                             this.registerClicked
