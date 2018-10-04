@@ -5,7 +5,7 @@ import {
     PROPERTY_ITEM_UPDATE,
     FETCH_PROPERTY_ITEM,
     FETCH_ALL_PROPERTIES,
-    FOUND_PROPERTIES_INSERT_ALL
+    FOUND_PROPERTIES_INSERT_ALL,
 } from './actionTypes';
 
 function foundPropertiesReducer(state = defaultState.foundProperties, action) {

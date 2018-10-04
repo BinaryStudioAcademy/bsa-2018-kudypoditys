@@ -1,5 +1,6 @@
 import defaultState from "client/logic/defaultState";
 import { SEARCH_UPDATE, SEARCH_SUBMIT_SUCCESS, SEARCH_SUBMIT_FAILED,CLEAR_SEARCH_PAGE } from "./actionTypes";
+import {UNDEFINE_SEARCHED_DATA} from "client/logic/search/actionTypes";
 
 function searchReducer(state = defaultState.search, action) {
     switch (action.type) {
@@ -12,7 +13,8 @@ function searchReducer(state = defaultState.search, action) {
         }
         case CLEAR_SEARCH_PAGE: {
             return {
-                ...state
+                ...state,
+                search: null
             };
         }
         case SEARCH_SUBMIT_SUCCESS: {
@@ -26,8 +28,14 @@ function searchReducer(state = defaultState.search, action) {
                 ...state,
                 ...action.payload
             }
-
        }
+        case UNDEFINE_SEARCHED_DATA: {
+            return {
+                ...state,
+                fireSubmit: false
+                // data: undefined
+            }
+        }
         default: {
             return state;
         }

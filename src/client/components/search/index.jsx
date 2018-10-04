@@ -24,6 +24,7 @@ import {SERVER_HOST} from "../../helpers/config";
 
 export class MainSearch extends React.Component {
     handleSubmit = () => {
+        debugger;
         let searchRequest = {};
         if (history.location.search !== "") {
             searchRequest = queryString.parse(history.location.search);
@@ -46,22 +47,23 @@ export class MainSearch extends React.Component {
         }
         if (query === undefined || query === null || query === "") return;
 
-        this.props.onSearch({
-            ...searchRequest,
-            ...{
-                query: query,
-                rooms: rooms,
-                adults: adults,
-                children: children,
-                startDate: startDate,
-                endDate: endDate,
-                page: 1,
-                sortBy: ""
-            }
-        });
+       // if(this.props.fireSubmit) {
+            this.props.onSearch({
+                ...searchRequest,
+                ...{
+                    query: query,
+                    rooms: rooms,
+                    adults: adults,
+                    children: children,
+                    startDate: startDate,
+                    endDate: endDate,
+                    page: 1,
+                    sortBy: ""
+                }
+            });
+        // }
     };
-    resetComponent = () =>
-        this.setState({isLoading: false, results: [], value: ""});
+    resetComponent = () => this.setState({isLoading: false, results: [], value: ""});
     getInfo = () => {
         let resultsData = [];
         let index = "cities";
@@ -200,6 +202,11 @@ export class MainSearch extends React.Component {
         rooms: 1,
         results: []
     },*/
+        debugger;
+        let searchRequest = {};
+        if (history.location.search !== "") {
+            searchRequest = queryString.parse(history.location.search);
+        }
         this.state = {
             startDate: moment(),
             endDate: moment().add(5, "days"),
@@ -207,7 +214,7 @@ export class MainSearch extends React.Component {
             rooms: props.rooms,
             adults: props.adults,
             children: props.children,
-            query: props.query || props.destination, // Maybe here set props of redux state
+            query: props.query || props.search.query || "", // Maybe here set props of redux state
             page: 1,
             results: []
         };
@@ -246,8 +253,8 @@ export class MainSearch extends React.Component {
     componentDidMount() {
         if (history.location.search !== "") {
             const parsed = queryString.parse(history.location.search); // here gets all data for search bar from query
-            console.log(history.location.search);
             console.log(parsed);
+            console.log(history.location);
 
             this.setState(
                 {
@@ -261,8 +268,17 @@ export class MainSearch extends React.Component {
                     sortBy: parsed.sortBy,
                     page: parsed.page
                 },
+                // TODO: Create boolean field to check if need to fire this action
+                // Fire action that get data according to query string in URL
+                // Check current page to not do unnecesary requests
                 () => {
-                    this.handleSubmit();
+                    if(history.location.pathname.includes('/property')) {
+                        this.handleSubmit();
+
+                    }
+                    // if(this.props.fireSubmit) {
+                    //     this.handleSubmit();
+                    // }
                 }
             );
         }
@@ -282,6 +298,7 @@ export class MainSearch extends React.Component {
             children
         } = this.state;
         // console.log("props!!!=" + JSON.stringify(this.props));
+        console.log("props.search.data!!!=" + JSON.stringify(this.props.search.data));
         if (this.props.search.data !== undefined) {
             const {data} = this.props.search;
             //send data to search page
@@ -443,7 +460,8 @@ MainSearch.propTypes = {
     onChildrenChange: PropTypes.func.isRequired,
     onRoomsChange: PropTypes.func.isRequired,
     handleSearchResults: PropTypes.func.isRequired,
-    data: PropTypes.array
+    data: PropTypes.array,
+    fireSubmit: PropTypes.bool
 };
 
 MainSearch.defaultProps = {
