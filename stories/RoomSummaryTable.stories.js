@@ -41,7 +41,7 @@ const rooms1 = {
         }
     ],
     showRoomPrice(id) {
-        console.log(id);
+        // console.log(id);
     }
 };
 const rooms2 = {
@@ -76,7 +76,7 @@ const rooms2 = {
         }
     ],
     showRoomPrice(id) {
-        console.log(id);
+        // console.log(id);
     }
 };
 const rooms3 = {
@@ -115,7 +115,7 @@ const rooms3 = {
         }
     ],
     showRoomPrice(id) {
-        console.log(id);
+        // console.log(id);
     }
 };
 

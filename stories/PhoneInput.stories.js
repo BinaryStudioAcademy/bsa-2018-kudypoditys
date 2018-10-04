@@ -4,11 +4,11 @@ import { storiesOf } from "@storybook/react";
 import PhoneInput from "../src/client/components/phone-input";
 
 const handleNumberChanged = value => {
-    console.log("Number changed", value);
+    // console.log("Number changed", value);
 };
 
 const handlePrefixChanged = value => {
-    console.log("Prefix changed", value);
+    // console.log("Prefix changed", value);
 };
 
 storiesOf("Phone input", module)

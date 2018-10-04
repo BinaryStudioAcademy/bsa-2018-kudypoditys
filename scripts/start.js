@@ -55,7 +55,6 @@ if (process.env.HOST) {
     `If this was unintentional, check that you haven't mistakenly set it in your shell.`
   );
   console.log(`Learn more here: ${chalk.yellow('http://bit.ly/2mwWSwH')}`);
-  console.log();
 }
 
 // We attempt to use the default port but if it is busy, we offer the user to

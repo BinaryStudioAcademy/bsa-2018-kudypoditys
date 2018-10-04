@@ -5,7 +5,7 @@ import * as actionTypes from "./actionTypes";
 
 function* createReview(action) {
     try {
-        console.log(reviewService.createReview);
+        // console.log(reviewService.createReview);
         const reviewResponse = yield call(
             reviewService.createReview,
             action.payload
@@ -23,7 +23,7 @@ function* createReview(action) {
 
 function* updateProperty(action) {
     try {
-        console.log(propertyService.updateProperty);
+        // console.log(propertyService.updateProperty);
         const propertyResponse = yield call(
             propertyService.updateProperty,
             action.payload
@@ -41,7 +41,9 @@ function* updateProperty(action) {
 
 export default function* propertySaga() {
     yield all([
-        takeLatest(actionTypes.CREATE_REVIEW, createReview),
+        takeLatest(actionTypes.CREATE_REVIEW, createReview), // Catches action with type CREATE_REVIEW - it doesn't
+        // handles in reducer, create review generator function takes this action object, then process it, maybe do
+        // async call and put new Action with another type - that Action need to be handled in reducer
         takeLatest(actionTypes.UPDATE_PROPERTY, updateProperty)
     ]);
 }

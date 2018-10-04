@@ -86,7 +86,7 @@ class PropertyService {
         return api
             .sendAuthRequest(`/api/property/${data.propertyId}`, "put", data)
             .then(response => {
-                console.log(response);
+                // console.log(response);
             });
     }
 

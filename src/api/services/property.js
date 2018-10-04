@@ -147,11 +147,11 @@ class PropertyService extends Service {
         return propertyRepository
             .getDetailsById(id)
             .then(_ => {
-                console.log("service then ", _);
+                // console.log("service then ", _);
                 return _;
             })
             .catch(_ => {
-                console.log("service catch ", _);
+                // console.log("service catch ", _);
             });
     }
     getFilteredProperties(filter) {

@@ -188,6 +188,21 @@ export class MainSearch extends React.Component {
     constructor(props) {
         super(props);
         this.roomSelector = React.createRef();
+        console.log(props);
+        console.log(this.props);
+        console.log(props.destination);
+        console.log(props.adults);
+        console.log(props.rooms);
+        /*
+        *  search: {
+        destination: "",
+        checkIn: null,
+        checkOut: null,
+        adults: 1,
+        children: 0,
+        rooms: 1,
+        results: []
+    },*/
         this.state = {
             startDate: moment(),
             endDate: moment().add(5, "days"),
@@ -195,7 +210,7 @@ export class MainSearch extends React.Component {
             rooms: 1,
             adults: 1,
             children: 1,
-            query: "",
+            query: "", // Maybe here set props of redux state
             page: 1,
             results: []
         };
