@@ -13,7 +13,7 @@ import {
 } from "semantic-ui-react";
 import "./index.scss";
 import PropTypes from "prop-types";
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import { mapStateToProps } from "./container";
 import { connect } from "react-redux";
 import MapWidgetModal from "client/components/map-widget-modal";
 import history from "client/history";
@@ -34,7 +34,6 @@ export class PropertyListItem extends React.Component {
                 pathname: "/property/" + this.props.propertyItemData.id,
                 search: history.location.search
             });
-            this.props.onRedirectOnDetails(); // TODO
         } else {
             history.push("/property/" + this.props.propertyItemData.id);
         }
@@ -287,4 +286,4 @@ PropertyListItem.propTypes = {
         mealType: PropTypes.string
     })
 };
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyListItem);
+export default connect(mapStateToProps)(PropertyListItem);

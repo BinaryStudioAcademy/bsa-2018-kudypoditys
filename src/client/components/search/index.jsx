@@ -248,6 +248,10 @@ export class MainSearch extends React.Component {
         this.setState(selectedDates);
     };
 
+    checkIfCurrentPageIsProperty() {
+        return history.location.pathname.includes('/property');
+    }
+
     componentDidMount() {
         if (history.location.search !== "") {
             const parsed = queryString.parse(history.location.search); // here gets all data for search bar from query
@@ -266,17 +270,10 @@ export class MainSearch extends React.Component {
                     sortBy: parsed.sortBy,
                     page: parsed.page
                 },
-                // TODO: Create boolean field to check if need to fire this action
-                // Fire action that get data according to query string in URL
-                // Check current page to not do unnecesary requests
                 () => {
-                    if (history.location.pathname.includes('/property')) {
+                    if (!this.checkIfCurrentPageIsProperty()) {
                         this.handleSubmit();
-
                     }
-                    // if(this.props.fireSubmit) {
-                    //     this.handleSubmit();
-                    // }
                 }
             );
         }
@@ -297,7 +294,7 @@ export class MainSearch extends React.Component {
         } = this.state;
         // console.log("props!!!=" + JSON.stringify(this.props));
         console.log("props.search.data!!!=" + JSON.stringify(this.props.search.data));
-        if (this.props.search.data !== undefined) {
+        if (this.props.search.data !== undefined && !this.checkIfCurrentPageIsProperty()) {
             const {data} = this.props.search;
             //send data to search page
             this.props.handleSearchResults({
