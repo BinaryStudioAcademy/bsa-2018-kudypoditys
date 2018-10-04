@@ -12,8 +12,7 @@ function searchReducer(state = defaultState.search, action) {
         }
         case CLEAR_SEARCH_PAGE: {
             return {
-                ...state,
-                search: null
+                ...state
             };
         }
         case SEARCH_SUBMIT_SUCCESS: {

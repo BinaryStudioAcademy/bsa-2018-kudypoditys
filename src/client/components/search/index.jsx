@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import {
     Input,
     Button,
@@ -12,15 +12,16 @@ import {
     Image
 } from "semantic-ui-react";
 import "react-dates/initialize";
-import { DateRangePicker } from "react-dates";
+import {DateRangePicker} from "react-dates";
 
 import "react-dates/lib/css/_datepicker.css";
 import axios from "axios";
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 import "./index.scss";
 import history from "client/history";
 import queryString from "query-string";
-import { SERVER_HOST } from "../../helpers/config";
+import {SERVER_HOST} from "../../helpers/config";
+
 export class MainSearch extends React.Component {
     handleSubmit = () => {
         let searchRequest = {};
@@ -37,11 +38,11 @@ export class MainSearch extends React.Component {
             queryCopy,
             isSelectedResult
         } = this.state;
-        let { query } = this.state;
+        let {query} = this.state;
 
         if (!isSelectedResult) {
             query = queryCopy;
-            this.setState({ query: queryCopy });
+            this.setState({query: queryCopy});
         }
         if (query === undefined || query === null || query === "") return;
 
@@ -60,7 +61,7 @@ export class MainSearch extends React.Component {
         });
     };
     resetComponent = () =>
-        this.setState({ isLoading: false, results: [], value: "" });
+        this.setState({isLoading: false, results: [], value: ""});
     getInfo = () => {
         let resultsData = [];
         let index = "cities";
@@ -68,7 +69,7 @@ export class MainSearch extends React.Component {
             .get(
                 `${SERVER_HOST}/elastic/autocomplete?index=${index}&type=document&query=${
                     this.state.query
-                }`
+                    }`
             )
             .then(citiesResponse => {
                 if (
@@ -87,7 +88,7 @@ export class MainSearch extends React.Component {
                 return axios.get(
                     `${SERVER_HOST}/elastic/autocomplete?index=${index}&type=document&query=${
                         this.state.query
-                    }`
+                        }`
                 );
             })
 
@@ -116,7 +117,7 @@ export class MainSearch extends React.Component {
                 });
             });
     };
-    handleResultSelect = (e, { result }) => {
+    handleResultSelect = (e, {result}) => {
         this.setState({
             query: result.title,
             isSelectedResult: true,
@@ -124,7 +125,7 @@ export class MainSearch extends React.Component {
         });
         this.props.onQueryChange(this.state.query);
     };
-    handleSearchChange = (e, { value }) => {
+    handleSearchChange = (e, {value}) => {
         this.setState(
             {
                 isLoading: true,
@@ -138,11 +139,11 @@ export class MainSearch extends React.Component {
         );
     };
     onAdultsSelected = count => {
-        this.setState({ adults: count });
+        this.setState({adults: count});
         this.props.onAdultsChange(count);
     };
-    renderResults = ({ image, price, title, description }) => [
-        image && <Image src={image} avatar />,
+    renderResults = ({image, price, title, description}) => [
+        image && <Image src={image} avatar/>,
         <div key="content" className="content">
             {price && <div className="price">{price}</div>}
             {title && <div className="title">{title}</div>}
@@ -188,11 +189,7 @@ export class MainSearch extends React.Component {
     constructor(props) {
         super(props);
         this.roomSelector = React.createRef();
-        console.log(props);
         console.log(this.props);
-        console.log(props.destination);
-        console.log(props.adults);
-        console.log(props.rooms);
         /*
         *  search: {
         destination: "",
@@ -207,36 +204,38 @@ export class MainSearch extends React.Component {
             startDate: moment(),
             endDate: moment().add(5, "days"),
             focusedInput: null,
-            rooms: 1,
-            adults: 1,
-            children: 1,
-            query: "", // Maybe here set props of redux state
+            rooms: props.rooms,
+            adults: props.adults,
+            children: props.children,
+            query: props.query || props.destination, // Maybe here set props of redux state
             page: 1,
             results: []
         };
     }
 
     onChildrenSelected = count => {
-        this.setState({ children: count });
+        this.setState({children: count});
         this.props.onChildrenChange(count);
     };
 
     onChildrenSelected = count => {
-        this.setState({ children: count });
+        this.setState({children: count});
         this.props.onChildrenChange(count);
     };
 
     onRoomsSelected = count => {
-        this.setState({ rooms: count });
+        this.setState({rooms: count});
         this.props.onRoomsChange(count);
     };
 
     componentWillMount() {
         this.resetComponent();
     };
+
     componentWillUnmount() {
         this.props.clearSearchPageSlice();
     }
+
     datesChanged = selectedDates => {
         if (selectedDates.startDate && selectedDates.endDate) {
             this.props.onDatesChange(selectedDates);
@@ -246,7 +245,10 @@ export class MainSearch extends React.Component {
 
     componentDidMount() {
         if (history.location.search !== "") {
-            var parsed = queryString.parse(history.location.search);
+            const parsed = queryString.parse(history.location.search); // here gets all data for search bar from query
+            console.log(history.location.search);
+            console.log(parsed);
+
             this.setState(
                 {
                     query: parsed.query,
@@ -267,7 +269,7 @@ export class MainSearch extends React.Component {
     }
 
     render() {
-         console.log("state=" + JSON.stringify(this.state));
+        // console.log("state=" + JSON.stringify(this.state));
 
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
@@ -281,7 +283,7 @@ export class MainSearch extends React.Component {
         } = this.state;
         // console.log("props!!!=" + JSON.stringify(this.props));
         if (this.props.search.data !== undefined) {
-            const { data } = this.props.search;
+            const {data} = this.props.search;
             //send data to search page
             this.props.handleSearchResults({
                 searchResults: data,
@@ -296,7 +298,6 @@ export class MainSearch extends React.Component {
                     sortBy: this.state.sortBy
                 }
             });
-            //   }
         }
         const childrenOptions = this.generateOptions(0, 10);
 
@@ -308,7 +309,7 @@ export class MainSearch extends React.Component {
                 <div className="destination">
                     <Search
                         resultRenderer={this.renderResults}
-                        style={{ height: 60 }}
+                        style={{height: 60}}
                         name="destination"
                         placeholder="Where are you going?"
                         loading={isLoading}
@@ -337,7 +338,7 @@ export class MainSearch extends React.Component {
                         onDatesChange={this.datesChanged}
                         focusedInput={this.state.focusedInput}
                         onFocusChange={focusedInput => {
-                            this.setState({ focusedInput });
+                            this.setState({focusedInput});
                         }}
                         showDefaultInputIcon={false}
                         small={true}
@@ -350,7 +351,7 @@ export class MainSearch extends React.Component {
                         onClick={this.toggleRoomSelector}
                     />
                     <div
-                        style={{ width: 170 }}
+                        style={{width: 170}}
                         ref={this.roomSelector}
                         className="room-selector hidden"
                         onMouseLeave={this.hideRoomSelector}
@@ -413,9 +414,9 @@ export class MainSearch extends React.Component {
                     </div>
                 </div>
 
-                <div className="btn-wrp" style={{ height: 60, width: 134 }}>
+                <div className="btn-wrp" style={{height: 60, width: 134}}>
                     <Button
-                        style={{ height: 60 }}
+                        style={{height: 60}}
                         type="submit"
                         content="Search"
                         primary

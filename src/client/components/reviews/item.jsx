@@ -30,7 +30,7 @@ export default class Review extends Component {
         const date = new Date(reviewData.createdAt).toLocaleString();
 
         let shouldRenderComments = true;
-        console.log(!reviewData.cons && !reviewData.pros + " " + reviewData.pros + " " + reviewData.cons)
+        // console.log(!reviewData.cons && !reviewData.pros + " " + reviewData.pros + " " + reviewData.cons)
         if (!reviewData.cons && !reviewData.pros) {
             shouldRenderComments = false;
         }
