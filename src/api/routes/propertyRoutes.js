@@ -101,7 +101,6 @@ property.route("/:id/details").get((req, res) => {
 });
 
 property.route("/city/:id").get((req, res) => {
-    console.log(req.params.id);
     propertyService
         .getPropertiesByCity(req.params.id)
         .then(properties => {

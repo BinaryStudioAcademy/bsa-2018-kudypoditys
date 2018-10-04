@@ -24,7 +24,6 @@ import {SERVER_HOST} from "../../helpers/config";
 
 export class MainSearch extends React.Component {
     handleSubmit = () => {
-        debugger;
         let searchRequest = {};
         if (history.location.search !== "") {
             searchRequest = queryString.parse(history.location.search);
@@ -189,30 +188,14 @@ export class MainSearch extends React.Component {
     constructor(props) {
         super(props);
         this.roomSelector = React.createRef();
-        console.log(this.props);
-        /*
-        *  search: {
-        destination: "",
-        checkIn: null,
-        checkOut: null,
-        adults: 1,
-        children: 0,
-        rooms: 1,
-        results: []
-    },*/
-        debugger;
-        let searchRequest = {};
-        if (history.location.search !== "") {
-            searchRequest = queryString.parse(history.location.search);
-        }
         this.state = {
             startDate: moment(),
             endDate: moment().add(5, "days"),
             focusedInput: null,
-            rooms: props.rooms,
-            adults: props.adults,
-            children: props.children,
-            query: props.query || props.search.query || "", // Maybe here set props of redux state
+            rooms: 1, // props.rooms,
+            adults: 1, // props.adults,
+            children: 0, // props.children,
+            query: "", // props.query || props.search.query || // Maybe here set props of redux state
             page: 1,
             results: []
         };
@@ -255,9 +238,7 @@ export class MainSearch extends React.Component {
     componentDidMount() {
         if (history.location.search !== "") {
             const parsed = queryString.parse(history.location.search); // here gets all data for search bar from query
-            console.log(parsed);
-            console.log(history.location);
-
+            // console.log(parsed);
             this.setState(
                 {
                     query: parsed.query,
