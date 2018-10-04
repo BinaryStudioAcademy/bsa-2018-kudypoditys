@@ -18,7 +18,7 @@ function* submitSearch(action) {
             }
         });
     } catch (error) {
-        // console.log(error.message);
+        console.log(error.message);
         yield put({
             type: actionTypes.SEARCH_SUBMIT_FAILED,
             payload: { data: { properties: [], propertiesCount: 0 } }

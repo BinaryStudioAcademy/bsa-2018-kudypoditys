@@ -127,7 +127,6 @@ export class PropertyListItem extends React.Component {
                                                 fontSize: 24,
                                                 fontWeight: "bold",
                                                 color: "#182c4f",
-                                                // opacity: 0.8,
                                                 cursor: "pointer"
                                             }}
                                             onClick={

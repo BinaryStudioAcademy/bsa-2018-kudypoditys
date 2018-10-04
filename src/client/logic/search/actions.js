@@ -1,5 +1,5 @@
 import {
-    SEARCH_UPDATE,SEARCH_SUBMIT,CLEAR_SEARCH_PAGE,UNDEFINE_SEARCHED_DATA
+    SEARCH_UPDATE,SEARCH_SUBMIT,CLEAR_SEARCH_PAGE
 } from './actionTypes';
 
 export function searchUpdate(payload) {
@@ -17,10 +17,5 @@ export function searchSubmit(payload) {
 export function clearSearchPageSlice() {
     return {
         type: CLEAR_SEARCH_PAGE
-    };
-}
-export function undefineSearchedData() {
-    return {
-        type: UNDEFINE_SEARCHED_DATA
     };
 }

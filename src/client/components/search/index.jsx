@@ -47,21 +47,19 @@ export class MainSearch extends React.Component {
         }
         if (query === undefined || query === null || query === "") return;
 
-       // if(this.props.fireSubmit) {
-            this.props.onSearch({
-                ...searchRequest,
-                ...{
-                    query: query,
-                    rooms: rooms,
-                    adults: adults,
-                    children: children,
-                    startDate: startDate,
-                    endDate: endDate,
-                    page: 1,
-                    sortBy: ""
-                }
-            });
-        // }
+        this.props.onSearch({
+            ...searchRequest,
+            ...{
+                query: query,
+                rooms: rooms,
+                adults: adults,
+                children: children,
+                startDate: startDate,
+                endDate: endDate,
+                page: 1,
+                sortBy: "" // sortBy
+            }
+        });
     };
     resetComponent = () => this.setState({isLoading: false, results: [], value: ""});
     getInfo = () => {
@@ -272,7 +270,7 @@ export class MainSearch extends React.Component {
                 // Fire action that get data according to query string in URL
                 // Check current page to not do unnecesary requests
                 () => {
-                    if(history.location.pathname.includes('/property')) {
+                    if (history.location.pathname.includes('/property')) {
                         this.handleSubmit();
 
                     }
@@ -460,8 +458,7 @@ MainSearch.propTypes = {
     onChildrenChange: PropTypes.func.isRequired,
     onRoomsChange: PropTypes.func.isRequired,
     handleSearchResults: PropTypes.func.isRequired,
-    data: PropTypes.array,
-    fireSubmit: PropTypes.bool
+    data: PropTypes.array
 };
 
 MainSearch.defaultProps = {

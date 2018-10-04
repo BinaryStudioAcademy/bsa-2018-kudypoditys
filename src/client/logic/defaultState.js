@@ -8,8 +8,7 @@ const state = {
         adults: 1,
         children: 0,
         rooms: 1,
-        results: [],
-        fireSubmit: true
+        results: []
     },
     login: {
         email: "",
