@@ -58,7 +58,9 @@ ReactDOM.render(
                     <Route path="/404" component={NotFoundPage} />
                     <Route
                         path="/user-cabinet"
-                        component={() => <AuthHOC Component={UserCabinet} />}
+                        component={() =>
+                            <AuthHOC Component={() => <UserCabinet />} />
+                        }
                     />
                     <Route component={NotFoundPage} />
                 </Switch>
