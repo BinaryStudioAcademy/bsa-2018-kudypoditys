@@ -8,7 +8,7 @@ storiesOf("User cabinet", module)
     .add("booking segment", () => (
         <BookingSegment
             viewBooking={id => {
-                console.log("booking: " + id);
+                // console.log("booking: " + id);
             }}
             images={[
                 {

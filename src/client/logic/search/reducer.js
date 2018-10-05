@@ -27,7 +27,6 @@ function searchReducer(state = defaultState.search, action) {
                 ...state,
                 ...action.payload
             }
-
        }
         default: {
             return state;

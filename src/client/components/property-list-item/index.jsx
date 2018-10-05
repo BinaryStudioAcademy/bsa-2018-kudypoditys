@@ -28,14 +28,15 @@ export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
         //todo  handleRedirectToMap
     };
-    handleAddToComparison = id => {
-        //todo
-    };
-    handleAddToFavorites = id => {
-        //todo
-    };
     handleRedirectToDetails = () => {
-        history.push("/property/" + this.props.propertyItemData.id);
+        if (history.location.search !== "") {
+            history.push({
+                pathname: "/property/" + this.props.propertyItemData.id,
+                search: history.location.search
+            });
+        } else {
+            history.push("/property/" + this.props.propertyItemData.id);
+        }
     };
 
     componentDidMount() {
@@ -125,7 +126,6 @@ export class PropertyListItem extends React.Component {
                                                 fontSize: 24,
                                                 fontWeight: "bold",
                                                 color: "#182c4f",
-                                                // opacity: 0.8,
                                                 cursor: "pointer"
                                             }}
                                             onClick={

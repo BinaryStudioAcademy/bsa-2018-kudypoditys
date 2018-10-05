@@ -48,7 +48,6 @@ elastic.route("/search").get((req, res) => {
 elastic.route("/autocomplete").get((req, res) => {
     const { index, type, query } = req.query;
     const fields = ["city", "name"];
-    console.log("HEy");
     ES_service.autocompleteSearch(req, res, index, type, query, fields);
 });
 

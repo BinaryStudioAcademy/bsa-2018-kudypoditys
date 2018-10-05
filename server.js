@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 require("./src/api/middleware")(app); //adding jwt and other
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
-const routes = require("./src/api/routes")(app);
+const routes = require("./src/api/routes")(app); // Here all express routers come into the game
 app.get("/*", (req, res) => {
     const fileDirectory = path.join(__dirname, "public");
 
