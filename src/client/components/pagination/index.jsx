@@ -13,6 +13,11 @@ class Pagination extends React.Component {
             this.props.paginationChanged(searchRequest);
         }
     };
+
+    componentDidUpdate() {
+        window.scrollTo(0, 0)
+    };
+
     render() {
 
         let searchRequest = {};
