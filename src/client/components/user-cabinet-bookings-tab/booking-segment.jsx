@@ -64,12 +64,8 @@ class BookingSegment extends React.Component {
         const propCurrency = booking.room.property.currency;
         const roomPrice = convert(propCurrency.code, price, currency.code);
 
-        if (now > start) {
+        if (now > start && !(booking.room.property.reviews.some(r => r.userId === this.props.userId))) {
             shouldRenderForm = true;
-        }
-
-        if(booking.room.property.reviews.some(r => r.userId === this.props.userId)) {
-            shouldRenderForm = false;
         }
 
         return (

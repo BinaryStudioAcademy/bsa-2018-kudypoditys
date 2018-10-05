@@ -57,7 +57,6 @@ user.route("/current").get((req, res) => {
         .findById(user.id)
         .then(user => {
             delete user.password;
-
             res.status(200).send(user);
         })
         .catch(err => {

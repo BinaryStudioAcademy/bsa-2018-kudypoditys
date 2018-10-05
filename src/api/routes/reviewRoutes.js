@@ -1,6 +1,7 @@
 const express = require("express");
 const review = express.Router();
 const reviewService = require("../services/review");
+const reservationService = require("../services/reservation");
 
 review
     .route("/")
@@ -16,12 +17,23 @@ review
     })
     .post((req, res) => {
         reviewService
-            .addReview(req.body)
-            .then(review => {
-                res.send(review);
+            .findByOptions({userId: req.user.id, propertyId: req.body.propertyId})
+            .then(reviews => {
+                if (reviews && reviews.length > 0) {
+                    res.status(400).send("You already left review for this property");
+                }
+                else {
+                    reviewService.addReview(req.body)
+                        .then(review => {
+                            res.send(review);
+                        })
+                        .catch(err => {
+                            res.status(500).send(err.message);
+                        });
+                }
             })
             .catch(err => {
-                res.status(500).send(err);
+                res.status(404).send(err.message);
             });
     });
 
@@ -60,7 +72,7 @@ review
 
 review.route("/:id/byuserid").get((req, res) => {
     reviewService
-        .findByOptions({ userId: req.params.id })
+        .findByOptions({userId: req.params.id})
         .then(reservations => {
             res.send(reservations);
         })
@@ -71,7 +83,7 @@ review.route("/:id/byuserid").get((req, res) => {
 
 review.route("/:id/byPropertyId").get((req, res) => {
     reviewService
-        .findByOptions({ propertyId: req.params.id })
+        .findByOptions({propertyId: req.params.id})
         .then(reservations => {
             res.send(reservations);
         })
