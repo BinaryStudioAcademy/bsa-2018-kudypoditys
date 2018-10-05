@@ -68,6 +68,10 @@ class BookingSegment extends React.Component {
             shouldRenderForm = true;
         }
 
+        if(booking.room.property.reviews.some(r => r.userId === this.props.userId)) {
+            shouldRenderForm = false;
+        }
+
         return (
             <Segment className="booking-container" style={{ padding: "10px" }}>
                 <div className="booking--left-section">
@@ -191,5 +195,6 @@ class BookingSegment extends React.Component {
 }
 
 export default connect(state => ({
-    currency: state.header.selectedCurrency
+    currency: state.header.selectedCurrency,
+    userId: state.userCabinet.user.id
 }))(BookingSegment);
