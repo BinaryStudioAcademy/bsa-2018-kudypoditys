@@ -8,7 +8,7 @@ import axios from "axios";
 import {mapStateToProps} from "./container";
 import "./index.scss";
 
-export class PropertyComments extends React.Component {
+export class PropertyCommentsList extends React.Component {
     constructor(props) {
         super(props);
 
@@ -38,14 +38,14 @@ export class PropertyComments extends React.Component {
 }
 
 // TODO
-PropertyComments.propTypes = {
+PropertyCommentsList.propTypes = {
     property: PropTypes.object
 };
 
-PropertyComments.defaultProps = {
+PropertyCommentsList.defaultProps = {
     property: {},
 };
 
 export default connect(
     mapStateToProps
-)(PropertyComments);
+)(PropertyCommentsList);
