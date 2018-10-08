@@ -4,11 +4,10 @@ import { Modal, Button } from 'semantic-ui-react';
 import { mapDispatchToProps, mapStateToProps } from './container';
 
 class SimpleModal extends Component {
-
   onButtonClick = (options) => {
     options.onClick && options.onClick();
     this.props.closeModal();
-  }
+  };
 
   render() {
     const { header, content, buttons, open } = this.props;

@@ -44,19 +44,13 @@ export class MainHeader extends Component {
         history.push("/");
     };
 
-    onWellcomeClicked = () => {
-        history.push("/user-cabinet");
-    };
-
     handleCurrancyChange = (e, {value}) => {
         const {currencies} = this.props;
         const currency = currencies.find(x => x.id === value);
         this.props.onCurrencyChange(currency);
 
         localStorage.setItem('selectedCurrency', JSON.stringify(currency));
-    }
-
-    // state = { activeItem: "about-us" };
+    };
 
     handleItemClick = (e, {name}) => this.setState({activeItem: name});
 
