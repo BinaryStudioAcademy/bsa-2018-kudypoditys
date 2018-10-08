@@ -1,12 +1,23 @@
 .review-flag {
-    margin-left: 15px !important;
-    margin-right: 25px !important;
+    float: right;
+    margin-left: 1.5em !important;
+    // margin-right: 1em !important;
+}
+
+.review-flag-name {
+    margin-right: 1em !important;
+    margin-left: 0.5em;
+    color: #465672 !important;
 }
 
 .review-rating {
     color: #465672 !important;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 0 !important;;
 
     .star {
-        margin-right: 30px;
+        margin-right: 3em;
     }
 }

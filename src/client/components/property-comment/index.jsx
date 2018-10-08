@@ -21,19 +21,17 @@ export class PropertyComment extends React.Component {
                 <div className='content'>
                     <a className='author'>{displayName}</a>
                     <div className='metadata review-flag'>
-                        <i className={this.props.user.country.icon} />
-                        <div>{this.props.user.country.name}</div>
+                        <i className={this.props.user.country.icon}/>
+                        <div className='review-flag-name'>{this.props.user.country.name}</div>
                     </div>
                     <div className='text'>{this.props.pros}</div>
                     <div className='metadata review-rating'>
-                        <div>
-                            <span>{this.props.avgReview} <i className="star icon"/></span>
-                            <span>{createdAtTimeAgo}</span>
-                        </div>
+                        <div>{this.props.avgReview} <i className="star icon"/></div>
+                        <div className='review-flag-name'>{createdAtTimeAgo}</div>
                     </div>
                     {/*<div className='actions'>*/}
-                        {/*/!*<div className="ui star rating icon" data-rating="3"/>*!/*/}
-                        {/*<div>{this.props.avgReview} <i aria-hidden='true' className="star icon"/> {createdAtTimeAgo}</div>*/}
+                    {/*/!*<div className="ui star rating icon" data-rating="3"/>*!/*/}
+                    {/*<div>{this.props.avgReview} <i aria-hidden='true' className="star icon"/> {createdAtTimeAgo}</div>*/}
                     {/*</div>*/}
                 </div>
             </div>
