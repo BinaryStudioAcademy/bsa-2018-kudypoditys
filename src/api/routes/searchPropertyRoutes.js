@@ -86,10 +86,7 @@ searchProperty.route("/").get((req, res) => {
                 propertyService
                     .getFilteredProperties(filter)
                     .then(propertiesData => {
-                        return res.send({
-                            properties: propertiesData.rows,
-                            propertiesCount: propertiesData.count
-                        });
+                        return res.send(propertiesData);
                     })
                     .catch(err => {
                         return res.status(404).send(err);

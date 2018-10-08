@@ -48,6 +48,10 @@ class SearchPage extends React.Component {
             <PropertyListItem
                 key={property.id}
                 propertyItemData={property}
+                searchData={{
+                    startDate: searchData.searchRequest.startDate,
+                    endDate: searchData.searchRequest.endDate
+                }}
                 itemIndex={properties.indexOf(property)}
             />
         ));

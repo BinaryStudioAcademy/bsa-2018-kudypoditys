@@ -45,7 +45,7 @@ export class PropertyListItem extends React.Component {
 
     render() {
         const {
-            propertyItemData, itemIndex, currency, allCurrencies
+            propertyItemData, itemIndex, currency, allCurrencies, searchData
         } = this.props;
 
         const propertyCurrency = propertyItemData.currency.code;
@@ -226,6 +226,18 @@ export class PropertyListItem extends React.Component {
                                 </span>
                             </div>
 
+                            { propertyItemData.isCheapest && (
+                                <div className="card_row__jackpot">
+                                    <Message
+                                        color="red"
+                                        className="search-page__jackpot"
+                                    >
+                                        <b>Jackpot!</b> This is a cheapest price you've seen in { propertyItemData.city.name } for your dates!<br />
+                                        <b>{ searchData.endDate.diff(searchData.startDate, "days") } nights ({ searchData.startDate.format("ddd D MMM") } - { searchData.endDate.format("ddd D MMM") })</b>
+                                    </Message>
+                                </div>
+                            )}
+
                             <div className="card_row__order">
                                 <div className="search-page__messages">
                                     <Message
@@ -284,6 +296,10 @@ PropertyListItem.propTypes = {
         locationRating: PropTypes.number.isRequired,
         availableRoomsCount: PropTypes.number.isRequired,
         mealType: PropTypes.string
+    }),
+    searchData: PropTypes.shape({
+        startDate: PropTypes.instanceOf(Date),
+        endDate: PropTypes.instanceOf(Date)
     })
 };
 export default connect(mapStateToProps)(PropertyListItem);
