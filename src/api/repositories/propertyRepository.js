@@ -525,6 +525,36 @@ class PropertyRepository extends Repository {
                     }
                 }
                 : {  id: { $in: filter.propertiesIds }};
+
+        let minPrice;
+        this.model.findAll({
+            where: propertyOption,
+
+            distinct: true,
+            order: [[Room, "price", "ASC"]],
+            include: [
+
+                fo,
+
+                {
+                    model: Room,
+                    required: true,
+                    where: {
+                        amount: { $gte: filter.rooms },
+                        price: roomPriceOption
+                    },
+                    include: [
+                        bedsInRoomOption
+                    ]
+                }
+            ]
+        }).then(properties => {
+            if (properties[0] && properties[0].rooms[0]) {
+                minPrice = properties[0].rooms[0].price;
+            }
+        });
+
+
         return this.model
             .findAndCountAll({
                 limit: 5,
@@ -577,7 +607,20 @@ class PropertyRepository extends Repository {
                 ]
             })
             .then(properties => {
-                return properties;
+                let propertiesArray = [];
+                for (let index in properties.rows) {
+                    let property = properties.rows[index].get({ plain: true });
+                    property.rooms.forEach((room) => {
+                        if (room.price === minPrice) {
+                            property.isCheapest = true;
+                        }
+                    });
+                    propertiesArray.push(property);
+                }
+                return {
+                    properties: propertiesArray,
+                    propertiesCount: properties.count
+                };
             });
     }
 
