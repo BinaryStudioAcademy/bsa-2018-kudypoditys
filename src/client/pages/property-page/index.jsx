@@ -30,6 +30,7 @@ import {
     getGroupedArray,
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
+import {PropertyComments} from "client/components/property-comments";
 
 export class PropertyPage extends React.Component {
     toggleReviews = () => {
@@ -219,6 +220,17 @@ export class PropertyPage extends React.Component {
                                     fullScreen
                                 />
                             </Modal>
+                            <Divider
+                                style={{
+                                    ...dividerStyle,
+                                    width: "250px"
+                                }}
+                            />
+                            /* Here will be comments compoment */
+                            <div style={{backgroundColor: "red", width: '250px', height: '250px'}}>
+
+                            </div>
+                            <PropertyComments />
                         </div>
 
                         <Container
