@@ -21,7 +21,7 @@ export class PropertyCommentsList extends React.Component {
         );
 
         return (
-            <div className='ui comments'>
+            <div className='ui comments comments-block'>
                 <h3 className='ui dividing header'>What guests loved the most</h3>
                 {listItems}
             </div>
