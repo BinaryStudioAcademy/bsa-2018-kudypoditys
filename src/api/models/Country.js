@@ -8,5 +8,11 @@ module.exports = orm.define('country', {
         validate: { notEmpty: true },
         allowNull: false,
         unique: true
+    },
+    icon: {
+        type: Sequelize.STRING,
+        validate: { notEmpty: true },
+        allowNull: false,
+        unique: true
     }
 });

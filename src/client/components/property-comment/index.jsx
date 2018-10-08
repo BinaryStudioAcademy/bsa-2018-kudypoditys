@@ -13,25 +13,6 @@ export class PropertyComment extends React.Component {
         const createdAtTimeAgo = moment(this.props.createdAt).fromNow();
         const displayName = this.props.user.nickname ? this.props.user.nickname : this.props.user.fullName;
         const avatarUrl = this.props.user.avatar ? this.props.user.avatar : 'https://ui-avatars.com/api/?name=' + displayName;
-        let countryIconClassName = '';
-        let countryName = '';
-        switch (this.props.user.countryId) {
-            case 1:
-                countryIconClassName = 'ua flag';
-                countryName = 'Ukraine';
-                break;
-            case 2:
-                countryIconClassName = 'pl flag';
-                countryName = 'Poland';
-                break;
-            case 3:
-                countryIconClassName = 'at flag';
-                countryName = 'Austria';
-                break;
-            default:
-                countryIconClassName = 'ua flag';
-                countryName = 'Ukraine';
-        }
         return (
             <div className=' comment'>
                 <div className=' avatar'>
@@ -40,8 +21,8 @@ export class PropertyComment extends React.Component {
                 <div className='content'>
                     <a className='author'>{displayName}</a>
                     <div className='metadata review-flag'>
-                        <i className={countryIconClassName} />
-                        <div>{countryName}</div>
+                        <i className={this.props.user.country.icon} />
+                        <div>{this.props.user.country.name}</div>
                     </div>
                     <div className='text'>{this.props.pros}</div>
                     <div className='metadata review-rating'>
