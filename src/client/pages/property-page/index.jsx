@@ -9,15 +9,14 @@ import {
     Sidebar,
     Label
 } from "semantic-ui-react";
-import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from "./container";
-import Search from "client/components/search";
+import {connect} from "react-redux";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 import AppHeader from "client/components/header";
 import AvailabilityPanel from "client/components/availability-panel";
 import Slider from "client/components/slider";
 import PropertyDescription from "client/components/property-description";
-import { PropertySummary } from "client/components/property-summary";
-import { NavigationBar } from "client/components/navigation-bar";
+import {PropertySummary} from "client/components/property-summary";
+import {NavigationBar} from "client/components/navigation-bar";
 import BasicMapWidget from "client/components/basic-map-widget";
 import RoomsSummaryTable from "client/components/rooms-summary-table";
 import Modal from "../../components/modal";
@@ -30,11 +29,11 @@ import {
     getGroupedArray,
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
-import {PropertyComments} from "client/components/property-comments";
+import {PropertyCommentsList} from "client/components/property-comments-list";
 
 export class PropertyPage extends React.Component {
     toggleReviews = () => {
-        this.setState({ reviewsVisible: !this.state.reviewsVisible });
+        this.setState({reviewsVisible: !this.state.reviewsVisible});
     };
 
     componentWillMount() {
@@ -68,9 +67,11 @@ export class PropertyPage extends React.Component {
         node.scrollIntoView();
     };
     hideReviews = () => {
-        this.setState({ reviewsVisible: false });
+        this.setState({reviewsVisible: false});
     };
-    handleSearchResults = searchResult => {};
+    handleSearchResults = searchResult => {
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -79,9 +80,9 @@ export class PropertyPage extends React.Component {
     }
 
     render() {
-        const { property, user, rooms } = this.props;
+        const {property, user, rooms} = this.props;
         // const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
-        const { reviewsVisible } = this.state;
+        const {reviewsVisible} = this.state;
         const dividerStyle = {
             color: "#465672",
             borderTop: "1px solid #46567215",
@@ -94,19 +95,19 @@ export class PropertyPage extends React.Component {
         if (!property)
             return (
                 <div className="centeredqqq">
-                    <div class="lds-spinner">
-                        <div />
-                        <div />
-                        <div />
-                        <div />
-                        <div />
-                        <div />
-                        <div />
-                        <div />
-                        <div />
-                        <div />
-                        <div />
-                        <div />
+                    <div className="lds-spinner">
+                        <div/>
+                        <div/>
+                        <div/>
+                        <div/>
+                        <div/>
+                        <div/>
+                        <div/>
+                        <div/>
+                        <div/>
+                        <div/>
+                        <div/>
+                        <div/>
                     </div>
                 </div>
             );
@@ -145,7 +146,7 @@ export class PropertyPage extends React.Component {
                             padding: "20px 15px 0 20px"
                         }}
                     >
-                        <Reviews property={property} />
+                        <Reviews property={property}/>
                     </div>
                 </Sidebar>
                 <Sidebar.Pusher>
@@ -212,7 +213,7 @@ export class PropertyPage extends React.Component {
                                 fullScreen
                             >
                                 <BasicMapWidget
-                                    style={{ width: "100%", height: "100%" }}
+                                    style={{width: "100%", height: "100%"}}
                                     coordinates={property.coordinates}
                                     properties={[property]}
                                     controlEnable={true}
@@ -226,11 +227,7 @@ export class PropertyPage extends React.Component {
                                     width: "250px"
                                 }}
                             />
-                            /* Here will be comments compoment */
-                            <div style={{backgroundColor: "red", width: '250px', height: '250px'}}>
-
-                            </div>
-                            <PropertyComments />
+                            <PropertyCommentsList style={{width: "100%", height: "100%"}} {...property} />
                         </div>
 
                         <Container
@@ -249,7 +246,7 @@ export class PropertyPage extends React.Component {
                                     this.toggleReviews();
                                 }}
                             />
-                            <Divider />
+                            <Divider/>
                             <PropertySummary
                                 rating={avgPropRating}
                                 totalReviews={property.reviews.length}
@@ -260,7 +257,7 @@ export class PropertyPage extends React.Component {
                                 <Label
                                     color="orange"
                                     tag
-                                    style={{ left: 0, marginBottom: 15 }}
+                                    style={{left: 0, marginBottom: 15}}
                                 >
                                     This property was booked{" "}
                                     {notes.recentlyBooked} time
@@ -268,18 +265,18 @@ export class PropertyPage extends React.Component {
                                     today
                                 </Label>
                             ) : null}
-                            <Slider pics={pics} slideIndex={0} />
+                            <Slider pics={pics} slideIndex={0}/>
 
-                            <Divider hidden />
+                            <Divider hidden/>
                             <div
                                 className="property-page__description"
-                                style={{ width: "100%" }}
+                                style={{width: "100%"}}
                             >
                                 <PropertyDescription
                                     property={property}
-                                    style={{ width: "100%" }}
+                                    style={{width: "100%"}}
                                 />
-                                <Divider style={dividerStyle} />
+                                <Divider style={dividerStyle}/>
                                 <Container
                                     text
                                     style={{
@@ -356,8 +353,8 @@ export class PropertyPage extends React.Component {
                                 }}
                             />
 
-                            <AvailabilityPanel style={{ width: "100%" }} />
-                            <Divider style={dividerStyle} />
+                            <AvailabilityPanel style={{width: "100%"}}/>
+                            <Divider style={dividerStyle}/>
                             <div>
                                 <Header
                                     as="h2"
@@ -373,12 +370,13 @@ export class PropertyPage extends React.Component {
                                     rooms={rooms}
                                 />
                             </div>
-                            <Divider hidden />
+                            <Divider hidden/>
                         </Container>
                     </div>
                 </Sidebar.Pusher>
             </div>
-        );
+        )
+            ;
     }
 }
 

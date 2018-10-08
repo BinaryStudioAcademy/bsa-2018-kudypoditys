@@ -1,51 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
 import "react-dates/initialize";
 
 import "react-dates/lib/css/_datepicker.css";
-import axios from "axios";
-import {mapStateToProps} from "./container";
 import "./index.scss";
+import PropertyComment from "client/components/property-comment";
 
 export class PropertyCommentsList extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            property: {}
-        }
-        // TODO:
-        // this.state = {
-        //     startDate: moment(),
-        //     endDate: moment().add(5, "days"),
-        //     focusedInput: null,
-        //     rooms: 1, // props.rooms,
-        //     adults: 1, // props.adults,
-        //     children: 0, // props.children,
-        //     query: "", // props.query || props.search.query || // Maybe here set props of redux state
-        //     page: 1,
-        //     results: []
-        // };
-    }
     componentDidMount() {
     }
 
     render() {
-        // console.log("state=" + JSON.stringify(this.state));
-        return (<div>HELLO FROM COMMENTS COMPONENT</div>);
+        console.log("Comments List props = ");
+        console.log(this.props);
+
+        if(!this.props) return null;
+
+        const listItems = this.props.reviews.map((item, index) =>
+            <PropertyComment key={item.id} {...item} />
+        );
+
+        return (
+            <div className='ui comments'>
+                <h3 className='ui dividing header'>What guests loved the most</h3>
+                {listItems}
+            </div>
+        )
     }
 }
 
-// TODO
 PropertyCommentsList.propTypes = {
-    property: PropTypes.object
+    property: PropTypes.object.isRequired
 };
 
 PropertyCommentsList.defaultProps = {
-    property: {},
+    property: null,
 };
 
-export default connect(
-    mapStateToProps
-)(PropertyCommentsList);
+export default PropertyCommentsList;
