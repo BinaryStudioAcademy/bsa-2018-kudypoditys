@@ -63,6 +63,12 @@ export class PropertyListItem extends React.Component {
         } else {
             currentBg = "";
         }
+        let price;
+        for (let roomId in propertyItemData.rooms) {
+            if (!price || propertyItemData.rooms[roomId].price < price) {
+                price = propertyItemData.rooms[roomId].price;
+            }
+        }
         let nightsCount = searchData.endDate.diff(searchData.startDate, "days");
         return (
             <Card
@@ -223,7 +229,7 @@ export class PropertyListItem extends React.Component {
                                     {propertyItemData.rooms[0].roomType.name}
                                 </div>
                                 <span className="priceInfo">
-                                    {currency.code} {convert(propertyCurrency, propertyItemData.rooms[0].price, currency.code)}
+                                    {currency.code} {convert(propertyCurrency, price, currency.code)}
                                 </span>
                             </div>
 
