@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Dropdown, Grid, Segment } from 'semantic-ui-react'
+import _ from 'lodash'
+import PropTypes from "prop-types";
 
 const quantityOptions = [
     { key: 1, text: '1', value: 1 },
@@ -8,9 +10,19 @@ const quantityOptions = [
     { key: 4, text: '4', value: 4 },
     { key: 5, text: '5', value: 5 },
 ];
+export const getOptions = (number, prefix = '') =>
+    _.times(number, index => ({
+        key: index,
+        text: `${prefix}${index}`,
+        value: index,
+    }));
 
 export default class QuantityPicker extends Component {
-    state = {};
+    constructor(props) {
+        super(props);
+
+        this.state = {};
+    }
 
     handleChange = (e, { value }) => {
         e.preventDefault();
@@ -24,7 +36,7 @@ export default class QuantityPicker extends Component {
         return (
             <Dropdown
                 onChange={this.handleChange}
-                options={quantityOptions}
+                options={getOptions(this.props.roomsAvailable, '')}
                 placeholder='0'
                 compact
                 selection
@@ -33,3 +45,11 @@ export default class QuantityPicker extends Component {
         )
     }
 }
+
+QuantityPicker.propTypes = {
+    roomsAvailable: PropTypes.number.isRequired
+};
+
+QuantityPicker.defaultProps = {
+    roomsAvailable: 0,
+};

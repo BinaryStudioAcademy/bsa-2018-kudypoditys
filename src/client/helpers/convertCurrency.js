@@ -13,10 +13,15 @@ export const converterObj = {
     }
 };
 
-const codeToTitle = new Map();
+export const codeToTitle = new Map();
 codeToTitle.set('€', 'eur');
 codeToTitle.set('$', 'usd');
 codeToTitle.set('₴', 'uah');
+
+const titleToCode = new Map();
+codeToTitle.set('EUR', '€');
+codeToTitle.set('USD', '$');
+codeToTitle.set('UAH', '₴');
 
 function round(value, decimals = 2) {
     const pow10 = Math.pow(10, decimals);
@@ -34,3 +39,5 @@ export function convert(currentCurrency, value, tagetCurrency) {
     return converterObj[from] && converterObj[from][to] &&
         round(converterObj[from][to] * value) || value;
 }
+
+export default titleToCode;

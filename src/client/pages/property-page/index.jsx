@@ -360,7 +360,7 @@ export class PropertyPage extends React.Component {
                                 >
                                     Rooms
                                 </Header>
-                                <RoomsTable />
+                                <RoomsTable {...property} />
                                 <RoomsSummaryTable
                                     ref={"roomsRef"}
                                     rooms={rooms}
