@@ -19,9 +19,9 @@ codeToTitle.set('$', 'usd');
 codeToTitle.set('₴', 'uah');
 
 const titleToCode = new Map();
-codeToTitle.set('EUR', '€');
-codeToTitle.set('USD', '$');
-codeToTitle.set('UAH', '₴');
+titleToCode.set('EUR', '€');
+titleToCode.set('USD', '$');
+titleToCode.set('UAH', '₴');
 
 function round(value, decimals = 2) {
     const pow10 = Math.pow(10, decimals);

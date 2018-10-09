@@ -360,11 +360,13 @@ export class PropertyPage extends React.Component {
                                 >
                                     Rooms
                                 </Header>
-                                <RoomsTable {...property} />
-                                <RoomsSummaryTable
+                                <RoomsTable
                                     ref={"roomsRef"}
-                                    rooms={rooms}
-                                />
+                                    />
+                                {/*<RoomsSummaryTable*/}
+                                    {/*ref={"roomsRef"}*/}
+                                    {/*rooms={rooms}*/}
+                                {/*/>*/}
                             </div>
                             <Divider hidden/>
                         </Container>

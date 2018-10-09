@@ -1,30 +1,28 @@
 import React from 'react'
 import {Divider, Icon, Table} from 'semantic-ui-react'
 import QuantityPicker from "client/components/quantity-picker";
-import PropTypes from "prop-types";
 import _ from "lodash";
 import {convert} from "client/helpers/convertCurrency";
 import Modal from "client/components/modal";
 import BookingForm from "client/components/booking-form";
 import titleToCode from "client/helpers/convertCurrency"
 import connect from "react-redux/es/connect/connect";
-import {mapDispatchToProps, mapStateToProps} from "client/components/rooms-summary-table/container";
+import {mapDispatchToProps, mapStateToProps} from "./container";
 
 export const getIcons = (number) => _.times(number, index => (<Icon name='user'/>));
 
 export class RoomsTable extends React.Component {
     getBedsSummary = bedsInRoom => {
         return (
-            <div style={{ padding: "5px" }}>
+            <div style={{padding: "5px"}}>
                 {bedsInRoom.map((bed, index) => {
                     return (
-                        <span
-                            key={index}
-                            style={{
-                                display: "block",
-                                paddingLeft: "23px",
-                                color: "#465672"
-                            }}
+                        <span key={index}
+                              style={{
+                                  display: "block",
+                                  paddingLeft: "23px",
+                                  color: "#465672"
+                              }}
                         >
                             {bed.count} {bed.bedType.name}
                         </span>
@@ -35,8 +33,8 @@ export class RoomsTable extends React.Component {
     };
 
     getRoomsSummary = (rooms, bookButton, property) => {
-        const { currency } = this.props;
-        const { currency: propCurrency } = property;
+        const {currency} = this.props;
+        const {currency: propCurrency} = property;
 
         const priceFunc = (price) => convert(propCurrency.code, price, currency.code);
         console.log(currency.code);
@@ -53,7 +51,7 @@ export class RoomsTable extends React.Component {
                                 fontSize: "18px"
                             }}
                         >
-                            <Icon name="bed" />
+                            <Icon name="bed"/>
                             {" " + room.roomType.name}
                         </p>
                         <div>{this.getBedsSummary(room.bedInRooms)}</div>
@@ -84,7 +82,7 @@ export class RoomsTable extends React.Component {
                                         }}
                                     >
                                         <button
-                                            style={{ height: "100%" }}
+                                            style={{height: "100%"}}
                                             onClick={() => {
                                                 this.props.setRoom(room.id);
                                             }}
@@ -105,7 +103,7 @@ export class RoomsTable extends React.Component {
                         ) : null}
                     </div>
                 </div>
-                <Divider hidden />
+                <Divider hidden/>
             </React.Fragment>
         ));
     };
@@ -113,83 +111,85 @@ export class RoomsTable extends React.Component {
     componentDidMount() {
     }
 
+    componentDidUpdate() {
+        console.log("RoomsTable componentDidUpdate props = ");
+        console.log(this.props);
+    }
+
     render() {
         console.log("RoomsTable props = ");
         console.log(this.props);
+        const { rooms, user, property } = this.props;
+        let bookButton = false;
+        if (user) bookButton = true;
 
-        if (!this.props) return null;
+        if (!this.props || !this.props.rooms) return null;
 
-        const roomRow = this.props.rooms.map(r => {
+        let roomRow = null;
+        if(this.props.rooms.length > 0) {
+            roomRow = this.props.rooms.map(r => {
 
-            const badsToSleep = r.bedInRooms.reduce((acc, el) => (acc + el.count), 0);
+                const badsToSleep = r.bedInRooms.reduce((acc, el) => (acc + el.count), 0);
 
-            return (
-                <Table.Row>
-                    <Table.Cell>
-                        <div>
-                            <div className='room-type'>
-                                <strong>Type: {r.roomType.name}</strong>
+                return (
+                    <Table.Row>
+                        <Table.Cell>
+                            <div>
+                                <div className='room-type'>
+                                    <strong>Type: {r.roomType.name}</strong>
+                                </div>
+                                <div className='room-area'>
+                                    <strong>Area:</strong> {r.area} square meters
+                                </div>
+                                <div className='room-beds'>
+                                    <strong>Beds:</strong>
+                                    <br/>
+                                    {this.getBedsSummary(r.bedInRooms)}
+                                </div>
+                                <div className='room-description'>
+                                    <strong>Description:</strong> {r.description ? r.description : ''}
+                                </div>
                             </div>
-                            <div className='room-area'>
-                                <strong>Area:</strong> {r.area} square meters
-                            </div>
-                            <div className='room-beds'>
-                                <strong>Beds:</strong>
-                                <br/>
-                                {this.getBedsSummary(r.bedInRooms)}
-                            </div>
-                            <div className='room-description'>
-                                <strong>Description:</strong> {r.description ? r.description : ''}
-                            </div>
-                        </div>
                         </Table.Cell>
-                    <Table.Cell>
-                        {getIcons(badsToSleep)}
-                    </Table.Cell>
-                    <Table.Cell>{r.price}$</Table.Cell>
-                    {/*TODO: add currency handling*/}
-                    <Table.Cell>
-                        <QuantityPicker roomsAvailable={r.amount + 1}/>
-                    </Table.Cell>
-                    <Table.Cell onClick={() => alert('I\'ll reserve Clicked!')}>
-                        <input type='submit' value="I'll reserve"/>
-                    </Table.Cell>
-                </Table.Row>
-            );
-        });
+                        <Table.Cell>
+                            {getIcons(badsToSleep)}
+                        </Table.Cell>
+                        <Table.Cell>{r.price}$</Table.Cell>
+                        {/*TODO: add currency handling*/}
+                        <Table.Cell>
+                            <QuantityPicker roomsAvailable={r.amount + 1}/>
+                        </Table.Cell>
+                        <Table.Cell onClick={() => alert('I\'ll reserve Clicked!')}>
+                            <input type='submit' value="I'll reserve"/>
+                        </Table.Cell>
+                    </Table.Row>
+                );
+            });
 
-        const roomsTable =
-            (
-                <Table celled compact definition>
-                    <Table.Header fullWidth>
-                        <Table.Row>
-                            <Table.HeaderCell width={10} textAlign='center'>Accommodation Type</Table.HeaderCell>
-                            <Table.HeaderCell width={1} textAlign='center'>Sleeps</Table.HeaderCell>
-                            <Table.HeaderCell width={1} textAlign='center'>Total Price</Table.HeaderCell>
-                            <Table.HeaderCell width={1} textAlign='center'>Quantity</Table.HeaderCell>
-                            <Table.HeaderCell width={3} textAlign='center'>Actions</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
+            let d = this.getRoomsSummary(rooms, bookButton, property);
+        } else {
+            roomRow = (<div>There are not any available rooms in the property</div>)
+        }
 
-                    <Table.Body>
-                        {roomRow}
-                    </Table.Body>
-                </Table>
-            );
+        return  (
+            <Table celled compact definition>
+                <Table.Header fullWidth>
+                    <Table.Row>
+                        <Table.HeaderCell width={10} textAlign='center'>Accommodation Type</Table.HeaderCell>
+                        <Table.HeaderCell width={1} textAlign='center'>Sleeps</Table.HeaderCell>
+                        <Table.HeaderCell width={1} textAlign='center'>Total Price</Table.HeaderCell>
+                        <Table.HeaderCell width={1} textAlign='center'>Quantity</Table.HeaderCell>
+                        <Table.HeaderCell width={3} textAlign='center'>Actions</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
 
-        return (
-            roomsTable
-        )
+                <Table.Body>
+                    {roomRow}
+                </Table.Body>
+            </Table>
+        );
     }
 }
-
-RoomsTable.propTypes = {
-    property: PropTypes.object.isRequired
-};
-
-RoomsTable.defaultProps = {
-    property: null,
-};
 
 export default connect(
     mapStateToProps,
