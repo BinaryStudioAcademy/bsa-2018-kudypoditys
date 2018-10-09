@@ -221,12 +221,6 @@ export class PropertyPage extends React.Component {
                                     fullScreen
                                 />
                             </Modal>
-                            <Divider
-                                style={{
-                                    ...dividerStyle,
-                                    width: "250px"
-                                }}
-                            />
                             <PropertyCommentsList style={{width: "100%", height: "100%"}} {...property} />
                         </div>
 
