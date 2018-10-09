@@ -225,10 +225,13 @@ export class MainSearch extends React.Component {
     }
 
     datesChanged = selectedDates => {
+        if (!selectedDates.endDate || selectedDates.endDate.diff(selectedDates.startDate, "days") < 0) {
+            selectedDates.endDate = selectedDates.startDate;
+        }
         if (selectedDates.startDate && selectedDates.endDate) {
             this.props.onDatesChange(selectedDates);
+            this.setState(selectedDates);
         }
-        this.setState(selectedDates);
     };
 
     checkIfCurrentPageIsProperty() {
@@ -261,8 +264,6 @@ export class MainSearch extends React.Component {
     }
 
     render() {
-        // console.log("state=" + JSON.stringify(this.state));
-
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
         const {
@@ -273,8 +274,6 @@ export class MainSearch extends React.Component {
             adults,
             children
         } = this.state;
-        // console.log("props!!!=" + JSON.stringify(this.props));
-        console.log("props.search.data!!!=" + JSON.stringify(this.props.search.data));
         if (this.props.search.data !== undefined && !this.checkIfCurrentPageIsProperty()) {
             const {data} = this.props.search;
             //send data to search page
