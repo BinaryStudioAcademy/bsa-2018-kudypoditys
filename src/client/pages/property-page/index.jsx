@@ -30,6 +30,7 @@ import {
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
 import {PropertyCommentsList} from "client/components/property-comments-list";
+import RoomsTable from "client/components/rooms-table";
 
 export class PropertyPage extends React.Component {
     toggleReviews = () => {
@@ -359,6 +360,7 @@ export class PropertyPage extends React.Component {
                                 >
                                     Rooms
                                 </Header>
+                                <RoomsTable />
                                 <RoomsSummaryTable
                                     ref={"roomsRef"}
                                     rooms={rooms}
