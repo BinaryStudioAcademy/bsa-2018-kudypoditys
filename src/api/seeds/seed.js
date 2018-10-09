@@ -3840,7 +3840,7 @@ const COUNTRIES = [
     {
         id: 1,
         name: "Ukraine",
-
+        icon: "ua flag",
         cities: [
             {
                 id: 1,
@@ -3882,6 +3882,7 @@ const COUNTRIES = [
     {
         id: 2,
         name: "Poland",
+        icon: "pl flag",
         cities: [
             {
                 id: 7,
@@ -3923,6 +3924,7 @@ const COUNTRIES = [
     {
         id: 3,
         name: "Austria",
+        icon: "at flag",
         cities: [
             {
                 id: 13,

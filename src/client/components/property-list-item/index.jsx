@@ -69,6 +69,7 @@ export class PropertyListItem extends React.Component {
                 price = propertyItemData.rooms[roomId].price;
             }
         }
+        let nightsCount = searchData.endDate.diff(searchData.startDate, "days");
         return (
             <Card
                 className="property_card"
@@ -239,7 +240,7 @@ export class PropertyListItem extends React.Component {
                                         className="search-page__jackpot"
                                     >
                                         <b>Jackpot!</b> This is a cheapest price you've seen in { propertyItemData.city.name } for your dates!<br />
-                                        <b>{ searchData.endDate.diff(searchData.startDate, "days") } nights ({ searchData.startDate.format("ddd D MMM") } - { searchData.endDate.format("ddd D MMM") })</b>
+                                        <b>{ nightsCount } { nightsCount === 1 ? 'night' : 'nights' } ({ searchData.startDate.format("ddd D MMM") } - { searchData.endDate.format("ddd D MMM") })</b>
                                     </Message>
                                 </div>
                             )}
