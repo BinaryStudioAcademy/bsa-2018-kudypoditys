@@ -1,4 +1,5 @@
 import React from 'react'
+import "./index.scss";
 import {Icon, Table} from 'semantic-ui-react'
 import QuantityPicker from "client/components/quantity-picker";
 import _ from "lodash";
@@ -44,7 +45,7 @@ export class RoomsTable extends React.Component {
         const roomToModify = {...(rooms.filter(r => r.id === roomId)[0])};
         roomToModify.selectedAmount = value;
         const unsortedRooms = [...rooms.filter(r => r.id !== roomId), roomToModify];
-        const sortedRooms = unsortedRooms.sort((a) => a.id);
+        const sortedRooms = unsortedRooms.sort((a, b) => a.id - b.id);
         this.props.selectRoomsAmount(roomId, value, sortedRooms);
     };
 
@@ -60,7 +61,11 @@ export class RoomsTable extends React.Component {
         let daysStaying = 1;
         if (checkIn && checkOut) {
             daysStaying = checkOut.diff(checkIn, 'days');
-            // console.log("Difference in days: " + daysStaying);
+            console.log("CheckIn: " + checkIn);
+            console.log(new Date(checkIn));
+            console.log("CheckOut: " + checkOut);
+            console.log(new Date(checkOut));
+            console.log("Difference in days: " + daysStaying);
         }
 
         let roomRow = null;
@@ -69,6 +74,7 @@ export class RoomsTable extends React.Component {
                 const bedsToSleep = r.bedInRooms.reduce((acc, el) => (acc + el.count), 0);
                 let priceForOneDay = priceFunc(r.price);
                 let totalPrice = priceForOneDay * daysStaying;
+                const totalCheck = totalPrice * r.selectedAmount;
 
                 return (
                     <Table.Row>
@@ -83,7 +89,7 @@ export class RoomsTable extends React.Component {
                                         }}
                                     >
                                         {/*<Icon name="bed"/>*/}
-                                        Type: {r.roomType.name}
+                                        Room: {r.roomType.name}
                                     </p>
                                 </div>
                                 <div className='room-area'>
@@ -116,23 +122,28 @@ export class RoomsTable extends React.Component {
                             {bookButton ? (
                                 <Modal
                                     trigger={
-                                        <div
-                                            className="book-btn"
-                                            style={{
-                                                height: "30px",
-                                                width: "100px",
-                                                // paddingLeft: "10px",
-                                                margin: "0"
-                                            }}
-                                        >
-                                            <button
-                                                style={{height: "100%"}}
-                                                onClick={() => {
-                                                    this.props.setRoom(r.id);
-                                                }}
+                                        <div>
+                                            <div className='room-total-check'>
+                                                {totalCheck}{currencySymbol}
+                                            </div>
+                                            <div className="book-btn"
+                                                 style={{
+                                                     height: "30px",
+                                                     width: "100px",
+                                                     // paddingLeft: "10px",
+                                                     margin: "0"
+                                                 }}
                                             >
-                                                Book now
-                                            </button>
+                                                {/*TODO: Use there Semantic button*/}
+                                                <button
+                                                    style={{height: "100%"}}
+                                                    onClick={() => {
+                                                        this.props.setRoom(r.id);
+                                                    }}
+                                                >
+                                                    Book now
+                                                </button>
+                                            </div>
                                         </div>
                                     }
                                     onClose={this.props.clearBookingForm}
