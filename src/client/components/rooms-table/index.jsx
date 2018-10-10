@@ -1,17 +1,24 @@
 import React from 'react'
-import {Divider, Icon, Table} from 'semantic-ui-react'
+import {Icon, Table} from 'semantic-ui-react'
 import QuantityPicker from "client/components/quantity-picker";
 import _ from "lodash";
-import {convert} from "client/helpers/convertCurrency";
+import {convertCurrencyByName, titleToCode} from "client/helpers/convertCurrency";
 import Modal from "client/components/modal";
 import BookingForm from "client/components/booking-form";
-import titleToCode from "client/helpers/convertCurrency"
 import connect from "react-redux/es/connect/connect";
 import {mapDispatchToProps, mapStateToProps} from "./container";
 
 export const getIcons = (number) => _.times(number, index => (<Icon name='user'/>));
 
 export class RoomsTable extends React.Component {
+    componentDidMount() {
+    }
+
+    componentDidUpdate() {
+        // console.log("RoomsTable componentDidUpdate props = ");
+        // console.log(this.props);
+    }
+
     getBedsSummary = bedsInRoom => {
         return (
             <div style={{padding: "5px"}}>
@@ -32,111 +39,39 @@ export class RoomsTable extends React.Component {
         );
     };
 
-    getRoomsSummary = (rooms, bookButton, property) => {
-        const {currency} = this.props;
-        const {currency: propCurrency} = property;
-
-        const priceFunc = (price) => convert(propCurrency.code, price, currency.code);
-        console.log(currency.code);
-        let a = titleToCode.get(currency.code);
-        console.log(a);
-        return rooms.map(room => (
-            <React.Fragment>
-                <div className="room-row">
-                    <div className="room-row--left-section">
-                        <p
-                            style={{
-                                margin: "0",
-                                color: "#465672",
-                                fontSize: "18px"
-                            }}
-                        >
-                            <Icon name="bed"/>
-                            {" " + room.roomType.name}
-                        </p>
-                        <div>{this.getBedsSummary(room.bedInRooms)}</div>
-                    </div>
-                    <div className="room-row--right-section">
-                        <p
-                            style={{
-                                margin: "0",
-                                color: "rgb(0, 168, 130)",
-                                fontSize: "18px",
-                                fontWeight: "bold",
-                                alignSelf: "center",
-                                paddingRight: "5px"
-                            }}
-                        >
-                            {currency.code} {priceFunc(room.price)}
-                        </p>
-                        {bookButton ? (
-                            <Modal
-                                trigger={
-                                    <div
-                                        className="book-btn"
-                                        style={{
-                                            height: "40px",
-                                            width: "150px",
-                                            paddingLeft: "10px",
-                                            margin: "0"
-                                        }}
-                                    >
-                                        <button
-                                            style={{height: "100%"}}
-                                            onClick={() => {
-                                                this.props.setRoom(room.id);
-                                            }}
-                                        >
-                                            Book now
-                                        </button>
-                                    </div>
-                                }
-                                onClose={this.props.clearBookingForm}
-                                closeIcon
-                            >
-                                {" "}
-                                <BookingForm
-                                    rooms={rooms}
-                                    paymentTypes={property.paymentTypes}
-                                />
-                            </Modal>
-                        ) : null}
-                    </div>
-                </div>
-                <Divider hidden/>
-            </React.Fragment>
-        ));
-    };
-
-    componentDidMount() {
-    }
-
-    componentDidUpdate() {
-        console.log("RoomsTable componentDidUpdate props = ");
-        console.log(this.props);
-    }
-
     render() {
         console.log("RoomsTable props = ");
         console.log(this.props);
-        const { rooms, user, property } = this.props;
+        if (!this.props || !this.props.rooms) return null;
+        const { rooms, user, property, currency } = this.props;
+        const {currency: propCurrency} = property;
         let bookButton = false;
         if (user) bookButton = true;
 
-        if (!this.props || !this.props.rooms) return null;
+        const priceFunc = (price) => convertCurrencyByName(propCurrency.code, price, currency.code);
+        const currencySymbol = titleToCode.get(currency.code);
 
         let roomRow = null;
         if(this.props.rooms.length > 0) {
             roomRow = this.props.rooms.map(r => {
-
-                const badsToSleep = r.bedInRooms.reduce((acc, el) => (acc + el.count), 0);
+                const bedsToSleep = r.bedInRooms.reduce((acc, el) => (acc + el.count), 0);
+                const priceToShow = priceFunc(r.price);
 
                 return (
                     <Table.Row>
                         <Table.Cell>
                             <div>
                                 <div className='room-type'>
-                                    <strong>Type: {r.roomType.name}</strong>
+                                    <p
+                                        style={{
+                                            margin: "0",
+                                            color: "#465672",
+                                            fontSize: "18px"
+                                        }}
+                                    >
+                                        {/*<Icon name="bed"/>*/}
+                                        Type: {r.roomType.name}
+                                    </p>
                                 </div>
                                 <div className='room-area'>
                                     <strong>Area:</strong> {r.area} square meters
@@ -152,21 +87,50 @@ export class RoomsTable extends React.Component {
                             </div>
                         </Table.Cell>
                         <Table.Cell>
-                            {getIcons(badsToSleep)}
+                            {getIcons(bedsToSleep)}
                         </Table.Cell>
-                        <Table.Cell>{r.price}$</Table.Cell>
+                        <Table.Cell>{priceToShow}{currencySymbol}</Table.Cell>
                         {/*TODO: add currency handling*/}
                         <Table.Cell>
                             <QuantityPicker roomsAvailable={r.amount + 1}/>
                         </Table.Cell>
-                        <Table.Cell onClick={() => alert('I\'ll reserve Clicked!')}>
-                            <input type='submit' value="I'll reserve"/>
+                        <Table.Cell >
+                            {bookButton ? (
+                                <Modal
+                                    trigger={
+                                        <div
+                                            className="book-btn"
+                                            style={{
+                                                height: "40px",
+                                                width: "150px",
+                                                paddingLeft: "10px",
+                                                margin: "0"
+                                            }}
+                                        >
+                                            <button
+                                                style={{height: "100%"}}
+                                                onClick={() => {
+                                                    this.props.setRoom(r.id);
+                                                }}
+                                            >
+                                                Book now
+                                            </button>
+                                        </div>
+                                    }
+                                    onClose={this.props.clearBookingForm}
+                                    closeIcon
+                                >
+                                    {" "}
+                                    <BookingForm
+                                        rooms={rooms}
+                                        paymentTypes={property.paymentTypes}
+                                    />
+                                </Modal>
+                            ) : null}
                         </Table.Cell>
                     </Table.Row>
                 );
             });
-
-            let d = this.getRoomsSummary(rooms, bookButton, property);
         } else {
             roomRow = (<div>There are not any available rooms in the property</div>)
         }

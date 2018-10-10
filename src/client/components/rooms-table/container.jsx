@@ -2,7 +2,7 @@ import { bookingInputUpdate } from "../../logic/property-page/actions";
 
 export function mapStateToProps({userCabinet, propertyPage, header}) {
     return {
-        userCabinet,
+        user: userCabinet.user,
         property: propertyPage.property,
         rooms: propertyPage.rooms, // TODO: rooms that available to get into
         currency: header.selectedCurrency,

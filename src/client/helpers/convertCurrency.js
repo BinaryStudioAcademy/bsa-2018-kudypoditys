@@ -18,26 +18,39 @@ codeToTitle.set('€', 'eur');
 codeToTitle.set('$', 'usd');
 codeToTitle.set('₴', 'uah');
 
-const titleToCode = new Map();
+export const titleToCode = new Map();
 titleToCode.set('EUR', '€');
 titleToCode.set('USD', '$');
 titleToCode.set('UAH', '₴');
+
+export const titleToLoverTitle = new Map();
+titleToLoverTitle.set('EUR', 'eur');
+titleToLoverTitle.set('USD', 'usd');
+titleToLoverTitle.set('UAH', 'uah');
 
 function round(value, decimals = 2) {
     const pow10 = Math.pow(10, decimals);
     return Math.round(value * pow10) / pow10;
 }
 
-export function convert(currentCurrency, value, tagetCurrency) {
+export function convertCurrencyByName(currentCurrency, value, targetCurrency) {
+    if (!currentCurrency || !targetCurrency || currentCurrency === targetCurrency)
+        return value;
 
-    if (!currentCurrency || !tagetCurrency || currentCurrency == tagetCurrency)
+    const from = titleToLoverTitle.get(currentCurrency),
+        to = titleToLoverTitle.get(targetCurrency);
+
+    return converterObj[from] && converterObj[from][to] && round(converterObj[from][to] * value) || value;
+}
+
+export function convert(currentCurrency, value, targetCurrency) {
+    if (!currentCurrency || !targetCurrency || currentCurrency == targetCurrency)
         return value;
 
     const from = codeToTitle.get(currentCurrency),
-        to = codeToTitle.get(tagetCurrency)
+        to = codeToTitle.get(targetCurrency);
 
-    return converterObj[from] && converterObj[from][to] &&
-        round(converterObj[from][to] * value) || value;
+    return converterObj[from] && converterObj[from][to] && round(converterObj[from][to] * value) || value;
 }
 
-export default titleToCode;
+// export default titleToCode;

@@ -18,7 +18,6 @@ import PropertyDescription from "client/components/property-description";
 import {PropertySummary} from "client/components/property-summary";
 import {NavigationBar} from "client/components/navigation-bar";
 import BasicMapWidget from "client/components/basic-map-widget";
-import RoomsSummaryTable from "client/components/rooms-summary-table";
 import Modal from "../../components/modal";
 import BookingForm from "../../components/booking-form";
 import ReactDOM from "react-dom";
@@ -350,7 +349,7 @@ export class PropertyPage extends React.Component {
 
                             <AvailabilityPanel style={{width: "100%"}}/>
                             <Divider style={dividerStyle}/>
-                            <div>
+                            <div ref={"roomsRef"}>
                                 <Header
                                     as="h2"
                                     style={{
@@ -360,9 +359,7 @@ export class PropertyPage extends React.Component {
                                 >
                                     Rooms
                                 </Header>
-                                <RoomsTable
-                                    ref={"roomsRef"}
-                                    />
+                                <RoomsTable />
                                 {/*<RoomsSummaryTable*/}
                                     {/*ref={"roomsRef"}*/}
                                     {/*rooms={rooms}*/}

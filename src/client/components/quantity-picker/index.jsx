@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dropdown, Grid, Segment } from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react'
 import _ from 'lodash'
 import PropTypes from "prop-types";
 
@@ -21,7 +21,9 @@ export default class QuantityPicker extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            value: null
+        };
     }
 
     handleChange = (e, { value }) => {
@@ -37,7 +39,7 @@ export default class QuantityPicker extends Component {
             <Dropdown
                 onChange={this.handleChange}
                 options={getOptions(this.props.roomsAvailable, '')}
-                placeholder='0'
+                // placeholder='0'
                 compact
                 selection
                 value={value}
