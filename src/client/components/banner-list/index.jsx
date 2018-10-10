@@ -30,8 +30,8 @@ export class BannerList extends Component {
             rooms: 1,
             adults: 1,
             children: 1,
-            startDate: moment(),
-            endDate: moment()
+            startDate: moment().startOf("day"),
+            endDate: moment().startOf("day").add(1, "days")
         });
     };
 

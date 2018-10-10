@@ -189,8 +189,8 @@ export class MainSearch extends React.Component {
         super(props);
         this.roomSelector = React.createRef();
         this.state = {
-            startDate: moment(),
-            endDate: moment().add(5, "days"),
+            startDate: moment().startOf("day"),
+            endDate: moment().startOf("day").add(5, "days"),
             focusedInput: null,
             rooms: 1, // props.rooms,
             adults: 1, // props.adults,
