@@ -39,11 +39,18 @@ export class RoomsTable extends React.Component {
         );
     };
 
+    handleQuantitySelectionChanged = (e, value, roomId) => {
+        const {rooms} = this.props;
+        const roomToModify = {...(rooms.filter(r => r.id === roomId)[0])};
+        roomToModify.selectedAmount = value;
+        const unsortedRooms = [...rooms.filter(r => r.id !== roomId), roomToModify];
+        const sortedRooms = unsortedRooms.sort((a) => a.id);
+        this.props.selectRoomsAmount(roomId, value, sortedRooms);
+    };
+
     render() {
-        console.log("RoomsTable props = ");
-        console.log(this.props);
         if (!this.props || !this.props.rooms) return null;
-        const { rooms, user, property, currency, checkIn, checkOut } = this.props;
+        const {rooms, user, property, currency, checkIn, checkOut} = this.props;
         const {currency: propCurrency} = property;
         let bookButton = false;
         if (user) bookButton = true;
@@ -51,13 +58,13 @@ export class RoomsTable extends React.Component {
         const priceFunc = (price) => convertCurrencyByName(propCurrency.code, price, currency.code);
         const currencySymbol = titleToCode.get(currency.code);
         let daysStaying = 1;
-        if(checkIn && checkOut) {
+        if (checkIn && checkOut) {
             daysStaying = checkOut.diff(checkIn, 'days');
             // console.log("Difference in days: " + daysStaying);
         }
 
         let roomRow = null;
-        if(this.props.rooms.length > 0) {
+        if (this.props.rooms.length > 0) {
             roomRow = this.props.rooms.map(r => {
                 const bedsToSleep = r.bedInRooms.reduce((acc, el) => (acc + el.count), 0);
                 let priceForOneDay = priceFunc(r.price);
@@ -100,9 +107,12 @@ export class RoomsTable extends React.Component {
                         </Table.Cell>
                         {/*TODO: add currency handling*/}
                         <Table.Cell>
-                            <QuantityPicker roomsAvailable={r.amount + 1}/>
+                            <QuantityPicker roomId={r.id}
+                                            roomsSelectedAmount={r.selectedAmount}
+                                            roomsAvailable={r.amount + 1}
+                                            onSelectionChanged={this.handleQuantitySelectionChanged}/>
                         </Table.Cell>
-                        <Table.Cell >
+                        <Table.Cell>
                             {bookButton ? (
                                 <Modal
                                     trigger={
@@ -143,7 +153,7 @@ export class RoomsTable extends React.Component {
             roomRow = (<div>There are not any available rooms in the property</div>)
         }
 
-        return  (
+        return (
             <Table celled compact definition>
                 <Table.Header fullWidth>
                     <Table.Row>

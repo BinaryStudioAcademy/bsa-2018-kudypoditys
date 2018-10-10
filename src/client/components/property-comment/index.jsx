@@ -8,8 +8,6 @@ import moment from "moment";
 
 export class PropertyComment extends React.Component {
     render() {
-        console.log("comment props = ");
-        console.log(this.props);
         const createdAtTimeAgo = moment(this.props.createdAt).fromNow();
         const displayName = this.props.user.nickname ? this.props.user.nickname : this.props.user.fullName;
         const avatarUrl = this.props.user.avatar ? this.props.user.avatar : 'https://ui-avatars.com/api/?name=' + displayName;

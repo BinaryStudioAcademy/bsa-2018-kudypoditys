@@ -1,4 +1,4 @@
-import { bookingInputUpdate } from "../../logic/property-page/actions";
+import { bookingInputUpdate, roomsSelectedAmountUpdate } from "../../logic/property-page/actions";
 
 export function mapStateToProps({userCabinet, propertyPage, header}) {
     return {
@@ -18,6 +18,9 @@ export function mapDispatchToProps(dispatch) {
         },
         setRoom(roomId) {
             dispatch(bookingInputUpdate({ roomId: roomId }));
+        },
+        selectRoomsAmount(roomId, selectedRoomsAmount, rooms) {
+            dispatch(roomsSelectedAmountUpdate(roomId, selectedRoomsAmount, rooms));
         }
     };
 }

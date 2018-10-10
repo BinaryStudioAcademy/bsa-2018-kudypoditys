@@ -8,7 +8,8 @@ import {
     CHECK_AVAILABILITY_SUCCESS,
     CHECK_AVAILABILITY_FAILURE,
     GET_ROOMS_INFO_SUCCESS,
-    CLEAR_PROPERTY_PAGE
+    CLEAR_PROPERTY_PAGE,
+    ROOMS_SELECTED_AMOUNT_UPDATE
 } from "./actionTypes";
 
 import { SEARCH_UPDATE } from "../search/actionTypes";
@@ -127,6 +128,19 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                     ...action.payload
                 }
             };
+        }
+
+        // TODO
+        case ROOMS_SELECTED_AMOUNT_UPDATE: {
+            return {
+                ...state,
+                bookingInput: {
+                    ...state.bookingInput,
+                    roomId: action.payload.roomId,
+                    roomsAmount: action.payload.selectedRoomsAmount
+                },
+                rooms: action.payload.rooms
+            }
         }
 
         default: {

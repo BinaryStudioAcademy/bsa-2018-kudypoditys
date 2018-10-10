@@ -17,41 +17,41 @@ export const getOptions = (number, prefix = '') =>
         value: index,
     }));
 
-export default class QuantityPicker extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            value: null
-        };
-    }
-
-    handleChange = (e, { value }) => {
-        e.preventDefault();
-        console.log(value);
-        this.setState({ value });
+export class QuantityPicker extends Component {
+    handleChange = (e, {value}) => {
+        this.props.onSelectionChanged(e, value, this.props.roomId)
+        // TODO: dispatch event(action) with roomId, selectedRoomsAmount
     };
 
     render() {
-        const { value } = this.state;
+        const options = getOptions(this.props.roomsAvailable, '');
+        const val = options.filter(o => o.value === this.props.roomsSelectedAmount)[0].value;
 
         return (
             <Dropdown
                 onChange={this.handleChange}
-                options={getOptions(this.props.roomsAvailable, '')}
+                options={options}
                 // placeholder='0'
                 compact
                 selection
-                value={value}
+                value={val}
             />
         )
     }
 }
 
 QuantityPicker.propTypes = {
-    roomsAvailable: PropTypes.number.isRequired
+    roomId: PropTypes.number.isRequired,
+    roomsSelectedAmount: PropTypes.number.isRequired,
+    roomsAvailable: PropTypes.number.isRequired,
+    onSelectionChanged: PropTypes.func.isRequired
 };
 
 QuantityPicker.defaultProps = {
+    roomId: 0,
+    roomsSelectedAmount: 0,
     roomsAvailable: 0,
+    onSelectionChanged: null
 };
+
+export default QuantityPicker;

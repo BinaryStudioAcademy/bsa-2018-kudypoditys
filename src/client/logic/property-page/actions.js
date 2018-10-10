@@ -6,7 +6,8 @@ import {
     BOOK_PROPERTY,
     CHECK_AVAILABILITY,
     GET_ROOMS_INFO,
-    CLEAR_PROPERTY_PAGE
+    CLEAR_PROPERTY_PAGE,
+    ROOMS_SELECTED_AMOUNT_UPDATE
 } from "./actionTypes";
 
 export function descriptionUpdate(payload) {
@@ -65,5 +66,16 @@ export function getRoomsInfo(propertyId, checkIn, checkOut) {
 export function clearPropertyPageSlice() {
     return {
         type: CLEAR_PROPERTY_PAGE
+    };
+}
+
+export function roomsSelectedAmountUpdate(roomId, selectedRoomsAmount, rooms) {
+    return {
+        type: ROOMS_SELECTED_AMOUNT_UPDATE,
+        payload: {
+            roomId,
+            selectedRoomsAmount,
+            rooms
+        }
     };
 }
