@@ -43,19 +43,25 @@ export class RoomsTable extends React.Component {
         console.log("RoomsTable props = ");
         console.log(this.props);
         if (!this.props || !this.props.rooms) return null;
-        const { rooms, user, property, currency } = this.props;
+        const { rooms, user, property, currency, checkIn, checkOut } = this.props;
         const {currency: propCurrency} = property;
         let bookButton = false;
         if (user) bookButton = true;
 
         const priceFunc = (price) => convertCurrencyByName(propCurrency.code, price, currency.code);
         const currencySymbol = titleToCode.get(currency.code);
+        let daysStaying = 1;
+        if(checkIn && checkOut) {
+            daysStaying = checkOut.diff(checkIn, 'days');
+            // console.log("Difference in days: " + daysStaying);
+        }
 
         let roomRow = null;
         if(this.props.rooms.length > 0) {
             roomRow = this.props.rooms.map(r => {
                 const bedsToSleep = r.bedInRooms.reduce((acc, el) => (acc + el.count), 0);
-                const priceToShow = priceFunc(r.price);
+                let priceForOneDay = priceFunc(r.price);
+                let totalPrice = priceForOneDay * daysStaying;
 
                 return (
                     <Table.Row>
@@ -89,7 +95,9 @@ export class RoomsTable extends React.Component {
                         <Table.Cell>
                             {getIcons(bedsToSleep)}
                         </Table.Cell>
-                        <Table.Cell>{priceToShow}{currencySymbol}</Table.Cell>
+                        <Table.Cell>
+                            {totalPrice}{currencySymbol}
+                        </Table.Cell>
                         {/*TODO: add currency handling*/}
                         <Table.Cell>
                             <QuantityPicker roomsAvailable={r.amount + 1}/>
@@ -101,9 +109,9 @@ export class RoomsTable extends React.Component {
                                         <div
                                             className="book-btn"
                                             style={{
-                                                height: "40px",
-                                                width: "150px",
-                                                paddingLeft: "10px",
+                                                height: "30px",
+                                                width: "100px",
+                                                // paddingLeft: "10px",
                                                 margin: "0"
                                             }}
                                         >

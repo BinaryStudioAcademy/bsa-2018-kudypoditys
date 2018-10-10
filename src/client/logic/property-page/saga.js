@@ -60,6 +60,11 @@ export default function* propertyPageSaga() {
                 "put",
                 input
             );
+
+            for(let i = 0; i < response.data.length; i++) {
+                response.data[i] = {...response.data[i], selectedAmount: 0};
+            }
+
             yield put({
                 type: actionTypes.CHECK_AVAILABILITY_SUCCESS,
                 payload: response.data
@@ -82,6 +87,12 @@ export default function* propertyPageSaga() {
                 "put",
                 input
             );
+
+            // if()
+            for(let i = 0; i < response.data.length; i++) {
+                response.data[i] = {...response.data[i], selectedAmount: 0};
+            }
+
             yield put({
                 type: actionTypes.GET_ROOMS_INFO_SUCCESS,
                 payload: response.data
