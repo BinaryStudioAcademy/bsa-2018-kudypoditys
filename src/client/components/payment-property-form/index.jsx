@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from './container';
 import './index.scss';
 
-class PaymentPropertyRegistrationForm extends Component {
+class PaymentPropertyForm extends Component {
 
   componentDidMount() {
     const { paymentTypes } = this.props;
@@ -127,9 +127,9 @@ class PaymentPropertyRegistrationForm extends Component {
 }
 
 const ReduxForm = reduxForm({
-  form: 'propertyRegistrationForm',
+  form: 'propertyForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-})(PaymentPropertyRegistrationForm);
+})(PaymentPropertyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

@@ -8,7 +8,7 @@ import renderDropdown from 'client/components/input-form/dropdown';
 
 import './index.scss';
 
-class PolicesPropertyRegistrationForm extends Component {
+class PolicesPropertyForm extends Component {
 
   renderCancellationCard() {
     const cancelOptions = [
@@ -75,7 +75,7 @@ class PolicesPropertyRegistrationForm extends Component {
 }
 
 export default reduxForm({
-  form: 'propertyRegistrationForm',
+  form: 'propertyForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-})(PolicesPropertyRegistrationForm);
+})(PolicesPropertyForm);

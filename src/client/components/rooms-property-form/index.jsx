@@ -9,7 +9,7 @@ import RoomForm from './room-form';
 
 import { mapStateToProps, mapDispatchToProps } from './container';
 
-class RoomsPropertyRegistrationForm extends Component {
+class RoomsPropertyForm extends Component {
   state = {
     activeIndex: -1
   }
@@ -114,9 +114,9 @@ class RoomsPropertyRegistrationForm extends Component {
 
 
 const ReduxForm = reduxForm({
-  form: 'propertyRegistrationForm',
+  form: 'propertyForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-})(RoomsPropertyRegistrationForm);
+})(RoomsPropertyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

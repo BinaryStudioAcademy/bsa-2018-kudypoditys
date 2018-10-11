@@ -6,7 +6,7 @@ import { editRoomIndexUpdate } from 'client/logic/1test-rooms-tab/actions';
 import { getFormValues } from 'redux-form';
 
 export function mapStateToProps(state) {
-    const values = getFormValues('propertyRegistrationForm')(state) || {};
+    const values = getFormValues('propertyForm')(state) || {};
     const { roomTypes } = state.roomTypes;
     const { bedTypes } = state.bedTypes;
     const { editRoomIndex } = state.testRoomsTab;

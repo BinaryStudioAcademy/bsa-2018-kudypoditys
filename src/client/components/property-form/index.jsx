@@ -5,14 +5,14 @@ import { DrawTab } from "./DrawTab";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "./container";
 
-import BasicInfoPropertyRegistrationForm from "../basic-info-property-registration-form";
-import FacilitiesPropertyRegistrationForm from "../facilities-property-registration-form";
-import PolicesPropertyRegistrationForm from "../polices-property-registration-form";
-import PhotoRegistrationPropertyForm from "../photo-registration-property-form";
-import PaymentPropertyRegistrationForm from "../payment-property-registration-form";
-import RoomsPropertyRegistrationForm from "../rooms-property-registration-form";
+import BasicInfoPropertyForm from "../basic-info-property-form";
+import FacilitiesPropertyForm from "../facilities-property-form";
+import PolicesPropertyForm from "../polices-property-form";
+import PhotoPropertyForm from "../photo-property-form";
+import PaymentPropertyForm from "../payment-property-form";
+import RoomsPropertyForm from "../rooms-property-form";
 
-export class PropertyRegistration extends React.Component {
+export class PropertyForm extends React.Component {
     state = {
         activeIndex: 0
     };
@@ -73,7 +73,7 @@ export class PropertyRegistration extends React.Component {
                 subheader:
                     "Start by telling us your property's name, contact details and address.",
                 component: (
-                    <BasicInfoPropertyRegistrationForm
+                    <BasicInfoPropertyForm
                         onSubmit={this.nextTab}
                     />
                 )
@@ -86,7 +86,7 @@ export class PropertyRegistration extends React.Component {
                 subheader:
                     " Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms",
                 component: (
-                    <RoomsPropertyRegistrationForm onSubmit={this.nextTab} />
+                    <RoomsPropertyForm onSubmit={this.nextTab} />
                 )
             },
             {
@@ -97,7 +97,7 @@ export class PropertyRegistration extends React.Component {
                 subheader:
                     "Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.",
                 component: (
-                    <FacilitiesPropertyRegistrationForm
+                    <FacilitiesPropertyForm
                         onSubmit={this.nextTab}
                     />
                 )
@@ -110,7 +110,7 @@ export class PropertyRegistration extends React.Component {
                 subheader:
                     " Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?",
                 component: (
-                    <PolicesPropertyRegistrationForm onSubmit={this.nextTab} />
+                    <PolicesPropertyForm onSubmit={this.nextTab} />
                 )
             },
             {
@@ -121,7 +121,7 @@ export class PropertyRegistration extends React.Component {
                 subheader:
                     "Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property's page on the Booking.com website.",
                 component: (
-                    <PhotoRegistrationPropertyForm onSubmit={this.nextTab} />
+                    <PhotoPropertyForm onSubmit={this.nextTab} />
                 )
             },
             {
@@ -131,7 +131,7 @@ export class PropertyRegistration extends React.Component {
                 customHeader: " Layout and pricing",
                 subheader: "Tell us about layout and pricing",
                 component: (
-                    <PaymentPropertyRegistrationForm
+                    <PaymentPropertyForm
                         onSubmit={this.onFormSubmit}
                     />
                 )
@@ -181,4 +181,4 @@ export class PropertyRegistration extends React.Component {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(PropertyRegistration);
+)(PropertyForm);

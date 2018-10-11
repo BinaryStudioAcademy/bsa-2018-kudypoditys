@@ -22,7 +22,7 @@ const parseNumber = value => {
     return number;
 };
 
-class FacilitiesPropertyRegistrationForm extends Component {
+class FacilitiesPropertyForm extends Component {
 
     componentDidMount() {
         const { languages, facilities } = this.props;
@@ -299,9 +299,9 @@ class FacilitiesPropertyRegistrationForm extends Component {
 }
 
 const ReduxForm = reduxForm({
-    form: 'propertyRegistrationForm',
+    form: 'propertyForm',
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
-})(FacilitiesPropertyRegistrationForm);
+})(FacilitiesPropertyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

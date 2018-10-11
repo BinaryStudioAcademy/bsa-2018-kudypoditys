@@ -14,7 +14,7 @@ import { mapDispatchToProps, mapStateToProps } from "./container";
 import "./index.scss";
 import AlgoliaPlaces from "algolia-places-react";
 
-class BasicInfoPropertyRegistrationForm extends Component {
+class BasicInfoPropertyForm extends Component {
     state = {};
 
     componentDidMount() {
@@ -290,10 +290,10 @@ class BasicInfoPropertyRegistrationForm extends Component {
 }
 
 const ReduxForm = reduxForm({
-    form: "propertyRegistrationForm",
+    form: "propertyForm",
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true
-})(BasicInfoPropertyRegistrationForm);
+})(BasicInfoPropertyForm);
 
 export default connect(
     mapStateToProps,

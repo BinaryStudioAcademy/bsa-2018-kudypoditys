@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import PhotoDropZone from '../input-form/photo-drop-zone';
 import './index.scss'
 
-class PhotoRegistrationPropertyForm extends Component {
+class PhotoPropertyForm extends Component {
   render() {
     const {
       handleSubmit, pristine, submitting
@@ -32,7 +32,7 @@ class PhotoRegistrationPropertyForm extends Component {
 }
 
 export default reduxForm({
-  form: 'propertyRegistrationForm',
+  form: 'propertyForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
-})(PhotoRegistrationPropertyForm);
+})(PhotoPropertyForm);
