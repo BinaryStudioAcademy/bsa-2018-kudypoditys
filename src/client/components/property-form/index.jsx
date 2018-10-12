@@ -59,7 +59,11 @@ export class PropertyForm extends React.Component {
     onFormSubmit = data => {
         data.facilities = this.normalizeFacilities(data.facilities);
 
-        this.props.createProperty(data);
+        if (this.props.isEdit) {
+            this.props.updateProperty(data);
+        } else {
+            this.props.createProperty(data);
+        }
     };
 
     getWizardForms() {
