@@ -78,4 +78,5 @@ export default reduxForm({
   form: 'propertyForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
+  enableReinitialize: true
 })(PolicesPropertyForm);

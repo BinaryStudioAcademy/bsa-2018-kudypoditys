@@ -292,7 +292,8 @@ class BasicInfoPropertyForm extends Component {
 const ReduxForm = reduxForm({
     form: "propertyForm",
     destroyOnUnmount: false,
-    forceUnregisterOnUnmount: true
+    forceUnregisterOnUnmount: true,
+    enableReinitialize: true
 })(BasicInfoPropertyForm);
 
 export default connect(

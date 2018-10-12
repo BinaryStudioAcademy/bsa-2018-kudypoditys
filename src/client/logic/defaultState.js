@@ -83,7 +83,7 @@ const state = {
     header: {
         currencies: [],
         selectedCurrency:
-            JSON.parse(localStorage.getItem('selectedCurrency')) 
+            JSON.parse(localStorage.getItem('selectedCurrency'))
             || { id: 2, name: 'US DOLLAR', code: 'USD', number: 840 },
         currentUser: null
     },
@@ -652,7 +652,9 @@ const state = {
         error: null
     },
 
-    userCabinetProperties: {}
+    userCabinetProperties: {},
+
+    propertyEdit: {}
 
     // _____________________
 };

@@ -34,5 +34,6 @@ class PhotoPropertyForm extends Component {
 export default reduxForm({
   form: 'propertyForm',
   destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true
+  forceUnregisterOnUnmount: true,
+  enableReinitialize: true
 })(PhotoPropertyForm);

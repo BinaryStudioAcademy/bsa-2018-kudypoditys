@@ -117,6 +117,7 @@ const ReduxForm = reduxForm({
   form: 'propertyForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
+  enableReinitialize: true
 })(RoomsPropertyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

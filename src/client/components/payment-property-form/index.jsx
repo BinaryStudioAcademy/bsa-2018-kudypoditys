@@ -130,6 +130,7 @@ const ReduxForm = reduxForm({
   form: 'propertyForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
+  enableReinitialize: true
 })(PaymentPropertyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

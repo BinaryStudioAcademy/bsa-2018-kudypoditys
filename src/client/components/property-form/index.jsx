@@ -63,7 +63,12 @@ export class PropertyForm extends React.Component {
     };
 
     getWizardForms() {
-        const { user } = this.props;
+        const { user, property, isEdit } = this.props;
+        const editProps = {
+            initialValues: property,
+            isEdit: isEdit
+        };
+
         return [
             {
                 key: "Basic Info",
@@ -74,6 +79,7 @@ export class PropertyForm extends React.Component {
                     "Start by telling us your property's name, contact details and address.",
                 component: (
                     <BasicInfoPropertyForm
+                        {...editProps}
                         onSubmit={this.nextTab}
                     />
                 )
@@ -86,7 +92,10 @@ export class PropertyForm extends React.Component {
                 subheader:
                     " Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms",
                 component: (
-                    <RoomsPropertyForm onSubmit={this.nextTab} />
+                    <RoomsPropertyForm
+                        {...editProps}
+                        onSubmit={this.nextTab}
+                    />
                 )
             },
             {
@@ -98,6 +107,7 @@ export class PropertyForm extends React.Component {
                     "Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.",
                 component: (
                     <FacilitiesPropertyForm
+                        {...editProps}
                         onSubmit={this.nextTab}
                     />
                 )
@@ -110,7 +120,10 @@ export class PropertyForm extends React.Component {
                 subheader:
                     " Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?",
                 component: (
-                    <PolicesPropertyForm onSubmit={this.nextTab} />
+                    <PolicesPropertyForm
+                        {...editProps}
+                        onSubmit={this.nextTab}
+                    />
                 )
             },
             {
@@ -121,7 +134,10 @@ export class PropertyForm extends React.Component {
                 subheader:
                     "Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property's page on the Booking.com website.",
                 component: (
-                    <PhotoPropertyForm onSubmit={this.nextTab} />
+                    <PhotoPropertyForm
+                        {...editProps}
+                        onSubmit={this.nextTab}
+                    />
                 )
             },
             {
@@ -132,6 +148,7 @@ export class PropertyForm extends React.Component {
                 subheader: "Tell us about layout and pricing",
                 component: (
                     <PaymentPropertyForm
+                        {...editProps}
                         onSubmit={this.onFormSubmit}
                     />
                 )

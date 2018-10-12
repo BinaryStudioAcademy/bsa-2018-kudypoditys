@@ -8,11 +8,6 @@ import Header from "client/components/header";
 
 
 export class EditPropertyPage extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {};
-    }
-
     componentWillMount() {
         this.props.getProperty(this.props.match.params.id);
     }
@@ -21,7 +16,7 @@ export class EditPropertyPage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PropertyForm proper/>
+                <PropertyForm property={this.props.property} isEdit={true}/>
             </Fragment>
         );
     }
