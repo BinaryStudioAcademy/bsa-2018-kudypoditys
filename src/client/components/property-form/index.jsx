@@ -69,7 +69,7 @@ export class PropertyForm extends React.Component {
     getWizardForms() {
         const { user, property, isEdit } = this.props;
         const editProps = {
-            initialValues: property,
+            initialValues: isEdit ? property : {},
             isEdit: isEdit
         };
 
