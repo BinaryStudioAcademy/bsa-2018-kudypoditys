@@ -1,4 +1,8 @@
-import { bookingInputUpdate, roomsSelectedAmountUpdate } from "../../logic/property-page/actions";
+import {
+    bookingInputUpdate,
+    roomsSelectedAmountUpdate,
+    toggleDescriptionCollapse
+} from '../../logic/property-page/actions';
 
 export function mapStateToProps({userCabinet, propertyPage, header}) {
     return {
@@ -21,6 +25,9 @@ export function mapDispatchToProps(dispatch) {
         },
         selectRoomsAmount(roomId, selectedRoomsAmount, rooms) {
             dispatch(roomsSelectedAmountUpdate(roomId, selectedRoomsAmount, rooms));
+        },
+        toggleRoomDescriptionCollapse(roomId) {
+            dispatch(toggleDescriptionCollapse(roomId));
         }
     };
 }

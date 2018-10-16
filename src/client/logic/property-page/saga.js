@@ -1,6 +1,14 @@
-import { call, put, all, takeLatest } from "redux-saga/effects";
+import {
+    call,
+    put,
+    all,
+    takeLatest
+} from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
 import api from "../../helpers/api";
+import {
+    descriptionUpdate
+} from '../property-description/actions';
 
 export default function* propertyPageSaga() {
     function* getPropertyInfo(action) {
@@ -51,8 +59,7 @@ export default function* propertyPageSaga() {
             if (!input.checkIn || !input.checkOut)
                 return yield put({
                     type: actionTypes.CHECK_AVAILABILITY_FAILURE,
-                    payload:
-                        "Fill in check-in and check-out dates to check availability"
+                    payload: "Fill in check-in and check-out dates to check availability"
                 });
             const response = yield call(
                 api.sendRequest,
@@ -61,8 +68,12 @@ export default function* propertyPageSaga() {
                 input
             );
 
-            for(let i = 0; i < response.data.length; i++) {
-                response.data[i] = {...response.data[i], selectedAmount: 0};
+            for (let i = 0; i < response.data.length; i++) {
+                response.data[i] = {
+                    ...response.data[i],
+                    selectedAmount: 0,
+                    descriptionCollapsed: true
+                };
             }
 
             yield put({
@@ -88,9 +99,12 @@ export default function* propertyPageSaga() {
                 input
             );
 
-            // if()
-            for(let i = 0; i < response.data.length; i++) {
-                response.data[i] = {...response.data[i], selectedAmount: 0};
+            for (let i = 0; i < response.data.length; i++) {
+                response.data[i] = {
+                    ...response.data[i],
+                    selectedAmount: 0,
+                    descriptionCollapsed: true
+                };
             }
 
             yield put({
