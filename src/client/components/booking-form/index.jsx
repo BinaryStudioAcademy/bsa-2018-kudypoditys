@@ -95,10 +95,10 @@ export class BookingForm extends React.Component {
         const adultsOptions = this.generateOptions(1, 10);
         const paymentOptions = this.generatePaymentOptions(paymentTypes);
         const roomOptions = this.generateRoomOptions(rooms);
-        const disableBookButton = true;
+        const disableBookButton = totalCheck < 1.0;
         const buttonClasses = classNames({
             "book-btn": true,
-            "book-btn-enabled": totalCheck >= 1.0
+            "book-btn-enabled": !disableBookButton
         });
         // const buttonClass = 'book-btn ' + disableBookButton ? 'book-btn-disabled' : 'book-btn-enabled';
         // totalCheck < 1;
