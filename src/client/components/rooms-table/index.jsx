@@ -11,6 +11,8 @@ import Modal from "client/components/modal";
 import BookingForm from "client/components/booking-form";
 import connect from "react-redux/es/connect/connect";
 import { mapDispatchToProps, mapStateToProps } from "./container";
+import { roomQuantityChanged } from '../../helpers/roomQuantityChanged';
+import { getDaysDifference } from '../../helpers/date-helpers';
 
 export const getIcons = number =>
     _.times(number, index => <Icon name="user" />);
@@ -54,17 +56,9 @@ export class RoomsTable extends React.Component {
     };
 
     handleQuantitySelectionChanged = (e, value, roomId) => {
-        const { rooms } = this.props;
-        const roomToModify = {
-            ...rooms.filter(r => r.id === roomId)[0]
-        };
-        roomToModify.selectedAmount = value;
-        const unsortedRooms = [
-            ...rooms.filter(r => r.id !== roomId),
-            roomToModify
-        ];
-        const sortedRooms = unsortedRooms.sort((a, b) => a.id - b.id);
-        this.props.selectRoomsAmount(roomId, value, sortedRooms);
+        const { rooms, selectRoomsAmount } = this.props;
+        // this.props.selectRoomsAmount(roomId, roomsAmount, sortedRooms);
+        roomQuantityChanged(rooms, value, roomId, selectRoomsAmount)
     };
 
     render() {
@@ -84,16 +78,7 @@ export class RoomsTable extends React.Component {
         const priceFunc = price =>
             convertCurrencyByName(propCurrency.code, price, currency.code);
         const currencySymbol = titleToCode.get(currency.code);
-        let daysStaying = 1;
-        if (checkIn && checkOut) {
-            daysStaying = checkOut.diff(checkIn, "days");
-            console.log("CheckIn: " + checkIn);
-            console.log(new Date(checkIn));
-            console.log("CheckOut: " + checkOut);
-            console.log(new Date(checkOut));
-            console.log("Difference in days: " + daysStaying);
-        }
-
+        const daysStaying = getDaysDifference(checkIn, checkOut);
         let roomRow = null;
         if (this.props.rooms.length > 0) {
             roomRow = this.props.rooms.map(room => {
@@ -103,9 +88,7 @@ export class RoomsTable extends React.Component {
                 );
                 let priceForOneDay = priceFunc(room.price);
                 let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
-                const totalCheck = (totalPrice * room.selectedAmount).toFixed(
-                    1
-                );
+                const totalCheck = (totalPrice * room.selectedAmount).toFixed(1);
 
                 return (
                     <Table.Row>

@@ -20,21 +20,21 @@ export const getOptions = (number, prefix = '') =>
 export class QuantityPicker extends Component {
     handleChange = (e, {value}) => {
         this.props.onSelectionChanged(e, value, this.props.roomId)
-        // TODO: dispatch event(action) with roomId, selectedRoomsAmount
     };
 
     render() {
-        const options = getOptions(this.props.roomsAvailable, '');
-        const val = options.filter(o => o.value === this.props.roomsSelectedAmount)[0].value;
+        const { roomsAvailable, roomsSelectedAmount, roomId, onSelectionChanged, ...rest} = this.props;
+        const options = getOptions(roomsAvailable, '');
 
         return (
             <Dropdown
+                {...rest}
                 onChange={this.handleChange}
                 options={options}
                 // placeholder='0'
                 compact
                 selection
-                value={val}
+                value={roomsSelectedAmount}
             />
         )
     }

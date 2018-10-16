@@ -70,12 +70,11 @@ export function clearPropertyPageSlice() {
     };
 }
 
-export function roomsSelectedAmountUpdate(roomId, selectedRoomsAmount, rooms) {
+export function roomsSelectedAmountUpdate(roomId, rooms) {
     return {
         type: ROOMS_SELECTED_AMOUNT_UPDATE,
         payload: {
             roomId,
-            selectedRoomsAmount,
             rooms
         }
     };

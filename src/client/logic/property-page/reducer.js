@@ -154,7 +154,6 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                     bookingInput: {
                         ...state.bookingInput,
                         roomId: action.payload.roomId,
-                        roomsAmount: action.payload.selectedRoomsAmount
                     },
                     rooms: action.payload.rooms
                 }
@@ -167,10 +166,6 @@ function propertyPageReducer(state = defaultState.propertyPage, action) {
                         // This isn't the item we care about - keep it as-is
                         return item;
                     }
-
-                    console.log("Found room which description toggled: ");
-                    console.log(item);
-                    console.log(!item.descriptionCollapsed);
 
                     // Otherwise, this is the one we want - return an updated value
                     return {
