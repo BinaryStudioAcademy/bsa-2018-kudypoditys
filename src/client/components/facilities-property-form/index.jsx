@@ -301,8 +301,7 @@ class FacilitiesPropertyForm extends Component {
 const ReduxForm = reduxForm({
     form: 'propertyForm',
     destroyOnUnmount: false,
-    forceUnregisterOnUnmount: true,
-    enableReinitialize: true
+    forceUnregisterOnUnmount: true
 })(FacilitiesPropertyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

@@ -12,7 +12,7 @@ function* createProperty(action) {
         yield put({
             type: actionTypes.CREATE_PROPERTY_SUCCESS
         });
-        yield put(reset('propertyRegistrationForm'));
+        yield put(reset('propertyForm'));
 
         yield put(modalShow(getSuccessModalConfig(property.id)));
     }

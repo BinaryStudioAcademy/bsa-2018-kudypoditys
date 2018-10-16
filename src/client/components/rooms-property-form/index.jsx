@@ -87,7 +87,7 @@ class RoomsPropertyForm extends Component {
   }
 
   render() {
-    const { handleSubmit, pristine, submitting } = this.props;
+    const { handleSubmit, pristine, submitting, isEdit } = this.props;
 
     return (
       <Fragment>
@@ -103,7 +103,7 @@ class RoomsPropertyForm extends Component {
         <Button
           color="teal"
           fluid
-          disabled={pristine || submitting}
+          disabled={!(isEdit || !pristine) || submitting}
           type="submit"
           form="roomsPropertyRegistrationForm"
         >Continue</Button>
@@ -117,7 +117,6 @@ const ReduxForm = reduxForm({
   form: 'propertyForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  enableReinitialize: true
 })(RoomsPropertyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

@@ -22,6 +22,7 @@ const BedType = require("../models/BedType");
 const PropertyLanguage = require("../models/PropertyLanguage");
 const BasicFacility = require("../models/BasicFacility");
 const FacilityCategory = require("../models/FacilityCategory");
+const Language = require("../models/Language");
 const AvailabilityRepository = require("./availabilityRepository");
 const RoomRepository = require("./roomRepository");
 const moment = require("moment");
@@ -106,6 +107,10 @@ const includeOptions = [
     {
         model: PaymentType,
         attributes: ["name", "id"]
+    },
+    {
+        model: Language,
+        attributes: ["id", "name"]
     }
 ];
 
@@ -119,7 +124,8 @@ class PropertyRepository extends Repository {
                 "rating",
                 "description",
                 "coordinates",
-                "contactPhone"
+                "contactPhone",
+                "contactPersonName"
             ],
             include: includeOptions
         });

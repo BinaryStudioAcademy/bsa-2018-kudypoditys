@@ -129,8 +129,7 @@ class PaymentPropertyForm extends Component {
 const ReduxForm = reduxForm({
   form: 'propertyForm',
   destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true,
-  enableReinitialize: true
+  forceUnregisterOnUnmount: true
 })(PaymentPropertyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);
