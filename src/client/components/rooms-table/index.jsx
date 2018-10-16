@@ -16,9 +16,6 @@ export const getIcons = number =>
     _.times(number, index => <Icon name="user" />);
 
 export class RoomsTable extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     componentDidMount() {}
 
     componentDidUpdate() {
@@ -26,10 +23,9 @@ export class RoomsTable extends React.Component {
         // console.log(this.props);
     }
 
-    handleToggleCollapseDescription(roomId) {
-        console.log(roomId);
+    handleToggleCollapseDescription(roomId, ev) {
+        ev.preventDefault();
         this.props.toggleRoomDescriptionCollapse(roomId);
-        // TODO: Raise action to room.descriptionCollapsed = !room.descriptionCollapsed;
     };
 
     getBedsSummary = bedsInRoom => {
@@ -110,7 +106,6 @@ export class RoomsTable extends React.Component {
                 const totalCheck = (totalPrice * room.selectedAmount).toFixed(
                     1
                 );
-                // const desciptionClassName =
 
                 return (
                     <Table.Row>
@@ -136,22 +131,16 @@ export class RoomsTable extends React.Component {
                                     <strong> Beds: </strong> <br />
                                     {this.getBedsSummary(room.bedInRooms)}
                                 </div>
-                                <div className="room-description">
+                                <div>
                                     <strong> Description: </strong>
-                                    <p
-                                        className={
-                                            room.description &&
-                                            room.description.length > 50
-                                                ? "description-expandable"
-                                                : "description"
-                                        }
-                                    >
+                                    <p className='room-description' >
                                         {room.description &&
                                         room.description.length > 50 &&
                                         room.descriptionCollapsed
                                             ? room.description.slice(0, 50)
                                             : room.description}
-                                        <a onClick={this.handleToggleCollapseDescription.bind(this, room.id)}>
+                                        <a href=''
+                                           onClick={this.handleToggleCollapseDescription.bind(this, room.id)}>
                                             ...
                                         </a>
                                     </p>
@@ -208,6 +197,7 @@ export class RoomsTable extends React.Component {
                                     onClose={this.props.clearBookingForm}
                                     closeIcon
                                 >
+                                {/* todo: insert (pass) params - rooms Amount */}
                                     <BookingForm
                                         rooms={rooms}
                                         paymentTypes={property.paymentTypes}
