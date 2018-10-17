@@ -131,6 +131,104 @@ class PropertyRepository extends Repository {
         });
     }
 
+    updateById(id, data) {
+        return this.model.findOne({
+            where: {
+                id: id
+            }
+        }).then((property) => {
+            // update basic info
+            return property.update(data).then(() => {
+                // update accommodationRule
+                return  AccommodationRule.update(data.accommodationRule, {
+                    where: {
+                        id: property.dataValues.accommodationRuleId
+                    }
+                }).then(() => {
+                    // update languages
+                    return PropertyLanguage.destroy({
+                        where: {
+                            propertyId: property.id
+                        }
+                    }).then(() => {
+                        let languages = data.languages.map(language => ({
+                            propertyId: property.id,
+                            languageId: language.id
+                        }));
+
+                        return PropertyLanguage.bulkCreate(languages);
+                    }).then(() => {
+                        // update paymentTypes
+                        return PropertyPaymentType.destroy({
+                            where: {
+                                propertyId: property.id
+                            }
+                        }).then(() => {
+                            let paymentTypes = data.paymentTypes.map(paymentType => ({
+                                propertyId: property.id,
+                                paymentTypeId: paymentType.id
+                            }));
+
+                            return PropertyPaymentType.bulkCreate(paymentTypes);
+                        });
+                    }).then(() => {
+                        // return Room.destroy({
+                        //     where: {
+                        //         propertyId: property.id
+                        //     }
+                        // }).then(() => {
+                        //     let rooms = data.rooms.map(room => ({
+                        //         propertyId: property.id,
+                        //         roomTypeId: room.roomTypeId,
+                        //         description: room.description,
+                        //         area: room.area,
+                        //         amount: room.amount,
+                        //         price: room.price
+                        //     }));
+
+                        //     return Room.bulkCreate(rooms);
+                        // })
+                    }).then(() => {
+                        // update images
+                        return Image.destroy({
+                            where: {
+                                propertyId: property.id
+                            }
+                        }).then(() => {
+                            let images = data.images.map(image => ({
+                                propertyId: property.id,
+                                url: image.url
+                            }));
+
+                            return Image.bulkCreate(images);
+                        });
+                    }).then(() => {
+                        // update basicFacility
+                        return BasicFacility.update(data.basicFacility, {
+                            where: {
+                                propertyId: property.id
+                            }
+                        });
+                    }).then(() => {
+                        // update facilities
+                        return FacilityList.destroy({
+                            where: {
+                                propertyId: property.id
+                            }
+                        }).then(() => {
+                            let facilities = data.facilities.map(facility => ({
+                                propertyId: property.id,
+                                facilityId: facility.id
+                            }));
+
+                            return FacilityList.bulkCreate(facilities);
+                        })
+                    });
+                });
+            });
+        });
+    }
+
     getDetailsById(id) {
         return this.model
             .findOne({
