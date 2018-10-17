@@ -153,11 +153,13 @@ class PropertyService {
             });
     };
 
-    updateProperty(data) {
+    updateProperty = data => {
+        const body = this.normalizeProperty(data);
+
         return api
-            .sendAuthRequest(`/api/property/${data.propertyId}`, "put", data)
+            .sendAuthRequest(`/api/property/${data.id}`, "put", body)
             .then(response => {
-                // console.log(response);
+                return response.data;
             });
     }
 
