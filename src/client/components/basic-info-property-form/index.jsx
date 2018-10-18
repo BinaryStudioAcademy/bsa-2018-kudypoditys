@@ -23,6 +23,14 @@ class BasicInfoPropertyForm extends Component {
         this.props.getPropertyTypes();
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.isEdit && this.props.initialValues) {
+            if (!prevProps.initialValues || this.props.initialValues.id !== prevProps.initialValues.id) {
+                this.onCountryChange(null, this.props.initialValues.countryId);
+            }
+        }
+    }
+
     onCountryChange = (_, value) => {
         const { countries } = this.props;
         const country = countries.find(x => x.id == value);
@@ -95,7 +103,7 @@ class BasicInfoPropertyForm extends Component {
     }
 
     render() {
-        const { pristine, submitting, handleSubmit } = this.props;
+        const { pristine, submitting, handleSubmit, isEdit } = this.props;
 
         const countriesOptions = this.getCountries();
         const cityOptions = this.getCities();
@@ -227,6 +235,7 @@ class BasicInfoPropertyForm extends Component {
                                     name="address"
                                     icon="map marker"
                                     validate={[required]}
+                                    ref={(input) => { this.addressInput = input }}
                                 />
                             </div>
                             <div className="wrapper">
@@ -277,7 +286,7 @@ class BasicInfoPropertyForm extends Component {
                         <Button
                             color="teal"
                             fluid
-                            disabled={pristine || submitting}
+                            disabled={!(isEdit || !pristine) || submitting}
                             type="submit"
                         >
                             Continue

@@ -105,6 +105,10 @@ const includeOptions = [
         ]
     },
     {
+        model: BasicFacility,
+        attributes: ["hasInternet", "hasParking", "internetPrice", "isFree", "isOnTerritory", "isPrivate", "needToBook", "parkingPrice"]
+    },
+    {
         model: PaymentType,
         attributes: ["name", "id"]
     },
@@ -172,6 +176,22 @@ class PropertyRepository extends Repository {
                             return PropertyPaymentType.bulkCreate(paymentTypes);
                         });
                     }).then(() => {
+                        // Room.findAll({
+                        //     where: {
+                        //         propertyId: property.id
+                        //     },
+                        //     include: [
+                        //         BedInRoom
+                        //     ]
+                        // }).then((rooms) => {
+                        //     rooms.forEach((room) => {
+                        //         BedInRoom.destroy({
+                        //             where: {
+                        //                 roomId: room.id
+                        //             }
+                        //         })
+                        //     });
+                        // });
                         // return Room.destroy({
                         //     where: {
                         //         propertyId: property.id

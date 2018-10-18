@@ -42,14 +42,18 @@ class PropertyService {
 
         const {
             hasInternet,
+            internetPrice,
             hasParking,
+            parkingPrice,
             isPrivate,
             isOnTerritory,
             needToBook
         } = basicFacility;
         return {
             hasInternet: hasInternet !== "absent",
+            internetPrice: internetPrice,
             hasParking: hasParking !== "absent",
+            parkingPrice: parkingPrice,
             isPrivate: Boolean(isPrivate),
             isOnTerritory: Boolean(isOnTerritory),
             needToBook: Boolean(needToBook)
@@ -83,7 +87,7 @@ class PropertyService {
                     departureFrom: property.accommodationRule.departureTimeStart,
                     departureTo: property.accommodationRule.departureTimeEnd
                 },
-                cancelReservation: property.accommodationRule.cancelReservation
+                cancelReservation: String(property.accommodationRule.cancelReservation)
             };
             const facilities = property.facilityLists.map((list) => {
                 return {
@@ -109,6 +113,14 @@ class PropertyService {
                 lng: property.coordinates.lng
             }
 
+            const basicFacilities = {
+                hasInternet: property.basicFacility.hasInternet ? property.basicFacility.internetPrice ? "paid" : "free" : "absent",
+                hasParking: property.basicFacility.hasParking ? property.basicFacility.parkingPrice ? "paid" : "free" : "absent",
+                isPrivate: Boolean(property.basicFacility.isPrivate),
+                isOnTerritory: Boolean(property.basicFacility.isOnTerritory),
+                needToBook: Boolean(property.basicFacility.needToBook)
+            }
+
             return {
                 id: property.id,
                 name: property.name,
@@ -126,14 +138,9 @@ class PropertyService {
                 accommodationRule: accomodiationRule,
                 paymentTypes: paymentTypes,
                 languages: languages,
-                facilities: facilities
-                // basicFacility.hasInternet
-                // basicFacility.internetPrice
-                // basicFacility.hasParking
-                // basicFacility.isPrivate
-                // basicFacility.isOnTerritory
-                // basicFacility.needToBook
-                // basicFacility.parkingPrice
+                facilities: facilities,
+                basicFacility: basicFacilities,
+                vatIncluded: 'null'
             };
         }
         return {};
