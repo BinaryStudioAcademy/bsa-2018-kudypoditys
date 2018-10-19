@@ -46,7 +46,7 @@ export class PropertyForm extends React.Component {
 
         for (let i = 0; i < submitedFacilities.length; ++i) {
             if (submitedFacilities[i]) {
-                res.push(facilities.find(x => x.id === submitedFacilities[i].id));
+                res[i] = facilities.find(x => x.id === i);
             }
         }
 
@@ -58,12 +58,13 @@ export class PropertyForm extends React.Component {
     }
 
     onFormSubmit = data => {
-        data.facilities = this.normalizeFacilities(data.facilities);
+        let newProperty = Object.assign({}, data);
+        newProperty.facilities = this.normalizeFacilities(data.facilities);
 
         if (this.props.isEdit) {
-            this.props.updateProperty(data);
+            this.props.updateProperty(newProperty);
         } else {
-            this.props.createProperty(data);
+            this.props.createProperty(newProperty);
         }
     };
 

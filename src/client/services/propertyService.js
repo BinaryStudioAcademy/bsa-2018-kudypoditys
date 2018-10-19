@@ -89,12 +89,20 @@ class PropertyService {
                 },
                 cancelReservation: String(property.accommodationRule.cancelReservation)
             };
-            const facilities = property.facilityLists.map((list) => {
-                return {
+
+            let facilities = [];
+            property.facilityLists.forEach(list => {
+                facilities[list.facility.id] = {
                     id: list.facility.id,
                     name: list.facility.name
                 };
             });
+            // property.facilityLists.map((list) => {
+            //     facilities[list.facility.id] = {
+            //         id: list.facility.id,
+            //         name: list.facility.name
+            //     };
+            // });
             const paymentTypes = property.paymentTypes.map((paymentType) => {
                 return {
                     id: paymentType.id,

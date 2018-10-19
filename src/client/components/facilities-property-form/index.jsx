@@ -251,7 +251,7 @@ class FacilitiesPropertyForm extends Component {
 
                 <Grid padded columns={3} style={{ marginTop: "20px", marginBottom: "20px" }}>
                     {facilities.map((facility, i) => (
-                        <Grid.Column key={i} style={{ padding: "10px" }}>
+                        <Grid.Column key={facility.id} style={{ padding: "10px" }}>
                             <Field
                                 component={renderCheckbox}
                                 name={`facilities.${facility.id}`}
