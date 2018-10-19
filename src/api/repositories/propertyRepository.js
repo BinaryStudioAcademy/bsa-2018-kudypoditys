@@ -176,38 +176,44 @@ class PropertyRepository extends Repository {
                             return PropertyPaymentType.bulkCreate(paymentTypes);
                         });
                     }).then(() => {
-                        // Room.findAll({
-                        //     where: {
-                        //         propertyId: property.id
-                        //     },
-                        //     include: [
-                        //         BedInRoom
-                        //     ]
-                        // }).then((rooms) => {
-                        //     rooms.forEach((room) => {
-                        //         BedInRoom.destroy({
-                        //             where: {
-                        //                 roomId: room.id
-                        //             }
-                        //         })
-                        //     });
-                        // });
-                        // return Room.destroy({
-                        //     where: {
-                        //         propertyId: property.id
-                        //     }
-                        // }).then(() => {
-                        //     let rooms = data.rooms.map(room => ({
-                        //         propertyId: property.id,
-                        //         roomTypeId: room.roomTypeId,
-                        //         description: room.description,
-                        //         area: room.area,
-                        //         amount: room.amount,
-                        //         price: room.price
-                        //     }));
-
-                        //     return Room.bulkCreate(rooms);
-                        // })
+                        // update rooms
+                        // TODO delete rooms
+                        data.rooms.forEach(roomData => {
+                            if (roomData.id) {
+                                Room.update(roomData, {
+                                    where: {
+                                        id: roomData.id
+                                    }
+                                }).then(() => {
+                                    BedInRoom.destroy({
+                                        where: {
+                                            roomId: roomData.id
+                                        }
+                                    }).then(() => {
+                                        return BedInRoom.bulkCreate(roomData.bedInRooms.map(bed => {
+                                            return {
+                                                bedTypeId: bed.bedTypeId,
+                                                count: bed.count,
+                                                roomId: roomData.id
+                                            }
+                                        }));
+                                    });
+                                });
+                            } else {
+                                Room.create({
+                                    ...roomData,
+                                    propertyId: property.id
+                                }).then(room => {
+                                    return BedInRoom.bulkCreate(roomData.bedInRooms.map(bed => {
+                                        return {
+                                            bedTypeId: bed.bedTypeId,
+                                            count: bed.count,
+                                            roomId: room.id
+                                        }
+                                    }));
+                                });
+                            }
+                        });
                     }).then(() => {
                         // update images
                         return Image.destroy({
