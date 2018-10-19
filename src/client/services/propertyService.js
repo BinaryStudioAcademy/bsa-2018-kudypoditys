@@ -1,5 +1,6 @@
 import api from "../helpers/api";
 import history from "client/history";
+import moment from "moment";
 
 class PropertyService {
     normalizeProperty = data => {
@@ -82,14 +83,13 @@ class PropertyService {
             });
             const accomodiationRule = {
                 CheckInCheckOut: {
-                    arrivalFrom: property.accommodationRule.arrivalTimeStart,
-                    arrivalTo: property.accommodationRule.arrivalTimeEnd,
-                    departureFrom: property.accommodationRule.departureTimeStart,
-                    departureTo: property.accommodationRule.departureTimeEnd
+                    arrivalFrom: moment(property.accommodationRule.arrivalTimeStart, "HH:mm:ss").format("HH:mm"),
+                    arrivalTo: moment(property.accommodationRule.arrivalTimeEnd, "HH:mm:ss").format("HH:mm"),
+                    departureFrom: moment(property.accommodationRule.departureTimeStart, "HH:mm:ss").format("HH:mm"),
+                    departureTo: moment(property.accommodationRule.departureTimeEnd, "HH:mm:ss").format("HH:mm")
                 },
                 cancelReservation: String(property.accommodationRule.cancelReservation)
             };
-
             let facilities = [];
             property.facilityLists.forEach(list => {
                 facilities[list.facility.id] = {
@@ -97,12 +97,6 @@ class PropertyService {
                     name: list.facility.name
                 };
             });
-            // property.facilityLists.map((list) => {
-            //     facilities[list.facility.id] = {
-            //         id: list.facility.id,
-            //         name: list.facility.name
-            //     };
-            // });
             const paymentTypes = property.paymentTypes.map((paymentType) => {
                 return {
                     id: paymentType.id,

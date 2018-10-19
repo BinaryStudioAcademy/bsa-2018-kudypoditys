@@ -270,7 +270,7 @@ class FacilitiesPropertyForm extends Component {
 
     render() {
         const {
-            handleSubmit, submitting, pristine
+            handleSubmit, submitting, pristine, isEdit
         } = this.props;
         return (
             <Form onSubmit={handleSubmit} id="facilitiesPropertyRegistartionForm">
@@ -290,7 +290,7 @@ class FacilitiesPropertyForm extends Component {
                 <Button
                     color="teal"
                     fluid
-                    disabled={pristine || submitting}
+                    disabled={!(isEdit || !pristine) || submitting}
                     type="submit"
                 >Continue</Button>
             </Form>

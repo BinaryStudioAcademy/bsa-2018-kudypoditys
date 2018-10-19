@@ -8,11 +8,16 @@ import { mapStateToProps, mapDispatchToProps } from './container';
 
 export class CheckInCheckOut extends Component {
     handleClick = (e, value) => {
+        console.log('TCL: CheckInCheckOut -> handleClick -> value', value);
         e.preventDefault();
 
         const {
-            arrivalFrom, arrivalTo, departureFrom, departureTo, input
+            arrivalFrom, arrivalTo, departureFrom, departureTo, input, isEdit, checkInCheckOut
         } = this.props;
+
+        if (isEdit) {
+            checkInCheckOut[value.type] = value.value
+        }
 
         input.onChange({
             arrivalFrom,
@@ -29,8 +34,9 @@ export class CheckInCheckOut extends Component {
 
     render() {
         const {
-            arrivalFrom, arrivalTo, departureFrom, departureTo
+            arrivalFrom, arrivalTo, departureFrom, departureTo, isEdit, checkInCheckOut
         } = this.props;
+
         return (
             <Fragment>
                 <Grid>
@@ -44,7 +50,7 @@ export class CheckInCheckOut extends Component {
 
                             <Form.Group widths='equal'>
                                 <DrawInputs
-                                    active={arrivalFrom}
+                                    active={isEdit ? checkInCheckOut.arrivalFrom : arrivalFrom}
                                     type={'arrivalFrom'}
                                     handleClick={this.handleClick}
                                 />
@@ -59,7 +65,7 @@ export class CheckInCheckOut extends Component {
 
                             <Form.Group widths="equal">
                                 <DrawInputs
-                                    active={departureFrom}
+                                    active={isEdit ? checkInCheckOut.departureFrom : departureFrom}
                                     handleClick={this.handleClick}
                                     type={'departureFrom'}
                                 />
@@ -78,7 +84,7 @@ export class CheckInCheckOut extends Component {
                             <Form.Group widths='equal'>
 
                                 <DrawInputs
-                                    active={arrivalTo}
+                                    active={isEdit ? checkInCheckOut.arrivalTo : arrivalTo}
                                     handleClick={this.handleClick}
                                     type={'arrivalTo'}
                                 />
@@ -95,7 +101,7 @@ export class CheckInCheckOut extends Component {
                             <Form.Group widths='equal'>
 
                                 <DrawInputs
-                                    active={departureTo}
+                                    active={isEdit ? checkInCheckOut.departureTo : departureTo}
                                     handleClick={this.handleClick}
                                     type={'departureTo'}
                                 />

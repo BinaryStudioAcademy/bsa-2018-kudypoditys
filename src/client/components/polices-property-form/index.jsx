@@ -42,9 +42,12 @@ class PolicesPropertyForm extends Component {
   }
 
   renderCheckInCheckOutCard() {
+    const { initialValues, isEdit } = this.props;
     return (
       <Field
         name="accommodationRule.checkInCheckOut"
+        checkInCheckOut={initialValues.accommodationRule.CheckInCheckOut}
+        isEdit={isEdit}
         component={CheckInCheckOut}
       />
     );
@@ -52,7 +55,7 @@ class PolicesPropertyForm extends Component {
 
   render() {
     const {
-      pristine, submitting, handleSubmit
+      pristine, submitting, handleSubmit, isEdit
     } = this.props;
 
     return (
@@ -66,7 +69,7 @@ class PolicesPropertyForm extends Component {
         <Button
           color="teal"
           fluid
-          disabled={pristine || submitting}
+          disabled={!(isEdit || !pristine) || submitting}
           type="submit"
         >Continue</Button>
       </Form>

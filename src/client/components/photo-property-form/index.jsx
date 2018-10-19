@@ -8,7 +8,7 @@ import './index.scss'
 class PhotoPropertyForm extends Component {
   render() {
     const {
-      handleSubmit, pristine, submitting
+      handleSubmit, pristine, submitting, isEdit
     } = this.props;
 
     return (
@@ -23,7 +23,7 @@ class PhotoPropertyForm extends Component {
         <Button
           color="teal"
           fluid
-          disabled={pristine || submitting}
+          disabled={!(isEdit || !pristine) || submitting}
           type="submit"
         >Continue</Button>
       </Form>
