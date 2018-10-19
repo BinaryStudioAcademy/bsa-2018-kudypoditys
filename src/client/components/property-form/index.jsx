@@ -46,7 +46,7 @@ export class PropertyForm extends React.Component {
 
         for (let i = 0; i < submitedFacilities.length; ++i) {
             if (submitedFacilities[i]) {
-                res.push(facilities.find(x => x.id === i));
+                res.push(facilities.find(x => x.id === submitedFacilities[i].id));
             }
         }
 
