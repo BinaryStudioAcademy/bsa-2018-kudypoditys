@@ -51,12 +51,12 @@ class PropertyService {
         } = basicFacility;
         return {
             hasInternet: hasInternet !== "absent",
-            internetPrice: internetPrice,
+            internetPrice: hasInternet === "paid" ? internetPrice : 0,
             hasParking: hasParking !== "absent",
-            parkingPrice: parkingPrice,
-            isPrivate: Boolean(isPrivate),
-            isOnTerritory: Boolean(isOnTerritory),
-            needToBook: Boolean(needToBook)
+            parkingPrice: hasParking === "paid" ? parkingPrice : 0,
+            isPrivate: isPrivate === "true",
+            isOnTerritory: isOnTerritory === "true",
+            needToBook: needToBook === "true"
         };
     };
 
@@ -115,10 +115,12 @@ class PropertyService {
 
             const basicFacilities = {
                 hasInternet: property.basicFacility.hasInternet ? property.basicFacility.internetPrice ? "paid" : "free" : "absent",
+                internetPrice: property.basicFacility.internetPrice || 0,
                 hasParking: property.basicFacility.hasParking ? property.basicFacility.parkingPrice ? "paid" : "free" : "absent",
-                isPrivate: Boolean(property.basicFacility.isPrivate),
-                isOnTerritory: Boolean(property.basicFacility.isOnTerritory),
-                needToBook: Boolean(property.basicFacility.needToBook)
+                parkingPrice: property.basicFacility.parkingPrice || 0,
+                isPrivate: String(property.basicFacility.isPrivate),
+                isOnTerritory: String(property.basicFacility.isOnTerritory),
+                needToBook: String(property.basicFacility.needToBook)
             }
 
             return {
