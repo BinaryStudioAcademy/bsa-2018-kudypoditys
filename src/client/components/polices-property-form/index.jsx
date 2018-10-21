@@ -46,7 +46,7 @@ class PolicesPropertyForm extends Component {
     return (
       <Field
         name="accommodationRule.checkInCheckOut"
-        checkInCheckOut={initialValues.accommodationRule.CheckInCheckOut}
+        checkInCheckOut={isEdit ? initialValues.accommodationRule.CheckInCheckOut : null}
         isEdit={isEdit}
         component={CheckInCheckOut}
       />

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Segment, Grid, Button, Container, Divider, Popup } from 'semantic-ui-react';
+import { Segment, Grid, Button, Container, Divider, Popup, Message } from 'semantic-ui-react';
 
 class RoomItems extends Component {
 
@@ -21,6 +21,7 @@ class RoomItems extends Component {
 
   renderItem(room, index) {
     const { handleDelete, handleEdit } = this.props;
+    const canDelete = !(room.reservations && room.reservations.length > 0)
 
     return (
       <Segment>
@@ -72,6 +73,14 @@ class RoomItems extends Component {
           </Grid.Row>
           {room.bedInRooms && room.bedInRooms.map(x => this.renderBed(x))}
 
+          { !canDelete &&
+            <Grid.Row>
+              <Message warning>
+                This room has bookings, you cannot delete it!
+              </Message>
+            </Grid.Row>
+          }
+
           <Grid.Row>
             <Button floated='right' type="button"
               basic color="teal"
@@ -80,6 +89,7 @@ class RoomItems extends Component {
             <Button floated='right' type="button"
               basic color="teal"
               icon={'trash'}
+              disabled={!canDelete}
               onClick={() => handleDelete(index)} />
           </Grid.Row>
         </Grid>

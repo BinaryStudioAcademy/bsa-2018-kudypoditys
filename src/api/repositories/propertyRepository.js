@@ -90,6 +90,10 @@ const includeOptions = [
                 model: BedInRoom,
                 attributes: ["count"],
                 include: [{ model: BedType, attributes: ["id", "name"] }]
+            },
+            {
+                model: Reservation,
+                attributes: ["id"]
             }
         ]
     },
@@ -176,8 +180,20 @@ class PropertyRepository extends Repository {
                             return PropertyPaymentType.bulkCreate(paymentTypes);
                         });
                     }).then(() => {
-                        // update rooms
-                        // TODO delete rooms
+                        // delete rooms
+                        let roomIds = [];
+                        data.rooms.forEach(room => {
+                            if (room.id) {
+                                roomIds.push(room.id);
+                            }
+                        });
+                        Room.destroy({
+                            where: {
+                                id: {[Sequelize.Op.notIn]: roomIds},
+                                propertyId: id
+                            }
+                        });
+                        // update/create rooms
                         data.rooms.forEach(roomData => {
                             if (roomData.id) {
                                 Room.update(roomData, {
