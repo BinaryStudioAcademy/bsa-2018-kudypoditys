@@ -145,130 +145,118 @@ class PropertyRepository extends Repository {
                 id: id,
                 userId: data.userId
             }
-        }).then((property) => {
+        }).then(async (property) => {
             // update basic info
-            return property.update(data).then(() => {
-                // update accommodationRule
-                return  AccommodationRule.update(data.accommodationRule, {
-                    where: {
-                        id: property.dataValues.accommodationRuleId
-                    }
-                }).then(() => {
-                    // update languages
-                    return PropertyLanguage.destroy({
-                        where: {
-                            propertyId: property.id
-                        }
-                    }).then(() => {
-                        let languages = data.languages.map(language => ({
-                            propertyId: property.id,
-                            languageId: language.id
-                        }));
+            await property.update(data);
 
-                        return PropertyLanguage.bulkCreate(languages);
-                    }).then(() => {
-                        // update paymentTypes
-                        return PropertyPaymentType.destroy({
-                            where: {
-                                propertyId: property.id
-                            }
-                        }).then(() => {
-                            let paymentTypes = data.paymentTypes.map(paymentType => ({
-                                propertyId: property.id,
-                                paymentTypeId: paymentType.id
-                            }));
-
-                            return PropertyPaymentType.bulkCreate(paymentTypes);
-                        });
-                    }).then(() => {
-                        // delete rooms
-                        let roomIds = [];
-                        data.rooms.forEach(room => {
-                            if (room.id) {
-                                roomIds.push(room.id);
-                            }
-                        });
-                        Room.destroy({
-                            where: {
-                                id: {[Sequelize.Op.notIn]: roomIds},
-                                propertyId: id
-                            }
-                        });
-                        // update/create rooms
-                        data.rooms.forEach(roomData => {
-                            if (roomData.id) {
-                                Room.update(roomData, {
-                                    where: {
-                                        id: roomData.id
-                                    }
-                                }).then(() => {
-                                    BedInRoom.destroy({
-                                        where: {
-                                            roomId: roomData.id
-                                        }
-                                    }).then(() => {
-                                        return BedInRoom.bulkCreate(roomData.bedInRooms.map(bed => {
-                                            return {
-                                                bedTypeId: bed.bedTypeId,
-                                                count: bed.count,
-                                                roomId: roomData.id
-                                            }
-                                        }));
-                                    });
-                                });
-                            } else {
-                                Room.create({
-                                    ...roomData,
-                                    propertyId: property.id
-                                }).then(room => {
-                                    return BedInRoom.bulkCreate(roomData.bedInRooms.map(bed => {
-                                        return {
-                                            bedTypeId: bed.bedTypeId,
-                                            count: bed.count,
-                                            roomId: room.id
-                                        }
-                                    }));
-                                });
-                            }
-                        });
-                    }).then(() => {
-                        // update images
-                        return Image.destroy({
-                            where: {
-                                propertyId: property.id
-                            }
-                        }).then(() => {
-                            let images = data.images.map(image => ({
-                                propertyId: property.id,
-                                url: image.url
-                            }));
-
-                            return Image.bulkCreate(images);
-                        });
-                    }).then(() => {
-                        // update basicFacility
-                        return BasicFacility.update(data.basicFacility, {
-                            where: {
-                                propertyId: property.id
-                            }
-                        });
-                    }).then(() => {
-                        // update facilities
-                        return FacilityList.destroy({
-                            where: {
-                                propertyId: property.id
-                            }
-                        }).then(() => {
-                            let facilities = data.facilities.map(facility => ({
-                                propertyId: property.id,
-                                facilityId: facility.id
-                            }));
-
-                            return FacilityList.bulkCreate(facilities);
-                        })
-                    });
-                });
+            // update accommodationRule
+            await AccommodationRule.update(data.accommodationRule, {
+                where: {
+                    id: property.dataValues.accommodationRuleId
+                }
             });
+            // update languages
+            await PropertyLanguage.destroy({
+                    where: {
+                        propertyId: property.id
+                    }
+            });
+            let languages = data.languages.map(language => ({
+                propertyId: property.id,
+                languageId: language.id
+            }));
+            await PropertyLanguage.bulkCreate(languages);
+
+            // update paymentTypes
+            await PropertyPaymentType.destroy({
+                where: {
+                    propertyId: property.id
+                }
+            });
+            let paymentTypes = data.paymentTypes.map(paymentType => ({
+                propertyId: property.id,
+                paymentTypeId: paymentType.id
+            }));
+            await PropertyPaymentType.bulkCreate(paymentTypes);
+
+            // delete rooms
+            let roomIds = [];
+            data.rooms.forEach(room => {
+                if (room.id) {
+                    roomIds.push(room.id);
+                }
+            });
+            await Room.destroy({
+                where: {
+                    id: {[Sequelize.Op.notIn]: roomIds},
+                    propertyId: id
+                }
+            });
+            // update/create rooms
+            data.rooms.forEach(async (roomData) => {
+                if (roomData.id) {
+                    await Room.update(roomData, {
+                        where: {
+                            id: roomData.id
+                        }
+                    });
+                    await BedInRoom.destroy({
+                        where: {
+                            roomId: roomData.id
+                        }
+                    });
+                    await BedInRoom.bulkCreate(roomData.bedInRooms.map(bed => {
+                        return {
+                            bedTypeId: bed.bedTypeId,
+                            count: bed.count,
+                            roomId: roomData.id
+                        }
+                    }));
+                } else {
+                    let room = await Room.create({
+                        ...roomData,
+                        propertyId: property.id
+                    });
+                    await BedInRoom.bulkCreate(roomData.bedInRooms.map(bed => {
+                        return {
+                            bedTypeId: bed.bedTypeId,
+                            count: bed.count,
+                            roomId: room.id
+                        }
+                    }));
+                }
+            });
+
+            // update images
+            await Image.destroy({
+                where: {
+                    propertyId: property.id
+                }
+            });
+            let images = data.images.map(image => ({
+                propertyId: property.id,
+                url: image.url
+            }));
+            await Image.bulkCreate(images);
+
+            // update basicFacility
+            await BasicFacility.update(data.basicFacility, {
+                where: {
+                    propertyId: property.id
+                }
+            });
+
+            // update facilities
+            await FacilityList.destroy({
+                where: {
+                    propertyId: property.id
+                }
+            });
+            let facilities = data.facilities.map(facility => ({
+                propertyId: property.id,
+                facilityId: facility.id
+            }));
+            await FacilityList.bulkCreate(facilities);
         });
     }
 

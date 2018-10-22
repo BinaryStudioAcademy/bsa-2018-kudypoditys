@@ -8,7 +8,6 @@ import { mapStateToProps, mapDispatchToProps } from './container';
 
 export class CheckInCheckOut extends Component {
     handleClick = (e, value) => {
-        console.log('TCL: CheckInCheckOut -> handleClick -> value', value);
         e.preventDefault();
 
         const {
