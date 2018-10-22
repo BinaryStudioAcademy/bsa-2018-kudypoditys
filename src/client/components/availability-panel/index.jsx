@@ -6,8 +6,7 @@ import {
     Button,
     Form,
     Dropdown,
-    Message,
-    Label
+    Message
 } from "semantic-ui-react";
 import moment from "moment";
 import { DateRangePicker } from "react-dates";

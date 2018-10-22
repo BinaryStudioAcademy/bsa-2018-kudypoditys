@@ -70,7 +70,7 @@ class PropertyService extends Service {
         }
     }
 
-    async available(room, checkIn, checkOut) {
+    async available(room, checkIn, checkOut) { // TODO: Rostik avalibility rooms logic
         try {
             const bookings = await reservationService.findByOptions({
                 roomId: room.id
@@ -147,11 +147,11 @@ class PropertyService extends Service {
         return propertyRepository
             .getDetailsById(id)
             .then(_ => {
-                console.log("service then ", _);
+                // console.log("service then ", _);
                 return _;
             })
             .catch(_ => {
-                console.log("service catch ", _);
+                // console.log("service catch ", _);
             });
     }
     getFilteredProperties(filter) {

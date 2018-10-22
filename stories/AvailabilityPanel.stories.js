@@ -13,12 +13,12 @@ storiesOf("AvailabilityPanel", module)
             adults={1}
             rooms={2}
             children={4}
-            onDatesChange={value =>
-                console.log(
-                    `check-in: ${new Date(
-                        value.startDate
-                    )}, check-out: ${new Date(value.endDate)}`
-                )
+            onDatesChange={value => value
+                // console.log(
+                //     `check-in: ${new Date(
+                //         value.startDate
+                //     )}, check-out: ${new Date(value.endDate)}`
+                // )
             }
             onAdultsChange={value => console.log(`adults: ${value}`)}
             onChildrenChange={value => console.log(`children: ${value}`)}
@@ -30,12 +30,12 @@ storiesOf("AvailabilityPanel", module)
     .add("availability panel with empty props", () => (
         <AvailabilityPanel
             propertyName="Hotel Dolynskiy"
-            onDatesChange={value =>
-                console.log(
-                    `check-in: ${new Date(
-                        value.startDate
-                    )}, check-out: ${new Date(value.endDate)}`
-                )
+            onDatesChange={value => value
+                // console.log(
+                //     `check-in: ${new Date(
+                //         value.startDate
+                //     )}, check-out: ${new Date(value.endDate)}`
+                // )
             }
             onAdultsChange={value => console.log(`adults: ${value}`)}
             onChildrenChange={value => console.log(`children: ${value}`)}

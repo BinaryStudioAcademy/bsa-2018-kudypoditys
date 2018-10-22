@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 import { Form, Header, Dropdown, Message } from "semantic-ui-react";
 import { DateRangePicker } from "react-dates";
 import moment from "moment";
@@ -6,6 +7,13 @@ import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 import history from "client/history";
+import QuantityPicker from "../quantity-picker";
+import { roomQuantityChanged } from "../../helpers/roomQuantityChanged";
+import {
+    convertCurrencyByName,
+    titleToCode
+} from "../../helpers/convertCurrency";
+import { getDaysDifference } from "../../helpers/date-helpers";
 
 export class BookingForm extends React.Component {
     generateOptions = (from, to) => {
@@ -38,6 +46,11 @@ export class BookingForm extends React.Component {
     datesChanged = selectedDates => {
         this.props.onDatesChange(this.props.propertyId, selectedDates);
     };
+    handleQuantitySelectionChanged = (e, value, roomId) => {
+        const { rooms, selectRoomsAmount } = this.props;
+        // this.props.selectRoomsAmount(roomId, roomsAmount, sortedRooms);
+        roomQuantityChanged(rooms, value, roomId, selectRoomsAmount);
+    };
 
     constructor(props) {
         super(props);
@@ -47,6 +60,7 @@ export class BookingForm extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         const {
             checkIn,
             checkOut,
@@ -57,16 +71,37 @@ export class BookingForm extends React.Component {
             paymentTypes,
             rooms,
             propertyName,
+            propertyCurrency,
+            currency,
             error,
             message,
-            cancelForFree
+            cancelForFree,
+            selectedRoomsAmount,
+            roomsAmount,
+            roomPrice
         } = this.props;
+        const priceFunc = price =>
+            convertCurrencyByName(propertyCurrency.code, price, currency.code);
+        const daysStaying = getDaysDifference(checkIn, checkOut);
+        const currencySymbol = titleToCode.get(currency.code);
+        let priceForOneDay = priceFunc(roomPrice);
+        let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
+        const totalCheck = (totalPrice * selectedRoomsAmount).toFixed(1);
+        // TODO: Code duplication
+
         const startDate = checkIn === null ? null : moment(checkIn);
         const endDate = checkOut === null ? null : moment(checkOut);
         const childrenOptions = this.generateOptions(0, 10);
         const adultsOptions = this.generateOptions(1, 10);
         const paymentOptions = this.generatePaymentOptions(paymentTypes);
         const roomOptions = this.generateRoomOptions(rooms);
+        const disableBookButton = totalCheck < 1.0;
+        const buttonClasses = classNames({
+            "book-btn": true,
+            "book-btn-enabled": !disableBookButton
+        });
+        // const buttonClass = 'book-btn ' + disableBookButton ? 'book-btn-disabled' : 'book-btn-enabled';
+        // totalCheck < 1;
 
         if (message === "Your booking was a success!") {
             this.props.clearBookingForm();
@@ -177,10 +212,28 @@ export class BookingForm extends React.Component {
                                 options={roomOptions}
                                 value={roomId ? roomId : roomOptions[0].value}
                                 onChange={(event, input) =>
-                                    this.props.onRoomChange(input.value)
+                                    this.props.onRoomChange(input.value, roomId)
                                 }
                             />
                         </Form.Field>
+                        <Form.Field>
+                            <label style={{ color: "#274560" }}>
+                                Rooms Amount
+                            </label>
+                            <QuantityPicker
+                                fluid
+                                selection
+                                icon="dropdown"
+                                name="room"
+                                roomId={roomId}
+                                roomsSelectedAmount={selectedRoomsAmount}
+                                roomsAvailable={roomsAmount + 1}
+                                onSelectionChanged={
+                                    this.handleQuantitySelectionChanged
+                                }
+                            />
+                        </Form.Field>
+
                         <Form.Field style={{ width: "170px" }}>
                             <label style={{ color: "#274560" }}>
                                 Payment type
@@ -189,7 +242,7 @@ export class BookingForm extends React.Component {
                                 fluid
                                 selection
                                 icon="dropdown"
-                                name="room"
+                                name="paymentType"
                                 options={paymentOptions}
                                 value={
                                     paymentTypeId
@@ -204,7 +257,14 @@ export class BookingForm extends React.Component {
                     </Form.Group>
                     {error ? <Message negative>{error}</Message> : null}
                     {message ? <Message positive>{message}</Message> : null}
-                    <button className="book-btn" type="submit">
+                    <p>
+                        Total price: {totalCheck} {currencySymbol}
+                    </p>
+                    <button
+                        className={buttonClasses}
+                        type="submit"
+                        disabled={disableBookButton}
+                    >
                         Book now
                     </button>
                 </Form>

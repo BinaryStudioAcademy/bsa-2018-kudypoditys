@@ -13,7 +13,7 @@ function simpleModalReducer(state = defaultState.simpleModal, action) {
       };
 
     case CLOSE_MODAL:
-      console.log('modal close!!! reducer')
+      // console.log('modal close!!! reducer')
       return {
         open: false
       };

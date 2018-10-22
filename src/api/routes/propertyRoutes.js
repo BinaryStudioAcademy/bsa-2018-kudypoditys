@@ -22,7 +22,7 @@ property
             .addProperty(req.body)
             .then(property => {
                 elasticService.indexNewAddedProperty(property);
-                console.log(property.name, property.id);
+                // console.log(property.name, property.id);
                 res.send(property);
             })
             .catch(err => {
@@ -101,7 +101,6 @@ property.route("/:id/details").get((req, res) => {
 });
 
 property.route("/city/:id").get((req, res) => {
-    console.log(req.params.id);
     propertyService
         .getPropertiesByCity(req.params.id)
         .then(properties => {
@@ -111,10 +110,9 @@ property.route("/city/:id").get((req, res) => {
             let avgPrice = 0,
                 name = '',
                 imageUrl= '',
-                id
+                id;
             for (const property of properties) {
-
-                console.log(property.city.dataValues)
+                // console.log(property.city.dataValues)
                 for (const room of property.rooms) {
                     totalPrice += Number(room.price);
                 }
@@ -123,7 +121,7 @@ property.route("/city/:id").get((req, res) => {
                 imageUrl = property.city.dataValues.imageUrl
                 id = property.city.dataValues.id
             }
-            console.log(roomAmount, totalPrice);
+            // console.log(roomAmount, totalPrice);
             avgPrice = (totalPrice / roomAmount).toFixed(0);
             const data = {
                 properties: roomAmount,

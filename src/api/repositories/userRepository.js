@@ -9,7 +9,11 @@ class UserRepository extends Repository {
             }
         });
     }
-
+    getUsersByEmail(email) {
+        return this.findByOptions({
+            email: email
+        });
+    }
 }
 
 module.exports = new UserRepository(userModel);

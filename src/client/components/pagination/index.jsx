@@ -13,13 +13,18 @@ class Pagination extends React.Component {
             this.props.paginationChanged(searchRequest);
         }
     };
+
+    componentDidUpdate() {
+        window.scrollTo(0, 0)
+    };
+
     render() {
 
         let searchRequest = {};
         if (history.location.search !== "") {
             searchRequest = queryString.parse(history.location.search);
         }
-        console.log('serachpage' + this.props.pagesCount)
+        // console.log('serachpage' + this.props.pagesCount)
         let currentPage=Number(searchRequest.page)
         return (
 

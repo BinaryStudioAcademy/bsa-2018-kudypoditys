@@ -48,6 +48,10 @@ class SearchPage extends React.Component {
             <PropertyListItem
                 key={property.id}
                 propertyItemData={property}
+                searchData={{
+                    startDate: searchData.searchRequest.startDate,
+                    endDate: searchData.searchRequest.endDate
+                }}
                 itemIndex={properties.indexOf(property)}
             />
         ));
@@ -106,7 +110,7 @@ class SearchPage extends React.Component {
             latitude: JSON.parse(localStorage.getItem("lastPositionLat")),
             longitude: JSON.parse(localStorage.getItem("lastPositionLng"))
         };
-        console.log("this.state.showLoading = " + this.state.showLoading);
+        // console.log("this.state.showLoading = " + this.state.showLoading);
         return (
             <div className="mock">
                 <Header

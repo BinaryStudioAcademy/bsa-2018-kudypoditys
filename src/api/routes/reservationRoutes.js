@@ -15,7 +15,6 @@ reservation
             });
     })
     .post((req, res) => {
-        console.log("body", req.body);
         const newReservation = {
             dateIn: new Date(Number(req.body.dateIn)),
             dateOut: new Date(Number(req.body.dateOut)),

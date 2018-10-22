@@ -18,7 +18,7 @@ export class VerifyEmail extends Component {
                 history.push("/?verified");
             }, 1000);
         } else {
-            console.log("not redirecting");
+            // console.log("not redirecting");
         }
     }
 

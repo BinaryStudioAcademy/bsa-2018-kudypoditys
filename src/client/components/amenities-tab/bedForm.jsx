@@ -13,13 +13,13 @@ const numbers = [{key: '0', text: '1', value: '1'},
 
 const ages = [{key: '0', text: 'Up to 12 years old', value: 'Up to 12 years old'},
     {key: '1', text: 'Up to 16 years old', value: 'Up to 16 years old'},
-    {key: '2', text: 'Up to 6 years old', value: 'Up to 6 years old'}]
+    {key: '2', text: 'Up to 6 years old', value: 'Up to 6 years old'}];
 
 let CheckboxBedForm = (props) => {
     const {
         hasExtraBedValue, hasChildrenUpToTwoValue,
         hasChildrenValue, hasAdultsValue
-    } = props
+    } = props;
     return (
         <Fragment>
             <Card style={{width: '1000px'}}>
@@ -120,15 +120,15 @@ let CheckboxBedForm = (props) => {
         </Fragment>
 
     )
-}
+};
 
-const selector = formValueSelector('AmenitiesTabRegistrationForm')
+const selector = formValueSelector('AmenitiesTabRegistrationForm');
 CheckboxBedForm = connect(
     state => {
         const hasExtraBedValue = selector(state, 'hasExtraBads');
         const hasChildrenUpToTwoValue = selector(state, 'ChildrenUpTwo');
         const hasChildrenValue = selector(state, 'Children');
-        const hasAdultsValue = selector(state, 'Adults')
+        const hasAdultsValue = selector(state, 'Adults');
         return {
             hasExtraBedValue,
             hasChildrenUpToTwoValue,
@@ -136,6 +136,6 @@ CheckboxBedForm = connect(
             hasAdultsValue
         }
     }
-)(CheckboxBedForm)
+)(CheckboxBedForm);
 
 export default CheckboxBedForm

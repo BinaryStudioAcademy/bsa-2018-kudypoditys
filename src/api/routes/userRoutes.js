@@ -14,7 +14,7 @@ user.route("/getemailverified").get((req, res) => {
 });
 
 user.route("/verifyemail").get((req, res) => {
-    console.log(req.query.email, req.query.token);
+    // console.log(req.query.email, req.query.token);
     userService
         .verifyEmail(req.query.email, req.query.token)
         .then(data => {
@@ -57,7 +57,6 @@ user.route("/current").get((req, res) => {
         .findById(user.id)
         .then(user => {
             delete user.password;
-
             res.status(200).send(user);
         })
         .catch(err => {

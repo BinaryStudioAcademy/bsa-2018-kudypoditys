@@ -16,9 +16,15 @@ button.book-btn {
     width: 100px;
 }
 
-button.book-btn:hover {
-    background-color: #5e749b;
+.book-btn-enabled {
+    &:hover {
+        background-color: #5e749b;
+    }
 }
+
+// button.book-btn:hover {
+//     background-color: #5e749b;
+// }
 
 .booking-form input.DateInput_input {
     height: 33px;

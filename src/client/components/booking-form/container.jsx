@@ -1,20 +1,33 @@
 import {
     bookingInputUpdate,
     bookProperty,
-    getRoomsInfo
+    getRoomsInfo,
+    roomsSelectedAmountUpdate
 } from "../../logic/property-page/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { property, bookingInput } = state.propertyPage;
+    const room = ownProps.rooms.find(r => r.id === bookingInput.roomId);
+    // console.log(room);
+    const { selectedAmount, amount, price } = room
+        ? room
+        : { selectedAmount: 1, amount: 1, price: 0 };
+
     return {
+        // local props
         propertyName: property.name,
-        cancelForFree: property.accommodationRule.cancelReservation,
         propertyId: property.id,
+        propertyCurrency: property.currency,
+        currency: state.header.selectedCurrency,
+        cancelForFree: property.accommodationRule.cancelReservation,
         checkIn: bookingInput.checkIn,
         checkOut: bookingInput.checkOut,
         adults: bookingInput.adults,
         children: bookingInput.children,
         roomId: bookingInput.roomId,
+        selectedRoomsAmount: selectedAmount,
+        roomsAmount: amount,
+        roomPrice: price,
         paymentTypeId: bookingInput.paymentTypeId,
         error: bookingInput.error,
         message: bookingInput.message
@@ -37,16 +50,36 @@ export function mapDispatchToProps(dispatch, ownProps) {
             dispatch(getRoomsInfo(propertyId, value.startDate, value.endDate));
         },
         onAdultsChange(value) {
-            dispatch(bookingInputUpdate({ adults: value }));
+            dispatch(
+                bookingInputUpdate({
+                    adults: value
+                })
+            );
         },
         onChildrenChange(value) {
-            dispatch(bookingInputUpdate({ children: value }));
+            dispatch(
+                bookingInputUpdate({
+                    children: value
+                })
+            );
         },
-        onRoomChange(value) {
-            dispatch(bookingInputUpdate({ roomId: value }));
+        onRoomChange(roomId) {
+            // , amount, selectedAmount, price || TODO: pass there its room's amount, selected amount, price
+            dispatch(
+                bookingInputUpdate({
+                    roomId: roomId
+                    // amount: amount,
+                    // selectedAmount: selectedAmount,
+                    // price: price
+                })
+            );
         },
         onPaymentTypeChange(value) {
-            dispatch(bookingInputUpdate({ paymentTypeId: value }));
+            dispatch(
+                bookingInputUpdate({
+                    paymentTypeId: value
+                })
+            );
         },
         clearBookingForm() {
             dispatch(
@@ -55,6 +88,9 @@ export function mapDispatchToProps(dispatch, ownProps) {
                     error: ""
                 })
             );
+        },
+        selectRoomsAmount(roomId, rooms) {
+            dispatch(roomsSelectedAmountUpdate(roomId, rooms));
         }
     };
 }

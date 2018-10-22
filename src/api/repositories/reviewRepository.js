@@ -6,12 +6,10 @@ class ReviewRepository extends Repository {
     findByOptions(options) {
         return this.model.findAll({
             where: options,
-            include: [
-                {
-                    model: Property,
-                    include: [Image]
-                }
-            ]
+            include: [{
+                model: Property,
+                include: [Image]
+            }]
         });
     }
 }

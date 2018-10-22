@@ -15,11 +15,11 @@ const passwordNumberError = [{ name: 'password', msg: 'Password must contain at 
 const passwordLetterError = [{ name: 'password', msg: 'Password must contain at least one letter.' }]
 
 const handleInputChange = (item) => {
-    console.log(`Changed ${item.name}: ${item.value}`);
+    // console.log(`Changed ${item.name}: ${item.value}`);
 }
 
 const handleRegisterClick = (buttonName) => {
-    console.log(`Clicked ${buttonName}`);
+    // console.log(`Clicked ${buttonName}`);
 }
 
 storiesOf('Registration', module)

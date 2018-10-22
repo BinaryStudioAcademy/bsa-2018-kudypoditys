@@ -30,9 +30,7 @@ export function getPropToggler(bookingArray, property, user) {
         }
     }
 
-
-
-    console.log(b);
+    // console.log(b);
     return b;
 }
 export function getPropToggler2( property, user) {
@@ -41,17 +39,13 @@ export function getPropToggler2( property, user) {
 
 
         for (let i = 0; i < property.reviews.length; i++) {
-
-            console.log(property.reviews[i].user.id === user.id);
+            // console.log(property.reviews[i].user.id === user.id);
             if (property.reviews[i].user.id === user.id) {
                 b = 1;
                 return b
             }
         }
 
-
-
-
-    console.log(b);
+    // console.log(b);
     return b;
 }

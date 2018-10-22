@@ -10,7 +10,7 @@ export const MenuItems = [
             header: ' Rooms and pricing',
             subheader: 'Start by telling us your property\'s name, contact details and address.',
             component: <BasicInfoPropertyRegistrationForm onSubmit={(data) => {
-                console.log(data);
+                // console.log(data);
             }} />
         }
     },

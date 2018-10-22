@@ -123,7 +123,8 @@ class ReservationRepository extends Repository {
                                         "Facilities",
                                         "avgReview",
                                         "createdAt",
-                                        "anon"
+                                        "anon",
+                                        "userId"
                                     ]
                                 },
                                 {

@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { Grid, Dropdown } from "semantic-ui-react";
+import React, {Component, Fragment} from "react";
+import {connect} from "react-redux";
+import {Grid, Dropdown} from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "client/history";
 import MainSearch from "client/components/search";
 import AuthHOC from "client/components/auth-hoc";
 import UserPopup from "client/components/header-user-popup";
 import "./index.scss";
-import { mapStateToProps, mapDispatchToProps } from "./container";
+import {mapStateToProps, mapDispatchToProps} from "./container";
 
 export class MainHeader extends Component {
     componentDidMount() {
@@ -19,7 +19,7 @@ export class MainHeader extends Component {
     };
 
     getCurrencies() {
-        const { currencies } = this.props;
+        const {currencies} = this.props;
         return currencies.map(x => ({
             key: x.id,
             value: x.id,
@@ -44,24 +44,18 @@ export class MainHeader extends Component {
         history.push("/");
     };
 
-    onWellcomeClicked = () => {
-        history.push("/user-cabinet");
-    };
-
-    handleCurrancyChange = (e, { value }) => {
-        const { currencies } = this.props;
+    handleCurrancyChange = (e, {value}) => {
+        const {currencies} = this.props;
         const currency = currencies.find(x => x.id === value);
         this.props.onCurrencyChange(currency);
 
         localStorage.setItem('selectedCurrency', JSON.stringify(currency));
-    }
+    };
 
-    // state = { activeItem: "about-us" };
-
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+    handleItemClick = (e, {name}) => this.setState({activeItem: name});
 
     render() {
-        const { currentUser, hideSignUpIn, noBackground } = this.props;
+        const {currentUser, hideSignUpIn, noBackground} = this.props;
         const currenciesOptions = this.getCurrencies();
         return (
             <div
@@ -71,7 +65,7 @@ export class MainHeader extends Component {
                         ? {
                             backgroundImage: "none"
                         }
-                        : { backgroundColor: "#028fc5" }
+                        : {backgroundColor: "#028fc5"}
                 }
             >
                 <Grid centered className={"grid--main"}>
@@ -87,7 +81,7 @@ export class MainHeader extends Component {
                         <Grid.Column width={8} textAlign={"right"}>
                             <Dropdown
                                 style={{
-                                    paddingTop:"6px",
+                                    paddingTop: "6px",
                                     width: "90px",
                                     fontSize: "14px",
                                     background: "none",
@@ -163,7 +157,7 @@ export class MainHeader extends Component {
                     </Grid.Row>
                     {this.props.showSearch ? (
                         <Grid.Row centered columns={1}>
-                            <Grid.Column width={16} style={{ marginTop: 45 }}>
+                            <Grid.Column width={16} style={{marginTop: 45}}>
                                 <MainSearch
                                     view="bar"
                                     destination="Lviv"

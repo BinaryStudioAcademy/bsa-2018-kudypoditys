@@ -28,14 +28,15 @@ export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
         //todo  handleRedirectToMap
     };
-    handleAddToComparison = id => {
-        //todo
-    };
-    handleAddToFavorites = id => {
-        //todo
-    };
     handleRedirectToDetails = () => {
-        history.push("/property/" + this.props.propertyItemData.id);
+        if (history.location.search !== "") {
+            history.push({
+                pathname: "/property/" + this.props.propertyItemData.id,
+                search: history.location.search
+            });
+        } else {
+            history.push("/property/" + this.props.propertyItemData.id);
+        }
     };
 
     componentDidMount() {
@@ -44,7 +45,7 @@ export class PropertyListItem extends React.Component {
 
     render() {
         const {
-            propertyItemData, itemIndex, currency, allCurrencies
+            propertyItemData, itemIndex, currency, allCurrencies, searchData
         } = this.props;
 
         const propertyCurrency = propertyItemData.currency.code;
@@ -62,6 +63,13 @@ export class PropertyListItem extends React.Component {
         } else {
             currentBg = "";
         }
+        let price;
+        for (let roomId in propertyItemData.rooms) {
+            if (!price || propertyItemData.rooms[roomId].price < price) {
+                price = propertyItemData.rooms[roomId].price;
+            }
+        }
+        let nightsCount = searchData.endDate.diff(searchData.startDate, "days");
         return (
             <Card
                 className="property_card"
@@ -125,7 +133,6 @@ export class PropertyListItem extends React.Component {
                                                 fontSize: 24,
                                                 fontWeight: "bold",
                                                 color: "#182c4f",
-                                                // opacity: 0.8,
                                                 cursor: "pointer"
                                             }}
                                             onClick={
@@ -222,9 +229,21 @@ export class PropertyListItem extends React.Component {
                                     {propertyItemData.rooms[0].roomType.name}
                                 </div>
                                 <span className="priceInfo">
-                                    {currency.code} {convert(propertyCurrency, propertyItemData.rooms[0].price, currency.code)}
+                                    {currency.code} {convert(propertyCurrency, price, currency.code)}
                                 </span>
                             </div>
+
+                            { propertyItemData.isCheapest && (
+                                <div className="card_row__jackpot">
+                                    <Message
+                                        color="red"
+                                        className="search-page__jackpot"
+                                    >
+                                        <b>Jackpot!</b> This is a cheapest price you've seen in { propertyItemData.city.name } for your dates!<br />
+                                        <b>{ nightsCount } { nightsCount === 1 ? 'night' : 'nights' } ({ searchData.startDate.format("ddd D MMM") } - { searchData.endDate.format("ddd D MMM") })</b>
+                                    </Message>
+                                </div>
+                            )}
 
                             <div className="card_row__order">
                                 <div className="search-page__messages">
@@ -284,6 +303,10 @@ PropertyListItem.propTypes = {
         locationRating: PropTypes.number.isRequired,
         availableRoomsCount: PropTypes.number.isRequired,
         mealType: PropTypes.string
+    }),
+    searchData: PropTypes.shape({
+        startDate: PropTypes.instanceOf(Date),
+        endDate: PropTypes.instanceOf(Date)
     })
 };
 export default connect(mapStateToProps)(PropertyListItem);

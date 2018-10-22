@@ -10,8 +10,7 @@ import { SERVER_HOST } from "../../helpers/config";
 import * as actionTypes from "../user-cabinet-properties-tab/actionTypes";
 
 function* getProperties(action) {
-    console.log("Hello from SAGA" + action.type);
-
+    // console.log("Hello from SAGA" + action.type);
     const URL1 = `${SERVER_HOST}/api/property/city/1`;
     const URL2 = `${SERVER_HOST}/api/property/city/2`;
     const URL3 = `${SERVER_HOST}/api/property/city/3`;
