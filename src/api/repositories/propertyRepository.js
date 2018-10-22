@@ -142,7 +142,8 @@ class PropertyRepository extends Repository {
     updateById(id, data) {
         return this.model.findOne({
             where: {
-                id: id
+                id: id,
+                userId: data.userId
             }
         }).then((property) => {
             // update basic info
