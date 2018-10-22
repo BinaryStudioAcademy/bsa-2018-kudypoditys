@@ -9,7 +9,7 @@ import RoomForm from './room-form';
 
 import { mapStateToProps, mapDispatchToProps } from './container';
 
-class RoomsPropertyRegistrationForm extends Component {
+class RoomsPropertyForm extends Component {
   state = {
     activeIndex: -1
   }
@@ -87,7 +87,7 @@ class RoomsPropertyRegistrationForm extends Component {
   }
 
   render() {
-    const { handleSubmit, pristine, submitting } = this.props;
+    const { handleSubmit, pristine, submitting, isEdit } = this.props;
 
     return (
       <Fragment>
@@ -103,7 +103,7 @@ class RoomsPropertyRegistrationForm extends Component {
         <Button
           color="teal"
           fluid
-          disabled={pristine || submitting}
+          disabled={!(isEdit || !pristine) || submitting}
           type="submit"
           form="roomsPropertyRegistrationForm"
         >Continue</Button>
@@ -114,9 +114,9 @@ class RoomsPropertyRegistrationForm extends Component {
 
 
 const ReduxForm = reduxForm({
-  form: 'propertyRegistrationForm',
+  form: 'propertyForm',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-})(RoomsPropertyRegistrationForm);
+})(RoomsPropertyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

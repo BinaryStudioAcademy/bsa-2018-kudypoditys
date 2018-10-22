@@ -77,7 +77,7 @@ function associations(models) {
 
     Room.hasMany(Reservation);
     Room.hasMany(Image);
-    Room.hasMany(BedInRoom);
+    Room.hasMany(BedInRoom, { onDelete: 'cascade' });
     Room.hasMany(RoomDiscount);
     Room.hasMany(Availability);
 

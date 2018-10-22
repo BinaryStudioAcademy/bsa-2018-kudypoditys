@@ -1,7 +1,7 @@
 const authPaths = [
     {
         url: "/api/property",
-        methods: ["post"]
+        methods: ["post", "put"]
     },
     {
         url: "/api/users/current",

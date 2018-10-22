@@ -22,7 +22,7 @@ const parseNumber = value => {
     return number;
 };
 
-class FacilitiesPropertyRegistrationForm extends Component {
+class FacilitiesPropertyForm extends Component {
 
     componentDidMount() {
         const { languages, facilities } = this.props;
@@ -251,7 +251,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
 
                 <Grid padded columns={3} style={{ marginTop: "20px", marginBottom: "20px" }}>
                     {facilities.map((facility, i) => (
-                        <Grid.Column key={i} style={{ padding: "10px" }}>
+                        <Grid.Column key={facility.id} style={{ padding: "10px" }}>
                             <Field
                                 component={renderCheckbox}
                                 name={`facilities.${facility.id}`}
@@ -270,7 +270,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
 
     render() {
         const {
-            handleSubmit, submitting, pristine
+            handleSubmit, submitting, pristine, isEdit
         } = this.props;
         return (
             <Form onSubmit={handleSubmit} id="facilitiesPropertyRegistartionForm">
@@ -290,7 +290,7 @@ class FacilitiesPropertyRegistrationForm extends Component {
                 <Button
                     color="teal"
                     fluid
-                    disabled={pristine || submitting}
+                    disabled={!(isEdit || !pristine) || submitting}
                     type="submit"
                 >Continue</Button>
             </Form>
@@ -299,9 +299,9 @@ class FacilitiesPropertyRegistrationForm extends Component {
 }
 
 const ReduxForm = reduxForm({
-    form: 'propertyRegistrationForm',
+    form: 'propertyForm',
     destroyOnUnmount: false,
-    forceUnregisterOnUnmount: true,
-})(FacilitiesPropertyRegistrationForm);
+    forceUnregisterOnUnmount: true
+})(FacilitiesPropertyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReduxForm);

@@ -8,7 +8,7 @@ import renderDropdown from 'client/components/input-form/dropdown';
 
 import './index.scss';
 
-class PolicesPropertyRegistrationForm extends Component {
+class PolicesPropertyForm extends Component {
 
   renderCancellationCard() {
     const cancelOptions = [
@@ -42,9 +42,12 @@ class PolicesPropertyRegistrationForm extends Component {
   }
 
   renderCheckInCheckOutCard() {
+    const { initialValues, isEdit } = this.props;
     return (
       <Field
         name="accommodationRule.checkInCheckOut"
+        checkInCheckOut={isEdit ? initialValues.accommodationRule.CheckInCheckOut : null}
+        isEdit={isEdit}
         component={CheckInCheckOut}
       />
     );
@@ -52,7 +55,7 @@ class PolicesPropertyRegistrationForm extends Component {
 
   render() {
     const {
-      pristine, submitting, handleSubmit
+      pristine, submitting, handleSubmit, isEdit
     } = this.props;
 
     return (
@@ -66,7 +69,7 @@ class PolicesPropertyRegistrationForm extends Component {
         <Button
           color="teal"
           fluid
-          disabled={pristine || submitting}
+          disabled={!(isEdit || !pristine) || submitting}
           type="submit"
         >Continue</Button>
       </Form>
@@ -75,7 +78,7 @@ class PolicesPropertyRegistrationForm extends Component {
 }
 
 export default reduxForm({
-  form: 'propertyRegistrationForm',
+  form: 'propertyForm',
   destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true,
-})(PolicesPropertyRegistrationForm);
+  forceUnregisterOnUnmount: true
+})(PolicesPropertyForm);

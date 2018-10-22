@@ -21,6 +21,10 @@ export class PropertyItem extends React.Component {
         history.push("/property/" + this.props.id);
     };
 
+    handleEditClick = () => {
+        history.push("/property/" + this.props.id + "/edit");
+    };
+
     render() {
         const { images } = this.props;
         let ratingStatus = "";
@@ -161,9 +165,15 @@ export class PropertyItem extends React.Component {
 
                             {/* <div className="card_row__price" /> */}
 
-                            <div className="card_row__order">
-                                <div className="property-page__messages" />
-
+                            <div className="propertie-buttons">
+                                <Button
+                                    className="property-page__main-button"
+                                    floated="right"
+                                    primary
+                                    onClick={this.handleEditClick}
+                                >
+                                    Edit
+                                </Button>
                                 <Button
                                     className="property-page__main-button"
                                     floated="right"

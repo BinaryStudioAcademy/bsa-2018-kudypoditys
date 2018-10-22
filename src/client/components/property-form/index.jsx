@@ -4,15 +4,16 @@ import { Tab, Container } from "semantic-ui-react";
 import { DrawTab } from "./DrawTab";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "./container";
+import PropertyService from "client/services/propertyService";
 
-import BasicInfoPropertyRegistrationForm from "../basic-info-property-registration-form";
-import FacilitiesPropertyRegistrationForm from "../facilities-property-registration-form";
-import PolicesPropertyRegistrationForm from "../polices-property-registration-form";
-import PhotoRegistrationPropertyForm from "../photo-registration-property-form";
-import PaymentPropertyRegistrationForm from "../payment-property-registration-form";
-import RoomsPropertyRegistrationForm from "../rooms-property-registration-form";
+import BasicInfoPropertyForm from "../basic-info-property-form";
+import FacilitiesPropertyForm from "../facilities-property-form";
+import PolicesPropertyForm from "../polices-property-form";
+import PhotoPropertyForm from "../photo-property-form";
+import PaymentPropertyForm from "../payment-property-form";
+import RoomsPropertyForm from "../rooms-property-form";
 
-export class PropertyRegistration extends React.Component {
+export class PropertyForm extends React.Component {
     state = {
         activeIndex: 0
     };
@@ -45,7 +46,7 @@ export class PropertyRegistration extends React.Component {
 
         for (let i = 0; i < submitedFacilities.length; ++i) {
             if (submitedFacilities[i]) {
-                res.push(facilities.find(x => x.id === i));
+                res[i] = facilities.find(x => x.id === i);
             }
         }
 
@@ -57,13 +58,25 @@ export class PropertyRegistration extends React.Component {
     }
 
     onFormSubmit = data => {
-        data.facilities = this.normalizeFacilities(data.facilities);
+        let newProperty = Object.assign({}, data);
+        newProperty.facilities = this.normalizeFacilities(data.facilities);
 
-        this.props.createProperty(data);
+        if (this.props.isEdit) {
+            this.props.updateProperty(newProperty);
+        } else {
+            this.props.createProperty(newProperty);
+        }
     };
 
     getWizardForms() {
-        const { user } = this.props;
+        const { user, property, isEdit } = this.props;
+        const remappedProperty = PropertyService.remapProperty(property);
+
+        const editProps = {
+            initialValues: isEdit ? remappedProperty : {},
+            isEdit: isEdit
+        };
+
         return [
             {
                 key: "Basic Info",
@@ -73,7 +86,8 @@ export class PropertyRegistration extends React.Component {
                 subheader:
                     "Start by telling us your property's name, contact details and address.",
                 component: (
-                    <BasicInfoPropertyRegistrationForm
+                    <BasicInfoPropertyForm
+                        {...editProps}
                         onSubmit={this.nextTab}
                     />
                 )
@@ -86,7 +100,10 @@ export class PropertyRegistration extends React.Component {
                 subheader:
                     " Tell us about your first room. After entering all the necessary info, you can fill in the details of your other rooms",
                 component: (
-                    <RoomsPropertyRegistrationForm onSubmit={this.nextTab} />
+                    <RoomsPropertyForm
+                        {...editProps}
+                        onSubmit={this.nextTab}
+                    />
                 )
             },
             {
@@ -97,7 +114,8 @@ export class PropertyRegistration extends React.Component {
                 subheader:
                     "Now, tell us some general details about your property, such as facilities available, internet, parking and the languages you speak.",
                 component: (
-                    <FacilitiesPropertyRegistrationForm
+                    <FacilitiesPropertyForm
+                        {...editProps}
                         onSubmit={this.nextTab}
                     />
                 )
@@ -110,7 +128,10 @@ export class PropertyRegistration extends React.Component {
                 subheader:
                     " Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?",
                 component: (
-                    <PolicesPropertyRegistrationForm onSubmit={this.nextTab} />
+                    <PolicesPropertyForm
+                        {...editProps}
+                        onSubmit={this.nextTab}
+                    />
                 )
             },
             {
@@ -121,7 +142,10 @@ export class PropertyRegistration extends React.Component {
                 subheader:
                     "Great photos invite guests to get the full experience of your property, so upload some high-resolution photos that represent all your property has to offer. We will display these photos on your property's page on the Booking.com website.",
                 component: (
-                    <PhotoRegistrationPropertyForm onSubmit={this.nextTab} />
+                    <PhotoPropertyForm
+                        {...editProps}
+                        onSubmit={this.nextTab}
+                    />
                 )
             },
             {
@@ -131,7 +155,8 @@ export class PropertyRegistration extends React.Component {
                 customHeader: " Layout and pricing",
                 subheader: "Tell us about layout and pricing",
                 component: (
-                    <PaymentPropertyRegistrationForm
+                    <PaymentPropertyForm
+                        {...editProps}
                         onSubmit={this.onFormSubmit}
                     />
                 )
@@ -181,4 +206,4 @@ export class PropertyRegistration extends React.Component {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(PropertyRegistration);
+)(PropertyForm);

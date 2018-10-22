@@ -34,6 +34,7 @@ import currencies from "client/logic/currencies/reducer";
 import propertyTypes from "client/logic/property-type/reducer";
 import simpleModal from "client/logic/simple-modal/reducer";
 import userCabinetProperties from "client/logic/user-cabinet-properties-tab/reducer";
+import propertyEdit from "client/logic/property-edit/reducer";
 
 export default combineReducers({
     search,
@@ -74,5 +75,6 @@ export default combineReducers({
     userCabinetProperties,
     currencies,
     propertyTypes,
-    simpleModal
+    simpleModal,
+    propertyEdit
 });
