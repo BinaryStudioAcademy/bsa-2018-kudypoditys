@@ -52,7 +52,6 @@ export class RankingBar extends React.Component {
                         style={{ width:70, border: 0 }}
                         item
                         text="Stars"
-                        simple
                         icon="caret down"
                     >
                         <Dropdown.Menu>
