@@ -14,7 +14,7 @@ user.route("/getemailverified").get((req, res) => {
 });
 
 user.route("/verifyemail").get((req, res) => {
-    console.log(req.query.email, req.query.token);
+    // console.log(req.query.email, req.query.token);
     userService
         .verifyEmail(req.query.email, req.query.token)
         .then(data => {

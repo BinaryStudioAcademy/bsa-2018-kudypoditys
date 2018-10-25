@@ -6,8 +6,10 @@ import {
     BOOK_PROPERTY,
     CHECK_AVAILABILITY,
     GET_ROOMS_INFO,
-    CLEAR_PROPERTY_PAGE
-} from "./actionTypes";
+    CLEAR_PROPERTY_PAGE,
+    ROOMS_SELECTED_AMOUNT_UPDATE,
+    ROOM_DESCRIPTION_COLLAPSE_TOGGLE
+} from './actionTypes';
 
 export function descriptionUpdate(payload) {
     return {
@@ -65,5 +67,25 @@ export function getRoomsInfo(propertyId, checkIn, checkOut) {
 export function clearPropertyPageSlice() {
     return {
         type: CLEAR_PROPERTY_PAGE
+    };
+}
+
+export function roomsSelectedAmountUpdate(roomId, rooms) {
+    return {
+        type: ROOMS_SELECTED_AMOUNT_UPDATE,
+        payload: {
+            roomId,
+            rooms
+        }
+    };
+}
+
+
+export function toggleDescriptionCollapse(roomId) {
+    return {
+        type: ROOM_DESCRIPTION_COLLAPSE_TOGGLE,
+        payload: {
+            roomId
+        }
     };
 }

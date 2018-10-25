@@ -18,7 +18,6 @@ import PropertyDescription from "client/components/property-description";
 import {PropertySummary} from "client/components/property-summary";
 import {NavigationBar} from "client/components/navigation-bar";
 import BasicMapWidget from "client/components/basic-map-widget";
-import RoomsSummaryTable from "client/components/rooms-summary-table";
 import Modal from "../../components/modal";
 import BookingForm from "../../components/booking-form";
 import ReactDOM from "react-dom";
@@ -30,6 +29,7 @@ import {
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
 import {PropertyCommentsList} from "client/components/property-comments-list";
+import RoomsTable from "client/components/rooms-table";
 
 export class PropertyPage extends React.Component {
     toggleReviews = () => {
@@ -349,7 +349,7 @@ export class PropertyPage extends React.Component {
 
                             <AvailabilityPanel style={{width: "100%"}}/>
                             <Divider style={dividerStyle}/>
-                            <div>
+                            <div ref={"roomsRef"}>
                                 <Header
                                     as="h2"
                                     style={{
@@ -359,10 +359,11 @@ export class PropertyPage extends React.Component {
                                 >
                                     Rooms
                                 </Header>
-                                <RoomsSummaryTable
-                                    ref={"roomsRef"}
-                                    rooms={rooms}
-                                />
+                                <RoomsTable />
+                                {/*<RoomsSummaryTable*/}
+                                    {/*ref={"roomsRef"}*/}
+                                    {/*rooms={rooms}*/}
+                                {/*/>*/}
                             </div>
                             <Divider hidden/>
                         </Container>

@@ -17,9 +17,6 @@ export class PropertyCommentsList extends React.Component {
             borderTop: "1px solid #46567215",
             borderBottom: "1px solid #465672"
         };
-        console.log("Comments List props = ");
-        console.log(this.props);
-
         if (!this.props) return null;
         const listItems = this.props.reviews.map((item, index) => {
             return (

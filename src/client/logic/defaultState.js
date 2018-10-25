@@ -169,8 +169,8 @@ const state = {
     propertyPage: {
         property: null,
         availabilityInput: {
-            checkIn: moment(),
-            checkOut: moment().add(5, "days"),
+            checkIn: moment().startOf('day'),
+            checkOut: moment().startOf('day').add(5, "days"),
             adults: 2,
             rooms: 1,
             children: 0,
@@ -178,8 +178,8 @@ const state = {
             error: ""
         },
         bookingInput: {
-            checkIn: moment(),
-            checkOut: moment().add(5, "days"),
+            checkIn: moment().startOf('day'),
+            checkOut: moment().startOf('day').add(5, "days"),
             adults: 2,
             children: 0,
             roomId: null,
