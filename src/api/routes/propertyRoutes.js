@@ -59,6 +59,7 @@ property.route("/availability").put((req, res) => {
 property
     .route("/:id")
     .put((req, res) => {
+        req.body.userId = req.user.id;
         propertyService
             .updateProperty(req.params.id, req.body)
             .then(property => {

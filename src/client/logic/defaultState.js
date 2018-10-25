@@ -83,7 +83,7 @@ const state = {
     header: {
         currencies: [],
         selectedCurrency:
-            JSON.parse(localStorage.getItem('selectedCurrency')) 
+            JSON.parse(localStorage.getItem('selectedCurrency'))
             || { id: 2, name: 'US DOLLAR', code: 'USD', number: 840 },
         currentUser: null
     },
@@ -642,17 +642,19 @@ const state = {
     },
 
     checkInCheckOut: {
-        arrivalFrom: "12:00",
+        arrivalFrom: "10:00",
         arrivalTo: "13:00",
-        departureFrom: "11:00",
-        departureTo: "11:30"
+        departureFrom: "10:00",
+        departureTo: "13:00"
     },
 
     propertyRegistration: {
         error: null
     },
 
-    userCabinetProperties: {}
+    userCabinetProperties: {},
+
+    propertyEdit: {}
 
     // _____________________
 };

@@ -10,6 +10,7 @@ import reducer from "client/logic/reducer";
 import ResetPasswordPage from 'client/pages/reset-password-page'
 import RegistrationPage from "client/pages/registration-page";
 import AddPropertyPage from "client/pages/add-property-page";
+import EditPropertyPage from "client/pages/edit-property-page";
 import { Router, Route, Switch } from "react-router-dom";
 import CheckInCheckOut from "client/pages/checkin-checkout-page";
 import { HomePage } from "client/pages/home-page";
@@ -48,6 +49,12 @@ ReactDOM.render(
                     <Route exact path="/resetpassword" component={ResetPasswordPage} />
                     <Route exact path="/forgotpassword" component={ForgotPasswordPage} />
                     <Route path="/search-page" component={SearchPage} />
+                    <Route
+                        path="/property/:id/edit"
+                        component={({match}) => (
+                            <AuthHOC Component={() => <EditPropertyPage match={match}/>} />
+                        )}
+                    />
                     <Route path="/property/:id" component={PropertyPage} />
                     <Route
                         path="/add-property/"

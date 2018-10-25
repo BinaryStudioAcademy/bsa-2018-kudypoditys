@@ -14,13 +14,21 @@ import { mapDispatchToProps, mapStateToProps } from "./container";
 import "./index.scss";
 import AlgoliaPlaces from "algolia-places-react";
 
-class BasicInfoPropertyRegistrationForm extends Component {
+class BasicInfoPropertyForm extends Component {
     state = {};
 
     componentDidMount() {
         this.props.getCountries();
         this.props.getCurrencies();
         this.props.getPropertyTypes();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.isEdit && this.props.initialValues) {
+            if (!prevProps.initialValues || this.props.initialValues.id !== prevProps.initialValues.id) {
+                this.onCountryChange(null, this.props.initialValues.countryId);
+            }
+        }
     }
 
     onCountryChange = (_, value) => {
@@ -95,7 +103,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
     }
 
     render() {
-        const { pristine, submitting, handleSubmit } = this.props;
+        const { pristine, submitting, handleSubmit, isEdit } = this.props;
 
         const countriesOptions = this.getCountries();
         const cityOptions = this.getCities();
@@ -227,6 +235,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
                                     name="address"
                                     icon="map marker"
                                     validate={[required]}
+                                    ref={(input) => { this.addressInput = input }}
                                 />
                             </div>
                             <div className="wrapper">
@@ -277,7 +286,7 @@ class BasicInfoPropertyRegistrationForm extends Component {
                         <Button
                             color="teal"
                             fluid
-                            disabled={pristine || submitting}
+                            disabled={!(isEdit || !pristine) || submitting}
                             type="submit"
                         >
                             Continue
@@ -290,10 +299,11 @@ class BasicInfoPropertyRegistrationForm extends Component {
 }
 
 const ReduxForm = reduxForm({
-    form: "propertyRegistrationForm",
+    form: "propertyForm",
     destroyOnUnmount: false,
-    forceUnregisterOnUnmount: true
-})(BasicInfoPropertyRegistrationForm);
+    forceUnregisterOnUnmount: true,
+    enableReinitialize: true
+})(BasicInfoPropertyForm);
 
 export default connect(
     mapStateToProps,
