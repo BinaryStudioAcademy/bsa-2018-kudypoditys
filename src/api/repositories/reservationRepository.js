@@ -84,7 +84,8 @@ class ReservationRepository extends Repository {
                 "dateOut",
                 "guestsCount",
                 "orderCode",
-                "createdAt"
+                "createdAt",
+                "priceTotal",
             ],
             include: [
                 {
