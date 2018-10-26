@@ -56,7 +56,7 @@ class BookingSegment extends React.Component {
         const now = moment();
         const duration = moment.duration(end.diff(start));
         const days = Math.round(duration.asDays());
-        const price = Number(booking.room.price) * days;
+        const price = Number(booking.priceTotal);
 
         let shouldRenderForm = false;
         const headerStyle = { color: "#465672" };

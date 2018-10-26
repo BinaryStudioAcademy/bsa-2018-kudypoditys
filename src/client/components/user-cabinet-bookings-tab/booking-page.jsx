@@ -42,7 +42,7 @@ class BookingPage extends React.Component {
         const end = moment(dateOut);
         const duration = moment.duration(end.diff(start));
         const days = Math.round(duration.asDays());
-        const price = Number(room.price) * days;
+        const price = Number(booking.priceTotal);
         const avgPropRatingArray = getGroupedArray(
             property.reviews,
             "avgReview"
