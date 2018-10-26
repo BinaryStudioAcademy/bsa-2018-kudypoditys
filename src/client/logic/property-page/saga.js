@@ -61,8 +61,9 @@ export default function* propertyPageSaga() {
                     type: actionTypes.CHECK_AVAILABILITY_FAILURE,
                     payload: "Fill in check-in and check-out dates to check availability"
                 });
+            // debugger;
             const response = yield call(
-                api.sendRequest,
+                api.sendAuthRequest,
                 "/api/property/availability",
                 "put",
                 input
@@ -93,7 +94,7 @@ export default function* propertyPageSaga() {
             //TODO api call
             const input = action.payload;
             const response = yield call(
-                api.sendRequest,
+                api.sendAuthRequest,
                 "/api/property/availability",
                 "put",
                 input
