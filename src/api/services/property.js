@@ -37,8 +37,12 @@ class PropertyService extends Service {
                         value.checkIn,
                         value.checkOut
                     )
-                )
-                    result.push(rooms[i]);
+                ){
+                    rooms[i].available = true;
+                } else {
+                    rooms[i].available = false;
+                }
+                result.push(rooms[i]);
             }
             return Promise.resolve(result);
         } catch (err) {
