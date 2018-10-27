@@ -24,7 +24,7 @@ let Room = orm.define('room', {
         allowNull: true
     },
     available: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.INTEGER,
         allowNull: true
     }
 });
