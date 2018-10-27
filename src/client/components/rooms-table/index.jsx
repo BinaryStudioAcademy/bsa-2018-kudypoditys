@@ -57,20 +57,28 @@ export class RoomsTable extends React.Component {
 
     handleQuantitySelectionChanged = (e, value, roomId) => {
         const { rooms, selectRoomsAmount } = this.props;
-        // this.props.selectRoomsAmount(roomId, roomsAmount, sortedRooms);
-        roomQuantityChanged(rooms, value, roomId, selectRoomsAmount)
+        const roomsAmount = value;
+        const sortedRooms = rooms;
+        if(roomId && roomsAmount && sortedRooms) {
+            this.props.selectRoomsAmount(roomId, roomsAmount, sortedRooms);
+        }
+        // roomQuantityChanged(rooms, value, roomId, selectRoomsAmount)
     };
 
     render() {
         if (!this.props || !this.props.rooms) return null;
         const {
             rooms,
+            roomsZ,
             user,
             property,
             currency,
             checkIn,
             checkOut
         } = this.props;
+        rooms.forEach(room => {
+            if (Array.isArray(roomsZ)) room.available = roomsZ.find(roomZ=> roomZ.id == room.id).available;
+        });
         const { currency: propCurrency } = property;
         let bookButton = false;
         if (user) bookButton = true;
@@ -138,10 +146,11 @@ export class RoomsTable extends React.Component {
                             <QuantityPicker
                                 roomId={room.id}
                                 roomsSelectedAmount={room.selectedAmount}
-                                roomsAvailable={room.amount + 1}
+                                roomsAvailable={room.available + 1}
                                 onSelectionChanged={
                                     this.handleQuantitySelectionChanged
                                 }
+                                disabled={!room.available}
                             />
                         </Table.Cell>
                         <Table.Cell>
@@ -150,7 +159,7 @@ export class RoomsTable extends React.Component {
                                     trigger={
                                         <div>
                                             <div className="room-total-check">
-                                                {totalCheck} {currencySymbol}
+                                                { totalCheck != 'NaN' ? totalCheck + currencySymbol : '' }
                                             </div>
                                             <div
                                                 className="book-btn"
@@ -162,18 +171,29 @@ export class RoomsTable extends React.Component {
                                                 }}
                                             >
                                                 {/*TODO: Use there Semantic button*/}
-                                                <button
-                                                    style={{
-                                                        height: "100%"
-                                                    }}
-                                                    onClick={() => {
-                                                        this.props.setRoom(
-                                                            room.id
-                                                        );
-                                                    }}
-                                                >
-                                                    Book now
-                                                </button>
+                                                {room.available ? (
+                                                    <button
+                                                        disabled={!room.selectedAmount}
+                                                        style={{
+                                                            height: "100%"
+                                                        }}
+                                                        onClick={() => {
+                                                            this.props.setRoom(
+                                                                room.id
+                                                            );
+                                                        }}
+                                                    >
+                                                        Book now
+                                                    </button>
+                                                ) : (
+                                                    <button
+                                                        className={"btn-sold-out"}
+                                                        style={{ height: "100%", backgroundColor: "darkred" }}
+                                                        disabled={true}
+                                                    >
+                                                        Sold out
+                                                    </button>
+                                                )}
                                             </div>
                                         </div>
                                     }

@@ -359,7 +359,9 @@ export class PropertyPage extends React.Component {
                                 >
                                     Rooms
                                 </Header>
-                                <RoomsTable />
+                                <RoomsTable
+                                    roomsZ = {rooms}
+                                />
                                 {/*<RoomsSummaryTable*/}
                                     {/*ref={"roomsRef"}*/}
                                     {/*rooms={rooms}*/}

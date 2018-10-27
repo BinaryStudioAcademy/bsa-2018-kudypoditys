@@ -24,7 +24,11 @@ export function mapDispatchToProps(dispatch) {
             dispatch(bookingInputUpdate({ roomId: roomId }));
         },
         selectRoomsAmount(roomId, selectedRoomsAmount, rooms) {
-            dispatch(roomsSelectedAmountUpdate(roomId, selectedRoomsAmount, rooms));
+            rooms = rooms.map(room=>{
+                if (room.id == roomId) room.selectedAmount = selectedRoomsAmount;
+                return room;
+            });
+            dispatch(roomsSelectedAmountUpdate(roomId, rooms));
         },
         toggleRoomDescriptionCollapse(roomId) {
             dispatch(toggleDescriptionCollapse(roomId));

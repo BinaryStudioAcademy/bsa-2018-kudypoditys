@@ -221,8 +221,9 @@ class ReservationService extends Service {
                     )
                         roomAmount--;
                 }
-                if (roomAmount <= 0) return Promise.resolve(false);
-                return Promise.resolve(true);
+                return Promise.resolve(roomAmount);
+                // if (roomAmount <= 0) return Promise.resolve(false);
+                // return Promise.resolve(true);
             }
         } catch (err) {
             return Promise.reject(err);

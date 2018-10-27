@@ -30,18 +30,13 @@ class PropertyService extends Service {
             const rooms = await roomService.findByOptions({
                 propertyId: value.propertyId
             });
+
             for (let i = 0; i < rooms.length; i++) {
-                if (
-                    await this.available(
-                        rooms[i],
-                        value.checkIn,
-                        value.checkOut
-                    )
-                ){
-                    rooms[i].available = true;
-                } else {
-                    rooms[i].available = false;
-                }
+                rooms[i].available = await this.available(
+                    rooms[i],
+                    value.checkIn,
+                    value.checkOut
+                );
                 result.push(rooms[i]);
             }
             return Promise.resolve(result);
@@ -119,8 +114,9 @@ class PropertyService extends Service {
                     )
                         roomAmount--;
                 }
-                if (roomAmount <= 0) return Promise.resolve(false);
-                return Promise.resolve(true);
+                return Promise.resolve(roomAmount);
+                // if (roomAmount <= 0) return Promise.resolve(false);
+                // return Promise.resolve(true);
             }
         } catch (err) {
             return Promise.reject(err);

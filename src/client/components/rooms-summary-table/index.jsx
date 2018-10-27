@@ -80,14 +80,25 @@ export class RoomsSummaryTable extends React.Component {
                                             margin: "0"
                                         }}
                                     >
-                                        <button
-                                            style={{ height: "100%" }}
-                                            onClick={() => {
-                                                this.props.setRoom(room.id);
-                                            }}
-                                        >
-                                            Book now
-                                        </button>
+                                        {room.available ? (
+                                            <button
+                                                className={"btn-book-now"}
+                                                style={{ height: "100%" }}
+                                                onClick={() => {
+                                                    this.props.setRoom(room.id);
+                                                }}
+                                            >
+                                                Book now
+                                            </button>
+                                        ) : (
+                                            <button
+                                                className={"btn-sold-out"}
+                                                style={{ height: "100%", backgroundColor: "darkred" }}
+                                                disabled={true}
+                                            >
+                                                Sold out
+                                            </button>
+                                        )}
                                     </div>
                                 }
                                 onClose={this.props.clearBookingForm}

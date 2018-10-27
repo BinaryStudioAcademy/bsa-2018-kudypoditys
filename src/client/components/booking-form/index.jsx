@@ -29,7 +29,8 @@ export class BookingForm extends React.Component {
     generateRoomOptions = rooms => {
         let options = [];
         for (let i = 0; i < rooms.length; i++) {
-            options.push({ text: rooms[i].roomType.name, value: rooms[i].id });
+            const disabled = rooms[i].available == 0;
+            options.push({ text: rooms[i].roomType.name, value: rooms[i].id, disabled: disabled });
         }
         return options;
     };
