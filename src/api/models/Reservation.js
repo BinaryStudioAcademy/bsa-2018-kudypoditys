@@ -52,6 +52,11 @@ let Reservation = orm.define("reservation", {
         type: Sequelize.INTEGER,
         allowNull: true
     },
+
+    roomsCount: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
 });
 
 module.exports = Reservation;

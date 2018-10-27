@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize');
 const Service = require("./generalService");
 const propertyRepository = require("../repositories/propertyRepository");
 const roomService = require("./room");
@@ -37,6 +38,8 @@ class PropertyService extends Service {
                     value.checkIn,
                     value.checkOut
                 );
+                // TODO: Last reservation info should be here
+                rooms[i].lastReservation = { id: 10, price: 129};
                 result.push(rooms[i]);
             }
             return Promise.resolve(result);
@@ -69,10 +72,39 @@ class PropertyService extends Service {
         }
     }
 
-    async available(room, checkIn, checkOut) { // TODO: Rostik avalibility rooms logic
+    async getLastReservation(room, checkIn, checkOut){
+        // TODO: finish getLastReservation function
         try {
+            const Op = Sequelize.Op;
             const bookings = await reservationService.findByOptions({
                 roomId: room.id
+            });
+
+
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    }
+
+    async available(room, checkIn, checkOut) { // TODO: Rostik avalibility rooms logic
+        try {
+            const Op = Sequelize.Op;
+            const bookings = await reservationService.findByOptions({
+                roomId: room.id,
+                // TODO: move this to reservationService.findByRoomAndDates
+                [Op.or]: [
+                    {
+                        dateIn: {
+                            [Op.gte]: new Date(checkIn), // >= checkIn
+                            [Op.lt]: new Date(checkOut), // < checkOut
+                        },
+                    },{
+                        dateOut: {
+                            [Op.gt]: new Date(checkIn), // > checkIn
+                            [Op.lte]: new Date(checkOut), // <= checkOut
+                        },
+                    }
+                ],
             });
             const availabilities = await availabilityService.findByOptions({
                 roomId: room.id
@@ -102,18 +134,22 @@ class PropertyService extends Service {
                 }
                 return Promise.resolve(true);
             } else {
-                let roomAmount = room.amount;
-                for (let i = 0; i < bookings.length; i++) {
-                    if (
-                        reservationService.datesIntersect(
-                            checkIn,
-                            checkOut,
-                            bookings[i].dateIn,
-                            bookings[i].dateOut
-                        )
-                    )
-                        roomAmount--;
-                }
+                // TODO: fix reservation calculation
+                // actually both options are wrong. reservations should be counted for each day of booking separately
+                //
+                // let roomAmount = room.amount;
+                // for (let i = 0; i < bookings.length; i++) {
+                //     if (
+                //         reservationService.datesIntersect(
+                //             checkIn,
+                //             checkOut,
+                //             bookings[i].dateIn,
+                //             bookings[i].dateOut
+                //         )
+                //     )
+                //         roomAmount--;
+                // }
+                let roomAmount = room.amount - bookings.length;
                 return Promise.resolve(roomAmount);
                 // if (roomAmount <= 0) return Promise.resolve(false);
                 // return Promise.resolve(true);
