@@ -1,10 +1,10 @@
-const Sequelize = require('sequelize');
 const Service = require("./generalService");
 const propertyRepository = require("../repositories/propertyRepository");
 const roomService = require("./room");
 const reservationService = require("./reservation");
 const availabilityService = require("./availability");
 const moment = require("moment");
+const dateHelpers = require("../helpers/date-helpers")
 
 class PropertyService extends Service {
     async findById(id) {
@@ -38,8 +38,20 @@ class PropertyService extends Service {
                     value.checkIn,
                     value.checkOut
                 );
-                // TODO: Last reservation info should be here
-                rooms[i].lastReservation = { id: 10, price: 129};
+                const lastReservation = await this.getLastReservation(rooms[i], value.checkIn, value.checkOut);
+                if (lastReservation) {
+                    const daysTotal = dateHelpers.dateDiff('d',lastReservation.dateIn, lastReservation.dateOut);
+                    const bookedDaysAgo = dateHelpers.dateDiff('d',lastReservation.createdAt, dateHelpers.getEndOfTodayDate());
+                    rooms[i].lastReservation = {
+                        // dateBooked: lastReservation.createdAt,
+                        bookedDaysAgo: bookedDaysAgo,
+                        pricePerNight: lastReservation.priceTotal / daysTotal,
+                        // dateIn: lastReservation.dateIn,
+                        // dateOut: lastReservation.dateOut,
+                        // daysTotal: daysTotal,
+                        // priceTotal: lastReservation.priceTotal,
+                    };
+                };
                 result.push(rooms[i]);
             }
             return Promise.resolve(result);
@@ -73,14 +85,13 @@ class PropertyService extends Service {
     }
 
     async getLastReservation(room, checkIn, checkOut){
-        // TODO: finish getLastReservation function
         try {
-            const Op = Sequelize.Op;
-            const bookings = await reservationService.findByOptions({
-                roomId: room.id
+            const bookings = await reservationService.findByRoomAndDates(room, checkIn, checkOut);
+            bookings.sort( (a, b) => {
+                return b.id - a.id;
             });
-
-
+            const lastBooking = bookings[0];
+            return Promise.resolve(lastBooking);
         } catch (err) {
             return Promise.reject(err);
         }
@@ -88,24 +99,7 @@ class PropertyService extends Service {
 
     async available(room, checkIn, checkOut) { // TODO: Rostik avalibility rooms logic
         try {
-            const Op = Sequelize.Op;
-            const bookings = await reservationService.findByOptions({
-                roomId: room.id,
-                // TODO: move this to reservationService.findByRoomAndDates
-                [Op.or]: [
-                    {
-                        dateIn: {
-                            [Op.gte]: new Date(checkIn), // >= checkIn
-                            [Op.lt]: new Date(checkOut), // < checkOut
-                        },
-                    },{
-                        dateOut: {
-                            [Op.gt]: new Date(checkIn), // > checkIn
-                            [Op.lte]: new Date(checkOut), // <= checkOut
-                        },
-                    }
-                ],
-            });
+            const bookings = await reservationService.findByRoomAndDates(room, checkIn, checkOut);
             const availabilities = await availabilityService.findByOptions({
                 roomId: room.id
             });
