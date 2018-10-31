@@ -4,6 +4,7 @@ const roomService = require("./room");
 const reservationService = require("./reservation");
 const availabilityService = require("./availability");
 const moment = require("moment");
+const dateHelpers = require("../helpers/date-helpers")
 
 class PropertyService extends Service {
     async findById(id) {
@@ -30,15 +31,28 @@ class PropertyService extends Service {
             const rooms = await roomService.findByOptions({
                 propertyId: value.propertyId
             });
+
             for (let i = 0; i < rooms.length; i++) {
-                if (
-                    await this.available(
-                        rooms[i],
-                        value.checkIn,
-                        value.checkOut
-                    )
-                )
-                    result.push(rooms[i]);
+                rooms[i].available = await this.available(
+                    rooms[i],
+                    value.checkIn,
+                    value.checkOut
+                );
+                const lastReservation = await this.getLastReservation(rooms[i], value.checkIn, value.checkOut);
+                if (lastReservation) {
+                    const daysTotal = dateHelpers.dateDiff('d',lastReservation.dateIn, lastReservation.dateOut);
+                    const bookedDaysAgo = dateHelpers.dateDiff('d',lastReservation.createdAt, dateHelpers.getEndOfTodayDate());
+                    rooms[i].lastReservation = {
+                        // dateBooked: lastReservation.createdAt,
+                        bookedDaysAgo: bookedDaysAgo,
+                        pricePerNight: lastReservation.priceTotal / daysTotal,
+                        // dateIn: lastReservation.dateIn,
+                        // dateOut: lastReservation.dateOut,
+                        // daysTotal: daysTotal,
+                        // priceTotal: lastReservation.priceTotal,
+                    };
+                };
+                result.push(rooms[i]);
             }
             return Promise.resolve(result);
         } catch (err) {
@@ -70,11 +84,22 @@ class PropertyService extends Service {
         }
     }
 
+    async getLastReservation(room, checkIn, checkOut){
+        try {
+            const bookings = await reservationService.findByRoomAndDates(room, checkIn, checkOut);
+            bookings.sort( (a, b) => {
+                return b.id - a.id;
+            });
+            const lastBooking = bookings[0];
+            return Promise.resolve(lastBooking);
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    }
+
     async available(room, checkIn, checkOut) { // TODO: Rostik avalibility rooms logic
         try {
-            const bookings = await reservationService.findByOptions({
-                roomId: room.id
-            });
+            const bookings = await reservationService.findByRoomAndDates(room, checkIn, checkOut);
             const availabilities = await availabilityService.findByOptions({
                 roomId: room.id
             });
@@ -103,20 +128,25 @@ class PropertyService extends Service {
                 }
                 return Promise.resolve(true);
             } else {
-                let roomAmount = room.amount;
-                for (let i = 0; i < bookings.length; i++) {
-                    if (
-                        reservationService.datesIntersect(
-                            checkIn,
-                            checkOut,
-                            bookings[i].dateIn,
-                            bookings[i].dateOut
-                        )
-                    )
-                        roomAmount--;
-                }
-                if (roomAmount <= 0) return Promise.resolve(false);
-                return Promise.resolve(true);
+                // TODO: fix reservation calculation
+                // actually both options are wrong. reservations should be counted for each day of booking separately
+                //
+                // let roomAmount = room.amount;
+                // for (let i = 0; i < bookings.length; i++) {
+                //     if (
+                //         reservationService.datesIntersect(
+                //             checkIn,
+                //             checkOut,
+                //             bookings[i].dateIn,
+                //             bookings[i].dateOut
+                //         )
+                //     )
+                //         roomAmount--;
+                // }
+                let roomAmount = room.amount - bookings.length;
+                return Promise.resolve(roomAmount);
+                // if (roomAmount <= 0) return Promise.resolve(false);
+                // return Promise.resolve(true);
             }
         } catch (err) {
             return Promise.reject(err);

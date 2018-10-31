@@ -76,7 +76,7 @@ class ReservationRepository extends Repository {
     }
 
     findByOptions(options) {
-        return this.model.findAll({
+        const result = this.model.findAll({
             where: options,
             attributes: [
                 "id",
@@ -84,7 +84,8 @@ class ReservationRepository extends Repository {
                 "dateOut",
                 "guestsCount",
                 "orderCode",
-                "createdAt"
+                "createdAt",
+                "priceTotal",
             ],
             include: [
                 {
@@ -149,6 +150,8 @@ class ReservationRepository extends Repository {
                 }
             ]
         });
+
+        return result;
     }
 
     findById(id) {

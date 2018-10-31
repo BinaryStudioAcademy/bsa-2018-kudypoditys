@@ -8,7 +8,7 @@ export function mapStateToProps({userCabinet, propertyPage, header}) {
     return {
         user: userCabinet.user,
         property: propertyPage.property,
-        rooms: propertyPage.rooms, // TODO: rooms that available to get into
+        rooms: propertyPage.property.rooms, // TODO: rooms that available to get into
         currency: header.selectedCurrency,
         checkIn: propertyPage.availabilityInput.checkIn,
         checkOut: propertyPage.availabilityInput.checkOut
@@ -24,7 +24,11 @@ export function mapDispatchToProps(dispatch) {
             dispatch(bookingInputUpdate({ roomId: roomId }));
         },
         selectRoomsAmount(roomId, selectedRoomsAmount, rooms) {
-            dispatch(roomsSelectedAmountUpdate(roomId, selectedRoomsAmount, rooms));
+            rooms = rooms.map(room=>{
+                if (room.id == roomId) room.selectedAmount = selectedRoomsAmount;
+                return room;
+            });
+            dispatch(roomsSelectedAmountUpdate(roomId, rooms));
         },
         toggleRoomDescriptionCollapse(roomId) {
             dispatch(toggleDescriptionCollapse(roomId));

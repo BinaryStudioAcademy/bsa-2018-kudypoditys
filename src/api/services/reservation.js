@@ -1,5 +1,6 @@
 const Service = require("./generalService");
 const reservationRepository = require("../repositories/reservationRepository");
+const Sequelize = require('sequelize');
 const roomService = require("./room");
 const userRepository = require("../repositories/userRepository");
 const userService = require("./user");
@@ -31,6 +32,31 @@ class ReservationService extends Service {
         try {
             const reservation = await this.repository.findById(id);
             return Promise.resolve(reservation);
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    }
+
+    async findByRoomAndDates(room, checkIn, checkOut) {
+        try {
+            const Op = Sequelize.Op;
+            const bookings = await this.findByOptions({
+                roomId: room.id,
+                [Op.or]: [
+                    {
+                        dateIn: {
+                            [Op.gte]: new Date(checkIn), // >= checkIn
+                            [Op.lt]: new Date(checkOut), // < checkOut
+                        },
+                    },{
+                        dateOut: {
+                            [Op.gt]: new Date(checkIn), // > checkIn
+                            [Op.lte]: new Date(checkOut), // <= checkOut
+                        },
+                    }
+                ],
+            });
+            return Promise.resolve(bookings);
         } catch (err) {
             return Promise.reject(err);
         }
@@ -221,8 +247,9 @@ class ReservationService extends Service {
                     )
                         roomAmount--;
                 }
-                if (roomAmount <= 0) return Promise.resolve(false);
-                return Promise.resolve(true);
+                return Promise.resolve(roomAmount);
+                // if (roomAmount <= 0) return Promise.resolve(false);
+                // return Promise.resolve(true);
             }
         } catch (err) {
             return Promise.reject(err);
