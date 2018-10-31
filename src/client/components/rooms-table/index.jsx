@@ -211,6 +211,7 @@ export class RoomsTable extends React.Component {
                                         <BookingForm
                                             rooms={rooms}
                                             paymentTypes={property.paymentTypes}
+                                            handleQuantitySelectionChanged={this.handleQuantitySelectionChanged}
                                         />
                                     </Modal>
                                 ) : null}
