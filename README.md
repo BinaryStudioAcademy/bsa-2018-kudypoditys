@@ -55,6 +55,13 @@ http://127.0.0.1:5000/elastic/index/init_test
 http://127.0.0.1:5000/elastic/index/add_test
 ```
 
+Sequelize migration:
+```bash
+yarn sequelize db:migrate
+```
+```bash
+yarn sequelize db:migrate:undo
+```
 
 ## Recommended extensions
 It's recommened that you install the following Chrome extensions:

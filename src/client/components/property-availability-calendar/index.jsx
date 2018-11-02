@@ -19,26 +19,54 @@ import moment from "moment";
 import "./index.scss";
 
 export class AvailabilityCalendar extends React.Component {
+
     submitHandle = data => {
         this.props.handleSubmit(this.props.selectedRoom.availabilities);
     };
 
-    handleAmountChange = (e, { name, value }) => {
-        const data = this.props.selectedRoom.availabilities[name];
-        data.amount = value;
+    handleAmountChange = (fullDate, e, { name, value }) => {
+        let data = this.props.selectedRoom.availabilities[name];
+        if(data){
+            data.amount = parseInt(value);
+        } else {
+            data = {
+                amount: parseInt(value),
+                createdAt: new Date().toISOString(),
+                date: new Date().getDay(),
+                dateCal: fullDate.toISOString(),
+                id: name,
+                price: parseInt(value),
+                roomId: this.props.selectedRoom.id,
+                updatedAt: new Date().toISOString(),
+            }
+        }
 
         this.props.handleUpdate(data);
     };
 
     handlePriceChange = (e, { name, value }) => {
-        const data = this.props.selectedRoom.availabilities[name];
-        data.price = value;
+        let data = this.props.selectedRoom.availabilities[name];
+        if(data){
+            data.price = parseInt(value);
+        } else {
+            data = {
+                amount: this.props.selectedRoom.amount,
+                createdAt: new Date().toDateString(),
+                date: 30,
+                dateCal: "2018-12-29T22:00:00.000Z",
+                id: null,
+                price: parseInt(value),
+                roomId: this.props.selectedRoom.id,
+                updatedAt: new Date().toDateString(),
+            }
+        }
 
         this.props.handleUpdate(data);
     };
 
     getDaysArrayByMonth() {
         let daysInMonth = moment().daysInMonth();
+
         const arrDays = [];
 
         while (daysInMonth) {
@@ -49,11 +77,12 @@ export class AvailabilityCalendar extends React.Component {
                 number: moment()
                     .date(daysInMonth)
                     .format("DD"),
-                fullDate: moment().date(daysInMonth)
+                fullDate: moment().date(daysInMonth).hour(0).minute(0).second(0)
             };
             arrDays.push(current);
             daysInMonth--;
         }
+        let z = arrDays;
         return arrDays.reverse();
     }
 
@@ -123,6 +152,10 @@ export class AvailabilityCalendar extends React.Component {
                                     availability={
                                         this.props.selectedRoom.availabilities
                                     }
+                                    defaultAmount={
+                                        this.props.selectedRoom.amount
+                                    }
+                                    context={this}
                                     days={daysArray}
                                 />
                             </Table.Row>
@@ -141,6 +174,9 @@ export class AvailabilityCalendar extends React.Component {
                                 <DrawPrices
                                     availability={
                                         this.props.selectedRoom.availabilities
+                                    }
+                                    defaultPrice={
+                                        this.props.selectedRoom.price
                                     }
                                     onPriceChange={this.handlePriceChange}
                                 />

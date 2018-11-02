@@ -13,7 +13,11 @@ export class DrawPrices extends React.Component {
                         name={index}
                         className={"table-price"}
                         size={"mini"}
-                        value={this.props.availability[index].price}
+                        value={
+                            this.props.availability[index]
+                            ? this.props.availability[index].price
+                            : this.props.defaultPrice
+                        }
                         onChange={this.props.onPriceChange}
                     />
                 </Table.Cell>
