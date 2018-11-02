@@ -1,6 +1,7 @@
 import defaultState from "client/logic/defaultState";
 import {
     PROPERTY_CALENDAR_UPDATE,
+    PROPERTY_CALENDAR_ADD,
     AVAILABILITY_SUBMIT_SUCCESS,
     SELECTED_ROOM_CHANGE
 } from "./actionTypes";
@@ -16,6 +17,16 @@ export default function availabilityCalendarReducer(
             return {
                 ...state,
                 ...action.payload
+            };
+        }
+
+        case PROPERTY_CALENDAR_ADD: {
+            return {
+                ...state,
+                selectedRoom: {
+                    ...state.selectedRoom,
+                    availabilities: [...state.selectedRoom.availabilities, action.payload]
+                }
             };
         }
 

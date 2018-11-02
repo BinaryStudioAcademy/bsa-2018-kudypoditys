@@ -1,6 +1,7 @@
 import {
     availabilitySubmit,
     calendarUpdate,
+    calendarAdd,
     selectedRoomChange
 } from "client/logic/property-availability-calendar/actions";
 
@@ -20,6 +21,9 @@ export function mapDispatchToProps(dispatch) {
         },
         handleUpdate(data) {
             dispatch(calendarUpdate(data));
+        },
+        handleAdd(data) {
+            dispatch(calendarAdd(data));
         },
         selectedRoomChange(data) {
             dispatch(selectedRoomChange(data));

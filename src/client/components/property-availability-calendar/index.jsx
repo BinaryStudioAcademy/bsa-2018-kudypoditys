@@ -24,44 +24,50 @@ export class AvailabilityCalendar extends React.Component {
         this.props.handleSubmit(this.props.selectedRoom.availabilities);
     };
 
-    handleAmountChange = (fullDate, e, { name, value }) => {
-        let data = this.props.selectedRoom.availabilities[name];
+    handleAmountChange = (fullDate, e,  {name, value} ) => {
+        let data = this.props.selectedRoom.availabilities
+            .find(av=>{
+                return av.date == fullDate.date()
+            });
         if(data){
             data.amount = parseInt(value);
+            this.props.handleUpdate(data);
         } else {
             data = {
                 amount: parseInt(value),
                 createdAt: new Date().toISOString(),
-                date: new Date().getDay(),
+                date: fullDate.date(),
                 dateCal: fullDate.toISOString(),
-                id: name,
-                price: parseInt(value),
+                id: null,
+                price: this.props.selectedRoom.price,
                 roomId: this.props.selectedRoom.id,
                 updatedAt: new Date().toISOString(),
-            }
+            };
+            this.props.handleAdd(data);
         }
-
-        this.props.handleUpdate(data);
     };
 
-    handlePriceChange = (e, { name, value }) => {
-        let data = this.props.selectedRoom.availabilities[name];
+    handlePriceChange = (fullDate, e, { name, value }) => {
+        let data = this.props.selectedRoom.availabilities
+            .find(av=>{
+                return av.date == fullDate.date()
+            });
         if(data){
             data.price = parseInt(value);
+            this.props.handleUpdate(data);
         } else {
             data = {
-                amount: this.props.selectedRoom.amount,
-                createdAt: new Date().toDateString(),
-                date: 30,
-                dateCal: "2018-12-29T22:00:00.000Z",
+                amount:  this.props.selectedRoom.amount,
+                createdAt: new Date().toISOString(),
+                date: fullDate.date(),
+                dateCal: fullDate.toISOString(),
                 id: null,
                 price: parseInt(value),
                 roomId: this.props.selectedRoom.id,
-                updatedAt: new Date().toDateString(),
-            }
+                updatedAt: new Date().toISOString(),
+            };
+            this.props.handleAdd(data);
         }
-
-        this.props.handleUpdate(data);
     };
 
     getDaysArrayByMonth() {
@@ -155,7 +161,6 @@ export class AvailabilityCalendar extends React.Component {
                                     defaultAmount={
                                         this.props.selectedRoom.amount
                                     }
-                                    context={this}
                                     days={daysArray}
                                 />
                             </Table.Row>
@@ -179,6 +184,7 @@ export class AvailabilityCalendar extends React.Component {
                                         this.props.selectedRoom.price
                                     }
                                     onPriceChange={this.handlePriceChange}
+                                    days={daysArray}
                                 />
                             </Table.Row>
                         </Table.Body>
