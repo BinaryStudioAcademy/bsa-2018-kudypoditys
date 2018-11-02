@@ -35,13 +35,13 @@ export class AvailabilityCalendar extends React.Component {
         } else {
             data = {
                 amount: parseInt(value),
-                createdAt: new Date().toISOString(),
+                // createdAt: new Date().toISOString(),
                 date: fullDate.date(),
-                dateCal: fullDate.toISOString(),
-                id: null,
+                dateCal: fullDate.format("YYYY-MM-DD"),
+                // id: null,
                 price: this.props.selectedRoom.price,
                 roomId: this.props.selectedRoom.id,
-                updatedAt: new Date().toISOString(),
+                // updatedAt: new Date().toISOString(),
             };
             this.props.handleAdd(data);
         }
@@ -58,13 +58,13 @@ export class AvailabilityCalendar extends React.Component {
         } else {
             data = {
                 amount:  this.props.selectedRoom.amount,
-                createdAt: new Date().toISOString(),
+                // createdAt: new Date().toISOString(),
                 date: fullDate.date(),
-                dateCal: fullDate.toISOString(),
-                id: null,
+                dateCal: fullDate,
+                // id: null,
                 price: parseInt(value),
                 roomId: this.props.selectedRoom.id,
-                updatedAt: new Date().toISOString(),
+                // updatedAt: new Date().toISOString(),
             };
             this.props.handleAdd(data);
         }
@@ -88,7 +88,6 @@ export class AvailabilityCalendar extends React.Component {
             arrDays.push(current);
             daysInMonth--;
         }
-        let z = arrDays;
         return arrDays.reverse();
     }
 
