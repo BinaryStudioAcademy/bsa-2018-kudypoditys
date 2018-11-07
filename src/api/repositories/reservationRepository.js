@@ -86,6 +86,7 @@ class ReservationRepository extends Repository {
                 "orderCode",
                 "createdAt",
                 "priceTotal",
+                'roomsCount'
             ],
             include: [
                 {
