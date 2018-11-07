@@ -21,6 +21,7 @@ reservation
             guestsCount: req.body.guestsCount,
             userId: req.user.id,
             roomId: Number(req.body.roomId),
+            roomsCount: req.body.selectedRoomsAmount,
             paymentTypeId: Number(req.body.paymentTypeId)
         };
         reservationService

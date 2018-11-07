@@ -132,6 +132,7 @@ export class BookingForm extends React.Component {
                             dateOut: Number(endDate),
                             guestsCount: adults + children,
                             roomId: roomId ? roomId : roomOptions[0].value,
+                            selectedRoomsAmount,
                             paymentTypeId: paymentTypeId
                                 ? paymentTypeId
                                 : paymentOptions[0].value
