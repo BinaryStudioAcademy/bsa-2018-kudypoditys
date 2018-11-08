@@ -9,7 +9,7 @@ AWS.config.update({ region: "eu-central-1" });
 var sqs = new AWS.SQS({ apiVersion: "2012-11-05" });
 
 class MailService {
-    sendMail(user, mailOptionsObj, action) {
+    sendMailByAws(user, mailOptionsObj, action) {
         console.log(user, mailOptionsObj);
         const mailOptions = {
             from: "kudypoditys@gmail.com",
@@ -56,7 +56,17 @@ class MailService {
         );
     }
 
-    sendMail____(user, mailOptionsObj, action) {
+    sendMailAction(receiver, mailOptions, action) {
+        const body = `
+            <a href="${process.env.BASE_URL}/${action}?email=${receiver.email}&token=${
+                mailOptions.verifyStringParam
+                }">
+            ${mailOptions.message}
+            </a>`
+        this.sendMail(receiver, mailOptions.subject, body);
+    }
+
+    sendMail(receiver, subject, body) {
         const EMAIL_USER = process.env.EMAIL_USER;
         const EMAIL_PASS = process.env.EMAIL_PASS;
 
@@ -67,17 +77,12 @@ class MailService {
                 pass: EMAIL_PASS
             }
         });
-        const BASE_URL = process.env.BASE_URL;
+
         const mailOptions = {
             from: EMAIL_USER,
-            to: user.email,
-            subject: mailOptionsObj.subject,
-            html: `
-        <a href="${BASE_URL}/${action}?email=${user.email}&token=${
-                mailOptionsObj.verifyStringParam
-            }">
-          ${mailOptionsObj.message}
-        </a>`
+            to: receiver.email,
+            subject: subject,
+            html: body
         };
         console.log(mailOptions);
         return transporter.sendMail(mailOptions).then(_ => true);
