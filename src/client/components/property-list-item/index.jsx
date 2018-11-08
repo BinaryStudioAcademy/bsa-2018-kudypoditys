@@ -57,6 +57,9 @@ export class PropertyListItem extends React.Component {
         );
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
 
+        const availableRoomsCount = propertyItemData.rooms.length;
+        const inHighDemond = availableRoomsCount && availableRoomsCount <= 3;
+
         let currentBg;
         if (itemIndex === 0) {
             currentBg = "#f9fbff";
@@ -251,6 +254,18 @@ export class PropertyListItem extends React.Component {
                                         className="search_result__message"
                                         style={{
                                             display:
+                                                inHighDemond
+                                                    ? "block"
+                                                    : "none"
+                                        }}
+                                    >
+                                        In high demond - only {availableRoomsCount} room left!
+                                    </Message>
+
+                                    <Message
+                                        className="search_result__message"
+                                        style={{
+                                            display:
                                                 propertyItemData.id % 2 === 0
                                                     ? "block"
                                                     : "none"
@@ -263,14 +278,14 @@ export class PropertyListItem extends React.Component {
                                 <Button
                                     className="search-page__main-button"
                                     color={
-                                        propertyItemData.availableRoomsCount ===
+                                        availableRoomsCount ===
                                             0
                                             ? "grey"
                                             : "blue"
                                     }
                                     floated="right"
                                     onClick={
-                                        propertyItemData.availableRoomsCount ===
+                                        availableRoomsCount ===
                                             0
                                             ? ""
                                             : this.handleRedirectToDetails
