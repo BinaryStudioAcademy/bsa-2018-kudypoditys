@@ -23,6 +23,7 @@ import {
 } from "client/helpers/avgReviewRating";
 import RatingBlock from "../reviews/ratingBlock";
 import { convert } from '../../helpers/convertCurrency';
+import { PropertyItem } from '../user-cabinet-properties-tab/propertyItem';
 
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
@@ -41,6 +42,21 @@ export class PropertyListItem extends React.Component {
 
     componentDidMount() {
         //  this.props.actions.fetchAllProperty();
+    }
+
+    // Show “Bestseller” icon if booked more then 15 times in the last 24 hours
+    isBestseller(property) {
+        let counter = 0;
+        property.rooms.forEach((room) => {
+            room.reservations.forEach((reservation) => {
+                let now = Math.round(new Date().getTime() / 1000);
+                let booking = Math.round(new Date(reservation.createdAt).getTime() / 1000);
+                if (Math.round(now - booking) / 3600 <= 24) {
+                    counter++;
+                }
+            })
+        })
+        return (counter >= 15) ? true : false;
     }
 
     render() {
@@ -70,6 +86,7 @@ export class PropertyListItem extends React.Component {
             }
         }
         let nightsCount = searchData.endDate.diff(searchData.startDate, "days");
+
         return (
             <Card
                 className="property_card"
@@ -100,6 +117,21 @@ export class PropertyListItem extends React.Component {
                                 }}
                             >
                                 {propertyItemData.mealType}
+                            </Label>
+                            <Label
+                                as="a"
+                                color="orange"
+                                content="Bestseller"
+                                ribbon
+                                style={{
+                                    position: "absolute",
+                                    top: "25px",
+                                    left: "-14px",
+                                    zIndex: "1",
+                                    display:
+                                        this.isBestseller(propertyItemData) ? "block" : "none"
+                                }}
+                            >
                             </Label>
                             <Image
                                 src={propertyItemData.images[0].url}
