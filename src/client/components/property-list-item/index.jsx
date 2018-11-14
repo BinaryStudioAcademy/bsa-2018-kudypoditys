@@ -111,9 +111,6 @@ export class PropertyListItem extends React.Component {
 
         let isBestseller = this.isBestsellerFunction(propertyItemData);
         let isBreakfast = this.isBreakfastFunction(propertyItemData);
-        console.log(this.props);
-        console.log(isBestseller);
-        console.log(isBreakfast);
 
         return (
             <Card
