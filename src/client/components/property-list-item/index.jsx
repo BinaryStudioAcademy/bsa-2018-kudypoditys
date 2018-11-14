@@ -23,7 +23,7 @@ import {
 } from "client/helpers/avgReviewRating";
 import RatingBlock from "../reviews/ratingBlock";
 import { convert } from '../../helpers/convertCurrency';
-import { PropertyItem } from '../user-cabinet-properties-tab/propertyItem';
+import { toUnixTimeSeconds, isWithinLastDay } from '../../helpers/date-helpers';
 
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
@@ -49,9 +49,9 @@ export class PropertyListItem extends React.Component {
         let counter = 0;
         property.rooms.forEach((room) => {
             room.reservations.forEach((reservation) => {
-                let now = Math.round(new Date().getTime() / 1000);
-                let booking = Math.round(new Date(reservation.createdAt).getTime() / 1000);
-                if (Math.round(now - booking) / 3600 <= 24) {
+                let current = toUnixTimeSeconds(new Date());
+                let booking = toUnixTimeSeconds(new Date(reservation.createdAt));
+                if (isWithinLastDay(current, booking)) {
                     counter++;
                 }
             })
