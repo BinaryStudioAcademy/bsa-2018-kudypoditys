@@ -44,8 +44,25 @@ export class PropertyListItem extends React.Component {
         //  this.props.actions.fetchAllProperty();
     }
 
+    // Check is searched room for two people and finded rooms were booked more than 20 times
+    isGreatForTwo(propertyRooms) {
+        let counter = 0;
+        let search = this.props.search;
+        if (search.rooms === 1 &&
+                search.adults === 2 && search.children === 0) {
+                    propertyRooms.forEach((room) => {
+                        if (room.roomType.name === "Double Room") {
+                            counter += room.reservations.length;
+                        }
+                    })
+        }
+        return (counter >= 20) ? true : false;
+    }
+
+    is
+
     // Show “Bestseller” icon if booked more then 15 times in the last 24 hours
-    isBestseller(property) {
+    isBestsellerFunction(property) {
         let counter = 0;
         property.rooms.forEach((room) => {
             room.reservations.forEach((reservation) => {
@@ -57,6 +74,11 @@ export class PropertyListItem extends React.Component {
             })
         })
         return (counter >= 15) ? true : false;
+    }
+
+    // Show “Breakfast included” icon if breakfast included in each room
+    isBreakfastFunction(property) {
+        return false;
     }
 
     render() {
@@ -86,6 +108,12 @@ export class PropertyListItem extends React.Component {
             }
         }
         let nightsCount = searchData.endDate.diff(searchData.startDate, "days");
+
+        let isBestseller = this.isBestsellerFunction(propertyItemData);
+        let isBreakfast = this.isBreakfastFunction(propertyItemData);
+        console.log(this.props);
+        console.log(isBestseller);
+        console.log(isBreakfast);
 
         return (
             <Card
@@ -120,6 +148,24 @@ export class PropertyListItem extends React.Component {
                             </Label>
                             <Label
                                 as="a"
+                                color="blue"
+                                content="Great for two"
+                                ribbon
+                                style={{
+                                    position: "absolute",
+                                    top: "25px",
+                                    left: "-14px",
+                                    zIndex: "1",
+                                    display:
+                                        this.isGreatForTwo(propertyItemData.rooms) &&
+                                            isBestseller === false &&
+                                                isBreakfast === false
+                                                ? "block"
+                                                : "none"
+                                }}
+                            ></Label>
+                            <Label
+                                as="a"
                                 color="orange"
                                 content="Bestseller"
                                 ribbon
@@ -129,10 +175,16 @@ export class PropertyListItem extends React.Component {
                                     left: "-14px",
                                     zIndex: "1",
                                     display:
-                                        this.isBestseller(propertyItemData) ? "block" : "none"
+                                        isBestseller === true ? "block" : "none"
                                 }}
                             >
                             </Label>
+                            <Label
+                                style={{
+                                    display: "none"
+                                }}
+                            ></Label>
+
                             <Image
                                 src={propertyItemData.images[0].url}
                                 floated="left"
