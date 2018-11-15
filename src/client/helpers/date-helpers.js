@@ -13,7 +13,12 @@ function getDaysDifference(checkIn, checkOut) {
     return daysStaying;
 }
 
+function isWithinLastDay(current, booking) {
+    return (Math.round(current - booking) / 3600 <= 24) ? true : false;
+}
+
 module.exports = {
     toUnixTimeSeconds,
-    getDaysDifference
+    getDaysDifference,
+    isWithinLastDay
 };

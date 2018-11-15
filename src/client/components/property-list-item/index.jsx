@@ -9,7 +9,8 @@ import {
     Icon,
     Header,
     Label,
-    Rating
+    Rating,
+    Popup
 } from "semantic-ui-react";
 import "./index.scss";
 import PropTypes from "prop-types";
@@ -23,6 +24,7 @@ import {
 } from "client/helpers/avgReviewRating";
 import RatingBlock from "../reviews/ratingBlock";
 import { convert } from '../../helpers/convertCurrency';
+import { toUnixTimeSeconds, isWithinLastDay } from '../../helpers/date-helpers';
 
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
@@ -41,6 +43,50 @@ export class PropertyListItem extends React.Component {
 
     componentDidMount() {
         //  this.props.actions.fetchAllProperty();
+    }
+
+    // Check is searched room for two people and finded rooms were booked more than 20 times
+    isGreatForTwo(propertyRooms) {
+        let counter = 0;
+        let search = this.props.search;
+        if (search.rooms === 1 &&
+                search.adults === 2 && search.children === 0) {
+                    propertyRooms.forEach((room) => {
+                        if (room.roomType.name === "Double Room") {
+                            counter += room.reservations.length;
+                        }
+                    })
+        }
+        return (counter >= 20) ? true : false;
+    }
+
+    // Show “Bestseller” icon if booked more then 15 times in the last 24 hours
+    isBestsellerFunction(property) {
+        let counter = 0;
+        property.rooms.forEach((room) => {
+            room.reservations.forEach((reservation) => {
+                let current = toUnixTimeSeconds(new Date());
+                let booking = toUnixTimeSeconds(new Date(reservation.createdAt));
+                if (isWithinLastDay(current, booking)) {
+                    counter++;
+                }
+            })
+        })
+        return (counter >= 15) ? true : false;
+    }
+
+    howManyBookings(property) {
+        let counter = 0;
+        property.rooms.forEach((room) => {
+            counter += room.reservations.length;
+        })
+        return counter;
+    }
+
+    // Show “Breakfast included” icon if breakfast included in each room
+    isBreakfastFunction(property) {
+        // console.log(property);
+        return false;
     }
 
     render() {
@@ -70,6 +116,10 @@ export class PropertyListItem extends React.Component {
             }
         }
         let nightsCount = searchData.endDate.diff(searchData.startDate, "days");
+
+        let isBestseller = this.isBestsellerFunction(propertyItemData);
+        let isBreakfast = this.isBreakfastFunction(propertyItemData);
+
         return (
             <Card
                 className="property_card"
@@ -101,6 +151,48 @@ export class PropertyListItem extends React.Component {
                             >
                                 {propertyItemData.mealType}
                             </Label>
+                            <Label
+                                as="a"
+                                color="blue"
+                                content="Great for two"
+                                ribbon
+                                style={{
+                                    position: "absolute",
+                                    top: "25px",
+                                    left: "-14px",
+                                    zIndex: "1",
+                                    display:
+                                        this.isGreatForTwo(propertyItemData.rooms) &&
+                                            isBestseller === false &&
+                                                isBreakfast === false
+                                                ? "block"
+                                                : "none"
+                                }}
+                            ></Label>
+                            <Popup
+                                trigger={<Label
+                                    as="a"
+                                    color="orange"
+                                    content="Bestseller"
+                                    ribbon
+                                    style={{
+                                        position: "absolute",
+                                        top: "25px",
+                                        left: "-14px",
+                                        zIndex: "1",
+                                        display:
+                                            isBestseller === true ? "block" : "none"
+                                    }}
+                                ></Label>}
+                                inverted
+                            >This is a bestselling property in {propertyItemData.city.name} right now - travellers like you booked
+                                                        it {this.howManyBookings(propertyItemData)} times in the last 24 hours!</Popup>
+                            <Label
+                                style={{
+                                    display: "none"
+                                }}
+                            ></Label>
+
                             <Image
                                 src={propertyItemData.images[0].url}
                                 floated="left"
