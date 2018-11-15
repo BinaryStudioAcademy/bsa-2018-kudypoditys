@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Button, List, Divider, Icon, Grid } from "semantic-ui-react";
+import {Button, List, Divider, Icon, Grid, Label} from "semantic-ui-react";
 import { required } from 'client/regexValidationService';
 import { Field } from 'redux-form';
 
@@ -16,6 +16,7 @@ class BedInRoomsFields extends Component {
           <Button type="button" onClick={() => fields.push()}>
             Add Bed
           </Button>
+          {error ? <Label color='red' pointing="left">{error}</Label> : null}
         </List.Item>
         {fields.map((bed, index) => (
           <Fragment>
@@ -59,7 +60,6 @@ class BedInRoomsFields extends Component {
             <Divider />
           </Fragment>
         ))}
-        {error && <List.Item>{error}</List.Item>}
       </List>
     )
   }

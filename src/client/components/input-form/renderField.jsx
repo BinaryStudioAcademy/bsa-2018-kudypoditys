@@ -13,7 +13,9 @@ const renderField = ({ input, type, icon, label, className, pointing, meta: { to
             icon={icon}
             fluid
             iconPosition='left'
-            className={className}
+            className={(touched && error)
+                ? (className !== undefined) ? `${className} field error` : 'field error'
+                : (className !== undefined) ? className : ''}
         />
     </React.Fragment>
 );

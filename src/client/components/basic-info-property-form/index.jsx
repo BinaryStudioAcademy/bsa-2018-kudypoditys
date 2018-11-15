@@ -8,7 +8,7 @@ import {
     phoneNumber
 } from "client/regexValidationService";
 import { Field, reduxForm } from "redux-form";
-import renderTextarea from "client/components/input-form/textarea";
+import renderTextarea from "../input-form/textarea";
 import renderDropdown from "../input-form/dropdown";
 import { mapDispatchToProps, mapStateToProps } from "./container";
 import "./index.scss";
@@ -40,7 +40,7 @@ class BasicInfoPropertyForm extends Component {
         });
     };
 
-    renderAngolia = ({ input }) => {
+    renderAngolia = ({ input, className, meta: { touched, error } }) => {
         return (
             <AlgoliaPlaces
                 name={input.name}
@@ -56,6 +56,9 @@ class BasicInfoPropertyForm extends Component {
                         ...suggestion.latlng
                     });
                 }}
+                className={(touched && error)
+                    ? (className !== undefined) ? `${className} field-error` : 'field-error'
+                    : (className !== undefined) ? className : ''}
             />
         );
     };
