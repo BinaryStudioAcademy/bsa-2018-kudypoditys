@@ -11,7 +11,8 @@ class AvailabilityService extends Service {
     }
 
     addAvailability(availability) {
-        return availabilityRepository.create(availability);
+        const result = availabilityRepository.create(availability);
+        return result;
     }
 
     updateAvailability(id, availability) {
@@ -23,8 +24,13 @@ class AvailabilityService extends Service {
     }
     async updateAvailabilityArray(availabilities) {
         const response = await availabilities.map(availability => {
-            return availabilityRepository.updateById(
-                availability.id,
+            if( availability.id )
+                // TODO: !!!! Try to find and update record by roomId + dateCal before adding new one !!!!
+                return availabilityRepository.updateById(
+                    availability.id,
+                    availability
+                );
+            return availabilityRepository.create(
                 availability
             );
         });

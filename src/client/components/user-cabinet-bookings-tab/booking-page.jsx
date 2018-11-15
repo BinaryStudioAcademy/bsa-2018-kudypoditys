@@ -47,6 +47,7 @@ class BookingPage extends React.Component {
             property.reviews,
             "avgReview"
         );
+        const roomsCount = (booking.roomsCount > 1)? `x${booking.roomsCount} `:"";
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
         const pStyle = {
             marginLeft: "10px",
@@ -119,7 +120,7 @@ class BookingPage extends React.Component {
                         </p>
                         <p style={pStyle}>
                             <Icon name="bed" />
-                            {room.roomType.name}
+                            {roomsCount}{room.roomType.name}
                         </p>
                         <p style={pStyle}>
                             <Icon name="barcode" />

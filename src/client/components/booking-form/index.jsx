@@ -47,11 +47,6 @@ export class BookingForm extends React.Component {
     datesChanged = selectedDates => {
         this.props.onDatesChange(this.props.propertyId, selectedDates);
     };
-    handleQuantitySelectionChanged = (e, value, roomId) => {
-        const { rooms, selectRoomsAmount } = this.props;
-        // this.props.selectRoomsAmount(roomId, roomsAmount, sortedRooms);
-        roomQuantityChanged(rooms, value, roomId, selectRoomsAmount);
-    };
 
     constructor(props) {
         super(props);
@@ -137,6 +132,7 @@ export class BookingForm extends React.Component {
                             dateOut: Number(endDate),
                             guestsCount: adults + children,
                             roomId: roomId ? roomId : roomOptions[0].value,
+                            selectedRoomsAmount,
                             paymentTypeId: paymentTypeId
                                 ? paymentTypeId
                                 : paymentOptions[0].value
@@ -230,7 +226,7 @@ export class BookingForm extends React.Component {
                                 roomsSelectedAmount={selectedRoomsAmount}
                                 roomsAvailable={roomsAmount + 1}
                                 onSelectionChanged={
-                                    this.handleQuantitySelectionChanged
+                                    this.props.handleQuantitySelectionChanged
                                 }
                             />
                         </Form.Field>
