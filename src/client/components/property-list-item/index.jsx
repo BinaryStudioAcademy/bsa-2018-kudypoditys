@@ -9,7 +9,8 @@ import {
     Icon,
     Header,
     Label,
-    Rating
+    Rating,
+    Popup
 } from "semantic-ui-react";
 import "./index.scss";
 import PropTypes from "prop-types";
@@ -59,8 +60,6 @@ export class PropertyListItem extends React.Component {
         return (counter >= 20) ? true : false;
     }
 
-    is
-
     // Show “Bestseller” icon if booked more then 15 times in the last 24 hours
     isBestsellerFunction(property) {
         let counter = 0;
@@ -76,8 +75,17 @@ export class PropertyListItem extends React.Component {
         return (counter >= 15) ? true : false;
     }
 
+    howManyBookings(property) {
+        let counter = 0;
+        property.rooms.forEach((room) => {
+            counter += room.reservations.length;
+        })
+        return counter;
+    }
+
     // Show “Breakfast included” icon if breakfast included in each room
     isBreakfastFunction(property) {
+        // console.log(property);
         return false;
     }
 
@@ -161,21 +169,24 @@ export class PropertyListItem extends React.Component {
                                                 : "none"
                                 }}
                             ></Label>
-                            <Label
-                                as="a"
-                                color="orange"
-                                content="Bestseller"
-                                ribbon
-                                style={{
-                                    position: "absolute",
-                                    top: "25px",
-                                    left: "-14px",
-                                    zIndex: "1",
-                                    display:
-                                        isBestseller === true ? "block" : "none"
-                                }}
-                            >
-                            </Label>
+                            <Popup
+                                trigger={<Label
+                                    as="a"
+                                    color="orange"
+                                    content="Bestseller"
+                                    ribbon
+                                    style={{
+                                        position: "absolute",
+                                        top: "25px",
+                                        left: "-14px",
+                                        zIndex: "1",
+                                        display:
+                                            isBestseller === true ? "block" : "none"
+                                    }}
+                                ></Label>}
+                                inverted
+                            >This is a bestselling property in {propertyItemData.city.name} right now - travellers like you booked
+                                                        it {this.howManyBookings(propertyItemData)} times in the last 24 hours!</Popup>
                             <Label
                                 style={{
                                     display: "none"
