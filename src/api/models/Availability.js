@@ -10,6 +10,11 @@ module.exports = orm.define("availability", {
         type: Sequelize.INTEGER,
         allowNull: false
     },
+    dateCal: {
+        type: Sequelize.DATE,
+        defaultValue: new Date(),
+        allowNull: false,
+    },
     price: {
         type: Sequelize.INTEGER,
         allowNull: false

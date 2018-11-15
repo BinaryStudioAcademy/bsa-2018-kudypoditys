@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import superagent from 'superagent';
 import Dropzone from 'react-dropzone'
-import { Loader, Segment, Dimmer, Icon, Button } from 'semantic-ui-react';
+import {Loader, Segment, Dimmer, Icon, Button, Label} from 'semantic-ui-react';
 import './index.scss';
 require('dotenv').config();
 
@@ -64,7 +64,7 @@ export default class PhotoDropZone extends Component {
 
   render() {
     const { isLoading } = this.state;
-    const { input } = this.props;
+    const { input, meta: { error, touched } } = this.props;
     const images = input.value || [];
 
     return (
@@ -97,6 +97,7 @@ export default class PhotoDropZone extends Component {
           >
             <Icon name='image' />
             Add photos</Button>
+            {(touched && error) ? <Label color='red' pointing="above">{error}</Label> : null}
         </Dropzone>
 
         {isLoading &&

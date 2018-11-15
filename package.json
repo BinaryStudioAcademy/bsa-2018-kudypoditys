@@ -6,11 +6,12 @@
   "scripts": {
     "start": "npm run build && node server.js",
     "start-client": "node scripts/start.js",
-    "start-api": "nodemon server.js",
+    "start-api": "nodemon --inspect=0.0.0.0:9228 server.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "sequelize": "sequelize --config=config/config.js --options-path=config/sequelize_options.js"
   },
   "repository": {
     "type": "git",
@@ -91,12 +92,15 @@
     "react-dropzone": "^5.0.1",
     "react-google-map": "^3.1.1",
     "react-google-maps-loader": "^4.2.3",
+    "react-hover": "^1.3.2",
     "react-images-upload": "^1.2.2",
     "react-map-gl": "^3.3.4",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scrollable-anchor": "^0.6.1",
     "react-slick": "^0.23.1",
+    "react-tooltip": "^3.9.0",
+    "react-tooltip-lite": "^1.7.1",
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",
     "redux-saga": "^0.16.0",
@@ -105,6 +109,7 @@
     "semantic-ui-calendar-react": "^0.8.0",
     "semantic-ui-react": "^0.82.1",
     "sequelize": "^4.38.0",
+    "sequelize-cli": "^5.2.0",
     "shortid": "^2.2.13",
     "slick-carousel": "^1.8.1",
     "socket.io": "^2.1.1",

@@ -1,8 +1,10 @@
 import React, { Fragment, Component } from "react";
 import { connect } from 'react-redux';
+import { Label } from "semantic-ui-react";
 import './index.scss';
 import { Header, Button, Form, List, Container } from "semantic-ui-react";
 import { FieldArray, reduxForm } from 'redux-form';
+import { required } from "client/regexValidationService";
 
 import RoomItems from './room-items';
 import RoomForm from './room-form';
@@ -59,7 +61,7 @@ class RoomsPropertyForm extends Component {
             <Button className="add-room-btn" type="button" onClick={() => { this.updateActiveIndex(fields.length); }}>
               Add Room
             </Button>
-            {submitFailed && error && <span>{error}</span> || <Fragment />}
+            {submitFailed && error && <Label color='red' pointing="left">{error}</Label> || <Fragment />}
           </List.Item>
         }
 
@@ -97,7 +99,12 @@ class RoomsPropertyForm extends Component {
           <Header as="h2" style={{ fontSize: '18px' }}>
             Rooms
             </Header>
-          <FieldArray form="roomsPropertyRegistrationForm" name={`rooms`} component={this.renderRoomFields} />
+          <FieldArray
+              form="roomsPropertyRegistrationForm"
+              name={`rooms`}
+              component={this.renderRoomFields}
+              validate={[required]}
+          />
         </Container>
 
         <Button

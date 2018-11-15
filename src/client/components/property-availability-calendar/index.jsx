@@ -19,26 +19,60 @@ import moment from "moment";
 import "./index.scss";
 
 export class AvailabilityCalendar extends React.Component {
+
     submitHandle = data => {
         this.props.handleSubmit(this.props.selectedRoom.availabilities);
     };
 
-    handleAmountChange = (e, { name, value }) => {
-        const data = this.props.selectedRoom.availabilities[name];
-        data.amount = value;
-
-        this.props.handleUpdate(data);
+    handleAmountChange = (fullDate, e,  {name, value} ) => {
+        let data = this.props.selectedRoom.availabilities
+            .find(av=>{
+                return av.date == fullDate.date()
+            });
+        if(data){
+            data.amount = parseInt(value);
+            this.props.handleUpdate(data);
+        } else {
+            data = {
+                amount: parseInt(value),
+                // createdAt: new Date().toISOString(),
+                date: fullDate.date(),
+                dateCal: fullDate.format("YYYY-MM-DD"),
+                // id: null,
+                price: this.props.selectedRoom.price,
+                roomId: this.props.selectedRoom.id,
+                // updatedAt: new Date().toISOString(),
+            };
+            this.props.handleAdd(data);
+        }
     };
 
-    handlePriceChange = (e, { name, value }) => {
-        const data = this.props.selectedRoom.availabilities[name];
-        data.price = value;
-
-        this.props.handleUpdate(data);
+    handlePriceChange = (fullDate, e, { name, value }) => {
+        let data = this.props.selectedRoom.availabilities
+            .find(av=>{
+                return av.date == fullDate.date()
+            });
+        if(data){
+            data.price = parseInt(value);
+            this.props.handleUpdate(data);
+        } else {
+            data = {
+                amount:  this.props.selectedRoom.amount,
+                // createdAt: new Date().toISOString(),
+                date: fullDate.date(),
+                dateCal: fullDate,
+                // id: null,
+                price: parseInt(value),
+                roomId: this.props.selectedRoom.id,
+                // updatedAt: new Date().toISOString(),
+            };
+            this.props.handleAdd(data);
+        }
     };
 
     getDaysArrayByMonth() {
         let daysInMonth = moment().daysInMonth();
+
         const arrDays = [];
 
         while (daysInMonth) {
@@ -49,7 +83,7 @@ export class AvailabilityCalendar extends React.Component {
                 number: moment()
                     .date(daysInMonth)
                     .format("DD"),
-                fullDate: moment().date(daysInMonth)
+                fullDate: moment().date(daysInMonth).hour(0).minute(0).second(0)
             };
             arrDays.push(current);
             daysInMonth--;
@@ -123,6 +157,9 @@ export class AvailabilityCalendar extends React.Component {
                                     availability={
                                         this.props.selectedRoom.availabilities
                                     }
+                                    defaultAmount={
+                                        this.props.selectedRoom.amount
+                                    }
                                     days={daysArray}
                                 />
                             </Table.Row>
@@ -142,7 +179,11 @@ export class AvailabilityCalendar extends React.Component {
                                     availability={
                                         this.props.selectedRoom.availabilities
                                     }
+                                    defaultPrice={
+                                        this.props.selectedRoom.price
+                                    }
                                     onPriceChange={this.handlePriceChange}
+                                    days={daysArray}
                                 />
                             </Table.Row>
                         </Table.Body>

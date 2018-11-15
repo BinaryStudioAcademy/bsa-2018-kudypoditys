@@ -22,6 +22,13 @@ let Room = orm.define('room', {
     description: {
         type: Sequelize.TEXT,
         allowNull: true
+    },
+    available: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
+    lastReservation: {
+        type: Sequelize.NONE
     }
 });
 

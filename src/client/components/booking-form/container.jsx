@@ -9,7 +9,7 @@ export function mapStateToProps(state, ownProps) {
     const { property, bookingInput } = state.propertyPage;
     const room = ownProps.rooms.find(r => r.id === bookingInput.roomId);
     // console.log(room);
-    const { selectedAmount, amount, price } = room
+    const { selectedAmount, available, price } = room
         ? room
         : { selectedAmount: 1, amount: 1, price: 0 };
 
@@ -26,7 +26,7 @@ export function mapStateToProps(state, ownProps) {
         children: bookingInput.children,
         roomId: bookingInput.roomId,
         selectedRoomsAmount: selectedAmount,
-        roomsAmount: amount,
+        roomsAmount: parseInt(available),
         roomPrice: price,
         paymentTypeId: bookingInput.paymentTypeId,
         error: bookingInput.error,

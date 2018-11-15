@@ -1,12 +1,13 @@
 const Service = require("./generalService");
 const reservationRepository = require("../repositories/reservationRepository");
+const Sequelize = require('sequelize');
 const roomService = require("./room");
 const userRepository = require("../repositories/userRepository");
 const userService = require("./user");
 const availabilityService = require("./availability");
 const moment = require("moment");
 const shortid = require("shortid");
-const nodemailer = require("nodemailer");
+const mailService = require("./mail");
 
 class ReservationService extends Service {
     async findAll() {
@@ -36,48 +37,47 @@ class ReservationService extends Service {
         }
     }
 
-    async sendMailBookingSuccess(userId, orderCode) {
-        const EMAIL_USER = process.env.EMAIL_USER;
-        const EMAIL_PASS = process.env.EMAIL_PASS;
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: EMAIL_USER,
-                pass: EMAIL_PASS
-            }
-        });
-
-        const user = await userRepository.findById(userId);
-        const mailOptions = {
-            from: EMAIL_USER,
-            to: user.email,
-            subject: "KudyPoditys booking success",
-            html: `You have successfully booked, your order code <b> ${orderCode} </b>`
-        };
-        return transporter.sendMail(mailOptions);
+    async findByRoomAndDates(room, checkIn, checkOut) {
+        try {
+            const Op = Sequelize.Op;
+            const bookings = await this.findByOptions({
+                roomId: room.id,
+                [Op.or]: [
+                    {
+                        dateIn: {
+                            [Op.gte]: new Date(checkIn), // >= checkIn
+                            [Op.lt]: new Date(checkOut), // < checkOut
+                        },
+                    },{
+                        dateOut: {
+                            [Op.gt]: new Date(checkIn), // > checkIn
+                            [Op.lte]: new Date(checkOut), // <= checkOut
+                        },
+                    }
+                ],
+            });
+            return Promise.resolve(bookings);
+        } catch (err) {
+            return Promise.reject(err);
+        }
     }
 
-    async sendMailBookingCancelled(userEmail, reason, reservation) {
-        const EMAIL_USER = process.env.EMAIL_USER;
-        const EMAIL_PASS = process.env.EMAIL_PASS;
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: EMAIL_USER,
-                pass: EMAIL_PASS
-            }
-        });
-        const mailOptions = {
-            from: EMAIL_USER,
-            to: userEmail,
-            subject: "KudyPoditys booking cancellation",
-            html: `We are sorry, but your property owner has cancelled your booking (№${
+    async sendMailBookingSuccess(userId, orderCode) {
+        const receiver = await userRepository.findById(userId);
+        const subject = "KudyPoditys booking success";
+        const body = `You have successfully booked, your order code <b> ${orderCode} </b>`;
+        return mailService.sendMail(receiver, subject, body);
+    }
+
+    async sendMailBookingCancelled(receiver, reason, reservation) {
+        const subject = "KudyPoditys booking cancellation";
+        const body = `We are sorry, but your property owner has cancelled your booking (№${
                 reservation.orderCode
             }) at ${
                 reservation.room.property.name
             } for the following reason: <br><br> ${reason} </b>`
-        };
-        return transporter.sendMail(mailOptions);
+
+        return mailService.sendMail(receiver, subject, body);
     }
 
     async ownerCancel(id, reason) {
@@ -86,7 +86,7 @@ class ReservationService extends Service {
             const user = await userService.findById(reservation.user.id);
             await this.deleteById(id);
             await this.sendMailBookingCancelled(
-                user.email,
+                user,
                 reason,
                 reservation
             );
@@ -221,8 +221,9 @@ class ReservationService extends Service {
                     )
                         roomAmount--;
                 }
-                if (roomAmount <= 0) return Promise.resolve(false);
-                return Promise.resolve(true);
+                return Promise.resolve(roomAmount);
+                // if (roomAmount <= 0) return Promise.resolve(false);
+                // return Promise.resolve(true);
             }
         } catch (err) {
             return Promise.reject(err);

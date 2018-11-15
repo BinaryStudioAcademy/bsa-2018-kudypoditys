@@ -5,3 +5,31 @@
 .room-description {
     font-weight: 300;
 }
+
+.sold-out-message {
+    color: red;
+    text-align: right;
+}
+
+/* default tooltip styles */
+.react-tooltip-lite {
+    background: #cfc55d;
+    color: #000000;
+    max-width: 600px !important;
+}
+
+.react-tooltip-lite-up-arrow {
+    border-top: 10px solid #333;
+}
+
+.react-tooltip-lite-down-arrow {
+    border-bottom: 10px solid #333;
+}
+
+.react-tooltip-lite-right-arrow {
+    border-right: 10px solid #333;
+}
+
+.react-tooltip-lite-left-arrow {
+    border-left: 10px solid #333;
+}

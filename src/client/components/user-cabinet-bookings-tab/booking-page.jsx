@@ -42,11 +42,12 @@ class BookingPage extends React.Component {
         const end = moment(dateOut);
         const duration = moment.duration(end.diff(start));
         const days = Math.round(duration.asDays());
-        const price = Number(room.price) * days;
+        const price = Number(booking.priceTotal);
         const avgPropRatingArray = getGroupedArray(
             property.reviews,
             "avgReview"
         );
+        const roomsCount = (booking.roomsCount > 1)? `x${booking.roomsCount} `:"";
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
         const pStyle = {
             marginLeft: "10px",
@@ -119,7 +120,7 @@ class BookingPage extends React.Component {
                         </p>
                         <p style={pStyle}>
                             <Icon name="bed" />
-                            {room.roomType.name}
+                            {roomsCount}{room.roomType.name}
                         </p>
                         <p style={pStyle}>
                             <Icon name="barcode" />
