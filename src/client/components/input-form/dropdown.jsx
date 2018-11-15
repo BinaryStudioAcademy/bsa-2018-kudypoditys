@@ -18,7 +18,9 @@ const renderDropdown = ({
         options={multiple && options.map(x => ({ ...x, value: JSON.stringify(x.value) })) || options}
         icon={icon}
         multiple={multiple}
-        className={className}
+        className={(touched && error)
+            ? (className !== undefined) ? `${className} error` : 'error'
+            : (className !== undefined) ? className : ''}
 
         value={multiple && (input.value && input.value.map(JSON.stringify) || []) || input.value || ''}
         onChange={(_, data) => {

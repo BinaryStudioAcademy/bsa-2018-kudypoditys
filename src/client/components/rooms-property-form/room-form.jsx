@@ -72,7 +72,12 @@ class RoomForm extends Component {
             validate={[required]}
           />
         </div>
-        <FieldArray name={`bedInRooms`} component={BedInRoomsFields} bedTypesOptions={bedTypesOptions} />
+        <FieldArray
+            name={`bedInRooms`}
+            component={BedInRoomsFields}
+            bedTypesOptions={bedTypesOptions}
+            validate={[required]}
+        />
         <Button floated='right' negative animated='vertical' type="button" onClick={handleCancel}>
           <Button.Content hidden>Cancel</Button.Content>
           <Button.Content visible>

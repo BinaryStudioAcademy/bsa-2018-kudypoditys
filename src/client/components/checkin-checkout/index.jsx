@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import './index.scss';
-import { Container, Form, Header, Grid } from 'semantic-ui-react';
+import {Container, Form, Header, Grid, Label} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DrawInputs from './DrawInputs'
@@ -33,7 +33,7 @@ export class CheckInCheckOut extends Component {
 
     render() {
         const {
-            arrivalFrom, arrivalTo, departureFrom, departureTo, isEdit, checkInCheckOut
+            arrivalFrom, arrivalTo, departureFrom, departureTo, isEdit, checkInCheckOut, meta: { error, touched }
         } = this.props;
 
         return (
@@ -68,7 +68,7 @@ export class CheckInCheckOut extends Component {
                                     handleClick={this.handleClick}
                                     type={'departureFrom'}
                                 />
-
+                                {(touched && error) ? <Label color='red' pointing="left">{error}</Label> : null}
                             </Form.Group>
                         </Grid.Column>
                     </Grid.Row>
