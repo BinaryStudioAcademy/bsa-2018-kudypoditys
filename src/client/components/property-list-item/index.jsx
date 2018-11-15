@@ -43,6 +43,19 @@ export class PropertyListItem extends React.Component {
         //  this.props.actions.fetchAllProperty();
     }
 
+    // Show “Breakfast included” icon if breakfast included in each room
+    isBreakfastFunction(property) {
+        let result = true;
+        property.rooms.forEach((room) => {
+            console.log(room);
+            // if (!) {
+            //     resutl = false;
+            //     break;
+            // }
+        })
+        return result;
+    }
+
     render() {
         const {
             propertyItemData, itemIndex, currency, allCurrencies, searchData
@@ -70,6 +83,9 @@ export class PropertyListItem extends React.Component {
             }
         }
         let nightsCount = searchData.endDate.diff(searchData.startDate, "days");
+
+        let isBreakfast = this.isBreakfastFunction(propertyItemData);
+
         return (
             <Card
                 className="property_card"
@@ -90,17 +106,18 @@ export class PropertyListItem extends React.Component {
                         >
                             <Label
                                 as="a"
-                                color="orange"
+                                color="green"
+                                content="Breakfast included"
                                 ribbon
                                 style={{
+                                    position: "absolute",
+                                    top: "25px",
+                                    left: "-14px",
+                                    zIndex: "1",
                                     display:
-                                        propertyItemData.mealType === undefined
-                                            ? "none"
-                                            : "block"
+                                        isBreakfast === true ? "block" : "none"
                                 }}
-                            >
-                                {propertyItemData.mealType}
-                            </Label>
+                            ></Label>
                             <Image
                                 src={propertyItemData.images[0].url}
                                 floated="left"
