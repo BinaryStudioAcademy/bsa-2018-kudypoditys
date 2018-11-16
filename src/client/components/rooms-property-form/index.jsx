@@ -76,6 +76,7 @@ class RoomsPropertyForm extends Component {
                 if (currentRoom) {
                   fields.remove(editRoomIndex);
                 }
+                console.log(room);
                 fields.push(room);
                 this.updateActiveIndex(-1);
               }}

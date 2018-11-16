@@ -8,12 +8,13 @@ import BedInRoomsFields from './bed-in-rooms-fields';
 import renderField from '../input-form/renderField';
 import renderTextarea from '../input-form/textarea';
 import renderDropdown from '../input-form/dropdown';
+import renderCheckbox from '../input-form/checkbox';
 
 
 class RoomForm extends Component {
   render() {
     const {
-      handleSubmit, handleCancel, roomTypesOptions, bedTypesOptions
+        handleSubmit, handleCancel, roomTypesOptions, bedTypesOptions
     } = this.props;
 
     return (
@@ -73,8 +74,11 @@ class RoomForm extends Component {
           />
         </div>
         <div className="wrapper">
-            <Checkbox
+            <Field
+            // <Checkbox
+                name={`breakfast`}
                 label="Breakfast included"
+                component={renderCheckbox}
             />
         </div>
         <FieldArray
