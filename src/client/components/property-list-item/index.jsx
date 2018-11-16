@@ -85,6 +85,7 @@ export class PropertyListItem extends React.Component {
 
     // Show “Breakfast included” icon if breakfast included in each room
     isBreakfastFunction(property) {
+        console.log(property);
         let result = true;
         property.rooms.forEach((room) => {
             if (room.mealType === undefined) {

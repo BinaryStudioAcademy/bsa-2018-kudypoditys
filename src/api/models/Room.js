@@ -17,11 +17,15 @@ let Room = orm.define('room', {
         type: Sequelize.FLOAT,
         validate: { min: 1, isFloat: true },
         allowNull: false
-
     },
     description: {
         type: Sequelize.TEXT,
         allowNull: true
+    },
+    breakfast: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
     },
     available: {
         type: Sequelize.INTEGER,
@@ -31,7 +35,5 @@ let Room = orm.define('room', {
         type: Sequelize.NONE
     }
 });
-
-
 
 module.exports = Room;
