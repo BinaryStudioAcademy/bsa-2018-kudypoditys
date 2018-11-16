@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, Icon } from "semantic-ui-react";
+import { Button, Form, Icon, Checkbox } from "semantic-ui-react";
 import { required } from 'client/regexValidationService';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
@@ -71,6 +71,11 @@ class RoomForm extends Component {
             label="Room type"
             validate={[required]}
           />
+        </div>
+        <div className="wrapper">
+            <Checkbox
+                label="Breakfast included"
+            />
         </div>
         <FieldArray
             name={`bedInRooms`}
