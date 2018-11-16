@@ -822,6 +822,7 @@ const ROOMS = [
         price: 20,
         amount: 10,
         area: 20,
+        breakfast: true,
         roomTypeId: 1,
         propertyId: 1
     },
@@ -854,6 +855,7 @@ const ROOMS = [
         price: 20,
         amount: 2,
         area: 41,
+        breakfast: true,
         roomTypeId: 2,
         propertyId: 5
     },
@@ -902,6 +904,7 @@ const ROOMS = [
         price: 20,
         amount: 2,
         area: 41,
+        breakfast: true,
         roomTypeId: 2,
         propertyId: 11
     },

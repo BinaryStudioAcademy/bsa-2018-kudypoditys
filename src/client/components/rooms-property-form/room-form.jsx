@@ -8,7 +8,7 @@ import BedInRoomsFields from './bed-in-rooms-fields';
 import renderField from '../input-form/renderField';
 import renderTextarea from '../input-form/textarea';
 import renderDropdown from '../input-form/dropdown';
-import renderCheckbox from '../input-form/checkbox';
+import renderBoolCheckbox from "../input-form/bool-checkbox";
 
 
 class RoomForm extends Component {
@@ -75,10 +75,9 @@ class RoomForm extends Component {
         </div>
         <div className="wrapper">
             <Field
-            // <Checkbox
                 name={`breakfast`}
                 label="Breakfast included"
-                component={renderCheckbox}
+                component={renderBoolCheckbox}
             />
         </div>
         <FieldArray
@@ -93,7 +92,7 @@ class RoomForm extends Component {
             <Icon name="cancel" />
           </Button.Content>
         </Button>
-        <Button floated='right' positive animated='vertical' type="submit">
+        <Button floated='right' positive animated='vertical' type="submit" >
           <Button.Content hidden>Save</Button.Content>
           <Button.Content visible>
             <Icon name="save outline icon" />

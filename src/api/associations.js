@@ -208,8 +208,8 @@ function associations(models) {
     Facility.belongsToMany(Property, { through: "facilityList" });
     Property.belongsToMany(Facility, { through: "facilityList" });
 
-    Room.belongsToMany(BedType, { through: "bedInRoom" });
-    BedType.belongsToMany(Room, { through: "bedInRoom" });
+    Room.belongsToMany(BedType, { through: "BedInRoom" });
+    BedType.belongsToMany(Room, { through: "BedInRoom" });
 
     Property.belongsToMany(Language, { through: 'propertyLanguage' });
     Language.belongsToMany(Property, { through: 'propertyLanguage' });
