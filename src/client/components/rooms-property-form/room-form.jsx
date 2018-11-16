@@ -92,7 +92,7 @@ class RoomForm extends Component {
             <Icon name="cancel" />
           </Button.Content>
         </Button>
-        <Button floated='right' positive animated='vertical' type="submit" >
+        <Button floated='right' positive animated='vertical' type="submit">
           <Button.Content hidden>Save</Button.Content>
           <Button.Content visible>
             <Icon name="save outline icon" />
