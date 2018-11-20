@@ -20,6 +20,7 @@ import paymentTypesSaga from "client/logic/payment-type/saga";
 import roomTypesSaga from "client/logic/room-types/saga";
 import bedTypesSaga from "client/logic/bed-types/saga";
 import currenciesSaga from "client/logic/currencies/saga";
+import currenciesRationSaga from "client/logic/currencies-ratio/saga";
 import propertyTypesSaga from "client/logic/property-type/saga";
 import userCabinetPropertiesSaga from "client/logic/user-cabinet-properties-tab/saga";
 import propertyEditSaga from 'client/logic/property-edit/saga';
@@ -50,6 +51,7 @@ export default function* rootSaga() {
         fork(currenciesSaga),
         fork(propertyTypesSaga),
         fork(userCabinetPropertiesSaga),
-        fork(propertyEditSaga)
+        fork(propertyEditSaga),
+        fork(currenciesRationSaga),
     ]);
 }

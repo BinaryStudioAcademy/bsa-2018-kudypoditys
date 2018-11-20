@@ -12,6 +12,7 @@ import {mapStateToProps, mapDispatchToProps} from "./container";
 export class MainHeader extends Component {
     componentDidMount() {
         this.props.getCurrencies();
+        this.props.getCurrenciesRatio();
     }
 
     logoutClicked = () => {

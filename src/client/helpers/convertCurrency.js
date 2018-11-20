@@ -28,7 +28,7 @@ titleToLoverTitle.set('EUR', 'eur');
 titleToLoverTitle.set('USD', 'usd');
 titleToLoverTitle.set('UAH', 'uah');
 
-function round(value, decimals = 2) {
+export function round(value, decimals = 2) {
     const pow10 = Math.pow(10, decimals);
     return Math.round(value * pow10) / pow10;
 }
@@ -51,6 +51,16 @@ export function convert(currentCurrency, value, targetCurrency) {
         to = codeToTitle.get(targetCurrency);
 
     return converterObj[from] && converterObj[from][to] && round(converterObj[from][to] * value) || value;
+}
+
+export function getRatio(currentCurrency, targetCurrency, converterObj) {
+    if (!currentCurrency || !targetCurrency || currentCurrency === targetCurrency)
+        return 1;
+
+    const from = titleToLoverTitle.get(currentCurrency),
+        to = titleToLoverTitle.get(targetCurrency);
+
+    return (converterObj[from] && converterObj[from][to]) ? converterObj[from][to] : 1;
 }
 
 // export default titleToCode;

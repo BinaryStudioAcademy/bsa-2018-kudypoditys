@@ -31,6 +31,7 @@ import roomTypes from "client/logic/room-types/reducer";
 import bedTypes from "client/logic/bed-types/reducer";
 import testRoomsTab from "client/logic/1test-rooms-tab/reducer";
 import currencies from "client/logic/currencies/reducer";
+import currenciesRatio from "client/logic/currencies-ratio/reducer";
 import propertyTypes from "client/logic/property-type/reducer";
 import simpleModal from "client/logic/simple-modal/reducer";
 import userCabinetProperties from "client/logic/user-cabinet-properties-tab/reducer";
@@ -76,5 +77,6 @@ export default combineReducers({
     currencies,
     propertyTypes,
     simpleModal,
-    propertyEdit
+    propertyEdit,
+    currenciesRatio,
 });

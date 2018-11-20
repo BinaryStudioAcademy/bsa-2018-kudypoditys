@@ -75,7 +75,10 @@ export class RoomsTable extends React.Component {
             property,
             currency,
             checkIn,
-            checkOut
+            checkOut,
+            getRatio,
+            currenciesRatio,
+            round
         } = this.props;
         rooms.forEach(room => {
             if (Array.isArray(roomsZ)) {
@@ -88,7 +91,9 @@ export class RoomsTable extends React.Component {
         if (user) bookButton = true;
 
         const priceFunc = price =>
-            convertCurrencyByName(propCurrency.code, price, currency.code);
+            round(
+                getRatio(propCurrency.code, currency.code, currenciesRatio) * price
+            );
         const currencySymbol = titleToCode.get(currency.code);
         const daysStaying = getDaysDifference(checkIn, checkOut);
         let roomRow = null;

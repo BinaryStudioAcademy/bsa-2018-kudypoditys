@@ -30,6 +30,7 @@ import {
 } from "client/helpers/avgReviewRating";
 import {PropertyCommentsList} from "client/components/property-comments-list";
 import RoomsTable from "client/components/rooms-table";
+import CurrencyConverterHOC from "client/components/currency-converter-hoc";
 
 export class PropertyPage extends React.Component {
     toggleReviews = () => {
@@ -359,9 +360,17 @@ export class PropertyPage extends React.Component {
                                 >
                                     Rooms
                                 </Header>
-                                <RoomsTable
-                                    roomsZ = {rooms}
+                                <CurrencyConverterHOC
+                                    Component={(HOCProps) =>
+                                        <RoomsTable
+                                            roomsZ={rooms}
+                                            {...HOCProps}
+                                        />
+                                    }
                                 />
+                                {/*<RoomsTable*/}
+                                    {/*roomsZ = {rooms}*/}
+                                {/*/>*/}
                                 {/*<RoomsSummaryTable*/}
                                     {/*ref={"roomsRef"}*/}
                                     {/*rooms={rooms}*/}

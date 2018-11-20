@@ -14,11 +14,13 @@ function countriesReducer(state = defaultState.currenciesData, action) {
       };
     case GET_CURRENCIES_SUCCESS:
       return {
+        ...state,
         currencies: action.payload,
         isLoading: false
       };
     case GET_CURRENCIES_FAILED:
       return {
+        ...state,
         isLoading: false,
         error: action.payload,
         currencies: []

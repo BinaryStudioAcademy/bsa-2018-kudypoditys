@@ -1,5 +1,6 @@
 import { selectCurrency, logout } from 'client/logic/header/actions';
 import { currenciesGet } from 'client/logic/currencies/actions';
+import { getCurrenciesRatio } from "../../logic/currencies-ratio/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { currencies } = state;
@@ -21,6 +22,10 @@ export function mapDispatchToProps(dispatch, ownProps) {
 
         logout() {
             dispatch(logout());
-        }
+        },
+
+        getCurrenciesRatio() {
+            dispatch(getCurrenciesRatio());
+        },
     };
 }
