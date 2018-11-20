@@ -10,64 +10,10 @@ import renderField from '../input-form/renderField';
 import renderTextarea from '../input-form/textarea';
 import renderDropdown from '../input-form/dropdown';
 
-const mealOptions = [
-    {
-        key: 0,
-        text: 'Breakfast',
-        value: {
-            id: 1,
-            name: 'breakfast'
-        }
-    },
-    {
-        key: 1,
-        text: 'Lunch',
-        value: {
-            id: 2,
-            name: 'lunch'
-        }
-    },
-    {
-        key: 2,
-        text: 'Dinner',
-        value: {
-            id: 3,
-            name: 'dinner'
-        }
-    }
-];
-const mealTypesOptions = [
-    {
-        key: 0,
-        text: 'Ordinary',
-        value: {
-            id: 1,
-            name: 'ordinary'
-        }
-    },
-    {
-        key: 1,
-        text: 'Continental',
-        value: {
-            id: 2,
-            name: 'continental'
-        }
-    },
-    {
-        key: 2,
-        text: 'Exclusive',
-        value: {
-            id: 13,
-            name: 'exclusive'
-        }
-    }
-];
-
-
 class RoomForm extends Component {
   render() {
     const {
-      handleSubmit, handleCancel, roomTypesOptions, bedTypesOptions
+      handleSubmit, handleCancel, roomTypesOptions, mealOptions, mealTypesOptions, bedTypesOptions
     } = this.props;
 
     return (
