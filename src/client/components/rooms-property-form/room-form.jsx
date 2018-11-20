@@ -3,11 +3,65 @@ import { Button, Form, Icon } from "semantic-ui-react";
 import { required } from 'client/regexValidationService';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
+import MealInRoomsFields from './meal-in-rooms-fields';
 import BedInRoomsFields from './bed-in-rooms-fields';
 
 import renderField from '../input-form/renderField';
 import renderTextarea from '../input-form/textarea';
 import renderDropdown from '../input-form/dropdown';
+
+const mealOptions = [
+    {
+        key: 0,
+        text: 'Breakfast',
+        value: {
+            id: 1,
+            name: 'breakfast'
+        }
+    },
+    {
+        key: 1,
+        text: 'Lunch',
+        value: {
+            id: 2,
+            name: 'lunch'
+        }
+    },
+    {
+        key: 2,
+        text: 'Dinner',
+        value: {
+            id: 3,
+            name: 'dinner'
+        }
+    }
+];
+const mealTypesOptions = [
+    {
+        key: 0,
+        text: 'Ordinary',
+        value: {
+            id: 1,
+            name: 'ordinary'
+        }
+    },
+    {
+        key: 1,
+        text: 'Continental',
+        value: {
+            id: 2,
+            name: 'continental'
+        }
+    },
+    {
+        key: 2,
+        text: 'Exclusive',
+        value: {
+            id: 13,
+            name: 'exclusive'
+        }
+    }
+];
 
 
 class RoomForm extends Component {
@@ -72,6 +126,12 @@ class RoomForm extends Component {
             validate={[required]}
           />
         </div>
+        <FieldArray
+            name={`mealInRooms`}
+            component={MealInRoomsFields}
+            mealOptions={mealOptions}
+            mealTypesOptions={mealTypesOptions}
+        />
         <FieldArray
             name={`bedInRooms`}
             component={BedInRoomsFields}
