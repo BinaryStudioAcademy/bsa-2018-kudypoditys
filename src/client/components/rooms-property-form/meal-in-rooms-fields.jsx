@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import {Button, List, Divider, Icon, Grid, Label, GridColumn} from "semantic-ui-react";
-import { required } from 'client/regexValidationService';
+import { required, positiveNumber } from 'client/regexValidationService';
 import { Field } from 'redux-form';
 
 import renderField from '../input-form/renderField';
@@ -51,7 +51,7 @@ class MealInRoomsFields extends Component {
                         component={renderField}
                         label="Price"
                         icon="dollar sign"
-                        validate={[required]}
+                        validate={[required, positiveNumber]}
                     />
                 </GridColumn>
                 <Grid.Column style={{ width: "12%", alignItems: 'center', display: 'flex' }}>
