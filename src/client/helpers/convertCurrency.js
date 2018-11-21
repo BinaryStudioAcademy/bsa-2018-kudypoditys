@@ -57,8 +57,8 @@ export function getRatio(currentCurrency, targetCurrency, converterObj) {
     if (!currentCurrency || !targetCurrency || currentCurrency === targetCurrency)
         return 1;
 
-    const from = titleToLoverTitle.get(currentCurrency),
-        to = titleToLoverTitle.get(targetCurrency);
+    const from = titleToLoverTitle.get(currentCurrency.toUpperCase()),
+        to = titleToLoverTitle.get(targetCurrency.toUpperCase());
 
     return (converterObj[from] && converterObj[from][to]) ? converterObj[from][to] : 1;
 }

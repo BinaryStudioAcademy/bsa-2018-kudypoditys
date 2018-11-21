@@ -360,17 +360,9 @@ export class PropertyPage extends React.Component {
                                 >
                                     Rooms
                                 </Header>
-                                <CurrencyConverterHOC
-                                    Component={(HOCProps) =>
-                                        <RoomsTable
-                                            roomsZ={rooms}
-                                            {...HOCProps}
-                                        />
-                                    }
+                                <RoomsTable
+                                    roomsZ = {rooms}
                                 />
-                                {/*<RoomsTable*/}
-                                    {/*roomsZ = {rooms}*/}
-                                {/*/>*/}
                                 {/*<RoomsSummaryTable*/}
                                     {/*ref={"roomsRef"}*/}
                                     {/*rooms={rooms}*/}
