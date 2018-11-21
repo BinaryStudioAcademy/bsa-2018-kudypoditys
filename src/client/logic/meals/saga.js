@@ -4,11 +4,11 @@ import {
     GET_MEALS_SUCCESS,
     GET_MEALS_FAILED
 } from './actionTypes';
-import mealsService from 'client/services/mealsService';
+import mealService from 'client/services/mealService';
 
 function* getMeals() {
   try {
-    const meals = yield call(mealsService.getAll);
+    const meals = yield call(mealService.getAll);
     yield put({
       type: GET_MEALS_SUCCESS,
       payload: meals
