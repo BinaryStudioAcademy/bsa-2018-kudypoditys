@@ -4288,6 +4288,36 @@ const BED_TYPES = [
     }
 ];
 
+const MEALS = [
+    {
+        id: 1,
+        name: 'Breakfast'
+    },
+    {
+        id: 2,
+        name: 'Lunch'
+    },
+    {
+        id: 3,
+        name: 'Dinner'
+    }
+];
+
+const MEAL_TYPES = [
+    {
+        id: 1,
+        name: 'Ordinary'
+    },
+    {
+        id: 2,
+        name: 'Continental'
+    },
+    {
+        id: 3,
+        name: 'Exclusive'
+    }
+];
+
 const PROPERTY_TYPE = [
     {
         id: 1,
@@ -5245,6 +5275,8 @@ module.exports = {
     REVIEW_CATEGORIES,
     BED_IN_ROOM,
     BED_TYPES,
+    MEALS,
+    MEAL_TYPES,
     ROOM_TYPES,
     PROPERTY_TYPE,
     LANGUAGES,
