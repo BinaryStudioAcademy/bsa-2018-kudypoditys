@@ -6,7 +6,7 @@ module.exports = {
         'rooms',
         'available',
         {
-            type: Sequelize.BOOLEAN,
+            type: Sequelize.INTEGER,
             allowNull: true
         }
     );

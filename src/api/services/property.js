@@ -32,12 +32,20 @@ class PropertyService extends Service {
                 propertyId: value.propertyId
             });
 
+            // const roomsIds = rooms.map(room => room.id);
+            // const availabilities = await availabilityService.findByOptions({
+            //     roomId: roomsIds
+            // });
+
             for (let i = 0; i < rooms.length; i++) {
-                rooms[i].available = await this.available(
+                rooms[i].available = await this.availableRoomsCount(
                     rooms[i],
                     value.checkIn,
                     value.checkOut
                 );
+
+                //rooms[i].availabilities = availabilities.filter(av => av.roomId === rooms[i].id);
+
                 const lastReservation = await this.getLastReservation(rooms[i], value.checkIn, value.checkOut);
                 if (lastReservation) {
                     const daysTotal = dateHelpers.dateDiff('d',lastReservation.dateIn, lastReservation.dateOut);
@@ -97,61 +105,40 @@ class PropertyService extends Service {
         }
     }
 
-    async available(room, checkIn, checkOut) { // TODO: Rostik avalibility rooms logic
+    async findBookingsBetweenDates(bookings, date1, date2){
+        return bookings.filter(booking => {
+            return reservationService.datesIntersect(
+                booking.dateIn,
+                booking.dateOut,
+                date1,
+                date2
+            )
+        });
+    }
+
+    async availableRoomsCount(room, checkIn, checkOut) {
         try {
             const bookings = await reservationService.findByRoomAndDates(room, checkIn, checkOut);
-            const availabilities = await availabilityService.findByOptions({
-                roomId: room.id
-            });
-
-            if (availabilities.length) {
-                for (
-                    let i = moment(checkIn);
-                    i <= moment(checkOut);
-                    i = moment(i).add(1, "day")
-                ) {
-                    let availability = await availabilities.find(item => {
-                        return item.date === moment(i).date();
-                    });
-                    let roomAmount = availability.amount;
-
-                    for (let i = 0; i < bookings.length; i++) {
-                        if (
-                            moment(bookings[i].dateIn).date() <
-                                availability.date &&
-                            moment(bookings[i].dateOut).date() >
-                                availability.date
-                        )
-                            roomAmount--;
-                    }
-                    if (roomAmount <= 0) return Promise.resolve(false);
-                }
-                return Promise.resolve(true);
-            } else {
-                // TODO: fix reservation calculation
-                // actually both options are wrong. reservations should be counted for each day of booking separately
-                //
-                // let roomAmount = room.amount;
-                // for (let i = 0; i < bookings.length; i++) {
-                //     if (
-                //         reservationService.datesIntersect(
-                //             checkIn,
-                //             checkOut,
-                //             bookings[i].dateIn,
-                //             bookings[i].dateOut
-                //         )
-                //     )
-                //         roomAmount--;
-                // }
-                let roomAmount = room.amount - bookings.length;
-                return Promise.resolve(roomAmount);
-                // if (roomAmount <= 0) return Promise.resolve(false);
-                // return Promise.resolve(true);
+            let roomAmountByDay = [];
+            const dateStart = moment(checkIn);
+            const dateEnd = moment(checkOut);
+            let date1 = dateStart;
+            let date2;
+            let roomsAmount;
+            let bookingsOnDay;
+            while(date1 <= dateEnd) {
+                date2 = moment(date1).add(1, "day");
+                bookingsOnDay = await this.findBookingsBetweenDates(bookings, date1, date2);
+                roomsAmount = room.amount - bookingsOnDay.length;
+                roomAmountByDay.push(roomsAmount);
+                date1 = date2;
             }
+            return Promise.resolve(Math.min(...roomAmountByDay));
         } catch (err) {
             return Promise.reject(err);
         }
     }
+
 
     getAllProperties() {
         return propertyRepository.findAll();
