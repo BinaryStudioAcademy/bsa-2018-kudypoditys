@@ -9,6 +9,7 @@ import "./index.scss";
 import history from "client/history";
 import QuantityPicker from "../quantity-picker";
 import { roomQuantityChanged } from "../../helpers/roomQuantityChanged";
+import {convertCurrencyByName} from "client/helpers/convertCurrency";
 import RoomPriceService from '../../services/roomPriceService';
 import {titleToCode} from "../../helpers/convertCurrency";
 
@@ -75,15 +76,14 @@ export class BookingForm extends React.Component {
         } = this.props;
         const currencySymbol = titleToCode.get(currency.code);
         const availabilities = rooms.find(room => room.id === roomId).availabilities;
-        const totalCheck = RoomPriceService.calculatePriceOfBooking(
+        const totalPrice = RoomPriceService.calculatePriceOfBooking(
             checkIn,
             checkOut,
             selectedRoomsAmount,
             roomPrice,
-            availabilities,
-            propertyCurrency,
-            currency
+            availabilities
         );
+        const totalCheck = convertCurrencyByName(propertyCurrency.code, totalPrice, currency.code);
         // TODO: Code duplication
         const childrenOptions = this.generateOptions(0, 10);
         const adultsOptions = this.generateOptions(1, 10);
@@ -131,6 +131,7 @@ export class BookingForm extends React.Component {
                             guestsCount: adults + children,
                             roomId: roomId ? roomId : roomOptions[0].value,
                             selectedRoomsAmount: selectedRoomsAmount ? selectedRoomsAmount: 1,
+                            priceTotal: totalPrice,
                             paymentTypeId: paymentTypeId
                                 ? paymentTypeId
                                 : paymentOptions[0].value

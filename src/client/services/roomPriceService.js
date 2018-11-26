@@ -1,12 +1,9 @@
 import moment from 'moment';
 import { getDaysDifference } from '../helpers/date-helpers';
-import {convertCurrencyByName} from "client/helpers/convertCurrency";
 class RoomPriceService {
     calculatePriceOfBooking(checkIn, checkOut, roomsSelectedAmount, roomPrice, availabilities, propertyCurrency, currentCurrenty) {
 
         const daysStaying = getDaysDifference(checkIn, checkOut);
-        const priceFunc = price =>
-            convertCurrencyByName(propertyCurrency.code, price, currentCurrenty.code);
         const startDate = checkIn === null ? null : moment(checkIn);
         const endDate = checkOut === null ? null : moment(checkOut);
 
@@ -31,11 +28,11 @@ class RoomPriceService {
                 priceForOneDay = roomPrice * selectedAmount;
             }
 
-            prices.push(priceFunc(priceForOneDay));
+            prices.push(priceForOneDay);
         }
-        const totalCheck = prices.reduce((total, price) => total + price, 0).toFixed(1);
+        const totalPrice = prices.reduce((total, price) => total + price, 0).toFixed(1);
 
-        return totalCheck;
+        return totalPrice;
     }
 }
 

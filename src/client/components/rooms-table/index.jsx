@@ -9,6 +9,7 @@ import BookingForm from "client/components/booking-form";
 import connect from "react-redux/es/connect/connect";
 import { mapDispatchToProps, mapStateToProps } from "./container";
 import Tooltip from 'react-tooltip-lite';
+import {convertCurrencyByName} from "client/helpers/convertCurrency";
 import RoomPriceService from '../../services/roomPriceService';
 export const getIcons = number =>
     _.times(number, index => <Icon name="user" />);
@@ -92,15 +93,14 @@ export class RoomsTable extends React.Component {
                 );
 
                 const availabilities = rooms.find(avRoom => avRoom.id === room.id).availabilities;
-                const totalCheck = RoomPriceService.calculatePriceOfBooking(
+                const totalPrice = RoomPriceService.calculatePriceOfBooking(
                     checkIn,
                     checkOut,
                     room.selectedAmount,
                     room.price,
-                    availabilities,
-                    propCurrency,
-                    currency
+                    availabilities
                 );
+                const totalCheck = convertCurrencyByName(currency.code, totalPrice, currency.code);
 
                 const soldOutDaysAgo = room.lastReservation ? room.lastReservation.bookedDaysAgo : null;
                 const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null;
