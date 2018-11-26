@@ -3,18 +3,11 @@ import { Dropdown } from 'semantic-ui-react'
 import _ from 'lodash'
 import PropTypes from "prop-types";
 
-const quantityOptions = [
-    { key: 1, text: '1', value: 1 },
-    { key: 2, text: '2', value: 2 },
-    { key: 3, text: '3', value: 3 },
-    { key: 4, text: '4', value: 4 },
-    { key: 5, text: '5', value: 5 },
-];
 export const getOptions = (number, prefix = '') =>
-    _.times(number, index => ({
+    _.times(number-1, index => ({
         key: index,
-        text: `${prefix}${index}`,
-        value: index,
+        text: `${prefix}${index+1}`,
+        value: index+1,
     }));
 
 export class QuantityPicker extends Component {
@@ -25,7 +18,6 @@ export class QuantityPicker extends Component {
     render() {
         const { roomsAvailable, roomsSelectedAmount, roomId, onSelectionChanged, ...rest} = this.props;
         const options = getOptions(roomsAvailable, '');
-
         return (
             <Dropdown
                 {...rest}
@@ -49,7 +41,7 @@ QuantityPicker.propTypes = {
 
 QuantityPicker.defaultProps = {
     roomId: 0,
-    roomsSelectedAmount: 0,
+    roomsSelectedAmount: 1,
     roomsAvailable: 0,
     onSelectionChanged: null
 };

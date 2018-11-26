@@ -9,11 +9,8 @@ import "./index.scss";
 import history from "client/history";
 import QuantityPicker from "../quantity-picker";
 import { roomQuantityChanged } from "../../helpers/roomQuantityChanged";
-import {
-    convertCurrencyByName,
-    titleToCode
-} from "../../helpers/convertCurrency";
-import { getDaysDifference } from "../../helpers/date-helpers";
+import RoomPriceService from '../../services/roomPriceService';
+import {titleToCode} from "../../helpers/convertCurrency";
 
 export class BookingForm extends React.Component {
     generateOptions = (from, to) => {
@@ -76,35 +73,17 @@ export class BookingForm extends React.Component {
             roomsAmount,
             roomPrice
         } = this.props;
-        const priceFunc = price =>
-            convertCurrencyByName(propertyCurrency.code, price, currency.code);
-        const daysStaying = getDaysDifference(checkIn, checkOut);
         const currencySymbol = titleToCode.get(currency.code);
-
-        const startDate = checkIn === null ? null : moment(checkIn);
-        const endDate = checkOut === null ? null : moment(checkOut);
-
-        let prices = [];
-        let priceForOneDay = null;
         const availabilities = rooms.find(room => room.id === roomId).availabilities;
-        for(let i = 0; i < daysStaying; i++) {
-            priceForOneDay = null;
-            for(let av of availabilities)  {
-                if(moment(av.dateCal).isBetween(startDate, endDate) && av.amount > 0) {
-                    if(av.amount - selectedRoomsAmount > 0) {
-                        priceForOneDay = av.price * selectedRoomsAmount;
-                    } else {
-                        priceForOneDay = av.price * av.amount + (selectedRoomsAmount - av.amount) * roomPrice;
-                    }
-                    break;
-                }
-            }
-            if(priceForOneDay === null) {
-                priceForOneDay = roomPrice * selectedRoomsAmount;
-            }
-            prices.push(priceFunc(priceForOneDay));
-        }
-        const totalCheck = prices.reduce((total, price) => total + price, 0).toFixed(1);
+        const totalCheck = RoomPriceService.calculatePriceOfBooking(
+            checkIn,
+            checkOut,
+            selectedRoomsAmount,
+            roomPrice,
+            availabilities,
+            propertyCurrency,
+            currency
+        );
         // TODO: Code duplication
         const childrenOptions = this.generateOptions(0, 10);
         const adultsOptions = this.generateOptions(1, 10);
@@ -147,11 +126,11 @@ export class BookingForm extends React.Component {
                     onSubmit={event => {
                         event.preventDefault();
                         this.props.onBooking({
-                            dateIn: Number(startDate),
-                            dateOut: Number(endDate),
+                            dateIn: Number(moment(checkIn)),
+                            dateOut: Number(moment(checkOut)),
                             guestsCount: adults + children,
                             roomId: roomId ? roomId : roomOptions[0].value,
-                            selectedRoomsAmount,
+                            selectedRoomsAmount: selectedRoomsAmount ? selectedRoomsAmount: 1,
                             paymentTypeId: paymentTypeId
                                 ? paymentTypeId
                                 : paymentOptions[0].value
@@ -177,8 +156,8 @@ export class BookingForm extends React.Component {
                                 startDateId="startDate"
                                 endDateId="endDate"
                                 required={true}
-                                startDate={startDate}
-                                endDate={endDate}
+                                startDate={moment(checkIn)}
+                                endDate={moment(checkOut)}
                                 onDatesChange={this.datesChanged}
                                 focusedInput={this.state.focusedInput}
                                 onFocusChange={focusedInput => {
