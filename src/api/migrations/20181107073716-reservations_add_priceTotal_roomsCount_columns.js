@@ -6,7 +6,7 @@ module.exports = {
             'reservations',
             'priceTotal',
             {
-                type: Sequelize.INTEGER
+                type: Sequelize.DOUBLE
             }
         );
         queryInterface.addColumn(

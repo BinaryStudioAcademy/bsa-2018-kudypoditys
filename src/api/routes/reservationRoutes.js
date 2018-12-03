@@ -22,7 +22,8 @@ reservation
             userId: req.user.id,
             roomId: Number(req.body.roomId),
             roomsCount: req.body.selectedRoomsAmount,
-            paymentTypeId: Number(req.body.paymentTypeId)
+            paymentTypeId: Number(req.body.paymentTypeId),
+            priceTotal : parseFloat(req.body.totalPrice)
         };
         reservationService
             .create(newReservation)
