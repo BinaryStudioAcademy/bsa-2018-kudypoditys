@@ -24,6 +24,7 @@ class MapView extends React.Component {
             popupInfo: null,
             propertyInfo: null
         };
+        this.price = 0;
     }
     renderPopup = () => {
         const { popupInfo, controlEnable } = this.state;
@@ -71,10 +72,15 @@ class MapView extends React.Component {
         });
     };
     renderPropertyMarker = (property, index) => {
+        let coast = 0;
+        if(property.rooms)
+         coast = property.rooms.map(x => x.price)[0]       
+
         const propCurrency = property.currency && property.currency.code;
         const currency = this.props.currency.code;
 
-        const price = convert(propCurrency, property.price, currency);
+        const price = convert(propCurrency, coast, currency);
+        this.price = price;
 
         return (
             <Marker
@@ -96,7 +102,7 @@ class MapView extends React.Component {
                 >
 
                 </Icon>
-                    {property.price ? (
+                    {this.price ? (
                         <Label
                             style={{
                                 whiteSpace: "nowrap",
@@ -107,7 +113,7 @@ class MapView extends React.Component {
                             }}
                             color="#d6d3d3"
                         >
-                            {currency} {price}
+                            {currency} {this.price}
                         </Label>
                     ) : null}
                 </div>
@@ -126,7 +132,7 @@ class MapView extends React.Component {
                     propertyName={propertyInfo.name}
                     propertyAddress={propertyInfo.address}
                     propertyCurrency={propertyInfo.currency.code}
-                    price={propertyInfo.price}
+                    price={propertyInfo.price ? propertyInfo.price : this.price}
                     rating={propertyInfo.rating}
                     imageSrc={propertyInfo.imageSrc}
                     closeClicked={() => this.setState({ propertyInfo: null })}
