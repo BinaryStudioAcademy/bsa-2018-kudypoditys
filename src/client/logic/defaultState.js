@@ -626,6 +626,20 @@ const state = {
     currenciesData: {
         currencies: []
     },
+    currenciesRatio: {
+        eur: {
+            uah: 32.24,
+            usd: 1.14
+        },
+        usd: {
+            uah: 27.93,
+            eur: 0.85
+        },
+        uah: {
+            usd: 0.04,
+            eur: 0.03
+        }
+    },
     propertyTypesData: {
         propertyTypes: []
     },

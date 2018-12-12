@@ -1,20 +1,23 @@
 import defaultState from 'client/logic/defaultState';
-import { convert } from '../../helpers/convertCurrency';
+import { getRatio, round, codeToTitle, convert } from '../../helpers/convertCurrency';
 import { CITY_INFOS_GET, CITY_INFOS_GET_SUCCESS } from './actionType';
 import { CURENCY_SELECT } from '../header/actionTypes';
 
 function cityInfosReducer(state = defaultState.cityInfos, action) {
     let cur = defaultState.header.selectedCurrency.code;
+    const { currenciesRatio } = defaultState;
     switch (action.type) {
         case CITY_INFOS_GET:
             return CITY_INFOS;
 
         case CURENCY_SELECT:
             for (let city in state) {
-                state[city].avgPrice = convert(
-                    state[city].baseCurrency,
-                    state[city].baseAvgPrice,
-                    action.payload.code,
+                const currentCurrency = codeToTitle.get(state[city].baseCurrency);
+                const targetCurrency = action.payload.code;
+                state[city].avgPrice = round(
+                    getRatio(currentCurrency, targetCurrency, currenciesRatio)
+                    * state[city].baseAvgPrice
+                    , 0
                 );
                 state[city].currency = action.payload.code;
 

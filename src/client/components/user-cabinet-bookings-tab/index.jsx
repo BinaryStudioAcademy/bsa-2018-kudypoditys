@@ -59,6 +59,7 @@ export class BookingsTab extends React.Component {
 
     render() {
         const { bookings, activeBooking } = this.props;
+        console.log(this.props);
         //console.log(JSON.stringify(bookings));
         return activeBooking ? (
             <Container fluid>

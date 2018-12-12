@@ -7,6 +7,8 @@ export function mapStateToProps(state) {
         user: user,
         property: property,
         currency: state.header.selectedCurrency,
+        checkIn: state.propertyPage.availabilityInput.checkIn,
+        checkOut: state.propertyPage.availabilityInput.checkOut
     };
 }
 

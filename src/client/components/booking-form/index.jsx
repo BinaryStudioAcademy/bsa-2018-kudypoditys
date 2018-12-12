@@ -14,6 +14,7 @@ import {
     titleToCode
 } from "../../helpers/convertCurrency";
 import { getDaysDifference } from "../../helpers/date-helpers";
+import CurrencyConverterHOC from "client/components/currency-converter-hoc";
 
 export class BookingForm extends React.Component {
     generateOptions = (from, to) => {
@@ -56,7 +57,6 @@ export class BookingForm extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         const {
             checkIn,
             checkOut,
@@ -74,10 +74,14 @@ export class BookingForm extends React.Component {
             cancelForFree,
             selectedRoomsAmount,
             roomsAmount,
-            roomPrice
+            roomPrice,
+            getRatio,
+            currenciesRatio,
+            round
         } = this.props;
-        const priceFunc = price =>
-            convertCurrencyByName(propertyCurrency.code, price, currency.code);
+        const priceFunc = (price) => round(
+            getRatio(propertyCurrency.code, currency.code, currenciesRatio) * price
+        );
         const daysStaying = getDaysDifference(checkIn, checkOut);
         const currencySymbol = titleToCode.get(currency.code);
         let priceForOneDay = priceFunc(roomPrice);
@@ -271,7 +275,7 @@ export class BookingForm extends React.Component {
     }
 }
 
-export default connect(
+export default CurrencyConverterHOC(connect(
     mapStateToProps,
     mapDispatchToProps
-)(BookingForm);
+)(BookingForm));

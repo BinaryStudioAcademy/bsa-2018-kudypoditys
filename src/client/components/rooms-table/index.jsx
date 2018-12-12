@@ -3,10 +3,7 @@ import "./index.scss";
 import { Icon, Table } from "semantic-ui-react";
 import QuantityPicker from "client/components/quantity-picker";
 import _ from "lodash";
-import {
-    convertCurrencyByName,
-    titleToCode
-} from "client/helpers/convertCurrency";
+import { titleToCode } from "client/helpers/convertCurrency";
 import Modal from "client/components/modal";
 import BookingForm from "client/components/booking-form";
 import connect from "react-redux/es/connect/connect";
@@ -14,6 +11,7 @@ import { mapDispatchToProps, mapStateToProps } from "./container";
 import { roomQuantityChanged } from '../../helpers/roomQuantityChanged';
 import { getDaysDifference } from '../../helpers/date-helpers';
 import Tooltip from 'react-tooltip-lite';
+import CurrencyConverterHOC from "client/components/currency-converter-hoc";
 
 export const getIcons = number =>
     _.times(number, index => <Icon name="user" />);
@@ -75,7 +73,10 @@ export class RoomsTable extends React.Component {
             property,
             currency,
             checkIn,
-            checkOut
+            checkOut,
+            getRatio,
+            currenciesRatio,
+            round
         } = this.props;
         rooms.forEach(room => {
             if (Array.isArray(roomsZ)) {
@@ -87,8 +88,9 @@ export class RoomsTable extends React.Component {
         let bookButton = false;
         if (user) bookButton = true;
 
-        const priceFunc = price =>
-            convertCurrencyByName(propCurrency.code, price, currency.code);
+        const priceFunc = price => round(
+            getRatio(propCurrency.code, currency.code, currenciesRatio) * price
+        );
         const currencySymbol = titleToCode.get(currency.code);
         const daysStaying = getDaysDifference(checkIn, checkOut);
         let roomRow = null;
@@ -279,7 +281,7 @@ export class RoomsTable extends React.Component {
     }
 }
 
-export default connect(
+export default CurrencyConverterHOC(connect(
     mapStateToProps,
     mapDispatchToProps
-)(RoomsTable);
+)(RoomsTable));

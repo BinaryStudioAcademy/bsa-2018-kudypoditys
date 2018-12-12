@@ -7,7 +7,8 @@ import { Icon, Popup, Divider } from "semantic-ui-react";
 import BookingForm from "../booking-form";
 import Modal from "../modal";
 import { Header } from "semantic-ui-react";
-import { convert } from "../../helpers/convertCurrency";
+import CurrencyConverterHOC from "client/components/currency-converter-hoc";
+import { getDaysDifference } from "../../helpers/date-helpers";
 
 export class RoomsSummaryTable extends React.Component {
     getBedsSummary = bedsInRoom => {
@@ -34,10 +35,13 @@ export class RoomsSummaryTable extends React.Component {
     };
 
     getRoomsSummary = (rooms, bookButton, property) => {
-        const { currency } = this.props;
+        const { currency, getRatio, currenciesRatio, round, checkIn, checkOut } = this.props;
         const { currency: propCurrency } = property;
 
-        const priceFunc = (price) => convert(propCurrency.code, price, currency.code);
+        const daysStaying = getDaysDifference(checkIn, checkOut);
+        const priceFunc = (price) => round(
+            getRatio(propCurrency.code, currency.code, currenciesRatio) * price * daysStaying
+        );
 
         return rooms.map(room => (
             <React.Fragment>
@@ -147,7 +151,7 @@ export class RoomsSummaryTable extends React.Component {
     }
 }
 
-export default connect(
+export default CurrencyConverterHOC(connect(
     mapStateToProps,
     mapDispatchToProps
-)(RoomsSummaryTable);
+)(RoomsSummaryTable));
