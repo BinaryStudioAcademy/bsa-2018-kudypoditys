@@ -72,7 +72,7 @@ class RatingBlock extends React.Component {
                     position="bottom center"
                 />
             </div>
-                <div style={{color:'red',marginRight:'12px'}}>{this.props.nowLooking}  other people looking now</div>
+                {this.props.nowLooking ? <div style={{color:'red',marginRight:'12px'}}>{this.props.nowLooking}  other people looking now</div> : null}
             </div>
         );
     }
