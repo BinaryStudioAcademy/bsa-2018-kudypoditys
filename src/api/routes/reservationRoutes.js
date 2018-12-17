@@ -23,11 +23,12 @@ reservation
             roomId: Number(req.body.roomId),
             roomsCount: req.body.selectedRoomsAmount,
             paymentTypeId: Number(req.body.paymentTypeId),
-            priceTotal : parseFloat(req.body.totalPrice)
+            priceTotal : parseFloat(req.body.totalPrice),
+            propertyId : req.body.propId
         };
         reservationService
             .create(newReservation)
-            .then(reservation => {
+            .then(reservation => {               
                 res.send(reservation);
             })
             .catch(err => {

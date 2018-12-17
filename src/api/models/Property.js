@@ -19,6 +19,9 @@ let Property = orm.define('property', {
         type: Sequelize.FLOAT,
         validate: { notEmpty: true }
     },
+    lastBooked : {
+        type : Sequelize.DATE,
+    },
     description: {
         type: Sequelize.TEXT,
         validate: { notEmpty: true },
