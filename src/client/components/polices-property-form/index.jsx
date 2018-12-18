@@ -49,6 +49,7 @@ class PolicesPropertyForm extends Component {
         checkInCheckOut={isEdit ? initialValues.accommodationRule.CheckInCheckOut : null}
         isEdit={isEdit}
         component={CheckInCheckOut}
+        validate={[required]}
       />
     );
   }

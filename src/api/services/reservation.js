@@ -7,7 +7,7 @@ const userService = require("./user");
 const availabilityService = require("./availability");
 const moment = require("moment");
 const shortid = require("shortid");
-const nodemailer = require("nodemailer");
+const mailService = require("./mail");
 
 class ReservationService extends Service {
     async findAll() {
@@ -63,47 +63,21 @@ class ReservationService extends Service {
     }
 
     async sendMailBookingSuccess(userId, orderCode) {
-        const EMAIL_USER = process.env.EMAIL_USER;
-        const EMAIL_PASS = process.env.EMAIL_PASS;
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: EMAIL_USER,
-                pass: EMAIL_PASS
-            }
-        });
-
-        const user = await userRepository.findById(userId);
-        const mailOptions = {
-            from: EMAIL_USER,
-            to: user.email,
-            subject: "KudyPoditys booking success",
-            html: `You have successfully booked, your order code <b> ${orderCode} </b>`
-        };
-        return transporter.sendMail(mailOptions);
+        const receiver = await userRepository.findById(userId);
+        const subject = "KudyPoditys booking success";
+        const body = `You have successfully booked, your order code <b> ${orderCode} </b>`;
+        return mailService.sendMail(receiver, subject, body);
     }
 
-    async sendMailBookingCancelled(userEmail, reason, reservation) {
-        const EMAIL_USER = process.env.EMAIL_USER;
-        const EMAIL_PASS = process.env.EMAIL_PASS;
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: EMAIL_USER,
-                pass: EMAIL_PASS
-            }
-        });
-        const mailOptions = {
-            from: EMAIL_USER,
-            to: userEmail,
-            subject: "KudyPoditys booking cancellation",
-            html: `We are sorry, but your property owner has cancelled your booking (№${
+    async sendMailBookingCancelled(receiver, reason, reservation) {
+        const subject = "KudyPoditys booking cancellation";
+        const body = `We are sorry, but your property owner has cancelled your booking (№${
                 reservation.orderCode
             }) at ${
                 reservation.room.property.name
             } for the following reason: <br><br> ${reason} </b>`
-        };
-        return transporter.sendMail(mailOptions);
+
+        return mailService.sendMail(receiver, subject, body);
     }
 
     async ownerCancel(id, reason) {
@@ -112,7 +86,7 @@ class ReservationService extends Service {
             const user = await userService.findById(reservation.user.id);
             await this.deleteById(id);
             await this.sendMailBookingCancelled(
-                user.email,
+                user,
                 reason,
                 reservation
             );

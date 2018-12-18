@@ -13,7 +13,9 @@ const renderTextarea = ({
         {...input}
         placeholder={label}
         fluid={fluid}
-        className={className}
+        className={(touched && error)
+            ? (className !== undefined) ? `${className} field-error` : 'field-error'
+            : (className !== undefined) ? className : ''}
       />
     </React.Fragment>
   );

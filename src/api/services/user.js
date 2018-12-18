@@ -83,7 +83,7 @@ class UserService extends Service {
         const verifyString = this.generateRandomString();
         const currentDate = dateHelpers.toUnixTimeSeconds(new Date());
         const action = "verifyemail";
-        const mailOptionsParam = {
+        const mailOptions = {
             subject: "Email Verification - Kudypoditys",
             message: "Verify your email for Kudypoditys",
             verifyStringParam: verifyString
@@ -98,7 +98,7 @@ class UserService extends Service {
             .then(data => {
                 if (data) {
                     return userRepository.findById(user.id).then(user => {
-                        mailService.sendMail(user, mailOptionsParam, action);
+                        mailService.sendMailAction(user, mailOptions, action);
                         return { error: false, data: user };
                     });
                 } else {
@@ -141,7 +141,7 @@ class UserService extends Service {
                     .then(_ => user)
             )
             .then(user => {
-                mailService.sendMail(user, mailOptions, action);
+                mailService.sendMailAction(user, mailOptions, action);
                 return true;
             });
     }

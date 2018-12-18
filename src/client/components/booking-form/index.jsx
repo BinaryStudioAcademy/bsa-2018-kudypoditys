@@ -134,7 +134,8 @@ export class BookingForm extends React.Component {
                             priceTotal: totalPrice,
                             paymentTypeId: paymentTypeId
                                 ? paymentTypeId
-                                : paymentOptions[0].value
+                                : paymentOptions[0].value,
+                            totalPrice : totalCheck
                         });
                     }}
                     style={{
