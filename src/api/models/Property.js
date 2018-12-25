@@ -19,6 +19,12 @@ let Property = orm.define('property', {
         type: Sequelize.FLOAT,
         validate: { notEmpty: true }
     },
+    distanceToMetro: {
+        type: Sequelize.FLOAT
+    },
+    nearestMetro: {
+        type: Sequelize.STRING
+    },
     lastBooked : {
         type : Sequelize.DATE,
     },
