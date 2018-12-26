@@ -26,15 +26,15 @@ fs.readdirSync(__dirname)
             .pop()
             .replace(/\..+$/, "")
     )
-    .forEach(modelName => {
-        models[modelName] = require(`${apiRoot}/models/${modelName}`);
+  .forEach(modelName => {
+        models[modelName] = require(`${apiRoot}\\models\\${modelName}`);
     });
 
 associations(models); // make associations
 
 module.exports = orm
     .sync({ force: false })
-    .then(() => {
+  .then(() => {
         seed(models);
     })
     .then(() => models);

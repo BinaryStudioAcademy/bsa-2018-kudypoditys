@@ -11,14 +11,13 @@ import {mapStateToProps, mapDispatchToProps} from "./container";
 
 export class MainHeader extends Component {
     componentDidMount() {
-        this.props.getCurrencies();
     }
 
     logoutClicked = () => {
         this.props.logout();
     };
 
-    getCurrencies() {
+	getCurrencies() {
         const {currencies} = this.props;
         return currencies.map(x => ({
             key: x.id,
@@ -45,7 +44,7 @@ export class MainHeader extends Component {
     };
 
     handleCurrancyChange = (e, {value}) => {
-        const {currencies} = this.props;
+        const {currencies} = this.props.currencies;
         const currency = currencies.find(x => x.id === value);
         this.props.onCurrencyChange(currency);
 
@@ -161,11 +160,29 @@ export class MainHeader extends Component {
                                 <MainSearch
                                     view="bar"
                                     destination="Lviv"
-                                    checkIn={new Date("Aug 14 2018")}
-                                    checkOut={new Date("Aug 16 2018")}
+                                    checkIn={(new Date("Aug 14 2018")).getTime()}
+                                    checkOut={(new Date("Aug 16 2018")).getTime()}
                                     adults={1}
                                     rooms={1}
                                     children={0}
+                                    onDestinationChange={
+                                      this.props.onDestinationChange
+                                    }
+                                    onCheckInChange={
+                                      this.props.onCheckInChange
+                                    }
+                                    onCheckOutChange={
+                                      this.props.onCheckOutChange
+                                    }
+                                    onAdultsChange={
+                                      this.props.onAdultsChange
+                                    }
+                                    onChildrenChange={
+                                      this.props.onChildrenChange
+                                    }
+                                    onRoomsChange={
+                                      this.props.onRoomsChange
+                                    }
                                     handleSearchResults={
                                         this.props.handleSearchResults
                                     }

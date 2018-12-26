@@ -309,7 +309,6 @@ export class MainSearch extends React.Component {
                         onSearchChange={this.handleSearchChange}
                         results={results}
                         value={query}
-                        {...this.props}
                         required
                     />
                 </div>

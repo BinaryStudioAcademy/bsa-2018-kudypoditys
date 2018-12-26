@@ -56,7 +56,6 @@ export class BookingForm extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         const {
             checkIn,
             checkOut,

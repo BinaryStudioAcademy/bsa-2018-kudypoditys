@@ -22,8 +22,6 @@ export class RoomsTable extends React.Component {
     componentDidMount() {}
 
     componentDidUpdate() {
-        // console.log("RoomsTable componentDidUpdate props = ");
-        // console.log(this.props);
     }
 
     handleToggleCollapseDescription(roomId, ev) {
