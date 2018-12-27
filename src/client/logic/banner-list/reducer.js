@@ -2,6 +2,7 @@ import defaultState from 'client/logic/defaultState';
 import { convert } from '../../helpers/convertCurrency';
 import { CITY_INFOS_GET, CITY_INFOS_GET_SUCCESS } from './actionType';
 import { CURENCY_SELECT } from '../header/actionTypes';
+import { Flag } from 'semantic-ui-react';
 
 function cityInfosReducer(state = defaultState.cityInfos, action) {
     let cur = defaultState.header.selectedCurrency.code;
@@ -24,7 +25,7 @@ function cityInfosReducer(state = defaultState.cityInfos, action) {
 
         case CITY_INFOS_GET_SUCCESS: {
             const currency = localStorage.getItem('selectedCurrency') || {};
-
+            
             for (let city in action.payload) {
                 action.payload[city].baseCurrency = '$';
                 action.payload[city].baseAvgPrice = action.payload[city].avgPrice;
@@ -34,8 +35,8 @@ function cityInfosReducer(state = defaultState.cityInfos, action) {
                     action.payload[city].baseCurrency,
                     action.payload[city].baseAvgPrice,
                     action.payload[city].currency
-                    ,
                 );
+                action.payload[city].avgPrice = +action.payload[city].avgPrice;
             }
 
             return {
@@ -54,61 +55,60 @@ export default cityInfosReducer;
 const CITY_INFOS = {
     Lviv: {
         id: 1,
-        name: 'Lviv',
+        name: "Lviv",
         properties: 8,
         avgPrice: 120,
         imageUrl:
-            'http://www.mgi4ua.com/wp-content/uploads/2017/11/lviv-ukraine.jpg',
+            "http://www.mgi4ua.com/wp-content/uploads/2017/11/lviv-ukraine.jpg",
         flagUrl:
-            'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png',
+            "http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png"
     },
     Dnipro: {
         id: 6,
-        name: 'Dnipro',
+        name: "Dnipro",
         properties: 3,
         avgPrice: 22,
         imageUrl:
-            'http://meandyoukraine.com/mainContent/DniproCity/DniproCity_featuredImage.jpg',
+            "http://meandyoukraine.com/mainContent/DniproCity/DniproCity_featuredImage.jpg",
         flagUrl:
-            'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png',
+            "http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png"
     },
     Ternopil: {
         id: 3,
-        name: 'Ternopil',
+        name: "Ternopil",
         properties: 3,
         avgPrice: 28,
         imageUrl:
-            'http://www.gazeta-misto.te.ua/wp-content/uploads/2017/05/18671255_1124933304279283_1785861677540967562_n.jpg',
+            "http://www.gazeta-misto.te.ua/wp-content/uploads/2017/05/18671255_1124933304279283_1785861677540967562_n.jpg",
         flagUrl:
-            'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png',
+            "http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png"
     },
     Kiev: {
         id: 2,
-        name: 'Kiev',
+        name: "Kiev",
         properties: 7,
         avgPrice: 32,
-        imageUrl: 'https://s.inyourpocket.com/gallery/130361.jpg',
+        imageUrl: "https://s.inyourpocket.com/gallery/130361.jpg",
         flagUrl:
-            'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png',
+            "http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png"
     },
     Odessa: {
         id: 4,
-        name: 'Odessa',
+        name: "Odessa",
         properties: 4,
         avgPrice: 24,
         imageUrl:
-            'https://www.hotel-deribas.com/wp-content/uploads/2018/03/19odessa.jpg',
+            "https://www.hotel-deribas.com/wp-content/uploads/2018/03/19odessa.jpg",
         flagUrl:
-            'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png',
+            "http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png"
     },
     Kharkiv: {
         id: 5,
-        name: 'Kharkiv',
+        name: "Kharkiv",
         properties: 2,
         avgPrice: 27,
         imageUrl:
-            'http://www.yoldasin.com/wp-content/uploads/2017/04/kharkiv-tren-istasyonu-960x638.jpg',
-        flagUrl:
-            'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png',
-    },
+            "http://www.yoldasin.com/wp-content/uploads/2017/04/kharkiv-tren-istasyonu-960x638.jpg",
+        flagUrl: 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
+    }
 };

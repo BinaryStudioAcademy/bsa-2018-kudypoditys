@@ -9,7 +9,7 @@ module.exports = orm.define('country', {
         allowNull: false,
         unique: true
     },
-    icon: {
+    flagUrl: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
         allowNull: false,

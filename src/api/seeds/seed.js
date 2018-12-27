@@ -3840,7 +3840,8 @@ const COUNTRIES = [
     {
         id: 1,
         name: "Ukraine",
-        icon: "ua flag",
+        flagUrl:
+            "http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png",
         cities: [
             {
                 id: 1,
@@ -3882,7 +3883,8 @@ const COUNTRIES = [
     {
         id: 2,
         name: "Poland",
-        icon: "pl flag",
+        flagUrl:
+            "https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg",
         cities: [
             {
                 id: 7,
@@ -3924,7 +3926,8 @@ const COUNTRIES = [
     {
         id: 3,
         name: "Austria",
-        icon: "at flag",
+        flagUrl:
+            "https://vignette.wikia.nocookie.net/gabrielallon/images/7/7d/Austria_Flag.png/revision/latest?cb=20151228205208",
         cities: [
             {
                 id: 13,

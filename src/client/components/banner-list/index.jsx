@@ -36,7 +36,6 @@ export class BannerList extends Component {
     };
 
     render() {
-        console.log(this.props.cityInfos);
         const { cityInfos, currency} = this.props;
         const { Dnipro, Kiev, Odessa, Lviv, Kharkiv, Ternopil } = cityInfos;
 
@@ -98,14 +97,14 @@ export class BannerList extends Component {
 }
 
 BannerList.propTypes = {
-    cityInfos: PropTypes.arrayOf(
+    cityInfos: PropTypes.objectOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
             name: PropTypes.string.isRequired,
-            flagUrl: PropTypes.string.isRequired,
             properties: PropTypes.number.isRequired,
             avgPrice: PropTypes.number.isRequired,
-            imageUrl: PropTypes.string.isRequired
+            imageUrl: PropTypes.string.isRequired,
+            flagUrl: PropTypes.string.isRequired
         })
     ).isRequired
 };
