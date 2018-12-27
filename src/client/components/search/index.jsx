@@ -34,7 +34,6 @@ export class MainSearch extends React.Component {
             children,
             startDate,
             endDate,
-            sortBy,
             queryCopy,
             isSelectedResult
         } = this.state;

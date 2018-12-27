@@ -33,7 +33,7 @@ class BasicInfoPropertyForm extends Component {
 
     onCountryChange = (_, value) => {
         const { countries } = this.props;
-        const country = countries.find(x => x.id == value);
+        const country = countries.find(x => x.id === value);
 
         this.setState({
             selectedCountry: country

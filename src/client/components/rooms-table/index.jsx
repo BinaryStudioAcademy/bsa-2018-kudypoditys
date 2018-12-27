@@ -11,7 +11,6 @@ import Modal from "client/components/modal";
 import BookingForm from "client/components/booking-form";
 import connect from "react-redux/es/connect/connect";
 import { mapDispatchToProps, mapStateToProps } from "./container";
-import { roomQuantityChanged } from '../../helpers/roomQuantityChanged';
 import { getDaysDifference } from '../../helpers/date-helpers';
 import Tooltip from 'react-tooltip-lite';
 
@@ -55,7 +54,7 @@ export class RoomsTable extends React.Component {
     };
 
     handleQuantitySelectionChanged = (e, value, roomId) => {
-        const { rooms, selectRoomsAmount } = this.props;
+        const { rooms } = this.props;
         const roomsAmount = value;
         const sortedRooms = rooms;
         if(roomId && roomsAmount && sortedRooms) {
@@ -77,8 +76,8 @@ export class RoomsTable extends React.Component {
         } = this.props;
         rooms.forEach(room => {
             if (Array.isArray(roomsZ)) {
-                room.available = roomsZ.find(roomZ=> roomZ.id == room.id).available;
-                room.lastReservation = roomsZ.find(roomZ=> roomZ.id == room.id).lastReservation;
+                room.available = roomsZ.find(roomZ=> roomZ.id === room.id).available;
+                room.lastReservation = roomsZ.find(roomZ=> roomZ.id === room.id).lastReservation;
             }
         });
         const { currency: propCurrency } = property;
@@ -164,7 +163,7 @@ export class RoomsTable extends React.Component {
                                         trigger={
                                             <div>
                                                 <div className="room-total-check">
-                                                    { totalCheck != 'NaN' ? totalCheck + currencySymbol : '' }
+                                                    { totalCheck !== 'NaN' ? totalCheck + currencySymbol : '' }
                                                 </div>
                                                 <div
                                                     className="book-btn"

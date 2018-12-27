@@ -12,7 +12,6 @@ import RegistrationPage from "client/pages/registration-page";
 import AddPropertyPage from "client/pages/add-property-page";
 import EditPropertyPage from "client/pages/edit-property-page";
 import { Router, Route, Switch } from "react-router-dom";
-import CheckInCheckOut from "client/pages/checkin-checkout-page";
 import { HomePage } from "client/pages/home-page";
 import PropertyPage from "client/pages/property-page";
 import LoginPage from "client/pages/login-page";

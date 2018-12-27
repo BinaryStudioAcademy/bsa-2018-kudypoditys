@@ -1,6 +1,6 @@
 import React from "react";
-import {Button, Container} from 'semantic-ui-react';
-import {Field, reduxForm} from 'redux-form'
+import { Button, Container } from 'semantic-ui-react';
+import { Field } from 'redux-form'
 
 
 class ButtonWithCheckbox extends React.Component {

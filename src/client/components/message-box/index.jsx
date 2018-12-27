@@ -4,9 +4,8 @@ import { Message } from 'semantic-ui-react';
 export default class MessageBox extends Component {
   render() {
     const {
-      headerText, bodyText, error,
-
-      color = error ? 'red' : color
+        headerText, bodyText, error,
+        color = error ? 'red' : this.props.color
     } = this.props;
 
     return (

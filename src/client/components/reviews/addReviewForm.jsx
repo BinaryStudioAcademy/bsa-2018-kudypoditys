@@ -1,12 +1,10 @@
 import React from "react";
 import {
     Header,
-    Comment,
     Form,
     Button,
     Checkbox,
     Transition,
-    Rating,
     Icon,
     Modal
 } from "semantic-ui-react";
@@ -48,8 +46,6 @@ export class addReviewForm extends React.Component {
         this.props.updateRating({ [name]: rating });
     };
     handleSubmit = event => {
-        const { anon } = this.state;
-
         const { user, property, reviewRating, pros, cons, userc } = this.props;
         const {
             Cleanliness,
@@ -98,7 +94,7 @@ export class addReviewForm extends React.Component {
     };
 
     render() {
-        const { anon, visible } = this.state;
+        const { visible } = this.state;
         const { property } = this.props;
         return (
             <Form reply onSubmit={this.handleSubmit}>

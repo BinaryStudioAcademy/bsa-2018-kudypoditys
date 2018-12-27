@@ -4,10 +4,7 @@ import {
     CITY_INFOS_GET_FAILD
 } from "./actionType";
 import { all, put, call, takeLatest } from "redux-saga/effects";
-import PropertyService from "client/services/propertyService";
-import api from "../../helpers/api";
 import { SERVER_HOST } from "../../helpers/config";
-import * as actionTypes from "../user-cabinet-properties-tab/actionTypes";
 
 function* getProperties(action) {
     // console.log("Hello from SAGA" + action.type);
@@ -82,4 +79,3 @@ function* getProperties(action) {
 export default function* bannerListSaga() {
     yield all([takeLatest(CITY_INFOS_GET, getProperties)]);
 }
-const cities = ["1", "2", "3", "4", "5", "6"];

@@ -1,9 +1,8 @@
 import React from "react";
 import "./index.scss";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-import { Icon, Popup, Divider } from "semantic-ui-react";
+import { Icon, Divider } from "semantic-ui-react";
 import BookingForm from "../booking-form";
 import Modal from "../modal";
 import { Header } from "semantic-ui-react";
@@ -11,8 +10,6 @@ import { convert } from "../../helpers/convertCurrency";
 
 export class RoomsSummaryTable extends React.Component {
     getBedsSummary = bedsInRoom => {
-        const bedsTotal = bedsInRoom.length;
-
         return (
             <div style={{ padding: "5px" }}>
                 {bedsInRoom.map((bed, index) => {

@@ -1,5 +1,4 @@
 import api from "../helpers/api";
-import history from "client/history";
 
 class ReviewService {
     createReview(data) {

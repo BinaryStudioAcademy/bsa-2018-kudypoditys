@@ -3,15 +3,11 @@ import {
     Button,
     Icon,
     Image,
-    Item,
-    Label,
     Card,
-    Divider,
     Progress,
     Header
 } from "semantic-ui-react";
 import history from "client/history";
-import { Comment } from "semantic-ui-react/dist/commonjs/views/Comment/Comment";
 
 export default class ReviewItem extends React.Component {
     state = {

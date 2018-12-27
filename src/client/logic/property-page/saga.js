@@ -6,9 +6,6 @@ import {
 } from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
 import api from "../../helpers/api";
-import {
-    descriptionUpdate
-} from '../property-description/actions';
 
 export default function* propertyPageSaga() {
     function* getPropertyInfo(action) {
@@ -35,12 +32,6 @@ export default function* propertyPageSaga() {
 
     function* bookProperty(action) {
         try {
-            const response = yield call(
-                api.sendAuthRequest,
-                "/api/reservation",
-                "post",
-                action.payload
-            );
             yield put({
                 type: actionTypes.BOOK_PROPERTY_SUCCESS,
                 payload: "Your booking was a success!"

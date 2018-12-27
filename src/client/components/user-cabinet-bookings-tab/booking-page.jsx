@@ -36,12 +36,6 @@ class BookingPage extends React.Component {
         const { orderCode } = this.props.booking;
         const { room } = booking;
         const { property } = room;
-        const dateIn = new Date(booking.dateIn),
-            dateOut = new Date(booking.dateOut);
-        const start = moment(dateIn);
-        const end = moment(dateOut);
-        const duration = moment.duration(end.diff(start));
-        const days = Math.round(duration.asDays());
         const price = Number(booking.priceTotal);
         const avgPropRatingArray = getGroupedArray(
             property.reviews,

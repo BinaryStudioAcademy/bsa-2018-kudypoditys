@@ -1,6 +1,6 @@
-import React, {Fragment} from "react";
-import {Card} from 'semantic-ui-react';
-import {Field, reduxForm,} from 'redux-form';
+import React, { Fragment } from "react";
+import { Card } from 'semantic-ui-react';
+import { Field } from 'redux-form';
 
 
 let CheckboxAmenitiesForm = (props) => {

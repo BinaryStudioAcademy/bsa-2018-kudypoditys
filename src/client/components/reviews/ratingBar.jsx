@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './index.scss';
 
-import { getPropertyStatus, getGroupedArray,
+import { getGroupedArray,
     getAvgFromArray, } from 'client/helpers/avgReviewRating';
 import {Progress} from "semantic-ui-react";
 
@@ -11,7 +11,6 @@ class avgRatingBar extends React.Component {
 
 
         const
-            avgPropRatingArray = getGroupedArray(property.reviews, 'avgReview'),
             avgPropCleanliness = getGroupedArray(property.reviews, 'Cleanliness'),
             avgPropComfort = getGroupedArray(property.reviews, 'Comfort'),
             avgPropFacilities = getGroupedArray(property.reviews, 'Facilities'),
@@ -23,8 +22,7 @@ class avgRatingBar extends React.Component {
             avgFacilities = getAvgFromArray(avgPropFacilities),
             avgComfort = getAvgFromArray(avgPropComfort),
             avgPrice = getAvgFromArray(avgPropPrice),
-            avgLocation = getAvgFromArray(avgPropLocation),
-            avgPropRating = getAvgFromArray(avgPropRatingArray);
+            avgLocation = getAvgFromArray(avgPropLocation);
         return (
             <div className="avg_rating___block">
 

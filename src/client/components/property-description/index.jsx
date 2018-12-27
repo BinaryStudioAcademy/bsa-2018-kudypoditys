@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import { Divider, Container } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 export default class PropertyDescription extends React.Component {

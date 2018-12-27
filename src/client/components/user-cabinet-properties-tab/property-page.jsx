@@ -1,5 +1,5 @@
 import React from "react";
-import { Tab, Button } from "semantic-ui-react";
+import { Tab } from "semantic-ui-react";
 import { ReviewsTab } from "./reviewsTab";
 import AvailabilityCalendar from "client/components/property-availability-calendar";
 import { BookingsList } from "./bookings-list";
@@ -37,7 +37,6 @@ export class PropertyPage extends React.Component {
         }
     ];
     render() {
-        const { property } = this.props;
         return (
             <Segment className="property-segment">
                 <a

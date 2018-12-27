@@ -61,7 +61,7 @@ class RoomsPropertyForm extends Component {
             <Button className="add-room-btn" type="button" onClick={() => { this.updateActiveIndex(fields.length); }}>
               Add Room
             </Button>
-            {submitFailed && error && <Label color='red' pointing="left">{error}</Label> || <Fragment />}
+            {(submitFailed && error && <Label color='red' pointing="left">{error}</Label>) || <Fragment />}
           </List.Item>
         }
 

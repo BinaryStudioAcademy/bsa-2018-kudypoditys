@@ -3,11 +3,9 @@ import "./index.scss";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-import request from "superagent";
-import { Checkbox, Card, List } from "semantic-ui-react";
+import { Checkbox, List } from "semantic-ui-react";
 import history from "client/history";
 import queryString from "query-string";
-// import Checkbox from './Checkbox';
 
 import { ratingScore, bedTypes, priceScore, bedsType } from "./filters";
 

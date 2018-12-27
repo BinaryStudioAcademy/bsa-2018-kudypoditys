@@ -1,6 +1,4 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import propertyService from "client/services/propertyService";
-import availabilityService from "client/services/availabilityService";
 import * as actionTypes from "./actionTypes";
 import api from "../../helpers/api";
 

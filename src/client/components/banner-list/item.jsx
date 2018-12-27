@@ -1,4 +1,4 @@
-import React, { Component, Fragment, connect } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Card, Container, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 

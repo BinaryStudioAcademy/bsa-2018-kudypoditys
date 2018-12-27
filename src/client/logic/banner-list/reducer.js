@@ -2,10 +2,8 @@ import defaultState from 'client/logic/defaultState';
 import { convert } from '../../helpers/convertCurrency';
 import { CITY_INFOS_GET, CITY_INFOS_GET_SUCCESS } from './actionType';
 import { CURENCY_SELECT } from '../header/actionTypes';
-import { Flag } from 'semantic-ui-react';
 
 function cityInfosReducer(state = defaultState.cityInfos, action) {
-    let cur = defaultState.header.selectedCurrency.code;
     switch (action.type) {
         case CITY_INFOS_GET:
             return CITY_INFOS;

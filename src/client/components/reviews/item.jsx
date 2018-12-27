@@ -1,19 +1,14 @@
 import React, { Component, Fragment } from "react";
 import {
-    Card,
     Comment,
     Header,
     Icon,
-    Label,
-    Transition
+    Label
 } from "semantic-ui-react";
-import PropTypes from "prop-types";
-
 import "./index.scss";
 
 import defaultUserPic from "./img/default_avatar.png";
 import anonPic from "./img/anon.jpg";
-import ReviewForm from "./addReviewForm";
 
 export default class Review extends Component {
     render() {

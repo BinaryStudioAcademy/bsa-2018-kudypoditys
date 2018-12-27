@@ -2,13 +2,6 @@ import React, {Component} from 'react';
 import Checkbox from './Checkbox';
 import {bedTypes} from './filters'
 
-
-const items = [
-    '1',
-    '2',
-    '3',
-];
-
 class cbtest extends Component {
     componentWillMount = () => {
         this.selectedCheckboxes = new Set();

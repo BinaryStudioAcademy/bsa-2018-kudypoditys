@@ -1,6 +1,5 @@
-import {POLICES_TAB_UPDATE} from "./actionTypes";
-import defaultState from 'client/logic/defaultState';
-import {CHECKIN_OUT_UPDATE} from "./actionTypes";
+import { POLICES_TAB_UPDATE } from "./actionTypes";
+import { CHECKIN_OUT_UPDATE } from "./actionTypes";
 
 
 export default function propertySubmitReducer(state = {}, action) {

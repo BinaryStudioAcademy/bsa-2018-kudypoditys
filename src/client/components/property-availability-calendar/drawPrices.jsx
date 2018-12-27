@@ -13,7 +13,7 @@ export class DrawPrices extends React.Component {
             const dayNum = fullDate.date();
             const availability = this.props.availability
                 .find(av=>{
-                    return av.date == dayNum;
+                    return av.date === dayNum;
                 })
 
             return (
