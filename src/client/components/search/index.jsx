@@ -237,7 +237,7 @@ export class MainSearch extends React.Component {
         return history.location.pathname.includes('/property');
     }
 
-    componentDidMount() {
+    componentDidMount() {        
         if (history.location.search !== "") {
             const parsed = queryString.parse(history.location.search); // here gets all data for search bar from query
             // console.log(parsed);
@@ -262,19 +262,9 @@ export class MainSearch extends React.Component {
         }
     }
 
-    render() {
-        const selectOptionsRooms = this.generateOptions(1, 30);
-        const selectOptionsAdults = this.generateOptions(1, 10);
-        const {
-            isLoading,
-            query,
-            results,
-            rooms,
-            adults,
-            children
-        } = this.state;
+    componentDidUpdate() {
         if (this.props.search.data !== undefined && !this.checkIfCurrentPageIsProperty()) {
-            const {data} = this.props.search;
+            const { data } = this.props.search;
             //send data to search page
             this.props.handleSearchResults({
                 searchResults: data,
@@ -290,6 +280,23 @@ export class MainSearch extends React.Component {
                 }
             });
         }
+    }
+
+    changeFocusDatePicker = focusedInput => this.setState({ focusedInput });
+
+    render() {
+        const selectOptionsRooms = this.generateOptions(1, 30);
+        const selectOptionsAdults = this.generateOptions(1, 10);
+        const {
+            isLoading,
+            query,
+            results,
+            rooms,
+            adults,
+            children
+        } = this.state;
+
+        
         const childrenOptions = this.generateOptions(0, 10);
 
         return (
@@ -327,9 +334,7 @@ export class MainSearch extends React.Component {
                         endDate={this.state.endDate}
                         onDatesChange={this.datesChanged}
                         focusedInput={this.state.focusedInput}
-                        onFocusChange={focusedInput => {
-                            this.setState({focusedInput});
-                        }}
+                        onFocusChange={this.changeFocusDatePicker.bind(this)}
                         showDefaultInputIcon={false}
                         small={true}
                     />
