@@ -86,7 +86,6 @@ export class PropertyListItem extends React.Component {
 
     // Show “Breakfast included” icon if breakfast included in each room
     isBreakfastFunction(property) {
-        // console.log(property);
         return false;
     }
 
@@ -397,19 +396,18 @@ export class PropertyListItem extends React.Component {
 
 PropertyListItem.propTypes = {
     propertyItemData: PropTypes.shape({
-        image: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         rating: PropTypes.number.isRequired,
         address: PropTypes.string.isRequired,
-        coordinates: PropTypes.string.isRequired,
-        distanceToCenter: PropTypes.number.isRequired,
-        priceTo: PropTypes.number.isRequired,
-        priceFrom: PropTypes.number.isRequired,
-        curency: PropTypes.string.isRequired,
-        reviewsNamber: PropTypes.number.isRequired,
-        locationRating: PropTypes.number.isRequired,
-        availableRoomsCount: PropTypes.number.isRequired,
+        coordinates: PropTypes.shape({
+            lat: PropTypes.number.isRequired,
+            lng: PropTypes.number.isRequired
+        }).isRequired,
+        distanceToCentre: PropTypes.number.isRequired,
+        // curency: PropTypes.string.isRequired,
+        // reviewsNumber: PropTypes.number.isRequired,
+        // locationRating: PropTypes.number.isRequired,
         mealType: PropTypes.string
     }),
     searchData: PropTypes.shape({

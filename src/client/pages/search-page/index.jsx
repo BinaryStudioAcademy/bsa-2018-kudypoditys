@@ -14,7 +14,6 @@ import sorry from "./img/nothing.png";
 class SearchPage extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this);
         this.state = {
             mapProp: [],
             switch:
@@ -25,7 +24,6 @@ class SearchPage extends React.Component {
             itemCount: 0,
             showEmptyList: false,
             showLoading: true,
-            rendered: false,
             searchRequest: {},
             selectedPage: 1,
             properties: [
@@ -42,38 +40,34 @@ class SearchPage extends React.Component {
     }
 
     componentWillUnmount = () => {
-        this.setState({ ...this.state, rendered: false });
-    }
+    };
 
-    componentDidMount = () => { 
-        this.setState({ ...this.state, rendered: true })
-        console.log(this);
-    }
+    componentDidMount = () => {
+    };
+
+    listItemsRender = () =>
+        this.state.properties.map(property => (
+            <PropertyListItem
+                key={property.id}
+                propertyItemData={property}
+                searchData={{
+                    startDate: this.state.searchRequest.startDate,
+                    endDate: this.state.searchRequest.endDate
+                }}
+                itemIndex={this.state.properties.indexOf(property)}
+            />
+        ));
+    
 
     handleSearchResults = searchData => {
-        console.log(searchData);
         let properties = [];
         if (searchData.searchResults.properties) {
             properties = searchData.searchResults.properties.filter(
                 property => property !== null
             );
         }
-        const listItems = properties.map(property => {
-            return (
-                <PropertyListItem
-                    key={property.id}
-                    propertyItemData={property}
-                    searchData={{
-                        startDate: searchData.searchRequest.startDate,
-                        endDate: searchData.searchRequest.endDate
-                    }}
-                    itemIndex={properties.indexOf(property)}
-                />
-            );
-        });
 
         this.setState({
-            listItems: listItems,
             itemCount: searchData.searchResults.propertiesCount,
             searchRequest: searchData.searchRequest,
             properties: searchData.searchResults.properties,
@@ -120,16 +114,24 @@ class SearchPage extends React.Component {
         });
         localStorage.setItem("switch", data.value);
     };
+
+    onDestinationChange = () => {}
+    onCheckInChange = () => {}
+    onCheckOutChange = () => {}
+
     render() {
         const active = this.state.switch;
         const LastStartPosition = {
             latitude: JSON.parse(localStorage.getItem("lastPositionLat")),
             longitude: JSON.parse(localStorage.getItem("lastPositionLng"))
         };
-        // console.log("this.state.showLoading = " + this.state.showLoading);
+
         return (
             <div className="mock">
                 <Header
+                    onDestinationChange={this.onDestinationChange}
+                    onCheckInChange={this.onCheckInChange}
+                    onCheckOutChange={this.onCheckOutChange}
                     handleSearchResults={this.handleSearchResults}
                     showSearch={true}
                 />
@@ -223,7 +225,7 @@ class SearchPage extends React.Component {
                                                     this.onSortingSelected
                                                 }
                                             />
-                                            {this.state.listItems}
+                                            {this.listItemsRender()}
                                         </div>
                                     ) : (
                                         <div
