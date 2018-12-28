@@ -262,6 +262,8 @@ export class MainSearch extends React.Component {
         }
     }
 
+    changeFocusDatePicker = focusedInput => this.setState({ focusedInput });
+
     render() {
         const selectOptionsRooms = this.generateOptions(1, 30);
         const selectOptionsAdults = this.generateOptions(1, 10);
@@ -327,9 +329,7 @@ export class MainSearch extends React.Component {
                         endDate={this.state.endDate}
                         onDatesChange={this.datesChanged}
                         focusedInput={this.state.focusedInput}
-                        onFocusChange={focusedInput => {
-                            this.setState({focusedInput});
-                        }}
+                        onFocusChange={this.changeFocusDatePicker.bind(this)}
                         showDefaultInputIcon={false}
                         small={true}
                     />

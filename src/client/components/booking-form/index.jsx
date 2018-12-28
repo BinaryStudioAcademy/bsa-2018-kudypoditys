@@ -46,6 +46,7 @@ export class BookingForm extends React.Component {
     datesChanged = selectedDates => {
         this.props.onDatesChange(this.props.propertyId, selectedDates);
     };
+    changeFocusDatePicker = focusedInput => this.setState({ focusedInput });
 
     constructor(props) {
         super(props);
@@ -161,9 +162,7 @@ export class BookingForm extends React.Component {
                                 endDate={endDate}
                                 onDatesChange={this.datesChanged}
                                 focusedInput={this.state.focusedInput}
-                                onFocusChange={focusedInput => {
-                                    this.setState({ focusedInput });
-                                }}
+                                onFocusChange={this.changeFocusDatePicker.bind(this)}
                                 small={true}
                                 x
                             />

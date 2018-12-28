@@ -25,6 +25,7 @@ import {
 import RatingBlock from "../reviews/ratingBlock";
 import { convert } from '../../helpers/convertCurrency';
 import { toUnixTimeSeconds, isWithinLastDay } from '../../helpers/date-helpers';
+import moment from "moment";
 
 export class PropertyListItem extends React.Component {
     handleRedirectToMap = id => {
@@ -412,8 +413,8 @@ PropertyListItem.propTypes = {
         mealType: PropTypes.string
     }),
     searchData: PropTypes.shape({
-        startDate: PropTypes.instanceOf(Date),
-        endDate: PropTypes.instanceOf(Date)
+        startDate: PropTypes.instanceOf(moment),
+        endDate: PropTypes.instanceOf(moment)
     })
 };
 export default connect(mapStateToProps)(PropertyListItem);

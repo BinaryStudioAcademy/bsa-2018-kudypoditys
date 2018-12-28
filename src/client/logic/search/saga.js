@@ -7,6 +7,7 @@ import { PAGINATION_UPDATE } from "../pagination/actionType";
 
 function* submitSearch(action) {
     try {
+        console.log("GETTING ROOMS");
         const searchResponse = yield call(
             searchService.submitSearch,
             action.payload

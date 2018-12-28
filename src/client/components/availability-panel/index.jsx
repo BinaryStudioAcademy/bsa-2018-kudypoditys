@@ -39,6 +39,8 @@ export class AvailabilityPanel extends React.Component {
         this.props.onDatesChange(this.props.propertyId, selectedDates);
     };
 
+    changeFocusDatePicker = focusedInput => this.setState({ focusedInput });
+
     render() {
         const {
             propertyName,
@@ -110,9 +112,7 @@ export class AvailabilityPanel extends React.Component {
                                     endDate={endDate}
                                     onDatesChange={this.datesChanged}
                                     focusedInput={this.state.focusedInput}
-                                    onFocusChange={focusedInput => {
-                                        this.setState({ focusedInput });
-                                    }}
+                                    onFocusChange={this.changeFocusDatePicker.bind(this)}
                                     showDefaultInputIcon={false}
                                     small={true}
                                     x
