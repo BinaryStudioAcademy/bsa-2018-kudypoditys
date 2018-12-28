@@ -29,7 +29,6 @@ class Pagination extends React.Component {
         return (
 
             <SemanticPagination
-                defaultActivePage={1}
                 firstItem={{
                     "aria-label": "First item",
                     content: "«",

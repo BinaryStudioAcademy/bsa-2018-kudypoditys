@@ -123,6 +123,8 @@ class MapView extends React.Component {
     handleMarkerClicked = property => {
         if (this.state.controlEnable) this.setState({ propertyInfo: property });
     };
+    changePropertyInfo = newPropertyInfo => this.setState({ propertyInfo: newPropertyInfo})
+
     renderInfo = () => {
         const { propertyInfo } = this.state;
 
@@ -135,7 +137,7 @@ class MapView extends React.Component {
                     price={propertyInfo.price ? propertyInfo.price : this.price}
                     rating={propertyInfo.rating}
                     imageSrc={propertyInfo.imageSrc}
-                    closeClicked={() => this.setState({ propertyInfo: null })}
+                    closeClicked={this.changePropertyInfo.bind(this, null)}
                     propertyId={propertyInfo.id}
                 />
             )
