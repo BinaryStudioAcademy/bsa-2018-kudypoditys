@@ -133,10 +133,21 @@ class PropertyRepository extends Repository {
                 "description",
                 "coordinates",
                 "contactPhone",
-                "contactPersonName"
+                "contactPersonName",
+                "lastBooked"
             ],
             include: includeOptions
         });
+    }
+
+    updateLastBooked(id,lastBooked){
+        return this.model.findOne({
+            where: {
+                id: id,
+            }
+        }).then(async (property) => {
+            await property.update(lastBooked);
+        });    
     }
 
     updateById(id, data) {
@@ -148,7 +159,7 @@ class PropertyRepository extends Repository {
         }).then(async (property) => {
             // update basic info
             await property.update(data);
-
+            
             // update accommodationRule
             await AccommodationRule.update(data.accommodationRule, {
                 where: {

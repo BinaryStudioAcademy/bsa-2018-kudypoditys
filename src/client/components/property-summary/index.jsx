@@ -14,6 +14,7 @@ export class PropertySummary extends React.Component {
             totalReviews,
             bookingPage,
             labelBelow,
+            nowLooking
         } = this.props;
 
         return (
@@ -97,6 +98,7 @@ export class PropertySummary extends React.Component {
                         avgPropRating={rating}
                         reviewsCount={totalReviews}
                         property={property}
+                        nowLooking = {nowLooking}
                     />
                 </div>
             </div>

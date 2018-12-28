@@ -126,6 +126,7 @@ export class BookingForm extends React.Component {
                     onSubmit={event => {
                         event.preventDefault();
                         this.props.onBooking({
+                            propId : this.props.propertyId,
                             dateIn: Number(startDate),
                             dateOut: Number(endDate),
                             guestsCount: adults + children,

@@ -26,6 +26,7 @@ import VerifyEmail from "client/components/verify-email";
 import ForgotPasswordPage from "client/pages/forgot-password-page";
 import SimpleModal from 'client/components/simple-modal';
 import ErrorBoundary from "client/components/error-boundary-handler";
+import {socket} from "./logic/socket"
 
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];
@@ -76,3 +77,10 @@ ReactDOM.render(
     </Provider>,
     document.getElementById("root")
 );
+
+window.addEventListener("beforeunload", (ev) => 
+{  
+    if(socket)
+        socket.emit('onClose');
+    ev.preventDefault();
+});

@@ -76,8 +76,12 @@ export class RoomsTable extends React.Component {
         } = this.props;
         rooms.forEach(room => {
             if (Array.isArray(roomsZ)) {
-                room.available = roomsZ.find(roomZ=> roomZ.id === room.id).available;
-                room.lastReservation = roomsZ.find(roomZ=> roomZ.id === room.id).lastReservation;
+                const roomZ = roomsZ.find(roomZ => roomZ.id == room.id);
+                //It can invoke bugs.
+                if(roomZ){
+                    room.available = roomZ.available;
+                    room.lastReservation = roomZ.lastReservation;
+                }
             }
         });
         const { currency: propCurrency } = property;

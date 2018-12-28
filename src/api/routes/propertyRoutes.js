@@ -2,6 +2,7 @@ const express = require("express");
 const property = express.Router();
 const propertyService = require("../services/property");
 const elasticService = require("../elastic/elasticService");
+const propertyReservationService = require("../services/propertyReservation")
 
 property
     .route("/")
@@ -46,7 +47,7 @@ property.route("/availability").put((req, res) => {
     let value = req.body;
     value.checkIn = new Date(value.checkIn);
     value.checkOut = new Date(value.checkOut);
-    propertyService
+    propertyReservationService
         .checkAvailability(value)
         .then(rooms => {
             res.send(rooms);
@@ -70,11 +71,13 @@ property
             });
     })
     .get((req, res) => {
-        propertyService
-            .findById(req.params.id)
-            .then(response => {
-                res.send(response);
-            })
+        Promise.all([propertyService.findById(req.params.id),
+                     propertyReservationService.wasBookedLastDay(req.params.id)])
+                .then(responce => {
+                    const property = responce[0];
+                    property.notes.recentlyBooked = responce[1];
+                    res.send(property);
+                })
             .catch(err => {
                 res.status(404).send(err.message);
             });

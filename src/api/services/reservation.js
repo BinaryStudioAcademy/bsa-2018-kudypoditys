@@ -8,6 +8,8 @@ const availabilityService = require("./availability");
 const moment = require("moment");
 const shortid = require("shortid");
 const mailService = require("./mail");
+const propertyService = require("./property");
+const propertyReservationService = require("./propertyReservation");
 
 class ReservationService extends Service {
     async findAll() {
@@ -111,6 +113,9 @@ class ReservationService extends Service {
                     reservation.userId,
                     reservation.orderCode
                 );
+
+                await propertyService.updateLastBooked(reservation.propertyId,{ lastBooked : moment().add(2, 'hours').format()});
+
                 return this.repository.create(reservation);
             }
             return Promise.reject(
