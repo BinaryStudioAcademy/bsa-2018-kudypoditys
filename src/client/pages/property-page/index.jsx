@@ -7,7 +7,8 @@ import {
     Header,
     Icon,
     Sidebar,
-    Label
+    Label,
+    Popup
 } from "semantic-ui-react";
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from "./container";
@@ -30,6 +31,8 @@ import {
 } from "client/helpers/avgReviewRating";
 import {PropertyCommentsList} from "client/components/property-comments-list";
 import RoomsTable from "client/components/rooms-table";
+import {socket} from '../../logic/socket';
+import * as moment from 'moment';
 
 export class PropertyPage extends React.Component {
     toggleReviews = () => {
@@ -44,10 +47,15 @@ export class PropertyPage extends React.Component {
             this.props.checkIn,
             this.props.checkOut
         );
+        socket.connect();
+        socket.emit('openPropertyRoom',this.props.match.params.id);
+        socket.emit('openPropertyPage',this.props.match.params.id);
+        socket.on('nowLooking',(res) => this.setState({nowLooking : res}));
     }
 
     componentWillUnmount() {
         this.props.clearPropertyPageSlice();
+        socket.emit('leavePropertyRoom',this.props.property.id);
     }
 
     componentDidMount() {
@@ -75,7 +83,8 @@ export class PropertyPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            reviewsVisible: false
+            reviewsVisible: false,
+            nowLooking : 0
         };
     }
 
@@ -120,6 +129,7 @@ export class PropertyPage extends React.Component {
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
 
         const pics = this.getImagesArray(property.images);
+        const lastBookedTime = moment().diff(property.lastBooked,'minutes');
         return (
             <div className="mock">
                 <AppHeader
@@ -246,6 +256,7 @@ export class PropertyPage extends React.Component {
                                 totalReviews={property.reviews.length}
                                 property={property}
                                 labelBelow={notes && notes.recentlyBooked}
+                                nowLooking={this.state.nowLooking}
                             />
                             {notes && notes.recentlyBooked ? (
                                 <Label
@@ -259,6 +270,28 @@ export class PropertyPage extends React.Component {
                                     today
                                 </Label>
                             ) : null}
+                            { lastBookedTime ? 
+                                lastBookedTime < 60 ? (<Popup trigger={
+                                <Label
+                                    color="red"
+                                    tag
+                                    style={{left:10, marginBottom: 15}}>
+                                    {<Icon name="clock"/>} {"Someone just booked this"}
+                                </Label>
+                                }  
+                            content={`Last booked: ${lastBookedTime} minutes ago`} />)
+                            :
+                             (
+                                <Label
+                                    color="red"
+                                    tag
+                                    style={{left:10, marginBottom: 15}}>
+                                    {<Icon name="clock"/>} {`Last booked: ${parseInt(lastBookedTime/60)} hour ago`}
+                                </Label>
+                             )
+                            : null
+                            }
+                            <br/>    
                             <Slider pics={pics} slideIndex={0}/>
 
                             <Divider hidden/>
