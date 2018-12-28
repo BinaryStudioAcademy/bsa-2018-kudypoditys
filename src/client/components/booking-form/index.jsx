@@ -9,9 +9,12 @@ import "./index.scss";
 import history from "client/history";
 import QuantityPicker from "../quantity-picker";
 import { roomQuantityChanged } from "../../helpers/roomQuantityChanged";
-import {convertCurrencyByName} from "client/helpers/convertCurrency";
 import RoomPriceService from '../../services/roomPriceService';
-import {titleToCode} from "../../helpers/convertCurrency";
+import {
+    convertCurrencyByName,
+    titleToCode
+} from "../../helpers/convertCurrency";
+import { getDaysDifference } from "../../helpers/date-helpers";
 
 export class BookingForm extends React.Component {
     generateOptions = (from, to) => {
@@ -27,7 +30,7 @@ export class BookingForm extends React.Component {
     generateRoomOptions = rooms => {
         let options = [];
         for (let i = 0; i < rooms.length; i++) {
-            const disabled = rooms[i].available == 0;
+            const disabled = rooms[i].available === 0;
             options.push({ text: rooms[i].roomType.name, value: rooms[i].id, disabled: disabled });
         }
         return options;
@@ -54,7 +57,6 @@ export class BookingForm extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         const {
             checkIn,
             checkOut,
@@ -128,6 +130,7 @@ export class BookingForm extends React.Component {
                         this.props.onBooking({
                             dateIn: Number(moment(checkIn)),
                             dateOut: Number(moment(checkOut)),
+                            propId : this.props.propertyId,
                             guestsCount: adults + children,
                             roomId: roomId ? roomId : roomOptions[0].value,
                             selectedRoomsAmount: selectedRoomsAmount ? selectedRoomsAmount: 1,

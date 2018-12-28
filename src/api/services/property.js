@@ -1,10 +1,5 @@
 const Service = require("./generalService");
 const propertyRepository = require("../repositories/propertyRepository");
-const roomService = require("./room");
-const reservationService = require("./reservation");
-const availabilityService = require("./availability");
-const moment = require("moment");
-const dateHelpers = require("../helpers/date-helpers")
 
 class PropertyService extends Service {
     async findById(id) {
@@ -13,7 +8,8 @@ class PropertyService extends Service {
             let notes = {
                 recentlyBooked: 0
             };
-            notes.recentlyBooked = await this.wasBookedLastDay(property.id);
+            //Migrate in another file/logic
+            //notes.recentlyBooked = await this.wasBookedLastDay(property.id);
             property.notes = notes;
             const response = {
                 property: property,
@@ -142,6 +138,10 @@ class PropertyService extends Service {
 
     getAllProperties() {
         return propertyRepository.findAll();
+    }
+
+    updateLastBooked(id,lastBooked){
+        return propertyRepository.updateLastBooked(id,lastBooked);
     }
 
     getPropertyById(id) {

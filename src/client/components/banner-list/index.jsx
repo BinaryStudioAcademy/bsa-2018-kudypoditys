@@ -18,7 +18,7 @@ export class BannerList extends Component {
         };
     }
 
-    componentWillMount() {
+  componentWillMount() {
         this.props.getCityInfos();
         // this.setState({lviv:this.props.city1}, ()=>console.log(this.state.city1))
     }
@@ -36,10 +36,8 @@ export class BannerList extends Component {
     };
 
     render() {
-
-
         const { cityInfos, currency} = this.props;
-        const {Dnipro, Kiev, Odessa, Lviv, Kharkiv, Ternopil} = cityInfos;
+        const { Dnipro, Kiev, Odessa, Lviv, Kharkiv, Ternopil } = cityInfos;
 
         return (
             <div className='container'>
@@ -99,14 +97,14 @@ export class BannerList extends Component {
 }
 
 BannerList.propTypes = {
-    cityInfos: PropTypes.arrayOf(
+    cityInfos: PropTypes.objectOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
-            city: PropTypes.string.isRequired,
-            flagUrl: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
             properties: PropTypes.number.isRequired,
             avgPrice: PropTypes.number.isRequired,
-            pictureUrl: PropTypes.string.isRequired
+            imageUrl: PropTypes.string.isRequired,
+            flagUrl: PropTypes.string.isRequired
         })
     ).isRequired
 };

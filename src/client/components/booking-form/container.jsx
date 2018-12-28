@@ -26,7 +26,7 @@ export function mapStateToProps(state, ownProps) {
         children: bookingInput.children,
         roomId: bookingInput.roomId,
         selectedRoomsAmount: selectedAmount,
-        roomsAmount: parseInt(available),
+        roomsAmount: parseInt(available, 10),
         roomPrice: price,
         paymentTypeId: bookingInput.paymentTypeId,
         error: bookingInput.error,

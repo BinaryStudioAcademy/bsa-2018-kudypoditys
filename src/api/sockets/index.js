@@ -1,16 +1,34 @@
 module.exports = io => {
-    io.on('connection', socket => {
+    io.sockets.on('connection', (socket) => {
 
-        socket.emit("change", `Connected with id: ${socket.id}.`);
+        socket.on("openPropertyPage",(room) => {
+             io.of('/').in(room).clients((error,clients) => {
+                 io.in(room).emit("nowLooking",clients.length);
+             });
+        })
 
-        socket.join("test");
+        socket.on('openPropertyRoom', (room) => {
+            socket.join(room);
+        });
 
-        socket.on("change", data => {
-            io.to("test").emit("change", `Socket ${socket.id}: ${data}`);
+        socket.on('leavePropertyRoom', (room) => {
+            socket.leave(room);
+            io.of('/').in(room).clients((error,clients) => {
+                io.in(room).emit("nowLooking",clients.length);
+            });
+        });
+
+        socket.on('onClose', () => {
+            const roomName = Object.keys(socket.rooms)[0];
+            io.of('/').in(roomName).clients((error,clients) => {
+                io.in(roomName).emit("nowLooking",clients.length - 1);
+            });
+            socket.leave(roomName);
         });
 
         socket.on("disconnect", () => {
-            io.to("test").emit("change", `Socket ${socket.id} has been disconnected!`);
+            socket.disconnect();
         });
     });
+
 };

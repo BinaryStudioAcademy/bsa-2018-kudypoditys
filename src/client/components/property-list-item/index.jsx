@@ -91,7 +91,7 @@ export class PropertyListItem extends React.Component {
 
     render() {
         const {
-            propertyItemData, itemIndex, currency, allCurrencies, searchData
+            propertyItemData, itemIndex, currency, searchData
         } = this.props;
 
         const propertyCurrency = propertyItemData.currency.code;
@@ -310,10 +310,22 @@ export class PropertyListItem extends React.Component {
                                         fullScreen
                                         buttonClass={"searchMapButton"}
                                     />
-                                    <span className="Property_list__distanceToCenter">
-                                        ({propertyItemData.distanceToCentre} km
-                                        from center)
-                                    </span>
+                                    <Popup  trigger={<span className="Property_list__distanceToCenter">
+                                                        ({propertyItemData.distanceToCentre > 1 ?
+                                                        `${propertyItemData.distanceToCentre}km from center` :
+                                                        `${propertyItemData.distanceToCentre * 1000}m from center` } )
+                                                    </span>}
+                                            content="This is a straight-line distance on the map. Actual travel distance may vary."
+                                            basic/>
+                                    {propertyItemData.distanceToMetro && 
+                                    propertyItemData.distanceToMetro <= 900 ?
+                                    <Popup  trigger={<span style={{color : "black"}}>
+                                                &nbsp;-&nbsp;
+                                                    <span style={{color : "black" , borderBottom : "1px dashed #999" , textDecoration : "none"}}>Metro access</span>
+                                                </span>}  
+                                            content={`”${propertyItemData.nearestMetro}” station is within ${propertyItemData.distanceToMetro} metres`}
+                                            basic/>
+                                    : null}
                                 </div>
                             </div>
 

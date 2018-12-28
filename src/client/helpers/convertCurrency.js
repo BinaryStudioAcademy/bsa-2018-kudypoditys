@@ -40,17 +40,17 @@ export function convertCurrencyByName(currentCurrency, value, targetCurrency) {
     const from = titleToLoverTitle.get(currentCurrency),
         to = titleToLoverTitle.get(targetCurrency);
 
-    return converterObj[from] && converterObj[from][to] && round(converterObj[from][to] * value) || value;
+    return (converterObj[from] && converterObj[from][to] && round(converterObj[from][to] * value)) || value;
 }
 
 export function convert(currentCurrency, value, targetCurrency) {
-    if (!currentCurrency || !targetCurrency || currentCurrency == targetCurrency)
+    if (!currentCurrency || !targetCurrency || currentCurrency === targetCurrency)
         return value;
 
     const from = codeToTitle.get(currentCurrency),
         to = codeToTitle.get(targetCurrency);
 
-    return converterObj[from] && converterObj[from][to] && round(converterObj[from][to] * value) || value;
+    return (converterObj[from] && converterObj[from][to] && round(converterObj[from][to] * value)) || value;
 }
 
 // export default titleToCode;

@@ -3,9 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import ImageUploader from "react-images-upload";
 import {
     phoneNumber,
-    email,
     password,
-    required,
     minLength8
 } from "client/regexValidationService";
 import inputField from "./input";
@@ -124,7 +122,7 @@ export class SettingsForm extends Component {
 
         this.updateSettings(data);
 
-        const currency = this.props.currencies.find(x => x.id == value);
+        const currency = this.props.currencies.find(x => x.id === value);
         // console.log(currency);
         this.props.onCurrencyChange(currency);
     }

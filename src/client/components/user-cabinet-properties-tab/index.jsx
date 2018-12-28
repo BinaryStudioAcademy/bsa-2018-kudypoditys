@@ -3,11 +3,6 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import { connect } from "react-redux";
 import {
     Button,
-    Icon,
-    Image,
-    Item,
-    Label,
-    Card,
     Header,
     Message,
     Segment

@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import history from "client/history";
-import { Icon, Menu, Popup, Comment, Image } from "semantic-ui-react";
+import { Menu, Popup, Image } from "semantic-ui-react";
 import "./index.scss";
 
 export default class UserPopup extends React.Component {

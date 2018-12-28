@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import './index.scss';
-import {Container, Form, Header, Grid, Label} from 'semantic-ui-react';
+import { Form, Header, Grid, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DrawInputs from './DrawInputs'

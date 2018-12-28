@@ -1,20 +1,14 @@
 import React from "react";
 import {
-    Container,
     Segment,
     Grid,
     Image,
     Button,
     Header,
-    Icon,
-    Message
+    Icon
 } from "semantic-ui-react";
 import "./booking-segment.scss";
 import moment from "moment";
-import {
-    getPropReviewsArray,
-    getPropToggler
-} from "client/helpers/reviewToggler";
 import Modal from "../modal";
 import ReviewForm from "../reviews/addReviewForm";
 import BasicMapWidget from "../basic-map-widget";
@@ -52,10 +46,7 @@ class BookingSegment extends React.Component {
             dateOut = new Date(booking.dateOut);
 
         const start = moment(dateIn);
-        const end = moment(dateOut);
         const now = moment();
-        const duration = moment.duration(end.diff(start));
-        const days = Math.round(duration.asDays());
         const price = Number(booking.priceTotal);
 
         let shouldRenderForm = false;

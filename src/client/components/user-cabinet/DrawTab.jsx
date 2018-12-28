@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Header, Tab, Divider, Message } from "semantic-ui-react";
+import { Header, Tab } from "semantic-ui-react";
 
 export class DrawTab extends React.Component {
     render() {
-        const { header, subheader, component } = this.props;
+        const { subheader, component } = this.props;
         return (
             <Tab.Pane>
                 {/* <Message info>{header}</Message> */}

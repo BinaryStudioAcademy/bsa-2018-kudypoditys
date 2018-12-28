@@ -1,4 +1,4 @@
-import { VERIFICATION_DATA_SEND, VERIFICATION_DATA_VERIFIED } from "./actionTypes";
+import { VERIFICATION_DATA_SEND } from "./actionTypes";
 import { all, put, call, takeLatest } from "redux-saga/effects";
 import authService from "client/services/authService";
 import { verificationDataVerified } from "./actions";

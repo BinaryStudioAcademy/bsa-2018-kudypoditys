@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./index.scss";
 
 import {
     getPropertyStatus,
     getPropertyColor
 } from "client/helpers/avgReviewRating";
-import { Icon, Popup } from "semantic-ui-react";
+import { Popup } from "semantic-ui-react";
 import RatingBar from "./ratingBar";
 
 class RatingBlock extends React.Component {
@@ -15,6 +15,7 @@ class RatingBlock extends React.Component {
         const ratingStatus = getPropertyStatus(avgPropRating);
         const ratingColor = getPropertyColor(avgPropRating);
         return (
+            <div>
             <div
                 className="rating_block"
                 style={{
@@ -57,12 +58,12 @@ class RatingBlock extends React.Component {
                         >
                             {" "}
                             {avgPropRating}
-                        </div>
+                        </div>                       
                     }
                     content={
                         <div style={{ padding: 10 }}>
                             {" "}
-                            <RatingBar property={property} />{" "}
+                            <RatingBar property={property} />{" "}                         
                         </div>
                     }
                     hoverable
@@ -70,6 +71,8 @@ class RatingBlock extends React.Component {
                     hideOnScroll
                     position="bottom center"
                 />
+            </div>
+                {this.props.nowLooking ? <div style={{color:'red',marginRight:'12px'}}>{this.props.nowLooking}  other people looking now</div> : null}
             </div>
         );
     }

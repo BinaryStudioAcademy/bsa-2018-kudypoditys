@@ -2,6 +2,7 @@ const express = require("express");
 const property = express.Router();
 const propertyService = require("../services/property");
 const elasticService = require("../elastic/elasticService");
+const propertyReservationService = require("../services/propertyReservation")
 
 property
     .route("/")
@@ -46,7 +47,7 @@ property.route("/availability").put((req, res) => {
     let value = req.body;
     value.checkIn = new Date(value.checkIn);
     value.checkOut = new Date(value.checkOut);
-    propertyService
+    propertyReservationService
         .checkAvailability(value)
         .then(rooms => {
             res.send(rooms);
@@ -70,11 +71,13 @@ property
             });
     })
     .get((req, res) => {
-        propertyService
-            .findById(req.params.id)
-            .then(response => {
-                res.send(response);
-            })
+        Promise.all([propertyService.findById(req.params.id),
+                     propertyReservationService.wasBookedLastDay(req.params.id)])
+                .then(responce => {
+                    const property = responce[0];
+                    property.notes.recentlyBooked = responce[1];
+                    res.send(property);
+                })
             .catch(err => {
                 res.status(404).send(err.message);
             });
@@ -109,26 +112,27 @@ property.route("/city/:id").get((req, res) => {
             let roomAmount = 0;
             let totalPrice = 0;
             let avgPrice = 0,
-                name = '',
-                imageUrl= '',
+                name = "",
+                imageUrl = "",
+                flagUrl = "",
                 id;
             for (const property of properties) {
-                // console.log(property.city.dataValues)
                 for (const room of property.rooms) {
                     totalPrice += Number(room.price);
                 }
                 roomAmount++;
                 name = property.city.dataValues.name;
-                imageUrl = property.city.dataValues.imageUrl
-                id = property.city.dataValues.id
+                imageUrl = property.city.dataValues.imageUrl;
+                flagUrl = property.city.dataValues.country.flagUrl;
+                id = property.city.dataValues.id;
             }
-            // console.log(roomAmount, totalPrice);
             avgPrice = (totalPrice / roomAmount).toFixed(0);
             const data = {
                 properties: roomAmount,
                 avgPrice: avgPrice,
                 name: name,
                 imageUrl: imageUrl,
+                flagUrl,
                 id: id
             };
 

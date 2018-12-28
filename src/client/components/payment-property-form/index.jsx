@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import {
-  Button, Card, Form,
+  Button, Form,
   Container, Header, Icon
 } from "semantic-ui-react";
 import { reduxForm, Field } from "redux-form";

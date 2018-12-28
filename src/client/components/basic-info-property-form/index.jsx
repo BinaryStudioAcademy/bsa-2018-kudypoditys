@@ -33,7 +33,7 @@ class BasicInfoPropertyForm extends Component {
 
     onCountryChange = (_, value) => {
         const { countries } = this.props;
-        const country = countries.find(x => x.id == value);
+        const country = countries.find(x => x.id === value);
 
         this.setState({
             selectedCountry: country
@@ -258,7 +258,7 @@ class BasicInfoPropertyForm extends Component {
                                 </label>
 
                                 <Field
-                                    icon="map pin"
+                                    icon="map"
                                     style={{ borderRadius: "0px" }}
                                     component={renderDropdown}
                                     options={countriesOptions}
@@ -268,6 +268,8 @@ class BasicInfoPropertyForm extends Component {
                                     validate={[required]}
                                 />
                             </div>
+                            {this.state.selectedCountry ?
+                            (<div>
                             <div className="wrapper">
                                 <label className="required">City</label>
                                 <Field
@@ -282,6 +284,47 @@ class BasicInfoPropertyForm extends Component {
                                     validate={[required]}
                                 />
                             </div>
+                            <div className="wrapper">
+                                <label className="required">
+                                    Distance to center
+                                </label>
+                                <Field
+                                    name={`distanceToCentre`}
+                                    min={0}
+                                    max={20}
+                                    type="number"
+                                    component={renderField}
+                                    label="Distance in km"
+                                    validate={[required]}
+                                    icon="map pin"
+                                                />
+                                </div>
+                                <div className="wrapper">
+                                    <label>
+                                        Info about nearest metro station
+                                    </label>
+                                    <div className="wrapper" style={{ display: "flex" , justifyContent: "space-between" }}>     
+                                        <Field
+                                            name={`nearestMetro`}
+                                            type="text"
+                                            className="metro"
+                                            component={renderField}
+                                            label="Metro name"
+                                            validate={[required]}
+                                            icon="train"
+                                                />
+                                        <Field
+                                            name={`distanceToMetro`}
+                                            type="number"
+                                            className="metro"
+                                            component={renderField}
+                                            label="Distance within 1 km in metres"
+                                            validate={[required]}
+                                            icon="location arrow"
+                                                />
+                                    </div>
+                                </div>
+                            </div>) : null}
                         </Card.Content>
                     </Container>
 

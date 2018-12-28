@@ -15,6 +15,7 @@ export class DrawReservations extends React.Component {
                 let dayIn = moment(reserv.dateIn).format("DD");
                 let dayOut = moment(reserv.dateOut).format("DD");
                 if (index >= dayIn && index <= dayOut) reservedRooms++;
+                return reserv;
             });
 
             const element = (

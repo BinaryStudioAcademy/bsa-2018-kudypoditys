@@ -1,5 +1,4 @@
 import {
-    PROPERTY_UPDATE,
     PROPERTY_UPDATE_SUCCESS,
     PROPERTY_UPDATE_FAIL
 } from './actionTypes'

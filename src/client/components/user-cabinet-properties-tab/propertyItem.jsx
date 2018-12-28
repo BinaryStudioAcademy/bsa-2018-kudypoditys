@@ -1,14 +1,12 @@
 import React from "react";
 import {
     Card,
-    Message,
     Image,
     Button,
     CardContent,
     Grid,
     Icon,
     Header,
-    Label,
     Rating
 } from "semantic-ui-react";
 import "./index.scss";

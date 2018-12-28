@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import superagent from 'superagent';
 import Dropzone from 'react-dropzone'
-import {Loader, Segment, Dimmer, Icon, Button, Label} from 'semantic-ui-react';
+import {Loader, Dimmer, Icon, Button, Label} from 'semantic-ui-react';
 import './index.scss';
 require('dotenv').config();
 
@@ -59,7 +59,7 @@ export default class PhotoDropZone extends Component {
     const { input } = this.props;
     const { value: images } = input;
 
-    input.onChange(images.filter(x => x.url != image.url));
+    input.onChange(images.filter(x => x.url !== image.url));
   }
 
   render() {
@@ -109,7 +109,7 @@ export default class PhotoDropZone extends Component {
         <ul className="fileInput__files">
           {images.map((image, index) => (
             <li key={index} className="fileInput__file">
-              <img src={image.url} style={{ height: 'auto', width: 150 }} />
+              <img alt="" src={image.url} style={{ height: 'auto', width: 150 }} />
 
               <Icon
                 name='trash alternate'

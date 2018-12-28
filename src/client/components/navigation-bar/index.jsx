@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Menu, Label, Divider } from "semantic-ui-react";
+import { Menu, Label } from "semantic-ui-react";
 import "./index.scss";
 
 export class NavigationBar extends React.Component {

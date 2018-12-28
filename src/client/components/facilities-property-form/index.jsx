@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from 'react-redux';
 import { reduxForm, Field } from "redux-form";
 import {
-    Button, Container, Form, Card, Header, Grid
+    Button, Container, Form, Header, Grid
 } from "semantic-ui-react";
 import { required } from "client/regexValidationService.js";
 import RadioGroup from "client/components/input-form/radio-group";
