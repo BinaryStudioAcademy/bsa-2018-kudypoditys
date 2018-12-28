@@ -18,6 +18,8 @@ import facilitiesSaga from "client/logic/facilities/saga";
 import languagesSaga from "client/logic/languages/saga";
 import paymentTypesSaga from "client/logic/payment-type/saga";
 import roomTypesSaga from "client/logic/room-types/saga";
+import mealsSaga from "client/logic/meals/saga";
+import mealTypesSaga from "client/logic/meal-types/saga";
 import bedTypesSaga from "client/logic/bed-types/saga";
 import currenciesSaga from "client/logic/currencies/saga";
 import propertyTypesSaga from "client/logic/property-type/saga";
@@ -46,6 +48,8 @@ export default function* rootSaga() {
         fork(languagesSaga),
         fork(paymentTypesSaga),
         fork(roomTypesSaga),
+        fork(mealsSaga),
+        fork(mealTypesSaga),
         fork(bedTypesSaga),
         fork(currenciesSaga),
         fork(propertyTypesSaga),

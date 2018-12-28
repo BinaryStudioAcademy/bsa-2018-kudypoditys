@@ -21,7 +21,9 @@ const {
     REVIEWS,
     LANGUAGES,
     CURRENCIES,
-    AVAILABILITY
+    AVAILABILITY,
+    MEALS,
+    MEAL_TYPES
 
 } = require("./seed");
 
@@ -104,7 +106,9 @@ function upsertAllData(models) {
         Language,
         Review,
         Currency,
-        Availability
+        Availability,
+        Meal,
+        MealType
     } = models;
 
 
@@ -132,7 +136,9 @@ function upsertAllData(models) {
         [Language, LANGUAGES],
         [Review, REVIEWS],
         [Currency, CURRENCIES],
-        [Availability, AVAILABILITY]
+        [Availability, AVAILABILITY],
+        [Meal, MEALS],
+        [MealType, MEAL_TYPES]
     ];
 
     //Country & City
