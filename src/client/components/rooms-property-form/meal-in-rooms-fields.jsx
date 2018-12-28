@@ -9,7 +9,7 @@ import renderDropdown from '../input-form/dropdown';
 class MealInRoomsFields extends Component {
   render() {
     const { fields, meta: { error }, mealOptions, mealTypesOptions } = this.props;
-    console.log(fields);
+    console.log(fields.getAll());
     return (
       <List divided relaxed>
         <List.Item>
@@ -24,7 +24,6 @@ class MealInRoomsFields extends Component {
               <Grid.Row>
                 <Grid.Column>
                   <label className="required">Meal</label>
-                  {console.log(mealOptions)}
                   <Field
                     component={renderDropdown}
                     options={mealOptions}

@@ -33,6 +33,9 @@ function associations(models) {
         Language,
         Availability,
         Currency,
+        MealInRoom,
+        Meal,
+        MealType
     } = models;
 
     // console.log(models);
@@ -188,6 +191,11 @@ function associations(models) {
 
     // UserRefreshToken associations
     UserRefreshToken.belongsTo(User);
+
+    //Meals associations 
+    Room.hasMany(MealInRoom);
+    MealType.hasMany(MealInRoom);
+    Meal.hasMany(MealInRoom);
 
     // Many To Many Associations
     ReviewCategory.belongsToMany(Review, { through: "scoreByCategory" });
