@@ -7,7 +7,6 @@ import {
     CANCEL_BOOKING_SUCCESS,
     GET_USER_REVIEWS_SUCCESS
 } from "./actionTypes";
-import { action } from "@storybook/react";
 
 export default function userCabinetReducer(
     state = defaultState.userCabinet,

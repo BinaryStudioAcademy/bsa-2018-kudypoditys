@@ -34,7 +34,6 @@ export class MainSearch extends React.Component {
             children,
             startDate,
             endDate,
-            sortBy,
             queryCopy,
             isSelectedResult
         } = this.state;
@@ -309,7 +308,6 @@ export class MainSearch extends React.Component {
                         onSearchChange={this.handleSearchChange}
                         results={results}
                         value={query}
-                        {...this.props}
                         required
                     />
                 </div>

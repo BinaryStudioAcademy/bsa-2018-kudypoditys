@@ -1,6 +1,5 @@
-import {Button, Input, Label, Rating, Header, Segment} from "semantic-ui-react";
-import React, {Fragment} from "react";
-import {Form} from "semantic-ui-react/dist/commonjs/collections/Form/Form";
+import { Rating, Header } from "semantic-ui-react";
+import React, { Fragment } from "react";
 
 
 export default class RatingForm extends React.Component {

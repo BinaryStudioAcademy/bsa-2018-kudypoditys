@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Form, Button, Container, Card, Header } from 'semantic-ui-react';
+import { Form, Button, Container, Header } from 'semantic-ui-react';
 import { required } from 'client/regexValidationService';
 import { Field, reduxForm } from 'redux-form';
 

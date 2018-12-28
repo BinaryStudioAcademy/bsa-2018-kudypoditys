@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Card, Header, Message, Segment } from "semantic-ui-react";
+import React from "react";
+import { Card, Header, Segment } from "semantic-ui-react";
 import ReviewItem from "./reviewItem";
 import "./index.scss";
 

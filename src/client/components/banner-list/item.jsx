@@ -1,4 +1,4 @@
-import React, { Component, Fragment, connect } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Card, Container, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
@@ -13,14 +13,11 @@ export class Banner extends Component {
         this.props.onClick(cityInfo)
     }
     render() {
-        const flagUrl= 'http://proudofukraine.com/wp-content/uploads/2015/06/Ukrainian-flag.png'
-
         const { cityInfo, currency } = this.props;
         const imgStyles = (url) => ({
             background: `url(${url})`,
             backgroundSize: "cover"
         });
-        // console.log(this.props)
 
         return cityInfo ? (
             <Container
@@ -45,7 +42,7 @@ export class Banner extends Component {
                     <div className="banner__rectangle">
                         <div
                             className="banner___flag"
-                            style={imgStyles(flagUrl)}
+                            style={imgStyles(cityInfo.flagUrl)}
                         />
                         <Card.Description className="banner__avgprice">
                             <span>Average price</span>
@@ -71,11 +68,11 @@ export class Banner extends Component {
 Banner.propTypes = {
     cityInfo: PropTypes.shape({
         id: PropTypes.number.isRequired,
-        city: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
         flagUrl: PropTypes.string.isRequired,
         properties: PropTypes.number.isRequired,
         avgPrice: PropTypes.number.isRequired,
-        pictureUrl: PropTypes.string.isRequired
+        imageUrl: PropTypes.string.isRequired
     }),
 
     onCardClick: PropTypes.func

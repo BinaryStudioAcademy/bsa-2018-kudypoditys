@@ -72,21 +72,3 @@ MapPopupItem.propTypes = {
 export default connect((state) => ({
     currency: state.header.selectedCurrency
 }))(MapPopupItem);
-{/*<Card*/ }
-{/*>*/ }
-{/*<Card.Content>*/ }
-{/*<Card.Header>*/ }
-{/*{this.props.propertyName}*/ }
-{/*</Card.Header>*/ }
-{/*</Card.Content>*/ }
-{/*<Card.Content extra>*/ }
-{/*<a style={{float: "right"}}>*/ }
-{/*<Icon name="money"/>*/ }
-{/*{this.props.price}*/ }
-{/*</a>*/ }
-{/*<a style={{float: "left"}}>*/ }
-{/*<Icon name="star"/>*/ }
-{/*{this.props.rating}*/ }
-{/*</a>*/ }
-{/*</Card.Content>*/ }
-{/*</Card>*/ }

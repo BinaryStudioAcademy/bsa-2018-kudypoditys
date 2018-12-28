@@ -1,10 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { connect } from "react-redux";
-import history from "client/history";
 import { Card, Header, Message, Segment } from "semantic-ui-react";
 import ReviewItem from "./reviewItem";
-import Review from "../reviews/item";
 import "./index.scss";
 
 export class ReviewsTab extends React.Component {

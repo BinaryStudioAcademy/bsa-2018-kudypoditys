@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Header, Grid, Rail, Button, Sticky, Segment} from 'semantic-ui-react';
+import React, { Component } from "react";
+import { Header, Grid, Button } from 'semantic-ui-react';
 import CheckboxBedForm from './bedForm';
 import CheckboxAmenitiesForm from './checkboxAmenitiesForm';
 import ButtonTab from './buttonForm';

@@ -8,7 +8,6 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 import history from "client/history";
 import QuantityPicker from "../quantity-picker";
-import { roomQuantityChanged } from "../../helpers/roomQuantityChanged";
 import {
     convertCurrencyByName,
     titleToCode
@@ -29,7 +28,7 @@ export class BookingForm extends React.Component {
     generateRoomOptions = rooms => {
         let options = [];
         for (let i = 0; i < rooms.length; i++) {
-            const disabled = rooms[i].available == 0;
+            const disabled = rooms[i].available === 0;
             options.push({ text: rooms[i].roomType.name, value: rooms[i].id, disabled: disabled });
         }
         return options;

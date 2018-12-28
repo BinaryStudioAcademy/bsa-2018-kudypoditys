@@ -16,9 +16,6 @@ import {
 import {
     SEARCH_UPDATE
 } from "../search/actionTypes";
-import {
-    descriptionUpdate
-} from '../property-description/actions';
 
 function propertyPageReducer(state = defaultState.propertyPage, action) {
     switch (action.type) {

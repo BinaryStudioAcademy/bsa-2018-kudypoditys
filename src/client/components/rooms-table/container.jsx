@@ -25,7 +25,7 @@ export function mapDispatchToProps(dispatch) {
         },
         selectRoomsAmount(roomId, selectedRoomsAmount, rooms) {
             rooms = rooms.map(room=>{
-                if (room.id == roomId) room.selectedAmount = selectedRoomsAmount;
+                if (room.id === roomId) room.selectedAmount = selectedRoomsAmount;
                 return room;
             });
             dispatch(roomsSelectedAmountUpdate(roomId, rooms));

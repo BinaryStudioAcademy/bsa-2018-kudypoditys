@@ -91,7 +91,7 @@ export class PropertyListItem extends React.Component {
 
     render() {
         const {
-            propertyItemData, itemIndex, currency, allCurrencies, searchData
+            propertyItemData, itemIndex, currency, searchData
         } = this.props;
 
         const propertyCurrency = propertyItemData.currency.code;

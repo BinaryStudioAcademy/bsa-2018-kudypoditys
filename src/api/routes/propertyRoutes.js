@@ -112,26 +112,27 @@ property.route("/city/:id").get((req, res) => {
             let roomAmount = 0;
             let totalPrice = 0;
             let avgPrice = 0,
-                name = '',
-                imageUrl= '',
+                name = "",
+                imageUrl = "",
+                flagUrl = "",
                 id;
             for (const property of properties) {
-                // console.log(property.city.dataValues)
                 for (const room of property.rooms) {
                     totalPrice += Number(room.price);
                 }
                 roomAmount++;
                 name = property.city.dataValues.name;
-                imageUrl = property.city.dataValues.imageUrl
-                id = property.city.dataValues.id
+                imageUrl = property.city.dataValues.imageUrl;
+                flagUrl = property.city.dataValues.country.flagUrl;
+                id = property.city.dataValues.id;
             }
-            // console.log(roomAmount, totalPrice);
             avgPrice = (totalPrice / roomAmount).toFixed(0);
             const data = {
                 properties: roomAmount,
                 avgPrice: avgPrice,
                 name: name,
                 imageUrl: imageUrl,
+                flagUrl,
                 id: id
             };
 

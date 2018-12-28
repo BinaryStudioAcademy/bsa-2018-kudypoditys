@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Table, Icon } from "semantic-ui-react";
 
 const count = 30;

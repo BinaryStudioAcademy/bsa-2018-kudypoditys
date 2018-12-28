@@ -311,7 +311,12 @@ class PropertyRepository extends Repository {
                 include: [
 
                     {
-                        model: City
+                        model: City,
+                        include: [
+                            {
+                                model: Country
+                            }
+                        ]
                     },
                     {
                         model: Image

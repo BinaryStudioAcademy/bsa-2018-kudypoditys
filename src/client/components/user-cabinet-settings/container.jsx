@@ -1,7 +1,6 @@
 import {
     updateUserSettings,
     sendUserSettings,
-    getUserSettings,
     uploadAvatar,
     changePassword,
     avatarDelete

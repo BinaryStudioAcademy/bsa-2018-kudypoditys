@@ -18,10 +18,6 @@ import {
     getPropToggler,
     getPropToggler2
 } from "client/helpers/reviewToggler";
-import {
-    getGroupedArray,
-    getAvgFromArray
-} from "client/helpers/avgReviewRating";
 import RatingBar from "./ratingBar";
 import Modal from "../modal";
 
@@ -60,29 +56,6 @@ export class Reviews extends React.Component {
         const { property, user, bookings, } = this.props;
         let shouldRenderForm = false;
         let reviewLeft = false;
-
-
-        const { visible } = this.state;
-
-        const avgPropRatingArray = getGroupedArray(
-                property.reviews,
-                "avgReview"
-            ),
-            avgPropCleanliness = getGroupedArray(
-                property.reviews,
-                "Cleanliness"
-            ),
-            avgPropComfort = getGroupedArray(property.reviews, "Comfort"),
-            avgPropFacilities = getGroupedArray(property.reviews, "Facilities"),
-            avgPropPrice = getGroupedArray(property.reviews, "Price"),
-            avgPropLocation = getGroupedArray(property.reviews, "Cleanliness");
-
-        const avgCleanliness = getAvgFromArray(avgPropCleanliness),
-            avgFacilities = getAvgFromArray(avgPropFacilities),
-            avgComfort = getAvgFromArray(avgPropComfort),
-            avgPrice = getAvgFromArray(avgPropPrice),
-            avgLocation = getAvgFromArray(avgPropLocation),
-            avgPropRating = getAvgFromArray(avgPropRatingArray);
 
         let legitArray = getPropReviewsArray(bookings);
 

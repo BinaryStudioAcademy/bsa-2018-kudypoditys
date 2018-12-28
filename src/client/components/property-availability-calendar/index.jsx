@@ -3,7 +3,6 @@ import {
     Table,
     Button,
     Icon,
-    Header,
     Message,
     Divider,
     Dropdown
@@ -13,7 +12,6 @@ import { mapDispatchToProps, mapStateToProps } from "./container";
 import { DrawCount } from "./drawCount";
 import { DrawReservations } from "./drawReservations";
 import { DrawPrices } from "./drawPrices";
-import { DrawStatus } from "./drawStatus";
 import moment from "moment";
 
 import "./index.scss";
@@ -27,14 +25,14 @@ export class AvailabilityCalendar extends React.Component {
     handleAmountChange = (fullDate, e,  {name, value} ) => {
         let data = this.props.selectedRoom.availabilities
             .find(av=>{
-                return av.date == fullDate.date()
+                return av.date === fullDate.date()
             });
         if(data){
-            data.amount = parseInt(value);
+            data.amount = parseInt(value, 10);
             this.props.handleUpdate(data);
         } else {
             data = {
-                amount: parseInt(value),
+                amount: parseInt(value, 10),
                 // createdAt: new Date().toISOString(),
                 date: fullDate.date(),
                 dateCal: fullDate.format("YYYY-MM-DD"),
@@ -50,10 +48,10 @@ export class AvailabilityCalendar extends React.Component {
     handlePriceChange = (fullDate, e, { name, value }) => {
         let data = this.props.selectedRoom.availabilities
             .find(av=>{
-                return av.date == fullDate.date()
+                return av.date === fullDate.date()
             });
         if(data){
-            data.price = parseInt(value);
+            data.price = parseInt(value, 10);
             this.props.handleUpdate(data);
         } else {
             data = {
@@ -62,7 +60,7 @@ export class AvailabilityCalendar extends React.Component {
                 date: fullDate.date(),
                 dateCal: fullDate,
                 // id: null,
-                price: parseInt(value),
+                price: parseInt(value, 10),
                 roomId: this.props.selectedRoom.id,
                 // updatedAt: new Date().toISOString(),
             };
