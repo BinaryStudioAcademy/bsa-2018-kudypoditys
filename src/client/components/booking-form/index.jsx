@@ -8,6 +8,8 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 import history from "client/history";
 import QuantityPicker from "../quantity-picker";
+import { roomQuantityChanged } from "../../helpers/roomQuantityChanged";
+import RoomPriceService from '../../services/roomPriceService';
 import {
     convertCurrencyByName,
     titleToCode
@@ -75,17 +77,17 @@ export class BookingForm extends React.Component {
             roomsAmount,
             roomPrice
         } = this.props;
-        const priceFunc = price =>
-            convertCurrencyByName(propertyCurrency.code, price, currency.code);
-        const daysStaying = getDaysDifference(checkIn, checkOut);
         const currencySymbol = titleToCode.get(currency.code);
-        let priceForOneDay = priceFunc(roomPrice);
-        let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
-        const totalCheck = (totalPrice * selectedRoomsAmount).toFixed(1);
+        const availabilities = rooms.find(room => room.id === roomId).availabilities;
+        const totalPrice = RoomPriceService.calculatePriceOfBooking(
+            checkIn,
+            checkOut,
+            selectedRoomsAmount,
+            roomPrice,
+            availabilities
+        );
+        const totalCheck = convertCurrencyByName(propertyCurrency.code, totalPrice, currency.code);
         // TODO: Code duplication
-
-        const startDate = checkIn === null ? null : moment(checkIn);
-        const endDate = checkOut === null ? null : moment(checkOut);
         const childrenOptions = this.generateOptions(0, 10);
         const adultsOptions = this.generateOptions(1, 10);
         const paymentOptions = this.generatePaymentOptions(paymentTypes);
@@ -127,12 +129,13 @@ export class BookingForm extends React.Component {
                     onSubmit={event => {
                         event.preventDefault();
                         this.props.onBooking({
+                            dateIn: Number(moment(checkIn)),
+                            dateOut: Number(moment(checkOut)),
                             propId : this.props.propertyId,
-                            dateIn: Number(startDate),
-                            dateOut: Number(endDate),
                             guestsCount: adults + children,
                             roomId: roomId ? roomId : roomOptions[0].value,
-                            selectedRoomsAmount,
+                            selectedRoomsAmount: selectedRoomsAmount ? selectedRoomsAmount: 1,
+                            priceTotal: totalPrice,
                             paymentTypeId: paymentTypeId
                                 ? paymentTypeId
                                 : paymentOptions[0].value,
@@ -159,8 +162,8 @@ export class BookingForm extends React.Component {
                                 startDateId="startDate"
                                 endDateId="endDate"
                                 required={true}
-                                startDate={startDate}
-                                endDate={endDate}
+                                startDate={moment(checkIn)}
+                                endDate={moment(checkOut)}
                                 onDatesChange={this.datesChanged}
                                 focusedInput={this.state.focusedInput}
                                 onFocusChange={this.changeFocusDatePicker.bind(this)}
@@ -213,8 +216,7 @@ export class BookingForm extends React.Component {
                             />
                         </Form.Field>
                         <Form.Field>
-                            <label style={{ color: "#274560" }}>
-                                Rooms Amount
+                            <label style={{ color: "#274560" }}>Rooms Amount
                             </label>
                             <QuantityPicker
                                 fluid

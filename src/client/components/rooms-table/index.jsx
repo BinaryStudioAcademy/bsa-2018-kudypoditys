@@ -3,17 +3,15 @@ import "./index.scss";
 import { Icon, Table } from "semantic-ui-react";
 import QuantityPicker from "client/components/quantity-picker";
 import _ from "lodash";
-import {
-    convertCurrencyByName,
-    titleToCode
-} from "client/helpers/convertCurrency";
+import {titleToCode} from "client/helpers/convertCurrency";
 import Modal from "client/components/modal";
 import BookingForm from "client/components/booking-form";
 import connect from "react-redux/es/connect/connect";
 import { mapDispatchToProps, mapStateToProps } from "./container";
 import { getDaysDifference } from '../../helpers/date-helpers';
 import Tooltip from 'react-tooltip-lite';
-
+import {convertCurrencyByName} from "client/helpers/convertCurrency";
+import RoomPriceService from '../../services/roomPriceService';
 export const getIcons = number =>
     _.times(number, index => <Icon name="user" />);
 
@@ -88,10 +86,7 @@ export class RoomsTable extends React.Component {
         let bookButton = false;
         if (user) bookButton = true;
 
-        const priceFunc = price =>
-            convertCurrencyByName(propCurrency.code, price, currency.code);
         const currencySymbol = titleToCode.get(currency.code);
-        const daysStaying = getDaysDifference(checkIn, checkOut);
         let roomRow = null;
         if (this.props.rooms.length > 0) {
             roomRow = this.props.rooms.map(room => {
@@ -99,9 +94,17 @@ export class RoomsTable extends React.Component {
                     (acc, el) => acc + el.count,
                     0
                 );
-                let priceForOneDay = priceFunc(room.price);
-                let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
-                const totalCheck = (totalPrice * room.selectedAmount).toFixed(1);
+
+                const availabilities = rooms.find(avRoom => avRoom.id === room.id).availabilities;
+                const totalPrice = RoomPriceService.calculatePriceOfBooking(
+                    checkIn,
+                    checkOut,
+                    room.selectedAmount,
+                    room.price,
+                    availabilities
+                );
+                const totalCheck = convertCurrencyByName(currency.code, totalPrice, currency.code);
+
                 const soldOutDaysAgo = room.lastReservation ? room.lastReservation.bookedDaysAgo : null;
                 const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null;
 
@@ -148,7 +151,7 @@ export class RoomsTable extends React.Component {
                             </Table.Cell>
                             <Table.Cell> {getIcons(bedsToSleep)} </Table.Cell>
                             <Table.Cell>
-                                {totalPrice}&nbsp;{currencySymbol}
+                                {totalCheck}&nbsp;{currencySymbol}
                             </Table.Cell>
                             <Table.Cell>
                                 <QuantityPicker
@@ -181,7 +184,6 @@ export class RoomsTable extends React.Component {
                                                     {/*TODO: Use there Semantic button*/}
                                                     {room.available ? (
                                                         <button
-                                                            disabled={!room.selectedAmount}
                                                             style={{
                                                                 height: "100%"
                                                             }}

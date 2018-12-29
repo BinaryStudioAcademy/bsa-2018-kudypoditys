@@ -4,10 +4,10 @@ import _ from 'lodash'
 import PropTypes from "prop-types";
 
 export const getOptions = (number, prefix = '') =>
-    _.times(number, index => ({
+    _.times(number-1, index => ({
         key: index,
-        text: `${prefix}${index}`,
-        value: index,
+        text: `${prefix}${index+1}`,
+        value: index+1,
     }));
 
 export class QuantityPicker extends Component {
@@ -18,7 +18,6 @@ export class QuantityPicker extends Component {
     render() {
         const { roomsAvailable, roomsSelectedAmount, roomId, onSelectionChanged, ...rest} = this.props;
         const options = getOptions(roomsAvailable, '');
-
         return (
             <Dropdown
                 {...rest}
@@ -42,7 +41,7 @@ QuantityPicker.propTypes = {
 
 QuantityPicker.defaultProps = {
     roomId: 0,
-    roomsSelectedAmount: 0,
+    roomsSelectedAmount: 1,
     roomsAvailable: 0,
     onSelectionChanged: null
 };

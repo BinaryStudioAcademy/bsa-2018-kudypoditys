@@ -85,6 +85,7 @@ const includeOptions = [
         model: Room,
         attributes: ["id", "price", "amount", "area", "description"],
         include: [
+            { model: Availability, attributes:["id", "price", "date", "dateCal", "amount"]},
             { model: RoomType, attributes: ["id", "name"] },
             {
                 model: BedInRoom,
