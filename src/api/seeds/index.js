@@ -78,8 +78,7 @@ function calc(){
 calc();
 
 
-function upsertAllData(models) {
-    const upsertPromises = [];
+async function upsertAllData(models) {
     const {
         Country,
         City,
@@ -107,10 +106,6 @@ function upsertAllData(models) {
         Availability
     } = models;
 
-
-
-
-
     const SimpleUpsertMap = [
         [PaymentType, PAYMENT_TYPES],
         [BedType, BED_TYPES],
@@ -121,17 +116,16 @@ function upsertAllData(models) {
         [PropertyType, PROPERTY_TYPE],
         [AccommodationRule, ACCOMMODATION_RULES],
         [User, USERS],
+        [Currency, CURRENCIES],
         [Property, TEMP],
         [FacilityList, FACILITY_LISTS],
         [PropertyPaymentType, PROPERTY_PAYMENT_TYPES],
         [Room, ROOMS],
         [BedInRoom, BED_IN_ROOM],
         [Image, IMAGES],
-        [User, USERS],
         [Reservation, RESERVATIONS],
         [Language, LANGUAGES],
         [Review, REVIEWS],
-        [Currency, CURRENCIES],
         [Availability, AVAILABILITY]
     ];
 
@@ -145,11 +139,11 @@ function upsertAllData(models) {
     }, []);
 
     for (const c of COUNTRIES) {
-        upsertPromises.push(Country.upsert(c));
+        await Country.upsert(c);
     }
 
     for (const c of CITIES) {
-        upsertPromises.push(City.upsert(c));
+        await City.upsert(c);
     }
 
     //Facility & FacilityCategory
@@ -165,22 +159,25 @@ function upsertAllData(models) {
         },
         []
     );
-
-    for (const fc of FACILITY_CATEGORIES) {
-        upsertPromises.push(FacilityCategory.upsert(fc));
+    for (const fcWithFacilities of FACILITY_CATEGORIES) {
+        const fcWithOutFacilities = {
+            id: fcWithFacilities.id,
+            name: fcWithFacilities.name
+        };
+        await FacilityCategory.upsert(fcWithOutFacilities);
     }
 
     for (const f of FACILITY) {
-        upsertPromises.push(Facility.upsert(f));
+        await Facility.upsert(f);
     }
 
     for (const mapItem of SimpleUpsertMap) {
         for (const itemToInsert of mapItem[1]) {
-            upsertPromises.push(mapItem[0].upsert(itemToInsert));
+            await mapItem[0].upsert(itemToInsert);
         }
     }
 
-    return Promise.all(upsertPromises);
+    return Promise.resolve();
 }
 
 function getTableList(orm) {
