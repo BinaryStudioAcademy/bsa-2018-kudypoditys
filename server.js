@@ -34,10 +34,10 @@ app.get("/*", (req, res) => {
 });
 
 const sockets = require("./src/api/sockets")(io);
-
-server.listen(port, () => {
-    console.log("Server running on http://127.0.0.1:%s", port);
-    elasticService.indexData();
+const orm = require(`${apiRoot}/models`);
+orm.then(() => {
+    server.listen(port, () => {
+        console.log("Server running on http://127.0.0.1:%s", port);
+        elasticService.indexData();
+    });
 });
-
-require(`${apiRoot}/models`);

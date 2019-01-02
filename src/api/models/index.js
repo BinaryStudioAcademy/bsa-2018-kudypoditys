@@ -34,7 +34,5 @@ associations(models); // make associations
 
 module.exports = orm
     .sync({ force: false })
-  .then(() => {
-        seed(models);
-    })
+    .then(() => seed(models))
     .then(() => models);
