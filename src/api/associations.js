@@ -192,6 +192,10 @@ function associations(models) {
     // UserRefreshToken associations
     UserRefreshToken.belongsTo(User);
 
+    //MealInRoom associations
+    MealInRoom.belongsTo(MealType);
+    MealInRoom.belongsTo(Meal);
+
     //Meals associations 
     Room.hasMany(MealInRoom);
     MealType.hasMany(MealInRoom);

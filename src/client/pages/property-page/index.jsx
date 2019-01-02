@@ -286,7 +286,7 @@ export class PropertyPage extends React.Component {
                                     color="red"
                                     tag
                                     style={{left:10, marginBottom: 15}}>
-                                    {<Icon name="clock"/>} {`Last booked: ${parseInt(lastBookedTime/60)} hour ago`}
+                                    {<Icon name="clock"/>} {`Last booked: ${parseInt(lastBookedTime/60, 10)} hour ago`}
                                 </Label>
                              )
                             : null
