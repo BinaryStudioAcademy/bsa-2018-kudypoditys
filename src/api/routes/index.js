@@ -24,6 +24,7 @@ const currency = require('./currencyRoutes');
 const propertyType = require('./propertyTypeRoutes');
 const meal = require('./mealRoutes');
 const mealType = require('./mealTypeRoutes');
+const mealInRoom = require('./mealInRoom')
 const elasticsearch = require("./elasticsearchRoutes");
 
 module.exports = function (app) {
@@ -54,4 +55,5 @@ module.exports = function (app) {
     app.use('/api/propertytype', propertyType);
     app.use('/api/meals', meal);
     app.use('/api/mealTypes', mealType);
+    app.use('/api/mealsInRoom',mealInRoom)
 };

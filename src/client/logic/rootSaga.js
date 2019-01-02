@@ -25,6 +25,7 @@ import currenciesSaga from "client/logic/currencies/saga";
 import propertyTypesSaga from "client/logic/property-type/saga";
 import userCabinetPropertiesSaga from "client/logic/user-cabinet-properties-tab/saga";
 import propertyEditSaga from 'client/logic/property-edit/saga';
+import mealsInRoomSaga from 'client/logic/mealInRoom/saga';
 
 export default function* rootSaga() {
     yield all([
@@ -54,6 +55,7 @@ export default function* rootSaga() {
         fork(currenciesSaga),
         fork(propertyTypesSaga),
         fork(userCabinetPropertiesSaga),
-        fork(propertyEditSaga)
+        fork(propertyEditSaga),
+        fork(mealsInRoomSaga)
     ]);
 }
