@@ -6,7 +6,7 @@ import { Field } from 'redux-form';
 import renderField from '../input-form/renderField';
 import renderDropdown from '../input-form/dropdown';
 
-class MealInRoomsFields extends Component {
+class MealsInRoomFields extends Component {
   render() {
     const { fields, meta: { error }, mealOptions, mealTypesOptions } = this.props;
     console.log(fields.getAll());
@@ -75,4 +75,4 @@ class MealInRoomsFields extends Component {
   }
 }
 
-export default MealInRoomsFields;
+export default MealsInRoomFields;

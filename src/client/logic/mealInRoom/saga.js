@@ -20,11 +20,17 @@ function* getMealsInRoom() {
 }
 
 function* createMealsInRoom(){
-  try{
-
-  }
-  catch (err) {
-
+  try {
+    const meal = yield call(mealInRoomService.create);
+    yield put({
+      type: actionTypes.CREATE_MEALS_IN_ROOM_SUCCESS,
+      payload: meal
+    });
+  } catch (err) {
+    yield put({
+      type: actionTypes.CREATE_MEALS_IN_ROOM_FAILED,
+      payload: err.message
+    });
   }
 }
 

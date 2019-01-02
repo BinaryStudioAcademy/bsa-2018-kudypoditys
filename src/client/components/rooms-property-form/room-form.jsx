@@ -3,7 +3,7 @@ import { Button, Form, Icon } from "semantic-ui-react";
 import { required } from 'client/regexValidationService';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
-import MealInRoomsFields from './meal-in-rooms-fields';
+import MealsInRoomFields from './meals-in-room-fields';
 import BedInRoomsFields from './bed-in-rooms-fields';
 
 import renderField from '../input-form/renderField';
@@ -73,8 +73,8 @@ class RoomForm extends Component {
           />
         </div>
         <FieldArray
-            name={`mealInRooms`}
-            component={MealInRoomsFields}
+            name={`mealsInRoom`}
+            component={MealsInRoomFields}
             mealOptions={mealOptions}
             mealTypesOptions={mealTypesOptions}
         />

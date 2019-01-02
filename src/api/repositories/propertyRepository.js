@@ -16,6 +16,7 @@ const City = require("../models/City");
 const Review = require("../models/Review");
 const User = require("../models/User");
 const Room = require("../models/Room");
+const MealInRoom = require("../models/MealInRoom");
 const FacilityList = require("../models/FacilityList");
 const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
@@ -25,7 +26,6 @@ const FacilityCategory = require("../models/FacilityCategory");
 const Language = require("../models/Language");
 const AvailabilityRepository = require("./availabilityRepository");
 const RoomRepository = require("./roomRepository");
-const moment = require("moment");
 
 const Currency = require('../models/Currency');
 
@@ -384,6 +384,22 @@ class PropertyRepository extends Repository {
                 );
             })
             .then(newProperty => {
+                let mealsInRoom = []
+                entity.rooms.forEach((room , index) => {
+                    mealsInRoom = mealsInRoom
+                    .concat(room.mealsInRoom
+                        .map(x => Object.assign(
+                            {roomId : newProperty.rooms[index].id,
+                             mealId : x.name.id,
+                             mealTypeId : x.type.id,
+                             price : x.price})))
+                })
+
+                return MealInRoom.bulkCreate(mealsInRoom).then(
+                    _ => newProperty
+                );}
+            )
+            .then(newProperty => {
                 let languages = entity.languages.map(l => ({
                     propertyId: newProperty.id,
                     languageId: l.id
@@ -407,7 +423,7 @@ class PropertyRepository extends Repository {
                 RoomRepository.findByOptions({
                     propertyId: newProperty.id
                 }).then(propertyRooms => {
-                    propertyRooms.map(room => {
+                    propertyRooms.forEach(room => {
                         let availabilities = this.getDaysArrayByMonth(
                             room.id,
                             room.amount,
@@ -762,11 +778,8 @@ class PropertyRepository extends Repository {
                 let propertiesArray = [];
                 for (let index in properties.rows) {
                     let property = properties.rows[index].get({ plain: true });
-                    property.rooms.forEach((room) => {
-                        if (room.price === minPrice) {
-                            property.isCheapest = true;
-                        }
-                    });
+                    property.rooms
+                        .forEach(room => property.isCheapest = room.price === minPrice)
                     propertiesArray.push(property);
                 }
                 return {
