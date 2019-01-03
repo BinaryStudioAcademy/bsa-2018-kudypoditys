@@ -3,8 +3,7 @@ const searchProperty = express.Router();
 const propertyService = require("../services/property");
 const elasticsearch = require("elasticsearch");
 const elasticClient = new elasticsearch.Client({
-    host:
-        "http://search-elasticsearch-kudypoditys-rqseuwvm4kuun4rbrfbxqly7z4.eu-central-1.es.amazonaws.com",
+    host: process.env.ELASTIC_HOST,
     log: "trace"
 });
 searchProperty.route("/").get((req, res) => {
