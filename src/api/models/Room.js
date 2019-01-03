@@ -40,6 +40,7 @@ Room.associate = function (models) {
     Room.hasMany(models.BedInRoom, { onDelete: 'cascade' });
     Room.hasMany(models.RoomDiscount);
     Room.hasMany(models.Availability);
+    Room.hasMany(models.MealInRoom);
 
     Room.belongsToMany(models.Discount, {
         through: "roomDiscount"

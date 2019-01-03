@@ -195,6 +195,7 @@ function associations(models) {
     //MealInRoom associations
     MealInRoom.belongsTo(MealType);
     MealInRoom.belongsTo(Meal);
+    MealInRoom.belongsTo(Room);
 
     //Meals associations 
     Room.hasMany(MealInRoom);
