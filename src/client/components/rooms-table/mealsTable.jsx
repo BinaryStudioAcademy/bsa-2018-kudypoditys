@@ -21,12 +21,12 @@ export default class MealsTable extends React.Component {
           </Table.Header>
       
           <Table.Body>
-            {meals.map(mealItem => { return (            
-            <Table.Row>
+            { meals.map((mealItem, index) => (            
+            <Table.Row key={index}>
               <Table.Cell>{mealItem.meal.name}</Table.Cell>
               <Table.Cell>{mealItem.mealType.name}</Table.Cell>
               <Table.Cell>{mealItem.price}</Table.Cell>
-            </Table.Row>)})}
+            </Table.Row>))}
           </Table.Body>
       
         </Table>

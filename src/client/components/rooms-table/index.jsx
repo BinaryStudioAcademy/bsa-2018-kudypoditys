@@ -21,8 +21,7 @@ export const getIcons = number =>
 export class RoomsTable extends React.Component {
     componentDidMount() {}
 
-    componentDidUpdate() {
-    }
+    componentDidUpdate() {}
 
     handleToggleCollapseDescription(roomId, ev) {
         ev.preventDefault();
@@ -78,7 +77,6 @@ export class RoomsTable extends React.Component {
                 if(roomZ){
                     room.available = roomZ.available;
                     room.lastReservation = roomZ.lastReservation;
-                    room.mealsInRoom = roomZ.mealInRooms;
                 }
             }
         });
@@ -101,7 +99,7 @@ export class RoomsTable extends React.Component {
                 let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
                 const totalCheck = (totalPrice * room.selectedAmount).toFixed(1);
                 const soldOutDaysAgo = room.lastReservation ? room.lastReservation.bookedDaysAgo : null;
-                const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null;   
+                const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null; 
                 return ([
                     (
                         <Table.Row id={room.id}>
@@ -143,13 +141,13 @@ export class RoomsTable extends React.Component {
                                     </div>
                                     <div>
                                         <strong><Icon name="food"/> Meals info</strong>
-                                        { room.mealsInRoom && room.mealsInRoom.length > 0 ?
+                                        { room.mealInRooms && room.mealInRooms.length > 0 ?
                                         <Popup 
                                         trigger={<p className='table-title'>
                                                     <span style={{borderBottom: "1px dashed  #000",color : "#465672", cursor : "help"}}>
                                                     Included</span> 
                                                 </p>}
-                                        content={<MealsTable meals={room.mealsInRoom} />} />
+                                        content={<MealsTable meals={room.mealInRooms} />} />
                                         :   <div className='table-title'>
                                                 <span>No included</span>
                                             </div>

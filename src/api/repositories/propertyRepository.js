@@ -17,6 +17,8 @@ const Review = require("../models/Review");
 const User = require("../models/User");
 const Room = require("../models/Room");
 const MealInRoom = require("../models/MealInRoom");
+const Meal = require("../models/Meal");
+const MealType = require("../models/MealType");
 const FacilityList = require("../models/FacilityList");
 const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
@@ -94,6 +96,20 @@ const includeOptions = [
             {
                 model: Reservation,
                 attributes: ["id"]
+            },
+            {
+                model: MealInRoom,
+                attributes: ["price"],
+                include: [
+                    { 
+                        model: Meal,
+                        attributes: ["name"]
+                    },
+                    { 
+                        model: MealType,
+                        attributes: ["name"]
+                    }
+                ]
             }
         ]
     },
