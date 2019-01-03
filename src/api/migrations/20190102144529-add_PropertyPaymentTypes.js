@@ -7,10 +7,8 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            belongsToProperty: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-                defaultValue: true
+            name: {
+                type: Sequelize.STRING
             },
             createdAt: {
                 allowNull: false,
