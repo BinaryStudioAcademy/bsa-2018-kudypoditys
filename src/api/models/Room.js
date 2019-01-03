@@ -1,8 +1,7 @@
-const
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let Room = orm.define('room', {
+const Room = orm.define('room', {
     price: {
         type: Sequelize.INTEGER,
         validate: { min: 1, notEmpty: true },
@@ -32,6 +31,22 @@ let Room = orm.define('room', {
     }
 });
 
+Room.associate = function (models) {
+    Room.belongsTo(models.RoomType);
+    Room.belongsTo(models.Property);
 
+    Room.hasMany(models.Reservation);
+    Room.hasMany(models.Image);
+    Room.hasMany(models.BedInRoom, { onDelete: 'cascade' });
+    Room.hasMany(models.RoomDiscount);
+    Room.hasMany(models.Availability);
+
+    Room.belongsToMany(models.Discount, {
+        through: "roomDiscount"
+    });
+    Room.belongsToMany(models.BedType, {
+        through: "bedInRoom"
+    });
+};
 
 module.exports = Room;

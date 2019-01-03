@@ -1,13 +1,16 @@
-const
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let BedType = orm.define('bedType', {
+const BedType = orm.define('bedType', {
     name: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: false
     }
 });
+
+BedType.associate = function (models) {
+    BedType.hasMany(models.BedInRoom);
+};
 
 module.exports = BedType;

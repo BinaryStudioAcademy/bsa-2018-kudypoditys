@@ -1,10 +1,7 @@
-const
-
-
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let AccommodationRule = orm.define('accommodationRule', {
+const AccommodationRule = orm.define('accommodationRule', {
     allowPets: {
         type: Sequelize.BOOLEAN,
         allowNull: true
@@ -36,5 +33,9 @@ let AccommodationRule = orm.define('accommodationRule', {
         allowNull: false
     }
 });
+
+AccommodationRule.associate = function (models) {
+    AccommodationRule.hasMany(models.Property);
+};
 
 module.exports = AccommodationRule;

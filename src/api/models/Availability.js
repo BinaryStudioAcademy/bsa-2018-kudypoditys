@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize"),
     orm = require("../orm");
 
-module.exports = orm.define("availability", {
+const Availability = orm.define("availability", {
     amount: {
         type: Sequelize.INTEGER,
         allowNull: false
@@ -20,3 +20,9 @@ module.exports = orm.define("availability", {
         allowNull: false
     }
 });
+
+Availability.associate = function (models) {
+    Availability.belongsTo(models.Room);
+};
+
+module.exports = Availability;

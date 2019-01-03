@@ -1,9 +1,7 @@
-const
-  Sequelize = require('sequelize'),
-  orm = require('../orm');
+const Sequelize = require('sequelize'),
+    orm = require('../orm');
 
-let BasicFacility = orm.define('basicFacility', {
-
+const BasicFacility = orm.define('basicFacility', {
   hasParking: {
     type: Sequelize.BOOLEAN,
   },
@@ -22,19 +20,20 @@ let BasicFacility = orm.define('basicFacility', {
   parkingPrice: {
     type: Sequelize.DOUBLE
   },
-
   hasInternet: {
     type: Sequelize.BOOLEAN,
   },
   internetPrice: {
     type: Sequelize.DOUBLE
   },
-
   propertyId: {
     type: Sequelize.INTEGER,
     unique: true,
   }
-
 });
+
+BasicFacility.associate = function (models) {
+    BasicFacility.belongsTo(models.Property);
+};
 
 module.exports = BasicFacility;

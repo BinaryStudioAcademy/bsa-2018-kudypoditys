@@ -1,8 +1,7 @@
-const
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let PropertyType = orm.define('propertyType', {
+const PropertyType = orm.define('propertyType', {
     name: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
@@ -15,5 +14,9 @@ let PropertyType = orm.define('propertyType', {
         allowNull: false
     }
 });
+
+PropertyType.associate = function (models) {
+    PropertyType.hasMany(models.Property);
+};
 
 module.exports = PropertyType;
