@@ -129,7 +129,14 @@ export class PropertyPage extends React.Component {
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
 
         const pics = this.getImagesArray(property.images);
-        const lastBookedTime = moment().diff(property.lastBooked,'minutes');
+
+        let bookedTime = 0;
+
+        if(property.lastBooked)
+           bookedTime = moment().diff(property.lastBooked, 'minutes');
+              
+        const lastBookedTime = bookedTime !== 0 ? bookedTime : 1;
+
         return (
             <div className="mock">
                 <AppHeader

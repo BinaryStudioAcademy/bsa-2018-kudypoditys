@@ -26,8 +26,8 @@ class PropertyService extends Service {
         return propertyRepository.findAll();
     }
 
-    updateLastBooked(id,lastBooked){
-        return propertyRepository.updateLastBooked(id,lastBooked);
+    updateLastBooked(id, lastBooked){
+        return propertyRepository.updateLastBooked(id, lastBooked);
     }
 
     getPropertyById(id) {

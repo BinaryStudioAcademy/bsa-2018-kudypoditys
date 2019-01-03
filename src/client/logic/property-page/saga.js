@@ -32,6 +32,12 @@ export default function* propertyPageSaga() {
 
     function* bookProperty(action) {
         try {
+            yield call(
+                api.sendAuthRequest,
+                "/api/reservation",
+                "post",
+                action.payload
+            );
             yield put({
                 type: actionTypes.BOOK_PROPERTY_SUCCESS,
                 payload: "Your booking was a success!"
