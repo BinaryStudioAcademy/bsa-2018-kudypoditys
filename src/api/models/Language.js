@@ -1,13 +1,19 @@
-const
-  Sequelize = require('sequelize'),
-  orm = require('../orm');
+const Sequelize = require('sequelize'),
+    orm = require('../orm');
 
-let Language = orm.define('language', {
+const Language = orm.define('language', {
   name: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false
   }
 });
+
+Language.associate = function (models) {
+    Language.hasMany(models.PropertyLanguage);
+    Language.belongsToMany(models.Property, {
+        through: "propertyLanguage"
+    });
+};
 
 module.exports = Language;

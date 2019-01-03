@@ -1,8 +1,7 @@
-const
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let BedInRoom = orm.define('bedInRoom', {
+const BedInRoom = orm.define('bedInRoom', {
     count: {
         type: Sequelize.INTEGER,
         validate: { min: 1, isNumeric: true },
@@ -10,5 +9,10 @@ let BedInRoom = orm.define('bedInRoom', {
         defaultValue: 1
     }
 });
+
+BedInRoom.associate = function (models) {
+    BedInRoom.belongsTo(models.BedType);
+    BedInRoom.belongsTo(models.Room);
+};
 
 module.exports = BedInRoom;

@@ -1,8 +1,7 @@
-const
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let RoomDiscount = orm.define('roomDiscount', {
+const RoomDiscount = orm.define('roomDiscount', {
     discountStart: {
         type: Sequelize.DATE,
         validate: { isDate: true },
@@ -14,5 +13,10 @@ let RoomDiscount = orm.define('roomDiscount', {
         allowNull: false
     }
 });
+
+RoomDiscount.associate = function (models) {
+    RoomDiscount.belongsTo(models.Room);
+    RoomDiscount.belongsTo(models.Discount);
+};
 
 module.exports = RoomDiscount;

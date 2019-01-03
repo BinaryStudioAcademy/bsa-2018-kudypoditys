@@ -1,13 +1,15 @@
-const
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let Message = orm.define('message', {
+const Message = orm.define('message', {
     body: {
         type: Sequelize.TEXT
-
     }
 });
+
+Message.associate = function (models) {
+    Message.belongsTo(models.Reservation);
+};
 
 module.exports = Message;
 

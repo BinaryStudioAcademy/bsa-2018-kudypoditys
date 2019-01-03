@@ -4,7 +4,6 @@ const path = require("path"),
     basename = path.basename(__filename),
     Sequelize = require("sequelize"),
     orm = require(`../orm`),
-    associations = require(`../associations`),
     seed = require("../seeds");
 
 const models = {
@@ -26,13 +25,17 @@ fs.readdirSync(__dirname)
             .pop()
             .replace(/\..+$/, "")
     )
-  .forEach(modelName => {
+    .forEach(modelName => {
         models[modelName] = require(`${apiRoot}\\models\\${modelName}`);
     });
 
-associations(models); // make associations
+//associations(models); // make associations
+Object.keys(models).map((modelName) => {
+    return models[modelName].associate ? models[modelName].associate(models)
+                                        : models[modelName];
+});
 
 module.exports = orm
-    .sync({ force: false })
+    .sync()
     .then(() => seed(models))
     .then(() => models);

@@ -1,8 +1,7 @@
-const // apiRoot = '/api',
-    Sequelize = require("sequelize"),
+const Sequelize = require("sequelize"),
     orm = require("../orm");
 
-let User = orm.define("user", {
+const User = orm.define("user", {
     fullName: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
@@ -62,5 +61,24 @@ let User = orm.define("user", {
         allowNull: true
     }
 });
+
+User.associate = function (models) {
+    User.belongsTo(models.Role);
+    User.belongsTo(models.UserSetting);
+    User.belongsTo(models.Country);
+    User.belongsTo(models.PaymentType);
+
+    User.hasOne(models.UserRefreshToken);
+
+    User.hasMany(models.Reservation);
+    User.hasMany(models.Property);
+    User.hasMany(models.Review);
+    User.hasMany(models.Favorite);
+
+    User.belongsToMany(models.Property, {
+        as: "favoriteProperties",
+        through: "favorite"
+    });
+};
 
 module.exports = User;

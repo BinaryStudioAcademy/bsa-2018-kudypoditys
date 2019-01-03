@@ -794,7 +794,6 @@ class PropertyRepository extends Repository {
                     //     model: FacilityList,
                     //     required: true,
                     // },
-
                     {
                         model: Room,
 

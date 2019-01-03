@@ -1,8 +1,7 @@
-const
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let City = orm.define('city', {
+const City = orm.define('city', {
     name: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
@@ -13,5 +12,10 @@ let City = orm.define('city', {
         type: Sequelize.STRING,
     }
 });
+
+City.associate = function (models) {
+    City.belongsTo(models.Country);
+    City.hasMany(models.Property);
+};
 
 module.exports = City;
