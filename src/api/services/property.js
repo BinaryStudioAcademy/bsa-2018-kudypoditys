@@ -1,5 +1,11 @@
 const Service = require("./generalService");
 const propertyRepository = require("../repositories/propertyRepository");
+const facilityRepository = require("../repositories/facilityRepository");
+const mealsInRoomRepository = require("../repositories/mealInRoomRepository");
+const propertyPaymentTypeRepository = require("../repositories/propertyPaymentTypeRepository");
+const availabilityRepository = require("../repositories/availabilityRepository");
+const roomRepository = require("../repositories/roomRepository");
+const propertyLanguageRepository = require("../repositories/propertyLanguageRepository");
 
 class PropertyService extends Service {
     async findById(id) {
@@ -35,7 +41,66 @@ class PropertyService extends Service {
     }
 
     addProperty(property) {
-        return propertyRepository.createDetails(property);
+        return propertyRepository
+                .createDetails(property)
+                .then(({ dataValues: newProperty }) => {
+                    let facilityList = property.facilities.map(f => ({
+                        propertyId: newProperty.id,
+                        facilityId: f.id
+                    }));
+                    return facilityRepository.insertMany(facilityList)
+                        .then(_ => newProperty);
+                    })
+                .then(newProperty => {
+                    let mealsInRoom = []
+                    property.rooms.forEach((room , index) => {
+                        mealsInRoom = mealsInRoom
+                        .concat(room.mealsInRoom
+                            .map(x => Object.assign(
+                                {roomId : newProperty.rooms[index].id,
+                                mealId : x.name.id,
+                                mealTypeId : x.type.id,
+                                price : x.price})))
+                    })
+                    return mealsInRoomRepository.insertMany(mealsInRoom)
+                        .then(_ => newProperty);}
+                )
+                .then(newProperty => {
+                    let languages = property.languages.map(l => ({
+                        propertyId: newProperty.id,
+                        languageId: l.id
+                    }));
+                    return propertyLanguageRepository.insertMany(languages)
+                        .then(_ => newProperty);
+                })
+                .then(newProperty => {
+                    let paymentTypes = property.paymentTypes.map(p => ({
+                        propertyId: newProperty.id,
+                        paymentTypeId: p.id
+                    }));
+
+                    return propertyPaymentTypeRepository.insertMany(paymentTypes).then(
+                        _ => newProperty
+                    );
+                })
+                .then(newProperty => {
+                    roomRepository.findByOptions({
+                        propertyId: newProperty.id
+                    }).then(propertyRooms => {
+                        propertyRooms.forEach(room => {
+                            let availabilities = this.getDaysArrayByMonth(
+                                room.id,
+                                room.amount,
+                                room.price
+                            );
+                            availabilities.map(async availability => {
+                                await availabilityRepository.create(availability);
+                            });
+                        });
+                    });
+                    return newProperty;
+                })
+                .then(newProperty => propertyRepository.findById(newProperty.id));
     }
 
     updateProperty(id, property) {

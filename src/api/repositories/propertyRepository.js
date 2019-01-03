@@ -26,8 +26,6 @@ const PropertyLanguage = require("../models/PropertyLanguage");
 const BasicFacility = require("../models/BasicFacility");
 const FacilityCategory = require("../models/FacilityCategory");
 const Language = require("../models/Language");
-const AvailabilityRepository = require("./availabilityRepository");
-const RoomRepository = require("./roomRepository");
 
 const Currency = require('../models/Currency');
 
@@ -390,71 +388,8 @@ class PropertyRepository extends Repository {
                     }
                 ]
             })
-            .then(({ dataValues: newProperty }) => {
-                let facilityList = entity.facilities.map(f => ({
-                    propertyId: newProperty.id,
-                    facilityId: f.id
-                }));
-                return FacilityList.bulkCreate(facilityList).then(
-                    _ => newProperty
-                );
-            })
-            .then(newProperty => {
-                let mealsInRoom = []
-                entity.rooms.forEach((room , index) => {
-                    mealsInRoom = mealsInRoom
-                    .concat(room.mealsInRoom
-                        .map(x => Object.assign(
-                            {roomId : newProperty.rooms[index].id,
-                             mealId : x.name.id,
-                             mealTypeId : x.type.id,
-                             price : x.price})))
-                })
-
-                return MealInRoom.bulkCreate(mealsInRoom).then(
-                    _ => newProperty
-                );}
-            )
-            .then(newProperty => {
-                let languages = entity.languages.map(l => ({
-                    propertyId: newProperty.id,
-                    languageId: l.id
-                }));
-
-                return PropertyLanguage.bulkCreate(languages).then(
-                    _ => newProperty
-                );
-            })
-            .then(newProperty => {
-                let paymentTypes = entity.paymentTypes.map(p => ({
-                    propertyId: newProperty.id,
-                    paymentTypeId: p.id
-                }));
-
-                return PropertyPaymentType.bulkCreate(paymentTypes).then(
-                    _ => newProperty
-                );
-            })
-            .then(newProperty => {
-                RoomRepository.findByOptions({
-                    propertyId: newProperty.id
-                }).then(propertyRooms => {
-                    propertyRooms.forEach(room => {
-                        let availabilities = this.getDaysArrayByMonth(
-                            room.id,
-                            room.amount,
-                            room.price
-                        );
-                        availabilities.map(async availability => {
-                            await AvailabilityRepository.create(availability);
-                        });
-                    });
-                });
-
-                return newProperty;
-            })
-            .then(newProperty => this.findById(newProperty.id));
     }
+
     getFacilityId(facilityStr) {
         let facilityId;
         switch (facilityStr) {

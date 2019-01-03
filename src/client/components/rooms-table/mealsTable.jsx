@@ -25,7 +25,7 @@ export default class MealsTable extends React.Component {
             <Table.Row key={index}>
               <Table.Cell>{mealItem.meal.name}</Table.Cell>
               <Table.Cell>{mealItem.mealType.name}</Table.Cell>
-              <Table.Cell>{mealItem.price}</Table.Cell>
+              <Table.Cell>{mealItem.price ? mealItem.price : "Free"}</Table.Cell>
             </Table.Row>))}
           </Table.Body>
       
