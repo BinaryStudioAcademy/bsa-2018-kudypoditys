@@ -1,21 +1,32 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
-import {
-  GET_LANGUAGES,
-  GET_LANGUAGES_SUCCESS,
-  GET_LANGUAGES_FAILED
-} from './actionTypes';
+import * as actionTypes from './actionTypes';
 import languageService from 'client/services/languageService';
 
 function* getLanguages() {
   try {
     const languages = yield call(languageService.getAll);
     yield put({
-      type: GET_LANGUAGES_SUCCESS,
+      type: actionTypes.GET_LANGUAGES_SUCCESS,
       payload: languages
     });
   } catch (err) {
     yield put({
-      type: GET_LANGUAGES_FAILED,
+      type: actionTypes.GET_LANGUAGES_FAILED,
+      payload: err.message
+    });
+  }
+}
+
+function* createLanguage(action) {
+  try {
+    const language = yield call(languageService.create,{name : action.payload});
+    yield put({
+      type: actionTypes.CREATE_LANGUAGE_SUCCESS,
+      payload: language
+    });
+  } catch (err) {
+    yield put({
+      type: actionTypes.GET_LANGUAGES_FAILED,
       payload: err.message
     });
   }
@@ -23,6 +34,7 @@ function* getLanguages() {
 
 export default function* languagesSaga() {
   yield all([
-    takeLatest(GET_LANGUAGES, getLanguages)
+    takeLatest(actionTypes.GET_LANGUAGES, getLanguages),
+    takeLatest(actionTypes.CREATE_LANGUAGE, createLanguage)
   ])
 }

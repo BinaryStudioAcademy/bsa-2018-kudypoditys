@@ -12,5 +12,14 @@ language.route('/')
         res.status(404).send(err);
       });
   })
+  .post((req, res) => {
+    languageService.create(req.body)
+      .then(language => {
+        res.send(language);
+      })
+      .catch((err) => {
+        res.status(404).send(err);
+      });
+  })
 
 module.exports = language;
