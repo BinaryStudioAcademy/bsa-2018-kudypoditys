@@ -682,6 +682,15 @@ const state = {
     roomTypesData: {
         roomTypes: []
     },
+    mealsData: {
+        meals: []
+    },
+    mealsInRoomData: {
+        mealsInRoom: []
+    },
+    mealTypesData: {
+        mealTypes: []
+    },
     bedTypesData: {
         bedTypes: []
     },

@@ -3,7 +3,7 @@ module.exports = io => {
 
         socket.on("openPropertyPage",(room) => {
              io.of('/').in(room).clients((error,clients) => {
-                 io.in(room).emit("nowLooking",clients.length);
+                 io.in(room).emit("nowLooking",clients.length - 1);
              });
         })
 
@@ -14,14 +14,14 @@ module.exports = io => {
         socket.on('leavePropertyRoom', (room) => {
             socket.leave(room);
             io.of('/').in(room).clients((error,clients) => {
-                io.in(room).emit("nowLooking",clients.length);
+                io.in(room).emit("nowLooking",clients.length - 1);
             });
         });
 
         socket.on('onClose', () => {
             const roomName = Object.keys(socket.rooms)[0];
             io.of('/').in(roomName).clients((error,clients) => {
-                io.in(roomName).emit("nowLooking",clients.length - 1);
+                io.in(roomName).emit("nowLooking",clients.length - 2);
             });
             socket.leave(roomName);
         });

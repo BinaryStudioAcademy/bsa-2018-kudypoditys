@@ -22,7 +22,7 @@ const renderDropdown = ({
             ? (className !== undefined) ? `${className} error` : 'error'
             : (className !== undefined) ? className : ''}
 
-        value={(multiple && (input.value && input.value.map(JSON.stringify))) || ([]) || input.value || ''}
+        value={(multiple && ((input.value && input.value.map(JSON.stringify)) || [])) || input.value || ''}
         onChange={(_, data) => {
           if (data.multiple)
             return input.onChange(data.value.map(JSON.parse))

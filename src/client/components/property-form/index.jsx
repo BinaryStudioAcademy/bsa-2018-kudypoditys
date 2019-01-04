@@ -58,6 +58,7 @@ export class PropertyForm extends React.Component {
     }
 
     onFormSubmit = data => {
+        console.log(data)
         let newProperty = Object.assign({}, data);
         newProperty.facilities = this.normalizeFacilities(data.facilities);
 

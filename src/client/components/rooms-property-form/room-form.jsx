@@ -3,17 +3,17 @@ import { Button, Form, Icon } from "semantic-ui-react";
 import { required } from 'client/regexValidationService';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
+import MealsInRoomFields from './meals-in-room-fields';
 import BedInRoomsFields from './bed-in-rooms-fields';
 
 import renderField from '../input-form/renderField';
 import renderTextarea from '../input-form/textarea';
 import renderDropdown from '../input-form/dropdown';
 
-
 class RoomForm extends Component {
   render() {
     const {
-      handleSubmit, handleCancel, roomTypesOptions, bedTypesOptions
+      handleSubmit, handleCancel, roomTypesOptions, mealOptions, mealTypesOptions, bedTypesOptions
     } = this.props;
 
     return (
@@ -72,6 +72,12 @@ class RoomForm extends Component {
             validate={[required]}
           />
         </div>
+        <FieldArray
+            name={`mealsInRoom`}
+            component={MealsInRoomFields}
+            mealOptions={mealOptions}
+            mealTypesOptions={mealTypesOptions}
+        />
         <FieldArray
             name={`bedInRooms`}
             component={BedInRoomsFields}

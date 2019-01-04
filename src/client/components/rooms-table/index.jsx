@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import { Icon, Table } from "semantic-ui-react";
+import { Icon, Table ,Popup} from "semantic-ui-react";
 import QuantityPicker from "client/components/quantity-picker";
 import _ from "lodash";
 import {
@@ -13,6 +13,7 @@ import connect from "react-redux/es/connect/connect";
 import { mapDispatchToProps, mapStateToProps } from "./container";
 import { getDaysDifference } from '../../helpers/date-helpers';
 import Tooltip from 'react-tooltip-lite';
+import MealsTable from './mealsTable';
 
 export const getIcons = number =>
     _.times(number, index => <Icon name="user" />);
@@ -20,8 +21,7 @@ export const getIcons = number =>
 export class RoomsTable extends React.Component {
     componentDidMount() {}
 
-    componentDidUpdate() {
-    }
+    componentDidUpdate() {}
 
     handleToggleCollapseDescription(roomId, ev) {
         ev.preventDefault();
@@ -39,11 +39,7 @@ export class RoomsTable extends React.Component {
                     return (
                         <span
                             key={index}
-                            style={{
-                                display: "block",
-                                paddingLeft: "23px",
-                                color: "#465672"
-                            }}
+                            className='table-title'
                         >
                             {bed.count} {bed.bedType.name}
                         </span>
@@ -76,7 +72,7 @@ export class RoomsTable extends React.Component {
         } = this.props;
         rooms.forEach(room => {
             if (Array.isArray(roomsZ)) {
-                const roomZ = roomsZ.find(roomZ => roomZ.id == room.id);
+                const roomZ = roomsZ.find(roomZ => roomZ.id === room.id);
                 //It can invoke bugs.
                 if(roomZ){
                     room.available = roomZ.available;
@@ -103,8 +99,7 @@ export class RoomsTable extends React.Component {
                 let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
                 const totalCheck = (totalPrice * room.selectedAmount).toFixed(1);
                 const soldOutDaysAgo = room.lastReservation ? room.lastReservation.bookedDaysAgo : null;
-                const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null;
-
+                const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null; 
                 return ([
                     (
                         <Table.Row id={room.id}>
@@ -143,6 +138,20 @@ export class RoomsTable extends React.Component {
                                                 ...
                                             </a>
                                         </p>
+                                    </div>
+                                    <div>
+                                        <strong><Icon name="food"/> Meals info</strong>
+                                        { room.mealInRooms && room.mealInRooms.length > 0 ?
+                                        <Popup 
+                                        trigger={<p className='table-title'>
+                                                    <span style={{borderBottom: "1px dashed  #000",color : "#465672", cursor : "help"}}>
+                                                    Included</span> 
+                                                </p>}
+                                        content={<MealsTable meals={room.mealInRooms} />} />
+                                        :   <div className='table-title'>
+                                                <span>No included</span>
+                                            </div>
+                                        }   
                                     </div>
                                 </div>
                             </Table.Cell>
