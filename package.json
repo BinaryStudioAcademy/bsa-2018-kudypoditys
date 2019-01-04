@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build && node server.js",
     "start-client": "node scripts/start.js",
-    "start-api": "yarn sequelize db:migrate && nodemon --inspect=0.0.0.0:9228 server.js",
+    "start-api": "yarn sequelize db:migrate && yarn sequelize db:seed:all && nodemon --inspect=0.0.0.0:9228 server.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 6006",

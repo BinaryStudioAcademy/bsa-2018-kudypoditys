@@ -3,8 +3,7 @@ const path = require("path"),
     fs = require("fs"),
     basename = path.basename(__filename),
     Sequelize = require("sequelize"),
-    orm = require(`../orm`),
-    seed = require("../seeds");
+    orm = require(`../orm`);
 
 const models = {
     Sequelize,
@@ -31,11 +30,10 @@ fs.readdirSync(__dirname)
 
 //associations(models); // make associations
 Object.keys(models).map((modelName) => {
-    return models[modelName].associate ? models[modelName].associate(models)
-                                        : models[modelName];
+    models[modelName].associate && models[modelName].associate(models);
+    return models[modelName];
 });
 
 module.exports = orm
     .sync()
-    .then(() => seed(models))
     .then(() => models);
