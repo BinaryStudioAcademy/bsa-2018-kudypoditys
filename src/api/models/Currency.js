@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize"),
     orm = require("../orm");
 
-module.exports = orm.define("currency", {
+const Currency = orm.define("currency", {
     name: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
@@ -27,3 +27,9 @@ module.exports = orm.define("currency", {
         unique: true
     }
 });
+
+Currency.associate = function (models) {
+    Currency.hasMany(models.Property);
+};
+
+module.exports = Currency;

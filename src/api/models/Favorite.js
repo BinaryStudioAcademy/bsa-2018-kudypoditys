@@ -1,11 +1,12 @@
 
-const
-    Sequelize = require('sequelize'),
-    orm = require('../orm');
+const orm = require('../orm');
 
-let Favoritе = orm.define('favoritе', {
+const Favorite = orm.define("favorite", {
 
 });
 
+Favorite.associate = function (models) {
+    Favorite.belongsTo(models.User);
+};
 
-module.exports = Favoritе;
+module.exports = Favorite;

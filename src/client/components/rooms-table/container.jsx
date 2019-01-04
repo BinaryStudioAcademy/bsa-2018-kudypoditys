@@ -4,7 +4,8 @@ import {
     toggleDescriptionCollapse
 } from '../../logic/property-page/actions';
 
-export function mapStateToProps({userCabinet, propertyPage, header}) {
+export function mapStateToProps(state) {
+    const {userCabinet, propertyPage, header} = state;
     return {
         user: userCabinet.user,
         property: propertyPage.property,

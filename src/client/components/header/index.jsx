@@ -44,7 +44,7 @@ export class MainHeader extends Component {
     };
 
     handleCurrancyChange = (e, {value}) => {
-        const {currencies} = this.props.currencies;
+        const {currencies} = this.props;
         const currency = currencies.find(x => x.id === value);
         this.props.onCurrencyChange(currency);
 

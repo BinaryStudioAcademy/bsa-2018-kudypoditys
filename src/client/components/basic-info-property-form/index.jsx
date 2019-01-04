@@ -5,7 +5,8 @@ import renderField from "../input-form/renderField";
 import {
     required,
     maxLength40,
-    phoneNumber
+    phoneNumber,
+    positiveNumber
 } from "client/regexValidationService";
 import { Field, reduxForm } from "redux-form";
 import renderTextarea from "../input-form/textarea";
@@ -295,7 +296,7 @@ class BasicInfoPropertyForm extends Component {
                                     type="number"
                                     component={renderField}
                                     label="Distance in km"
-                                    validate={[required]}
+                                    validate={[required,positiveNumber]}
                                     icon="map pin"
                                                 />
                                 </div>
@@ -310,7 +311,7 @@ class BasicInfoPropertyForm extends Component {
                                             className="metro"
                                             component={renderField}
                                             label="Metro name"
-                                            validate={[required]}
+                                            validate={[]}
                                             icon="train"
                                                 />
                                         <Field
@@ -319,7 +320,7 @@ class BasicInfoPropertyForm extends Component {
                                             className="metro"
                                             component={renderField}
                                             label="Distance within 1 km in metres"
-                                            validate={[required]}
+                                            validate={[positiveNumber]}
                                             icon="location arrow"
                                                 />
                                     </div>

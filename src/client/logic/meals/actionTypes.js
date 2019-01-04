@@ -1,0 +1,3 @@
+export const GET_MEALS = 'GET_MEALS';
+export const GET_MEALS_SUCCESS = 'GET_MEALS:SUCCESS';
+export const GET_MEALS_FAILED = 'GET_MEALS:FAILED';

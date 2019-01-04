@@ -16,6 +16,9 @@ const City = require("../models/City");
 const Review = require("../models/Review");
 const User = require("../models/User");
 const Room = require("../models/Room");
+const MealInRoom = require("../models/MealInRoom");
+const Meal = require("../models/Meal");
+const MealType = require("../models/MealType");
 const FacilityList = require("../models/FacilityList");
 const BedInRoom = require("../models/BedInRoom");
 const BedType = require("../models/BedType");
@@ -23,9 +26,6 @@ const PropertyLanguage = require("../models/PropertyLanguage");
 const BasicFacility = require("../models/BasicFacility");
 const FacilityCategory = require("../models/FacilityCategory");
 const Language = require("../models/Language");
-const AvailabilityRepository = require("./availabilityRepository");
-const RoomRepository = require("./roomRepository");
-const moment = require("moment");
 
 const Currency = require('../models/Currency');
 
@@ -94,6 +94,20 @@ const includeOptions = [
             {
                 model: Reservation,
                 attributes: ["id"]
+            },
+            {
+                model: MealInRoom,
+                attributes: ["price"],
+                include: [
+                    { 
+                        model: Meal,
+                        attributes: ["name"]
+                    },
+                    { 
+                        model: MealType,
+                        attributes: ["name"]
+                    }
+                ]
             }
         ]
     },
@@ -374,55 +388,8 @@ class PropertyRepository extends Repository {
                     }
                 ]
             })
-            .then(({ dataValues: newProperty }) => {
-                let facilityList = entity.facilities.map(f => ({
-                    propertyId: newProperty.id,
-                    facilityId: f.id
-                }));
-                return FacilityList.bulkCreate(facilityList).then(
-                    _ => newProperty
-                );
-            })
-            .then(newProperty => {
-                let languages = entity.languages.map(l => ({
-                    propertyId: newProperty.id,
-                    languageId: l.id
-                }));
-
-                return PropertyLanguage.bulkCreate(languages).then(
-                    _ => newProperty
-                );
-            })
-            .then(newProperty => {
-                let paymentTypes = entity.paymentTypes.map(p => ({
-                    propertyId: newProperty.id,
-                    paymentTypeId: p.id
-                }));
-
-                return PropertyPaymentType.bulkCreate(paymentTypes).then(
-                    _ => newProperty
-                );
-            })
-            .then(newProperty => {
-                RoomRepository.findByOptions({
-                    propertyId: newProperty.id
-                }).then(propertyRooms => {
-                    propertyRooms.map(room => {
-                        let availabilities = this.getDaysArrayByMonth(
-                            room.id,
-                            room.amount,
-                            room.price
-                        );
-                        availabilities.map(async availability => {
-                            await AvailabilityRepository.create(availability);
-                        });
-                    });
-                });
-
-                return newProperty;
-            })
-            .then(newProperty => this.findById(newProperty.id));
     }
+
     getFacilityId(facilityStr) {
         let facilityId;
         switch (facilityStr) {
@@ -762,11 +729,8 @@ class PropertyRepository extends Repository {
                 let propertiesArray = [];
                 for (let index in properties.rows) {
                     let property = properties.rows[index].get({ plain: true });
-                    property.rooms.forEach((room) => {
-                        if (room.price === minPrice) {
-                            property.isCheapest = true;
-                        }
-                    });
+                    property.rooms
+                        .forEach(room => property.isCheapest = room.price === minPrice)
                     propertiesArray.push(property);
                 }
                 return {
@@ -794,7 +758,6 @@ class PropertyRepository extends Repository {
                     //     model: FacilityList,
                     //     required: true,
                     // },
-
                     {
                         model: Room,
 

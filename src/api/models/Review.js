@@ -1,17 +1,13 @@
-const
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let Review = orm.define('review', {
+const Review = orm.define('review', {
     pros: {
         type: Sequelize.TEXT
-
     },
     cons: {
         type: Sequelize.TEXT
-
     },
-
     Cleanliness: {
         type: Sequelize.FLOAT,
     },
@@ -27,14 +23,23 @@ let Review = orm.define('review', {
     Location: {
         type: Sequelize.FLOAT,
     },
-
     avgReview: {
         type: Sequelize.FLOAT,
     },
     anon: {
         type: Sequelize.BOOLEAN,
     }
-
 });
+
+Review.associate = function (models) {
+    Review.belongsTo(models.User);
+    Review.belongsTo(models.Property);
+
+    Review.hasMany(models.ScoreByCategory);
+
+    Review.belongsToMany(models.ReviewCategory, {
+        through: "scoreByCategory"
+    });
+};
 
 module.exports = Review;

@@ -1,9 +1,7 @@
-const
-    // apiRoot = '/api',
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let UserRefreshToken = orm.define('userRefreshToken', {
+const UserRefreshToken = orm.define('userRefreshToken', {
     refreshToken: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
@@ -22,5 +20,9 @@ let UserRefreshToken = orm.define('userRefreshToken', {
         unique: true
     }
 });
+
+UserRefreshToken.associate = function (models) {
+    UserRefreshToken.belongsTo(models.User);
+};
 
 module.exports = UserRefreshToken;

@@ -7,9 +7,8 @@ const dateHelpers = require("../helpers/date-helpers")
 
 class PropertyReservationService {
 
-async updatePropertyLastBooking(id,date){
-
-       return await propertyRepository.updateById(id, {'lastBooked' : date})
+    async updatePropertyLastBooking(id,date) {
+       return await propertyService.updateById(id, {'lastBooked' : date})
     }
 
     //Сount of booked rooms: Implement! 

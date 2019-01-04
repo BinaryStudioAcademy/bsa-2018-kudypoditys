@@ -1,13 +1,11 @@
 
-const
-    Sequelize = require('sequelize'),
+const Sequelize = require('sequelize'),
     orm = require('../orm');
 
-let Property = orm.define('property', {
+const Property = orm.define('property', {
     name: {
         type: Sequelize.STRING,
         validate: { notEmpty: true },
-
     },
     address: {
         type: Sequelize.STRING,
@@ -60,6 +58,37 @@ let Property = orm.define('property', {
     }
 });
 
+Property.associate = function (models) {
+    Property.belongsTo(models.User);
+    Property.belongsTo(models.VerificationStatus);
+    Property.belongsTo(models.City);
+    Property.belongsTo(models.PropertyType);
+    Property.belongsTo(models.AccommodationRule);
+    Property.belongsTo(models.Currency);
 
+    Property.hasMany(models.Favorite);
+    Property.hasMany(models.Review);
+    Property.hasMany(models.FacilityList);
+    Property.hasMany(models.PropertyPaymentType);
+    Property.hasMany(models.Room);
+    Property.hasMany(models.Image);
+    Property.hasMany(models.PropertyLanguage);
+
+    Property.hasOne(models.BasicFacility);
+
+    Property.belongsToMany(models.PaymentType, {
+        through: "propertyPaymentType"
+    });
+    Property.belongsToMany(models.User, {
+        as: "likedByUsers",
+        through: "favorite"
+    });
+    Property.belongsToMany(models.Facility, {
+        through: "facilityList"
+    });
+    Property.belongsToMany(models.Language, {
+        through: "propertyLanguage"
+    });
+};
 
 module.exports = Property;

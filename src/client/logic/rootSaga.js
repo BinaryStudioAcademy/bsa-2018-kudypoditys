@@ -18,11 +18,14 @@ import facilitiesSaga from "client/logic/facilities/saga";
 import languagesSaga from "client/logic/languages/saga";
 import paymentTypesSaga from "client/logic/payment-type/saga";
 import roomTypesSaga from "client/logic/room-types/saga";
+import mealsSaga from "client/logic/meals/saga";
+import mealTypesSaga from "client/logic/meal-types/saga";
 import bedTypesSaga from "client/logic/bed-types/saga";
 import currenciesSaga from "client/logic/currencies/saga";
 import propertyTypesSaga from "client/logic/property-type/saga";
 import userCabinetPropertiesSaga from "client/logic/user-cabinet-properties-tab/saga";
 import propertyEditSaga from 'client/logic/property-edit/saga';
+import mealsInRoomSaga from 'client/logic/mealInRoom/saga';
 
 export default function* rootSaga() {
     yield all([
@@ -46,10 +49,13 @@ export default function* rootSaga() {
         fork(languagesSaga),
         fork(paymentTypesSaga),
         fork(roomTypesSaga),
+        fork(mealsSaga),
+        fork(mealTypesSaga),
         fork(bedTypesSaga),
         fork(currenciesSaga),
         fork(propertyTypesSaga),
         fork(userCabinetPropertiesSaga),
-        fork(propertyEditSaga)
+        fork(propertyEditSaga),
+        fork(mealsInRoomSaga)
     ]);
 }

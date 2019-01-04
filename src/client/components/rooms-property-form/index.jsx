@@ -17,7 +17,7 @@ class RoomsPropertyForm extends Component {
   }
 
   componentDidMount() {
-    const { roomTypes, bedTypes } = this.props;
+    const { roomTypes, meals, mealTypes, bedTypes } = this.props;
 
     if (!roomTypes || roomTypes.length === 0) {
       this.props.getRoomTypes();
@@ -26,6 +26,14 @@ class RoomsPropertyForm extends Component {
     if (!bedTypes || bedTypes.length === 0) {
       this.props.getBedTypes();
     }
+
+    if (!meals || meals.length === 0) {
+        this.props.getMeals();
+    }
+
+    if (!mealTypes || mealTypes.length === 0) {
+        this.props.getMealTypes();
+    }
   }
 
   updateActiveIndex = (newIndex) => {
@@ -33,9 +41,21 @@ class RoomsPropertyForm extends Component {
   }
 
   renderRoomFields = ({ fields, meta: { error, submitFailed } }) => {
-    const { rooms, roomTypes, bedTypes } = this.props;
+    const { rooms, roomTypes, meals, mealTypes, bedTypes } = this.props;
     const { editRoomIndex } = this.props;
     const currentRoom = rooms && rooms[editRoomIndex];
+
+    const mealOptions = meals.map((x, i) => ({
+        key: i,
+        value: x,
+        text: x.name
+    }));
+
+    const mealTypesOptions = mealTypes.map((x, i) => ({
+        key: i,
+        value: x,
+        text: x.name
+    }));
 
     const bedTypesOptions = bedTypes.map((x, i) => ({
       key: i,
@@ -80,6 +100,8 @@ class RoomsPropertyForm extends Component {
                 this.updateActiveIndex(-1);
               }}
               roomTypesOptions={roomTypesOptions}
+              mealOptions={mealOptions}
+              mealTypesOptions={mealTypesOptions}
               bedTypesOptions={bedTypesOptions}
             />
           </List.Item>

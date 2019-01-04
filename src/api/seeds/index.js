@@ -21,7 +21,9 @@ const {
     REVIEWS,
     LANGUAGES,
     CURRENCIES,
-    AVAILABILITY
+    AVAILABILITY,
+    MEALS,
+    MEAL_TYPES
 
 } = require("./seed");
 
@@ -103,7 +105,9 @@ async function upsertAllData(models) {
         Language,
         Review,
         Currency,
-        Availability
+        Availability,
+        Meal,
+        MealType
     } = models;
 
     const SimpleUpsertMap = [
@@ -126,7 +130,10 @@ async function upsertAllData(models) {
         [Reservation, RESERVATIONS],
         [Language, LANGUAGES],
         [Review, REVIEWS],
-        [Availability, AVAILABILITY]
+        [Currency, CURRENCIES],
+        [Availability, AVAILABILITY],
+        [Meal, MEALS],
+        [MealType, MEAL_TYPES]
     ];
 
     //Country & City

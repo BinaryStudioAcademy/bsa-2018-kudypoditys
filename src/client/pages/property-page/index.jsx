@@ -129,7 +129,15 @@ export class PropertyPage extends React.Component {
         const avgPropRating = getAvgFromArray(avgPropRatingArray);
 
         const pics = this.getImagesArray(property.images);
-        const lastBookedTime = moment().diff(property.lastBooked,'minutes');
+
+        let lastBookedTime = 0;
+
+        if(property.lastBooked)
+        {
+            const bookedTime = moment().diff(property.lastBooked, 'minutes');
+            lastBookedTime = bookedTime !== 0 ? bookedTime : 1;
+        }
+              
         return (
             <div className="mock">
                 <AppHeader
@@ -286,7 +294,7 @@ export class PropertyPage extends React.Component {
                                     color="red"
                                     tag
                                     style={{left:10, marginBottom: 15}}>
-                                    {<Icon name="clock"/>} {`Last booked: ${parseInt(lastBookedTime/60)} hour ago`}
+                                    {<Icon name="clock"/>} {`Last booked: ${parseInt(lastBookedTime/60, 10)} hour ago`}
                                 </Label>
                              )
                             : null
