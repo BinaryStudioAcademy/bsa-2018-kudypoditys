@@ -8,7 +8,7 @@ module.exports = {
                 description:
                     "This property is 15 minutes walk from the beach. Located on Independence Square in the heart of Kiev, this hotel offers air-conditioned rooms and suites with elegant décor. It is a 3-minute walk from the Maidan Nezalezhnosti and Kreschatik Metro Stations. In-room facilities at the Ukraine Hotel include satellite TV and a refrigerator. Your bathroom includes free toiletries and perfumes. Guests enjoy views of the Kreschatyk Street and the surrounding area. A large breakfast buffet is available at the Ukraine Hotel, and 24-hour room service is offered. Ukrainian and European cuisine is served for lunch and dinner. Live music is sometimes played here. The hotel features a beauty salon, sauna and massage facilities. A private laundry service is also available. Hotel Ukraine is a 10-minute walk from Mariyinsky Park and the St. Sofia Cathedral. Secure parking is available on site. Pecherskyj is a great choice for travellers interested in restaurants, food and friendly locals. This is our guests' favourite part of Kiev, according to independent reviews. This property also has one of the best-rated locations in Kiev! Guests are happier about it compared to other properties in the area.",
                 contactPhone: "0509832174",
-                coordinates: { lat: 50.44857, lng: 30.52734 },
+                coordinates: JSON.stringify({ lat: 50.44857, lng: 30.52734 }),
                 distanceToCentre: 1.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -25,7 +25,7 @@ module.exports = {
                 description: `Providing free WiFi, Hotel Dolynskiy is set in Lviv. This property is situated a short distance from attractions such as The St. Onuphrius Church and Monastery and The Church of St. Nicholas. The property is 700 m from The High Castle Park and a 9-minute walk from Zankovetski Drama Theater.
                     At the hotel, rooms are equipped with a wardrobe. The private bathroom is equipped with free toiletries. Lviv State Academic Opera and Ballet Theater is 800 m from Hotel Dolynskiy, while The Armenian Cathedral is a 10-minute walk away. The nearest airport is Lviv International Airport, 7 km from the accommodation. This is our guests' favourite part of Lviv, according to independent reviews.`,
                 contactPhone: "0509842174",
-                coordinates: { lat: 49.850813, lng: 24.028545 },
+                coordinates: JSON.stringify({ lat: 49.850813, lng: 24.028545 }),
                 distanceToCentre: 0.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -42,7 +42,7 @@ module.exports = {
                 description:
                     "Hotel Atlas Deluxe is located in the heart of Lviv, within a 2-minute walk of Ploshcha Rynok Square and a 10-minute walk of Ivana Franko Park. It offers a sauna, fitness centre and concierge service. The classic-style air-conditioned rooms feature a flat-screen TV with satellite channels. The bathroom comes with a hairdryer and free toiletries. Guests can order a meal in the on-site restaurant. After a busy day, you can enjoy your favourite drink at the bar. Lviv Train Station is within a 10-minute drive of Hotel Atlas Deluxe. A shuttle to Lviv International Airport (6.5 km) is available at surcharge. This is our guests' favourite part of Lviv, according to independent reviews.",
                 contactPhone: "0678674908",
-                coordinates: { lat: 49.835743, lng: 24.032616 },
+                coordinates: JSON.stringify({ lat: 49.835743, lng: 24.032616 }),
                 distanceToCentre: 1.1,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -58,7 +58,7 @@ module.exports = {
                 description:
                     "Located in the city centre of Lviv, less than a 2-minute walk from Svobody Prospekt and a 5-minute walk from Market Square, Rius hotel features free Wi-Fi throughout the property. The modern rooms here provide guests with panoramic windows with a city view, a minibar, a balcony or a terrace, a flat-screen TV with satellite channels, air conditioning, and a private bathroom with a bath or shower. The Lviv Theatre of Opera and Ballet is a 6-minute walk, and the City Hall is a 7-minute walk away. Rius hotel is 2.5 km from Lviv Train Station, 1 km from Doroshenka tram stop, and 7 km from Lviv International Airport. Guarded underground parking is provided. This is our guests' favourite part of Lviv, according to independent reviews. This property also has one of the best-rated locations in Lviv! Guests are happier about it compared to other properties in the area.",
                 contactPhone: "0955679712",
-                coordinates: { lat: 49.841931, lng: 24.024986 },
+                coordinates: JSON.stringify({ lat: 49.841931, lng: 24.024986 }),
                 distanceToCentre: 0.2,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -74,7 +74,7 @@ module.exports = {
                 description:
                     "This hotel is located in the historic centre of Lviv, just a 10-minute walk from Ploschad Rynok Square. Free Wi-Fi and a 24-hour reception are featured at British Club Lviv. The elegant, air-conditioned rooms and apartments of this hotel are decorated in classical English style. Each one includes a flat-screen TV, a refrigerator and a private bathroom with bathrobes and a hairdryer. Breakfast is served every morning in the hotel’s dining area. Lviv Opera Theatre is just a 2-minute walk away, and Ivana Franko Park is a 5-minute walk from the hotel. A bus stop on Prospekt Svobody is 150 m from British Club Lviv. Lviv Central Train Station is 2.5 km away, and Lviv International Airport is 6 km from the hotel. ",
                 contactPhone: "0509842174",
-                coordinates: { lat: 49.84325, lng: 24.02388 },
+                coordinates: JSON.stringify({ lat: 49.84325, lng: 24.02388 }),
                 distanceToCentre: 2.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -90,7 +90,7 @@ module.exports = {
                 description:
                     "This guest house is located in the centre of Kharkov, a 5-minute walk from Konstitutsii Square. Free Wi-Fi, a 24-hour reception and private parking are featured at Complimente Guest House. The bright, air-conditioned rooms are decorated in classic style. Every room includes a flat-screen TV, a kitchenette equipped with a fridge and a private bathroom. A hairdryer is available. The on-site café serves European cuisine, and a selection of drinks is available at the bar. Kharkov Opera and Ballet Theatre is a 7-minute walk away, and the Shevchenko Park is within a walking distance of the guest house. Istoricheskiy Muzey and Sovetskaya Metro Stations are 500 m from Complimente Guest House. Kharkov Central Train Station is 5 km away, and Kharkov Airport is 12 km from the guest house. This is our guests' favourite part of Kharkov, according to independent reviews.",
                 contactPhone: "0674569222",
-                coordinates: { lat: 49.995886, lng: 36.228966 },
+                coordinates: JSON.stringify({ lat: 49.995886, lng: 36.228966 }),
                 distanceToCentre: 3.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -107,7 +107,7 @@ module.exports = {
                 description:
                     "Featuring free WiFi throughout the property, Pletnevskiy Inn offers accommodation in the historical building in the centre of Kharkov. Guests can enjoy the on-site restaurant. Every room at this hotel is air conditioned and is equipped with a flat-screen TV with cable channels. Certain units include a seating area to relax in after a busy day. You will find a kettle in the room. Every room has a private bathroom fitted with a shower. Extras include bathrobes, slippers and free toiletries. You will find a 24-hour front desk and a concierge service at the property. The on-site parking is available. Metallist Stadium is 2.1 km from Pletnevskiy Inn, while Kharkov Historical Museum is 700 m from the property. The nearest Metro Station is Maidan Konstitutzii, 700 m from property. The nearest airport is Kharkiv International Airport, 8 km from the property. ",
                 contactPhone: "0896789099",
-                coordinates: { lat: 49.986943, lng: 36.233579 },
+                coordinates: JSON.stringify({ lat: 49.986943, lng: 36.233579 }),
                 distanceToCentre: 1.4,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -123,7 +123,7 @@ module.exports = {
                 description:
                     "his property is 6 minutes walk from the beach. Offering great views of the Black Sea, this historic, classical-style hotel is within a 10-minute walk of Deribasovskaya street, Potemkin Stairs and Duke de Richelieu monument. Opera and Ballet Theatre is 300 m away. Spacious, soundproofed rooms and suites provide a flat-screen TV, desk and safety deposit box. A three-storeyed spa area features a hammam, spa bath, 2 swimming pool and gym. Guests can also enjoy a wide range of massages and cosmetology treatments. The on-site restaurant serves traditional Ukrainian and European cuisine. In summer, guests can dine in the paio. Airport shuttles can be booked at the Londonskaya’s 24-hour reception. The hotel is 2 km from Odessa Train Station and 10 km from Odessa International Airport. Primorsky is a great choice for travellers interested in food, restaurants and architecture.",
                 contactPhone: "05089079871",
-                coordinates: { lat: 46.486877, lng: 30.741964 },
+                coordinates: JSON.stringify({ lat: 46.486877, lng: 30.741964 }),
                 distanceToCentre: 3.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -139,7 +139,7 @@ module.exports = {
                 description:
                     "Stylish rooms with free WiFi and unique décor, UNO Design Hotel is just a 2-minute walk from Deribasovskaya Street and 800 m from the sandy Black Sea Coast. UNO Design Hotel offers spacious suites and rooms with a flat-screen TV and a fully equipped kitchenette. Slippers and toiletries are provided. There are many restaurants and bars within walking distance of UNO Design Hotel. The property is centrally located in the city, just a 5-minute walk from sights such as Odessa Opera and Ballet House and the Potemkin Steps. Odessa Main Train Station is a 10-minute drive and Odessa International Airport is 30 minutes' away by car. Primorsky is a great choice for travellers interested in food, restaurants and architecture. This is our guests' favourite part of Odessa, according to independent reviews.",
                 contactPhone: "0509842174",
-                coordinates: { lat: 46.479989, lng: 30.740628 },
+                coordinates: JSON.stringify({ lat: 46.479989, lng: 30.740628 }),
                 distanceToCentre: 1.5,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -155,7 +155,7 @@ module.exports = {
                 description:
                     "This property is 2 minutes walk from the beach. Featuring the on-site Dolphinarium, Oceanarium and the Dolphin assisted therapy centre, Resort & SPA Hotel NEMO with dolphins is set in the historical centre of Odessa, on Lanzheron Beach. It offers 9 heated sea-water swimming pools, fitness & spa zone, a 24-hour room service and free WiFi. All rooms are air-conditioned and come with a balcony, flat-screen TV, a safety deposit box and minibar. All suites feature a spa bath. Guests can enjoy Ukrainian, European and Japanese cuisine in the hotel's restaurant, or have a drink at the bar. Odessa city centre is a 5-minute drive from Resort & Spa Hotel Nemo with dolphins. Central Train Station is a 10-minute drive from the resort. Odessa International Airport is 10 km away. Primorsky is a great choice for travellers interested in food, restaurants and architecture.",
                 contactPhone: "05066789078",
-                coordinates: { lat: 46.477551, lng: 30.764932 },
+                coordinates: JSON.stringify({ lat: 46.477551, lng: 30.764932 }),
                 distanceToCentre: 6.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -171,7 +171,7 @@ module.exports = {
                 description:
                     "This hostel in Odessa city centre is only 15 minutes’ walk from Odessa Central Train Station. It features a lounge area with a TV, a well-equipped kitchen and free Wi-Fi. Hostel-Hotel Odesskiy offers shared dormitory rooms with access to shared bathroom facilities. Every room is heated, and includes a desk and wardrobe. Guests at Hostel-Hotel Odesskiy can use the accommodation’s shared kitchen facilities to prepare meals. The kitchen includes a refrigerator, microwave and electric kettle, and a super market is located next door. Odessa attractions such as the Opera and Ballet Theatre and Odessa Philharmonic can be found within 1 km from the hostel. Chernomorets football stadium is only 300 m away. The hostel is located 7 km from Odessa Airport and a public bus runs from here to Troitskaya bus stop, 50 m from the hostel. Primorsky is a great choice for travellers interested in food, restaurants and architecture. This is our guests' favourite part of Odessa, according to independent reviews.",
                 contactPhone: "09565789091",
-                coordinates: { lat: 46.476261, lng: 30.743401 },
+                coordinates: JSON.stringify({ lat: 46.476261, lng: 30.743401 }),
                 distanceToCentre: 8.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -189,7 +189,7 @@ module.exports = {
                     Guests can also relax in the shared lounge area.
                     This property also has one of the best-rated locations in Ternopilʼ!`,
                 contactPhone: "0674589485",
-                coordinates: { lat: 49.557224, lng: 25.591945 },
+                coordinates: JSON.stringify({ lat: 49.557224, lng: 25.591945 }),
                 distanceToCentre: 1.9,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -208,7 +208,7 @@ module.exports = {
                     Guests can also visit a beauty salon, Pryma, offering massage sessions.
                     Many shops and restaurants are within a 5-minute walk of the Hotel Ternopil. Ternopil Train Station is within a 15-minute walk and Ternopil Airport is a 15-minute drive away. `,
                 contactPhone: "0956786121",
-                coordinates: { lat: 49.552459, lng: 25.588378 },
+                coordinates: JSON.stringify({ lat: 49.552459, lng: 25.588378 }),
                 distanceToCentre: 9.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -227,7 +227,7 @@ module.exports = {
                     Guests of Hotel Kamelot can relax in the Finnish sauna and cool off in the indoor swimming pool. A massage service is also available.
                     Kamelot Hotel is 8 minutes’ drive from Ternopil Train Station and the 18th-century Dominican Church. Ternopil Airport is 15 minutes’ drive away.`,
                 contactPhone: "0906786876",
-                coordinates: { lat: 49.532944, lng: 25.625296 },
+                coordinates: JSON.stringify({ lat: 49.532944, lng: 25.625296 }),
                 distanceToCentre: 1.5,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -246,7 +246,7 @@ module.exports = {
                     The Verhovina’s restaurant serves Ukrainian and Russian dishes, which can be enjoyed on the summer terrace. Cocktails and drinks are offered at the on-site bar.
                     Kiev city centre with Maidan Nezalezhnosti Square is 20 minutes’ metro ride from Hotel Verhovina, and Kiev Train Station is 15 minutes away by metro. Boryspil Airport is 50 km from the hotel.`,
                 contactPhone: "0678909456",
-                coordinates: { lat: 50.442993, lng: 30.355522 },
+                coordinates: JSON.stringify({ lat: 50.442993, lng: 30.355522 }),
                 distanceToCentre: 4.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -265,7 +265,7 @@ module.exports = {
                     Kiev Central Station is a 15 minutes' drive away by metro. Borispol Airport is a 40 minutes' drive away. Public parking spaces are available outside Tourist Hotel Complex on request.
                     Dniprovskyj is a great choice for travellers interested in sightseeing, friendly locals and history.`,
                 contactPhone: "0908909422",
-                coordinates: { lat: 50.450798, lng: 30.597152 },
+                coordinates: JSON.stringify({ lat: 50.450798, lng: 30.597152 }),
                 distanceToCentre: 3.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -284,7 +284,7 @@ module.exports = {
                     Mariinsky Palace is a 5-minute walk from the hotel, and Independence Square is a 15-minute walk away. Arsenalna Metro Station is a 5-minute walk from the hotel and provides links to St Volodymyr’s Cathedral.
                     Kiev Airport is a 40-minute drive from the hotel, and Kiev Main Station is a 20-minute drive away. `,
                 contactPhone: "09567893241",
-                coordinates: { lat: 50.445877, lng: 30.537976 },
+                coordinates: JSON.stringify({ lat: 50.445877, lng: 30.537976 }),
                 distanceToCentre: 7.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -305,7 +305,7 @@ module.exports = {
                     City Holiday Resort & SPA's front desk operates around the clock and offers car rental, concierge, tour desk and ticket services.
                     The nearest airport is Zhuliany Airport, 6 km from City Holiday Resort & SPA. `,
                 contactPhone: "0674594012",
-                coordinates: { lat: 50.432374, lng: 30.35915 },
+                coordinates: JSON.stringify({ lat: 50.432374, lng: 30.35915 }),
                 distanceToCentre: 1.3,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -322,7 +322,7 @@ module.exports = {
                     All units include a private bathroom and have air conditioning, a flat-screen TV and a microwave. A fridge and kettle are also provided.
                     Saint Sophia Cathedral is 7 km from the apartment. `,
                 contactPhone: "0674099409",
-                coordinates: { lat: 50.449413, lng: 30.423436 },
+                coordinates: JSON.stringify({ lat: 50.449413, lng: 30.423436 }),
                 distanceToCentre: 3.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -342,7 +342,7 @@ module.exports = {
                     Expocentre of Ukraine is 9 km from Andreevsky Guest House.
                     Podilskyj is a great choice for travellers interested in old town exploring, architecture and walking.`,
                 contactPhone: "0955589762",
-                coordinates: { lat: 50.459142, lng: 30.515081 },
+                coordinates: JSON.stringify({ lat: 50.459142, lng: 30.515081 }),
                 distanceToCentre: 2.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -360,7 +360,7 @@ module.exports = {
                     Guests can swim in the seasonal outdoor pool and relax in the White Beach.
                     Bartolomeo Best River Resort features two tennis courts, playgrounds for mini-football and beach volleyball. `,
                 contactPhone: "0678007800",
-                coordinates: { lat: 48.446454, lng: 35.081028 },
+                coordinates: JSON.stringify({ lat: 48.446454, lng: 35.081028 }),
                 distanceToCentre: 3.5,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -379,7 +379,7 @@ module.exports = {
                     Health foods and natural juices are served in Tsunami’s restaurant. Breakfast is provided each morning.
                     The Karl Marx Prospekt boulevard is a 3-minute walk from the Tsunami Spa Hotel. The hotel offers free private parking.`,
                 contactPhone: "0674108900",
-                coordinates: { lat: 48.457366, lng: 35.068969 },
+                coordinates: JSON.stringify({ lat: 48.457366, lng: 35.068969 }),
                 distanceToCentre: 2.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -396,7 +396,7 @@ module.exports = {
                     The apartment comes with a flat-screen TV and a living room.
                     Bolshoy Ice Palace is 3.2 km from the apartment. The nearest airport is Adler-Sochi International Airport, 3 km from Apartments on Kirova. `,
                 contactPhone: "0904118899",
-                coordinates: { lat: 48.461395, lng: 35.02735 },
+                coordinates: JSON.stringify({ lat: 48.461395, lng: 35.02735 }),
                 distanceToCentre: 1.1,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -416,7 +416,7 @@ module.exports = {
                     Lviv Train Station is 8 minutes’ drive from Ratusha Apartments, and Lviv Airport is 15 minutes by car away. A shuttle service is available on request.
                     This is our guests' favourite part of Lviv, according to independent reviews.`,
                 contactPhone: "0671129412",
-                coordinates: { lat: 49.841211, lng: 24.032039 },
+                coordinates: JSON.stringify({ lat: 49.841211, lng: 24.032039 }),
                 distanceToCentre: 7.7,
                 createdAt: new Date(),
                 updatedAt: new Date(),
@@ -435,7 +435,7 @@ module.exports = {
                     Shevchenka Avenue is 200 m from the apartment, while The Bernardine Monastery is 300 m from the property. The nearest airport is Lviv International Airport, 6 km from the property.
                     This is our guests' favourite part of Lviv, according to independent reviews.`,
                 contactPhone: "0678907890",
-                coordinates: { lat: 49.837202, lng: 24.035115 },
+                coordinates: JSON.stringify({ lat: 49.837202, lng: 24.035115 }),
                 createdAt: new Date(),
                 updatedAt: new Date(),
                 propertyTypeId: 1,
