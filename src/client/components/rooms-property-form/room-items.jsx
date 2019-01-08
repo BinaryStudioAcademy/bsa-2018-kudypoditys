@@ -19,6 +19,23 @@ class RoomItems extends Component {
     );
   }
 
+  renderMeals(meal) {
+    return(<Fragment>
+      <Grid.Row columns={3}>
+        <Grid.Column>
+          {meal.name.name}
+        </Grid.Column>
+        <Grid.Column>
+          {meal.type.name}
+        </Grid.Column>
+        <Grid.Column>
+          {meal.price}
+        </Grid.Column>
+      </Grid.Row>
+      <Divider />
+    </Fragment>)
+  }
+
   renderItem(room, index) {
     const { handleDelete, handleEdit } = this.props;
     const canDelete = !(room.reservations && room.reservations.length > 0)
@@ -72,6 +89,19 @@ class RoomItems extends Component {
             </Grid.Column>
           </Grid.Row>
           {room.bedInRooms && room.bedInRooms.map(x => this.renderBed(x))}
+
+          <Grid.Row columns={3} style={{ background: 'whitesmoke' }}>
+            <Grid.Column>
+              Meal
+            </Grid.Column>
+            <Grid.Column>
+              Type
+            </Grid.Column>
+            <Grid.Column>
+              Price
+            </Grid.Column>
+          </Grid.Row>
+          {room.mealsInRoom && room.mealsInRoom.map(x => this.renderMeals(x))}
 
           { !canDelete &&
             <Grid.Row>

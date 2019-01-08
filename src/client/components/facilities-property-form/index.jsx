@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from 'react-redux';
 import { reduxForm, Field } from "redux-form";
 import {
-    Button, Container, Form, Header, Grid
+    Button, Container, Form, Header, Grid, Icon, Modal, Input
 } from "semantic-ui-react";
 import { required } from "client/regexValidationService.js";
 import RadioGroup from "client/components/input-form/radio-group";
@@ -23,6 +23,23 @@ const parseNumber = value => {
 };
 
 class FacilitiesPropertyForm extends Component {
+
+    state = { modalOpen: false , language: '' }
+
+    handleOpen = (event) => {
+        event.preventDefault();
+        this.setState({ modalOpen: true })
+    }
+
+    handleClose = () => this.setState({ modalOpen: false })
+
+    handleSubmitLanguageCreate = () => {
+        this.props.createLanguage(this.state.language);
+        this.setState({language: ''});
+        this.handleClose();
+    }
+
+    handleLanguageChange = (e) => this.setState({language: e.target.value});
 
     componentDidMount() {
         const { languages, facilities } = this.props;
@@ -223,16 +240,37 @@ class FacilitiesPropertyForm extends Component {
                 <Header style={{ fontSize: "18px" }} className="required">
                     Languages. What languages do you or your staff speak?
                 </Header>
-
-                <Field
-                    component={renderDropdown}
-                    options={languagesOptions}
-                    name="languages"
-                    label="Languages"
-                    multiple
-                    validate={[required]}
-                />
-
+                <div style={{display : "flex"}}>
+                    <div style={{width : "100%" }}>
+                        <Field    
+                            component={renderDropdown}
+                            options={languagesOptions}
+                            name="languages"
+                            label="Languages"
+                            multiple
+                            validate={[required]}
+                        />
+                    </div>
+                    <Modal 
+                        size={"tiny"} 
+                        open={this.state.modalOpen}
+                        trigger={<Button 
+                            className='modal-button'
+                            onClick={this.handleOpen}
+                            content={<Icon name='plus' color="white" />}/>}>
+                        <Modal.Header>Input language name</Modal.Header>
+                        <Modal.Content>
+                            <Input  value={this.state.language} 
+                                    onChange={this.handleLanguageChange} 
+                                    style={{width : "100%"}}
+                                    placeholder="language name..."/>
+                        </Modal.Content>
+                        <Modal.Actions>
+                            <Button onClick={this.handleClose} negative>Cancel</Button>
+                            <Button type={"button"} onClick={this.handleSubmitLanguageCreate} positive content='Create' />
+                        </Modal.Actions>
+                    </Modal>      
+                </div>
                 <div className="meta">
                     Guests should know what languages You know, before booking
                 </div>

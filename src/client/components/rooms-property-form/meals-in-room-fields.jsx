@@ -9,7 +9,6 @@ import renderDropdown from '../input-form/dropdown';
 class MealsInRoomFields extends Component {
   render() {
     const { fields, meta: { error }, mealOptions, mealTypesOptions } = this.props;
-    console.log(fields.getAll());
     return (
       <List divided relaxed>
         <List.Item>
