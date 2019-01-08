@@ -16,7 +16,7 @@ import Tooltip from 'react-tooltip-lite';
 import MealsTable from './mealsTable';
 
 export const getIcons = number =>
-    _.times(number, index => <Icon name="user" />);
+    _.times(number, index => <Icon key={index} name="user" />);
 
 export class RoomsTable extends React.Component {
     componentDidMount() {}
@@ -30,17 +30,10 @@ export class RoomsTable extends React.Component {
 
     getBedsSummary = bedsInRoom => {
         return (
-            <div
-                style={{
-                    padding: "5px"
-                }}
-            >
+            <div style={{ padding: "5px" }}>
                 {bedsInRoom.map((bed, index) => {
                     return (
-                        <span
-                            key={index}
-                            className='table-title'
-                        >
+                        <span key={index} className='table-title'>
                             {bed.count} {bed.bedType.name}
                         </span>
                     );
@@ -102,7 +95,7 @@ export class RoomsTable extends React.Component {
                 const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null; 
                 return ([
                     (
-                        <Table.Row id={room.id}>
+                        <Table.Row key={room.id} id={room.id}>
                             <Table.Cell>
                                 <div>
                                     <div className="room-type">
@@ -142,12 +135,16 @@ export class RoomsTable extends React.Component {
                                     <div>
                                         <strong><Icon name="food"/> Meals info</strong>
                                         { room.mealInRooms && room.mealInRooms.length > 0 ?
-                                        <Popup 
-                                        trigger={<p className='table-title'>
-                                                    <span style={{borderBottom: "1px dashed  #000",color : "#465672", cursor : "help"}}>
-                                                    Included</span> 
-                                                </p>}
-                                        content={<MealsTable meals={room.mealInRooms} />} />
+                                            <Popup 
+                                                trigger={
+                                                    <p className='table-title'>
+                                                        <span style={{borderBottom: "1px dashed  #000",color : "#465672", cursor : "help"}}>Included</span> 
+                                                    </p>
+                                                }
+                                                content={
+                                                    <MealsTable meals={room.mealInRooms} />
+                                                }
+                                            />
                                         :   <div className='table-title'>
                                                 <span>No included</span>
                                             </div>
@@ -229,11 +226,11 @@ export class RoomsTable extends React.Component {
                         </Table.Row>
                     ),
                     (
-                        <Table.Row id={1000+room.id}>
+                        <Table.Row key={1000 + room.id} id={1000+room.id}>
                             { room.available ? (
                                 null
                             ) : (
-                                <Table.Cell colspan={5}>
+                                <Table.Cell colSpan={5}>
                                     <Tooltip
                                         content={'To give you an idea of the price range, we looked at how much this was booked for when it sold out. The price we\'re showing is based on the average price per night'}
                                         direction="up"
@@ -283,7 +280,7 @@ export class RoomsTable extends React.Component {
                         </Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
-                <Table.Body> {roomRow} </Table.Body>
+                <Table.Body>{roomRow}</Table.Body>
             </Table>
         );
     }

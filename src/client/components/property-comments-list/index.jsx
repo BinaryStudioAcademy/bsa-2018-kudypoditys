@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "react-dates/initialize";
 
 import "react-dates/lib/css/_datepicker.css";
@@ -20,7 +19,7 @@ export class PropertyCommentsList extends React.Component {
         if (!this.props) return null;
         const listItems = this.props.reviews.map((item, index) => {
             return (
-                <React.Fragment>
+                <React.Fragment key={item.id}>
                     <PropertyComment key={item.id} {...item} />
                     <Divider style={{...dividerStyle, width: "250px"}}/>
                 </React.Fragment>
@@ -37,11 +36,6 @@ export class PropertyCommentsList extends React.Component {
 }
 
 PropertyCommentsList.propTypes = {
-    property: PropTypes.object.isRequired
-};
-
-PropertyCommentsList.defaultProps = {
-    property: null,
 };
 
 export default PropertyCommentsList;

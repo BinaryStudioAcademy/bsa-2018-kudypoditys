@@ -115,7 +115,6 @@ export class AvailabilityPanel extends React.Component {
                                     onFocusChange={this.changeFocusDatePicker.bind(this)}
                                     showDefaultInputIcon={false}
                                     small={true}
-                                    x
                                 />
                             </div>
                             <Form.Group className="room-selector" inline>

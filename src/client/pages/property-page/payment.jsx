@@ -7,26 +7,13 @@ export default class PaymentMethods extends React.Component {
         return (
             <List>
                 {paymentTypes.map((item, i) => {
-                    return (
-                        <List.Item
-                            style={{
-                                marginBottom: "5px"
-                            }}
-                        >
+                    return <List.Item style={{ marginBottom: "5px" }} key={i}>
                             <List.Content>
-                                <span
-                                    key={i}
-                                    style={{
-                                        fontSize: 16,
-                                        lineHeight: 1.2,
-                                        color: "rgb(166,174,188)"
-                                    }}
-                                >
+                                <span style={{ fontSize: 16, lineHeight: 1.2, color: "rgb(166,174,188)" }}>
                                     {item.name}
                                 </span>
                             </List.Content>
-                        </List.Item>
-                    );
+                        </List.Item>;
                 })}
             </List>
         );

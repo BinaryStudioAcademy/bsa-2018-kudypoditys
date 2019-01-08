@@ -9,8 +9,8 @@ export function mapStateToProps(state, ownProps) {
     return {
         propertyName: property.name,
         propertyId: property.id,
-        checkIn: availabilityInput.checkIn,
-        checkOut: availabilityInput.checkOut,
+        checkIn: new Date(availabilityInput.checkIn.get('millisecond')),
+        checkOut: new Date(availabilityInput.checkOut.get('millisecond')),
         adults: availabilityInput.adults,
         children: availabilityInput.children,
         rooms: availabilityInput.rooms,
