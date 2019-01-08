@@ -74,11 +74,18 @@ export class PropertyPage extends React.Component {
         const node = ReactDOM.findDOMNode(this.refs[targetRef]);
         node.scrollIntoView();
     };
+
     hideReviews = () => {
         this.setState({reviewsVisible: false});
     };
-    handleSearchResults = searchResult => {
-    };
+
+    handleSearchResults = searchResult => { };
+
+    onDestinationChange = () => { };
+
+    onCheckInChange = () => { };
+
+    onCheckOutChange = () => { };
 
     constructor(props) {
         super(props);
@@ -143,6 +150,9 @@ export class PropertyPage extends React.Component {
                 <AppHeader
                     showSearch={true}
                     handleSearchResults={this.handleSearchResults}
+                    onDestinationChange={this.onDestinationChange}
+                    onCheckInChange={this.onCheckInChange}
+                    onCheckOutChange={this.onCheckOutChange}
                 />
 
                 <Sidebar
@@ -151,7 +161,7 @@ export class PropertyPage extends React.Component {
                     animation="overlay"
                     direction="right"
                     width="very wide"
-                    vertical
+                    vertical="true"
                     style={{
                         backgroundColor: "white",
                         boxShadow: "0 0 3px 1px #dddddd"
@@ -169,7 +179,7 @@ export class PropertyPage extends React.Component {
                 </Sidebar>
                 <Sidebar.Pusher>
                     <div className="property-page__wrapper">
-                        <div text className="property-page__wrapper-left_side">
+                        <div className="property-page__wrapper-left_side">
                             {
                                 <Modal
                                     trigger={
@@ -328,32 +338,13 @@ export class PropertyPage extends React.Component {
                                             <List>
                                                 {property.facilityLists.map(
                                                     (item, i) => {
-                                                        return (
-                                                            <List.Item
-                                                                style={{
-                                                                    marginBottom:
-                                                                        "5px"
-                                                                }}
-                                                            >
-                                                                <List.Content>
-                                                                    <span
-                                                                        key={i}
-                                                                        style={{
-                                                                            fontSize: 16,
-                                                                            lineHeight: 1.2,
-                                                                            color:
-                                                                                "rgb(166,174,188)"
-                                                                        }}
-                                                                    >
-                                                                        {
-                                                                            item
-                                                                                .facility
-                                                                                .name
-                                                                        }
-                                                                    </span>
-                                                                </List.Content>
-                                                            </List.Item>
-                                                        );
+                                                        return <List.Item style={{ marginBottom: "5px" }} key={i}>
+                                                                    <List.Content>
+                                                                        <span style={{ fontSize: 16, lineHeight: 1.2, color: "rgb(166,174,188)" }}>
+                                                                            {item.facility.name}
+                                                                        </span>
+                                                                    </List.Content>
+                                                                </List.Item>;
                                                     }
                                                 )}
                                             </List>

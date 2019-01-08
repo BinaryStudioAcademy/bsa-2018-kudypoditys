@@ -1,5 +1,4 @@
 require("dotenv").config();
-const elasticRepository = require("./index");
 const elasticsearch = require("elasticsearch");
 const init = require("./init");
 const PropertyService = require("./../services/property");
