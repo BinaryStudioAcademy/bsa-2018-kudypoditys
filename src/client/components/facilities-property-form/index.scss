@@ -82,6 +82,13 @@
 }
 
 .modal-button{
-  margin : 15px 0px 15px 20px!important;
-  padding-right : 12px!important;
+  margin-left: 15px;
+  height: 50px;
+  position: absolute;
+  right: 0;
+  bottom: 15px;
+
+  i {
+    padding-left: 8px;
+  }
 }

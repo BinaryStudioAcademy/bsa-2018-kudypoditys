@@ -254,10 +254,10 @@ class FacilitiesPropertyForm extends Component {
                     <Modal 
                         size={"tiny"} 
                         open={this.state.modalOpen}
-                        trigger={<Button 
+                        trigger={<div style={{position : "relative", marginLeft : "10%"}}><Button 
                             className='modal-button'
                             onClick={this.handleOpen}
-                            content={<Icon name='plus' color="white" />}/>}>
+                            content={<Icon name='plus' color="white" />}/></div>}>
                         <Modal.Header>Input language name</Modal.Header>
                         <Modal.Content>
                             <Input  value={this.state.language} 
