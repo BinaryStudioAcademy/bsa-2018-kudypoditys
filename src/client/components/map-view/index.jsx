@@ -111,7 +111,7 @@ class MapView extends React.Component {
                                 left: -7
 
                             }}
-                            color="olive"
+                            color="black"
                         >
                             {currency} {this.price}
                         </Label>

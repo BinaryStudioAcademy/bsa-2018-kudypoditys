@@ -165,7 +165,6 @@ export class BookingForm extends React.Component {
                                 focusedInput={this.state.focusedInput}
                                 onFocusChange={this.changeFocusDatePicker.bind(this)}
                                 small={true}
-                                x
                             />
                         </div>
                     </Form.Field>

@@ -19,6 +19,7 @@ export const getIcons = number =>
     _.times(number, index => <Icon key={index} name="user" />);
 
 export class RoomsTable extends React.Component {
+
     componentDidMount() {}
 
     componentDidUpdate() {}
@@ -56,23 +57,12 @@ export class RoomsTable extends React.Component {
         if (!this.props || !this.props.rooms) return null;
         const {
             rooms,
-            roomsZ,
             user,
             property,
             currency,
             checkIn,
             checkOut
         } = this.props;
-        rooms.forEach(room => {
-            if (Array.isArray(roomsZ)) {
-                const roomZ = roomsZ.find(roomZ => roomZ.id === room.id);
-                //It can invoke bugs.
-                if(roomZ){
-                    room.available = roomZ.available;
-                    room.lastReservation = roomZ.lastReservation;
-                }
-            }
-        });
         const { currency: propCurrency } = property;
         let bookButton = false;
         if (user) bookButton = true;
@@ -172,9 +162,6 @@ export class RoomsTable extends React.Component {
                                     <Modal
                                         trigger={
                                             <div>
-                                                <div className="room-total-check">
-                                                    { totalCheck !== 'NaN' ? totalCheck + currencySymbol : '' }
-                                                </div>
                                                 <div
                                                     className="book-btn"
                                                     style={{
@@ -187,6 +174,7 @@ export class RoomsTable extends React.Component {
                                                     {/*TODO: Use there Semantic button*/}
                                                     {room.available ? (
                                                         <button
+                                                            className="book-btn"
                                                             disabled={!room.selectedAmount}
                                                             style={{
                                                                 height: "100%"
