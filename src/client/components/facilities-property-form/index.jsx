@@ -240,8 +240,8 @@ class FacilitiesPropertyForm extends Component {
                 <Header style={{ fontSize: "18px" }} className="required">
                     Languages. What languages do you or your staff speak?
                 </Header>
-                <div style={{display : "flex"}}>
-                    <div style={{width : "100%" }}>
+                <div className="lang-container">
+                    <div className='lang-input'>
                         <Field    
                             component={renderDropdown}
                             options={languagesOptions}
@@ -254,10 +254,16 @@ class FacilitiesPropertyForm extends Component {
                     <Modal 
                         size={"tiny"} 
                         open={this.state.modalOpen}
-                        trigger={<Button 
-                            className='modal-button'
-                            onClick={this.handleOpen}
-                            content={<Icon name='plus' color="white" />}/>}>
+                        trigger={
+                            <div className='lang-btn-outer-container'>
+                                <div className='lang-btn-inner-container'>
+                                    <Button 
+                                        className='lang-button'
+                                        onClick={this.handleOpen}
+                                        content={<Icon name='plus' color="white" />}/>
+                                </div>
+                            </div>
+                            }>
                         <Modal.Header>Input language name</Modal.Header>
                         <Modal.Content>
                             <Input  value={this.state.language} 
