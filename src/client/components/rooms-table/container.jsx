@@ -9,7 +9,6 @@ export function mapStateToProps(state) {
     return {
         user: userCabinet.user,
         property: propertyPage.property,
-        rooms: propertyPage.property.rooms, // TODO: rooms that available to get into
         currency: header.selectedCurrency,
         checkIn: propertyPage.availabilityInput.checkIn,
         checkOut: propertyPage.availabilityInput.checkOut
