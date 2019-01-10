@@ -29,8 +29,6 @@ const deleteIds = countries.map(country => ({
 }));
 
 module.exports = {
-    countries: countries,
-
     up: (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert("countries", seed);
     },
