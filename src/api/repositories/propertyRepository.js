@@ -99,11 +99,11 @@ const includeOptions = [
                 model: MealInRoom,
                 attributes: ["price"],
                 include: [
-                    { 
+                    {
                         model: Meal,
                         attributes: ["name"]
                     },
-                    { 
+                    {
                         model: MealType,
                         attributes: ["name"]
                     }
@@ -161,7 +161,7 @@ class PropertyRepository extends Repository {
             }
         }).then(async (property) => {
             await property.update(lastBooked);
-        });    
+        });
     }
 
     updateById(id, data) {
@@ -173,7 +173,7 @@ class PropertyRepository extends Repository {
         }).then(async (property) => {
             // update basic info
             await property.update(data);
-            
+
             // update accommodationRule
             await AccommodationRule.update(data.accommodationRule, {
                 where: {
@@ -797,6 +797,19 @@ class PropertyRepository extends Repository {
                         },
                         {
                             model: RoomType
+                        },
+                        {
+                            model: MealInRoom,
+                            include: [
+                                {
+                                    model: Meal,
+                                    attributes: ["name"]
+                                },
+                                {
+                                    model: MealType,
+                                    attributes: ["name"]
+                                }
+                            ]
                         }
                     ]
                 },

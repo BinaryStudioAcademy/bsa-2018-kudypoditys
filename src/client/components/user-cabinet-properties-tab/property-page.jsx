@@ -40,7 +40,7 @@ export class PropertyPage extends React.Component {
             menuItem: "Meals",
             render: () => (
                 <Tab.Pane attached={false}>
-                    <MealsTab />
+                    <MealsTab rooms={this.props.property.rooms}/>
                 </Tab.Pane>
             )
         }

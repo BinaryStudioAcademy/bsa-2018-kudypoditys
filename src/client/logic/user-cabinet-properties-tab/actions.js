@@ -5,7 +5,7 @@ import {
     CANCEL_OWNER_BOOKING
 } from "./actionTypes";
 
-export function getUserpropertiesInfo(id) {
+export function getUserPropertiesInfo(id) {
     return {
         type: GET_CURRENT_USER_INFO,
         id

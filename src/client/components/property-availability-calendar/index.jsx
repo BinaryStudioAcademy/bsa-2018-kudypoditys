@@ -210,6 +210,7 @@ export class AvailabilityCalendar extends React.Component {
                         labelPosition="left"
                         primary
                         size="small"
+                        style={{marginBottom : "10px"}}
                         onClick={this.submitHandle}
                     >
                         <Icon name="save outline" /> Save
