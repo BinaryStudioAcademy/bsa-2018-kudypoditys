@@ -128,10 +128,10 @@ const city2 = {
 
 storiesOf('BannerList', module)
     .add('banner list with five elements', () =>
-        <BannerList cityInfos={cityInfos} getCityInfos={() => {
+        <BannerList cities={cityInfos} getCityInfos={() => {
         }}/>)
     .add('banner list with four elements', () =>
-        <BannerList cityInfos={cityInfos2} getCityInfos={() => {
+        <BannerList cities={cityInfos2} getCityInfos={() => {
         }}/>)
     .add('single banner Lviv', () => <Banner cityInfo={city} onCardClick={() => { }} />)
     .add('single banner Poland', () => <Banner cityInfo={city2} onCardClick={() => { }} />)

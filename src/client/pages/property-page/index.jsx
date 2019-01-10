@@ -9,7 +9,6 @@ import {
     Sidebar,
     Label,
     Popup,
-    Button,
     Grid
 } from "semantic-ui-react";
 import {connect} from "react-redux";

@@ -126,7 +126,7 @@ property.route("/city/:id").get((req, res) => {
                 flagUrl = property.city.dataValues.country.flagUrl;
                 id = property.city.dataValues.id;
             }
-            avgPrice = (totalPrice / roomAmount).toFixed(0);
+            avgPrice = +(totalPrice / roomAmount).toFixed(0);
             const data = {
                 properties: roomAmount,
                 avgPrice: avgPrice,
