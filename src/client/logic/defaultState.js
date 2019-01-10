@@ -120,7 +120,9 @@ const state = {
         shownFrom: 1,
         shownTo: 5
     },
-    cityInfos: { },
+    cityInfos: {
+        cities: []
+    },
     filters: [
         {
             id: "1",
