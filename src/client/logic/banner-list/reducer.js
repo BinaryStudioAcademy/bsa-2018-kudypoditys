@@ -21,23 +21,20 @@ function cityInfosReducer(state = defaultState.cityInfos, action) {
 
         case CITY_INFOS_GET_SUCCESS: {
             const currency = localStorage.getItem('selectedCurrency') || {};
-            
-            for (let city in action.payload) {
-                action.payload[city].baseCurrency = '$';
-                action.payload[city].baseAvgPrice = action.payload[city].avgPrice;
+            const baseCurrency = '$',
+                currencyCode = currency.code || '$';
 
-                action.payload[city].currency = currency.code || '$';
-                action.payload[city].avgPrice = convert(
-                    action.payload[city].baseCurrency,
-                    action.payload[city].baseAvgPrice,
-                    action.payload[city].currency
-                );
-                action.payload[city].avgPrice = +action.payload[city].avgPrice;
-            }
+            const cityInfos = {
+                cities: action.payload.map(city => {
+                    return ({
+                    ...city,
+                    avgPrice: convert(baseCurrency, city.avgPrice, currencyCode)
+                })})
+            };
 
             return {
                 ...state,
-                ...action.payload,
+                ...cityInfos,
             };
         }
 

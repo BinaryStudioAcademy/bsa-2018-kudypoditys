@@ -80,7 +80,7 @@ export class RoomsTable extends React.Component {
                 );
                 let priceForOneDay = priceFunc(room.price);
                 let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
-                const totalCheck = (totalPrice * room.selectedAmount).toFixed(1);
+                // const totalCheck = (totalPrice * room.selectedAmount).toFixed(1);
                 const soldOutDaysAgo = room.lastReservation ? room.lastReservation.bookedDaysAgo : null;
                 const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null; 
                 return ([
