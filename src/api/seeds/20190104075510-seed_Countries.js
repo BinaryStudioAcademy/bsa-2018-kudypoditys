@@ -24,12 +24,12 @@ const seed = countries.map((country, i) => ({
     updatedAt: new Date()
 }));
 
-const deleteIds = countries.map(country => ({
-    id: country.id
+const deleteIds = seed.map(item => ({
+    id: item.id
 }));
 
 module.exports = {
-    up: (queryInterface, Sequelize) => {
+    up: (queryInterface) => {
         return queryInterface.bulkInsert("countries", seed);
     },
 

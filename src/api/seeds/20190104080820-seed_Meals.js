@@ -1,37 +1,34 @@
+const meals = [
+    {
+        name: "Breakfast"
+    },
+    {
+        name: "Lunch"
+    },
+    {
+        name: "Dinner"
+    }
+];
+
+const seed = meals.map((meal, i) => ({
+    id: i + 1,
+    name: meal.name,
+    createdAt: new Date(),
+    updatedAt: new Date()
+}));
+
+const deleteIds = seed.map(item => ({
+    id: item.id
+}));
+
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.bulkInsert("meals", [
-            {
-                name: "Breakfast",
-                createdAt: new Date(),
-                updatedAt: new Date()
-            },
-            {
-                name: "Lunch",
-                createdAt: new Date(),
-                updatedAt: new Date()
-            },
-            {
-                name: "Dinner",
-                createdAt: new Date(),
-                updatedAt: new Date()
-            }
-        ]);
+        return queryInterface.bulkInsert("meals", seed);
     },
 
     down: (queryInterface, Sequelize) => {
         return queryInterface.bulkDelete("meals", {
-            [Sequelize.Op.or]: [
-                {
-                    id: 1
-                },
-                {
-                    id: 2
-                },
-                {
-                    id: 3
-                }
-            ]
+            [Sequelize.Op.or]: deleteIds
         });
     }
 };
