@@ -346,7 +346,7 @@ const properties = [
 const seed = properties.map((property, i) => ({
     id: i + 1,
     name: property.name,
-    rating: Math.random() * 11,
+    rating: (1 + Math.random() * 10).toFixed(1),
     address: property.address,
     description: property.description,
     contactPhone: property.contactPhone,
