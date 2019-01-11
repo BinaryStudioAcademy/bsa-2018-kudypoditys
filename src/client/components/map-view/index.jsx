@@ -24,7 +24,6 @@ class MapView extends React.Component {
             popupInfo: null,
             propertyInfo: null
         };
-        this.price = 0;
     }
     renderPopup = () => {
         const { popupInfo, controlEnable } = this.state;
@@ -71,17 +70,12 @@ class MapView extends React.Component {
             }
         });
     };
-    renderPropertyMarker = (property, index) => {
-        let coast = 0;
-        if(property.rooms)
-         coast = property.rooms.map(x => x.price)[0]       
-
+    renderPropertyMarker = (property, index) => {     
+        const firstRoomPrice = property.rooms[0].price;
         const propCurrency = property.currency && property.currency.code;
         const currency = this.props.currency.code;
 
-        const price = convert(propCurrency, coast, currency);
-        this.price = price;
-
+        const price = convert(propCurrency, firstRoomPrice, currency);
         return (
             <Marker
                 key={`marker-${index}`}
@@ -91,31 +85,29 @@ class MapView extends React.Component {
                 offsetTop={-10}
             >
                 <div className="mark1">
-                <Icon
-                    size="big"
-                    name="map marker alternate"
-                    onMouseEnter={() => this.setState({ popupInfo: property })}
-                    onMouseLeave={() => this.setState({ popupInfo: null })}
-                    onClick={() => {
-                        this.handleMarkerClicked(property);
-                    }}
-                >
+                    <Icon
+                        size="big"
+                        name="map marker alternate"
+                        onMouseEnter={() => this.setState({ popupInfo: property })}
+                        onMouseLeave={() => this.setState({ popupInfo: null })}
+                        onClick={() => {
+                            this.handleMarkerClicked(property);
+                        }}
+                    >
 
-                </Icon>
-                    {this.price ? (
-                        <Label
-                            style={{
-                                whiteSpace: "nowrap",
-                                fontSize: 10,
-                                position: "relative",
-                                left: -7
+                    </Icon>
+                    <Label
+                        style={{
+                            whiteSpace: "nowrap",
+                            fontSize: 10,
+                            position: "relative",
+                            left: -7
 
-                            }}
-                            color="black"
-                        >
-                            {currency} {this.price}
-                        </Label>
-                    ) : null}
+                        }}
+                        color="black"
+                    >
+                        {currency} {price}
+                    </Label>
                 </div>
             </Marker>
         );
@@ -134,7 +126,7 @@ class MapView extends React.Component {
                     propertyName={propertyInfo.name}
                     propertyAddress={propertyInfo.address}
                     propertyCurrency={propertyInfo.currency.code}
-                    price={propertyInfo.price ? propertyInfo.price : this.price}
+                    price={propertyInfo.price}
                     rating={propertyInfo.rating}
                     imageSrc={propertyInfo.imageSrc}
                     closeClicked={this.changePropertyInfo.bind(this, null)}
