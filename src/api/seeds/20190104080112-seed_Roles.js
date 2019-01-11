@@ -1,37 +1,34 @@
+const roles = [
+    {
+        name: "Admin"
+    },
+    {
+        name: "User"
+    },
+    {
+        name: "Owner"
+    }
+];
+
+const seed = roles.map((role, i) => ({
+    id: i + 1,
+    name: role.name,
+    createdAt: new Date(),
+    updatedAt: new Date()
+}));
+
+const deleteIds = seed.map(item => ({
+    id: item.id
+}));
+
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.bulkInsert("roles", [
-            {
-                name: "Admin",
-                createdAt: new Date(),
-                updatedAt: new Date()
-            },
-            {
-                name: "User",
-                createdAt: new Date(),
-                updatedAt: new Date()
-            },
-            {
-                name: "Owner",
-                createdAt: new Date(),
-                updatedAt: new Date()
-            }
-        ]);
+        return queryInterface.bulkInsert("roles", seed);
     },
 
     down: (queryInterface, Sequelize) => {
         return queryInterface.bulkDelete("roles", {
-            [Sequelize.Op.or]: [
-                {
-                    id: 1
-                },
-                {
-                    id: 2
-                },
-                {
-                    id: 3
-                }
-            ]
+            [Sequelize.Op.or]: deleteIds
         });
     }
 };

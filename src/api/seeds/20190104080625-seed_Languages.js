@@ -1,45 +1,37 @@
+const languages = [
+    {
+        name: "English"
+    },
+    {
+        name: "Russian"
+    },
+    {
+        name: "Ukranian"
+    },
+    {
+        name: "German"
+    }
+];
+
+const seed = languages.map((language, i) => ({
+    id: i + 1,
+    name: language.name,
+    createdAt: new Date(),
+    updatedAt: new Date()
+}));
+
+const deleteIds = seed.map(item => ({
+    id: item.id
+}));
+
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.bulkInsert("languages", [
-            {
-                name: "English",
-                createdAt: new Date(),
-                updatedAt: new Date()
-            },
-            {
-                name: "Russian",
-                createdAt: new Date(),
-                updatedAt: new Date()
-            },
-            {
-                name: "Ukranian",
-                createdAt: new Date(),
-                updatedAt: new Date()
-            },
-            {
-                name: "German",
-                createdAt: new Date(),
-                updatedAt: new Date()
-            }
-        ]);
+        return queryInterface.bulkInsert("languages", seed);
     },
 
     down: (queryInterface, Sequelize) => {
         return queryInterface.bulkDelete("languages", {
-            [Sequelize.Op.or]: [
-                {
-                    id: 1
-                },
-                {
-                    id: 2
-                },
-                {
-                    id: 3
-                },
-                {
-                    id: 4
-                }
-            ]
+            [Sequelize.Op.or]: deleteIds
         });
     }
 };
