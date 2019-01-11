@@ -172,7 +172,7 @@ const state = {
             checkIn: moment().startOf("day"),
             checkOut: moment()
                 .startOf("day")
-                .add(5, "days"),
+                .add(1, "days"),
             adults: 2,
             rooms: 1,
             children: 0,

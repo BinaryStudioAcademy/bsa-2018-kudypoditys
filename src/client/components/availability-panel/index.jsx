@@ -55,8 +55,8 @@ export class AvailabilityPanel extends React.Component {
         } = this.props;
         const selectOptions = this.generateOptions(1, 10);
         const childrenOptions = this.generateOptions(0, 10);
-        const startDate = checkIn === null ? null : moment(checkIn);
-        const endDate = checkOut === null ? null : moment(checkOut);
+        const startDate = checkIn === null ? moment() : moment(checkIn);
+        const endDate = checkOut === null ? moment().add(1, "day") : moment(checkOut);
 
         return (
             <div className="availability-panel-wrp">
@@ -203,8 +203,6 @@ export class AvailabilityPanel extends React.Component {
 
 AvailabilityPanel.propTypes = {
     propertyName: PropTypes.string.isRequired,
-    checkIn: PropTypes.instanceOf(Date),
-    checkOut: PropTypes.instanceOf(Date),
     adults: PropTypes.number,
     children: PropTypes.number,
     rooms: PropTypes.number,

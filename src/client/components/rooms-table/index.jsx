@@ -4,7 +4,7 @@ import { Icon, Table ,Popup} from "semantic-ui-react";
 import QuantityPicker from "client/components/quantity-picker";
 import _ from "lodash";
 import {
-    convertCurrencyByName,
+    convert,
     titleToCode
 } from "client/helpers/convertCurrency";
 import Modal from "client/components/modal";
@@ -67,8 +67,7 @@ export class RoomsTable extends React.Component {
         let bookButton = false;
         if (user) bookButton = true;
 
-        const priceFunc = price =>
-            convertCurrencyByName(propCurrency.code, price, currency.code);
+        const priceFunc = price => convert(propCurrency.code, price, currency.code);
         const currencySymbol = titleToCode.get(currency.code);
         const daysStaying = getDaysDifference(checkIn, checkOut);
         let roomRow = null;

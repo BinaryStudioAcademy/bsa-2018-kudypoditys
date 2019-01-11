@@ -96,7 +96,7 @@ export class PropertyPage extends React.Component {
     }
 
     render() {
-        const {property, rooms} = this.props;
+        const { property, rooms } = this.props;
         // const avgPropRatingArray = getGroupedArray(property.reviews, "avgReview")
         const {reviewsVisible} = this.state;
         const dividerStyle = {
@@ -174,43 +174,6 @@ export class PropertyPage extends React.Component {
                                     </Grid.Column>
                                 </Grid.Row>
                             </Grid>
-                                // <Modal
-                                //     trigger={
-                                //         <div
-                                //
-                                //             style={{
-                                //                 height: "33px",
-                                //                 visibility:
-                                //                     !user ||
-                                //                     ((!rooms ||
-                                //                         !rooms.length) &&
-                                //                         user)
-                                //                         ? "hidden"
-                                //                         : "visible"
-                                //             }}
-                                //         >
-                                //             <button>Book now</button>
-                                //             <div
-                                //                 className="book-icon"
-                                //                 style={{
-                                //                     cursor: "pointer"
-                                //                 }}
-                                //             >
-                                //                 <Icon
-                                //                     name="bookmark"
-                                //                     size="large"
-                                //                 />
-                                //             </div>
-                                //         </div>
-                                //     }
-                                //     onClose={this.props.clearBookingForm}
-                                //     closeIcon
-                                // >
-                                //     <BookingForm
-                                //         rooms={rooms}
-                                //         paymentTypes={property.paymentTypes}
-                                //     />
-                                // </Modal>
                             }
                             <Divider style={{ ...dividerStyle, width: "250px" }} />
                             <Modal trigger={<span>
