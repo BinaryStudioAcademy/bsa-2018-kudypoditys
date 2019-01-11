@@ -46,7 +46,6 @@ class SearchPage extends React.Component {
     };
 
     listItemsRender = () => {
-        console.log("SEADCH PAGE", this.state.properties);
         return this.state.properties.map(property => (
             <PropertyListItem
                 key={property.id}
