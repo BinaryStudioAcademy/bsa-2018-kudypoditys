@@ -8,7 +8,7 @@ import {
 export function getUserPropertiesInfo(id) {
     return {
         type: GET_CURRENT_USER_INFO,
-        id
+        payload : id
     };
 }
 

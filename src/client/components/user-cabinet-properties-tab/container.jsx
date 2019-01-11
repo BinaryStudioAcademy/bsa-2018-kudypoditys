@@ -16,12 +16,15 @@ export function mapStateToProps(state) {
 export function mapDispatchToProps(dispatch) {
     return {
         fetchUserInfo(id) {
-            if(id)
+            if(id){
                 dispatch(getUserPropertiesInfo(id));
+            }
         },
 
         chooseProperty(property) {
-            dispatch(chooseProperty(property));
+            if(property){
+                dispatch(chooseProperty(property));
+            }
         },
 
         unchooseProperty() {

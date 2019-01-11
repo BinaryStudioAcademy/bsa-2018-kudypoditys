@@ -3,11 +3,10 @@ import propertyService from "client/services/propertyService";
 import * as actionTypes from "./actionTypes";
 import api from "../../helpers/api";
 
-function* getUserpropertiesInfo(id) {
+function* getUserPropertiesInfo(action) {
     try {
         const propetyResponse = yield call(
-            propertyService.getUserPropertiesInfo,
-            id.id
+            propertyService.getUserPropertiesInfo, action.payload
         );
         yield put({
             type: actionTypes.GET_CURRENT_USER_INFO_SUCCESS,
@@ -40,7 +39,7 @@ function* cancelBooking(action) {
 
 export default function* availabilitySaga() {
     yield all([
-        takeLatest(actionTypes.GET_CURRENT_USER_INFO, getUserpropertiesInfo),
+        takeLatest(actionTypes.GET_CURRENT_USER_INFO, getUserPropertiesInfo),
         takeLatest(actionTypes.CANCEL_OWNER_BOOKING, cancelBooking)
     ]);
 }
