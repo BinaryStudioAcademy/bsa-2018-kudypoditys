@@ -14,6 +14,7 @@ export class MealForm extends Component {
     componentWillMount(){
         this.props.getMeals();
         this.props.getMealTypes();
+        this.setInitialValues(this.props.room);
     }
 
     componentWillReceiveProps(newProps){
@@ -21,7 +22,12 @@ export class MealForm extends Component {
         {
             this.setState({roomId : newProps.roomId});
 
-            let items = newProps.room.mealInRooms
+            this.setInitialValues(newProps.room);
+        }
+    }
+
+    setInitialValues(room){
+        let items = room.mealInRooms
             .map(x => Object.assign({
                 id : x.id,
                 name : {name : x.meal.name},
@@ -30,7 +36,6 @@ export class MealForm extends Component {
             }));
 
             this.props.change('mealsInRoom',items);
-        }
     }
 
     render(){

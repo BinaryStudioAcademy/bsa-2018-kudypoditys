@@ -29,7 +29,13 @@ export class MealsTab extends React.Component
     };
 
     handleSubmit(e){
-        console.log(e);
+
+        const { id : roomId , mealInRooms : initialMeals } = this.state.selectedRoom;
+        const initialMealsWhichLeft = e.mealsInRoom.filter(x => x.id);
+        const forCreate = e.mealsInRoom.filter(x => !x.id);
+        const forDelete = initialMeals.filter(x => !initialMealsWhichLeft.map(x => x.id).includes(x.id));
+
+        this.updateRoomMeals({ forCreate, forDelete, roomId });
     }
 
     render(){
@@ -47,8 +53,12 @@ export class MealsTab extends React.Component
                 />
                 <Divider />
                 <div>
-                    <MealForm className="meal-form-container" roomId={this.state.selectedRoom.id} onSubmit={this.handleSubmit} room={this.state.selectedRoom}/>
-                 </div>
+                    <MealForm
+                        className="meal-form-container"
+                        roomId={this.state.selectedRoom.id}
+                        onSubmit={this.handleSubmit.bind(this)}
+                        room={this.state.selectedRoom}/>
+                </div>
             </Fragment>
             );
     }
