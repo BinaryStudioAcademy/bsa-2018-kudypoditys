@@ -36,7 +36,15 @@ class MealsTab extends React.Component
         const forCreate = e.mealsInRoom.filter(x => !x.id);
         const forDelete = initialMeals.filter(x => !initialMealsWhichLeft.map(x => x.id).includes(x.id));
 
-        this.props.updateRoomMeals({ forCreate, forDelete, roomId });
+        let forUpdate = [];
+        initialMealsWhichLeft
+        .forEach(x => {
+            let initialItem = initialMeals.find(item => item.id === x.id);
+            if(String(initialItem.price) !== String(x.price) || initialItem.mealType.name !== x.type.name || initialItem.meal.name !== x.name.name)
+                forUpdate = forUpdate.concat([x]);
+        });
+
+        this.props.updateRoomMeals({ forCreate, forDelete, forUpdate, roomId });
     }
 
     render(){
