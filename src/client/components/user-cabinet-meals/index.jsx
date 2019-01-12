@@ -1,10 +1,11 @@
 import  React, { Fragment } from "react";
 import { Message, Divider , Dropdown } from 'semantic-ui-react';
 import MealForm from './meal-form';
-
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from './container';
 import "./index.scss";
 
-export class MealsTab extends React.Component
+class MealsTab extends React.Component
 {
     constructor(props) {
         super(props);
@@ -35,7 +36,7 @@ export class MealsTab extends React.Component
         const forCreate = e.mealsInRoom.filter(x => !x.id);
         const forDelete = initialMeals.filter(x => !initialMealsWhichLeft.map(x => x.id).includes(x.id));
 
-        this.updateRoomMeals({ forCreate, forDelete, roomId });
+        this.props.updateRoomMeals({ forCreate, forDelete, roomId });
     }
 
     render(){
@@ -62,5 +63,9 @@ export class MealsTab extends React.Component
             </Fragment>
             );
     }
-
 }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MealsTab);

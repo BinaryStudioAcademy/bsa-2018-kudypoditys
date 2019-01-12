@@ -1,6 +1,6 @@
 import { mealsGet } from 'client/logic/meals/actions';
 import { mealTypesGet } from 'client/logic/meal-types/actions';
-import { updateMealsInRoom } from 'client/logic/mealInRoom/actions';
+import { updateMealsInPropertyRoom } from 'client/logic/user-cabinet-properties-tab/actions';
 
 
 export function mapStateToProps(state) {
@@ -17,6 +17,6 @@ export function mapDispatchToProps(dispatch) {
     return {
         getMeals: () => dispatch(mealsGet()),
         getMealTypes: () => dispatch(mealTypesGet()),
-        updateRoomMeals: (data) => dispatch(updateMealsInRoom(data))
+        updateRoomMeals: (data) => dispatch(updateMealsInPropertyRoom(data))
     };
 }

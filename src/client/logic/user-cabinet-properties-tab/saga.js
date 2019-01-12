@@ -1,5 +1,6 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
 import propertyService from "client/services/propertyService";
+import mealInRoomService from "client/services/mealInRoomService";
 import * as actionTypes from "./actionTypes";
 import api from "../../helpers/api";
 
@@ -17,6 +18,24 @@ function* getUserPropertiesInfo(action) {
     } catch (error) {
         console.log(error);
         yield put({ type: actionTypes.GET_CURRENT_USER_INFO_FAILURE });
+    }
+}
+
+function* updateMealsInPropertyRoom(action) {
+    try {
+        const meals = yield call(
+            mealInRoomService.update, action.payload
+        );
+        yield put({
+            type: actionTypes.UPDATE_MEALS_IN_PROPERTY_ROOM_SUCCESS,
+            payload: {
+                meals,
+                roomId : action.payload.roomId
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        yield put({ type: actionTypes.UPDATE_MEALS_IN_PROPERTY_ROOM_FAILURE});
     }
 }
 
@@ -40,6 +59,7 @@ function* cancelBooking(action) {
 export default function* availabilitySaga() {
     yield all([
         takeLatest(actionTypes.GET_CURRENT_USER_INFO, getUserPropertiesInfo),
-        takeLatest(actionTypes.CANCEL_OWNER_BOOKING, cancelBooking)
+        takeLatest(actionTypes.CANCEL_OWNER_BOOKING, cancelBooking),
+        takeLatest(actionTypes.UPDATE_MEALS_IN_PROPERTY_ROOM, updateMealsInPropertyRoom)
     ]);
 }
