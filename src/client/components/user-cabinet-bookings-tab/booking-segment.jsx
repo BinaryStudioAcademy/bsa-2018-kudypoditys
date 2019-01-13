@@ -12,7 +12,7 @@ import moment from "moment";
 import Modal from "../modal";
 import ReviewForm from "../reviews/addReviewForm";
 import BasicMapWidget from "../basic-map-widget";
-import history from "client/history";
+import history from "../../history";
 import { connect } from "react-redux";
 import { convert } from "../../helpers/convertCurrency";
 

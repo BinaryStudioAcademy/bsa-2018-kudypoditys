@@ -1,9 +1,9 @@
-import { call, put, takeLatest, all } from 'redux-saga/effects';
+import { call, put, takeLatest, all } from "redux-saga/effects";
 
-import { RESET_PASSWORD, RESET_PASSWORD_SUCSESS, RESET_PASSWORD_FAILED } from './actionTypes';
-import authService from 'client/services/authService';
-import { modalShow } from 'client/logic/simple-modal/actions';
-import history from 'client/history';
+import { RESET_PASSWORD, RESET_PASSWORD_SUCSESS, RESET_PASSWORD_FAILED } from "./actionTypes";
+import authService from "../../services/authService";
+import { modalShow } from "../simple-modal/actions";
+import history from "../../history";
 
 function* resetPassword(action) {
     try {

@@ -1,7 +1,6 @@
 import {
     ADD_DATA
-} from './actionTypes';
-
+} from "./actionTypes";
 
 export default function propertySubmitReducer(state = {}, action) {
     switch (action.type) {

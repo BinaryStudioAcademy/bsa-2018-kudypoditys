@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Header from "client/components/header";
+import Header from "../../components/header";
 import "./index.scss";
-import BannerList from "client/components/banner-list";
+import BannerList from "../../components/banner-list";
+
 export class HomePage extends Component {
 					handleSearchResults = () => {
 							//todo

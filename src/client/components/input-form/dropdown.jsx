@@ -1,6 +1,6 @@
 import React from "react";
 import { Dropdown, Label } from "semantic-ui-react";
-import './index.scss';
+import "./index.scss";
 
 // DONT TOUCH THIS :D
 const renderDropdown = ({

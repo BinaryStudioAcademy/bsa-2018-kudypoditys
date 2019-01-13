@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {List, Header, Grid} from 'semantic-ui-react';
+import React, { Component } from "react";
+import { List, Header, Grid } from "semantic-ui-react";
 
-import './index.scss';
+import "./index.scss";
 
 
 export default class Footer extends Component {

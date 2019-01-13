@@ -1,6 +1,6 @@
 import {
     PAGINATION_UPDATE
-} from './actionType';
+} from "./actionType";
 
 export const paginationUpdate = (payload) => {
     return {

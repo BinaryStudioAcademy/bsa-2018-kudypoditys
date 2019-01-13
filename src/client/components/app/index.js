@@ -1,6 +1,6 @@
-import React from 'react';
-import { HomePage } from 'client/components/home-page';
-import { getHitCount } from 'client/services/hitCountService';
+import React from "react";
+import { HomePage } from "../../pages/home-page";
+import { getHitCount } from "../../services/hitCountService";
 
 class App extends React.Component {
 

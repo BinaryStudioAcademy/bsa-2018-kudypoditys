@@ -1,9 +1,9 @@
 import React from "react";
-import history from 'client/history';
+import history from "../../history";
 import { Field, reduxForm } from "redux-form";
 import { Button, Icon, Message, Segment } from "semantic-ui-react";
-import "client/components/registration/index.scss";
-import renderField from "client/components/input-form/renderField";
+import "../registration/index.scss";
+import renderField from "../input-form/renderField";
 import {
     required,
     minLength2,
@@ -12,7 +12,7 @@ import {
     email,
     phoneNumber,
     password
-} from "client/regexValidationService";
+} from "../../regexValidationService";
 
 const RegistrationForm = props => {
     const { submitting, registerFeedback } = props;

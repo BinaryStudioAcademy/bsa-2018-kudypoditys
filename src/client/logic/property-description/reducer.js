@@ -1,6 +1,5 @@
-import defaultState from 'client/logic/defaultState';
-import {PROPERTY_DESCRIPTION_UPDATE} from "./actionTypes";
-
+import defaultState from "../defaultState";
+import { PROPERTY_DESCRIPTION_UPDATE } from "./actionTypes";
 
 function propertyDescriptionReducer(state = defaultState.shownProperties, action) {
     switch (action.type) {

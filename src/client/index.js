@@ -5,27 +5,27 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import "client/styles/global.scss";
-import reducer from "client/logic/reducer";
-import ResetPasswordPage from 'client/pages/reset-password-page'
-import RegistrationPage from "client/pages/registration-page";
-import AddPropertyPage from "client/pages/add-property-page";
-import EditPropertyPage from "client/pages/edit-property-page";
+import "./styles/global.scss";
+import reducer from "./logic/reducer";
+import ResetPasswordPage from './pages/reset-password-page'
+import RegistrationPage from "./pages/registration-page";
+import AddPropertyPage from "./pages/add-property-page";
+import EditPropertyPage from "./pages/edit-property-page";
 import { Router, Route, Switch } from "react-router-dom";
-import { HomePage } from "client/pages/home-page";
-import PropertyPage from "client/pages/property-page";
-import LoginPage from "client/pages/login-page";
-import SearchPage from "client/pages/search-page";
-import { NotFoundPage } from "client/pages/404-page";
+import { HomePage } from "./pages/home-page";
+import PropertyPage from "./pages/property-page";
+import LoginPage from "./pages/login-page";
+import SearchPage from "./pages/search-page";
+import { NotFoundPage } from "./pages/404-page";
 import createSagaMidddelware from "redux-saga";
-import rootSaga from "client/logic/rootSaga";
-import history from "client/history";
+import rootSaga from "./logic/rootSaga";
+import history from "./history";
 import UserCabinet from "./pages/user-cabinet";
 import AuthHOC from "./components/auth-hoc";
-import VerifyEmail from "client/components/verify-email";
-import ForgotPasswordPage from "client/pages/forgot-password-page";
-import SimpleModal from 'client/components/simple-modal';
-import ErrorBoundary from "client/components/error-boundary-handler";
+import VerifyEmail from "./components/verify-email";
+import ForgotPasswordPage from "./pages/forgot-password-page";
+import SimpleModal from './components/simple-modal';
+import ErrorBoundary from "./components/error-boundary-handler";
 import {socket} from "./logic/socket"
 
 const sagaMiddelware = createSagaMidddelware();

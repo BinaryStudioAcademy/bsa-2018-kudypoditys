@@ -5,10 +5,9 @@ import {
     phoneNumber,
     password,
     minLength8
-} from "client/regexValidationService";
+} from "../../regexValidationService";
 import inputField from "./input";
 import AlgoliaPlaces from "algolia-places-react";
-
 import {
     Form,
     Header,

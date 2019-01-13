@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-import history from "client/history";
+import history from "../../history";
 
 export class VerifyEmail extends Component {
     handleVerifySend = () => {

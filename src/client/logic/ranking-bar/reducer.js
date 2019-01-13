@@ -1,5 +1,5 @@
-import defaultState from 'client/logic/defaultState';
-import {RANKING_BAR_UPDATE} from './actionTypes';
+import defaultState from "../defaultState";
+import { RANKING_BAR_UPDATE } from "./actionTypes";
 
 function sortTypeReducer(state = defaultState.sortType, action) {
     switch (action.type) {
@@ -8,27 +8,8 @@ function sortTypeReducer(state = defaultState.sortType, action) {
                 ...state.sortType,
                 ...action.payload
             };
-        }
-        // case COLLECTION_DELETE: {
-        //     const newState = { ...state };
-        //     delete newState.foundProperties[action._id]
-        //     return newState;
-        // }
-        // case COLLECTION_INSERT: {
-        //     return {
-        //         ...state.foundProperties,
-        //         [action._id]: action.payload
-        //     };
-        // }
-        // case COLLECTION_UPDATE: {
-        //     return {
-        //         ...state.foundProperties,
-        //         [action._id]: {
-        //             ...state.foundProperties[action._id],
-        //             ...action.payload
-        //         }
-        //     };
-        // }
+        };
+
         default: {
             return state;
         }

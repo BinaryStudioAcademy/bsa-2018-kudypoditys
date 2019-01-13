@@ -1,4 +1,4 @@
-import api from '../helpers/api';
+import api from "../helpers/api";
 
 class BedTypeService {
   getAll() {

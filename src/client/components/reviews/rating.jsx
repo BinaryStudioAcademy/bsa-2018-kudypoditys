@@ -1,7 +1,6 @@
 import { Rating, Header } from "semantic-ui-react";
 import React, { Fragment } from "react";
 
-
 export default class RatingForm extends React.Component {
 
     render() {

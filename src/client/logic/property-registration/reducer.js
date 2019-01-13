@@ -1,9 +1,8 @@
 import {
     CREATE_PROPERTY_FAILED,
     CREATE_PROPERTY_SUCCESS
-} from './actionTypes'
-
-import defaultState from "client/logic/defaultState";
+} from "./actionTypes";
+import defaultState from "../defaultState";
 
 export default function propertySubmitReducer(state = defaultState.propertyRegistration, action) {
     switch (action.type) {

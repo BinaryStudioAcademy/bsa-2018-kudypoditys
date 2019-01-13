@@ -1,6 +1,5 @@
 import React from "react";
-import {Input, Label} from "semantic-ui-react";
-
+import { Input, Label } from "semantic-ui-react";
 
 const inputField = ({input, type, icon, label, className, val, pointing, meta: {touched, error}}) => (
     <div className={className}>

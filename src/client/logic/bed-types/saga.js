@@ -1,10 +1,10 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import {
   GET_BED_TYPES,
   GET_BED_TYPES_SUCCESS,
   GET_BED_TYPES_FAILED
-} from './actionTypes';
-import bedTypeService from 'client/services/bedTypeService';
+} from "./actionTypes";
+import bedTypeService from "../../services/bedTypeService";
 
 function* getBedTypes() {
   try {

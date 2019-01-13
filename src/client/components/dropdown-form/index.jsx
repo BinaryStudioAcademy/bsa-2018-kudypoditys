@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {compose} from 'redux';
-import {Field, reduxForm} from 'redux-form';
+import React from "react";
+import PropTypes from "prop-types";
+import { compose } from "redux";
+import { Field, reduxForm } from "redux-form";
 
-import {Form} from 'semantic-ui-react';
+import { Form } from "semantic-ui-react";
 
-import semanticSelectorFormField from './semanticSelectorForm';
-import './index.scss'
+import semanticSelectorFormField from "./semanticSelectorForm";
+import "./index.scss";
 
 const options = [
     {key: '0', text: 'UAH/Stay', value: 'UAH/Stay'},

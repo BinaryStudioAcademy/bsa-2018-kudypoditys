@@ -1,4 +1,4 @@
-import { API_URL } from 'client/constants';
+import { API_URL } from "../constants";
 
 export function getHitCount() {
     return fetch(API_URL + 'hit-count')

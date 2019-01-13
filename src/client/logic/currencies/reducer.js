@@ -1,9 +1,9 @@
-import defaultState from 'client/logic/defaultState';
+import defaultState from "../defaultState";
 import {
   GET_CURRENCIES,
   GET_CURRENCIES_FAILED,
   GET_CURRENCIES_SUCCESS,
-} from './actionTypes';
+} from "./actionTypes";
 
 function countriesReducer(state = defaultState.currenciesData, action) {
   switch (action.type) {

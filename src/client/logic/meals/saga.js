@@ -1,10 +1,10 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import {
     GET_MEALS,
     GET_MEALS_SUCCESS,
     GET_MEALS_FAILED
-} from './actionTypes';
-import mealService from 'client/services/mealService';
+} from "./actionTypes";
+import mealService from "../../services/mealService";
 
 function* getMeals() {
   try {

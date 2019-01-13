@@ -1,4 +1,4 @@
-import { checkInOutUpdate } from 'client/logic/checkInCheckOut/actions';
+import { checkInOutUpdate } from "../../logic/checkInCheckOut/actions";
 
 export function mapStateToProps(state) {
     const { checkInCheckOut } = state;

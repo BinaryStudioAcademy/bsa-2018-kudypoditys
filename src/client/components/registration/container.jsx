@@ -1,4 +1,4 @@
-import { registerSubmit } from "client/logic/registration/actions";
+import { registerSubmit } from "../../logic/registration/actions";
 
 export function mapStateToProps({ form }) {
     const { registration } = form;

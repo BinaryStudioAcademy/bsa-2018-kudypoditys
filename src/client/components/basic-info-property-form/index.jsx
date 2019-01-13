@@ -7,7 +7,7 @@ import {
     maxLength40,
     phoneNumber,
     positiveNumber
-} from "client/regexValidationService";
+} from "../../regexValidationService";
 import { Field, reduxForm } from "redux-form";
 import renderTextarea from "../input-form/textarea";
 import renderDropdown from "../input-form/dropdown";

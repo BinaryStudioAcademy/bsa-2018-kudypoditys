@@ -1,8 +1,8 @@
 import { call, put, all, takeLatest } from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
-import propertyService from "client/services/propertyService";
-import history from 'client/history';
-import { modalShow } from 'client/logic/simple-modal/actions';
+import propertyService from "../../services/propertyService";
+import history from "../../history";
+import { modalShow } from "../simple-modal/actions";
 
 export default function* propertyEditSaga() {
     function* updateProperty(action) {

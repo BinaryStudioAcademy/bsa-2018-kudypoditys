@@ -4,10 +4,8 @@ import {
     UPDATE_REVIEW,
     UPDATE_RATING, UPDATE_PROPERTY, UPDATE_PROPERTY_SUCCESS, UPDATE_PROPERTY_FAILED
 
-} from './actionTypes'
-
-import defaultState from "client/logic/defaultState";
-
+} from "./actionTypes";
+import defaultState from "../defaultState";
 
 export default function reviewsReducer(state = defaultState.reviewData, action) {
     switch (action.type) {

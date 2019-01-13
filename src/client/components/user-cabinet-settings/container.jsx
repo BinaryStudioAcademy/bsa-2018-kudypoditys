@@ -4,11 +4,9 @@ import {
     uploadAvatar,
     changePassword,
     avatarDelete
-} from "client/logic/user-cabinet-settings/actions";
-
-import { currenciesGet } from 'client/logic/currencies/actions';
-
-import { selectCurrency } from 'client/logic/header/actions';
+} from "../../logic/user-cabinet-settings/actions";
+import { currenciesGet } from "../../logic/currencies/actions";
+import { selectCurrency } from "../../logic/header/actions";
 
 export function mapStateToProps(state) {
     const { userSettings, currencies, header } = state;

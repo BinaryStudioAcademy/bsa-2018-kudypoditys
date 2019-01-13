@@ -1,4 +1,4 @@
-import defaultState from "client/logic/defaultState";
+import defaultState from "../defaultState";
 import { GET_CURRENT_USER_SUCCESS } from "../login/actionTypes";
 import {
     CHOOSE_BOOKING,

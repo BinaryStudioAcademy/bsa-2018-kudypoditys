@@ -9,7 +9,7 @@ import {
 } from "./actionTypes";
 import { LOGOUT } from "../header/actionTypes";
 import { GET_CURRENT_USER_SUCCESS } from "../login/actionTypes";
-import defaultState from "client/logic/defaultState";
+import defaultState from "../defaultState";
 
 export default function userSettingsReducer(
     state = defaultState.personalSettings,

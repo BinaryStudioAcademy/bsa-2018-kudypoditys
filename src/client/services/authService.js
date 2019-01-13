@@ -1,6 +1,6 @@
 import api from "../helpers/api";
 import cookies from "../helpers/cookie-tool";
-import history from "client/history";
+import history from "../history";
 
 class AuthService {
     signup(user) {

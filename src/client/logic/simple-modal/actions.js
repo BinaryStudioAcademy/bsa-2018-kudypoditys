@@ -1,4 +1,4 @@
-import { SHOW_MODAL, CLOSE_MODAL } from './actionTypes';
+import { SHOW_MODAL, CLOSE_MODAL } from "./actionTypes";
 
 export const modalShow = (payload) => ({
   type: SHOW_MODAL,
@@ -13,4 +13,3 @@ export const modalClose = () => {
   };
 
 }
-

@@ -1,14 +1,12 @@
-import React from 'react';
-import './index.scss';
-
+import React from "react";
+import "./index.scss";
 import { getGroupedArray,
-    getAvgFromArray, } from 'client/helpers/avgReviewRating';
-import {Progress} from "semantic-ui-react";
+    getAvgFromArray, } from "../../helpers/avgReviewRating";
+import { Progress } from "semantic-ui-react";
 
 class avgRatingBar extends React.Component {
     render() {
         const { property } = this.props;
-
 
         const
             avgPropCleanliness = getGroupedArray(property.reviews, 'Cleanliness'),

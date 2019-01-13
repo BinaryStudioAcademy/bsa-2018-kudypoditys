@@ -9,7 +9,7 @@ import {
     CLEAR_PROPERTY_PAGE,
     ROOMS_SELECTED_AMOUNT_UPDATE,
     ROOM_DESCRIPTION_COLLAPSE_TOGGLE
-} from './actionTypes';
+} from "./actionTypes";
 
 export function descriptionUpdate(payload) {
     return {

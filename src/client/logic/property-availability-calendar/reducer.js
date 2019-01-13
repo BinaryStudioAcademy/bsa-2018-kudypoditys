@@ -1,10 +1,9 @@
-import defaultState from "client/logic/defaultState";
+import defaultState from "../defaultState";
 import {
     PROPERTY_CALENDAR_UPDATE,
     PROPERTY_CALENDAR_ADD,
     SELECTED_ROOM_CHANGE
 } from "./actionTypes";
-
 import { CHOOSE_PROPERTY } from "../user-cabinet-properties-tab/actionTypes";
 
 export default function availabilityCalendarReducer(

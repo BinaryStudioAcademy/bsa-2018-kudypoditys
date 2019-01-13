@@ -1,4 +1,4 @@
-import defaultState from 'client/logic/defaultState';
+import defaultState from "../defaultState";
 import {
     PROPERTY_ITEM_DELETE,
     PROPERTY_ITEM_INSERT,
@@ -6,7 +6,7 @@ import {
     FETCH_PROPERTY_ITEM,
     FETCH_ALL_PROPERTIES,
     FOUND_PROPERTIES_INSERT_ALL,
-} from './actionTypes';
+} from "./actionTypes";
 
 function foundPropertiesReducer(state = defaultState.foundProperties, action) {
     switch (action.type) {

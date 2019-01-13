@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
-import {Button, List, Divider, Icon, Grid, Label, GridColumn} from "semantic-ui-react";
-import { required, positiveNumber } from 'client/regexValidationService';
-import { Field } from 'redux-form';
+import { Button, List, Divider, Icon, Grid, Label, GridColumn } from "semantic-ui-react";
+import { required, positiveNumber } from "../../regexValidationService";
+import { Field } from "redux-form";
 
-import renderField from '../input-form/renderField';
-import renderDropdown from '../input-form/dropdown';
+import renderField from "../input-form/renderField";
+import renderDropdown from "../input-form/dropdown";
 
 class MealsInRoomFields extends Component {
   render() {

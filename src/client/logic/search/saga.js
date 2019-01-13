@@ -1,5 +1,5 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import searchService from "client/services/searchService";
+import searchService from "../../services/searchService";
 import * as actionTypes from "./actionTypes";
 import { RANKING_BAR_UPDATE } from "../ranking-bar/actionTypes";
 import { QUICK_FILTERS_UPDATE } from "../quick-filter/actionType";

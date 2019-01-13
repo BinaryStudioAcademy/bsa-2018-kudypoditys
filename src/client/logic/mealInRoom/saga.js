@@ -1,8 +1,6 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
-import 
-  *
-as actionTypes from './actionTypes';
-import mealInRoomService from 'client/services/mealInRoomService';
+import { call, put, all, takeLatest } from "redux-saga/effects";
+import * as actionTypes from "./actionTypes";
+import mealInRoomService from "../../services/mealInRoomService";
 
 function* getMealsInRoom() {
   try {

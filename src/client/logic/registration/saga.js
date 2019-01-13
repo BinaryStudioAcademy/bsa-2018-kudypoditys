@@ -1,9 +1,9 @@
 import { call, put, all, takeLatest } from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
-import authService from "client/services/authService";
-import history from "client/history";
+import authService from "../../services/authService";
+import history from "../../history";
 import { registerSuccess, registerFailure } from "./actions";
-import { modalShow } from 'client/logic/simple-modal/actions';
+import { modalShow } from '../simple-modal/actions';
 
 function* signup(action) {
     try {

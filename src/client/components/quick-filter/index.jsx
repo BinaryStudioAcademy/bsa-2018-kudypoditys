@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { Checkbox, List } from "semantic-ui-react";
-import history from "client/history";
+import history from "../../history";
 import queryString from "query-string";
 
 import { ratingScore, bedTypes, priceScore, bedsType } from "./filters";

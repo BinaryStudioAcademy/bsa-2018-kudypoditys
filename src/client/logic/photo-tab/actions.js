@@ -1,6 +1,6 @@
 import {
     PROPERTY_PHOTO_UPDATE
-} from './actionTypes';
+} from "./actionTypes";
 
 
 export function imageUpdate(payload) {

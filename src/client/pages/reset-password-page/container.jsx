@@ -1,4 +1,4 @@
-import { passwordReset, urlQuerySave } from 'client/logic/reset-password/actions';
+import { passwordReset, urlQuerySave } from "../../logic/reset-password/actions";
 
 export function mapStateToProps(state, ownProps) {
   return {

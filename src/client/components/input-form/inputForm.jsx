@@ -1,5 +1,6 @@
-import React from 'react';
-import './index.scss'
+import React from "react";
+import "./index.scss"
+
 const renderField = (field) => (
     <div id="input-form" >
         <input {...field.input}
@@ -9,10 +10,10 @@ const renderField = (field) => (
             autoComplete={field.autocomplete}
             max={field.max}
             min={field.min} />
+            
         {field.meta.touched && field.meta.error &&
             <span className="error">{field.meta.error}</span>}
     </div>
-)
+);
 
-export default renderField
-
+export default renderField;

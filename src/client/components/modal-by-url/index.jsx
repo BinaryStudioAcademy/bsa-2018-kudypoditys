@@ -1,6 +1,6 @@
 import React from "react";
-import {Button, Icon, Modal} from "semantic-ui-react";
-import history from "client/history";
+import { Button, Icon, Modal } from "semantic-ui-react";
+import history from "../../history";
 
 
 export default ({

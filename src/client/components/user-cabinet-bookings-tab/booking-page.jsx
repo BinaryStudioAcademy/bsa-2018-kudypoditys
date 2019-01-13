@@ -7,17 +7,16 @@ import {
     Divider,
     Confirm
 } from "semantic-ui-react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { Slider } from "../slider";
 import moment from "moment";
 import "./booking-page.scss";
-// import BasicMapWidget from "../basic-map-widget";
 import {
     getGroupedArray,
     getAvgFromArray
-} from "client/helpers/avgReviewRating";
+} from "../../helpers/avgReviewRating";
 import { PropertySummary } from "../property-summary";
-import history from "client/history";
+import history from "../../history";
 import { convert } from "../../helpers/convertCurrency";
 
 class BookingPage extends React.Component {

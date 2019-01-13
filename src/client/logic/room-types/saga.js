@@ -1,10 +1,10 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import {
   GET_ROOM_TYPES,
   GET_ROOM_TYPES_SUCCESS,
   GET_ROOM_TYPES_FAILED
-} from './actionTypes';
-import roomTypeService from 'client/services/roomTypeService';
+} from "./actionTypes";
+import roomTypeService from "../../services/roomTypeService";
 
 function* getRoomTypes() {
   try {

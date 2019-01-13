@@ -1,5 +1,5 @@
-import defaultState from 'client/logic/defaultState';
-import * as actionTypes from './actionTypes';
+import defaultState from "../defaultState";
+import * as actionTypes from "./actionTypes";
 
 function languagesReducer(state = defaultState.languagesData, action) {
   switch (action.type) {

@@ -1,6 +1,6 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
-import * as actionTypes from './actionTypes';
-import languageService from 'client/services/languageService';
+import { call, put, all, takeLatest } from "redux-saga/effects";
+import * as actionTypes from "./actionTypes";
+import languageService from "../../services/languageService";
 
 function* getLanguages() {
   try {

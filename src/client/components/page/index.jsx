@@ -1,7 +1,7 @@
-import React, {Component, Fragment} from 'react';
-import './index.scss';
-import Header from 'client/components/header';
-import Footer from 'client/components/footer';
+import React, { Component, Fragment } from "react";
+import "./index.scss";
+import Header from "../header";
+import Footer from "../footer";
 
 
 class Page extends Component {

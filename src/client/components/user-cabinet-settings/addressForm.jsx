@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { Dropdown, Label } from "semantic-ui-react";
-import renderField from "client/components/input-form/renderField";
+import renderField from "../input-form/renderField";
 
 export class AddressForm extends Component {
     handleChange = (e, { name, value }) => {

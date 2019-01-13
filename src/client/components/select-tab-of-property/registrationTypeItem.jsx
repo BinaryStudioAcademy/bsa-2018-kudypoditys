@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import { Card, Button, Image } from 'semantic-ui-react';
-
-
+import React, { Component } from "react";
+import { Card, Button, Image } from "semantic-ui-react";
 
 export class RegistrationTypeItem extends Component {
 

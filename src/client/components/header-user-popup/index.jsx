@@ -1,5 +1,5 @@
 import React from "react";
-import history from "client/history";
+import history from "../../history";
 import { Menu, Popup, Image } from "semantic-ui-react";
 import "./index.scss";
 

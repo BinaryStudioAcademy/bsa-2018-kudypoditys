@@ -1,5 +1,5 @@
-import { selectCurrency, logout } from 'client/logic/header/actions';
-import { currenciesGet } from 'client/logic/currencies/actions';
+import { selectCurrency, logout } from "../../logic/header/actions";
+import { currenciesGet } from "../../logic/currencies/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { currencies } = state;

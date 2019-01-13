@@ -1,5 +1,5 @@
-import defaultState from 'client/logic/defaultState';
-import { CHECKIN_OUT_UPDATE } from './actionTypes';
+import defaultState from "../defaultState";
+import { CHECKIN_OUT_UPDATE } from "./actionTypes";
 
 export default function checkInCheckOutReducer(state = defaultState.checkInCheckOut, action) {
   switch (action.type) {

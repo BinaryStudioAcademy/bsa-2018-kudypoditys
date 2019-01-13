@@ -1,5 +1,5 @@
 import api from "../helpers/api";
-import history from "client/history";
+import history from "../history";
 import moment from "moment";
 
 class PropertyService {

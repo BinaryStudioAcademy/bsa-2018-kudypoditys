@@ -1,5 +1,5 @@
-import { facilitiesGet } from '../../logic/facilities/actions';
-import { languagesGet, createLanguage} from '../../logic/languages/actions';
+import { facilitiesGet } from "../../logic/facilities/actions";
+import { languagesGet, createLanguage } from "../../logic/languages/actions";
 import { getFormValues } from "redux-form";
 
 export function mapStateToProps(state) {

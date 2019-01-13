@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import history from 'client/history';
+import React, { Component } from "react";
+import history from "../../history";
 import {
     Button, Form, Header, Container, Segment, Icon
 } from "semantic-ui-react";
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm } from "redux-form";
 
-import { email, required } from 'client/regexValidationService';
-import renderField from 'client/components/input-form/renderField';
+import { email, required } from "../../regexValidationService";
+import renderField from "../../components/input-form/renderField";
 
 class ForgotPasswordForm extends Component {
     render() {

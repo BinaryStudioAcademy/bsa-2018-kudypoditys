@@ -1,5 +1,5 @@
 import React from "react";
-import {Header} from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 
 export class MealsTab extends React.Component {
         render(){

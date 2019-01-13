@@ -1,10 +1,10 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import {
   GET_CURRENCIES,
   GET_CURRENCIES_SUCCESS,
   GET_CURRENCIES_FAILED,
-} from './actionTypes';
-import currencyService from 'client/services/currencyService';
+} from "./actionTypes";
+import currencyService from "../../services/currencyService";
 
 function* getCurrencies() {
   try {

@@ -1,6 +1,6 @@
-import { propertyCreate } from 'client/logic/property-registration/actions'
-import { facilitiesGet } from 'client/logic/facilities/actions';
-import { propertyUpdate } from 'client/logic/property-edit/actions';
+import { propertyCreate } from '../../logic/property-registration/actions'
+import { facilitiesGet } from '../../logic/facilities/actions';
+import { propertyUpdate } from '../../logic/property-edit/actions';
 
 export function mapStateToProps(state) {
     const { propertyRegistration, facilities, header } = state;

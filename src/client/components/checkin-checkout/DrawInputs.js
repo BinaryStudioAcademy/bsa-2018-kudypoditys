@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { Form } from "semantic-ui-react";
 import { ButtonsValues, options } from "./config";
-import { mapStateToProps, mapDispatchToProps } from './container';
-import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from "./container";
+import { connect } from "react-redux";
 
 
 export class DrawInputs extends React.Component {

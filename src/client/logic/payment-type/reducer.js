@@ -1,9 +1,9 @@
-import defaultState from 'client/logic/defaultState';
+import defaultState from "../defaultState";
 import {
   GET_PAYMENT_TYPES,
   GET_PAYMENT_TYPES_FAILED,
   GET_PAYMENT_TYPES_SUCCESS
-} from './actionTypes';
+} from "./actionTypes";
 
 function paymentTypesReducer(state = defaultState.paymentTypes, action) {
   switch (action.type) {

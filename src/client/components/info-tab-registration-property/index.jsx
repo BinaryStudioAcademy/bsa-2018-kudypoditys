@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
-import { Grid, Segment } from 'semantic-ui-react';
-import { RegistrationTypeItem } from './registrationTypeItem';
-import Header from 'client/components/header'
+import React, { Component, Fragment } from "react";
+import { Grid, Segment } from "semantic-ui-react";
+import { RegistrationTypeItem } from "./registrationTypeItem";
+import Header from "../../components/header";
 
 
 class InfoTabRegistration extends Component {

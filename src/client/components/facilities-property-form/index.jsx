@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 import {
     Button, Container, Form, Header, Grid, Icon, Modal, Input
 } from "semantic-ui-react";
-import { required } from "client/regexValidationService.js";
-import RadioGroup from "client/components/input-form/radio-group";
-import renderField from 'client/components/input-form/renderField';
-import renderDropdown from 'client/components/input-form/dropdown';
-import renderCheckbox from 'client/components/input-form/checkbox';
+import { required } from "../../regexValidationService.js";
+import RadioGroup from "../../components/input-form/radio-group";
+import renderField from "../../components/input-form/renderField";
+import renderDropdown from "../../components/input-form/dropdown";
+import renderCheckbox from "../../components/input-form/checkbox";
 
-import { mapDispatchToProps, mapStateToProps } from './container';
-import './index.scss'
+import { mapDispatchToProps, mapStateToProps } from "./container";
+import "./index.scss";
 
 const parseNumber = value => {
     const number = Number(value);

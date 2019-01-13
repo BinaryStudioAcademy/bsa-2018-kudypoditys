@@ -6,7 +6,7 @@ import moment from "moment";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
-import history from "client/history";
+import history from "../../history";
 import QuantityPicker from "../quantity-picker";
 import {
     convertCurrencyByName,

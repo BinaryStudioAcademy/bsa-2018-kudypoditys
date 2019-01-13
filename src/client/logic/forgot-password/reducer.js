@@ -1,9 +1,9 @@
-import defaultState from 'client/logic/defaultState';
+import defaultState from "../defaultState";
 import {
     SEND_RESET_PASSWORD_EMAIL,
     SEND_RESET_PASSWORD_EMAIL_SUCCESS,
     SEND_RESET_PASSWORD_EMAIL_FAILED
-} from './actionTypes';
+} from "./actionTypes";
 
 function forgotPasswordReducer(state = defaultState.forgotPassword, action) {
     switch (action.type) {

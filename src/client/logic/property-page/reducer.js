@@ -1,4 +1,4 @@
-import defaultState from "client/logic/defaultState";
+import defaultState from "../defaultState";
 import {
     GET_PROPERTY_INFO_SUCCESS,
     AVAILABILITY_INPUT_UPDATE,
@@ -11,8 +11,7 @@ import {
     CLEAR_PROPERTY_PAGE,
     ROOMS_SELECTED_AMOUNT_UPDATE,
     ROOM_DESCRIPTION_COLLAPSE_TOGGLE
-} from './actionTypes';
-
+} from "./actionTypes";
 import {
     SEARCH_UPDATE
 } from "../search/actionTypes";

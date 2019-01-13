@@ -1,14 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { Grid } from 'semantic-ui-react';
-import qs from 'query-string';
-
-import history from 'client/history';
-import MessageBox from 'client/components/message-box';
-import ResetPasswordForm from 'client/components/reset-password-form';
-import Header from 'client/components/header';
-
-import { mapStateToProps, mapDispatchToProps } from 'client/pages/reset-password-page/container';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { Grid } from "semantic-ui-react";
+import qs from "query-string";
+import history from "../../history";
+import MessageBox from "../../components/message-box";
+import ResetPasswordForm from "../../components/reset-password-form";
+import Header from "../../components/header";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 
 export class ResetPasswordPage extends Component {
 

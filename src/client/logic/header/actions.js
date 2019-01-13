@@ -2,7 +2,7 @@ import {
     CURENCY_SELECT,
     CURRENCIES_GET,
     LOGOUT
-} from './actionTypes';
+} from "./actionTypes";
 
 export function selectCurrency(payload) {
     return {

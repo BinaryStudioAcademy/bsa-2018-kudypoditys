@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Header, Tab } from "semantic-ui-react";
 
 export class DrawTab extends React.Component {

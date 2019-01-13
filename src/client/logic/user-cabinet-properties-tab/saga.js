@@ -1,5 +1,5 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import propertyService from "client/services/propertyService";
+import propertyService from "../../services/propertyService";
 import * as actionTypes from "./actionTypes";
 import api from "../../helpers/api";
 

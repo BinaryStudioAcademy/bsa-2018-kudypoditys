@@ -1,7 +1,7 @@
 import React from "react";
 import { Tab } from "semantic-ui-react";
 import { ReviewsTab } from "./reviewsTab";
-import AvailabilityCalendar from "client/components/property-availability-calendar";
+import AvailabilityCalendar from "../property-availability-calendar";
 import { BookingsList } from "./bookings-list";
 import { Segment, Icon, Divider } from "semantic-ui-react";
 import { MealsTab } from "../user-cabinet-meals";

@@ -1,10 +1,10 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import {
   GET_PAYMENT_TYPES,
   GET_PAYMENT_TYPES_SUCCESS,
   GET_PAYMENT_TYPES_FAILED
-} from './actionTypes';
-import paymentTypeService from 'client/services/paymentType';
+} from "./actionTypes";
+import paymentTypeService from "../../services/paymentType";
 
 function* getPaymentTypes() {
   try {

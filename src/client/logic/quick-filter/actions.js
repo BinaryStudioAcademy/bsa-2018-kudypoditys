@@ -1,8 +1,6 @@
 import {
     QUICK_FILTERS_UPDATE
-} from './actionType';
-
-
+} from "./actionType";
 
 export function quickFiltersUpdate(payload) {
     return {

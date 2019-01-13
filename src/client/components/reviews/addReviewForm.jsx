@@ -16,11 +16,9 @@ import {
     getReviewAvg,
     getGroupedArray,
     getAvgFromArray
-} from "client/helpers/avgReviewRating";
-import history from "client/history";
+} from "../../helpers/avgReviewRating";
+import history from "../../history";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-
-// import {Reviews} from "./index";
 
 export class addReviewForm extends React.Component {
     state = {

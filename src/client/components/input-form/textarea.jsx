@@ -1,6 +1,6 @@
 import React from "react";
 import { TextArea, Label } from "semantic-ui-react";
-import './index.scss';
+import "./index.scss";
 
 const renderTextarea = ({
   input, label, className, pointing, fluid, meta: { touched, error }

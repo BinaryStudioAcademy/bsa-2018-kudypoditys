@@ -1,6 +1,6 @@
-import { put, all, takeLatest } from 'redux-saga/effects';
-import * as actionTypes from './actionTypes';
-import authService from 'client/services/authService';
+import { put, all, takeLatest } from "redux-saga/effects";
+import * as actionTypes from "./actionTypes";
+import authService from "../../services/authService";
 
 function* logout() {
     try {

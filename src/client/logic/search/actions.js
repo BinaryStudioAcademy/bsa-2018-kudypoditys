@@ -1,6 +1,6 @@
 import {
     SEARCH_UPDATE,SEARCH_SUBMIT,CLEAR_SEARCH_PAGE
-} from './actionTypes';
+} from "./actionTypes";
 
 export function searchUpdate(payload) {
     return {

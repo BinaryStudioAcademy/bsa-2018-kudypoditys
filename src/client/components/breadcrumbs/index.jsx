@@ -1,9 +1,9 @@
-import React from 'react';
-import { Breadcrumb } from 'semantic-ui-react';
-import './index.scss';
-import {mapStateToProps} from './container'
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Breadcrumb } from "semantic-ui-react";
+import "./index.scss";
+import {mapStateToProps} from "./container";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
 
 class Breadcrumbs extends React.Component {
     constructor(props) {

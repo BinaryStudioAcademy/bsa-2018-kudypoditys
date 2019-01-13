@@ -1,6 +1,6 @@
 import {
     ROOM_SUMMARY_PRICE_GET
-} from './actionType';
+} from "./actionType";
 
 export const roomSummaryPriceGet = (id) => {
     return {

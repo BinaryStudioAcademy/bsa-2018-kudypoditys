@@ -1,4 +1,4 @@
-import defaultState from "client/logic/defaultState";
+import defaultState from "../defaultState";
 import { LOGIN_SUCCESS, LOGIN_FAILURE, RESET_LOGIN } from "./actionTypes";
 
 export default function loginReducer(state = defaultState.login, action) {

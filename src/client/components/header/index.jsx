@@ -1,11 +1,11 @@
-import React, {Component, Fragment} from "react";
-import {connect} from "react-redux";
-import {Grid, Dropdown} from "semantic-ui-react";
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { Grid, Dropdown } from "semantic-ui-react";
 import PropTypes from "prop-types";
-import history from "client/history";
-import MainSearch from "client/components/search";
-import AuthHOC from "client/components/auth-hoc";
-import UserPopup from "client/components/header-user-popup";
+import history from "../../history";
+import MainSearch from "../../components/search";
+import AuthHOC from "../../components/auth-hoc";
+import UserPopup from "../../components/header-user-popup";
 import "./index.scss";
 import {mapStateToProps, mapDispatchToProps} from "./container";
 

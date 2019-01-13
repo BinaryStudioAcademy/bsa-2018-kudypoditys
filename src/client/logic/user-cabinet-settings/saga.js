@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import { all, call, takeLatest, put } from "redux-saga/effects";
-import userService from "client/services/userService";
+import userService from "../../services/userService";
 
 function* sendSettings(action) {
     try {

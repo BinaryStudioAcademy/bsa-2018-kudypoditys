@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
-import {Button, List, Divider, Icon, Grid, Label} from "semantic-ui-react";
-import { required } from 'client/regexValidationService';
-import { Field } from 'redux-form';
+import { Button, List, Divider, Icon, Grid, Label } from "semantic-ui-react";
+import { required } from "../../regexValidationService";
+import { Field } from "redux-form";
 
-import renderField from '../input-form/renderField';
-import renderDropdown from '../input-form/dropdown';
+import renderField from "../input-form/renderField";
+import renderDropdown from "../input-form/dropdown";
 
 class BedInRoomsFields extends Component {
   render() {

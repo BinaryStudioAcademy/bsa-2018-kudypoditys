@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { Card, Icon, Image } from "semantic-ui-react";
 import PropTypes from "prop-types";
-import history from 'client/history';
+import history from "../../history";
 import { convert } from "../../helpers/convertCurrency";
 export class MapPropertyItem extends Component {
     nameClicked = () => {

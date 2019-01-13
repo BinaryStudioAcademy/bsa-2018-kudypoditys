@@ -1,5 +1,5 @@
 import api from "../helpers/api";
-import history from "client/history";
+import history from "../history";
 
 class SearchService {
     submitSearch(data) {
@@ -15,4 +15,5 @@ class SearchService {
         return api.sendRequest(`/api/search-property${queryData}`, "get", "");
     }
 }
+
 export default new SearchService();

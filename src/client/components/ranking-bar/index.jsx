@@ -4,8 +4,9 @@ import { Menu, Dropdown } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-import history from "client/history";
+import history from "../../history";
 import queryString from "query-string";
+
 export class RankingBar extends React.Component {
     constructor() {
         super();

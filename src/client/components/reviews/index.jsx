@@ -2,13 +2,9 @@ import React from "react";
 import {
     Header,
     Comment,
-
     Message,
-
 } from "semantic-ui-react";
-
 import { connect } from "react-redux";
-
 import "./index.scss";
 import ReviewForm from "./addReviewForm";
 import Review from "./item";
@@ -17,16 +13,11 @@ import {
     getPropReviewsArray,
     getPropToggler,
     getPropToggler2
-} from "client/helpers/reviewToggler";
+} from "../../helpers/reviewToggler";
 import RatingBar from "./ratingBar";
 import Modal from "../modal";
 
-
 export class Reviews extends React.Component {
-
-
-
-
 
     toggleVisibility = () =>
         this.setState({

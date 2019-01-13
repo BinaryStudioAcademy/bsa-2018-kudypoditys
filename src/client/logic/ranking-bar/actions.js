@@ -1,6 +1,6 @@
 import {
     RANKING_BAR_UPDATE
-} from './actionTypes';
+} from "./actionTypes";
 
 export function sortUpdate(payload) {
     return {

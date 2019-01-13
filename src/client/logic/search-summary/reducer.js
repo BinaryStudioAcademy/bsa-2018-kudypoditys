@@ -1,7 +1,7 @@
-import defaultState from 'client/logic/defaultState';
+import defaultState from "../defaultState";
 import {
     SEARCH_RESULT_UPDATE
-} from './actionTypes';
+} from "./actionTypes";
 
 function summaryReducer(state = defaultState.searchResults, action) {
     switch (action.type) {

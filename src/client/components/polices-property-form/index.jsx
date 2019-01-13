@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import { Form, Button, Container, Header } from 'semantic-ui-react';
-import { required } from 'client/regexValidationService';
-import { Field, reduxForm } from 'redux-form';
+import React, { Component, Fragment } from "react";
+import { Form, Button, Container, Header } from "semantic-ui-react";
+import { required } from "../../regexValidationService";
+import { Field, reduxForm } from "redux-form";
 
-import CheckInCheckOut from 'client/components/checkin-checkout';
-import renderDropdown from 'client/components/input-form/dropdown';
+import CheckInCheckOut from "../checkin-checkout";
+import renderDropdown from "../input-form/dropdown";
 
-import './index.scss';
+import "./index.scss";
 
 class PolicesPropertyForm extends Component {
 

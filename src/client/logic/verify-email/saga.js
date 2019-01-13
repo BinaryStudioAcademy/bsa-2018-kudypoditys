@@ -1,10 +1,9 @@
 import { VERIFICATION_DATA_SEND } from "./actionTypes";
 import { all, put, call, takeLatest } from "redux-saga/effects";
-import authService from "client/services/authService";
+import authService from "../../services/authService";
 import { verificationDataVerified } from "./actions";
-import { modalShow } from 'client/logic/simple-modal/actions';
-import history from "client/history";
-
+import { modalShow } from "../simple-modal/actions";
+import history from "../../history";
 
 function* verify() {
     try {

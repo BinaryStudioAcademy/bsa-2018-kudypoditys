@@ -1,10 +1,10 @@
-import defaultState from 'client/logic/defaultState';
+import defaultState from "../defaultState";
 import {
     GET_MEALS_IN_ROOM,
     CREATE_MEALS_IN_ROOM,
     GET_MEAL_IN_ROOM_SUCCESS,
     GET_MEAL_IN_ROOM_FAILED
-} from './actionTypes';
+} from "./actionTypes";
 
 function mealsInRoomReducer(state = defaultState.mealsData, action) {
   switch (action.type) {

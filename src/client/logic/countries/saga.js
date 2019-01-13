@@ -1,10 +1,10 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import {
   GET_COUNTRIES,
   GET_COUNTRIES_SUCCESS,
   GET_COUNTRIES_FAILED
-} from './actionTypes';
-import countryService from 'client/services/countryService';
+} from "./actionTypes";
+import countryService from "../../services/countryService";
 
 function* getCountries() {
   try {

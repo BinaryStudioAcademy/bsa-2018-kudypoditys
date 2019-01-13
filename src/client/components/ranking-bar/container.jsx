@@ -1,4 +1,4 @@
-import { sortUpdate } from "client/logic/ranking-bar/actions";
+import { sortUpdate } from "../../logic/ranking-bar/actions";
 
 export function mapStateToProps(state) {
     const { search } = state;

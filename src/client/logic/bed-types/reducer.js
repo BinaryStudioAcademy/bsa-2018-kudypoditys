@@ -1,9 +1,9 @@
-import defaultState from 'client/logic/defaultState';
+import defaultState from "../../logic/defaultState";
 import {
   GET_BED_TYPES,
   GET_BED_TYPES_SUCCESS,
   GET_BED_TYPES_FAILED
-} from './actionTypes';
+} from "./actionTypes";
 
 function bedTypesReducer(state = defaultState.bedTypesData, action) {
   switch (action.type) {

@@ -1,7 +1,7 @@
 import {
     REGISTER_FAILURE,
     REGISTER_SUCCESS
-} from './actionTypes';
+} from "./actionTypes";
 
 export default (state, action) => {
     switch (action.type) {

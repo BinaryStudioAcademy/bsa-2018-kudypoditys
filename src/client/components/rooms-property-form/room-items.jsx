@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from 'react';
-import { Segment, Grid, Button, Container, Divider, Popup, Message } from 'semantic-ui-react';
+import React, { Component, Fragment } from "react";
+import { Segment, Grid, Button, Container, Divider, Popup, Message } from "semantic-ui-react";
 
 class RoomItems extends Component {
-
   renderBed(bed) {
     return (
       <Fragment>

@@ -1,6 +1,6 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
-import reviewService from "client/services/reviewService";
-import propertyService from "client/services/propertyService";
+import reviewService from "../../services/reviewService";
+import propertyService from "../../services/propertyService";
 import * as actionTypes from "./actionTypes";
 
 function* createReview(action) {

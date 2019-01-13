@@ -1,13 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import superagent from 'superagent';
-import Dropzone from 'react-dropzone'
-import {Loader, Dimmer, Icon, Button, Label} from 'semantic-ui-react';
-import './index.scss';
-require('dotenv').config();
+import React, { Component, Fragment } from "react";
+import superagent from "superagent";
+import Dropzone from "react-dropzone"
+import { Loader, Dimmer, Icon, Button, Label } from "semantic-ui-react";
+import "./index.scss";
+require("dotenv").config();
 
 export const UPLOAD_PRESET = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET;
 export const UPLOAD_URL = process.env.REACT_APP_CLOUDINARY_UPLOAD_URL;
-
 
 export default class PhotoDropZone extends Component {
   state = {

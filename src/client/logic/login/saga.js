@@ -1,8 +1,8 @@
 import { call, put, all, takeLatest } from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
-import authService from "client/services/authService";
-import userService from "client/services/userService";
-import history from "client/history";
+import authService from "../../services/authService";
+import userService from "../../services/userService";
+import history from "../../history";
 
 function* login(action) {
     const { email, password } = action.payload;

@@ -2,7 +2,7 @@ import React from "react";
 import "./index.scss";
 import { Header } from "semantic-ui-react";
 import PropTypes from "prop-types";
-import formatNumber from "client/helpers/formatNumber";
+import formatNumber from "../../helpers/formatNumber";
 import { connect } from "react-redux";
 import { mapStateToProps } from "./container";
 

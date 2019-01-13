@@ -1,5 +1,5 @@
 import React from "react";
-import {Input, Label} from "semantic-ui-react";
+import { Input, Label } from "semantic-ui-react";
 
 
 const FormTextInput = ({input, min, max, type, icon, label, autocomplete, className, meta: {touched, error}}) => (

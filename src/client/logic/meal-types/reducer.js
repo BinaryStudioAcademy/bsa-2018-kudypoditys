@@ -1,9 +1,9 @@
-import defaultState from 'client/logic/defaultState';
+import defaultState from "../defaultState";
 import {
     GET_MEAL_TYPES,
     GET_MEAL_TYPES_SUCCESS,
     GET_MEAL_TYPES_FAILED
-} from './actionTypes';
+} from "./actionTypes";
 
 function mealTypesReducer(state = defaultState.mealTypesData, action) {
   switch (action.type) {

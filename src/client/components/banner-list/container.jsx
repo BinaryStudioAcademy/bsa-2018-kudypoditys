@@ -1,5 +1,5 @@
-import { cityInfosGet } from 'client/logic/banner-list/actions';
-import { searchUpdate, searchSubmit } from "client/logic/search/actions";
+import { cityInfosGet } from "../../logic/banner-list/actions";
+import { searchUpdate, searchSubmit } from "../../logic/search/actions";
 
 export function mapStateToProps(state) {
     const { cityInfos, header } = state;

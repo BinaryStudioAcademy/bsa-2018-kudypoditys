@@ -1,4 +1,5 @@
 import moment from "moment";
+
 export function getPropReviewsArray(bookingArray) {
     let array = [],
         now = moment();

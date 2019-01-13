@@ -7,7 +7,7 @@ import {
     Progress,
     Header
 } from "semantic-ui-react";
-import history from "client/history";
+import history from "../../history";
 
 export default class ReviewItem extends React.Component {
     state = {

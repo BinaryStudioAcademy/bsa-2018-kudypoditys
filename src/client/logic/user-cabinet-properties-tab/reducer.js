@@ -1,4 +1,3 @@
-// import defaultState from "client/logic/defaultState";
 import {
     GET_CURRENT_USER_INFO_SUCCESS,
     CHOOSE_PROPERTY,
@@ -6,7 +5,6 @@ import {
 } from "./actionTypes";
 
 export default function availabilityCalendarReducer(
-    // state = defaultState.availabilityCalendar,
     state = {},
     action
 ) {

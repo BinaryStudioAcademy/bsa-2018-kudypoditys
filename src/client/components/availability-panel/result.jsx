@@ -1,6 +1,6 @@
 import React from "react";
 import { Message, Header } from "semantic-ui-react";
-import RoomsSummaryTable from "client/components/rooms-summary-table";
+import RoomsSummaryTable from "../rooms-summary-table";
 
 export default class AvailabilityResult extends React.Component {
     render() {

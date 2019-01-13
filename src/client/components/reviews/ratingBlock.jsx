@@ -1,10 +1,9 @@
 import React from "react";
 import "./index.scss";
-
 import {
     getPropertyStatus,
     getPropertyColor
-} from "client/helpers/avgReviewRating";
+} from "../../helpers/avgReviewRating";
 import { Popup } from "semantic-ui-react";
 import RatingBar from "./ratingBar";
 

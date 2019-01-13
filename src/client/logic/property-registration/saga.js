@@ -1,10 +1,10 @@
-import { call, put, takeLatest, all } from 'redux-saga/effects';
-import { reset } from 'redux-form';
-import history from 'client/history';
+import { call, put, takeLatest, all } from "redux-saga/effects";
+import { reset } from "redux-form";
+import history from "../../history";
 
-import propertyService from 'client/services/propertyService';
-import * as actionTypes from './actionTypes';
-import { modalShow } from 'client/logic/simple-modal/actions';
+import propertyService from "../../services/propertyService";
+import * as actionTypes from "./actionTypes";
+import { modalShow } from "../simple-modal/actions";
 
 function* createProperty(action) {
     try {

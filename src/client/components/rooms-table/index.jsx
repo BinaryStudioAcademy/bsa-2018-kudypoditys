@@ -1,19 +1,19 @@
 import React from "react";
 import "./index.scss";
 import { Icon, Table ,Popup} from "semantic-ui-react";
-import QuantityPicker from "client/components/quantity-picker";
+import QuantityPicker from "../quantity-picker";
 import _ from "lodash";
 import {
     convert,
     titleToCode
-} from "client/helpers/convertCurrency";
-import Modal from "client/components/modal";
-import BookingForm from "client/components/booking-form";
+} from "../../helpers/convertCurrency";
+import Modal from "../components/modal";
+import BookingForm from "../booking-form";
 import connect from "react-redux/es/connect/connect";
 import { mapDispatchToProps, mapStateToProps } from "./container";
-import { getDaysDifference } from '../../helpers/date-helpers';
-import Tooltip from 'react-tooltip-lite';
-import MealsTable from './mealsTable';
+import { getDaysDifference } from "../../helpers/date-helpers";
+import Tooltip from "react-tooltip-lite";
+import MealsTable from "./mealsTable";
 
 export const getIcons = number =>
     _.times(number, index => <Icon key={index} name="user" />);

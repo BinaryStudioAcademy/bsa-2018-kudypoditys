@@ -5,7 +5,7 @@ import { DrawTab } from "./DrawTab";
 import { MenuItems } from "./config";
 import { Container, Tab } from "semantic-ui-react";
 import Header from "../header";
-import history from "client/history";
+import history from "../../history";
 import "./index.scss";
 
 export class UserCabinet extends React.Component {

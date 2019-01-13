@@ -1,5 +1,5 @@
-import defaultState from 'client/logic/defaultState';
-import { RESET_PASSWORD_SUCSESS, SAVE_URL_QUERY, RESET_PASSWORD_FAILED, RESET_PASSWORD } from './actionTypes';
+import defaultState from "../defaultState";
+import { RESET_PASSWORD_SUCSESS, SAVE_URL_QUERY, RESET_PASSWORD_FAILED, RESET_PASSWORD } from "./actionTypes";
 
 function resetPasswordReducer(state = defaultState.resetPassword, action) {
     switch (action.type) {

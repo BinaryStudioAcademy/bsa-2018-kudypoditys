@@ -1,4 +1,4 @@
-import { emailResetPasswordSend } from 'client/logic/forgot-password/actions';
+import { emailResetPasswordSend } from '../../logic/forgot-password/actions';
 
 export function mapStateToProps(state, ownProps) {
   return {

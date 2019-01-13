@@ -1,15 +1,15 @@
 import React, { Fragment, Component } from "react";
 import { connect } from 'react-redux';
 import { Label } from "semantic-ui-react";
-import './index.scss';
+import "./index.scss";
 import { Header, Button, Form, List, Container } from "semantic-ui-react";
-import { FieldArray, reduxForm } from 'redux-form';
-import { required } from "client/regexValidationService";
+import { FieldArray, reduxForm } from "redux-form";
+import { required } from "../../regexValidationService";
 
-import RoomItems from './room-items';
-import RoomForm from './room-form';
+import RoomItems from "./room-items";
+import RoomForm from "./room-form";
 
-import { mapStateToProps, mapDispatchToProps } from './container';
+import { mapStateToProps, mapDispatchToProps } from "./container";
 
 class RoomsPropertyForm extends Component {
   state = {

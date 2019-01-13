@@ -1,9 +1,9 @@
 import React from "react";
-import history from "client/history";
+import history from "../../history";
 import { Field, reduxForm } from "redux-form";
 import { Button, Form, Icon, Segment } from "semantic-ui-react";
-import renderField from "client/components/input-form/renderField";
-import { required, email } from "client/regexValidationService";
+import renderField from "../input-form/renderField";
+import { required, email } from "../../regexValidationService";
 
 let LoginForm = props => {
     const { handleSubmit, submitting, pristine } = props;

@@ -1,16 +1,17 @@
 import React from "react";
 import "./index.scss";
 import { Container, Segment, Icon, Button, Image } from "semantic-ui-react";
-import SearchSummary from "client/components/search-summary";
-import RankingBar from "client/components/ranking-bar";
-import PropertyListItem from "client/components/property-list-item";
-import Pagination from "client/components/pagination";
-import Header from "client/components/header";
-import QuickFilter from "client/components/quick-filter";
-import MapGlobalWidget from "client/components/map-global-widget";
+import SearchSummary from "../../components/search-summary";
+import RankingBar from "../../components/ranking-bar";
+import PropertyListItem from "../../components/property-list-item";
+import Pagination from "../../components/pagination";
+import Header from "../../components/header";
+import QuickFilter from "../../components/quick-filter";
+import MapGlobalWidget from "../../components/map-global-widget";
 import { connect } from "react-redux";
 import { mapStateToProps } from "./container";
 import sorry from "./img/nothing.png";
+
 class SearchPage extends React.Component {
     constructor(props) {
         super(props);

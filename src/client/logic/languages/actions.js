@@ -1,4 +1,4 @@
-import { GET_LANGUAGES, CREATE_LANGUAGE } from './actionTypes';
+import { GET_LANGUAGES, CREATE_LANGUAGE } from "./actionTypes";
 
 export const languagesGet = () => ({
   type: GET_LANGUAGES

@@ -4,8 +4,6 @@ import SettingsForm from "./settingsForm.jsx";
 import * as staticData from "./staticData";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-
-
 import "./index.scss";
 
 export class EditPersonalSettings extends Component {

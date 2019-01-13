@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./index.scss";
-
 import { Button, Modal } from "semantic-ui-react";
 import MapView from "../map-view";
 

@@ -11,7 +11,7 @@ import {
 import moment from "moment";
 import { DateRangePicker } from "react-dates";
 
-import Modal from ".././modal";
+import Modal from "../modal";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { connect } from "react-redux";
 import RoomsSummaryTable from "../rooms-summary-table";

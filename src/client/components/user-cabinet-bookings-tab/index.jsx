@@ -5,7 +5,7 @@ import { Container, Button, Header, Message, Divider } from "semantic-ui-react";
 import BookingPage from "./booking-page";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { connect } from "react-redux";
-import history from "client/history";
+import history from "../../history";
 
 export class BookingsTab extends React.Component {
     bookNowClicked = () => {

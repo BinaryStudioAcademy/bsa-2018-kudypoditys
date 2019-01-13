@@ -3,7 +3,7 @@ import { Pagination as SemanticPagination } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-import history from "client/history";
+import history from "../../history";
 import queryString from "query-string";
 class Pagination extends React.Component {
     onPageChange = (event, data) => {

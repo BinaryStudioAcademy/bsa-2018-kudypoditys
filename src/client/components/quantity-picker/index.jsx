@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { Dropdown } from 'semantic-ui-react'
-import _ from 'lodash'
+import React, { Component } from "react"
+import { Dropdown } from "semantic-ui-react"
+import _ from "lodash"
 import PropTypes from "prop-types";
 
 export const getOptions = (number, prefix = '') =>

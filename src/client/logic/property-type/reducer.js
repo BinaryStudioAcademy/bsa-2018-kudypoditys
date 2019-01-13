@@ -1,9 +1,9 @@
-import defaultState from 'client/logic/defaultState';
+import defaultState from "../defaultState";
 import {
   GET_PROPERTY_TYPES,
   GET_PROPERTY_TYPES_SUCCESS,
   GET_PROPERTY_TYPES_FAILED
-} from './actionTypes';
+} from "./actionTypes";
 
 function propertyTypesReducer(state = defaultState.propertyTypesData, action) {
   switch (action.type) {

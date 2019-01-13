@@ -1,7 +1,7 @@
-import defaultState from 'client/logic/defaultState';
-import { convert } from '../../helpers/convertCurrency';
-import { CITY_INFOS_GET_SUCCESS } from './actionType';
-import { CURENCY_SELECT } from '../header/actionTypes';
+import defaultState from "../../logic/defaultState";
+import { convert } from "../../helpers/convertCurrency";
+import { CITY_INFOS_GET_SUCCESS } from "./actionType";
+import { CURENCY_SELECT } from "../header/actionTypes";
 
 function cityInfosReducer(state = defaultState.cityInfos, action) {
     switch (action.type) {

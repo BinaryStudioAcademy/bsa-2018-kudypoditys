@@ -4,13 +4,12 @@ import {
   Container, Header, Icon
 } from "semantic-ui-react";
 import { reduxForm, Field } from "redux-form";
-import { required, maxLength255 } from "client/regexValidationService";
-
-import renderDropdown from 'client/components/input-form/dropdown';
-import renderTextarea from 'client/components/input-form/textarea';
+import { required, maxLength255 } from "../../regexValidationService";
+import renderDropdown from "../input-form/dropdown";
+import renderTextarea from "../input-form/textarea";
 import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from './container';
-import './index.scss';
+import { mapStateToProps, mapDispatchToProps } from "./container";
+import "./index.scss";
 
 class PaymentPropertyForm extends Component {
 

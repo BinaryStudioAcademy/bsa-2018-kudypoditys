@@ -1,4 +1,4 @@
-import formatNumber from 'client/helpers/formatNumber'
+import formatNumber from "../../helpers/formatNumber";
 
 describe("validate", () => {
     it("should return proper string with thousand", () => {

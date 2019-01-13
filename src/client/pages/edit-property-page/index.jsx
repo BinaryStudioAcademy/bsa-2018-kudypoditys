@@ -1,11 +1,9 @@
 import React, { Fragment, Component } from "react";
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from "./container";
-import PropertyForm from "client/components/property-form";
+import PropertyForm from "../../components/property-form";
 import "./index.scss";
-// import { Header } from "semantic-ui-react";
-import Header from "client/components/header";
-
+import Header from "../../components/header";
 
 export class EditPropertyPage extends Component {
     componentWillMount() {

@@ -1,5 +1,4 @@
-
-import {PAGINATION_UPDATE} from "./actionType";
+import { PAGINATION_UPDATE } from "./actionType";
 
 function paginationReducer(state, action) {
     switch (action.type) {

@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {Form, Input} from 'semantic-ui-react';
-import './index.scss'
+import React from "react";
+import PropTypes from "prop-types";
+import {Form, Input} from "semantic-ui-react";
+import "./index.scss";
 
 
 export default function semanticSelectorFormField({input, type, label, placeholder, meta: {touched, error, warning}, as: As = Input, ...props}) {

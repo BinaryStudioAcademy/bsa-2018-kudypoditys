@@ -1,5 +1,5 @@
-import { GET_MEALS } from './actionTypes';
+import { GET_MEALS } from "./actionTypes";
 
 export const mealsGet = () => ({
-  type: GET_MEALS
+	type: GET_MEALS
 });

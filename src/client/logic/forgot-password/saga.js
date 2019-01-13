@@ -1,11 +1,11 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import {
   SEND_RESET_PASSWORD_EMAIL,
   SEND_RESET_PASSWORD_EMAIL_FAILED,
   SEND_RESET_PASSWORD_EMAIL_SUCCESS
-} from './actionTypes';
-import authService from 'client/services/authService';
-import { modalShow } from 'client/logic/simple-modal/actions';
+} from "./actionTypes";
+import authService from '../../services/authService';
+import { modalShow } from '../simple-modal/actions';
 
 function* sendResetPasswordEmail(action) {
   try {

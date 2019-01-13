@@ -9,7 +9,7 @@ import {
 } from "semantic-ui-react";
 import "./index.scss";
 import { PropertyItem } from "./propertyItem";
-import history from "client/history";
+import history from "../../history";
 import { PropertyPage } from "./property-page";
 
 export class ReviewsTab extends React.Component {

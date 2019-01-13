@@ -1,10 +1,10 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import {
   GET_FACILITIES,
   GET_FACILITIES_FAILED,
   GET_FACILITIES_SUCCESS
-} from './actionTypes';
-import facilityService from 'client/services/facilityService';
+} from "./actionTypes";
+import facilityService from "../../services/facilityService";
 
 function* getFacilities() {
   try {

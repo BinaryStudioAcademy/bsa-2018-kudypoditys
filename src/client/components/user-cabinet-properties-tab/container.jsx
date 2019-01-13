@@ -3,7 +3,7 @@ import {
     chooseProperty,
     unchooseProperty,
     cancelBooking
-} from "client/logic/user-cabinet-properties-tab/actions";
+} from "../../logic/user-cabinet-properties-tab/actions";
 
 export function mapStateToProps(state) {
     const { userCabinetProperties, userCabinet } = state;

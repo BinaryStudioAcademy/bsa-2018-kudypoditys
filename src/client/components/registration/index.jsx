@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Header } from "semantic-ui-react";
-import "client/components/registration/index.scss";
+import "../registration/index.scss";
 
 import Registrationform from "./form";
 import { connect } from "react-redux";

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import Checkbox from './Checkbox';
-import {bedTypes} from './filters'
+import React, { Component } from "react";
+import Checkbox from "./Checkbox";
+import { bedTypes } from "./filters";
 
 class cbtest extends Component {
     componentWillMount = () => {

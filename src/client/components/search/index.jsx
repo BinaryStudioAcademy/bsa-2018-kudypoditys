@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import {
     Input,
     Button,
@@ -12,15 +12,15 @@ import {
     Image
 } from "semantic-ui-react";
 import "react-dates/initialize";
-import {DateRangePicker} from "react-dates";
+import { DateRangePicker } from "react-dates";
 
 import "react-dates/lib/css/_datepicker.css";
 import axios from "axios";
-import {mapStateToProps, mapDispatchToProps} from "./container";
+import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
-import history from "client/history";
+import history from "../../history";
 import queryString from "query-string";
-import {SERVER_HOST} from "../../helpers/config";
+import { SERVER_HOST } from "../../helpers/config";
 
 export class MainSearch extends React.Component {
     handleSubmit = () => {

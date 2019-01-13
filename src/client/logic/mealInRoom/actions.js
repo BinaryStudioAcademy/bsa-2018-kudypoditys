@@ -1,4 +1,4 @@
-import { GET_MEALS_IN_ROOM , CREATE_MEALS_IN_ROOM } from './actionTypes';
+import { GET_MEALS_IN_ROOM , CREATE_MEALS_IN_ROOM } from "./actionTypes";
 
 export const mealsInRoomGet = () => ({
   type: GET_MEALS_IN_ROOM

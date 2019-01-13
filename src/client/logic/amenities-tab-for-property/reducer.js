@@ -1,4 +1,4 @@
-import {AMENITIES_TAB_UPDATE} from "./actionTypes";
+import { AMENITIES_TAB_UPDATE } from "./actionTypes";
 
 
 export default function amenitiesTabReducer(state = {}, action) {

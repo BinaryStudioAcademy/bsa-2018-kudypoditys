@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Modal, Button } from 'semantic-ui-react';
-import { mapDispatchToProps, mapStateToProps } from './container';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Modal, Button } from "semantic-ui-react";
+import { mapDispatchToProps, mapStateToProps } from "./container";
 
 class SimpleModal extends Component {
   onButtonClick = (options) => {

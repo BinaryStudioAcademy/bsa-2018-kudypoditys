@@ -1,4 +1,4 @@
-import { RESET_PASSWORD, SAVE_URL_QUERY } from './actionTypes';
+import { RESET_PASSWORD, SAVE_URL_QUERY } from "./actionTypes";
 
 export const passwordReset = (payload) => {
     return {

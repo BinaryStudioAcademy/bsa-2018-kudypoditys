@@ -1,6 +1,5 @@
-import {SERVICES_TAB_UPDATE} from "./actionTypes";
-import defaultState from "client/logic/defaultState";
-
+import { SERVICES_TAB_UPDATE } from "./actionTypes";
+import defaultState from "../defaultState";
 
 export default function servicesTabReducer(state = defaultState.propertyServicesTab, action,) {
     switch (action.type) {

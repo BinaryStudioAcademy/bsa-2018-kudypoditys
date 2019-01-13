@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import "./index.scss";
 import { Banner } from "./item";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-import history from "client/history";
+import history from "../../history";
 import moment from "moment";
 import _ from "lodash"
 

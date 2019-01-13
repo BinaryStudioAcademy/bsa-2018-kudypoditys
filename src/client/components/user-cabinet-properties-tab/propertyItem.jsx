@@ -12,7 +12,7 @@ import {
 import "./index.scss";
 import BasicMapWidget from "../basic-map-widget";
 import Modal from "../modal";
-import history from "client/history";
+import history from "../../history";
 
 export class PropertyItem extends React.Component {
     handleRedirectToDetails = () => {

@@ -1,4 +1,4 @@
-import defaultState from "client/logic/defaultState";
+import defaultState from "../defaultState";
 import { SEARCH_UPDATE, SEARCH_SUBMIT_SUCCESS, SEARCH_SUBMIT_FAILED,CLEAR_SEARCH_PAGE } from "./actionTypes";
 
 function searchReducer(state = defaultState.search, action) {

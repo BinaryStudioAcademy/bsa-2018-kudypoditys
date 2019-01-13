@@ -1,6 +1,7 @@
-import { POLICES_TAB_UPDATE } from "./actionTypes";
-import { CHECKIN_OUT_UPDATE } from "./actionTypes";
-
+import { 
+    POLICES_TAB_UPDATE,
+    CHECKIN_OUT_UPDATE 
+} from "./actionTypes";
 
 export default function propertySubmitReducer(state = {}, action) {
     switch (action.type) {

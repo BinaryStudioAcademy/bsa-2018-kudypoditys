@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Button, Form, Icon } from "semantic-ui-react";
-import { required } from 'client/regexValidationService';
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { required } from "../../regexValidationService";
+import { Field, FieldArray, reduxForm } from "redux-form";
 
-import MealsInRoomFields from './meals-in-room-fields';
-import BedInRoomsFields from './bed-in-rooms-fields';
+import MealsInRoomFields from "./meals-in-room-fields";
+import BedInRoomsFields from "./bed-in-rooms-fields";
 
-import renderField from '../input-form/renderField';
-import renderTextarea from '../input-form/textarea';
-import renderDropdown from '../input-form/dropdown';
+import renderField from "../input-form/renderField";
+import renderTextarea from "../input-form/textarea";
+import renderDropdown from "../input-form/dropdown";
 
 class RoomForm extends Component {
   render() {

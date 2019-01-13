@@ -1,6 +1,5 @@
 import React from "react";
 import { Modal } from "semantic-ui-react";
-
 import "./index.scss";
 
 export default class ModalComponent extends React.Component {

@@ -1,4 +1,4 @@
-import { GET_CURRENCIES, CHANGE_CURRENCY } from './actionTypes';
+import { GET_CURRENCIES, CHANGE_CURRENCY } from "./actionTypes";
 
 export const currenciesGet = () => ({
   type: GET_CURRENCIES

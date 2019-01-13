@@ -1,6 +1,6 @@
 import {
     PROPERTY_UPDATE
-} from './actionTypes';
+} from "./actionTypes";
 
 export function propertyUpdate(payload) {
     return {

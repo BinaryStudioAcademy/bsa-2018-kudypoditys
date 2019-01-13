@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Message } from 'semantic-ui-react';
+import React, { Component } from "react";
+import { Message } from "semantic-ui-react";
 
 export default class MessageBox extends Component {
   render() {

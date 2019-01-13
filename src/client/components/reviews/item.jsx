@@ -6,7 +6,6 @@ import {
     Label
 } from "semantic-ui-react";
 import "./index.scss";
-
 import defaultUserPic from "./img/default_avatar.png";
 import anonPic from "./img/anon.jpg";
 

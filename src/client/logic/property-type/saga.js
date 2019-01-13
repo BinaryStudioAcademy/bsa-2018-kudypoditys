@@ -1,10 +1,10 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import {
   GET_PROPERTY_TYPES,
   GET_PROPERTY_TYPES_SUCCESS,
   GET_PROPERTY_TYPES_FAILED,
-} from './actionTypes';
-import propertyTypeService from 'client/services/propertyTypeService';
+} from "./actionTypes";
+import propertyTypeService from "../../services/propertyTypeService";
 
 function* getPropertyTypes() {
   try {

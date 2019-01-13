@@ -1,6 +1,5 @@
-import defaultState from 'client/logic/defaultState';
-import {PROPERTY_PHOTO_UPDATE} from "./actionTypes";
-
+import defaultState from "../defaultState";
+import { PROPERTY_PHOTO_UPDATE } from "./actionTypes";
 
 function propertyPhotoReducer(state = defaultState.images, action) {
     switch (action.type) {
