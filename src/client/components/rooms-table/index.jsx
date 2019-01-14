@@ -4,7 +4,7 @@ import { Icon, Table ,Popup} from "semantic-ui-react";
 import QuantityPicker from "client/components/quantity-picker";
 import _ from "lodash";
 import {
-    convertCurrencyByName,
+    convert,
     titleToCode
 } from "client/helpers/convertCurrency";
 import Modal from "client/components/modal";
@@ -19,6 +19,7 @@ export const getIcons = number =>
     _.times(number, index => <Icon key={index} name="user" />);
 
 export class RoomsTable extends React.Component {
+
     componentDidMount() {}
 
     componentDidUpdate() {}
@@ -56,29 +57,17 @@ export class RoomsTable extends React.Component {
         if (!this.props || !this.props.rooms) return null;
         const {
             rooms,
-            roomsZ,
             user,
             property,
             currency,
             checkIn,
             checkOut
         } = this.props;
-        rooms.forEach(room => {
-            if (Array.isArray(roomsZ)) {
-                const roomZ = roomsZ.find(roomZ => roomZ.id === room.id);
-                //It can invoke bugs.
-                if(roomZ){
-                    room.available = roomZ.available;
-                    room.lastReservation = roomZ.lastReservation;
-                }
-            }
-        });
         const { currency: propCurrency } = property;
         let bookButton = false;
         if (user) bookButton = true;
 
-        const priceFunc = price =>
-            convertCurrencyByName(propCurrency.code, price, currency.code);
+        const priceFunc = price => convert(propCurrency.code, price, currency.code);
         const currencySymbol = titleToCode.get(currency.code);
         const daysStaying = getDaysDifference(checkIn, checkOut);
         let roomRow = null;
@@ -90,7 +79,7 @@ export class RoomsTable extends React.Component {
                 );
                 let priceForOneDay = priceFunc(room.price);
                 let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
-                const totalCheck = (totalPrice * room.selectedAmount).toFixed(1);
+                // const totalCheck = (totalPrice * room.selectedAmount).toFixed(1);
                 const soldOutDaysAgo = room.lastReservation ? room.lastReservation.bookedDaysAgo : null;
                 const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null; 
                 return ([
@@ -172,9 +161,6 @@ export class RoomsTable extends React.Component {
                                     <Modal
                                         trigger={
                                             <div>
-                                                <div className="room-total-check">
-                                                    { totalCheck !== 'NaN' ? totalCheck + currencySymbol : '' }
-                                                </div>
                                                 <div
                                                     className="book-btn"
                                                     style={{
@@ -187,6 +173,7 @@ export class RoomsTable extends React.Component {
                                                     {/*TODO: Use there Semantic button*/}
                                                     {room.available ? (
                                                         <button
+                                                            className="book-btn"
                                                             disabled={!room.selectedAmount}
                                                             style={{
                                                                 height: "100%"

@@ -45,8 +45,8 @@ class SearchPage extends React.Component {
     componentDidMount = () => {
     };
 
-    listItemsRender = () =>
-        this.state.properties.map(property => (
+    listItemsRender = () => {
+        return this.state.properties.map(property => (
             <PropertyListItem
                 key={property.id}
                 propertyItemData={property}
@@ -57,6 +57,7 @@ class SearchPage extends React.Component {
                 itemIndex={this.state.properties.indexOf(property)}
             />
         ));
+    }
     
 
     handleSearchResults = searchData => {
@@ -233,7 +234,7 @@ class SearchPage extends React.Component {
                                             style={{ marginTop: 20 }}
                                         >
                                             <MapGlobalWidget
-                                                properties={this.state.mapProp}
+                                                properties={this.state.properties}
                                                 startPosition={
                                                     this.state.mapProp.length
                                                         ? {
