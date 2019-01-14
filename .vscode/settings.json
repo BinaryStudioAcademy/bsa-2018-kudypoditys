@@ -1,2 +1,5 @@
 {
+    "autoimport.doubleQuotes": true,
+
+    "autoimport.filesToScan": "*.{js,jsx}"
 }
