@@ -18,6 +18,7 @@ function* getProperties(action) {
 
     try {
         const responses = yield all(urls.map(u => call(fetch, u)));
+        console.log(yield responses[0].json());
         const cities = yield all(responses.map(r => r.json()));
         yield put({
             type: CITY_INFOS_GET_SUCCESS,

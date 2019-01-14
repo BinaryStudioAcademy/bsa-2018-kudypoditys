@@ -7,7 +7,7 @@ import {
     convert,
     titleToCode
 } from "../../helpers/convertCurrency";
-import Modal from "../components/modal";
+import Modal from "../modal";
 import BookingForm from "../booking-form";
 import connect from "react-redux/es/connect/connect";
 import { mapDispatchToProps, mapStateToProps } from "./container";
