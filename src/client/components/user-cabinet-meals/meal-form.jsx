@@ -27,12 +27,15 @@ export class MealForm extends Component {
     }
 
     setInitialValues(room){
+
         let items = room.mealInRooms
             .map(x => Object.assign({
                 id : x.id,
-                name : {name : x.meal.name},
-                type : {name : x.mealType.name},
-                price : x.price
+                name : { name : x.meal.name },
+                type : { name : x.mealType.name },
+                price : x.price,
+                mealTypeId : x.mealTypeId,
+                mealId : x.mealId
             }));
 
             this.props.change('mealsInRoom',items);

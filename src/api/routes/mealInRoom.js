@@ -1,6 +1,6 @@
 const express = require('express');
 const mealInRoom = express.Router();
-const mealInRoomService = require('../services/mealInRoomService');
+const mealInRoomService = require('../services/mealInRoom');
 
 mealInRoom.route('/')
 .get((req, res) => {

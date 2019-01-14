@@ -3,6 +3,7 @@ import { Message, Divider , Dropdown } from 'semantic-ui-react';
 import MealForm from './meal-form';
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from './container';
+import _ from 'lodash';
 import "./index.scss";
 
 class MealsTab extends React.Component
@@ -32,16 +33,25 @@ class MealsTab extends React.Component
     handleSubmit(e){
 
         const { id : roomId , mealInRooms : initialMeals } = this.state.selectedRoom;
-        const initialMealsWhichLeft = e.mealsInRoom.filter(x => x.id);
-        const forCreate = e.mealsInRoom.filter(x => !x.id);
-        const forDelete = initialMeals.filter(x => !initialMealsWhichLeft.map(x => x.id).includes(x.id));
+
+        const [initialMealsWhichLeft, forCreate] = _.partition(e.mealsInRoom, x => x.id);
+
+        const forDelete = initialMeals
+            .filter(x => !initialMealsWhichLeft.map(x => x.id).includes(x.id))
+            .map(x => x.id);
 
         let forUpdate = [];
+
         initialMealsWhichLeft
         .forEach(x => {
             let initialItem = initialMeals.find(item => item.id === x.id);
-            if(String(initialItem.price) !== String(x.price) || initialItem.mealType.name !== x.type.name || initialItem.meal.name !== x.name.name)
+            if (
+                String(initialItem.price) !== String(x.price)
+                || initialItem.mealType.name !== x.type.name
+                || initialItem.meal.name !== x.name.name
+            ) {
                 forUpdate = forUpdate.concat([x]);
+            }
         });
 
         this.props.updateRoomMeals({ forCreate, forDelete, forUpdate, roomId });
