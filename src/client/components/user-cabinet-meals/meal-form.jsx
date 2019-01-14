@@ -12,8 +12,6 @@ export class MealForm extends Component {
     state = { roomId : 0}
 
     componentWillMount(){
-        this.props.getMeals();
-        this.props.getMealTypes();
         this.setInitialValues(this.props.room);
     }
 
@@ -31,8 +29,8 @@ export class MealForm extends Component {
         let items = room.mealInRooms
             .map(x => Object.assign({
                 id : x.id,
-                name : { name : x.meal.name },
-                type : { name : x.mealType.name },
+                name : { name : x.meal ? x.meal.name : x.name.name},
+                type : { name : x.mealType ? x.mealType.name : x.type.name },
                 price : x.price,
                 mealTypeId : x.mealTypeId,
                 mealId : x.mealId

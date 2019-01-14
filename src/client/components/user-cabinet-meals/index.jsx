@@ -1,5 +1,5 @@
 import  React, { Fragment } from "react";
-import { Message, Divider , Dropdown } from 'semantic-ui-react';
+import { Message, Divider, Dropdown, Modal, Button, Icon } from 'semantic-ui-react';
 import MealForm from './meal-form';
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from './container';
@@ -10,8 +10,17 @@ class MealsTab extends React.Component
 {
     constructor(props) {
         super(props);
-        this.state = { selectedRoom: this.props.rooms[0]};
+        this.state = { selectedRoom: this.props.rooms[0], showMessage : false };
     }
+
+    componentWillMount(){
+        this.props.getMeals();
+        this.props.getMealTypes();
+    }
+
+    handleOpen = () => this.setState({ showMessage: true })
+
+    handleClose = () => this.setState({ showMessage: false })
 
     getRoomsOptions() {
         const { rooms } = this.props;
@@ -54,10 +63,24 @@ class MealsTab extends React.Component
             }
         });
 
-        this.props.updateRoomMeals({ forCreate, forDelete, forUpdate, roomId });
+        this.props.updateRoomMeals({
+                forCreate,
+                forDelete,
+                forUpdate,
+                roomId,
+                extra : {
+                    initialMealsWhichLeft,
+                    meals : this.props.meals,
+                    mealTypes: this.props.mealTypes }
+                });
+
+        this.handleOpen();
     }
 
     render(){
+
+        const { meals, mealTypes } = this.props;
+
         return (
             <Fragment>
                 <Message info content="There you can manage meals in rooms." />
@@ -76,8 +99,23 @@ class MealsTab extends React.Component
                         className="meal-form-container"
                         roomId={this.state.selectedRoom.id}
                         onSubmit={this.handleSubmit.bind(this)}
-                        room={this.state.selectedRoom}/>
+                        room={this.state.selectedRoom}
+                        meals={meals}
+                        mealTypes={mealTypes}/>
                 </div>
+                <Modal
+                    open={this.state.showMessage}
+                    onClose={this.handleClose}
+                    size='mini'>
+                    <Modal.Content>
+                        <h3>Meals successfully updated!</h3>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button color='green' onClick={this.handleClose}>
+                            <Icon name='checkmark' /> Got it
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
             </Fragment>
             );
     }

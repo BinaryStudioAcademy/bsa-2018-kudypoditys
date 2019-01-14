@@ -32,7 +32,7 @@ class Repository {
     }
 
     insertMany(items) {
-        return this.model.bulkCreate(items);
+        return this.model.bulkCreate(items, { returning : true });
     }
 
     deleteMany(ids){

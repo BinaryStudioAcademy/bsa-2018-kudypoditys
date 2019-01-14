@@ -23,13 +23,25 @@ function* getUserPropertiesInfo(action) {
 
 function* updateMealsInPropertyRoom(action) {
     try {
+        const initialValues = action.payload.extra.initialMealsWhichLeft;
+        const { meals : mealsList, mealTypes } = action.payload.extra;
+        const requestData = Object.assign({}, action.payload, {extra: undefined});
+
         const meals = yield call(
-            mealInRoomService.update, action.payload
+            mealInRoomService.update, requestData
         );
+
+        const newItemsWithMappedProps = yield meals
+            .map(x => Object.assign({}, x,
+                {
+                    name : {name : mealsList.find(meal => meal.id === x.mealId).name},
+                    type : {name : mealTypes.find(meal => meal.id === x.mealTypeId).name}
+                }));
+
         yield put({
             type: actionTypes.UPDATE_MEALS_IN_PROPERTY_ROOM_SUCCESS,
             payload: {
-                meals,
+                meals : initialValues.concat(newItemsWithMappedProps),
                 roomId : action.payload.roomId
             }
         });

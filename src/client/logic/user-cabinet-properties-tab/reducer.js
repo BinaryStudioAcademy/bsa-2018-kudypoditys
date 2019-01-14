@@ -38,7 +38,7 @@ export default function userCabinetPropertiesReducer(
                             if (state.activeProperty.rooms[i].id === action.payload.roomId) {
                                 return {
                                     ...r,
-                                    mealsInRoom: action.payload.meals
+                                    mealInRooms: action.payload.meals
                                 }
                             }
                             return r;
