@@ -1,4 +1,4 @@
-import defaultState from 'client/logic/defaultState';
+import defaultState from '../../logic/defaultState';
 import { convert } from '../../helpers/convertCurrency';
 import { CITY_INFOS_GET_SUCCESS } from './actionType';
 import { CURENCY_SELECT } from '../header/actionTypes';
@@ -24,17 +24,14 @@ function cityInfosReducer(state = defaultState.cityInfos, action) {
             const baseCurrency = '$',
                 currencyCode = currency.code || '$';
 
-            const cityInfos = {
-                cities: action.payload.map(city => {
-                    return ({
-                    ...city,
-                    avgPrice: convert(baseCurrency, city.avgPrice, currencyCode)
-                })})
-            };
+            const cities = action.payload.map(city => ({
+                ...city,
+                avgPrice: convert(baseCurrency, city.avgPrice, currencyCode)
+            }));
 
             return {
                 ...state,
-                ...cityInfos,
+                cities
             };
         }
 

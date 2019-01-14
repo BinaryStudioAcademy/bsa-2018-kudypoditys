@@ -7,7 +7,8 @@ import { Banner } from "./item";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import history from "client/history";
 import moment from "moment";
-import _ from "lodash"
+import _ from "lodash";
+import _fp from "lodash/fp";
 
 export class BannerList extends Component {
 
@@ -37,14 +38,17 @@ export class BannerList extends Component {
 
     render() {
         const quantityCards = 3;
-        const { cityInfos, currency} = this.props;
-        cityInfos.cities = this.addGridParametersToCities(cityInfos.cities);
-        cityInfos.cities = _.chunk(cityInfos.cities, quantityCards);
+        const { cityInfos, currency } = this.props;
+        const citiesRows = _fp.flow(
+            this.addGridParametersToCities,
+            _fp.chunk(quantityCards)
+        )(cityInfos.cities);
+
         return (
             <div className='container'>
-            { _.head(cityInfos.cities) ? (
+                {_.head(citiesRows) ? (
                 <Grid>
-                    { _.map(cityInfos.cities, (cities, index) => (
+                        {_.map(citiesRows, (cities, index) => (
                         <Grid.Row key={index} columns='equal'>
                             { _.map(cities, city => (
                                 <Grid.Column width={city.width} key={city.id}>

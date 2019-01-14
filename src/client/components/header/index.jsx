@@ -199,8 +199,11 @@ export class MainHeader extends Component {
 MainHeader.propTypes = {
     currencies: PropTypes.arrayOf(
         PropTypes.shape({
-            text: PropTypes.string.isRequired,
-            value: PropTypes.number.isRequired
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+            code: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired,
+            codeTitle: PropTypes.string.isRequired
         })
     ).isRequired,
     currentUser: PropTypes.shape({
