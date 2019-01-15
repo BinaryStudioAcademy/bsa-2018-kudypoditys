@@ -1,6 +1,6 @@
 import {storiesOf} from "@storybook/react";
 import React from "react";
-import {PropertyDescription} from 'client/components/property-description';
+import {PropertyDescription} from 'client/components/property/property-description';
 
 let propertyItemData = {
     description: 'Elegant rooms with free Wi-Fi and flat-screen TVs are offered at City Club, located a 10-minute walk from Kharkiv-Chervonozavods\'kyi Train Station. Free parking and a spa are offered.\n' +

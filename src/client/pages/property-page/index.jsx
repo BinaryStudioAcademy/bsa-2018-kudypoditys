@@ -13,13 +13,13 @@ import {
 } from "semantic-ui-react";
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from "./container";
-import AppHeader from "client/components/header";
-import AvailabilityPanel from "client/components/availability-panel";
-import Slider from "client/components/slider";
-import PropertyDescription from "client/components/property-description";
-import {PropertySummary} from "client/components/property-summary";
-import {NavigationBar} from "client/components/navigation-bar";
-import BasicMapWidget from "client/components/basic-map-widget";
+import AppHeader from "../../components/header";
+import AvailabilityPanel from "../../components/availability-panel";
+import Slider from "../../components/slider";
+import PropertyDescription from "../../components/property/property-description";
+import {PropertySummary} from "../../components/property/property-summary";
+import {NavigationBar} from "../../components/navigation-bar";
+import BasicMapWidget from "../../components/map/basic-map-widget";
 import Modal from "../../components/modal";
 import ReactDOM from "react-dom";
 import HouseRules from "./rules";
@@ -28,9 +28,9 @@ import Reviews from "../../components/reviews";
 import {
     getGroupedArray,
     getAvgFromArray
-} from "client/helpers/avgReviewRating";
-import {PropertyCommentsList} from "client/components/property-comments-list";
-import RoomsTable from "client/components/rooms-table";
+} from "../../helpers/avgReviewRating";
+import {PropertyCommentsList} from "../../components/property/property-comments-list";
+import RoomsTable from "../../components/rooms-table";
 import {socket} from '../../logic/socket';
 import * as moment from 'moment';
 
@@ -144,7 +144,7 @@ export class PropertyPage extends React.Component {
             const bookedTime = moment().diff(property.lastBooked, 'minutes');
             lastBookedTime = bookedTime !== 0 ? bookedTime : 1;
         }
-              
+
         return <div className="mock">
                 <AppHeader showSearch={true} handleSearchResults={this.handleSearchResults} onDestinationChange={this.onDestinationChange} onCheckInChange={this.onCheckInChange} onCheckOutChange={this.onCheckOutChange} />
 

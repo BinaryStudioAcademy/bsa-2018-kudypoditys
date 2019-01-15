@@ -13,7 +13,7 @@ import LoginPage from "client/pages/login-page";
 import SearchPage from "client/pages/search-page";
 import { NotFoundPage } from "client/pages/404-page";
 
-import UserCabinet from "client/pages/user-cabinet";
+import UserCabinet from "../user-cabinet/user-cabinet-component";
 import AuthHOC from "client/components/auth-hoc";
 import VerifyEmail from "client/components/verify-email";
 import ForgotPasswordPage from "client/pages/forgot-password-page";
