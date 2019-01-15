@@ -1,4 +1,4 @@
-import { paginationUpdate } from "../../logic/pagination/actions";
+import { paginationUpdate } from "../../../logic/pagination/actions";
 
 export function mapStateToProps(state) {
     const { search } = state;

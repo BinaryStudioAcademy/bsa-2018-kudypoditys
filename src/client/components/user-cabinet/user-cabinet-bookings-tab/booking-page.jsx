@@ -8,7 +8,7 @@ import {
     Confirm
 } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { Slider } from "../../slider";
+import { Slider } from "../../common/slider";
 import moment from "moment";
 import "./booking-page.scss";
 import {

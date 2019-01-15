@@ -1,4 +1,4 @@
-import { getCurrentUser } from "../../logic/login/actions";
+import { getCurrentUser } from "../../../logic/login/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { currentUser } = state.header;

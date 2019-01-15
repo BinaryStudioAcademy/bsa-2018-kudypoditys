@@ -4,7 +4,7 @@ import {Grid, Dropdown} from "semantic-ui-react";
 import PropTypes from "prop-types";
 import history from "../../history";
 import MainSearch from "../../components/search";
-import AuthHOC from "../../components/auth-hoc";
+import AuthHOC from "../../components/common/auth-hoc";
 import UserPopup from "../../components/header/user-popup";
 import "./index.scss";
 import {mapStateToProps, mapDispatchToProps} from "./container";

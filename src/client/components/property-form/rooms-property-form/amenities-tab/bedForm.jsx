@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import {Button, Card, Form, Input, Label} from "semantic-ui-react";
 import {Field, formValueSelector} from 'redux-form';
-import semanticSelectorFormField from 'client/components/dropdown-form/semanticSelectorForm'
+import semanticSelectorFormField from './dropdown-form/semanticSelectorForm'
 import {required} from 'client/regexValidationService';
 import {connect} from 'react-redux'
 

@@ -1,13 +1,13 @@
 import React from "react";
 import "./index.scss";
 import { Icon, Table ,Popup} from "semantic-ui-react";
-import QuantityPicker from "../../../components/quantity-picker";
+import QuantityPicker from "../quantity-picker";
 import _ from "lodash";
 import {
     convert,
     titleToCode
 } from "../../../helpers/convertCurrency";
-import Modal from "../../../components/modal";
+import Modal from "../../../components/common/modal";
 import BookingForm from "../booking-form";
 import connect from "react-redux/es/connect/connect";
 import { mapDispatchToProps, mapStateToProps } from "./container";

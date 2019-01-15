@@ -1,12 +1,12 @@
 import React from "react";
 import "./index.scss";
 import { Container, Segment, Icon, Button, Image } from "semantic-ui-react";
-import SearchSummary from "../../components/search-summary";
-import RankingBar from "../../components/ranking-bar";
+import SearchSummary from "../../components/search/search-summary";
+import RankingBar from "../../components/search/ranking-bar";
 import PropertyListItem from "../../components/property/property-list-item";
-import Pagination from "../../components/pagination";
+import Pagination from "../../components/common/pagination";
 import Header from "../../components/header";
-import QuickFilter from "../../components/quick-filter";
+import QuickFilter from "../../components/search/quick-filter";
 import MapGlobalWidget from "../../components/map/map-global-widget";
 import { connect } from "react-redux";
 import { mapStateToProps } from "./container";

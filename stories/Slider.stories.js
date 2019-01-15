@@ -2,7 +2,7 @@ import React from "react";
 
 import {storiesOf} from "@storybook/react";
 
-import Slider from "client/components/slider";
+import Slider from "client/components/common/slider";
 
 const pics = [
     "https://picsum.photos/600/302",

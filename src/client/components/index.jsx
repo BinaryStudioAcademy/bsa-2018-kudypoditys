@@ -2,27 +2,27 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "./container";
 
-import ResetPasswordPage from "client/pages/reset-password-page";
-import RegistrationPage from "client/pages/registration-page";
-import AddPropertyPage from "client/pages/add-property-page";
-import EditPropertyPage from "client/pages/edit-property-page";
+import ResetPasswordPage from "../pages/reset-password-page";
+import RegistrationPage from "../pages/registration-page";
+import AddPropertyPage from "../pages/add-property-page";
+import EditPropertyPage from "../pages/edit-property-page";
 import { Route, Switch } from "react-router-dom";
-import { HomePage } from "client/pages/home-page";
-import PropertyPage from "client/pages/property-page";
-import LoginPage from "client/pages/login-page";
-import SearchPage from "client/pages/search-page";
-import { NotFoundPage } from "client/pages/404-page";
+import { HomePage } from "../pages/home-page";
+import PropertyPage from "../pages/property-page";
+import LoginPage from "../pages/login-page";
+import SearchPage from "../pages/search-page";
+import { NotFoundPage } from "../pages/404-page";
 
 import UserCabinet from "./user-cabinet/user-cabinet-component";
-import AuthHOC from "client/components/auth-hoc";
-import VerifyEmail from "client/components/verify-email";
-import ForgotPasswordPage from "client/pages/forgot-password-page";
+import AuthHOC from "../components/common/auth-hoc";
+import VerifyEmail from "../components/common/verify-email";
+import ForgotPasswordPage from "../pages/forgot-password-page";
 
-import SimpleModal from 'client/components/simple-modal';
-import ErrorBoundary from "client/components/error-boundary-handler";
+import SimpleModal from '../components/common/simple-modal';
+import ErrorBoundary from "../components/common/error-boundary-handler";
 import { Provider } from "react-redux";
 import { Router } from "react-router-dom";
-import history from "client/history";
+import history from "../history";
 
 export class Root extends Component {
     componentWillMount() {
