@@ -1,5 +1,5 @@
 import React from "react";
-import MapView from "../map-view";
+import MapView from "../map/map-view";
 
 class BasicMapWidget extends React.Component {
     render() {

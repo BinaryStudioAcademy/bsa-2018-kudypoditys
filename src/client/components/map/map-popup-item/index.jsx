@@ -2,38 +2,40 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Card, Icon, Image } from "semantic-ui-react";
 import PropTypes from "prop-types";
-import history from 'client/history';
-import { convert } from "../../helpers/convertCurrency";
-export class MapPropertyItem extends Component {
-    nameClicked = () => {
-        history.push(`/property/${this.props.propertyId}`)
-    };
+import { convert } from "../../../helpers/convertCurrency";
+
+
+export class MapPopupItem extends Component {
 
     render() {
-        const { currency, propertyCurrency } = this.props;
+        const propertyCurrency = this.props.propertyCurrency;
+        const currency = this.props.currency;
 
         const price = convert(propertyCurrency, this.props.price, currency.code);
 
+
         return (
+
+
             <Card
                 style={{
                     minWidth: "100px",
-                    margin: "3%"
+
                 }}
             >
                 <Image centered src={this.props.imageSrc} size="medium" />
-                <Icon
-                    style={{
-                        position: "absolute",
-                        right: "1%",
-                        top: "1%",
-                        textAlign: "right",
-                        color: "white"
-                    }}
-                    name="close"
-                    size="large"
-                    onClick={this.props.closeClicked}
-                />
+                {/*<Icon*/}
+                {/*style={{*/}
+                {/*position: "absolute",*/}
+                {/*right: "1%",*/}
+                {/*top: "1%",*/}
+                {/*textAlign: "right",*/}
+                {/*color: "white"*/}
+                {/*}}*/}
+                {/*name="close"*/}
+                {/*size="large"*/}
+                {/*onClick={this.props.closeClicked}*/}
+                {/*/>*/}
                 <Card.Content>
                     <Card.Header style={{ textAlight: "center" }}>
                         <a tabIndex="0" onClick={this.nameClicked}>
@@ -47,9 +49,8 @@ export class MapPropertyItem extends Component {
                     </Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
-                    <a style={{ float: "right" }}>
-                        <Icon name="money" />
-                        {propertyCurrency} {price}
+                    <a style={{ float: "right", border: "none" }}>
+                        {currency.code} {price}
                     </a>
                     <a style={{ float: "left" }}>
                         <Icon name="star" />
@@ -57,18 +58,17 @@ export class MapPropertyItem extends Component {
                     </a>
                 </Card.Content>
             </Card>
+
         );
     }
 }
 
-MapPropertyItem.propTypes = {
-    imageSrc: PropTypes.string,
+MapPopupItem.propTypes = {
     propertyName: PropTypes.string,
-    propertyAddress: PropTypes.string,
     price: PropTypes.number,
     rating: PropTypes.string
 };
 
 export default connect((state) => ({
     currency: state.header.selectedCurrency
-}))(MapPropertyItem);
+}))(MapPopupItem);

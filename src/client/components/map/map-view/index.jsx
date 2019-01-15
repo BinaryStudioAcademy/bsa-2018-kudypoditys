@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 import { connect } from 'react-redux';
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import { MAPBOX_TOKEN } from "client/constants";
+import { MAPBOX_TOKEN } from "../../../constants";
 import { Icon, Label } from "semantic-ui-react";
-import MapPropertyItem from "client/components/map-property-item";
+import MapPropertyItem from "../map-property-item";
 import PropTypes from "prop-types";
-import MapPopupItem from "client/components/map-popup-item";
-import { convert } from '../../helpers/convertCurrency';
+import MapPopupItem from "../map-popup-item";
+import { convert } from '../../../helpers/convertCurrency';
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -70,7 +70,7 @@ class MapView extends React.Component {
             }
         });
     };
-    renderPropertyMarker = (property, index) => {     
+    renderPropertyMarker = (property, index) => {
         const firstRoomPrice = property.rooms[0].price;
         const propCurrency = property.currency && property.currency.code;
         const currency = this.props.currency.code;

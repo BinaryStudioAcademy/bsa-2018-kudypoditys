@@ -16,7 +16,7 @@ import "./index.scss";
 import PropTypes from "prop-types";
 import { mapStateToProps } from "./container";
 import { connect } from "react-redux";
-import MapWidgetModal from "client/components/map-widget-modal";
+import MapWidgetModal from "../../components/map/map-widget-modal";
 import history from "client/history";
 import {
     getGroupedArray,
@@ -317,12 +317,12 @@ export class PropertyListItem extends React.Component {
                                                     </span>}
                                             content="This is a straight-line distance on the map. Actual travel distance may vary."
                                             basic/>
-                                    {propertyItemData.distanceToMetro && 
+                                    {propertyItemData.distanceToMetro &&
                                     propertyItemData.distanceToMetro <= 900 ?
                                     <Popup  trigger={<span style={{color : "black"}}>
                                                 &nbsp;-&nbsp;
                                                     <span style={{color : "black" , borderBottom : "1px dashed #999" , textDecoration : "none"}}>Metro access</span>
-                                                </span>}  
+                                                </span>}
                                             content={`”${propertyItemData.nearestMetro}” station is within ${propertyItemData.distanceToMetro} metres`}
                                             basic/>
                                     : null}
