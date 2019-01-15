@@ -3,7 +3,7 @@ import "react-dates/initialize";
 
 import "react-dates/lib/css/_datepicker.css";
 import "./index.scss";
-import PropertyComment from "client/components/property-comment";
+import PropertyComment from "../property-comment";
 import {Divider} from "semantic-ui-react";
 
 export class PropertyCommentsList extends React.Component {

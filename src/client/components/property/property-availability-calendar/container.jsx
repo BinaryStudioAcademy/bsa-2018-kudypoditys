@@ -3,7 +3,7 @@ import {
     calendarUpdate,
     calendarAdd,
     selectedRoomChange
-} from "client/logic/property-availability-calendar/actions";
+} from "../../../logic/property-availability-calendar/actions";
 
 export function mapStateToProps(state) {
     const { availabilityCalendar } = state;

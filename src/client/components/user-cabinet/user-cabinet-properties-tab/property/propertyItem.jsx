@@ -10,7 +10,7 @@ import {
     Rating
 } from "semantic-ui-react";
 import "../index.scss";
-import BasicMapWidget from "../../../basic-map-widget";
+import BasicMapWidget from "../../../map/basic-map-widget";
 import Modal from "../../../modal";
 import history from "../../../../history";
 

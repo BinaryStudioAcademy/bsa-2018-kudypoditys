@@ -15,7 +15,7 @@ import {
     getGroupedArray,
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
-import { PropertySummary } from "../../property-summary";
+import { PropertySummary } from "../../property/property-summary";
 import history from "client/history";
 import { convert } from "../../../helpers/convertCurrency";
 

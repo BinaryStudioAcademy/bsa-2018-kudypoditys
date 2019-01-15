@@ -16,15 +16,15 @@ import "./index.scss";
 import PropTypes from "prop-types";
 import { mapStateToProps } from "./container";
 import { connect } from "react-redux";
-import MapWidgetModal from "../../components/map/map-widget-modal";
+import MapWidgetModal from "../../map/map-widget-modal";
 import history from "client/history";
 import {
     getGroupedArray,
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
-import RatingBlock from "../reviews/ratingBlock";
-import { convert } from '../../helpers/convertCurrency';
-import { toUnixTimeSeconds, isWithinLastDay } from '../../helpers/date-helpers';
+import RatingBlock from "../../reviews/ratingBlock";
+import { convert } from '../../../helpers/convertCurrency';
+import { toUnixTimeSeconds, isWithinLastDay } from '../../../helpers/date-helpers';
 import moment from "moment";
 
 export class PropertyListItem extends React.Component {

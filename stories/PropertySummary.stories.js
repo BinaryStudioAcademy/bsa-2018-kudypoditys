@@ -1,5 +1,5 @@
 import {storiesOf} from "@storybook/react";
-import {PropertySummary} from "../src/client/components/property-summary";
+import {PropertySummary} from "../src/client/components/property/property-summary";
 import React from "react";
 
 let propertyItemData = {
