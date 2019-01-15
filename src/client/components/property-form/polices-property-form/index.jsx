@@ -3,7 +3,7 @@ import { Form, Button, Container, Header } from 'semantic-ui-react';
 import { required } from '../../../regexValidationService';
 import { Field, reduxForm } from 'redux-form';
 
-import CheckInCheckOut from '../../../components/checkin-checkout';
+import CheckInCheckOut from './checkin-checkout';
 import renderDropdown from '../../../components/input-form/dropdown';
 
 import { cancelOptions } from './config';
