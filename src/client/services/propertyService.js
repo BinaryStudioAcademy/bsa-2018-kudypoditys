@@ -174,9 +174,9 @@ class PropertyService {
             });
     }
 
-    getUserPropertiesInfo(data) {
+    getUserPropertiesInfo(id) {
         return api
-            .sendRequest(`/api/property/${data.id}/info`, "get")
+            .sendRequest(`/api/property/${id}/info`, "get")
             .then(response => response.data);
     }
     getPropertiesByCity(city) {

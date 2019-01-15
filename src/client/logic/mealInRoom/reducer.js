@@ -1,29 +1,34 @@
 import defaultState from 'client/logic/defaultState';
-import {
-    GET_MEALS_IN_ROOM,
-    CREATE_MEALS_IN_ROOM,
-    GET_MEAL_IN_ROOM_SUCCESS,
-    GET_MEAL_IN_ROOM_FAILED
-} from './actionTypes';
+import * as actionTypes from './actionTypes';
 
-function mealsInRoomReducer(state = defaultState.mealsData, action) {
+function mealsInRoomReducer(state = defaultState.mealsInRoomData, action) {
   switch (action.type) {
-    case GET_MEALS_IN_ROOM:
+    case actionTypes.GET_MEALS_IN_ROOM:
       return {
         ...state,
         isLoading: true
       };
-    case CREATE_MEALS_IN_ROOM:
+    case actionTypes.CREATE_MEALS_IN_ROOM:
       return {
         ...state,
         mealsInRoom : state.mealsInRoom.concat[action.payload]
       }
-    case GET_MEAL_IN_ROOM_SUCCESS:
+    case actionTypes.GET_MEAL_IN_ROOM_SUCCESS:
       return {
         mealsInRoom: action.payload,
         isLoading: false
       };
-    case GET_MEAL_IN_ROOM_FAILED:
+    case actionTypes.UPDATE_MEALS_IN_ROOM_SUCCESS:
+      return {
+        mealsInRoom: action.payload, ///DON`T FORGET TO CHANGE STATE
+        isLoading: false
+      };
+    case actionTypes.UPDATE_MEALS_IN_ROOM_FAILED:
+      return {
+        isLoading: false,
+        error: action.payload,
+      };
+    case actionTypes.GET_MEAL_IN_ROOM_FAILED:
       return {
         isLoading: false,
         error: action.payload,

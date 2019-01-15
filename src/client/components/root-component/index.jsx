@@ -18,6 +18,12 @@ import AuthHOC from "client/components/auth-hoc";
 import VerifyEmail from "client/components/verify-email";
 import ForgotPasswordPage from "client/pages/forgot-password-page";
 
+import SimpleModal from 'client/components/simple-modal';
+import ErrorBoundary from "client/components/error-boundary-handler";
+import { Provider } from "react-redux";
+import { Router } from "react-router-dom";
+import history from "client/history";
+
 export class Root extends Component {
     componentWillMount() {
         this.props.getCurrencies();
@@ -25,36 +31,43 @@ export class Root extends Component {
 
     render() {
         return (
-            <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/signup" component={RegistrationPage} />
-                <Route exact path="/verifyemail" component={VerifyEmail} />
-                <Route exact path="/login" component={LoginPage} />
-                <Route exact path="/resetpassword" component={ResetPasswordPage} />
-                <Route exact path="/forgotpassword" component={ForgotPasswordPage} />
-                <Route path="/search-page" component={SearchPage} />
-                <Route
-                    path="/property/:id/edit"
-                    component={({ match }) => (
-                        <AuthHOC Component={() => <EditPropertyPage match={match} />} />
-                    )}
-                />
-                <Route path="/property/:id" component={PropertyPage} />
-                <Route
-                    path="/add-property/"
-                    component={() => (
-                        <AuthHOC Component={AddPropertyPage} />
-                    )}
-                />
-                <Route path="/404" component={NotFoundPage} />
-                <Route
-                    path="/user-cabinet"
-                    component={() =>
-                        <AuthHOC Component={() => <UserCabinet />} />
-                    }
-                />
-                <Route component={NotFoundPage} />
-            </Switch>
+            <Provider store={this.props.store}>
+                <ErrorBoundary>
+                    <Router history={history}>
+                        <Switch>
+                            <Route exact path="/" component={HomePage} />
+                            <Route exact path="/signup" component={RegistrationPage} />
+                            <Route exact path="/verifyemail" component={VerifyEmail} />
+                            <Route exact path="/login" component={LoginPage} />
+                            <Route exact path="/resetpassword" component={ResetPasswordPage} />
+                            <Route exact path="/forgotpassword" component={ForgotPasswordPage} />
+                            <Route path="/search-page" component={SearchPage} />
+                            <Route
+                                path="/property/:id/edit"
+                                component={({ match }) => (
+                                    <AuthHOC Component={() => <EditPropertyPage match={match} />} />
+                                )}
+                            />
+                            <Route path="/property/:id" component={PropertyPage} />
+                            <Route
+                                path="/add-property/"
+                                component={() => (
+                                    <AuthHOC Component={AddPropertyPage} />
+                                )}
+                            />
+                            <Route path="/404" component={NotFoundPage} />
+                            <Route
+                                path="/user-cabinet"
+                                component={() =>
+                                    <AuthHOC Component={() => <UserCabinet />} />
+                                }
+                            />
+                            <Route component={NotFoundPage} />
+                        </Switch>
+                    </Router>
+                    <SimpleModal />
+                </ErrorBoundary>
+            </Provider>
         );
     };
 }

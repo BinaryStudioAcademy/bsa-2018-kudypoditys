@@ -2,13 +2,21 @@ import {
     GET_CURRENT_USER_INFO,
     CHOOSE_PROPERTY,
     UNCHOOSE_PROPERTY,
-    CANCEL_OWNER_BOOKING
+    CANCEL_OWNER_BOOKING,
+    UPDATE_MEALS_IN_PROPERTY_ROOM
 } from "./actionTypes";
 
-export function getUserpropertiesInfo(id) {
+export function getUserPropertiesInfo(id) {
     return {
         type: GET_CURRENT_USER_INFO,
-        id
+        payload : id
+    };
+}
+
+export function updateMealsInPropertyRoom(payload) {
+    return {
+        type: UPDATE_MEALS_IN_PROPERTY_ROOM,
+        payload
     };
 }
 

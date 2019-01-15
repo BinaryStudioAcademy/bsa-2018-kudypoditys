@@ -1,5 +1,5 @@
 import {
-    getUserpropertiesInfo,
+    getUserPropertiesInfo,
     chooseProperty,
     unchooseProperty,
     cancelBooking
@@ -16,11 +16,15 @@ export function mapStateToProps(state) {
 export function mapDispatchToProps(dispatch) {
     return {
         fetchUserInfo(id) {
-            dispatch(getUserpropertiesInfo(id));
+            if(id){
+                dispatch(getUserPropertiesInfo(id));
+            }
         },
 
         chooseProperty(property) {
-            dispatch(chooseProperty(property));
+            if(property){
+                dispatch(chooseProperty(property));
+            }
         },
 
         unchooseProperty() {

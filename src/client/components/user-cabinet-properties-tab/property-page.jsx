@@ -4,7 +4,7 @@ import { ReviewsTab } from "./reviewsTab";
 import AvailabilityCalendar from "client/components/property-availability-calendar";
 import { BookingsList } from "./bookings-list";
 import { Segment, Icon, Divider } from "semantic-ui-react";
-import { MealsTab } from "../user-cabinet-meals";
+import MealsTab from "../user-cabinet-meals";
 
 export class PropertyPage extends React.Component {
     panes = [
@@ -40,7 +40,7 @@ export class PropertyPage extends React.Component {
             menuItem: "Meals",
             render: () => (
                 <Tab.Pane attached={false}>
-                    <MealsTab />
+                    <MealsTab rooms={this.props.property.rooms}/>
                 </Tab.Pane>
             )
         }

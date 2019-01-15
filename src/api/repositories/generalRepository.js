@@ -32,8 +32,13 @@ class Repository {
     }
 
     insertMany(items) {
-        return this.model.bulkCreate(items);
+        return this.model.bulkCreate(items, { returning : true });
     }
+
+    deleteMany(ids){
+        return this.model.destroy({ where : { id : ids }});
+    }
+
     findByPage(
         page = 0,
         recordsOnPage = 20,

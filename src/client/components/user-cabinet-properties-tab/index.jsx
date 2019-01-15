@@ -38,7 +38,7 @@ export class ReviewsTab extends React.Component {
     };
 
     componentWillMount() {
-        this.props.fetchUserInfo({ id: this.props.user.id });
+        this.props.fetchUserInfo(this.props.user.id);
     }
 
     render() {
@@ -51,9 +51,7 @@ export class ReviewsTab extends React.Component {
                         backToAllProperties={this.backToAllProperties}
                         cancelBooking={value => {
                             this.props.cancelBooking(value);
-                            this.props.fetchUserInfo({
-                                id: this.props.user.id
-                            });
+                            this.props.fetchUserInfo(this.props.user.id);
                         }}
                     />
                 ) : (
