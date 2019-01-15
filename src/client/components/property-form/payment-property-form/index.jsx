@@ -4,10 +4,10 @@ import {
   Container, Header, Icon
 } from "semantic-ui-react";
 import { reduxForm, Field } from "redux-form";
-import { required, maxLength255 } from "client/regexValidationService";
+import { required, maxLength255 } from "../../../regexValidationService";
 
-import renderDropdown from 'client/components/input-form/dropdown';
-import renderTextarea from 'client/components/input-form/textarea';
+import renderDropdown from "../../../components/input-form/dropdown"
+import renderTextarea from '../../../components/input-form/textarea';
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from './container';
 import './index.scss';

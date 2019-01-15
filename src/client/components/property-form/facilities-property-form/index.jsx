@@ -10,6 +10,8 @@ import renderField from 'client/components/input-form/renderField';
 import renderDropdown from 'client/components/input-form/dropdown';
 import renderCheckbox from 'client/components/input-form/checkbox';
 
+import { internetOptions, parkingOptions, parkingTypeOptions, territoryOptions, needToBookOptions } from './staticData';
+
 import { mapDispatchToProps, mapStateToProps } from './container';
 import './index.scss'
 
@@ -56,21 +58,6 @@ class FacilitiesPropertyForm extends Component {
     renderInternetCard() {
         const { hasInternet } = this.props;
 
-        const internetOptions = [
-            {
-                value: 'free',
-                label: 'Yes, for free'
-            },
-            {
-                value: 'paid',
-                label: 'Yes, for aditional fee'
-            },
-            {
-                value: 'absent',
-                label: 'No'
-            }
-        ];
-
         return (
             <Fragment>
                 <Header as='h2' style={{ fontSize: "18px" }} className="required">
@@ -105,63 +92,6 @@ class FacilitiesPropertyForm extends Component {
 
     renderParkingCard() {
         const { hasParking } = this.props;
-
-        const parkingOptions = [
-            {
-                key: 1,
-                value: 'free',
-                text: 'Yes, for free'
-            },
-            {
-                key: 2,
-                value: 'paid',
-                text: 'Yes, but paid'
-            },
-            {
-                key: 3,
-                value: 'absent',
-                text: 'No'
-            }
-        ];
-
-        const parkingTypeOptions = [
-            {
-                key: 1,
-                value: 'true',
-                text: 'Private'
-            },
-            {
-                key: 2,
-                value: 'false',
-                text: 'Public'
-            }
-        ];
-
-        const territoryOptions = [
-            {
-                key: 1,
-                value: 'true',
-                text: 'On Territory'
-            },
-            {
-                key: 2,
-                value: 'false',
-                text: 'Off Territory'
-            }
-        ];
-
-        const needToBookOptions = [
-            {
-                key: 1,
-                value: 'true',
-                text: 'Need to book'
-            },
-            {
-                key: 2,
-                value: 'false',
-                text: 'No need to book'
-            }
-        ];
 
         return (
             <Fragment >
@@ -242,7 +172,7 @@ class FacilitiesPropertyForm extends Component {
                 </Header>
                 <div className="lang-container">
                     <div className='lang-input'>
-                        <Field    
+                        <Field
                             component={renderDropdown}
                             options={languagesOptions}
                             name="languages"
@@ -251,13 +181,13 @@ class FacilitiesPropertyForm extends Component {
                             validate={[required]}
                         />
                     </div>
-                    <Modal 
-                        size={"tiny"} 
+                    <Modal
+                        size={"tiny"}
                         open={this.state.modalOpen}
                         trigger={
                             <div className='lang-btn-outer-container'>
                                 <div className='lang-btn-inner-container'>
-                                    <Button 
+                                    <Button
                                         className='lang-button'
                                         onClick={this.handleOpen}
                                         content={<Icon name='plus' color="white" />}/>
@@ -266,8 +196,8 @@ class FacilitiesPropertyForm extends Component {
                             }>
                         <Modal.Header>Input language name</Modal.Header>
                         <Modal.Content>
-                            <Input  value={this.state.language} 
-                                    onChange={this.handleLanguageChange} 
+                            <Input  value={this.state.language}
+                                    onChange={this.handleLanguageChange}
                                     style={{width : "100%"}}
                                     placeholder="language name..."/>
                         </Modal.Content>
@@ -275,7 +205,7 @@ class FacilitiesPropertyForm extends Component {
                             <Button onClick={this.handleClose} negative>Cancel</Button>
                             <Button type={"button"} onClick={this.handleSubmitLanguageCreate} positive content='Create' />
                         </Modal.Actions>
-                    </Modal>      
+                    </Modal>
                 </div>
                 <div className="meta">
                     Guests should know what languages You know, before booking

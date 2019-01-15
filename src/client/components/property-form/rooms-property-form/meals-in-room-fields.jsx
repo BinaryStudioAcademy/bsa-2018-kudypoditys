@@ -3,10 +3,10 @@ import {Button, List, Divider, Icon, Grid, Label, GridColumn} from "semantic-ui-
 import { required, positiveNumber } from 'client/regexValidationService';
 import { Field } from 'redux-form';
 
-import renderField from '../input-form/renderField';
-import renderDropdown from '../input-form/dropdown';
+import renderField from '../../input-form/renderField';
+import renderDropdown from '../../input-form/dropdown';
 
-class MealsInRoomFields extends Component {
+export class MealsInRoomFields extends Component {
   render() {
     const { fields, meta: { error }, mealOptions, mealTypesOptions } = this.props;
     return (

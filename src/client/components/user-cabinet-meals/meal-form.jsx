@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { FieldArray, reduxForm } from 'redux-form';
-import { mapStateToProps, mapDispatchToProps } from './container';
-import MealsInRoomFields from '../rooms-property-form/meals-in-room-fields'
+import { FieldArray, reduxForm } from "redux-form";
+import { mapStateToProps, mapDispatchToProps } from "./container";
+import MealsInRoomFields from "../property-form/rooms-property-form/meals-in-room-fields";
 import {
     Button,
     Icon,

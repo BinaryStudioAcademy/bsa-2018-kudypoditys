@@ -1,5 +1,5 @@
 import React from "react";
-import BasicInfoPropertyRegistrationForm from '../basic-info-property-registration-form';
+import BasicInfoPropertyRegistrationForm from '../../basic-info-property-registration-form';
 
 export const MenuItems = [
     {

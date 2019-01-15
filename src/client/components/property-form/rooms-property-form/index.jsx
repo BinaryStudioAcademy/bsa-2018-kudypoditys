@@ -4,7 +4,7 @@ import { Label } from "semantic-ui-react";
 import './index.scss';
 import { Header, Button, Form, List, Container } from "semantic-ui-react";
 import { FieldArray, reduxForm } from 'redux-form';
-import { required } from "client/regexValidationService";
+import { required } from "../../../regexValidationService";
 
 import RoomItems from './room-items';
 import RoomForm from './room-form';

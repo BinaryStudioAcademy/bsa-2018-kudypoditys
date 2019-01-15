@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Card, Button, Form, Icon, Container, Header } from "semantic-ui-react";
-import renderField from "../input-form/renderField";
+import renderField from "../../input-form/renderField";
 import {
     required,
     maxLength40,
@@ -9,8 +9,8 @@ import {
     positiveNumber
 } from "client/regexValidationService";
 import { Field, reduxForm } from "redux-form";
-import renderTextarea from "../input-form/textarea";
-import renderDropdown from "../input-form/dropdown";
+import renderTextarea from "../../input-form/textarea";
+import renderDropdown from "../../input-form/dropdown";
 import { mapDispatchToProps, mapStateToProps } from "./container";
 import "./index.scss";
 import AlgoliaPlaces from "algolia-places-react";
@@ -304,7 +304,7 @@ class BasicInfoPropertyForm extends Component {
                                     <label>
                                         Info about nearest metro station
                                     </label>
-                                    <div className="wrapper" style={{ display: "flex" , justifyContent: "space-between" }}>     
+                                    <div className="wrapper" style={{ display: "flex" , justifyContent: "space-between" }}>
                                         <Field
                                             name={`nearestMetro`}
                                             type="text"

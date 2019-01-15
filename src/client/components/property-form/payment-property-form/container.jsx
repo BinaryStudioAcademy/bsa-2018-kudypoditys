@@ -1,4 +1,4 @@
-import { paymentTypesGet } from 'client/logic/payment-type/actions';
+import { paymentTypesGet } from '../../../logic/payment-type/actions';
 
 export const mapStateToProps = (state) => {
     const { paymentTypes } = state;

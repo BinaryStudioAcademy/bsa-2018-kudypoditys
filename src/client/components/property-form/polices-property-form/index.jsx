@@ -1,28 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import { Form, Button, Container, Header } from 'semantic-ui-react';
-import { required } from 'client/regexValidationService';
+import { required } from '../../../regexValidationService';
 import { Field, reduxForm } from 'redux-form';
 
-import CheckInCheckOut from 'client/components/checkin-checkout';
-import renderDropdown from 'client/components/input-form/dropdown';
+import CheckInCheckOut from '../../../components/checkin-checkout';
+import renderDropdown from '../../../components/input-form/dropdown';
+
+import { cancelOptions } from './config';
 
 import './index.scss';
 
 class PolicesPropertyForm extends Component {
 
   renderCancellationCard() {
-    const cancelOptions = [
-      {
-        key: 1,
-        value: 'true',
-        text: 'Yes, my guests can cancel their booking for free'
-      },
-      {
-        key: 2,
-        value: 'false',
-        text: 'No, my guests will look the booking fee if they cancel'
-      },
-    ];
 
     return (
       <Fragment>

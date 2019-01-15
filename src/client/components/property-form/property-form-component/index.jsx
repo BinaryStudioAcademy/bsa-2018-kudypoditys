@@ -4,7 +4,7 @@ import { Tab, Container } from "semantic-ui-react";
 import { DrawTab } from "./DrawTab";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "./container";
-import PropertyService from "client/services/propertyService";
+import PropertyService from "../../../services/propertyService";
 
 import BasicInfoPropertyForm from "../basic-info-property-form";
 import FacilitiesPropertyForm from "../facilities-property-form";
