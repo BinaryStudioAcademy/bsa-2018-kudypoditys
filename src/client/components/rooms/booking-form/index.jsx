@@ -7,12 +7,12 @@ import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import "./index.scss";
 import history from "client/history";
-import QuantityPicker from "../quantity-picker";
+import QuantityPicker from "../../quantity-picker";
 import {
     convertCurrencyByName,
     titleToCode
-} from "../../helpers/convertCurrency";
-import { getDaysDifference } from "../../helpers/date-helpers";
+} from "../../../helpers/convertCurrency";
+import { getDaysDifference } from "../../../helpers/date-helpers";
 
 export class BookingForm extends React.Component {
     generateOptions = (from, to) => {

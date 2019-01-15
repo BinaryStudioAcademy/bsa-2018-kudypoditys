@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import history from "client/history";
+import history from "../../../history";
 import { mapStateToProps, mapDispatchToProps } from "./container";
-import LoginForm from "./loginForm";
+import LoginForm from "../login/loginForm";
 import { Message, Grid, Container, Header } from "semantic-ui-react";
 
 export class LoginComponent extends React.Component {

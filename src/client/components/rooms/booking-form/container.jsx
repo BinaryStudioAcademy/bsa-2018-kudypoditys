@@ -3,7 +3,7 @@ import {
     bookProperty,
     getRoomsInfo,
     roomsSelectedAmountUpdate
-} from "../../logic/property-page/actions";
+} from "../../../logic/property-page/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { property, bookingInput } = state.propertyPage;

@@ -1,4 +1,4 @@
-import { bookingInputUpdate } from "../../logic/property-page/actions";
+import { bookingInputUpdate } from "../../../logic/property-page/actions";
 
 export function mapStateToProps(state) {
     const { user } = state.userCabinet;

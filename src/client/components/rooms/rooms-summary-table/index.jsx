@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import { Icon, Divider } from "semantic-ui-react";
 import BookingForm from "../booking-form";
-import Modal from "../modal";
+import Modal from "../../modal";
 import { Header } from "semantic-ui-react";
-import { convert } from "../../helpers/convertCurrency";
+import { convert } from "../../../helpers/convertCurrency";
 
 export class RoomsSummaryTable extends React.Component {
     getBedsSummary = bedsInRoom => {

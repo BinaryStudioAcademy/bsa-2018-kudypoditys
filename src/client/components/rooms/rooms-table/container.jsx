@@ -2,7 +2,7 @@ import {
     bookingInputUpdate,
     roomsSelectedAmountUpdate,
     toggleDescriptionCollapse
-} from '../../logic/property-page/actions';
+} from '../../../logic/property-page/actions';
 
 export function mapStateToProps(state) {
     const {userCabinet, propertyPage, header} = state;

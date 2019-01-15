@@ -1,4 +1,4 @@
-import { currenciesGet } from '../../logic/currencies/actions';
+import { currenciesGet } from '../logic/currencies/actions';
 
 export function mapStateToProps(state) {
     return {

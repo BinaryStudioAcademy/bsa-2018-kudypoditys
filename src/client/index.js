@@ -9,7 +9,7 @@ import reducer from "client/logic/reducer";
 import createSagaMidddelware from "redux-saga";
 import rootSaga from "client/logic/rootSaga";
 import {socket} from "./logic/socket"
-import Root from "./components/root-component";
+import Root from "./components";
 
 const sagaMiddelware = createSagaMidddelware();
 const middleware = [sagaMiddelware];

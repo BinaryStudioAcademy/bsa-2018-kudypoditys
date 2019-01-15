@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Container, Header } from "semantic-ui-react";
-import "client/components/registration/index.scss";
-
-import Registrationform from "./form";
+import RegistrationForm from "./form";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./container";
+
+import "./index.scss";
 
 export class Registration extends Component {
     render() {
@@ -20,7 +20,7 @@ export class Registration extends Component {
                 >
                     Sign up
                 </Header>
-                <Registrationform
+                <RegistrationForm
                     registerFeedback={this.props.registerFeedback}
                     onSubmit={this.props.handleRegistrationSubmit}
                 />

@@ -1,17 +1,17 @@
 import React from "react";
 import "./index.scss";
 import { Icon, Table ,Popup} from "semantic-ui-react";
-import QuantityPicker from "client/components/quantity-picker";
+import QuantityPicker from "../../../components/quantity-picker";
 import _ from "lodash";
 import {
     convert,
     titleToCode
-} from "client/helpers/convertCurrency";
-import Modal from "client/components/modal";
-import BookingForm from "client/components/booking-form";
+} from "../../../helpers/convertCurrency";
+import Modal from "../../../components/modal";
+import BookingForm from "../booking-form";
 import connect from "react-redux/es/connect/connect";
 import { mapDispatchToProps, mapStateToProps } from "./container";
-import { getDaysDifference } from '../../helpers/date-helpers';
+import { getDaysDifference } from '../../../helpers/date-helpers';
 import Tooltip from 'react-tooltip-lite';
 import MealsTable from './mealsTable';
 
@@ -81,7 +81,7 @@ export class RoomsTable extends React.Component {
                 let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
                 // const totalCheck = (totalPrice * room.selectedAmount).toFixed(1);
                 const soldOutDaysAgo = room.lastReservation ? room.lastReservation.bookedDaysAgo : null;
-                const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null; 
+                const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null;
                 return ([
                     (
                         <Table.Row key={room.id} id={room.id}>
@@ -124,10 +124,10 @@ export class RoomsTable extends React.Component {
                                     <div>
                                         <strong><Icon name="food"/> Meals info</strong>
                                         { room.mealInRooms && room.mealInRooms.length > 0 ?
-                                            <Popup 
+                                            <Popup
                                                 trigger={
                                                     <p className='table-title'>
-                                                        <span style={{borderBottom: "1px dashed  #000",color : "#465672", cursor : "help"}}>Included</span> 
+                                                        <span style={{borderBottom: "1px dashed  #000",color : "#465672", cursor : "help"}}>Included</span>
                                                     </p>
                                                 }
                                                 content={
@@ -137,7 +137,7 @@ export class RoomsTable extends React.Component {
                                         :   <div className='table-title'>
                                                 <span>No included</span>
                                             </div>
-                                        }   
+                                        }
                                     </div>
                                 </div>
                             </Table.Cell>

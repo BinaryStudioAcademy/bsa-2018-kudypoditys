@@ -1,7 +1,7 @@
 import React from "react";
-import Registration from "client/components/registration";
+import Registration from "../../components/authorization/registration";
 import "./index.scss";
-import Header from "client/components/header";
+import Header from "../../components/header";
 
 export default class RegistrationPage extends React.Component {
     render() {

@@ -1,7 +1,7 @@
 import React from "react";
-import Login from "client/components/login";
+import Login from "../../components/authorization/login";
 import "./index.scss";
-import Header from "client/components/header";
+import Header from "../../components/header";
 
 export default class LoginPage extends React.Component {
     render() {

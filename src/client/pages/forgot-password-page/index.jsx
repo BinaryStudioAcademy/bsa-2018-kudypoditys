@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid } from 'semantic-ui-react';
 
-import history from 'client/history';
-import MessageBox from 'client/components/message-box';
-import Header from 'client/components/header';
-import ForgotPasswordForm from 'client/components/forgot-password-form';
-import { mapStateToProps, mapDispatchToProps } from 'client/pages/forgot-password-page/container';
+import history from '../../history';
+import MessageBox from '../../components/authorization/message-box';
+import Header from '../../components/header';
+import ForgotPasswordForm from '../../components/authorization/forgot-password-form';
+import { mapStateToProps, mapDispatchToProps } from './container';
 
 export class ForgotPasswordPage extends Component {
   onFormSubmit = (data) => {

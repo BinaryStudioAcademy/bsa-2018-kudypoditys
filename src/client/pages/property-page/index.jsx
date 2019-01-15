@@ -14,11 +14,11 @@ import {
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from "./container";
 import AppHeader from "../../components/header";
-import AvailabilityPanel from "../../components/availability-panel";
+import AvailabilityPanel from "../../components/property/property-availability-panel";
 import Slider from "../../components/slider";
 import PropertyDescription from "../../components/property/property-description";
 import {PropertySummary} from "../../components/property/property-summary";
-import {NavigationBar} from "../../components/navigation-bar";
+import {NavigationBar} from "../../components/property/property-navigation-bar";
 import BasicMapWidget from "../../components/map/basic-map-widget";
 import Modal from "../../components/modal";
 import ReactDOM from "react-dom";
@@ -30,7 +30,7 @@ import {
     getAvgFromArray
 } from "../../helpers/avgReviewRating";
 import {PropertyCommentsList} from "../../components/property/property-comments-list";
-import RoomsTable from "../../components/rooms-table";
+import RoomsTable from "../../components/rooms/rooms-table";
 import {socket} from '../../logic/socket';
 import * as moment from 'moment';
 

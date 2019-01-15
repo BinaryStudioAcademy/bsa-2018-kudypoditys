@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import history from 'client/history';
+import history from '../../../history';
 import {
   Button, Form, Header, Segment, Container, Icon
 } from "semantic-ui-react";
 import { Field, reduxForm } from 'redux-form';
 
-import { isEqualToFields, required, password, minLength8 } from 'client/regexValidationService';
-import renderField from 'client/components/input-form/renderField';
+import { isEqualToFields, required, password, minLength8 } from '../../../regexValidationService';
+import renderField from '../../../components/input-form/renderField';
 
 const isEqualToPassword = isEqualToFields('password');
 
