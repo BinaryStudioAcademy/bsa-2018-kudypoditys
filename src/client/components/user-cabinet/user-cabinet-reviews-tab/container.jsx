@@ -1,4 +1,4 @@
-import { getUserReviews } from "../../logic/user-cabinet/actions";
+import { getUserReviews } from "../../../logic/user-cabinet/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { userCabinet } = state;

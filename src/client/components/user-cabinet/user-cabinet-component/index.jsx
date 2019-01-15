@@ -4,7 +4,7 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import { DrawTab } from "./DrawTab";
 import { MenuItems } from "./config";
 import { Container, Tab } from "semantic-ui-react";
-import Header from "../header";
+import Header from "../../header";
 import history from "client/history";
 import "./index.scss";
 

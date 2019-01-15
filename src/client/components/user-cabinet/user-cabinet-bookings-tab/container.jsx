@@ -3,7 +3,7 @@ import {
     chooseBooking,
     unchooseBooking,
     cancelBooking
-} from "../../logic/user-cabinet/actions";
+} from "../../../logic/user-cabinet/actions";
 
 export function mapStateToProps(state, ownProps) {
     const { user, bookings, activeBooking } = state.userCabinet;

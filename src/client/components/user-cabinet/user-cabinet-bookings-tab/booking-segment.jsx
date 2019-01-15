@@ -9,12 +9,12 @@ import {
 } from "semantic-ui-react";
 import "./booking-segment.scss";
 import moment from "moment";
-import Modal from "../modal";
-import ReviewForm from "../reviews/addReviewForm";
-import BasicMapWidget from "../basic-map-widget";
+import Modal from "../../modal";
+import ReviewForm from "../../reviews/addReviewForm";
+import BasicMapWidget from "../../basic-map-widget";
 import history from "client/history";
 import { connect } from "react-redux";
-import { convert } from "../../helpers/convertCurrency";
+import { convert } from "../../../helpers/convertCurrency";
 
 class BookingSegment extends React.Component {
     constructor(props) {
