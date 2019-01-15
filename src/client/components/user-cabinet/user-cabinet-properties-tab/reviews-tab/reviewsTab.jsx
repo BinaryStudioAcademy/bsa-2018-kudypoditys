@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Header, Segment } from "semantic-ui-react";
 import ReviewItem from "./reviewItem";
-import "./index.scss";
+import "../index.scss";
 
 export class ReviewsTab extends React.Component {
     getReviewsItems = property => {

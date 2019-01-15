@@ -8,7 +8,7 @@ import {
     Button
 } from "semantic-ui-react";
 import moment from "moment";
-import Modal from "../modal";
+import Modal from "../../modal";
 import CancelBookingForm from "./cancelForm";
 
 import "./index.scss";

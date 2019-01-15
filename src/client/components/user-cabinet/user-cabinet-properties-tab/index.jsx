@@ -8,9 +8,9 @@ import {
     Segment
 } from "semantic-ui-react";
 import "./index.scss";
-import { PropertyItem } from "./propertyItem";
+import { PropertyItem } from "./property/propertyItem";
 import history from "client/history";
-import { PropertyPage } from "./property-page";
+import { UserCabinetPropertyPage } from "./property/property-page";
 
 export class ReviewsTab extends React.Component {
     addPropertyClicked = () => {
@@ -46,7 +46,7 @@ export class ReviewsTab extends React.Component {
         return (
             <Segment className="property-segment">
                 {activeProperty ? (
-                    <PropertyPage
+                    <UserCabinetPropertyPage
                         property={activeProperty}
                         backToAllProperties={this.backToAllProperties}
                         cancelBooking={value => {

@@ -1,12 +1,12 @@
 import React from "react";
 import { Tab } from "semantic-ui-react";
-import { ReviewsTab } from "./reviewsTab";
+import { ReviewsTab } from "../reviews-tab/reviewsTab";
 import AvailabilityCalendar from "client/components/property-availability-calendar";
-import { BookingsList } from "./bookings-list";
+import { BookingsList } from "../bookings-list";
 import { Segment, Icon, Divider } from "semantic-ui-react";
-import MealsTab from "../user-cabinet-meals";
+import MealsTab from "../meals-tab";
 
-export class PropertyPage extends React.Component {
+export class UserCabinetPropertyPage extends React.Component {
     panes = [
         {
             menuItem: "Bookings",

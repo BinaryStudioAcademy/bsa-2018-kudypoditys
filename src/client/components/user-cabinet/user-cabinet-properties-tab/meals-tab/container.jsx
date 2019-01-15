@@ -1,6 +1,6 @@
-import { mealsGet } from 'client/logic/meals/actions';
-import { mealTypesGet } from 'client/logic/meal-types/actions';
-import { updateMealsInPropertyRoom } from 'client/logic/user-cabinet-properties-tab/actions';
+import { mealsGet } from '../../../../logic/meals/actions';
+import { mealTypesGet } from '../../../../logic/meal-types/actions';
+import { updateMealsInPropertyRoom } from '../../../../logic/user-cabinet-properties-tab/actions';
 
 
 export function mapStateToProps(state) {
