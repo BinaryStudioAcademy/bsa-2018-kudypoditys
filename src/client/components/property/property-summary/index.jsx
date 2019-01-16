@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss';
 import { Header, Icon, Rating } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import Modal from '../../modal';
+import Modal from '../../common/modal';
 import BasicMapWidget from '../../map/basic-map-widget';
 import RatingBlock from '../../../components/reviews/ratingBlock';
 

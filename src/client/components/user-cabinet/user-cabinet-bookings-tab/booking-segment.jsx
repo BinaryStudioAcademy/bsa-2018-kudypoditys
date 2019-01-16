@@ -9,7 +9,7 @@ import {
 } from "semantic-ui-react";
 import "./booking-segment.scss";
 import moment from "moment";
-import Modal from "../../modal";
+import Modal from "../../common/modal";
 import ReviewForm from "../../reviews/addReviewForm";
 import BasicMapWidget from "../../map/basic-map-widget";
 import history from "client/history";

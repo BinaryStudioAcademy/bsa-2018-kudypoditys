@@ -19,7 +19,7 @@ import {
     getPropToggler2
 } from "client/helpers/reviewToggler";
 import RatingBar from "./ratingBar";
-import Modal from "../modal";
+import Modal from "../common/modal";
 
 
 export class Reviews extends React.Component {
