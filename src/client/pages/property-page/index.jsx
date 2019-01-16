@@ -54,7 +54,7 @@ export class PropertyPage extends React.Component {
             {
                 query : {
                     roomId : this.props.match.params.id,
-                    token : UserTrackingService.getUserToken()
+                    token : UserTrackingService.getToken()
                 }
             });
 

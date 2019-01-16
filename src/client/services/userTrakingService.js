@@ -1,21 +1,24 @@
 import cookies from "browser-cookies";
+import rand_tocken from "rand-token";
 
 class UserTrackingService {
 
-    getUserToken(){
+    getToken() {
+        const accessToken = cookies.get("accessToken")
+
+        if (!accessToken) {
+            return cookies.get("anonymousToken");
+        }
+
         return cookies.get("accessToken");
     }
 
-    setAnonymousToken(){
-        return cookies.set("anonymousToken", 1)
+    setAnonymousToken() {
+        return !cookies.get("anonymousToken") ? cookies.set("anonymousToken", rand_tocken.uid(16)) : null;
     }
 
-    clearAnonymousToken(){
+    clearAnonymousToken() {
         cookies.erase("anonymousToken");
-    }
-
-    getAnonymousToken(){
-        return cookies.get("anonymousToken");
     }
 }
 
