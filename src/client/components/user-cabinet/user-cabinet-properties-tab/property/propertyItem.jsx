@@ -11,7 +11,7 @@ import {
 } from "semantic-ui-react";
 import "../index.scss";
 import BasicMapWidget from "../../../map/basic-map-widget";
-import Modal from "../../../modal";
+import Modal from "../../../common/modal";
 import history from "../../../../history";
 
 export class PropertyItem extends React.Component {

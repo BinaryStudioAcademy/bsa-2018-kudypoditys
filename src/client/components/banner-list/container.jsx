@@ -1,4 +1,4 @@
-import { cityInfosGet } from 'client/logic/banner-list/actions';
+import { cityInfosGet } from 'client/logic/cities/actions';
 import { searchUpdate, searchSubmit } from "client/logic/search/actions";
 
 export function mapStateToProps(state) {

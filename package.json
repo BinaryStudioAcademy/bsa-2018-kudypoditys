@@ -73,6 +73,7 @@
     "moment": "^2.22.2",
     "node-sass": "^4.9.2",
     "nodemailer": "^4.6.8",
+    "normalizr": "^3.3.0",
     "object-assign": "^4.1.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",

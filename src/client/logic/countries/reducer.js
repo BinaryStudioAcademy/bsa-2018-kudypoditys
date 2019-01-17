@@ -5,7 +5,7 @@ import {
   GET_COUNTRIES_FAILED
 } from './actionTypes';
 
-function countriesReducer(state = defaultState.countriesData, action) {
+function countriesReducer(state = defaultState.countries, action) {
   switch (action.type) {
     case GET_COUNTRIES:
       return {

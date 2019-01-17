@@ -11,7 +11,7 @@ import { reducer as formReducer } from "redux-form";
 import quickFilter from "client/logic/quick-filter/reducer";
 import header from "client/logic/header/reducer";
 import roomSummary from "client/logic/rooms-summary-table/reducer";
-import cityInfos from "client/logic/banner-list/reducer";
+import cities from "client/logic/cities/reducer";
 import amenitiesTab from "./amenities-tab-for-property/reducer";
 import propertySubmit from "./main-info-tab/reducer";
 import propertyRegistration from "client/logic/property-registration/reducer";
@@ -41,7 +41,7 @@ import propertyEdit from "client/logic/property-edit/reducer";
 export default combineReducers({
     search,
     sortType,
-    cityInfos,
+    cities,
     searchSummary,
     header,
     shownProperties,
