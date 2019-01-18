@@ -16,6 +16,8 @@ class CurrencyService extends Service {
                 const res = await fetch(`http://free.currencyconverterapi.com/api/v5/convert?q=USD_${x.code}&compact=y`);
                 const rate = (await res.json())[`USD_${x.code}`]["val"];
 
+                await x.update({ rateLastUpdate : moment().format(), rate : rate});
+
                 return Object.assign(x, { rateLastUpdate : moment().format(), rate : rate});
             }
 
