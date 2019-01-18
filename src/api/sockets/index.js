@@ -14,9 +14,12 @@ module.exports = io => {
         .in("room "  + data.roomId)
         .emit("nowLooking",
                 [...new Set(
-                    roomSockets
-                    .filter(x => x.roomId === data.roomId)
-                    .map(x => x.token))
+                    roomSockets.reduce((res, option) => {
+                        if (option.roomId === data.roomId) {
+                            res.push(option.token);
+                        }
+                        return res;
+                    }, []))
                 ]
                 .length - 1);
 
@@ -31,12 +34,15 @@ module.exports = io => {
             io
             .in("room "  + roomId)
             .emit("nowLooking",
-                    [...new Set(
-                        roomSockets
-                        .filter(x => x.roomId === roomId)
-                        .map(x => x.token))
-                    ]
-                    .length - 1);
+                [...new Set(
+                    roomSockets.reduce((res, option) => {
+                        if (option.roomId === data.roomId) {
+                            res.push(option.token);
+                        }
+                        return res;
+                    }, []))
+                ]
+                .length - 1);
 
             socket.disconnect();
         });
