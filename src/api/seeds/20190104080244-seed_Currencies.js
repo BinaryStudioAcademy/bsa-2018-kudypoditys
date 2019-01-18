@@ -3,19 +3,25 @@ const currencies = [
         name: "EURO",
         code: "EUR",
         codeTitle: "EUR",
-        number: "978"
+        number: "978",
+        rate : "0.8",
+        rateLastUpdate : new Date()
     },
     {
         name: "US DOLLAR",
         code: "USD",
         codeTitle: "USD",
-        number: "840"
+        number: "840",
+        rate : "1",
+        rateLastUpdate : new Date()
     },
     {
         name: "Hryvnia",
         code: "UAH",
         codeTitle: "UAH",
-        number: "980"
+        number: "980",
+        rate : "28",
+        rateLastUpdate : new Date()
     }
 ];
 

@@ -25,6 +25,12 @@ const Currency = orm.define("currency", {
         validate: { notEmpty: true },
         allowNull: false,
         unique: true
+    },
+    rate : {
+        type: Sequelize.DOUBLE,
+    },
+    rateLastUpdate : {
+        type: Sequelize.DATE,
     }
 });
 
