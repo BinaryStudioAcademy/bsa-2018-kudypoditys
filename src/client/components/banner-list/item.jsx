@@ -1,15 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Card, Container, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import shortParagraphImg from "./img/short-paragraph.png";
 
 import "./index.scss";
-// import tag from "client/components/banner-list/img/tag.svg";
-import shortParagraphImg from "./img/short-paragraph.png";
 
 export class Banner extends Component {
 
     handleClick(cityInfo) {
-        // console.log('Hello from item')
         this.props.onClick(cityInfo)
     }
     render() {
@@ -47,9 +45,9 @@ export class Banner extends Component {
                         <Card.Description className="banner__avgprice">
                             <span>Average price</span>
                             <span className="avgPrice">
-                               {currency}{' '}
-                                {Intl.NumberFormat("en-US").format(
-                                    cityInfo.avgPrice
+                               {currency.code}{' '}
+                                {Intl.NumberFormat("en-US",{ maximumFractionDigits : 0 }).format(
+                                    cityInfo.avgPrice * currency.rate
                                 )}
                             </span>
                         </Card.Description>

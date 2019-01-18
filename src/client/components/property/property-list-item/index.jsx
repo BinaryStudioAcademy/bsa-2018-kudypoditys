@@ -23,7 +23,6 @@ import {
     getAvgFromArray
 } from "client/helpers/avgReviewRating";
 import RatingBlock from "../../reviews/ratingBlock";
-import { convert } from '../../../helpers/convertCurrency';
 import { toUnixTimeSeconds, isWithinLastDay } from '../../../helpers/date-helpers';
 import moment from "moment";
 
@@ -336,7 +335,9 @@ export class PropertyListItem extends React.Component {
                                     {propertyItemData.rooms[0].roomType.name}
                                 </div>
                                 <span className="priceInfo">
-                                    {currency.code} {convert(propertyCurrency, price, currency.code)}
+                                    {currency.code} {
+                                        Intl.NumberFormat("en-US", { maximumFractionDigits : 0 })
+                                            .format(price * currency.rate)}
                                 </span>
                             </div>
 
