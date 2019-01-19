@@ -609,7 +609,6 @@ const state = {
             Location: 0
         }
     },
-    //--------------------------
     countries: {
         byId: {},
         all: []

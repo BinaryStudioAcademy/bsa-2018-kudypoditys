@@ -7,6 +7,10 @@ class CountryRepository extends Repository {
     //todo additional methods for repository
 
     getAllDetails() {
+        return this.model.findAll();
+    }
+
+    getAllWithCities(){
         return this.model.findAll({
             include: [City]
         });

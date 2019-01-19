@@ -1,5 +1,5 @@
 import { CITIES_GET } from "./actionType";
 
-export const cityInfosGet = data => ({
+export const citiesGet = data => ({
     type: CITIES_GET, payload: data
 });
