@@ -20,7 +20,6 @@ function* getProperties(action) {
         const { result, entities } = normalize(cities, [
             citySchema
         ]);
-        console.log(entities);
 
         yield put({
             type: CITIES_GET_SUCCESS,

@@ -13,7 +13,7 @@ import _fp from "lodash/fp";
 export class BannerList extends Component {
 
     componentWillMount() {
-        this.props.getCities();
+        this.props.getCitiesWithCountries();
     };
 
     onCardClick = query => {
@@ -38,11 +38,14 @@ export class BannerList extends Component {
 
     render() {
         const quantityCards = 3;
-        const { cities, currency } = this.props;
+        const { cities, currency,countries } = this.props;
+
+        const items = cities.map(x => Object.assign(x, { flagUrl : countries[x.countryId].flagUrl }));
+
         const citiesRows = _fp.flow(
             this.addGridParametersToCities,
             _fp.chunk(quantityCards)
-        )(cities);
+        )(items);
 
         return (
             <div className='container'>

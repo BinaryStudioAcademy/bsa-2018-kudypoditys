@@ -7,6 +7,7 @@ import {
 import { normalize } from "normalizr";
 import { countrySchema } from "./country.schema";
 import countryService from 'client/services/countryService';
+import { CITIES_GET} from "../cities/actionType";
 
 function* getCountries() {
   try {
@@ -14,6 +15,9 @@ function* getCountries() {
     const { result, entities } = normalize(countries, [
         countrySchema
     ]);
+    yield put({
+        type:CITIES_GET
+    })
     yield put({
       type: GET_COUNTRIES_SUCCESS,
       payload: { all : result, byId : entities}
