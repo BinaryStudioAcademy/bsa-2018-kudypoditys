@@ -9,7 +9,7 @@ import reviewSaga from "client/logic/reviews/saga";
 import propertyPageSaga from "./property-page/saga";
 import searchSaga from "./search/saga";
 import personalSettingsSaga from "./user-cabinet-settings/saga";
-import bannerListSaga from "./banner-list/saga";
+import citiesSaga from "./cities/saga";
 import availabilityCalendar from "client/logic/property-availability-calendar/saga";
 import resetPasswordSaga from "client/logic/reset-password/saga";
 import forgotPasswordSaga from "client/logic/forgot-password/saga";
@@ -40,7 +40,7 @@ export default function* rootSaga() {
         fork(searchSaga),
         fork(resetPasswordSaga),
         fork(forgotPasswordSaga),
-        fork(bannerListSaga),
+        fork(citiesSaga),
         fork(availabilityCalendar),
         // fork(propertySaga) ???
         fork(propertyRegistrationSaga),

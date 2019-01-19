@@ -120,8 +120,9 @@ const state = {
         shownFrom: 1,
         shownTo: 5
     },
-    cityInfos: {
-        cities: []
+    cities: {
+        byId: {},
+        all: []
     },
     filters: [
         {
@@ -608,9 +609,9 @@ const state = {
             Location: 0
         }
     },
-    //--------------------------
-    countriesData: {
-        countries: []
+    countries: {
+        byId: {},
+        all: []
     },
     languagesData: {
         languages: []
