@@ -24,9 +24,12 @@ import { Provider } from "react-redux";
 import { Router } from "react-router-dom";
 import history from "../history";
 
+import UserTrackingService from "../services/userTrakingService"
+
 export class Root extends Component {
     componentWillMount() {
         this.props.getCurrencies();
+        UserTrackingService.setAnonymousToken();
     };
 
     render() {

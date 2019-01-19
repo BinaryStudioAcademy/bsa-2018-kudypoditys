@@ -1,3 +1,4 @@
+//redundant
 export const converterObj = {
     eur: {
         uah: 32.24,

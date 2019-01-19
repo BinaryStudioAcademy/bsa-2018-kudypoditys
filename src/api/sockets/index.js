@@ -1,32 +1,49 @@
 module.exports = io => {
-    io.sockets.on('connection', (socket) => {
 
-        socket.on("openPropertyPage",(room) => {
-             io.of('/').in(room).clients((error,clients) => {
-                 io.in(room).emit("nowLooking",clients.length - 1);
-             });
-        })
+    let roomSockets = []
 
-        socket.on('openPropertyRoom', (room) => {
-            socket.join(room);
-        });
+    io.sockets.on("connection", (socket) => {
 
-        socket.on('leavePropertyRoom', (room) => {
-            socket.leave(room);
-            io.of('/').in(room).clients((error,clients) => {
-                io.in(room).emit("nowLooking",clients.length - 1);
-            });
-        });
+        let data = socket.conn.request._query;
 
-        socket.on('onClose', () => {
-            const roomName = Object.keys(socket.rooms)[0];
-            io.of('/').in(roomName).clients((error,clients) => {
-                io.in(roomName).emit("nowLooking",clients.length - 2);
-            });
-            socket.leave(roomName);
-        });
+        roomSockets = roomSockets.concat({ socketId : socket.id, token : data.token, roomId : data.roomId })
+
+        socket.join("room " + data.roomId)
+
+        io
+        .in("room "  + data.roomId)
+        .emit("nowLooking",
+                [...new Set(
+                    roomSockets.reduce((res, option) => {
+                        if (option.roomId === data.roomId) {
+                            res.push(option.token);
+                        }
+                        return res;
+                    }, []))
+                ]
+                .length - 1);
 
         socket.on("disconnect", () => {
+
+            const roomId = socket.conn.request._query.roomId;
+
+            roomSockets = roomSockets.filter(x => !(x.socketId === socket.id));
+
+            socket.leave("room " + roomId);
+
+            io
+            .in("room "  + roomId)
+            .emit("nowLooking",
+                [...new Set(
+                    roomSockets.reduce((res, option) => {
+                        if (option.roomId === data.roomId) {
+                            res.push(option.token);
+                        }
+                        return res;
+                    }, []))
+                ]
+                .length - 1);
+
             socket.disconnect();
         });
     });

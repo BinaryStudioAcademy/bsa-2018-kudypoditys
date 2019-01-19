@@ -8,7 +8,6 @@ import "client/styles/global.scss";
 import reducer from "client/logic/reducer";
 import createSagaMidddelware from "redux-saga";
 import rootSaga from "client/logic/rootSaga";
-import {socket} from "./logic/socket"
 import Root from "./components";
 
 const sagaMiddelware = createSagaMidddelware();
@@ -21,10 +20,3 @@ const store = createStore(
 sagaMiddelware.run(rootSaga);
 
 ReactDOM.render(<Root store={store}/>, document.getElementById("root"));
-
-window.addEventListener("beforeunload", (ev) =>
-{
-    if(socket)
-        socket.emit('onClose');
-    ev.preventDefault();
-});

@@ -31,8 +31,10 @@ import {
 } from "../../helpers/avgReviewRating";
 import {PropertyCommentsList} from "../../components/property/property-comments-list";
 import RoomsTable from "../../components/rooms/rooms-table";
-import {socket} from '../../logic/socket';
+import UserTrackingService from "../../services/userTrakingService"
 import * as moment from 'moment';
+import socketIOClient from 'socket.io-client';
+import { SERVER_URL } from "../../constants";
 
 export class PropertyPage extends React.Component {
     toggleReviews = () => {
@@ -47,15 +49,23 @@ export class PropertyPage extends React.Component {
             this.props.checkIn,
             this.props.checkOut
         );
-        socket.connect();
-        socket.emit('openPropertyRoom',this.props.match.params.id);
-        socket.emit('openPropertyPage',this.props.match.params.id);
-        socket.on('nowLooking',(res) => this.setState({nowLooking : res}));
+
+        const socket = socketIOClient(SERVER_URL,
+            {
+                query : {
+                    roomId : this.props.match.params.id,
+                    token : UserTrackingService.getToken()
+                }
+            });
+
+        socket.on('nowLooking',(res) => this.setState({ nowLooking : res }));
+
+        this.setState({ socket : socket})
     }
 
     componentWillUnmount() {
         this.props.clearPropertyPageSlice();
-        socket.emit('leavePropertyRoom',this.props.property.id);
+        this.state.socket.disconnect();
     }
 
     componentDidMount() {

@@ -10,8 +10,7 @@ export function mapStateToProps(state) {
             {
                 const city = cities.byId[id];
                 return {...city, flagUrl : countries.byId[city.countryId].flagUrl || ''};
-            }
-            ),
+            }),
         currency: header.selectedCurrency.code };
 }
 
