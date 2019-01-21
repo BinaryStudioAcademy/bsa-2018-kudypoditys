@@ -161,12 +161,13 @@ const state = {
             type: "Hotel Class"
         }
     ],
-
-    rooms: {},
     propertyRegistrationTab: {
         userName: "User Name"
     },
-
+    rooms:{
+        all: [],
+        byId: {}
+    },
     propertyPage: {
         property: null,
         availabilityInput: {

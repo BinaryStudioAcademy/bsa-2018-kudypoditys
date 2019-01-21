@@ -5,7 +5,10 @@ import {
     takeLatest
 } from "redux-saga/effects";
 import * as actionTypes from "./actionTypes";
+import { GET_ROOMS_SUCCESS } from "../rooms/actionTypes";
 import api from "../../helpers/api";
+import { normalize } from "normalizr";
+import { propertySchema } from "./property.schema";
 
 export default function* propertyPageSaga() {
     function* getPropertyInfo(action) {
@@ -15,11 +18,23 @@ export default function* propertyPageSaga() {
                 `/api/property/${action.payload}`,
                 "get"
             );
-            let propertyData = response.data.property;
-            propertyData.notes = response.data.notes;
+            const propertyData = response.data.property;
+
+            //TODO: normalize property state
+            const { result, entities } = normalize(propertyData, propertySchema);
+
+            const property = {...Object.values(entities.property)[0], notes: response.data.notes }
+
+            yield put({
+                type: GET_ROOMS_SUCCESS,
+                payload: {
+                    entities : { rooms: entities.rooms },
+                    all: Object.keys(entities.rooms).map(x => +x)
+                }
+            });
             yield put({
                 type: actionTypes.GET_PROPERTY_INFO_SUCCESS,
-                payload: propertyData
+                payload: property
             });
         } catch (err) {
             console.log(err);
