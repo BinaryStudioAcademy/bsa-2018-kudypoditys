@@ -1,15 +1,19 @@
-import { cityInfosGet } from 'client/logic/banner-list/actions';
-import { searchUpdate, searchSubmit } from "client/logic/search/actions";
+import { searchUpdate, searchSubmit } from "../../logic/search/actions";
+import { countriesGet } from "../../logic/countries/actions";
 
 export function mapStateToProps(state) {
-    const { cityInfos, header } = state;
-    return { cityInfos, currency: header.selectedCurrency };
+    const { cities, header, countries } = state;
+
+    return {
+        cities : cities.all.map(id =>cities.byId[id]),
+        countries : countries.byId,
+        currency: header.selectedCurrency };
 }
 
 export function mapDispatchToProps(dispatch, ownProps, data) {
     return {
-        getCityInfos() {
-            dispatch(cityInfosGet());
+        getCitiesWithCountries() {
+            dispatch(countriesGet());
         },
         onSearch(data) {
             dispatch(searchUpdate({ query: data }));
