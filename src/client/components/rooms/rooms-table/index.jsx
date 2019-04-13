@@ -78,7 +78,7 @@ export class RoomsTable extends React.Component {
                     0
                 );
                 let priceForOneDay = priceFunc(room.price);
-                let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
+                let totalPrice = (priceForOneDay * daysStaying * room.selectedAmount).toFixed(1);
                 // const totalCheck = (totalPrice * room.selectedAmount).toFixed(1);
                 const soldOutDaysAgo = room.lastReservation ? room.lastReservation.bookedDaysAgo : null;
                 const soldOutPrice = room.lastReservation ? room.lastReservation.pricePerNight.toFixed(0) : null;
@@ -149,7 +149,7 @@ export class RoomsTable extends React.Component {
                                 <QuantityPicker
                                     roomId={room.id}
                                     roomsSelectedAmount={room.selectedAmount}
-                                    roomsAvailable={room.available + 1}
+                                    roomsAvailable={room.amount + 1}
                                     onSelectionChanged={
                                         this.handleQuantitySelectionChanged
                                     }

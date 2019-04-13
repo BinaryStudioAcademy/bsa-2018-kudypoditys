@@ -9,7 +9,7 @@ import "./index.scss";
 import history from "client/history";
 import QuantityPicker from "../quantity-picker";
 import {
-    convertCurrencyByName,
+    convert,
     titleToCode
 } from "../../../helpers/convertCurrency";
 import { getDaysDifference } from "../../../helpers/date-helpers";
@@ -76,10 +76,11 @@ export class BookingForm extends React.Component {
             roomPrice
         } = this.props;
         const priceFunc = price =>
-            convertCurrencyByName(propertyCurrency.code, price, currency.code);
+            convert(propertyCurrency.code, price, currency.code);
         const daysStaying = getDaysDifference(checkIn, checkOut);
         const currencySymbol = titleToCode.get(currency.code);
         let priceForOneDay = priceFunc(roomPrice);
+        console.log(priceForOneDay)
         let totalPrice = (priceForOneDay * daysStaying).toFixed(1);
         const totalCheck = (totalPrice * selectedRoomsAmount).toFixed(1);
         // TODO: Code duplication

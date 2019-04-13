@@ -6,10 +6,9 @@ import {
 } from "../../../logic/property-page/actions";
 
 export function mapStateToProps(state, ownProps) {
-    const { property, bookingInput } = state.propertyPage;
+    const { property, bookingInput, availabilityInput } = state.propertyPage;
     const room = ownProps.rooms.find(r => r.id === bookingInput.roomId);
-    // console.log(room);
-    const { selectedAmount, available, price } = room
+    const { selectedAmount, amount, price } = room
         ? room
         : { selectedAmount: 1, amount: 1, price: 0 };
 
@@ -20,13 +19,13 @@ export function mapStateToProps(state, ownProps) {
         propertyCurrency: property.currency,
         currency: state.header.selectedCurrency,
         cancelForFree: property.accommodationRule.cancelReservation,
-        checkIn: bookingInput.checkIn,
-        checkOut: bookingInput.checkOut,
+        checkIn: availabilityInput.checkIn,
+        checkOut: availabilityInput.checkOut,
         adults: bookingInput.adults,
         children: bookingInput.children,
         roomId: bookingInput.roomId,
         selectedRoomsAmount: selectedAmount,
-        roomsAmount: parseInt(available, 10),
+        roomsAmount: parseInt(amount, 10),
         roomPrice: price,
         paymentTypeId: bookingInput.paymentTypeId,
         error: bookingInput.error,
